@@ -5,26 +5,19 @@ using DG.Tweening;
 
 public class CameraController : MonoBehaviour
 {
-    public Vector3 LobbyPos;
-    public Vector3 LobbyRot;
-    public Vector3 StagePos;
-    public Vector3 StageRot;    
+    public float LobbySize;
+    public float StageSize;
 
     public void SetLobbyCam()
 	{
-        this.transform.position = LobbyPos;
-        this.transform.rotation = Quaternion.Euler(LobbyRot);
+        this.GetComponent<Camera>().orthographicSize = LobbySize;
 	}
 
     public void SetStageCam()
     {
-        this.transform.DOMove(StagePos, 1f);
-        this.transform.DORotate(StageRot, 1f);        
+        Camera cam = this.GetComponent<Camera>();
+        cam.DOOrthoSize(StageSize, 1f).SetEase(Ease.Linear);
     }
 
-    public void SetBattleCam(Vector3 pos)
-	{
-        this.transform.DOMove(pos, 1.5f);
-	}
 
 }

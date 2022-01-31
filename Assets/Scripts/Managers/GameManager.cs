@@ -54,11 +54,6 @@ public class GameManager : MonoSingleton<GameManager>
 			StartStage = true;
 	}
 
-	public void SetBattleCam(Vector3 pos)
-	{
-		camCon.SetBattleCam(pos);
-	}
-
 	// 홈이나 다른 버튼을 눌러 어플리케이션이 멈췄을 때 콜됨
 	void OnApplicationPause(bool pause)
 	{

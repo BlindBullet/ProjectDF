@@ -28,14 +28,14 @@ public class JoystickManager : MonoSingleton<JoystickManager>
 
         while (true)
         {
+            
             switch (state)
             {
                 case JoystickState.EndDrag:
-                    if (!_char.Anim.GetCurrentAnimatorStateInfo(0).IsName("S_Idle"))
-                        _char.Anim.SetTrigger("S_Idle");
+                    _char.SetDirection(dir, state);
                     break;
                 default:
-                    _char.SetDirection(dir);
+                    _char.SetDirection(dir, state);
                     _char.transform.Translate(new Vector3(dir.x, dir.y, 0) * Time.deltaTime * speed);
                     cam.transform.position = _char.transform.position.WithZ(-10f);
                     break;
