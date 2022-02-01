@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,7 @@ public class EnemyBase : MonoBehaviour
 
 	private void Start()
 	{
-		Stat = new EnemyStat();
-		Stat.MaxHp = 10;
-		Stat.CurHp = 10;
-		Stat.Atk = 1;
-		Stat.Spd = 1f;
-
-		StartCoroutine(MoveSequence());
+		
 	}
 
 	IEnumerator MoveSequence()
@@ -47,7 +42,16 @@ public class EnemyBase : MonoBehaviour
 		
 	}
 
+	public void Setup()
+	{
+		Stat = new EnemyStat();
+		Stat.MaxHp = 10;
+		Stat.CurHp = 10;
+		Stat.Atk = 1;
+		Stat.Spd = 1f;
 
+		StartCoroutine(MoveSequence());
+	}
 }
 
 public class EnemyStat

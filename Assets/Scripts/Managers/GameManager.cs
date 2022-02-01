@@ -52,6 +52,11 @@ public class GameManager : MonoSingleton<GameManager>
 		{
 			State = GameState.StageReady;
 		}
+
+		if (Input.GetKeyDown(KeyCode.S))
+		{
+			EnemySpawner.Ins.SpawnEnemy("Gremlin");
+		}
 	}
 
 	// 홈이나 다른 버튼을 눌러 어플리케이션이 멈췄을 때 콜됨

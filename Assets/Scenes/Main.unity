@@ -3613,7 +3613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &599828343
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8146,7 +8146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1695963635
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14346,6 +14346,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gremlin
+      objectReference: {fileID: 0}
+    - target: {fileID: 312136423949437986, guid: 3811751fbaaa7224c91c8382a202288a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 312136423949437987, guid: 3811751fbaaa7224c91c8382a202288a,
         type: 3}
