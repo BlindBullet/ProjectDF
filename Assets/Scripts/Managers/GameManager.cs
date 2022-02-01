@@ -6,13 +6,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
-{
-	[HideInInspector]
-	public bool StartStage = false;
-	[SerializeField]
-	private CameraController camCon;
-	[SerializeField]
-	private LobbyUI _lobbyUI;	
+{	
+	[SerializeField] private CameraController camCon;
+	[SerializeField] private LobbyUI _lobbyUI;	
 
 	public GameState State;
 	public bool StartBattle = false;
@@ -39,19 +35,23 @@ public class GameManager : MonoSingleton<GameManager>
 	{
 		camCon.SetLobbyCam();
 		
-
-		while (!StartStage)
+		while (State != GameState.StageReady)
 		{
 			yield return null;
 		}
-
 		
+		yield return new WaitForSeconds(1f);
+
+		State = GameState.StageStart;
+
 	}
 
-	public void StageStart()
+	private void Update()
 	{
-		if (!StartStage)
-			StartStage = true;
+		if (Input.GetKeyDown(KeyCode.A))
+		{
+			State = GameState.StageReady;
+		}
 	}
 
 	// 홈이나 다른 버튼을 눌러 어플리케이션이 멈췄을 때 콜됨
@@ -88,9 +88,13 @@ public class GameManager : MonoSingleton<GameManager>
 
 public enum GameState
 {
+	None,
 	Lobby,
-	Run,
-	BattleReady,
-	Battle,
+	StageReady,
+	StageStart,
+	StageWin,
+	StageLose,
+
+	
 
 }
