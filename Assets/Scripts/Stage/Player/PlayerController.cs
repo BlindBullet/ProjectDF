@@ -23,58 +23,76 @@ public class PlayerController : MonoBehaviour
 
 		float reDegree = 360 - degree;
 
+		//switch (state)
+		//{
+		//	case JoystickState.EndDrag:
+		//		if (reDegree >= 315f || reDegree <= 45f)
+		//		{
+		//			if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("B_Idle"))
+		//				Anim.SetTrigger("B_Idle");
+		//		}
+		//		else if (reDegree >= 45f && reDegree <= 135f)
+		//		{
+		//			if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("S_Idle"))
+		//				Anim.SetTrigger("S_Idle");
+		//		}
+		//		else if (reDegree >= 135f && reDegree <= 225f)
+		//		{
+		//			if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("F_Idle"))
+		//				Anim.SetTrigger("F_Idle");
+		//		}
+		//		else if (reDegree >= 225f && reDegree <= 315f)
+		//		{
+		//			if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("S_Idle"))
+		//				Anim.SetTrigger("S_Idle");
+		//		}
+		//		break;
+		//	default:				
+		//		if (reDegree >= 315f || reDegree <= 45f)
+		//		{
+		//			if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("B_Walk"))
+		//				Anim.SetTrigger("B_Walk");
+		//		}
+		//		else if (reDegree >= 45f && reDegree <= 135f)
+		//		{
+		//			PlayerTrf.localScale = PlayerTrf.localScale.WithX(-playerScaleX);
+		//			if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("S_Walk"))
+		//				Anim.SetTrigger("S_Walk");
+		//		}
+		//		else if (reDegree >= 135f && reDegree <= 225f)
+		//		{
+		//			if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("F_Walk"))
+		//				Anim.SetTrigger("F_Walk");
+		//		}
+		//		else if (reDegree >= 225f && reDegree <= 315f)
+		//		{
+		//			PlayerTrf.localScale = PlayerTrf.localScale.WithX(playerScaleX);
+		//			if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("S_Walk"))
+		//				Anim.SetTrigger("S_Walk");
+		//		}
+		//		break;
+		//}
 
 		switch (state)
 		{
 			case JoystickState.EndDrag:
-				if (reDegree >= 315f || reDegree <= 45f)
-				{
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("B_Idle"))
-						Anim.SetTrigger("B_Idle");
-				}
-				else if (reDegree >= 45f && reDegree <= 135f)
-				{
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("S_Idle"))
-						Anim.SetTrigger("S_Idle");
-				}
-				else if (reDegree >= 135f && reDegree <= 225f)
-				{
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("F_Idle"))
-						Anim.SetTrigger("F_Idle");
-				}
-				else if (reDegree >= 225f && reDegree <= 315f)
-				{
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("S_Idle"))
-						Anim.SetTrigger("S_Idle");
-				}
+				if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+					Anim.SetTrigger("Idle");
 				break;
-			default:				
-				if (reDegree >= 315f || reDegree <= 45f)
-				{
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("B_Walk"))
-						Anim.SetTrigger("B_Walk");
-				}
-				else if (reDegree >= 45f && reDegree <= 135f)
-				{
-					PlayerTrf.localScale = PlayerTrf.localScale.WithX(-playerScaleX);
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("S_Walk"))
-						Anim.SetTrigger("S_Walk");
-				}
-				else if (reDegree >= 135f && reDegree <= 225f)
-				{
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("F_Walk"))
-						Anim.SetTrigger("F_Walk");
-				}
-				else if (reDegree >= 225f && reDegree <= 315f)
-				{
-					PlayerTrf.localScale = PlayerTrf.localScale.WithX(playerScaleX);
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("S_Walk"))
-						Anim.SetTrigger("S_Walk");
-				}
+			default:
+				if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+					Anim.SetTrigger("Walk");				
 				break;
 		}
 
-		
+		if (dir.x >= 0)
+		{
+			PlayerTrf.localScale = PlayerTrf.localScale.WithX(playerScaleX);
+		}
+		else
+		{
+			PlayerTrf.localScale = PlayerTrf.localScale.WithX(-playerScaleX);
+		}
 	}
 
 }

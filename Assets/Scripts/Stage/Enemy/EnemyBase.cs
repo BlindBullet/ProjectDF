@@ -54,6 +54,7 @@ public class EnemyBase : MonoBehaviour
 	}
 }
 
+[System.Serializable]
 public class EnemyStat
 {
 	public int MaxHp;
