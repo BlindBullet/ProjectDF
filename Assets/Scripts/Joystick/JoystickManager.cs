@@ -12,7 +12,12 @@ public class JoystickManager : MonoSingleton<JoystickManager>
 
     private void Start()
     {        
-        _joystick.JoystickControlledDelegate.AddListener(MoveOrder);
+        _joystick.JoystickControlledDelegate.AddListener(MoveOrder);        
+    }
+
+    public void Setup(PlayerController playerController)
+	{
+        _char = playerController;
         StartCoroutine(MoveSequence());
     }
 

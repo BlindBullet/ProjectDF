@@ -50,14 +50,15 @@ public class GameManager : MonoSingleton<GameManager>
 	{
 		if (Input.GetKeyDown(KeyCode.A))
 		{
+			CharacterSpawner.Ins.SpawnPlayer("Barbarian");
 			State = GameState.StageReady;
 		}
 
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			EnemySpawner.Ins.SpawnEnemy("Diablo");
-			EnemySpawner.Ins.SpawnEnemy("AncientTroll");
-			EnemySpawner.Ins.SpawnEnemy("KingSkeleton");
+			CharacterSpawner.Ins.SpawnEnemy("Diablo");
+			CharacterSpawner.Ins.SpawnEnemy("AncientTroll");
+			CharacterSpawner.Ins.SpawnEnemy("KingSkeleton");
 		}
 	}
 

@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoSingleton<EnemySpawner>
+public class CharacterSpawner : MonoSingleton<CharacterSpawner>
 {
     
-
+	public void SpawnPlayer(string id)
+	{
+		PlayerBase player = ObjectManager.Ins.Pop<PlayerBase>(Resources.Load("Prefabs/Characters/Players/" + id) as GameObject);
+		player.transform.position = Vector3.zero;
+		JoystickManager.Ins.Setup(player.GetComponent<PlayerController>());
+	}
 
     public void SpawnEnemy(string id)
 	{
