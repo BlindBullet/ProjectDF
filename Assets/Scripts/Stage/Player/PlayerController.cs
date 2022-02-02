@@ -75,13 +75,29 @@ public class PlayerController : MonoBehaviour
 
 		switch (state)
 		{
-			case JoystickState.EndDrag:
-				if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-					Anim.SetTrigger("Idle");
+			case JoystickState.EndDrag:				
+				if(dir.y > 0.1f)
+				{
+					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Idle_B"))
+						Anim.SetTrigger("Idle_B");
+				}
+				else
+				{
+					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Idle_F"))
+						Anim.SetTrigger("Idle_F");
+				}
 				break;
 			default:
-				if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
-					Anim.SetTrigger("Walk");				
+				if (dir.y > 0.1f)
+				{
+					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_B"))
+						Anim.SetTrigger("Walk_B");
+				}
+				else
+				{
+					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_F"))
+						Anim.SetTrigger("Walk_F");
+				}
 				break;
 		}
 

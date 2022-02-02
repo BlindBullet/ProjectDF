@@ -8,7 +8,7 @@ public class PlayerBase : MonoBehaviour
 
 	private void OnEnable()
 	{
-		Player = this;
+		Player = this;		
 	}
 
 
