@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 	public Transform PlayerTrf;
     public Animator Anim;
-	float playerScaleX;
+	float playerScaleX = 10f;
 
 	private void Start()
 	{
