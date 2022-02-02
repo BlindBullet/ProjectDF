@@ -56,7 +56,6 @@ public class GameManager : MonoSingleton<GameManager>
 		if (Input.GetKeyDown(KeyCode.S))
 		{
 			EnemySpawner.Ins.SpawnEnemy("Diablo");
-			EnemySpawner.Ins.SpawnEnemy("Gremlin");
 		}
 	}
 

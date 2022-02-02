@@ -8,6 +8,7 @@ public class EnemyBase : MonoBehaviour
 	public EnemyStat Stat;
 	public GameObject Model;
 	public Rigidbody2D Rb;
+	public Animator Anim;
 
 	private void Start()
 	{
@@ -17,14 +18,26 @@ public class EnemyBase : MonoBehaviour
 	IEnumerator MoveSequence()
 	{
 		float scaleX = Model.transform.localScale.x;
+		Anim.SetTrigger("Idle_F");
 
 		while (true)
 		{
 			if(GameManager.Ins.State == GameState.StageStart)
 			{			
 				Vector3 dir = (PlayerBase.Player.transform.position - transform.position).normalized;
-				
-				if(dir.x >= 0)
+
+				if (dir.y > 0.1f)
+				{
+					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_B"))
+						Anim.SetTrigger("Walk_B");
+				}
+				else
+				{
+					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_F"))
+						Anim.SetTrigger("Walk_F");
+				}
+
+				if (dir.x >= 0)
 				{
 					Model.transform.localScale = Model.transform.localScale.WithX(scaleX);
 				}
