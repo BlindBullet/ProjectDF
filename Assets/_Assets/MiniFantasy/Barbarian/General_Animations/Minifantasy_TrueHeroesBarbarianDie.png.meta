@@ -55,13 +55,13 @@ TextureImporter:
     second: Minifantasy_TrueHeroesBarbarianDie_16
   - first:
       213: -403036543811797437
-    second: Minifantasy_TrueHeroesBarbarianDie_17
+    second: Minifantasy_TrueHeroesBarbarianDie_19
   - first:
       213: 1663933946040287982
-    second: Minifantasy_TrueHeroesBarbarianDie_17
+    second: Minifantasy_TrueHeroesBarbarianDie_19
   - first:
       213: -8579645432813323205
-    second: Minifantasy_TrueHeroesBarbarianDie_18
+    second: Minifantasy_TrueHeroesBarbarianDie_19
   - first:
       213: 3251125610473758272
     second: Minifantasy_TrueHeroesBarbarianDie_19
@@ -169,12 +169,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 13
-        width: 11
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_1
       rect:
         serializedVersion: 2
-        x: 38
-        y: 15
-        width: 16
-        height: 17
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -211,12 +211,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_2
       rect:
         serializedVersion: 2
-        x: 68
-        y: 13
-        width: 23
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -232,12 +232,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_3
       rect:
         serializedVersion: 2
-        x: 101
-        y: 13
-        width: 17
-        height: 14
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_4
       rect:
         serializedVersion: 2
-        x: 133
-        y: 13
-        width: 17
-        height: 12
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -274,12 +274,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_5
       rect:
         serializedVersion: 2
-        x: 165
-        y: 13
-        width: 17
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -295,12 +295,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_6
       rect:
         serializedVersion: 2
-        x: 197
-        y: 13
-        width: 17
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -316,12 +316,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_7
       rect:
         serializedVersion: 2
-        x: 228
-        y: 13
-        width: 18
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -337,12 +337,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_8
       rect:
         serializedVersion: 2
-        x: 259
-        y: 13
-        width: 20
-        height: 10
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -358,12 +358,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_9
       rect:
         serializedVersion: 2
-        x: 291
-        y: 13
-        width: 22
-        height: 9
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -379,12 +379,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_10
       rect:
         serializedVersion: 2
-        x: 323
-        y: 13
-        width: 23
-        height: 9
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -400,12 +400,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_11
       rect:
         serializedVersion: 2
-        x: 355
-        y: 12
-        width: 23
-        height: 10
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 352
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -421,12 +421,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_12
       rect:
         serializedVersion: 2
-        x: 387
-        y: 12
-        width: 23
-        height: 9
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 384
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -442,12 +442,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_13
       rect:
         serializedVersion: 2
-        x: 419
-        y: 12
-        width: 23
-        height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 416
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -463,12 +463,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_14
       rect:
         serializedVersion: 2
-        x: 451
-        y: 12
-        width: 23
-        height: 7
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 448
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -484,12 +484,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_15
       rect:
         serializedVersion: 2
-        x: 484
-        y: 12
-        width: 22
-        height: 6
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 480
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -505,12 +505,12 @@ TextureImporter:
       name: Minifantasy_TrueHeroesBarbarianDie_16
       rect:
         serializedVersion: 2
-        x: 517
-        y: 12
-        width: 22
-        height: 6
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 512
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -523,15 +523,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Minifantasy_TrueHeroesBarbarianDie_17
+      name: Minifantasy_TrueHeroesBarbarianDie_18
       rect:
         serializedVersion: 2
-        x: 549
-        y: 12
-        width: 22
-        height: 6
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 576
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -544,15 +544,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Minifantasy_TrueHeroesBarbarianDie_18
+      name: Minifantasy_TrueHeroesBarbarianDie_19
       rect:
         serializedVersion: 2
-        x: 580
-        y: 12
-        width: 22
-        height: 6
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 608
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -565,22 +565,22 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Minifantasy_TrueHeroesBarbarianDie_19
+      name: Minifantasy_TrueHeroesBarbarianDie_17
       rect:
         serializedVersion: 2
-        x: 608
-        y: 12
-        width: 22
-        height: 6
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 544
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04e967c74815e1d20800000000000000
-      internalID: 3251125610473758272
+      spriteID: 34eb8961660286af0800000000000000
+      internalID: -403036543811797437
       vertices: []
       indices: 
       edges: []
