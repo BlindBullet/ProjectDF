@@ -44,7 +44,7 @@ public class JoystickUi : MonoSingleton<JoystickUi>, IBeginDragHandler, IDragHan
 	{
 		joystick.gameObject.SetActive(true);
 		Vector3 position = bl_JoystickUtils.TouchPosition(m_Canvas, 0);
-		joystick.transform.position = position;		
+		joystick.transform.position = position;
 
 		startPos = position;
 		ControlJoystickLever(eventData, JoystickState.BeginDrag);

@@ -27,17 +27,19 @@ public class JoystickManager : MonoSingleton<JoystickManager>
         Camera cam = Camera.main;
 
         while (true)
-        {
-            
+        {   
             switch (state)
             {
                 case JoystickState.EndDrag:
                     _char.SetDirection(dir, state);
                     break;
-                default:
+                case JoystickState.OnDrag:
                     _char.SetDirection(dir, state);
                     _char.transform.Translate(new Vector3(dir.x, dir.y, 0) * Time.deltaTime * speed);
                     cam.transform.position = _char.transform.position.WithZ(-10f);
+                    break;
+                default:
+                    
                     break;
             }
             
