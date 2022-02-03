@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+	public static List<EnemyBase> Enemies = new List<EnemyBase>();
+
 	public EnemyStat Stat;
 	public GameObject Model;
 	public Rigidbody2D Rb;
 	public Animator Anim;
 
-	private void Start()
+	private void OnEnable()
 	{
-		
+		Enemies.Add(this);
 	}
 
 	IEnumerator MoveSequence()
@@ -64,6 +66,11 @@ public class EnemyBase : MonoBehaviour
 		Stat.Spd = 1f;
 
 		StartCoroutine(MoveSequence());
+	}
+
+	private void OnDisable()
+	{
+		Enemies.Remove(this);
 	}
 }
 

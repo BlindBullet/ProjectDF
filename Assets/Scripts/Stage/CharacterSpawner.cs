@@ -31,20 +31,20 @@ public class CharacterSpawner : MonoSingleton<CharacterSpawner>
 		switch (randNo)
 		{
 			case 0:
-				randX = Random.Range(min.x - 2f, max.x + 2f);
-				randY = Random.Range(max.y, max.y + 2f);
+				randX = Random.Range(min.x - 10f, max.x + 10f);
+				randY = Random.Range(max.y, max.y + 10f);
 				break;
 			case 1:
-				randX = Random.Range(min.x - 2f, min.x);
-				randY = Random.Range(min.y - 2f, max.y + 2f);
+				randX = Random.Range(min.x - 10f, min.x);
+				randY = Random.Range(min.y - 10f, max.y + 10f);
 				break;
 			case 2:
-				randX = Random.Range(min.x - 2f, max.x + 2f);
-				randY = Random.Range(min.y, min.y - 2f);
+				randX = Random.Range(min.x - 10f, max.x + 10f);
+				randY = Random.Range(min.y, min.y - 10f);
 				break;
 			case 3:
-				randX = Random.Range(max.x, max.x + 2f);
-				randY = Random.Range(min.y - 2f, max.y + 2f);
+				randX = Random.Range(max.x, max.x + 10f);
+				randY = Random.Range(min.y - 10f, max.y + 10f);
 				break;
 		}
 
