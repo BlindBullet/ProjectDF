@@ -30,7 +30,7 @@ public class SkillController : MonoBehaviour
                 {                    
                     if (!isAttacking)
                     {
-                        cAttack = StartCoroutine(AttackSequence());                 
+                        cAttack = StartCoroutine(AttackSequence(me.Range.AllTargetColl[0].GetComponent<EnemyBase>()));                 
                     }   
                 }
                 else
@@ -43,7 +43,7 @@ public class SkillController : MonoBehaviour
         }
     }
 
-    IEnumerator AttackSequence()
+    IEnumerator AttackSequence(EnemyBase target)
     {
         isAttacking = true;
         float totalTime = 0.2f;
@@ -66,8 +66,6 @@ public class SkillController : MonoBehaviour
 
         yield return new WaitForSeconds(fireTime);
 
-        EnemyBase target = me.Range.AllTargetColl[0].GetComponent<EnemyBase>();
-
         if (attack.Data.HitFx != "")
         {
             EffectManager.Ins.ShowFx(attack.Data.HitFx, target.transform);
@@ -79,9 +77,9 @@ public class SkillController : MonoBehaviour
         if (isCrit)
             dmg = dmg * (1 + (me.Data.CritDmg / 100f));
 
+        Vector3 pos = target.transform.position;
         resultDmg = target.TakeDmg(dmg);
-
-        FloatingTextManager.Ins.ShowDmg(target.transform.position, resultDmg.ToString());
+        FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString());
 
         yield return new WaitForSeconds((1f / me.Data.Spd) - fireTime);
 

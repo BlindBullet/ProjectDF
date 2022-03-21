@@ -12,6 +12,8 @@ public class EnemyBase : MonoBehaviour
 	public GameObject Model;
 	public Rigidbody2D Rb;
 	public Animator Anim;
+	BoxCollider2D col;
+	Coroutine cMove = null;
 
 	private void OnEnable()
 	{
@@ -23,7 +25,11 @@ public class EnemyBase : MonoBehaviour
 		Stat = new EnemyStat();
 		Stat.CurHp = 30f;
 		Stat.Spd = 2f;
-		StartCoroutine(MoveSequence());
+
+		col = GetComponent<BoxCollider2D>();
+		col.enabled = true;
+
+		cMove = StartCoroutine(MoveSequence());
 	}
 
 	IEnumerator MoveSequence()
@@ -57,24 +63,12 @@ public class EnemyBase : MonoBehaviour
 					Anim.SetTrigger("Walk");
 			}
 
-			//if (dir.x >= 0)
-			//{
-			//	Model.transform.localScale = Model.transform.localScale.WithX(scaleX);
-			//}
-			//else
-			//{
-			//	Model.transform.localScale = Model.transform.localScale.WithX(-scaleX);
-			//}
-
 			transform.position += dir * Stat.Spd * 0.5f * Time.deltaTime;
 			
 			yield return null;
 		}
 		
 	}
-
-
-	
 
     public double TakeDmg(double atk)
     {
@@ -89,7 +83,10 @@ public class EnemyBase : MonoBehaviour
 
 	public void Die()
     {
+		StopCoroutine(cMove);
+		col.enabled = false;
 		Enemies.Remove(this);
+		
 		StartCoroutine(DieSequence());
 	}
 
@@ -97,6 +94,7 @@ public class EnemyBase : MonoBehaviour
     {
 		yield return new WaitForSeconds(1f);
 
+		transform.position = new Vector3(0, 20f, 0);
 		ObjectManager.Ins.Push<EnemyBase>(this);
     }
 
