@@ -1,50 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CodeStage.AntiCheat.ObscuredTypes;
 
+[System.Serializable]
 public class PlayerData
-{
-    public int Gold;
+{    
+    public double Gold;
+    public double Gem;
     public int Stage;
-    public int AtkLv;
-    public int DefLv;
-    public int GoldLv;   
-
+    
     public void Init()
 	{
         Gold = 0;
-        Stage = 1;
-        AtkLv = 1;
-        DefLv = 1;
-        GoldLv = 1;
-
+        Gem = 0;
+        Stage = 1;    
         
         Save();
 	}
 
-    public void ChangeGold(int amount)
+    public void ChangeGold(double amount)
 	{
         Gold += amount;
         Save();
 	}
 
-    public void AtkLvUp()
-	{
-        AtkLv++;
+    public void ChangeGem(double amount)
+    {
+        Gem += amount;
         Save();
-	}
-
-    public void DefLvUp()
-	{
-        DefLv++;
-        Save();
-	}
-
-    public void GoldLvUp()
-	{
-        GoldLv++;
-        Save();
-	}
+    }
 
     public void NextStage()
 	{
@@ -68,10 +53,8 @@ public class PlayerData
 		else
 		{            
             Gold = data.Gold;
+            Gem = data.Gem;
             Stage = data.Stage;
-            AtkLv = data.AtkLv;
-            DefLv = data.DefLv;
-            GoldLv = data.GoldLv;        
         }
 	}
 

@@ -29,9 +29,20 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
-    - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - Assembly-CSharp
+    - AllIn1SpriteShaderAssembly
+    - Febucci.TextAnimator.Runtime
+    - Febucci.TextAnimator.Demo.Runtime
+    - DamageNumbersPro
+    - ACTk.Runtime
+    - ACTk.Examples.Genuine.Runtime
+    - ACTk.Examples.Runtime
     - PsdPlugin
+    - Febucci.TextAnimator.Demo.Editor
+    - Febucci.TextAnimator.Editor
+    - ACTk.Editor
+    - ACTk.Examples.Genuine.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

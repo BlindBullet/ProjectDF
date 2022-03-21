@@ -24,7 +24,7 @@ public class LanguageManager : SingletonObject<LanguageManager> {
 		
 	}
 
-	Dictionary<string, StringData> dicData = new Dictionary<string, StringData>();
+	Dictionary<string, StringChart> dicData = new Dictionary<string, StringChart>();
 	public LanguageType currentLanguageType;
 
 	public void ChangeLanguage(LanguageType type)
@@ -36,7 +36,7 @@ public class LanguageManager : SingletonObject<LanguageManager> {
 	public string SetString(string id)
 	{
 		if (dicData != null)
-			dicData = ChartManager.Ins.StringData;
+			dicData = CsvData.Ins.StringChart;
 
 		if (!dicData.ContainsKey(id))
 		{

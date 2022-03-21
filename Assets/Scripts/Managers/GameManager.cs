@@ -6,59 +6,27 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
-{	
-	[SerializeField] private CameraController camCon;
-	[SerializeField] private LobbyUI _lobbyUI;	
-
-	public GameState State;
-	public bool StartBattle = false;
-	Coroutine cRun = null;
+{
 
 	private void Start()
 	{
 		DialogManager.Ins.SetDialogTransform();
 		SaveLoadManager.Ins.LoadAllDatas();
-
-		State = GameState.Lobby;
-
-		SetLobbyUi();
-
-		StartCoroutine(GameSequence());
-	}
-
-	void SetLobbyUi()
-	{
-		
-	}
-
-	IEnumerator GameSequence()
-	{
-		camCon.SetLobbyCam();
-		
-		while (State != GameState.StageReady)
-		{
-			yield return null;
-		}
-		
-		yield return new WaitForSeconds(1f);
-
-		State = GameState.StageStart;
-
 	}
 
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.A))
 		{
-			CharacterSpawner.Ins.SpawnPlayer("Barbarian");
-			State = GameState.StageReady;
+			
 		}
 
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			CharacterSpawner.Ins.SpawnEnemy("Diablo");
-			CharacterSpawner.Ins.SpawnEnemy("AncientTroll");
-			CharacterSpawner.Ins.SpawnEnemy("KingSkeleton");
+			//CharacterSpawner.Ins.SpawnEnemy("Diablo");
+			//CharacterSpawner.Ins.SpawnEnemy("AncientTroll");
+			//CharacterSpawner.Ins.SpawnEnemy("KingSkeleton");
+			CharacterSpawner.Ins.SpawnEnemy("Gremlin");
 		}
 	}
 
@@ -91,18 +59,5 @@ public class GameManager : MonoSingleton<GameManager>
 		SceneManager.LoadScene(0);
 	}
 
-
-}
-
-public enum GameState
-{
-	None,
-	Lobby,
-	StageReady,
-	StageStart,
-	StageWin,
-	StageLose,
-
-	
 
 }

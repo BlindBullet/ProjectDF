@@ -2,16 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSpawner : MonoSingleton<CharacterSpawner>
+public class CharacterSpawner : SingletonObject<CharacterSpawner>
 {
     
-	public void SpawnPlayer(string id)
-	{
-		PlayerBase player = ObjectManager.Ins.Pop<PlayerBase>(Resources.Load("Prefabs/Characters/Players/" + id) as GameObject);
-		player.transform.position = Vector3.zero;
-		JoystickManager.Ins.Setup(player.GetComponent<PlayerController>());
-	}
-
     public void SpawnEnemy(string id)
 	{
 		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/" + id) as GameObject);
@@ -27,12 +20,13 @@ public class CharacterSpawner : MonoSingleton<CharacterSpawner>
 		int randNo = Random.Range(0, 4);
 		float randX = 0;
 		float randY = 0;
+		randNo = 0;
 
 		switch (randNo)
 		{
-			case 0:
-				randX = Random.Range(min.x - 10f, max.x + 10f);
-				randY = Random.Range(max.y, max.y + 10f);
+			case 0:				
+				randX = Random.Range(min.x + 1f, max.x - 1f);
+				randY = Random.Range(max.y, max.y + 3f);				
 				break;
 			case 1:
 				randX = Random.Range(min.x - 10f, min.x);

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JoystickManager : MonoSingleton<JoystickManager>
-{
-    [SerializeField] PlayerController _char;
+{    
     [SerializeField] JoystickUi _joystick;
     [SerializeField] float speed;
     public Vector2 dir;
@@ -13,12 +12,6 @@ public class JoystickManager : MonoSingleton<JoystickManager>
     private void Start()
     {        
         _joystick.JoystickControlledDelegate.AddListener(MoveOrder);        
-    }
-
-    public void Setup(PlayerController playerController)
-	{
-        _char = playerController;
-        StartCoroutine(MoveSequence());
     }
 
     public void MoveOrder(Vector2 dir, JoystickState state)
@@ -36,12 +29,10 @@ public class JoystickManager : MonoSingleton<JoystickManager>
             switch (state)
             {
                 case JoystickState.EndDrag:
-                    _char.SetDirection(dir, state);
+                    
                     break;
                 case JoystickState.OnDrag:
-                    _char.SetDirection(dir, state);
-                    _char.transform.Translate(new Vector3(dir.x, dir.y, 0) * Time.deltaTime * speed);
-                    cam.transform.position = _char.transform.position.WithZ(-10f);
+                    
                     break;
                 default:
                     

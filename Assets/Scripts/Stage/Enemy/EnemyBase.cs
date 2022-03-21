@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -17,69 +18,86 @@ public class EnemyBase : MonoBehaviour
 		Enemies.Add(this);
 	}
 
+	public void Setup()
+	{
+		Stat = new EnemyStat();
+		Stat.CurHp = 30f;
+		Stat.Spd = 2f;
+		StartCoroutine(MoveSequence());
+	}
+
 	IEnumerator MoveSequence()
 	{
 		float scaleX = Model.transform.localScale.x;
-		Anim.SetTrigger("Idle_F");
+		Anim.SetTrigger("Idle");
+
+		int randNo = Random.Range(0, 2);
+
+		if(randNo == 0)
+        {
+			Model.transform.localScale = Model.transform.localScale.WithX(scaleX);
+		}
+        else
+        {
+			Model.transform.localScale = Model.transform.localScale.WithX(-scaleX);
+		}
 
 		while (true)
-		{
-			if(GameManager.Ins.State == GameState.StageStart)
-			{			
-				Vector3 dir = (PlayerBase.Player.transform.position - transform.position).normalized;
+		{	
+			Vector3 dir = Vector3.down;
 
-				if (dir.y > 0.1f)
-				{
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_B"))
-						Anim.SetTrigger("Walk_B");
-				}
-				else
-				{
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_F"))
-						Anim.SetTrigger("Walk_F");
-				}
-
-				if (dir.x >= 0)
-				{
-					Model.transform.localScale = Model.transform.localScale.WithX(scaleX);
-				}
-				else
-				{
-					Model.transform.localScale = Model.transform.localScale.WithX(-scaleX);
-				}
-
-				transform.position += dir * Stat.Spd * 0.5f * Time.deltaTime;
+			if (dir.y > 0.1f)
+			{
+				if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_B"))
+					Anim.SetTrigger("Walk_B");
+			}
+			else
+			{
+				if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+					Anim.SetTrigger("Walk");
 			}
 
-			yield return null;
+			//if (dir.x >= 0)
+			//{
+			//	Model.transform.localScale = Model.transform.localScale.WithX(scaleX);
+			//}
+			//else
+			//{
+			//	Model.transform.localScale = Model.transform.localScale.WithX(-scaleX);
+			//}
 
+			transform.position += dir * Stat.Spd * 0.5f * Time.deltaTime;
+			
+			yield return null;
 		}
 		
 	}
 
-	public void Setup()
-	{
-		Stat = new EnemyStat();
-		Stat.MaxHp = 10;
-		Stat.CurHp = 10;
-		Stat.Atk = 1;
-		Stat.Spd = 1f;
 
-		StartCoroutine(MoveSequence());
-	}
+	
 
-	private void OnDisable()
-	{
+    public double TakeDmg(double atk)
+    {
+		atk = Math.Round(atk);
+		Stat.CurHp -= atk;
+
+		if (Stat.CurHp <= 0)
+			Die();
+
+		return atk;
+    }
+
+	public void Die()
+    {
 		Enemies.Remove(this);
+		StartCoroutine(DieSequence());
 	}
-}
 
-[System.Serializable]
-public class EnemyStat
-{
-	public int MaxHp;
-	public int CurHp;
-	public int Atk;
-	public float Spd;
+	IEnumerator DieSequence()
+    {
+		yield return new WaitForSeconds(1f);
+
+		ObjectManager.Ins.Push<EnemyBase>(this);
+    }
 
 }

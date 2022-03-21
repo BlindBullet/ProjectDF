@@ -1,0 +1,3 @@
+﻿Id,Type,BeginFx,HitFx,Projectile
+Attack1,Normal,,TestHitFx,
+Attack2,Projectile,,TestHitFx,TestProjectile

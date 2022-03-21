@@ -19,7 +19,7 @@ public static partial class ExtensionMethods
 	/// <param name="currencyType">클리커 단위타입</param> 
 	/// /// <returns>클리커 표현식</returns> 
 
-	public static string ToCurrencyString(this double number, CurrencyType currencyType = CurrencyType.SI) 
+	public static string ToCurrencyString(this double number, CurrencyType currencyType = CurrencyType.Default) 
 	{ 
 		// 정수부가 0인경우 0으로 퉁친다. 
 		if (-1d < number && number < 1d) 
