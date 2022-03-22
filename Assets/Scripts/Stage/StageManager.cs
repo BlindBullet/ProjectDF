@@ -8,6 +8,8 @@ public class StageManager : MonoSingleton<StageManager>
     public PlayerData PlayerData = new PlayerData();
     public TopBar TopBar;
 
+    public List<HeroBase> DeployedHeroes = new List<HeroBase>();
+
     public event UnityAction<double> GoldChanged;
     public event UnityAction<double> GemChanged;
 
@@ -39,7 +41,7 @@ public class StageManager : MonoSingleton<StageManager>
             HeroChart chart = CsvData.Ins.HeroChart[ConstantData.StartHeroes[i]];
             HeroData data = new HeroData();
             data.InitData(chart);
-            HeroBase.Heroes[i].Init(data);
+            DeployedHeroes[i].Init(data);
         }
     }
 

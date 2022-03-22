@@ -31,18 +31,18 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp-firstpass
     - Assembly-CSharp
-    - AllIn1SpriteShaderAssembly
-    - Febucci.TextAnimator.Runtime
-    - Febucci.TextAnimator.Demo.Runtime
-    - DamageNumbersPro
-    - ACTk.Runtime
-    - ACTk.Examples.Genuine.Runtime
     - ACTk.Examples.Runtime
+    - DamageNumbersPro
+    - Febucci.TextAnimator.Runtime
+    - AllIn1SpriteShaderAssembly
+    - ACTk.Runtime
+    - Febucci.TextAnimator.Demo.Runtime
+    - ACTk.Examples.Genuine.Runtime
     - PsdPlugin
-    - Febucci.TextAnimator.Demo.Editor
-    - Febucci.TextAnimator.Editor
     - ACTk.Editor
+    - Febucci.TextAnimator.Editor
     - ACTk.Examples.Genuine.Editor
+    - Febucci.TextAnimator.Demo.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

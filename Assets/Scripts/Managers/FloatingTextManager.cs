@@ -18,9 +18,12 @@ public class FloatingTextManager : MonoSingleton<FloatingTextManager>
         SymbolBuff = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/SymbolBuffPrefab");
     }
 
-    public void ShowDmg(Vector3 pos, string text)
+    public void ShowDmg(Vector3 pos, string text, bool isCrit)
     {
-        Dmg.Spawn(pos, text);
+        if (isCrit)
+            CritDmg.Spawn(pos, text);
+        else
+            Dmg.Spawn(pos, text);
     }
 
     public void ShowCritDmg(Vector3 pos, string text)

@@ -14,6 +14,7 @@ public class AttackChart
 
 public enum AttackType
 {
+	None,
 	Normal,
 	Projectile,
 

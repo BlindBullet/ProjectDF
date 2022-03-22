@@ -56,30 +56,33 @@ public class SkillController : MonoBehaviour
             totalTime = totalTime / me.Data.Spd;
             fireTime = fireTime / me.Data.Spd;
         }
+        
+        if (attack.Data.BeginFx != null)        
+            EffectManager.Ins.ShowFx(attack.Data.BeginFx, this.transform);
 
-        if (attack.Data.BeginFx != "")
-        {
-            
-        }
-
+        double dmg = me.Data.Atk;
         bool isCrit = Random.Range(0f, 100f) < me.Data.CritChance ? true : false;
 
         yield return new WaitForSeconds(fireTime);
 
-        if (attack.Data.HitFx != "")
+        if (attack.Data.HitFx != null)        
+            EffectManager.Ins.ShowFx(attack.Data.HitFx, target.transform);        
+        
+        if (attack.Data.Projectile == null)
         {
-            EffectManager.Ins.ShowFx(attack.Data.HitFx, target.transform);
+            double resultDmg = 0;
+
+            if (isCrit)
+                dmg = dmg * (1 + (me.Data.CritDmg / 100f));
+
+            Vector3 pos = target.transform.position;
+            resultDmg = target.TakeDmg(dmg);
+            FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString(), isCrit);
         }
-
-        double dmg = me.Data.Atk;
-        double resultDmg = 0;
-
-        if (isCrit)
-            dmg = dmg * (1 + (me.Data.CritDmg / 100f));
-
-        Vector3 pos = target.transform.position;
-        resultDmg = target.TakeDmg(dmg);
-        FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString());
+        else
+        {
+            
+        }
 
         yield return new WaitForSeconds((1f / me.Data.Spd) - fireTime);
 

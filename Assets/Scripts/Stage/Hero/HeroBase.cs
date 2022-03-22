@@ -17,11 +17,6 @@ public class HeroBase : MonoBehaviour
     [HideInInspector] public AttackRange Range;
     [HideInInspector] public HeroTween Tween;
 
-    private void Awake()
-    {
-        Heroes.Add(this);
-    }
-
     public void Init(HeroData data)
     {
         Data = data;
@@ -38,6 +33,7 @@ public class HeroBase : MonoBehaviour
         Ui.SetUp(Data);
 
         Range.StartSearch(this);
+        Heroes.Add(this);
     }
 
     public void ChangeSpeed(float value)
