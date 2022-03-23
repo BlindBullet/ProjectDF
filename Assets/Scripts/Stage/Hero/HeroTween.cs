@@ -15,11 +15,11 @@ public class HeroTween : MonoBehaviour
         originPos = Icon.anchoredPosition;
     }
 
-    public void Attack(float spd)
+    public void Attack(float spd, EnemyBase target)
     {
         Sequence seq = DOTween.Sequence();
         seq.Append(Icon.DOAnchorPosY(Icon.anchoredPosition.y + 20f, 0.1f / spd).SetEase(Ease.OutQuad))
-            .Append(Icon.DOAnchorPosY(originPos.y, 0.1f / spd));        
+            .Append(Icon.DOAnchorPosY(originPos.y, 0.1f / spd));
     }
 
     

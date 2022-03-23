@@ -182,7 +182,8 @@ MonoBehaviour:
   m_text: 11
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a9da3c6fe6d8674b979acf47b14f139, type: 2}
-  m_sharedMaterial: {fileID: -6900626577801905656, guid: 9a9da3c6fe6d8674b979acf47b14f139, type: 2}
+  m_sharedMaterial: {fileID: -6900626577801905656, guid: 9a9da3c6fe6d8674b979acf47b14f139,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -687,8 +688,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3628255904565143113}
   m_Enabled: 1
-  m_SortingLayerID: -432767241
-  m_SortingLayer: 3
+  m_SortingLayerID: -1719127201
+  m_SortingLayer: 4
   m_SortingOrder: 1
 --- !u!1 &6752680735536672953
 GameObject:

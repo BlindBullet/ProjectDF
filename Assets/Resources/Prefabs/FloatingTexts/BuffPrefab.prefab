@@ -182,7 +182,8 @@ MonoBehaviour:
   m_text: ATK UP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d157804495fc75446b892bb8ddaf2a3d, type: 2}
-  m_sharedMaterial: {fileID: 6351561881551016941, guid: d157804495fc75446b892bb8ddaf2a3d, type: 2}
+  m_sharedMaterial: {fileID: 6351561881551016941, guid: d157804495fc75446b892bb8ddaf2a3d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -263,7 +264,7 @@ GameObject:
   - component: {fileID: 3392254734338670064}
   - component: {fileID: 8718982890974709022}
   m_Layer: 0
-  m_Name: SymbolBuffPrefab
+  m_Name: BuffPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -687,9 +688,9 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3628255904565143113}
   m_Enabled: 1
-  m_SortingLayerID: -432767241
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: -1719127201
+  m_SortingLayer: 4
+  m_SortingOrder: 0
 --- !u!1 &6752680735536672953
 GameObject:
   m_ObjectHideFlags: 0

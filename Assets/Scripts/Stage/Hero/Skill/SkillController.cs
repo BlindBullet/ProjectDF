@@ -23,9 +23,9 @@ public class SkillController : MonoBehaviour
     public IEnumerator UseSkill()
     {
         while (true)
-        {   
+        {
             if (me.Range.AllTargetColl.Count > 0 && EnemyBase.Enemies.Count > 0)
-            {                
+            {
                 if (!usingSKill)
                 {                    
                     if (!isAttacking)
@@ -48,8 +48,9 @@ public class SkillController : MonoBehaviour
         isAttacking = true;
         float totalTime = 0.2f;
         float fireTime = 0.1f;
-                        
-        me.Tween.Attack(me.Data.Spd > 1f ? me.Data.Spd : 1f);
+
+        Debug.Log((target.transform.position - this.transform.position).normalized);
+        me.Tween.Attack(me.Data.Spd > 1f ? me.Data.Spd : 1f, target);
 
         if (me.Data.Spd >= 1f)
         {
@@ -65,11 +66,11 @@ public class SkillController : MonoBehaviour
 
         yield return new WaitForSeconds(fireTime);
 
-        if (attack.Data.HitFx != null)        
-            EffectManager.Ins.ShowFx(attack.Data.HitFx, target.transform);        
-        
         if (attack.Data.Projectile == null)
         {
+            if (attack.Data.HitFx != null)
+                EffectManager.Ins.ShowFx(attack.Data.HitFx, target.transform);
+
             double resultDmg = 0;
 
             if (isCrit)
@@ -82,6 +83,7 @@ public class SkillController : MonoBehaviour
         else
         {
             
+
         }
 
         yield return new WaitForSeconds((1f / me.Data.Spd) - fireTime);

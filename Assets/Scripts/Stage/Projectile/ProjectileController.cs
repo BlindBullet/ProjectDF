@@ -6,7 +6,7 @@ using DG.Tweening;
 public class ProjectileController : MonoBehaviour
 {
 	Transform targetTrf;
-	public int Atk;
+	public double Atk;
 	public float Spd;
 	
 	public void Setup(Transform targetTrf)
@@ -30,7 +30,7 @@ public class ProjectileController : MonoBehaviour
 	{
 		if (collision.CompareTag("Enemy"))
 		{
-			collision.GetComponent<EnemyBase>().Stat.CurHp -= Atk;
+			collision.GetComponent<EnemyBase>().TakeDmg(Atk);
 
 			if (collision.GetComponent<EnemyBase>().Stat.CurHp <= 0)
 				ObjectManager.Ins.Push<EnemyBase>(collision.GetComponent<EnemyBase>());

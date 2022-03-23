@@ -8,27 +8,22 @@ public class FloatingTextManager : MonoSingleton<FloatingTextManager>
     DamageNumber Dmg;
     DamageNumber CritDmg;
     DamageNumber Heal;
-    DamageNumber SymbolBuff;
+    DamageNumber Buff;
 
     private void Start()
     {
         Dmg = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/DamagePrefab");
         CritDmg = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/CritDamagePrefab");
         Heal = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/HealPrefab");
-        SymbolBuff = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/SymbolBuffPrefab");
+        Buff = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/BuffTextPrefab");
     }
 
     public void ShowDmg(Vector3 pos, string text, bool isCrit)
-    {
+    {        
         if (isCrit)
             CritDmg.Spawn(pos, text);
         else
             Dmg.Spawn(pos, text);
-    }
-
-    public void ShowCritDmg(Vector3 pos, string text)
-    {
-        CritDmg.Spawn(pos, text);
     }
 
     public void ShowHeal(Vector3 pos, string text)
@@ -38,7 +33,7 @@ public class FloatingTextManager : MonoSingleton<FloatingTextManager>
 
     public void ShowSymbolBuff(Vector3 pos, string text)
     {
-        SymbolBuff.Spawn(pos, text);
+        Buff.Spawn(pos, text);
     }
 
 

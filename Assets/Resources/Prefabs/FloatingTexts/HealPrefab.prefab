@@ -517,9 +517,9 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3348366047528726993}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1000
+  m_SortingLayerID: -1719127201
+  m_SortingLayer: 4
+  m_SortingOrder: 0
 --- !u!1 &4262610171533245831
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +702,8 @@ MonoBehaviour:
   m_text: <color=#83FF00FF>11</color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5a349091a69937144918748d70d1845d, type: 2}
-  m_sharedMaterial: {fileID: -4097034777433151714, guid: 5a349091a69937144918748d70d1845d, type: 2}
+  m_sharedMaterial: {fileID: -4097034777433151714, guid: 5a349091a69937144918748d70d1845d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
