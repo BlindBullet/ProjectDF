@@ -49,7 +49,6 @@ public class SkillController : MonoBehaviour
         float totalTime = 0.2f;
         float fireTime = 0.1f;
 
-        Debug.Log((target.transform.position - this.transform.position).normalized);
         me.Tween.Attack(me.Data.Spd > 1f ? me.Data.Spd : 1f, target);
 
         if (me.Data.Spd >= 1f)
@@ -82,13 +81,21 @@ public class SkillController : MonoBehaviour
         }
         else
         {
-            
+            LookTarget(target);
 
         }
 
         yield return new WaitForSeconds((1f / me.Data.Spd) - fireTime);
 
         isAttacking = false;
+    }
+
+    void LookTarget(EnemyBase target)
+    {
+        Vector3 dir = target.transform.position - me.ProjectileAnchor.position;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        me.ProjectileAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     

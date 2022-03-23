@@ -16,6 +16,7 @@ public class HeroBase : MonoBehaviour
     [HideInInspector] public SkillController SkillCon;
     [HideInInspector] public AttackRange Range;
     [HideInInspector] public HeroTween Tween;
+    public Transform ProjectileAnchor;
 
     public void Init(HeroData data)
     {

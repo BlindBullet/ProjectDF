@@ -8,6 +8,8 @@ public class CsvData : SingletonObject<CsvData>
 	public Dictionary<string, HeroChart> HeroChart = new Dictionary<string, HeroChart>();
 	public Dictionary<string, AttackChart> AttackChart = new Dictionary<string, AttackChart>();
 	public Dictionary<string, FxChart> FxChart = new Dictionary<string, FxChart>();
+	public Dictionary<string, List<ProjectileChart>> ProjectileChart = new Dictionary<string, List<ProjectileChart>>();
+
 
 	protected override void OnCreate()
 	{
@@ -17,6 +19,7 @@ public class CsvData : SingletonObject<CsvData>
 		HeroChart = CsvParser.Ins.ParseToDict(HeroChart, "DataTables/HeroChart");
 		AttackChart = CsvParser.Ins.ParseToDict(AttackChart, "DataTables/AttackChart");
 		FxChart = CsvParser.Ins.ParseToDict(FxChart, "DataTables/FxChart");
+		ProjectileChart = CsvParser.Ins.ParseDupeKeyToDict(ProjectileChart, "DataTables/ProjectileChart");
 
 
 	}
