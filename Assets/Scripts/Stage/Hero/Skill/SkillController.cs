@@ -5,16 +5,22 @@ using UnityEngine;
 public class SkillController : MonoBehaviour
 {
     BasicAttack attack;
+
+    public Skill Attack;
+    public Skill Skill;
+
     HeroBase me;
-    bool usingSKill = false;
-    bool isAttacking = false;
+    bool usingSKill = false;    
     Coroutine cAttack = null;
 
-    public void Setup(HeroBase heroBase)
+    public void Init(HeroBase heroBase)
     {
         me = heroBase;
         HeroChart heroChart = CsvData.Ins.HeroChart[me.Data.Id];
-        
+
+        Attack = new Skill(heroChart.BasicAttack, 1);
+        Skill = new Skill(heroChart.Skill, 1);
+
         attack = new BasicAttack(heroChart.BasicAttack);
         
         StartCoroutine(UseSkill());
@@ -28,9 +34,9 @@ public class SkillController : MonoBehaviour
             {
                 if (!usingSKill)
                 {                    
-                    if (!isAttacking)
+                    if (cAttack == null)
                     {
-                        cAttack = StartCoroutine(AttackSequence(me.Range.AllTargetColl[0].GetComponent<EnemyBase>()));                 
+                        cAttack = StartCoroutine(AttackSequence(Attack));                 
                     }   
                 }
                 else
@@ -43,51 +49,112 @@ public class SkillController : MonoBehaviour
         }
     }
 
-    IEnumerator AttackSequence(EnemyBase target)
+    IEnumerator SkillSequence(Skill skill)
     {
-        isAttacking = true;
-        float totalTime = 0.2f;
-        float fireTime = 0.1f;
+        yield return null;
+    }
 
-        me.Tween.Attack(me.Data.Spd > 1f ? me.Data.Spd : 1f, target);
+    IEnumerator AttackSequence(Skill skill)
+    {
+        SkillChart data = skill.Data;
 
-        if (me.Data.Spd >= 1f)
+        switch (data.Type)
         {
-            totalTime = totalTime / me.Data.Spd;
-            fireTime = fireTime / me.Data.Spd;
+            case SkillType.Attack:
+
+                break;
+            case SkillType.Active:
+
+                break;
         }
-        
-        if (attack.Data.BeginFx != null)        
+
+        if (data.BeginFx != null)
             EffectManager.Ins.ShowFx(attack.Data.BeginFx, this.transform);
 
-        double dmg = me.Data.Atk;
-        bool isCrit = Random.Range(0f, 100f) < me.Data.CritChance ? true : false;
-
-        yield return new WaitForSeconds(fireTime);
-
-        if (attack.Data.Projectile == null)
+        if (data.Anim == "Attack")
         {
-            if (attack.Data.HitFx != null)
-                EffectManager.Ins.ShowFx(attack.Data.HitFx, target.transform);
-
-            double resultDmg = 0;
-
-            if (isCrit)
-                dmg = dmg * (1 + (me.Data.CritDmg / 100f));
-
-            Vector3 pos = target.transform.position;
-            resultDmg = target.TakeDmg(dmg);
-            FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString(), isCrit);
-        }
-        else
-        {
-            LookTarget(target);
-
+            me.Tween.Attack(me.Data.Spd > 1f ? me.Data.Spd : 1f, me.Range.AllTargetColl[0].GetComponent<EnemyBase>());
         }
 
-        yield return new WaitForSeconds((1f / me.Data.Spd) - fireTime);
+        float totalTime = skill.Data.TotalFrame / 30f;
+        float progressTime = 0;        
 
-        isAttacking = false;
+        if (me.Data.Spd > 1f)
+        {
+            totalTime = totalTime / me.Data.Spd;
+        }
+
+        for (int i = 0; i < data.FireFrame.Length; i++)
+        {
+            if(i == 0)
+            {
+                if(data.Type == SkillType.Attack)
+                {
+                    progressTime += data.FireFrame[i] / 30f / me.Data.Spd;
+                    yield return new WaitForSeconds(data.FireFrame[i] / 30f / me.Data.Spd);
+                }
+                else
+                {
+                    progressTime += data.FireFrame[i] / 30f;
+                    yield return new WaitForSeconds(data.FireFrame[i] / 30f);
+                }
+            }
+            else
+            {
+                if (data.Type == SkillType.Attack)
+                {
+                    progressTime += (data.FireFrame[i] - data.FireFrame[i - 1]) / 30f / me.Data.Spd;
+                    yield return new WaitForSeconds((data.FireFrame[i] - data.FireFrame[i - 1]) / 30f / me.Data.Spd);
+                }
+                else
+                {
+                    progressTime += (data.FireFrame[i] - data.FireFrame[i - 1]) / 30f;
+                    yield return new WaitForSeconds((data.FireFrame[i] - data.FireFrame[i - 1]) / 30f);
+                }
+                    
+            }
+
+            //리절트 그룹 실행            
+            ResultGroupSequence(CsvData.Ins.ResultGroupChart[data.ResultGroup[i]]);
+        }
+        
+        if(totalTime - progressTime > 0)
+            yield return new WaitForSeconds(totalTime - progressTime);
+        
+        //double dmg = me.Data.Atk;
+        //bool isCrit = Random.Range(0f, 100f) < me.Data.CritChance ? true : false;
+
+        //if (Attack.Data.Projectile == null)
+        //{
+        //    if (attack.Data.HitFx != null)
+        //        EffectManager.Ins.ShowFx(attack.Data.HitFx, target.transform);
+
+        //    double resultDmg = 0;
+
+        //    if (isCrit)
+        //        dmg = dmg * (1 + (me.Data.CritDmg / 100f));
+
+        //    Vector3 pos = target.transform.position;
+        //    resultDmg = target.TakeDmg(dmg);
+        //    FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString(), isCrit);
+        //}
+        //else
+        //{
+        //    LookTarget(target);
+
+        //}
+
+        //yield return new WaitForSeconds((1f / me.Data.Spd) - fireTime);
+
+        cAttack = null;
+    }
+
+    void ResultGroupSequence(List<ResultGroupChart> datas)
+    {
+        for(int i = 0; i < datas.Count; i++)
+        {
+
+        }
     }
 
     void LookTarget(EnemyBase target)
@@ -100,6 +167,43 @@ public class SkillController : MonoBehaviour
 
     
 
+}
+
+public class Skill
+{
+    public string Id;
+    public int Lv;
+    public float CoolTime;
+    public SkillChart Data;
+
+    public Skill(string id, int lv)
+    {
+        Id = id;
+        Lv = lv;
+        CoolTime = 0;
+        SetData();
+    }
+
+    void SetData()
+    {
+        foreach(KeyValuePair<string, SkillChart> elem in CsvData.Ins.SkillChart)
+        {
+            if(elem.Key == Id)
+            {
+                if(elem.Value.Lv == Lv)
+                {
+                    Data = elem.Value;
+                }
+            }
+        }
+    }
+
+    public void IncreaseLv()
+    {
+        Lv++;
+        CoolTime = 0;
+        SetData();
+    }
 }
 
 public class BasicAttack

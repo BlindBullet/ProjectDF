@@ -28,7 +28,7 @@ public class HeroBase : MonoBehaviour
         Range = GetComponent<AttackRange>();
         
         SkillCon = GetComponent<SkillController>();
-        SkillCon.Setup(this);
+        SkillCon.Init(this);
 
         Ui = GetComponent<HeroUi>();
         Ui.SetUp(Data);
