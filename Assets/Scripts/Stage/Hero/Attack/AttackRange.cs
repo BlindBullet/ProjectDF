@@ -91,6 +91,32 @@ public class AttackRange : MonoBehaviour
 		}
 	}
 
+	public List<EnemyBase> SearchTarget(ResultGroupChart data, EnemyBase enemy)
+    {
+		List<EnemyBase> result = new List<EnemyBase>();
+		Collider2D[] _colls = null;
+
+        switch (data.RangeType)
+        {
+			case RangeType.Circle:
+				_colls = Physics2D.OverlapCircleAll(enemy.transform.position, data.RnageSize[0]);
+								
+				break;
+        }
+
+		if(_colls != null)
+        {
+			foreach (Collider2D member in _colls)
+			{
+				if (member.CompareTag("Enemy"))
+				{
+					result.Add(member.GetComponent<EnemyBase>());
+				}
+			}
+		}
+
+		return result;
+	}
 
 	public void OnDrawGizmos()
 	{

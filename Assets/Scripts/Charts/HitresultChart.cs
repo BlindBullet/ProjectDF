@@ -15,8 +15,7 @@ public class HitresultChart
     public float Value { get; set; }
     public float ValuePercent { get; set; }
     public float DurationTime { get; set; }
-    public string AddOnhitResultGroupId { get; set; }
-    public string AfterResultGroupId { get; set; }
+    public string AddOnhitResultGroupId { get; set; }    
 
 }
 

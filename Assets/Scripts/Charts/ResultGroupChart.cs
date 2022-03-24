@@ -24,6 +24,7 @@ public enum TargetType
     None,
     Enemy,
     Hero,
+    Me,
 
 }
 

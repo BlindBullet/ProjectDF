@@ -4,24 +4,27 @@ using UnityEngine;
 using DG.Tweening;
 
 public class ProjectileController : MonoBehaviour
-{
-	Transform targetTrf;
-	public double Atk;
-	public float Spd;
-	
-	public void Setup(Transform targetTrf)
-	{
-		this.targetTrf = targetTrf;
+{	
+	ProjectileChart data;
+	List<HitresultChart> hitresults = new List<HitresultChart>();
+	HeroBase caster;
+
+	public void Setup(ProjectileChart data, List<HitresultChart> hitresults, HeroBase caster)
+    {
+		this.data = data;
+		this.hitresults = hitresults;
+		this.caster = caster;
+
 		StartCoroutine(MoveSequence());
-	}
+    }
 
 	IEnumerator MoveSequence()
 	{
-		Vector3 dir = (targetTrf.position - transform.position).normalized;
+		Vector3 dir = new Vector3(0, 1, 0);
 
 		while (true)
-		{	
-			transform.position += dir * Spd * Time.deltaTime;
+		{			
+			transform.position += dir * 2f * Time.deltaTime;
 			yield return null;
 		}		
 	}
@@ -30,17 +33,11 @@ public class ProjectileController : MonoBehaviour
 	{
 		if (collision.CompareTag("Enemy"))
 		{
-			collision.GetComponent<EnemyBase>().TakeDmg(Atk);
-
-			if (collision.GetComponent<EnemyBase>().Stat.CurHp <= 0)
-				ObjectManager.Ins.Push<EnemyBase>(collision.GetComponent<EnemyBase>());
-
+			//collision.GetComponent<EnemyBase>().TakeDmg(Atk);
+			
+			
 			ObjectManager.Ins.Push<ProjectileController>(this);
 		}
 	}
 
-	//public void OnBecameInvisible()
-	//{
-	//	ObjectManager.Ins.Push<ProjectileController>(this);
-	//}
 }
