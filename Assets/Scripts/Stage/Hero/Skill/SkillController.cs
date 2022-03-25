@@ -146,7 +146,7 @@ public class SkillController : MonoBehaviour
                         for(int k = 0; k < enemyTargets.Count; k++)
                         {
                             //히트리절트 전달
-                            SendHitresult(datas[i], enemyTargets[k], me);
+                            HitresultManager.Ins.SendHitresult(datas[i], enemyTargets[k], me);
                         }
                     }
                     else
@@ -159,7 +159,7 @@ public class SkillController : MonoBehaviour
                             List<EnemyBase> delayTargets = me.Range.SearchTarget(datas[i], enemyTargets[i]);
 
                             //히트리절트 전달
-                            SendHitresult(datas[i], delayTargets[k], me);
+                            HitresultManager.Ins.SendHitresult(datas[i], delayTargets[k], me);
                         }
                     }
                     break;
@@ -168,87 +168,16 @@ public class SkillController : MonoBehaviour
                     for(int k = 0; k < heroTargets.Count; k++)
                     {
                         //히트리절트 전달
-                        SendHitresult(datas[i], heroTargets[k]);
+                        HitresultManager.Ins.SendHitresult(datas[i], heroTargets[k]);
                     }
                     break;
                 case TargetType.Me:
                     //히트리절트 전달
-                    SendHitresult(datas[i], me);
+                    HitresultManager.Ins.SendHitresult(datas[i], me);
                     break;
             }
         }
     }
-
-    void SendHitresult(ResultGroupChart data, EnemyBase target, HeroBase caster)
-    {
-        List<HitresultChart> hitresults = CsvData.Ins.HitresultChart[data.Hitresult];
-
-        if (data.Projectile == null)
-        {
-            for(int i = 0; i < hitresults.Count; i++)
-            {
-                float randNo = Random.Range(0, 100);
-
-                if(hitresults[i].Prob >= randNo)
-                {
-                    if (hitresults[i].HitFx != null)
-                        EffectManager.Ins.ShowFx(hitresults[i].HitFx, target.transform);
-
-                    switch (hitresults[i].FactorOwner)
-                    {
-                        case FactorOwner.Caster:
-                            double dmg = hitresults[i].Value + (caster.Data.Atk * (hitresults[i].ValuePercent / 100f));
-                            bool isCrit = Random.Range(0f, 100f) < me.Data.CritChance ? true : false;
-                            double resultDmg = 0;
-
-                            if (isCrit)
-                                dmg = dmg * (1 + (me.Data.CritDmg / 100f));
-
-                            Vector3 pos = target.transform.position;
-                            resultDmg = target.TakeDmg(dmg);
-                            FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString(), isCrit);
-                            break;
-                        case FactorOwner.Target:
-
-                            break;
-                    }
-                }
-                else
-                {
-                    Debug.Log("미스");
-                }
-                                
-                //온힛 추가 예정?
-
-            }
-        }
-        else
-        {
-            Vector2 dir = target.transform.position - me.ProjectileAnchor.position;
-
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            me.ProjectileAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-            //프로젝타일 발사
-            List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart[data.Projectile];
-
-            for(int i = 0; i < projectiles.Count; i++)
-            {
-                GameObject obj = Instantiate(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject, me.ProjectileAnchor.position.WithX(me.ProjectileAnchor.position.x + projectiles[i].PosX), Quaternion.AngleAxis(angle - 90, Vector3.forward));
-                ProjectileController projectile = obj.GetComponent<ProjectileController>();
-                //ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
-                //projectile.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-                //projectile.transform.position = me.ProjectileAnchor.position.WithX(me.ProjectileAnchor.position.x + projectiles[i].PosX);
-                projectile.Setup(projectiles[i], hitresults, me);
-            }
-        }
-    }
-
-    void SendHitresult(ResultGroupChart data, HeroBase target)
-    {
-
-    }
-
 
     List<HeroBase> SearchHeroTargets(ResultGroupChart data)
     {
