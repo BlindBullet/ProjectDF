@@ -13,7 +13,9 @@ public class EnemyBase : MonoBehaviour
 	public Rigidbody2D Rb;
 	public Animator Anim;
 	BoxCollider2D col;
-	Coroutine cMove = null;
+	Coroutine cMove = null;	
+	bool isPushing = false;
+	Coroutine cPush = null;
 
 	private void OnEnable()
 	{
@@ -29,6 +31,8 @@ public class EnemyBase : MonoBehaviour
 		col = GetComponent<BoxCollider2D>();
 		col.enabled = true;
 
+		Rb.drag = 1f;
+		Rb.angularDrag = 1f;
 		cMove = StartCoroutine(MoveSequence());
 	}
 
@@ -63,8 +67,8 @@ public class EnemyBase : MonoBehaviour
 					Anim.SetTrigger("Walk");
 			}
 
-			transform.position += dir * Stat.Spd * 0.5f * Time.deltaTime;
-			
+			Rb.velocity = new Vector2(0, isPushing ? 0 : -Stat.Spd);			
+
 			yield return null;
 		}
 		
@@ -83,7 +87,10 @@ public class EnemyBase : MonoBehaviour
 
 	public void Die()
     {
-		StopCoroutine(cMove);
+		StopCoroutine(cMove);		
+		Rb.drag = 100f;
+		Rb.angularDrag = 100f;
+		Rb.velocity = Vector2.zero;
 		col.enabled = false;
 		Enemies.Remove(this);
 		
@@ -97,5 +104,30 @@ public class EnemyBase : MonoBehaviour
 		transform.position = new Vector3(0, 20f, 0);
 		ObjectManager.Ins.Push<EnemyBase>(this);
     }
+
+	public void Push(float value, float time)
+    {
+		if(cPush == null)
+        {
+			cPush = StartCoroutine(PushSequence(value, time));
+		}	
+        else
+        {
+			StopCoroutine(cPush);
+			cPush = StartCoroutine(PushSequence(value, time));
+		}
+    }
+
+    IEnumerator PushSequence(float value, float time)
+    {
+		isPushing = true;
+		Rb.AddForce(new Vector2(0, value), ForceMode2D.Impulse);
+
+		yield return new WaitForSeconds(time);
+
+		isPushing = false;
+		cPush = null;
+    }
+
 
 }

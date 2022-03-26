@@ -25,6 +25,8 @@ public enum HitType
     Dmg,
     Buff,
     Debuff,
+    Push,
+    Stun,
 
 }
 

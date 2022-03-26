@@ -5,50 +5,101 @@ using UnityEngine;
 public class HitresultManager : MonoSingleton<HitresultManager>
 {
 
+    public IEnumerator ResultGroupSequence(List<ResultGroupChart> datas, HeroBase caster)
+    {
+        for (int i = 0; i < datas.Count; i++)
+        {
+            switch (datas[i].TargetType)
+            {
+                case TargetType.Enemy:
+                    List<EnemyBase> enemyTargets = SearchEnemyTargets(datas[i], caster);
 
+                    if (datas[i].RangeType == RangeType.None)
+                    {
+                        for (int k = 0; k < enemyTargets.Count; k++)
+                        {
+                            //히트리절트 전달
+                            SendResultGroup(datas[i], enemyTargets[k], caster);
+                        }
+                    }
+                    else
+                    {
+                        yield return new WaitForSeconds(datas[i].DelayTime);
 
-    public void SendHitresult(ResultGroupChart data, EnemyBase target, HeroBase caster)
+                        //범위에 따라 다시 타겟을 지정
+                        for (int k = 0; k < enemyTargets.Count; k++)
+                        {
+                            List<EnemyBase> delayTargets = caster.Range.SearchTarget(datas[i], enemyTargets[i]);
+
+                            if (delayTargets.Count > 0)
+                            {
+                                //히트리절트 전달
+                                SendResultGroup(datas[i], delayTargets[k], caster);
+                            }
+                        }
+                    }
+                    break;
+                case TargetType.Hero:
+                    List<HeroBase> heroTargets = SearchHeroTargets(datas[i], caster);
+                    for (int k = 0; k < heroTargets.Count; k++)
+                    {
+                        //히트리절트 전달
+                        SendHitresult(datas[i], heroTargets[k]);
+                    }
+                    break;
+                case TargetType.Me:
+                    //히트리절트 전달
+                    SendHitresult(datas[i], caster);
+                    break;
+            }
+        }
+    }
+
+    List<HeroBase> SearchHeroTargets(ResultGroupChart data, HeroBase caster)
+    {
+        List<HeroBase> targets = new List<HeroBase>();
+
+        switch (data.TargetDetail)
+        {
+            case TargetDetail.All:
+                targets = HeroBase.Heroes;
+                break;
+        }
+
+        return targets;
+    }
+
+    List<EnemyBase> SearchEnemyTargets(ResultGroupChart data, HeroBase caster)
+    {
+        List<EnemyBase> targets = new List<EnemyBase>();
+
+        switch (data.TargetDetail)
+        {
+            case TargetDetail.All:
+                for (int i = 0; i < caster.Range.AllTargetColl.Count; i++)
+                {
+                    targets.Add(caster.Range.AllTargetColl[i].GetComponent<EnemyBase>());
+                }
+                break;
+            case TargetDetail.Closest:
+                for (int i = 0; i < data.TargetCount; i++)
+                {
+                    if (i < caster.Range.AllTargetColl.Count)
+                        targets.Add(caster.Range.AllTargetColl[i].GetComponent<EnemyBase>());
+                }
+                break;
+        }
+
+        return targets;
+    }
+
+    public void SendResultGroup(ResultGroupChart data, EnemyBase target, HeroBase caster)
     {
         List<HitresultChart> hitresults = CsvData.Ins.HitresultChart[data.Hitresult];
 
         if (data.Projectile == null)
         {
-            for (int i = 0; i < hitresults.Count; i++)
-            {
-                float randNo = Random.Range(0, 100);
-
-                if (hitresults[i].Prob >= randNo)
-                {
-                    if (hitresults[i].HitFx != null)
-                        EffectManager.Ins.ShowFx(hitresults[i].HitFx, target.transform);
-
-                    switch (hitresults[i].FactorOwner)
-                    {
-                        case FactorOwner.Caster:
-                            double dmg = hitresults[i].Value + (caster.Data.Atk * (hitresults[i].ValuePercent / 100f));
-                            bool isCrit = Random.Range(0f, 100f) < caster.Data.CritChance ? true : false;
-                            double resultDmg = 0;
-
-                            if (isCrit)
-                                dmg = dmg * (1 + (caster.Data.CritDmg / 100f));
-
-                            Vector3 pos = target.transform.position;
-                            resultDmg = target.TakeDmg(dmg);
-                            FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString(), isCrit);
-                            break;
-                        case FactorOwner.Target:
-
-                            break;
-                    }
-                }
-                else
-                {
-                    Debug.Log("미스");
-                }
-
-                //온힛 추가 예정?
-
-            }
+            SendHitresult(hitresults, target, caster);
         }
         else
         {
@@ -70,6 +121,9 @@ public class HitresultManager : MonoSingleton<HitresultManager>
         }
     }
 
+    //public void SendResultGroup(ResultGroupChart data,)
+
+
     public void SendHitresult(ResultGroupChart data, HeroBase target)
     {
 
@@ -86,21 +140,32 @@ public class HitresultManager : MonoSingleton<HitresultManager>
                 if (hitresults[i].HitFx != null)
                     EffectManager.Ins.ShowFx(hitresults[i].HitFx, target.transform);
 
-                switch (hitresults[i].FactorOwner)
+                switch (hitresults[i].Type)
                 {
-                    case FactorOwner.Caster:
-                        double dmg = hitresults[i].Value + (caster.Data.Atk * (hitresults[i].ValuePercent / 100f));
-                        bool isCrit = Random.Range(0f, 100f) < caster.Data.CritChance ? true : false;
-                        double resultDmg = 0;
+                    case HitType.Dmg:
+                        switch (hitresults[i].FactorOwner)
+                        {
+                            case FactorOwner.Caster:
+                                double dmg = hitresults[i].Value + (caster.Data.Atk * (hitresults[i].ValuePercent / 100f));
+                                bool isCrit = Random.Range(0f, 100f) < caster.Data.CritChance ? true : false;
+                                double resultDmg = 0;
 
-                        if (isCrit)
-                            dmg = dmg * (1 + (caster.Data.CritDmg / 100f));
+                                if (isCrit)
+                                    dmg = dmg * (1 + (caster.Data.CritDmg / 100f));
 
-                        Vector3 pos = target.transform.position;
-                        resultDmg = target.TakeDmg(dmg);
-                        FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString(), isCrit);
+                                Vector3 pos = target.transform.position;
+                                resultDmg = target.TakeDmg(dmg);
+                                FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString(), isCrit);
+                                break;
+                            case FactorOwner.Target:
+
+                                break;
+                        }
                         break;
-                    case FactorOwner.Target:
+                    case HitType.Push:                        
+                        //target.Push(hitresults[i].Value, hitresults[i].DurationTime);                        
+                        break;
+                    case HitType.Stun:
 
                         break;
                 }

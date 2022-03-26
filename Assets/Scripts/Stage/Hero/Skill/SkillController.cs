@@ -122,7 +122,7 @@ public class SkillController : MonoBehaviour
             }
 
             //리절트 그룹 실행            
-            StartCoroutine(ResultGroupSequence(CsvData.Ins.ResultGroupChart[data.ResultGroup[i]]));
+            StartCoroutine(HitresultManager.Ins.ResultGroupSequence(CsvData.Ins.ResultGroupChart[data.ResultGroup[i]], me));
         }
         
         if(totalTime - progressTime > 0)
@@ -132,90 +132,93 @@ public class SkillController : MonoBehaviour
         cSkill = null;
     }
 
-    IEnumerator ResultGroupSequence(List<ResultGroupChart> datas)
-    {
-        for(int i = 0; i < datas.Count; i++)
-        {
-            switch (datas[i].TargetType)
-            {
-                case TargetType.Enemy:
-                    List<EnemyBase> enemyTargets = SearchEnemyTargets(datas[i]);
+    //IEnumerator ResultGroupSequence(List<ResultGroupChart> datas)
+    //{
+    //    for(int i = 0; i < datas.Count; i++)
+    //    {
+    //        switch (datas[i].TargetType)
+    //        {
+    //            case TargetType.Enemy:
+    //                List<EnemyBase> enemyTargets = SearchEnemyTargets(datas[i]);
 
-                    if(datas[i].RangeType == RangeType.None)
-                    {
-                        for(int k = 0; k < enemyTargets.Count; k++)
-                        {
-                            //히트리절트 전달
-                            HitresultManager.Ins.SendHitresult(datas[i], enemyTargets[k], me);
-                        }
-                    }
-                    else
-                    {
-                        yield return new WaitForSeconds(datas[i].DelayTime);
+    //                if(datas[i].RangeType == RangeType.None)
+    //                {
+    //                    for(int k = 0; k < enemyTargets.Count; k++)
+    //                    {
+    //                        //히트리절트 전달
+    //                        HitresultManager.Ins.SendResultGroup(datas[i], enemyTargets[k], me);
+    //                    }
+    //                }
+    //                else
+    //                {
+    //                    yield return new WaitForSeconds(datas[i].DelayTime);
 
-                        //범위에 따라 다시 타겟을 지정
-                        for (int k = 0; k < enemyTargets.Count; k++)
-                        {
-                            List<EnemyBase> delayTargets = me.Range.SearchTarget(datas[i], enemyTargets[i]);
+    //                    //범위에 따라 다시 타겟을 지정
+    //                    for (int k = 0; k < enemyTargets.Count; k++)
+    //                    {
+    //                        List<EnemyBase> delayTargets = me.Range.SearchTarget(datas[i], enemyTargets[i]);
 
-                            //히트리절트 전달
-                            HitresultManager.Ins.SendHitresult(datas[i], delayTargets[k], me);
-                        }
-                    }
-                    break;
-                case TargetType.Hero:
-                    List<HeroBase> heroTargets = SearchHeroTargets(datas[i]);
-                    for(int k = 0; k < heroTargets.Count; k++)
-                    {
-                        //히트리절트 전달
-                        HitresultManager.Ins.SendHitresult(datas[i], heroTargets[k]);
-                    }
-                    break;
-                case TargetType.Me:
-                    //히트리절트 전달
-                    HitresultManager.Ins.SendHitresult(datas[i], me);
-                    break;
-            }
-        }
-    }
+    //                        if(delayTargets.Count > 0)
+    //                        {
+    //                            //히트리절트 전달
+    //                            HitresultManager.Ins.SendResultGroup(datas[i], delayTargets[k], me);
+    //                        }
+    //                    }
+    //                }
+    //                break;
+    //            case TargetType.Hero:
+    //                List<HeroBase> heroTargets = SearchHeroTargets(datas[i]);
+    //                for(int k = 0; k < heroTargets.Count; k++)
+    //                {
+    //                    //히트리절트 전달
+    //                    HitresultManager.Ins.SendHitresult(datas[i], heroTargets[k]);
+    //                }
+    //                break;
+    //            case TargetType.Me:
+    //                //히트리절트 전달
+    //                HitresultManager.Ins.SendHitresult(datas[i], me);
+    //                break;
+    //        }
+    //    }
+    //}
 
-    List<HeroBase> SearchHeroTargets(ResultGroupChart data)
-    {
-        List<HeroBase> targets = new List<HeroBase>();
+    //List<HeroBase> SearchHeroTargets(ResultGroupChart data)
+    //{
+    //    List<HeroBase> targets = new List<HeroBase>();
 
-        switch (data.TargetDetail)
-        {
-            case TargetDetail.All:
-                targets = HeroBase.Heroes;
-                break;            
-        }
+    //    switch (data.TargetDetail)
+    //    {
+    //        case TargetDetail.All:
+    //            targets = HeroBase.Heroes;
+    //            break;            
+    //    }
 
-        return targets;
-    }
+    //    return targets;
+    //}
 
-    List<EnemyBase> SearchEnemyTargets(ResultGroupChart data)
-    {
-        List<EnemyBase> targets = new List<EnemyBase>();
+    //List<EnemyBase> SearchEnemyTargets(ResultGroupChart data)
+    //{
+    //    List<EnemyBase> targets = new List<EnemyBase>();
 
-        switch (data.TargetDetail)
-        {
-            case TargetDetail.All:
-                for(int i = 0; i < me.Range.AllTargetColl.Count; i++)
-                {
-                    targets.Add(me.Range.AllTargetColl[i].GetComponent<EnemyBase>());
-                }
-                break;
-            case TargetDetail.Closest:
-                for(int i = 0; i < data.TargetCount; i++)
-                {
-                    if(i < me.Range.AllTargetColl.Count)
-                        targets.Add(me.Range.AllTargetColl[i].GetComponent<EnemyBase>());
-                }
-                break;
-        }
+    //    switch (data.TargetDetail)
+    //    {
+    //        case TargetDetail.All:
+    //            for(int i = 0; i < me.Range.AllTargetColl.Count; i++)
+    //            {
+    //                targets.Add(me.Range.AllTargetColl[i].GetComponent<EnemyBase>());
+    //            }
+    //            break;
+    //        case TargetDetail.Closest:
+    //            for(int i = 0; i < data.TargetCount; i++)
+    //            {
+    //                if(i < me.Range.AllTargetColl.Count)
+    //                    targets.Add(me.Range.AllTargetColl[i].GetComponent<EnemyBase>());
+    //            }
+    //            break;
+    //    }
 
-        return targets;
-    }
+    //    return targets;
+    //}
 
     void LookTarget(EnemyBase target)
     {
