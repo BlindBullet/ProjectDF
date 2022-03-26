@@ -1,8 +1,9 @@
 ﻿Id,Seq,Prob,TargetType,TargetDetail,TargetCount,RangeType,RnageSize,DelayTime,DelayBeginFx,Hitresult,Projectile
 Attack1,1,100,Enemy,Closest,1,,,,,dmg_100,
-Attack2,1,100,Enemy,Closest,1,,,,,dmg_100,TestProjectile2
+Attack2,1,100,Enemy,Closest,1,,,,,dmg_100,TestProjectile
 Skill1,1,100,Enemy,Closest,1,Circle,2,,,dmg_100,TestProjectile
 Skill2,1,100,Hero,All,,,,,,buff_atk_100p,
 Skill3,1,100,Me,,,,,,,buff_atk_200p,
 Skill4,1,100,Enemy,All,,,,,,dmg_100,TestProjectile
 Skill5,1,100,Enemy,All,,,,,,dmg_100,TestProjectile
+Explosion,1,100,Enemy,All,,Circle,1,0,,dmg_100,

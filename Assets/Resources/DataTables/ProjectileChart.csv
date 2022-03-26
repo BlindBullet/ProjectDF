@@ -1,4 +1,4 @@
 ﻿Id,MoveType,HitOnlyTarget,PenCount,PosX,Angle,Speed,DelayTime,Lifetime,Model,BeginFx,DurationFx,HitDestroyFx,DestroyFx,HitresultId,HitResultGroupId,DestroyResultGroupId
-TestProjectile,Direct,False,0,0,0,6,0,5,TestProjectile,,,,,dmg_100,,
-TestProjectile2,Direct,False,0,0.3,0,6,0,5,TestProjectile,,,,,dmg_100,,
-TestProjectile2,Direct,False,0,-0.3,0,6,0,5,TestProjectile,,,,,dmg_100,,
+TestProjectile,Direct,False,0,0,0,10,0,5,TestProjectile,,,,,dmg_100,Explosion,
+TestProjectile2,Direct,False,0,0.3,0,6,0,2,TestProjectile,,,,,dmg_100,,Explosion
+TestProjectile2,Direct,False,0,-0.3,0,6,0,5,TestProjectile,,,,,dmg_100,Explosion,

@@ -44,6 +44,7 @@ public class ProjectileController : MonoBehaviour
 				if(data.DestroyResultGroupId != null)
                 {
 					List<ResultGroupChart> destroyResultGroups = CsvData.Ins.ResultGroupChart[data.DestroyResultGroupId];
+					HitresultManager.Ins.RunResultGroup(destroyResultGroups, transform.position, caster);
 				}
 
 				this.transform.position = new Vector3(0, -100f, 0);
@@ -62,21 +63,24 @@ public class ProjectileController : MonoBehaviour
 			EnemyBase enemyBase = collision.GetComponent<EnemyBase>();
 			HitresultManager.Ins.SendHitresult(hitresults, enemyBase, caster);
 			
-			if(data.HitResultGroupId != null)
+			if (data.HitResultGroupId != null)
             {
 				List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitResultGroupId];
-
+				HitresultManager.Ins.RunResultGroup(hitResultGroups, transform.position, caster);
 			}
 
 			if(penCount == 0)
             {
+				if (data.HitDestroyFx != null)
+					EffectManager.Ins.ShowFx(data.HitDestroyFx, this.transform.position);
+
 				if (data.DestroyFx != null)
 					EffectManager.Ins.ShowFx(data.DestroyFx, this.transform.position);
 
 				if (data.DestroyResultGroupId != null)
                 {
 					List<ResultGroupChart> destroyResultGroups = CsvData.Ins.ResultGroupChart[data.DestroyResultGroupId];
-
+					HitresultManager.Ins.RunResultGroup(destroyResultGroups, transform.position, caster);
 				}
 
 				penCount--;
