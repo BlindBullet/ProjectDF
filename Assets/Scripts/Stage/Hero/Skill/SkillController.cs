@@ -25,12 +25,12 @@ public class SkillController : MonoBehaviour
 
         attack = new BasicAttack(heroChart.BasicAttack);
         
-        StartCoroutine(UseSkill());
+        StartCoroutine(UseAttack());
     }
 
     public void ReStart()
     {
-        StartCoroutine(UseSkill());
+        StartCoroutine(UseAttack());
     }
 
     public void Stop()
@@ -38,7 +38,7 @@ public class SkillController : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public IEnumerator UseSkill()
+    public IEnumerator UseAttack()
     {
         while (true)
         {
@@ -50,20 +50,34 @@ public class SkillController : MonoBehaviour
                     {
                         cAttack = StartCoroutine(SkillSequence(Attack));                 
                     }   
-                }
-                else
-                {
-                    if(cAttack != null)
-                    {
-                        StopCoroutine(cAttack);
-                        cAttack = null;
-                    }   
-
-                    cSkill = StartCoroutine(SkillSequence(Skill));
-                }
+                }                
             }
 
+            if(cSkill == null)
+            {
+                Skill.ProgressCoolTime();
+                me.Ui.SetCoolTimeFrame(Skill.CoolTime / Skill._CoolTime);
+            }   
+
             yield return null;
+        }
+    }
+
+    public void UseSkill()
+    {
+        if (Skill.CoolTime < Skill._CoolTime)
+            return;
+                
+        if (me.Range.AllTargetColl.Count > 0 && EnemyBase.Enemies.Count > 0)
+        {
+            if (cAttack != null)
+            {
+                StopCoroutine(cAttack);
+                cAttack = null;
+            }
+
+            cSkill = StartCoroutine(SkillSequence(Skill));
+            Skill.InitCoolTime();
         }
     }
 
@@ -140,7 +154,7 @@ public class SkillController : MonoBehaviour
             yield return new WaitForSeconds(totalTime - progressTime);
         
         cAttack = null;
-        cSkill = null;
+        cSkill = null;        
     }
 
     
@@ -152,8 +166,9 @@ public class SkillController : MonoBehaviour
 public class Skill
 {
     public string Id;
-    public int Lv;
+    public int Lv;    
     public float CoolTime;
+    public float _CoolTime;
     public SkillChart Data;
 
     public Skill(string id, int lv)
@@ -162,6 +177,7 @@ public class Skill
         Lv = lv;
         CoolTime = 0;
         SetData();
+        _CoolTime = Data.CoolTime;
     }
 
     void SetData()
@@ -172,7 +188,7 @@ public class Skill
             {
                 if(elem.Value.Lv == Lv)
                 {
-                    Data = elem.Value;
+                    Data = elem.Value;                    
                 }
             }
         }
@@ -183,7 +199,22 @@ public class Skill
         Lv++;
         CoolTime = 0;
         SetData();
+        _CoolTime = Data.CoolTime;
     }
+
+    public void ProgressCoolTime()
+    {
+        CoolTime += Time.deltaTime;
+
+        if (CoolTime >= _CoolTime)
+            CoolTime = _CoolTime;
+    }
+
+    public void InitCoolTime()
+    {
+        CoolTime = 0;
+    }
+
 }
 
 public class BasicAttack

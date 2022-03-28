@@ -130,7 +130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5401945930221269823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.027, y: -0.329, z: 0}
+  m_LocalPosition: {x: 0, y: 30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5401945930171970007}
@@ -150,38 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stat:
-    MaxHp:
-      migratedVersion: 
-      currentCryptoKey: 5873992552116151036
-      hiddenValue: 1910741879787158626
-      hiddenValueOldByte8:
-        b1: 0
-        b2: 0
-        b3: 0
-        b4: 0
-        b5: 0
-        b6: 0
-        b7: 0
-        b8: 0
-      inited: 1
-      fakeValue: 0
-      fakeValueActive: 0
-    CurHp:
-      migratedVersion: 
-      currentCryptoKey: 5755636563355555390
-      hiddenValue: -729496137839526186
-      hiddenValueOldByte8:
-        b1: 0
-        b2: 0
-        b3: 0
-        b4: 0
-        b5: 0
-        b6: 0
-        b7: 0
-        b8: 0
-      inited: 1
-      fakeValue: 0
-      fakeValueActive: 0
+    MaxHp: 0
+    CurHp: 0
     Spd: 2
   Model: {fileID: 5401945930171970005}
   Rb: {fileID: 5666512806264660223}

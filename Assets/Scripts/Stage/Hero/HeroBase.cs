@@ -23,12 +23,12 @@ public class HeroBase : MonoBehaviour
         Data = data;
 
         Range = GetComponent<AttackRange>();
-        
-        SkillCon = GetComponent<SkillController>();
-        SkillCon.Init(this);
 
         Ui = GetComponent<HeroUi>();
         Ui.SetUp(Data);
+
+        SkillCon = GetComponent<SkillController>();
+        SkillCon.Init(this);
 
         Tween = GetComponent<HeroTween>();
         Tween.SetTween();

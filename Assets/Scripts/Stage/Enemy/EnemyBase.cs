@@ -26,7 +26,7 @@ public class EnemyBase : MonoBehaviour
 	{
 		Stat = new EnemyStat();
 		Stat.CurHp = 30f;
-		Stat.Spd = 1f;
+		Stat.Spd = 0.5f;
 
 		col = GetComponent<BoxCollider2D>();
 		col.enabled = true;

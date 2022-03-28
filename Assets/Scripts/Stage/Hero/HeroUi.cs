@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.U2D;
 using AllIn1SpriteShader;
+using System;
 
 public class HeroUi : MonoBehaviour
 {
@@ -16,8 +17,10 @@ public class HeroUi : MonoBehaviour
     public Button LvUpBtn;
     public TextMeshProUGUI LvUpBtnText;
     public TextMeshProUGUI LvUpCostText;
+    public Image SkillCoolTimeFrame;
     HeroData data;
     Material lvUpBtnMat;
+    HeroBase me;
 
     private void Start()
     {
@@ -31,6 +34,7 @@ public class HeroUi : MonoBehaviour
 
     public void SetUp(HeroData data)
     {
+        me = GetComponent<HeroBase>();
         this.data = data;
         HeroChart chart = CsvData.Ins.HeroChart[data.Id];
 
@@ -49,11 +53,17 @@ public class HeroUi : MonoBehaviour
         SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
         SetIcon(chart);
         SetLvUpBtn(0);
+        SetIconBtn();
     }
 
     void SetIcon(HeroChart chart)
     {
         IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Heroes").GetSprite(chart.Model);        
+    }
+
+    public void SetCoolTimeFrame(float value)
+    {
+        SkillCoolTimeFrame.fillAmount = value;
     }
 
     public void LvUp(HeroData data)
@@ -82,6 +92,12 @@ public class HeroUi : MonoBehaviour
         {
             LvUpBtnDisable();
         }
+    }
+
+    void SetIconBtn()
+    {
+        IconBtn.onClick.RemoveAllListeners();
+        IconBtn.onClick.AddListener(() => me.SkillCon.UseSkill());
     }
 
     public void LvUpBtnEnable()
