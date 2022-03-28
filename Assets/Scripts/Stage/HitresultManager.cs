@@ -94,7 +94,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
             Vector2 dir = target.transform.position - caster.ProjectileAnchor.position;
 
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            caster.ProjectileAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            //caster.ProjectileAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             //프로젝타일 발사
             List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart[data.Projectile];

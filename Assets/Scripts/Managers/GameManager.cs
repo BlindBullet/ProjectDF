@@ -23,11 +23,13 @@ public class GameManager : MonoSingleton<GameManager>
 
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			//CharacterSpawner.Ins.SpawnEnemy("Diablo");
-			//CharacterSpawner.Ins.SpawnEnemy("AncientTroll");
-			//CharacterSpawner.Ins.SpawnEnemy("KingSkeleton");
-			CharacterSpawner.Ins.SpawnEnemy("Gremlin");
-		}
+            //CharacterSpawner.Ins.SpawnEnemy("Astronaut");
+
+            CharacterSpawner.Ins.SpawnEnemy("Diablo");
+            CharacterSpawner.Ins.SpawnEnemy("AncientTroll");
+            CharacterSpawner.Ins.SpawnEnemy("KingSkeleton");
+            //CharacterSpawner.Ins.SpawnEnemy("Gremlin");
+        }
 	}
 
 	// 홈이나 다른 버튼을 눌러 어플리케이션이 멈췄을 때 콜됨

@@ -20,12 +20,22 @@ public class SkillController : MonoBehaviour
         me = heroBase;
         HeroChart heroChart = CsvData.Ins.HeroChart[me.Data.Id];
 
-        Attack = new Skill(heroChart.BasicAttack, 1);
-        Skill = new Skill(heroChart.Skill, 1);
+        Attack = new Skill(heroChart.BasicAttack, me.Data.AtkLv);
+        Skill = new Skill(heroChart.Skill, me.Data.SkillLv);
 
         attack = new BasicAttack(heroChart.BasicAttack);
         
         StartCoroutine(UseSkill());
+    }
+
+    public void ReStart()
+    {
+        StartCoroutine(UseSkill());
+    }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
     }
 
     public IEnumerator UseSkill()
@@ -59,12 +69,12 @@ public class SkillController : MonoBehaviour
 
     IEnumerator SkillSequence(Skill skill)
     {   
-        SkillChart data = skill.Data;
-                
+        SkillChart data = skill.Data;        
+
         switch (data.Type)
         {
             case SkillType.Attack:
-
+                
                 break;
             case SkillType.Active:
 
@@ -77,6 +87,7 @@ public class SkillController : MonoBehaviour
         if (data.Anim == "Attack")
         {
             me.Tween.Attack(me.Data.Spd > 1f ? me.Data.Spd : 1f, me.Range.AllTargetColl[0].GetComponent<EnemyBase>());
+            
         }
         else
         {
@@ -132,13 +143,7 @@ public class SkillController : MonoBehaviour
         cSkill = null;
     }
 
-    void LookTarget(EnemyBase target)
-    {
-        Vector3 dir = target.transform.position - me.ProjectileAnchor.position;
-
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        me.ProjectileAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }
+    
 
     
 

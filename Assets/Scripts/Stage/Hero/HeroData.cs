@@ -13,6 +13,8 @@ public class HeroData
     public float Range;
     public float CritChance;
     public float CritDmg;
+    public int AtkLv;
+    public int SkillLv;
 
     public void InitData(HeroChart chart)
     {
@@ -23,6 +25,8 @@ public class HeroData
         Range = chart.Range;
         CritChance = 50f;
         CritDmg = 100f;
+        AtkLv = 1;
+        SkillLv = 1;
     }
 
     public bool LevelUp()

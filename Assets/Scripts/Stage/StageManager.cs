@@ -29,11 +29,6 @@ public class StageManager : MonoSingleton<StageManager>
 
     }
 
-    public void Load()
-    {
-
-    }
-
     void SetStartHeroes()
     {
         for (int i = 0; i < ConstantData.StartHeroes.Length; i++)
@@ -44,6 +39,33 @@ public class StageManager : MonoSingleton<StageManager>
             DeployedHeroes[i].Init(data);
         }
     }
+
+    public void Load()
+    {
+
+    }
+
+    IEnumerator StartStage(int stageNo)
+    {
+
+
+        yield return null;
+    }
+
+
+
+
+    void WinStage()
+    {
+
+    }
+
+    void LoseStage()
+    {
+
+    }
+
+    
 
     public void ChangeGold(double value)
     {

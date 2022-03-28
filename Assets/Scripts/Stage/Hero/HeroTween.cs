@@ -12,14 +12,16 @@ public class HeroTween : MonoBehaviour
 
     public void SetTween()
     {
-        originPos = Icon.anchoredPosition;
+        originPos = Icon.transform.position;        
     }
 
     public void Attack(float spd, EnemyBase target)
     {
+        Vector3 dir = (target.transform.position - Icon.position).normalized;
+        
         Sequence seq = DOTween.Sequence();
-        seq.Append(Icon.DOAnchorPosY(Icon.anchoredPosition.y + 20f, 0.1f / spd).SetEase(Ease.OutQuad))
-            .Append(Icon.DOAnchorPosY(originPos.y, 0.1f / spd));
+        seq.Append(Icon.DOMove(new Vector2(originPos.x + (dir.x / 5f), originPos.y + (dir.y / 5f)), 0.1f / spd).SetEase(Ease.OutQuad))
+            .Append(Icon.DOMove(originPos, 0.1f / spd));
     }
 
     

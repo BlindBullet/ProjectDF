@@ -63,8 +63,8 @@ public class EnemyBase : MonoBehaviour
 			}
 			else
 			{
-				if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
-					Anim.SetTrigger("Walk");
+				if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_F"))
+					Anim.SetTrigger("Walk_F");
 			}
 
 			Rb.velocity = new Vector2(0, isPushing ? 0 : -Stat.Spd);			
@@ -87,7 +87,8 @@ public class EnemyBase : MonoBehaviour
 
 	public void Die()
     {
-		StopCoroutine(cMove);		
+		StopCoroutine(cMove);
+		Anim.SetTrigger("Die");
 		Rb.drag = 100f;
 		Rb.angularDrag = 100f;
 		Rb.velocity = Vector2.zero;
