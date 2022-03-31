@@ -2,15 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSpawner : SingletonObject<CharacterSpawner>
+public class EnemySpawner : SingletonObject<EnemySpawner>
 {
-    
+    public void Spawn(int stageNo)
+    {
+		List<StageChart> datas = CsvData.Ins.StageChart[stageNo];
+
+		for(int i = 0; i < datas.Count; i++)
+        {
+			StartCoroutine(SpawnSequence(datas[i], i == datas.Count - 1 ? true : false));
+        }
+    }
+
+	IEnumerator SpawnSequence(StageChart chart, bool isLast)
+    {
+		yield return new WaitForSeconds(chart.Time);
+
+		if(chart.Enemies != null)
+        {
+			for (int i = 0; i < chart.Enemies.Length; i++)
+			{
+				for (int k = 0; k < chart.Count[i]; k++)
+				{
+					SpawnEnemy(chart.Enemies[i]);
+				}
+			}
+		}
+
+		if (chart.Boss != null)
+			SpawnBoss(chart.Boss);
+
+        if (isLast)
+        {
+			StageManager.Ins.LastEnemiesSpawned = true;
+        }
+    }
+
+
     public void SpawnEnemy(string id)
 	{
 		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/" + id) as GameObject);
 		enemy.transform.position = CalcSpawnPos();
 		enemy.Setup();
 	}
+
+	void SpawnBoss(string id)
+    {
+
+    }
 
 	Vector2 CalcSpawnPos()
 	{

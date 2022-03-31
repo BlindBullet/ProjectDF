@@ -17,11 +17,6 @@ public class EnemyBase : MonoBehaviour
 	bool isPushing = false;
 	Coroutine cPush = null;
 
-	private void OnEnable()
-	{
-		Enemies.Add(this);
-	}
-
 	public void Setup()
 	{
 		Stat = new EnemyStat();
@@ -34,6 +29,7 @@ public class EnemyBase : MonoBehaviour
 		Rb.drag = 1f;
 		Rb.angularDrag = 1f;
 		cMove = StartCoroutine(MoveSequence());
+		Enemies.Add(this);
 	}
 
 	IEnumerator MoveSequence()

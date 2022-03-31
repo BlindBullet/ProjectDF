@@ -9,6 +9,7 @@ public class TopBar : MonoBehaviour
 {
     public TextMeshProUGUI GoldText;
     public TextMeshProUGUI GemText;
+    public TextMeshProUGUI StageText;
 
     private void Start()
     {
@@ -19,6 +20,11 @@ public class TopBar : MonoBehaviour
     public void Init()
     {
         GoldText.text = ExtensionMethods.ToCurrencyString(StageManager.Ins.PlayerData.Gold);
+    }
+
+    public void SetStageText(int stageNo)
+    {
+        StageText.text = LanguageManager.Ins.SetString("Stage") + " " + stageNo.ToString();
     }
 
     public void SetGoldText(double value)

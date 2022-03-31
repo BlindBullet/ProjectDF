@@ -13,6 +13,9 @@ public class StageManager : MonoSingleton<StageManager>
     public event UnityAction<double> GoldChanged;
     public event UnityAction<double> GemChanged;
 
+    public bool LastEnemiesSpawned;
+    Coroutine cStageSequence = null;
+
     private void Start()
     {
         Init();
@@ -25,8 +28,7 @@ public class StageManager : MonoSingleton<StageManager>
 
         TopBar.Init();
         SetStartHeroes();
-
-
+        SetStage(PlayerData.Stage);        
     }
 
     void SetStartHeroes()
@@ -45,22 +47,41 @@ public class StageManager : MonoSingleton<StageManager>
 
     }
 
-    IEnumerator StartStage(int stageNo)
+    void SetStage(int stageNo)
     {
-
-
-        yield return null;
+        TopBar.SetStageText(stageNo);
+        cStageSequence = StartCoroutine(ProgressStage(stageNo));
     }
 
+    IEnumerator ProgressStage(int stageNo)
+    {
+        LastEnemiesSpawned = false;
 
+        EnemySpawner.Ins.Spawn(stageNo);
+
+        while (!LastEnemiesSpawned)
+        {   
+            yield return null;
+        }
+        
+        while (EnemyBase.Enemies.Count > 0)
+        {        
+            yield return null;
+        }
+
+        WinStage();
+    }
 
 
     void WinStage()
     {
-
+        Debug.Log("½Â¸®");
+        
+        PlayerData.NextStage();
+        SetStage(PlayerData.Stage);        
     }
 
-    void LoseStage()
+    public void LoseStage()
     {
 
     }
