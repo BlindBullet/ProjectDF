@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeStage.AntiCheat.ObscuredTypes;
+using System;
 
 [System.Serializable]
 public class EnemyStat
@@ -10,4 +11,10 @@ public class EnemyStat
 	public double CurHp;	
 	public float Spd;
 
+    public void SetStat(EnemyChart data, int stageNo, bool isBoss)
+    {
+        MaxHp = ConstantData.GetEnemyHp(data.Hp, stageNo, isBoss);
+        CurHp = MaxHp;
+        Spd = data.Spd;
+    }
 }

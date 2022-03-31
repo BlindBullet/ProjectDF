@@ -13,6 +13,7 @@ public class CsvData : SingletonObject<CsvData>
 	public Dictionary<string, List<ResultGroupChart>> ResultGroupChart = new Dictionary<string, List<ResultGroupChart>>();
 	public Dictionary<string, List<HitresultChart>> HitresultChart = new Dictionary<string, List<HitresultChart>>();
 	public Dictionary<int, List<StageChart>> StageChart = new Dictionary<int, List<StageChart>>();
+	public Dictionary<string, EnemyChart> EnemyChart = new Dictionary<string, EnemyChart>();
 
 	protected override void OnCreate()
 	{
@@ -27,6 +28,7 @@ public class CsvData : SingletonObject<CsvData>
 		ResultGroupChart = CsvParser.Ins.ParseDupeKeyToDict(ResultGroupChart, "DataTables/ResultGroupChart");
 		HitresultChart = CsvParser.Ins.ParseDupeKeyToDict(HitresultChart, "DataTables/HitresultChart");
 		StageChart = CsvParser.Ins.ParseDupeKeyToDict(StageChart, "DataTables/StageChart");
+		EnemyChart = CsvParser.Ins.ParseToDict(EnemyChart, "DataTables/EnemyChart");
 
 	}
 

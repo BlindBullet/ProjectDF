@@ -66,7 +66,7 @@ public class StageManager : MonoSingleton<StageManager>
         }
         
         while (EnemyBase.Enemies.Count > 0)
-        {        
+        {
             yield return null;
         }
 
@@ -76,8 +76,6 @@ public class StageManager : MonoSingleton<StageManager>
 
     void WinStage()
     {
-        Debug.Log("½Â¸®");
-        
         PlayerData.NextStage();
         SetStage(PlayerData.Stage);   
     }

@@ -17,11 +17,11 @@ public class EnemyBase : MonoBehaviour
 	bool isPushing = false;
 	Coroutine cPush = null;
 
-	public void Setup(int stageNo)
+	public void Setup(EnemyChart data, int stageNo, bool isBoss = false)
 	{
 		Stat = new EnemyStat();
-		Stat.CurHp = 30f;
-		Stat.Spd = 0.5f;
+		Stat.SetStat(data, stageNo, isBoss);
+		Debug.Log(Stat.CurHp);
 
 		col = GetComponent<BoxCollider2D>();
 		col.enabled = true;

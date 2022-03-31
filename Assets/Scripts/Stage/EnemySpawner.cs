@@ -42,7 +42,7 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 		}
 
 		if (chart.Boss != null)
-			SpawnBoss(chart.Boss, chart.No);
+			SpawnEnemy(chart.Boss, chart.No, true);
 
         if (isLast)
         {
@@ -51,19 +51,21 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
     }
 
 
-    public void SpawnEnemy(string id, int stageNo)
+    public void SpawnEnemy(string id, int stageNo, bool isBoss = false)
 	{
-		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/" + id) as GameObject);
+		EnemyChart chart = CsvData.Ins.EnemyChart[id];
+		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/" + chart.Model) as GameObject);
 		enemy.transform.position = CalcSpawnPos();
-		enemy.Setup(stageNo);
+		enemy.Setup(chart, stageNo, isBoss);
 	}
 
-	void SpawnBoss(string id, int stageNo)
-    {
-		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/" + id) as GameObject);
-		enemy.transform.position = CalcSpawnPos();
-		enemy.Setup(stageNo);
-	}
+	//void SpawnBoss(string id, int stageNo)
+    //{
+	//	EnemyChart chart = CsvData.Ins.EnemyChart[id];
+	//	EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/" + chart.Model) as GameObject);
+	//	enemy.transform.position = CalcSpawnPos();
+	//	enemy.Setup(chart, stageNo, true);
+	//}
 
 	Vector2 CalcSpawnPos()
 	{

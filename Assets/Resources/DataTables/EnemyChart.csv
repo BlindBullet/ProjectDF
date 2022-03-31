@@ -1,0 +1,5 @@
+﻿Id,StrName,StrDesc,Model,Size,Hp,Spd,Gold,Skill
+10001,enemy_name_10001,enemy_desc_10001,Skeleton,1,10,0.5,10,
+10002,enemy_name_10002,enemy_desc_10002,Diablo,1,15,0.5,10,
+10003,enemy_name_10003,enemy_desc_10003,Troll,1,30,0.3,20,
+20001,enemy_name_20001,enemy_desc_20001,Astronaut,1,50,0.2,50,
