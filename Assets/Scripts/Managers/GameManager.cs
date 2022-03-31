@@ -25,9 +25,9 @@ public class GameManager : MonoSingleton<GameManager>
 		{
             //CharacterSpawner.Ins.SpawnEnemy("Astronaut");
 
-            EnemySpawner.Ins.SpawnEnemy("Diablo");
-            EnemySpawner.Ins.SpawnEnemy("Troll");
-            EnemySpawner.Ins.SpawnEnemy("Skeleton");
+            EnemySpawner.Ins.SpawnEnemy("Diablo", 1);
+            EnemySpawner.Ins.SpawnEnemy("Troll", 1);
+            EnemySpawner.Ins.SpawnEnemy("Skeleton", 1);
             //CharacterSpawner.Ins.SpawnEnemy("Gremlin");
         }
 	}

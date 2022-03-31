@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class EnemySpawner : SingletonObject<EnemySpawner>
 {
+
+
     public void Spawn(int stageNo)
     {
-		List<StageChart> datas = CsvData.Ins.StageChart[stageNo];
+		List<StageChart> datas = new List<StageChart>();
+		int lastResisteredNo = CsvData.Ins.StageChart[CsvData.Ins.StageChart.Count - 1][0].No;
+
+        if (CsvData.Ins.StageChart.ContainsKey(stageNo))
+        {
+			datas = CsvData.Ins.StageChart[stageNo];
+		}	
+        else
+        {	
+			datas = CsvData.Ins.StageChart[stageNo - (lastResisteredNo * (stageNo / lastResisteredNo))]; 
+        }
 
 		for(int i = 0; i < datas.Count; i++)
         {
@@ -24,13 +36,13 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 			{
 				for (int k = 0; k < chart.Count[i]; k++)
 				{
-					SpawnEnemy(chart.Enemies[i]);
+					SpawnEnemy(chart.Enemies[i], chart.No);
 				}
 			}
 		}
 
 		if (chart.Boss != null)
-			SpawnBoss(chart.Boss);
+			SpawnBoss(chart.Boss, chart.No);
 
         if (isLast)
         {
@@ -39,17 +51,19 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
     }
 
 
-    public void SpawnEnemy(string id)
+    public void SpawnEnemy(string id, int stageNo)
 	{
 		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/" + id) as GameObject);
 		enemy.transform.position = CalcSpawnPos();
-		enemy.Setup();
+		enemy.Setup(stageNo);
 	}
 
-	void SpawnBoss(string id)
+	void SpawnBoss(string id, int stageNo)
     {
-
-    }
+		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/" + id) as GameObject);
+		enemy.transform.position = CalcSpawnPos();
+		enemy.Setup(stageNo);
+	}
 
 	Vector2 CalcSpawnPos()
 	{

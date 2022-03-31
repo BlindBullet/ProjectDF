@@ -50,6 +50,7 @@ public class StageManager : MonoSingleton<StageManager>
     void SetStage(int stageNo)
     {
         TopBar.SetStageText(stageNo);
+
         cStageSequence = StartCoroutine(ProgressStage(stageNo));
     }
 
@@ -78,7 +79,7 @@ public class StageManager : MonoSingleton<StageManager>
         Debug.Log("½Â¸®");
         
         PlayerData.NextStage();
-        SetStage(PlayerData.Stage);        
+        SetStage(PlayerData.Stage);   
     }
 
     public void LoseStage()

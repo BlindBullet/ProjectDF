@@ -17,7 +17,7 @@ public class EnemyBase : MonoBehaviour
 	bool isPushing = false;
 	Coroutine cPush = null;
 
-	public void Setup()
+	public void Setup(int stageNo)
 	{
 		Stat = new EnemyStat();
 		Stat.CurHp = 30f;
