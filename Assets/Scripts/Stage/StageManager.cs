@@ -86,6 +86,11 @@ public class StageManager : MonoSingleton<StageManager>
     }
 
     
+    public void GetGold(double value)
+    {
+
+        ChangeGold(value);
+    }
 
     public void ChangeGold(double value)
     {

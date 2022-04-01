@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 5359221183733696257}
   - component: {fileID: 5321556456486670563}
   m_Layer: 5
-  m_Name: Image
+  m_Name: SkillCoolTimeFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

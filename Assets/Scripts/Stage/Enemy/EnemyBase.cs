@@ -16,12 +16,14 @@ public class EnemyBase : MonoBehaviour
 	Coroutine cMove = null;	
 	bool isPushing = false;
 	Coroutine cPush = null;
+	bool isBoss = false;
 
 	public void Setup(EnemyChart data, int stageNo, bool isBoss = false)
 	{
 		Stat = new EnemyStat();
 		Stat.SetStat(data, stageNo, isBoss);
-		Debug.Log(Stat.CurHp);
+
+		this.isBoss = isBoss;
 
 		col = GetComponent<BoxCollider2D>();
 		col.enabled = true;
@@ -83,6 +85,7 @@ public class EnemyBase : MonoBehaviour
 
 	public void Die()
     {
+		StageManager.Ins.GetGold(Stat.Gold);
 		StopCoroutine(cMove);
 		Anim.SetTrigger("Die");
 		Rb.drag = 100f;
@@ -90,7 +93,15 @@ public class EnemyBase : MonoBehaviour
 		Rb.velocity = Vector2.zero;
 		col.enabled = false;
 		Enemies.Remove(this);
-		
+
+        if (isBoss)
+        {
+			for(int i = 0; i < Enemies.Count; i++)
+            {
+				Enemies[i].Die();
+            }
+        }	
+
 		StartCoroutine(DieSequence());
 	}
 

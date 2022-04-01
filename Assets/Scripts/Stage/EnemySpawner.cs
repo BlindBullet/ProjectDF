@@ -80,8 +80,8 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 		switch (randNo)
 		{
 			case 0:				
-				randX = Random.Range(min.x + 1f, max.x - 1f);
-				randY = Random.Range(max.y, max.y + 3f);				
+				randX = Random.Range(min.x, max.x);
+				randY = Random.Range(max.y + 3f, max.y + 6f);				
 				break;
 			case 1:
 				randX = Random.Range(min.x - 10f, min.x);

@@ -24,7 +24,7 @@ public class TopBar : MonoBehaviour
 
     public void SetStageText(int stageNo)
     {
-        StageText.text = LanguageManager.Ins.SetString("Stage") + " " + stageNo.ToString();
+        StageText.text = LanguageManager.Ins.SetString("Stage") + "\n" + stageNo.ToString();
     }
 
     public void SetGoldText(double value)
