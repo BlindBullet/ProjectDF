@@ -23,8 +23,8 @@ public class HeroData
         Atk = chart.Atk;
         Spd = chart.Spd;
         Range = chart.Range;
-        CritChance = 50f;
-        CritDmg = 100f;
+        CritChance = chart.CritChance;
+        CritDmg = chart.CritDmg;
         AtkLv = 1;
         SkillLv = 1;
     }
@@ -46,6 +46,16 @@ public class HeroData
     public void ChangeSpeed(float value)
     {
         Spd += value;
+    }
+
+    public void AtkLvUp()
+    {
+        AtkLv++;
+    }
+
+    public void SkillLvUp()
+    {
+        SkillLv++;
     }
 
 
