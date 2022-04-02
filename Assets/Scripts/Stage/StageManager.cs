@@ -13,6 +13,7 @@ public class StageManager : MonoSingleton<StageManager>
     public event UnityAction<double> GoldChanged;
     public event UnityAction<double> GemChanged;
 
+    [HideInInspector]
     public bool LastEnemiesSpawned;
     Coroutine cStageSequence = null;
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeStage.AntiCheat.ObscuredTypes;
+using System;
 
 [System.Serializable]
 public class HeroData
@@ -37,6 +38,7 @@ public class HeroData
         {
             StageManager.Ins.ChangeGold(-cost);
             Lv++;
+            Atk = Math.Round(Atk * 1.2f);
             return true;
         }
         
