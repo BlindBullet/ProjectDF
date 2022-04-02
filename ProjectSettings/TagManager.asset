@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Hero
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Hero
   - Water
   - UI
-  - 
+  - Field
   - 
   - 
   - 
