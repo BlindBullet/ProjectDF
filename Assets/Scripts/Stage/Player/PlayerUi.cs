@@ -5,5 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerUi : MonoBehaviour
 {
-    
+    public Button HeroBtn;
+
+    private void Start()
+    {
+        HeroBtn.onClick.RemoveAllListeners();
+        HeroBtn.onClick.AddListener(() => DialogManager.Ins.OpenHero());
+    }
 }

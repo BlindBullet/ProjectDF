@@ -18,7 +18,7 @@ public class HeroUi : MonoBehaviour
     public TextMeshProUGUI LvUpBtnText;
     public TextMeshProUGUI LvUpCostText;
     public Image SkillCoolTimeFrame;
-    HeroData data;
+    Hero data;
     Material lvUpBtnMat;
     HeroBase me;
 
@@ -32,7 +32,7 @@ public class HeroUi : MonoBehaviour
         lvUpBtnMat = LvUpBtn.GetComponent<Image>().material;        
     }
 
-    public void SetUp(HeroData data)
+    public void SetUp(Hero data)
     {
         me = GetComponent<HeroBase>();
         this.data = data;
@@ -68,7 +68,7 @@ public class HeroUi : MonoBehaviour
         SkillCoolTimeFrame.fillAmount = value;
     }
 
-    public void LvUp(HeroData data)
+    public void LvUp(Hero data)
     {
         SetLvText(data.Lv);
         SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));

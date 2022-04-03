@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class DialogController : MonoBehaviour
 {
-	public Button BackPanelBtn;
+	public Button BackPanelBtn;	
 	public DialogTween OpenTween;
 	public DialogTween CloseTween;
+	public Button CloseBtn;
 	[HideInInspector]
 	public bool EnabledBackkey;
 
@@ -29,6 +31,12 @@ public class DialogController : MonoBehaviour
 		{
 			BackPanelBtn.onClick.RemoveAllListeners();
 			BackPanelBtn.onClick.AddListener(() => { BackkeyManager.Ins.UseBackkey(); });
+		}
+
+		if(CloseBtn != null)
+        {
+			CloseBtn.onClick.RemoveAllListeners();
+			CloseBtn.onClick.AddListener(() => CloseDialog());
 		}
 	}
 
@@ -56,6 +64,5 @@ public class DialogController : MonoBehaviour
 		BackkeyManager.Ins.RemoveDialog(this);
 		Destroy(this.gameObject);
 	}
-
 
 }

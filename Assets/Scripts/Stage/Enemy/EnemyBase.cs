@@ -53,6 +53,14 @@ public class EnemyBase : MonoBehaviour
 		while (true)
 		{	
 			Vector3 dir = Vector3.down;
+			float xSpd = 0f;
+			Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+			Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+			if (transform.position.x < min.x)
+				xSpd = Stat.Spd;
+			if (transform.position.x > max.x)
+				xSpd = -Stat.Spd;
 
 			if (dir.y > 0.1f)
 			{
@@ -65,7 +73,7 @@ public class EnemyBase : MonoBehaviour
 					Anim.SetTrigger("Walk_F");
 			}
 
-			Rb.velocity = new Vector2(0, isPushing ? 0 : -Stat.Spd);			
+			Rb.velocity = new Vector2(xSpd, isPushing ? 0 : -Stat.Spd);			
 
 			yield return null;
 		}

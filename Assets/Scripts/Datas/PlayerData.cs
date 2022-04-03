@@ -9,15 +9,53 @@ public class PlayerData
     public double Gold;
     public double Gem;
     public int Stage;
-    
+    public List<HeroData> Heroes = new List<HeroData>();
+
     public void Init()
 	{
         Gold = 0;
         Gem = 0;
-        Stage = 1;    
-        
+        Stage = 1;
+        ResisterHeroes();
+
+        for (int i = 0; i < ConstantData.StartHeroes.Length; i++)
+        {
+            AddHero(ConstantData.StartHeroes[i]);
+        }
         Save();
 	}
+
+    public void AddHero(string id)
+    {
+        for(int i = 0; i < Heroes.Count; i++)
+        {
+            if (Heroes[i].Id == id)
+                Heroes[i].IsOwn = true;
+        }
+
+        Save();
+    }
+
+    void ResisterHeroes()
+    {
+        foreach(KeyValuePair<string, HeroChart> elem in CsvData.Ins.HeroChart)
+        {
+            bool alreadyOwn = false;
+
+            for(int i = 0; i < Heroes.Count; i++)
+            {
+                if (elem.Key == Heroes[i].Id)
+                    alreadyOwn = true;
+            }
+
+            if (!alreadyOwn)
+            {
+                HeroData data = new HeroData();
+                data.Init(elem.Key);                
+                Heroes.Add(data);
+            }   
+        }
+    }
 
     public void ChangeGold(double amount)
 	{

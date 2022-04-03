@@ -32,20 +32,20 @@ public class StageManager : MonoSingleton<StageManager>
         SetStage(PlayerData.Stage);        
     }
 
+    public void Load()
+    {
+
+    }
+
     void SetStartHeroes()
     {
         for (int i = 0; i < ConstantData.StartHeroes.Length; i++)
         {
             HeroChart chart = CsvData.Ins.HeroChart[ConstantData.StartHeroes[i]];
-            HeroData data = new HeroData();
+            Hero data = new Hero();
             data.InitData(chart);
             DeployedHeroes[i].Init(data);
         }
-    }
-
-    public void Load()
-    {
-
     }
 
     void SetStage(int stageNo)

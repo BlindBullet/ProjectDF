@@ -19,7 +19,9 @@ public class TopBar : MonoBehaviour
 
     public void Init()
     {
-        GoldText.text = ExtensionMethods.ToCurrencyString(StageManager.Ins.PlayerData.Gold);
+        SetGoldText(0);
+        SetGemText(0);
+        //GoldText.text = ExtensionMethods.ToCurrencyString(StageManager.Ins.PlayerData.Gold);
     }
 
     public void SetStageText(int stageNo)

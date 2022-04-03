@@ -12,7 +12,14 @@ public class GameManager : MonoSingleton<GameManager>
 	{
 		DialogManager.Ins.SetDialogTransform();
 		SaveLoadManager.Ins.LoadAllDatas();
+
+		ResisterHeroes();
 	}
+
+	public void ResisterHeroes()
+    {
+		
+    }
 
 	private void Update()
 	{

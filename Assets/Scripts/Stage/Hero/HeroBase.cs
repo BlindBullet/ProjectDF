@@ -11,14 +11,14 @@ public class HeroBase : MonoBehaviour
 {
     public static List<HeroBase> Heroes = new List<HeroBase>();
 
-    public HeroData Data;
+    public Hero Data;
     [HideInInspector] public HeroUi Ui;
     [HideInInspector] public SkillController SkillCon;
     [HideInInspector] public AttackRange Range;
     [HideInInspector] public HeroTween Tween;
     public Transform ProjectileAnchor;
 
-    public void Init(HeroData data)
+    public void Init(Hero data)
     {
         Data = data;
 

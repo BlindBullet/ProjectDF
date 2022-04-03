@@ -25,6 +25,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogConfirmAndCancel>().SetDialog(title, desc, action);
 	}
 
-
+	public void OpenHero()
+    {
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogHero") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogHero>().OpenDialog();
+	}
 
 }
