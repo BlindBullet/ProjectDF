@@ -8,6 +8,7 @@ using System;
 public class TopBar : MonoBehaviour
 {
     public TextMeshProUGUI GoldText;
+    public TextMeshProUGUI MagiciteText;
     public TextMeshProUGUI GemText;
     public TextMeshProUGUI StageText;
 
@@ -32,6 +33,11 @@ public class TopBar : MonoBehaviour
     public void SetGoldText(double value)
     {
         GoldText.text = ExtensionMethods.ToCurrencyString(StageManager.Ins.PlayerData.Gold);
+    }
+
+    public void SetMagiciteText(double value)
+    {
+        MagiciteText.text = ExtensionMethods.ToCurrencyString(StageManager.Ins.PlayerData.Magicite);
     }
 
     public void SetGemText(double value)

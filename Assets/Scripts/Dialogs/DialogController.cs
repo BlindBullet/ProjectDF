@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System;
+using TMPro;
 
 public class DialogController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class DialogController : MonoBehaviour
 	public DialogTween OpenTween;
 	public DialogTween CloseTween;
 	public Button CloseBtn;
+	public TextMeshProUGUI CloseBtnText;
 	[HideInInspector]
 	public bool EnabledBackkey;
 
@@ -38,6 +40,9 @@ public class DialogController : MonoBehaviour
 			CloseBtn.onClick.RemoveAllListeners();
 			CloseBtn.onClick.AddListener(() => CloseDialog());
 		}
+
+		if (CloseBtnText != null)
+			CloseBtnText.text = LanguageManager.Ins.SetString("Close");
 	}
 
 	void Open()

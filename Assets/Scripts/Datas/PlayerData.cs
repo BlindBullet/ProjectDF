@@ -7,6 +7,7 @@ using CodeStage.AntiCheat.ObscuredTypes;
 public class PlayerData
 {    
     public double Gold;
+    public double Magicite;
     public double Gem;
     public int Stage;
     public List<HeroData> Heroes = new List<HeroData>();
@@ -14,6 +15,7 @@ public class PlayerData
     public void Init()
 	{
         Gold = 0;
+        Magicite = 0;
         Gem = 0;
         Stage = 1;
         ResisterHeroes();
@@ -22,6 +24,7 @@ public class PlayerData
         {
             AddHero(ConstantData.StartHeroes[i]);
         }
+
         Save();
 	}
 

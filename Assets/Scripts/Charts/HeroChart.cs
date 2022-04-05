@@ -15,5 +15,15 @@ public class HeroChart
 	public float Range { get; set; }
 	public string BasicAttack { get; set; }
 	public string Skill { get; set; }
+	public CostType CostType { get; set; }
+	public double Cost { get; set; }
 
+}
+
+public enum CostType
+{
+	None,
+	Gold,
+	Gem,
+	Magicite,
 }
