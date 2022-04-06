@@ -41,7 +41,7 @@ public class PlayerData
 
     void ResisterHeroes()
     {
-        foreach(KeyValuePair<string, HeroChart> elem in CsvData.Ins.HeroChart)
+        foreach(KeyValuePair<string, List<HeroChart>> elem in CsvData.Ins.HeroChart)
         {
             bool alreadyOwn = false;
 
@@ -54,7 +54,7 @@ public class PlayerData
             if (!alreadyOwn)
             {
                 HeroData data = new HeroData();
-                data.Init(elem.Key);                
+                data.Init(elem.Value);
                 Heroes.Add(data);
             }   
         }

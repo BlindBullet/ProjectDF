@@ -8,6 +8,7 @@ using System;
 public class Hero
 {
     public string Id;
+    public int Grade;
     public int Lv;
     public double Atk;
     public float Spd;
@@ -19,7 +20,8 @@ public class Hero
 
     public void InitData(HeroChart chart)
     {
-        Id = chart.Id;
+        Id = chart.Id;        
+        Grade = chart.Grade;
         Lv = 1;
         Atk = chart.Atk;
         Spd = chart.Spd;

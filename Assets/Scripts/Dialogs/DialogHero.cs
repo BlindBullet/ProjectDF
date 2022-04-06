@@ -28,7 +28,7 @@ public class DialogHero : DialogController
     }
 
     void OpenHeroInfo(HeroData data)
-    {
-        Debug.Log(data.Id + " 정보 팝업 열기");
+    {   
+        DialogManager.Ins.OpenHeroInfo(data);
     }
 }

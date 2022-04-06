@@ -18,6 +18,7 @@ public class HeroUi : MonoBehaviour
     public TextMeshProUGUI LvUpBtnText;
     public TextMeshProUGUI LvUpCostText;
     public Image SkillCoolTimeFrame;
+    public GameObject[] Stars;
     Hero data;
     Material lvUpBtnMat;
     HeroBase me;
@@ -36,8 +37,7 @@ public class HeroUi : MonoBehaviour
     {
         me = GetComponent<HeroBase>();
         this.data = data;
-        HeroChart chart = CsvData.Ins.HeroChart[data.Id];
-
+        HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];        
         LvUpBtnText.text = LanguageManager.Ins.SetString("level_up");
         
         LvUpBtn.onClick.RemoveAllListeners();
@@ -52,6 +52,7 @@ public class HeroUi : MonoBehaviour
         SetLvText(data.Lv);
         SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
         SetIcon(chart);
+        SetStars(chart.Grade);
         SetLvUpBtn(0);
         SetIconBtn();
     }
@@ -59,8 +60,8 @@ public class HeroUi : MonoBehaviour
     void SetIcon(HeroChart chart)
     {
         IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Heroes/Heroes").GetSprite(chart.Model);
-        IconFrame.sprite = Resources.Load<Sprite>("Sprites/Heroes/Frames/" + chart.Tier.ToString());
-        IconBg.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Tier.ToString());
+        IconFrame.sprite = Resources.Load<Sprite>("Sprites/Heroes/Frames/" + chart.Attr.ToString());
+        IconBg.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Attr.ToString());
     }
 
     public void SetCoolTimeFrame(float value)
@@ -112,6 +113,14 @@ public class HeroUi : MonoBehaviour
     {
         LvUpBtn.enabled = false;
         lvUpBtnMat.EnableKeyword("GREYSCALE_ON");        
+    }
+
+    void SetStars(int grade)
+    {
+        for (int i = 0; i < grade; i++)
+        {
+            Stars[i].SetActive(true);
+        }
     }
 
     private void OnDisable()

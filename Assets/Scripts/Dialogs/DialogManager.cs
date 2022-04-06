@@ -31,4 +31,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogHero>().OpenDialog();
 	}
 
+	public void OpenHeroInfo(HeroData data)
+    {
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogHeroInfo") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogHeroInfo>().OpenDialog(data);
+	}
+
 }

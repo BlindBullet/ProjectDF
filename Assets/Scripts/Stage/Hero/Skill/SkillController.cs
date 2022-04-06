@@ -18,7 +18,7 @@ public class SkillController : MonoBehaviour
     public void Init(HeroBase heroBase)
     {
         me = heroBase;
-        HeroChart heroChart = CsvData.Ins.HeroChart[me.Data.Id];
+        HeroChart heroChart = CsvData.Ins.HeroChart[me.Data.Id][me.Data.Grade - 1];
 
         Attack = new Skill(heroChart.BasicAttack, me.Data.AtkLv);
         Skill = new Skill(heroChart.Skill, me.Data.SkillLv);

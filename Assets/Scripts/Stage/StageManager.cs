@@ -41,7 +41,7 @@ public class StageManager : MonoSingleton<StageManager>
     {
         for (int i = 0; i < ConstantData.StartHeroes.Length; i++)
         {
-            HeroChart chart = CsvData.Ins.HeroChart[ConstantData.StartHeroes[i]];
+            HeroChart chart = CsvData.Ins.HeroChart[ConstantData.StartHeroes[i]][0];            
             Hero data = new Hero();
             data.InitData(chart);
             DeployedHeroes[i].Init(data);
