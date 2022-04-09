@@ -26,7 +26,7 @@ public class Hero
         Atk = chart.Atk;
         Spd = chart.Spd;
         Range = chart.Range;
-        CritChance = 50f;
+        CritChance = 0f;
         CritDmg = 100f;
         AtkLv = 1;
         SkillLv = 1;

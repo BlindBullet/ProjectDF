@@ -13,7 +13,7 @@ public class HeroChart
 	public string Origin { get; set; }
 	public double Atk { get; set; }
 	public float Spd { get; set; }
-	public float Range { get; set; }
+	public float Range { get; set; }	
 	public string BasicAttack { get; set; }
 	public string Skill { get; set; }
 	public CostType CostType { get; set; }
