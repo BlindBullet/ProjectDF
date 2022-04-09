@@ -10,13 +10,15 @@ public class EnemyStat
 	public double MaxHp;
 	public double CurHp;	
 	public float Spd;
-    public double Gold;
+	public double Gold;
+	public Attr Attr;
 
-    public void SetStat(EnemyChart data, int stageNo, bool isBoss)
-    {
-        MaxHp = ConstantData.GetEnemyHp(data.Hp, stageNo, isBoss);
-        CurHp = MaxHp;
-        Gold = ConstantData.GetEnemyGold(data.Gold, stageNo, isBoss);
-        Spd = data.Spd;
-    }
+	public void SetStat(EnemyChart data, int stageNo, bool isBoss)
+	{
+		MaxHp = ConstantData.GetEnemyHp(data.Hp, stageNo, isBoss);
+		CurHp = MaxHp;
+		Gold = ConstantData.GetEnemyGold(data.Gold, stageNo, isBoss);
+		Spd = data.Spd;
+		Attr = data.Attr;
+	}
 }

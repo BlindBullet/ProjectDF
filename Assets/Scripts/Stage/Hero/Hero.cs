@@ -17,11 +17,13 @@ public class Hero
     public float CritDmg;
     public int AtkLv;
     public int SkillLv;
+    public Attr Attr;
 
     public void InitData(HeroChart chart)
     {
         Id = chart.Id;        
         Grade = chart.Grade;
+        Attr = chart.Attr;
         Lv = 1;
         Atk = chart.Atk;
         Spd = chart.Spd;

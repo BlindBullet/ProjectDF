@@ -107,8 +107,26 @@ public class EnemyBase : MonoBehaviour
 		
 	}
 
-	public double TakeDmg(double atk)
+	public double TakeDmg(double atk, Attr attr)
 	{
+		switch (attr)
+		{
+			case Attr.None:
+				break;
+			case Attr.Red:
+				if (Stat.Attr == Attr.Green)
+					atk = atk * 2f;
+				break;
+			case Attr.Green:
+				if (Stat.Attr == Attr.Blue)
+					atk = atk * 2f;
+				break;
+			case Attr.Blue:
+				if (Stat.Attr == Attr.Red)
+					atk = atk * 2f;
+				break;
+		}
+
 		atk = Math.Round(atk);
 		Stat.CurHp -= atk;
 		SetHp();
