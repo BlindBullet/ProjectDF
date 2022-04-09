@@ -21,6 +21,8 @@ public class EnemyBase : MonoBehaviour
 	bool isBoss = false;
 
 	public SpriteRenderer ModelSprite;
+	public SpriteRenderer FrameSprite;
+	public SpriteRenderer BgSprite;
 	public TextMeshPro HpText;
 
 	public void Setup(EnemyChart chart, int stageNo, bool isBoss = false)
@@ -38,6 +40,7 @@ public class EnemyBase : MonoBehaviour
 		col = GetComponent<CircleCollider2D>();
 		col.enabled = true;
 
+		Rb.mass = chart.Weight;
 		Rb.drag = 1f;
 		Rb.angularDrag = 1f;
 		cMove = StartCoroutine(MoveSequence());
@@ -47,6 +50,7 @@ public class EnemyBase : MonoBehaviour
 	void SetModel(EnemyChart chart)
 	{
 		ModelSprite.sprite = Resources.Load<SpriteAtlas>("Sprites/Enemies/Enemies").GetSprite(chart.Model);
+		BgSprite.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Attr.ToString());
 	}
 
 	IEnumerator MoveSequence()
