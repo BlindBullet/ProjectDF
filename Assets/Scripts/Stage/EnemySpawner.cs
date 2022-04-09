@@ -6,32 +6,32 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 {
 
 
-    public void Spawn(int stageNo)
-    {
+	public void Spawn(int stageNo)
+	{
 		List<StageChart> datas = new List<StageChart>();
 		int lastResisteredNo = CsvData.Ins.StageChart[CsvData.Ins.StageChart.Count - 1][0].No;
 
-        if (CsvData.Ins.StageChart.ContainsKey(stageNo))
-        {
+		if (CsvData.Ins.StageChart.ContainsKey(stageNo))
+		{
 			datas = CsvData.Ins.StageChart[stageNo];
 		}	
-        else
-        {	
+		else
+		{	
 			datas = CsvData.Ins.StageChart[stageNo - (lastResisteredNo * (stageNo / lastResisteredNo))]; 
-        }
+		}
 
 		for(int i = 0; i < datas.Count; i++)
-        {
+		{
 			StartCoroutine(SpawnSequence(datas[i], i == datas.Count - 1 ? true : false));
-        }
-    }
+		}
+	}
 
 	IEnumerator SpawnSequence(StageChart chart, bool isLast)
-    {
+	{
 		yield return new WaitForSeconds(chart.Time);
 
 		if(chart.Enemies != null)
-        {
+		{
 			for (int i = 0; i < chart.Enemies.Length; i++)
 			{
 				for (int k = 0; k < chart.Count[i]; k++)
@@ -44,23 +44,24 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 		if (chart.Boss != null)
 			SpawnEnemy(chart.Boss, chart.No, true);
 
-        if (isLast)
-        {
+		if (isLast)
+		{
 			StageManager.Ins.LastEnemiesSpawned = true;
-        }
-    }
+		}
+	}
 
 
-    public void SpawnEnemy(string id, int stageNo, bool isBoss = false)
+	public void SpawnEnemy(string id, int stageNo, bool isBoss = false)
 	{
 		EnemyChart chart = CsvData.Ins.EnemyChart[id];
-		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/" + chart.Model) as GameObject);
+		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/EnemyObj") as GameObject);
+		enemy.transform.localScale = new Vector2(chart.Size, chart.Size);
 		enemy.transform.position = CalcSpawnPos();
 		enemy.Setup(chart, stageNo, isBoss);
 	}
 
 	//void SpawnBoss(string id, int stageNo)
-    //{
+	//{
 	//	EnemyChart chart = CsvData.Ins.EnemyChart[id];
 	//	EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/" + chart.Model) as GameObject);
 	//	enemy.transform.position = CalcSpawnPos();
