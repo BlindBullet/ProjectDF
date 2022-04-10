@@ -13,24 +13,20 @@ public class EnemyBase : MonoBehaviour
 	public EnemyStat Stat;
 	public GameObject Model;
 	[HideInInspector] public Rigidbody2D Rb;
-	public Animator Anim;
+	[HideInInspector] public EnemySpriteController SpriteCon;
 	CircleCollider2D col;
 	Coroutine cMove = null;	
 	bool isPushing = false;
 	Coroutine cPush = null;
 	bool isBoss = false;
-
-	public SpriteRenderer ModelSprite;
-	public SpriteRenderer FrameSprite;
-	public SpriteRenderer BgSprite;
+		
 	public TextMeshPro HpText;
 
 	public void Setup(EnemyChart chart, int stageNo, bool isBoss = false)
 	{
 		Stat = new EnemyStat();
 		Stat.SetStat(chart, stageNo, isBoss);
-
-		SetModel(chart);
+				
 		SetHp();
 
 		this.isBoss = isBoss;
@@ -40,6 +36,9 @@ public class EnemyBase : MonoBehaviour
 		col = GetComponent<CircleCollider2D>();
 		col.enabled = true;
 
+		SpriteCon = GetComponent<EnemySpriteController>();
+		SpriteCon.Setup(chart);
+
 		Rb.mass = chart.Weight;
 		Rb.drag = 1f;
 		Rb.angularDrag = 1f;
@@ -47,29 +46,9 @@ public class EnemyBase : MonoBehaviour
 		Enemies.Add(this);
 	}
 
-	void SetModel(EnemyChart chart)
-	{
-		ModelSprite.sprite = Resources.Load<SpriteAtlas>("Sprites/Enemies/Enemies").GetSprite(chart.Model);
-		BgSprite.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Attr.ToString());
-	}
-
 	IEnumerator MoveSequence()
 	{
 		float scaleX = Model.transform.localScale.x;
-
-		if(Anim != null)
-			Anim.SetTrigger("Idle");
-
-		//int randNo = Random.Range(0, 2);
-
-		//if(randNo == 0)
-		//{
-		//	Model.transform.localScale = Model.transform.localScale.WithX(scaleX);
-		//}
-		//else
-		//{
-		//	Model.transform.localScale = Model.transform.localScale.WithX(-scaleX);
-		//}
 
 		while (true)
 		{	
@@ -83,23 +62,6 @@ public class EnemyBase : MonoBehaviour
 			if (transform.position.x > max.x)
 				xSpd = -Stat.Spd;
 
-			if (dir.y > 0.1f)
-			{
-				if (Anim != null)
-				{
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_B"))
-						Anim.SetTrigger("Walk_B");
-				}	
-			}
-			else
-			{
-				if (Anim != null)
-				{
-					if (!Anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_F"))
-						Anim.SetTrigger("Walk_F");
-				}	
-			}
-
 			Rb.velocity = new Vector2(xSpd, isPushing ? 0 : -Stat.Spd);			
 
 			yield return null;
@@ -107,7 +69,7 @@ public class EnemyBase : MonoBehaviour
 		
 	}
 
-	public double TakeDmg(double atk, Attr attr)
+	public double TakeDmg(double atk, Attr attr, bool isCrit, float stiffTime)
 	{
 		switch (attr)
 		{
@@ -131,6 +93,8 @@ public class EnemyBase : MonoBehaviour
 		Stat.CurHp -= atk;
 		SetHp();
 
+		SpriteCon.Hit(isCrit, stiffTime);
+
 		if (Stat.CurHp <= 0)
 			Die();
 
@@ -146,17 +110,15 @@ public class EnemyBase : MonoBehaviour
 	}
 
 	public void Die()
-	{
+	{	
 		StageManager.Ins.GetGold(Stat.Gold);
 		StopCoroutine(cMove);
 
-		if (Anim != null)
-			Anim.SetTrigger("Die");
-
+		Rb.mass = 100f;
 		Rb.drag = 100f;
 		Rb.angularDrag = 100f;
 		Rb.velocity = Vector2.zero;
-		col.enabled = false;
+
 		Enemies.Remove(this);
 
 		if (isBoss)
@@ -172,9 +134,15 @@ public class EnemyBase : MonoBehaviour
 
 	IEnumerator DieSequence()
 	{
+		SpriteCon.Die();
+
+		yield return new WaitForSeconds(0.5f);
+
+		col.enabled = false;
+
 		yield return new WaitForSeconds(1f);
 
-		transform.position = new Vector3(0, 20f, 0);
+		transform.position = new Vector3(0, 20f, 0);		
 		ObjectManager.Ins.Push<EnemyBase>(this);
 	}
 

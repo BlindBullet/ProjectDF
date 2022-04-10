@@ -29,7 +29,7 @@ public class StageManager : MonoSingleton<StageManager>
 
         TopBar.Init();
         SetStartHeroes();
-        SetStage(PlayerData.Stage);        
+        StartCoroutine(SetStage(PlayerData.Stage));        
     }
 
     public void Load()
@@ -48,8 +48,10 @@ public class StageManager : MonoSingleton<StageManager>
         }
     }
 
-    void SetStage(int stageNo)
+    IEnumerator SetStage(int stageNo)
     {
+        yield return new WaitForSeconds(2f);
+
         TopBar.SetStageText(stageNo);
 
         cStageSequence = StartCoroutine(ProgressStage(stageNo));
@@ -78,7 +80,7 @@ public class StageManager : MonoSingleton<StageManager>
     void WinStage()
     {
         PlayerData.NextStage();
-        SetStage(PlayerData.Stage);   
+        StartCoroutine(SetStage(PlayerData.Stage));   
     }
 
     public void LoseStage()

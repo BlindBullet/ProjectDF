@@ -15,6 +15,7 @@ public class HitresultChart
     public float Value { get; set; }
     public float ValuePercent { get; set; }
     public float DurationTime { get; set; }
+    public float StiffTime { get; set; }
     public string AddOnhitResultGroupId { get; set; }    
 
 }

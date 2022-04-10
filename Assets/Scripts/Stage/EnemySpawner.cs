@@ -60,14 +60,6 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 		enemy.Setup(chart, stageNo, isBoss);
 	}
 
-	//void SpawnBoss(string id, int stageNo)
-	//{
-	//	EnemyChart chart = CsvData.Ins.EnemyChart[id];
-	//	EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/" + chart.Model) as GameObject);
-	//	enemy.transform.position = CalcSpawnPos();
-	//	enemy.Setup(chart, stageNo, true);
-	//}
-
 	Vector2 CalcSpawnPos()
 	{
 		Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));

@@ -141,7 +141,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
                                     dmg = dmg * (1 + (caster.Data.CritDmg / 100f));
 
                                 Vector3 pos = target.transform.position;
-                                resultDmg = target.TakeDmg(dmg, caster.Data.Attr);
+                                resultDmg = target.TakeDmg(dmg, caster.Data.Attr, isCrit, hitresults[i].StiffTime);
                                 FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString(), isCrit);
                                 break;
                             case FactorOwner.Target:

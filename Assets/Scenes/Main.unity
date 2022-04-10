@@ -334,7 +334,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 1253236125}
+      objectReference: {fileID: 563631078}
     - target: {fileID: 8091651916359210964, guid: 54fa4549670e2f84fb1821acd938d487,
         type: 3}
       propertyPath: Size
@@ -603,6 +603,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 61095634}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &72313996
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Waterfall
+  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - EValue: -0.65
+    - Light: 0.5
+    - TValue: 0.6
+    - _Alpha: 1
+    - _ColorMask: 15
+    - _Distortion: 1
+    - _Speed: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &83059438
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,50 +1011,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!21 &128291180
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Waterfall
-  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - EValue: -0.65
-    - Light: 0.5
-    - TValue: 0.6
-    - _Alpha: 1
-    - _ColorMask: 15
-    - _Distortion: 1
-    - _Speed: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &129569366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,7 +1086,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129569366}
   m_CullTransparentMesh: 0
---- !u!21 &133081835
+--- !u!21 &130469985
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -4492,6 +4492,50 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!21 &247715891
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Waterfall
+  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - EValue: 1
+    - Light: 1
+    - TValue: 1
+    - _Alpha: 1
+    - _ColorMask: 15
+    - _Distortion: 0
+    - _Speed: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - Lightcolor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &256150864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4767,6 +4811,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 279381775}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &290754692
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Waterfall
+  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - EValue: -0.65
+    - Light: 0.5
+    - TValue: 0.6
+    - _Alpha: 1
+    - _ColorMask: 15
+    - _Distortion: 1
+    - _Speed: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &295254149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4986,50 +5074,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 308184951}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &315383266
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Waterfall
-  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - EValue: -0.65
-    - Light: 0.5
-    - TValue: 0.6
-    - _Alpha: 1
-    - _ColorMask: 15
-    - _Distortion: 1
-    - _Speed: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &355428515
 GameObject:
   m_ObjectHideFlags: 0
@@ -5283,7 +5327,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 133081835}
+      objectReference: {fileID: 1548315242}
     - target: {fileID: 8091651916359210964, guid: 54fa4549670e2f84fb1821acd938d487,
         type: 3}
       propertyPath: Size
@@ -5419,50 +5463,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385728697}
   m_CullTransparentMesh: 1
---- !u!21 &390408092
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Waterfall
-  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - EValue: -0.65
-    - Light: 0.5
-    - TValue: 0.6
-    - _Alpha: 1
-    - _ColorMask: 15
-    - _Distortion: 1
-    - _Speed: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &401519784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6135,50 +6135,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 519849258}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &527474501
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Waterfall
-  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - EValue: -0.65
-    - Light: 0.5
-    - TValue: 0.6
-    - _Alpha: 1
-    - _ColorMask: 15
-    - _Distortion: 1
-    - _Speed: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &544747013
 GameObject:
   m_ObjectHideFlags: 0
@@ -6718,6 +6674,50 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!21 &563631078
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Waterfall
+  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - EValue: 1
+    - Light: 1
+    - TValue: 1
+    - _Alpha: 1
+    - _ColorMask: 15
+    - _Distortion: 0
+    - _Speed: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - Lightcolor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &578035432
 GameObject:
   m_ObjectHideFlags: 0
@@ -7059,6 +7059,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635294479}
   m_CullTransparentMesh: 1
+--- !u!21 &641981538
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Waterfall
+  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - EValue: -0.65
+    - Light: 0.5
+    - TValue: 0.6
+    - _Alpha: 1
+    - _ColorMask: 15
+    - _Distortion: 1
+    - _Speed: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!114 &644771483 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2033754679382799829, guid: 54fa4549670e2f84fb1821acd938d487,
@@ -7954,7 +7998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GoldText: {fileID: 4926634119988547118}
-  MagiciteText: {fileID: 0}
+  MagiciteText: {fileID: 1668023542}
   GemText: {fileID: 544747016}
   StageText: {fileID: 1776070467}
 --- !u!1001 &846867396
@@ -8434,6 +8478,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 885713414}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &895266812
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Waterfall
+  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - EValue: -0.65
+    - Light: 0.5
+    - TValue: 0.6
+    - _Alpha: 1
+    - _ColorMask: 15
+    - _Distortion: 1
+    - _Speed: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &912475482
 GameObject:
   m_ObjectHideFlags: 0
@@ -9368,50 +9456,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050711994}
   m_CullTransparentMesh: 1
---- !u!21 &1058241004
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Waterfall
-  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - EValue: -0.65
-    - Light: 0.5
-    - TValue: 0.6
-    - _Alpha: 1
-    - _ColorMask: 15
-    - _Distortion: 1
-    - _Speed: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1080473996
 GameObject:
   m_ObjectHideFlags: 0
@@ -9649,7 +9693,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143361647}
   m_CullTransparentMesh: 1
---- !u!21 &1199712347
+--- !u!21 &1159200558
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -9677,12 +9721,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - EValue: -0.65
-    - Light: 0.5
-    - TValue: 0.6
+    - EValue: 1
+    - Light: 1
+    - TValue: 1
     - _Alpha: 1
     - _ColorMask: 15
-    - _Distortion: 1
+    - _Distortion: 0
     - _Speed: 1
     - _Stencil: 0
     - _StencilComp: 8
@@ -9690,7 +9734,7 @@ Material:
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
     m_Colors:
-    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
+    - Lightcolor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!1001 &1209916821
@@ -9884,50 +9928,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2923724151648199491}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1253236125
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Waterfall
-  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - EValue: -0.65
-    - Light: 0.5
-    - TValue: 0.6
-    - _Alpha: 1
-    - _ColorMask: 15
-    - _Distortion: 1
-    - _Speed: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1308446637
 GameObject:
   m_ObjectHideFlags: 0
@@ -10916,50 +10916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbdf7f2cc48e65488dc5a19c99f2f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1516739768
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Waterfall
-  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - EValue: -0.65
-    - Light: 0.5
-    - TValue: 0.6
-    - _Alpha: 1
-    - _ColorMask: 15
-    - _Distortion: 1
-    - _Speed: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &1534343762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11157,6 +11113,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbdf7f2cc48e65488dc5a19c99f2f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &1548315242
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Waterfall
+  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - EValue: 1
+    - Light: 1
+    - TValue: 1
+    - _Alpha: 1
+    - _ColorMask: 15
+    - _Distortion: 0
+    - _Speed: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - Lightcolor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1552309619
 GameObject:
   m_ObjectHideFlags: 0
@@ -11641,7 +11641,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 390408092}
+      objectReference: {fileID: 247715891}
     - target: {fileID: 8091651916359210964, guid: 54fa4549670e2f84fb1821acd938d487,
         type: 3}
       propertyPath: Size
@@ -12771,7 +12771,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 527474501}
+      objectReference: {fileID: 2104500925}
     - target: {fileID: 8091651916359210964, guid: 54fa4549670e2f84fb1821acd938d487,
         type: 3}
       propertyPath: Size
@@ -13913,50 +13913,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1925607591}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1930575820
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Waterfall
-  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - EValue: -0.65
-    - Light: 0.5
-    - TValue: 0.6
-    - _Alpha: 1
-    - _ColorMask: 15
-    - _Distortion: 1
-    - _Speed: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - Lightcolor: {r: 1, g: 0.5748328, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &1963699534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14905,6 +14861,50 @@ Material:
     - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+--- !u!21 &2104500925
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Waterfall
+  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - EValue: 1
+    - Light: 1
+    - TValue: 1
+    - _Alpha: 1
+    - _ColorMask: 15
+    - _Distortion: 0
+    - _Speed: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - Lightcolor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!1001 &2122594028
 PrefabInstance:
@@ -15874,7 +15874,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 1058241004}
+      objectReference: {fileID: 1159200558}
     - target: {fileID: 8091651916359210964, guid: 54fa4549670e2f84fb1821acd938d487,
         type: 3}
       propertyPath: Size
