@@ -1226,7 +1226,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 30, y: 40}
-  m_SizeDelta: {x: 389.081, y: 72.15201}
+  m_SizeDelta: {x: 520, y: 72.15201}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4152864260263286861
 CanvasRenderer:
@@ -3007,7 +3007,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 30, y: 40}
-  m_SizeDelta: {x: 389.081, y: 72.15201}
+  m_SizeDelta: {x: 520, y: 72.152}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7531655801250703817
 CanvasRenderer:
@@ -4012,6 +4012,8 @@ MonoBehaviour:
   Range: {fileID: 4152864261077564110}
   SkillName: {fileID: 4152864261196185834}
   SkillDesc: {fileID: 4152864260703576727}
+  CEName: {fileID: 8381272630766865826}
+  CEDesc: {fileID: 6882817532031544030}
   PurchaseBtnText: {fileID: 8677660582993751508}
   PurchaseCost: {fileID: 4152864261431264159}
   PurchaseBtn: {fileID: 8677660581248815651}

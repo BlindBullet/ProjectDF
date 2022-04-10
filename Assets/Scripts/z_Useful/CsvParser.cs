@@ -41,10 +41,10 @@ public class CsvParser : SingletonObject<CsvParser>
 
 			List<string> columns = new List<string>(lines[i].Split(','));
 			/*if (names.Count != columns.Count)
-            {
-                Debug.LogError(string.Format("{0} 테이블 {1}줄의 열 수가 올바르지 않음", dataName, i + 1));
-                continue;
-            }*/
+			{
+				Debug.LogError(string.Format("{0} 테이블 {1}줄의 열 수가 올바르지 않음", dataName, i + 1));
+				continue;
+			}*/
 
 			list.Add(SetValues<string, TV>(names, columns, path));
 		}

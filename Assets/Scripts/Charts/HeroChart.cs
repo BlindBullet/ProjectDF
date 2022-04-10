@@ -15,9 +15,9 @@ public class HeroChart
 	public float Spd { get; set; }
 	public float Range { get; set; }	
 	public string BasicAttack { get; set; }
-	public string Skill { get; set; }
-	public CostType CostType { get; set; }
+	public string Skill { get; set; }	
 	public double Cost { get; set; }
+	public string CollectionEffect { get; set; }
 
 }
 

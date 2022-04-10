@@ -1,0 +1,9 @@
+﻿Id,Desc,ConType,CParam1,CParam2,CParam3,CParam4,CParam5,TargetType,TParam1,TParam2,TParam3,EffectType,EParam1,EParam2,EParam3,EParam4
+TestSE1,StrDescTestSE1,,,,,,,Hero,All,,,StatChange,Inc,Atk,,10
+TestSE2,StrDescTestSE2,DeployHero,Attr,Red,High,1,,Hero,Attr,Red,,StatChange,Inc,Atk,,10
+TestSE3,StrDescTestSE3,DeployHero,GradeAverage,,High,2,,Hero,Slot,1|2|3,,StatChange,Inc,Atk,,10
+TestSE4,StrDescTestSE4,DeployHero,Grade,2,High,2,,Hero,Grade,1,High,StatChange,Inc,Atk,,10
+TestSE5,StrDescTestSE5,DeployHero,AttrAll,,,,,Hero,All,,,StatChange,Inc,Atk,,10
+TestSE6,StrDescTestSE6,DeployHero,Slot,1,Attr,Red,,Enemy,All,,,StatChange,Dec,Hp,,10
+TestSE7,StrDescTestSE7,DeployHero,Slot,1,Grade,High,2,Player,,,,AddCurrency,Inc,Gold,,10
+TestSE8,StrDescTestSE8,,,,,,,Player,,,,StartStage,Inc,,5,

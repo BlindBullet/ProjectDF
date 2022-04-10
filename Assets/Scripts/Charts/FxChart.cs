@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FxChart
 {
-    public string DataId { get; set; }
+    public string Id { get; set; }
     public string FxResource { get; set; }
     public string SpawnAnchor { get; set; }
     public float SpawnPosX { get; set; }

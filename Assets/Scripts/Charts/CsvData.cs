@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CsvData : SingletonObject<CsvData>
 {
-    public Dictionary<string, StringChart> StringChart = new Dictionary<string, StringChart>();
+	public Dictionary<string, StringChart> StringChart = new Dictionary<string, StringChart>();
 	public Dictionary<string, List<HeroChart>> HeroChart = new Dictionary<string, List<HeroChart>>();
 	public Dictionary<string, AttackChart> AttackChart = new Dictionary<string, AttackChart>();
 	public Dictionary<string, FxChart> FxChart = new Dictionary<string, FxChart>();
@@ -14,6 +14,7 @@ public class CsvData : SingletonObject<CsvData>
 	public Dictionary<string, List<HitresultChart>> HitresultChart = new Dictionary<string, List<HitresultChart>>();
 	public Dictionary<int, List<StageChart>> StageChart = new Dictionary<int, List<StageChart>>();
 	public Dictionary<string, EnemyChart> EnemyChart = new Dictionary<string, EnemyChart>();
+	public Dictionary<string, SEChart> SEChart = new Dictionary<string, SEChart>();
 
 	protected override void OnCreate()
 	{
@@ -29,6 +30,7 @@ public class CsvData : SingletonObject<CsvData>
 		HitresultChart = CsvParser.Ins.ParseDupeKeyToDict(HitresultChart, "DataTables/HitresultChart");
 		StageChart = CsvParser.Ins.ParseDupeKeyToDict(StageChart, "DataTables/StageChart");
 		EnemyChart = CsvParser.Ins.ParseToDict(EnemyChart, "DataTables/EnemyChart");
+		SEChart = CsvParser.Ins.ParseToDict(SEChart, "DataTables/StatusEffectChart");
 
 	}
 
