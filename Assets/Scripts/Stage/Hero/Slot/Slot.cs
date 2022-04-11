@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SlotInfo : MonoBehaviour
+public class Slot : MonoBehaviour
 {
-	public int No;
-	public int Lv;	
+	public int No;	
 	public Button LvUpBtn;
+	public TextMeshProUGUI LvText;
 	public TextMeshProUGUI LvUpBtnText;
 	public TextMeshProUGUI LvUpCostText;
 	Material lvUpBtnMat;
@@ -16,7 +16,7 @@ public class SlotInfo : MonoBehaviour
 
 	private void Start()
 	{
-		StageManager.Ins.GoldChanged += SetLvUpBtn;
+		StageManager.Ins.GoldChanged += SetLvUpBtnState;
 
 		Image uiImage = LvUpBtn.GetComponent<Image>();
 		uiImage.material = new Material(uiImage.material);
@@ -26,9 +26,38 @@ public class SlotInfo : MonoBehaviour
 
 	public void Init(SlotData data)
 	{
-		this.data = data;		
+		this.data = data;
 		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
-		SetLvUpBtn(0);
+		SetLvUpBtnState(0);
+		SetLvText();
+
+		LvUpBtn.onClick.RemoveAllListeners();
+		LvUpBtn.onClick.AddListener(() => 
+		{
+			LevelUp();
+		});
+	}
+
+	void LevelUp()
+	{
+		if (data.LevelUp())
+		{
+			for (int i = 0; i < HeroBase.Heroes.Count; i++)
+			{
+				if (HeroBase.Heroes[i].Data.SlotNo == No)
+				{
+					HeroBase.Heroes[i].ChangeLv(data.Lv);
+				}
+			}
+		}
+
+		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
+		SetLvText();
+	}
+
+	void SetLvText()
+	{
+		LvText.text = data.Lv.ToString();
 	}
 
 	void SetLvUpCost(double cost)
@@ -36,7 +65,7 @@ public class SlotInfo : MonoBehaviour
 		LvUpCostText.text = ExtensionMethods.ToCurrencyString(cost);
 	}
 
-	void SetLvUpBtn(double value)
+	void SetLvUpBtnState(double value)
 	{
 		if (StageManager.Ins.PlayerData.Gold >= ConstantData.GetLvUpCost(data.Lv))
 		{

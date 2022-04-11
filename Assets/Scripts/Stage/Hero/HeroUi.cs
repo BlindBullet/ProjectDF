@@ -12,17 +12,16 @@ public class HeroUi : MonoBehaviour
     public Button IconBtn;
     public Image IconFrame;
     public Image IconImg;
-    public Image IconBg;
-    public TextMeshProUGUI LvText;
+    public Image IconBg;    
     public Image SkillCoolTimeFrame;
     public GameObject[] Stars;    
     HeroBase me;
 
-    public void SetUp(HeroData data)
+    public void SetUp(HeroData data, SlotData slotData)
     {
         me = GetComponent<HeroBase>();        
-        HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];        
-        
+        HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];
+
         SetIcon(chart);
         SetStars(chart.Grade);        
         SetIconBtn();
@@ -33,11 +32,6 @@ public class HeroUi : MonoBehaviour
         IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Heroes/Heroes").GetSprite(chart.Model);
         IconFrame.sprite = Resources.Load<Sprite>("Sprites/Heroes/Frames/" + chart.Attr.ToString());
         IconBg.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Attr.ToString());
-    }
-
-    public void SetLvText(int lv)
-    {
-        LvText.text = lv.ToString();
     }
 
     public void SetCoolTimeFrame(float value)

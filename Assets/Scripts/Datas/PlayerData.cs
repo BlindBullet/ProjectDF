@@ -94,11 +94,11 @@ public class PlayerData
 		{
 			if (Heroes[i].Id == data.Id)
 			{
-				Heroes[i].DeploySlotNo = slotNo;
+				Heroes[i].SlotNo = slotNo;
 			}
-			else if(Heroes[i].DeploySlotNo == slotNo)
+			else if(Heroes[i].SlotNo == slotNo)
 			{
-				Heroes[i].DeploySlotNo = -1;
+				Heroes[i].SlotNo = -1;
 			}
 		}
 

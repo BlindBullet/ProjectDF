@@ -80,7 +80,7 @@ public class DialogHeroInfo : DialogController
 	{		
 		if (data.IsOwn)
 		{
-			if (data.DeploySlotNo < 0)
+			if (data.SlotNo < 0)
 			{
 				DeployBtn.gameObject.SetActive(true);
 				DeployBtnText.text = LanguageManager.Ins.SetString("Deploy");

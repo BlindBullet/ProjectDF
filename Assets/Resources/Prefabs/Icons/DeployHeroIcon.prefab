@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8602506024714244379
 RectTransform:
   m_ObjectHideFlags: 0
@@ -460,17 +460,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2642975442955127779}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 6778901888225288956}
-  m_Father: {fileID: 3956694269523117449}
-  m_RootOrder: 3
+  m_Father: {fileID: 3956694270233366258}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 1.2096, y: -42.3}
+  m_AnchoredPosition: {x: 69.3, y: -42.3}
   m_SizeDelta: {x: 84, y: 86}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &884307989356627926
@@ -546,7 +546,7 @@ RectTransform:
   - {fileID: 1557744580036905845}
   - {fileID: 993302079925978663}
   m_Father: {fileID: 3956694269523117449}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -623,7 +623,6 @@ RectTransform:
   - {fileID: 3956694270633828067}
   - {fileID: 3956694270786063501}
   - {fileID: 8765081152739249041}
-  - {fileID: 8602506024714244379}
   - {fileID: 4911351750097030935}
   m_Father: {fileID: 3956694270233366258}
   m_RootOrder: 0
@@ -855,6 +854,7 @@ RectTransform:
   m_Children:
   - {fileID: 3956694269523117449}
   - {fileID: 3956694271547906262}
+  - {fileID: 8602506024714244379}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -895,6 +895,11 @@ MonoBehaviour:
   Range: {fileID: 0}
   Tween: {fileID: 0}
   ProjectileAnchor: {fileID: 8765081152739249041}
+  Data:
+    Id: 
+    Grade: 0
+    IsOwn: 0
+    SlotNo: 0
 --- !u!114 &2635919947509388237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,7 +916,6 @@ MonoBehaviour:
   IconFrame: {fileID: 3956694270786063502}
   IconImg: {fileID: 3956694270495933037}
   IconBg: {fileID: 3956694270633828092}
-  LvText: {fileID: 3336516659647943758}
   SkillCoolTimeFrame: {fileID: 5359221183733696257}
   Stars:
   - {fileID: 2035994245082315930}

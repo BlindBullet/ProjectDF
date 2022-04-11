@@ -8,7 +8,7 @@ public class StageManager : MonoSingleton<StageManager>
 	public PlayerData PlayerData = new PlayerData();
 	public TopBar TopBar;
 		
-	public List<SlotInfo> Slots = new List<SlotInfo>();
+	public List<Slot> Slots = new List<Slot>();
 
 	public event UnityAction<double> GoldChanged;
 	public event UnityAction<double> GemChanged;
@@ -56,6 +56,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 			HeroChart chart = CsvData.Ins.HeroChart[heroData.Id][heroData.Grade];
 			GameObject obj = Instantiate(Resources.Load("Prefabs/Icons/DeployHeroIcon") as GameObject, Slots[i].transform);
+			obj.transform.SetAsFirstSibling();
 			obj.GetComponent<HeroBase>().Init(heroData, PlayerData.Slots[i]);			
 			PlayerData.DeployHero(heroData, i + 1);
 		}

@@ -19,19 +19,18 @@ public class Stat
     {
         HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade];
 
+        Atk = chart.Atk;
         BasicAtk = chart.Atk;
         Attr = chart.Attr;        
         Spd = chart.Spd;
         Range = chart.Range;
         CritChance = 0f;
-        CritDmg = 100f;        
-
-        SetAtk(lv);
+        CritDmg = 100f;
     }
 
-    public void SetAtk(int lv)
+    public void ChangeLv(int lv)
     {
-        Atk = Math.Round(BasicAtk * Mathf.Pow(1.2f, lv));        
+        Atk = Atk * 1.2f;  
     }
 
     public void ChangeSpeed(float value)
