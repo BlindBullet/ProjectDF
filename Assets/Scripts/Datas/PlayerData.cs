@@ -101,8 +101,6 @@ public class PlayerData
 				Heroes[i].SlotNo = -1;
 			}
 		}
-
-		//¿µ¿õ ¹èÄ¡...
 	}
 
 	public void ChangeGold(double amount)

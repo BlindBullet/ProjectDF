@@ -87,4 +87,10 @@ public class HeroBase : MonoBehaviour
 		Stat.ChangeSpeed(value);    
 	}
 
+	public void Destroy()
+	{
+		SkillCon.Stop();
+		Destroy(this.gameObject);
+	}
+
 }

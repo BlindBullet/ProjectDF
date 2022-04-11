@@ -19,18 +19,19 @@ public class GameManager : MonoSingleton<GameManager>
 	{
 		if (Input.GetKeyDown(KeyCode.A))
 		{
-			
+			HeroData data = StageManager.Ins.PlayerData.Heroes[5];
+			StageManager.Ins.DeployHero(data, 1);
 		}
 
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-            //CharacterSpawner.Ins.SpawnEnemy("Astronaut");
+			//CharacterSpawner.Ins.SpawnEnemy("Astronaut");
 
-            EnemySpawner.Ins.SpawnEnemy("Diablo", 1);
-            EnemySpawner.Ins.SpawnEnemy("Troll", 1);
-            EnemySpawner.Ins.SpawnEnemy("Skeleton", 1);
-            //CharacterSpawner.Ins.SpawnEnemy("Gremlin");
-        }
+			EnemySpawner.Ins.SpawnEnemy("Diablo", 1);
+			EnemySpawner.Ins.SpawnEnemy("Troll", 1);
+			EnemySpawner.Ins.SpawnEnemy("Skeleton", 1);
+			//CharacterSpawner.Ins.SpawnEnemy("Gremlin");
+		}
 	}
 
 	// 홈이나 다른 버튼을 눌러 어플리케이션이 멈췄을 때 콜됨

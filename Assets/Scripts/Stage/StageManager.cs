@@ -57,9 +57,27 @@ public class StageManager : MonoSingleton<StageManager>
 			HeroChart chart = CsvData.Ins.HeroChart[heroData.Id][heroData.Grade];
 			GameObject obj = Instantiate(Resources.Load("Prefabs/Icons/DeployHeroIcon") as GameObject, Slots[i].transform);
 			obj.transform.SetAsFirstSibling();
-			obj.GetComponent<HeroBase>().Init(heroData, PlayerData.Slots[i]);			
-			PlayerData.DeployHero(heroData, i + 1);
+			obj.GetComponent<HeroBase>().Init(heroData, PlayerData.Slots[i]);
+			heroData.DeployHero(i + 1);
 		}
+	}
+
+	public void DeployHero(HeroData heroData, int slotNo)
+	{
+		for(int i = 0; i < HeroBase.Heroes.Count; i++)
+		{
+			if (HeroBase.Heroes[i].Data.SlotNo == slotNo)
+			{
+				HeroBase.Heroes[i].Data.ReleaseHero();
+				HeroBase.Heroes[i].Destroy();
+			}	
+		}
+
+		HeroChart chart = CsvData.Ins.HeroChart[heroData.Id][heroData.Grade];
+		GameObject obj = Instantiate(Resources.Load("Prefabs/Icons/DeployHeroIcon") as GameObject, Slots[slotNo - 1].transform);
+		obj.transform.SetAsFirstSibling();
+		obj.GetComponent<HeroBase>().Init(heroData, PlayerData.Slots[slotNo - 1]);
+		heroData.DeployHero(slotNo);
 	}
 
 	void SetSlots()
