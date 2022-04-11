@@ -39,7 +39,7 @@ public class DialogHeroInfo : DialogController
 		}
 
 		SetHero(chart);
-		HeroIcon.SetIcon(data);
+		HeroIcon.Setup(data);
 		SetStat(chart);
 		SetSkill(chart.Skill);
 		SetCE(chart.CollectionEffect);
@@ -77,9 +77,19 @@ public class DialogHeroInfo : DialogController
 	}
 
 	void SetButtons(HeroData data, HeroChart chart)
-	{
+	{		
 		if (data.IsOwn)
 		{
+			if (data.DeploySlotNo < 0)
+			{
+				DeployBtn.gameObject.SetActive(true);
+				DeployBtnText.text = LanguageManager.Ins.SetString("Deploy");
+
+				DeployBtn.onClick.RemoveAllListeners();
+				DeployBtn.onClick.AddListener(() => { });
+			}
+			
+			PurchaseBtn.gameObject.SetActive(false);
 			UpgradeBtn.gameObject.SetActive(true);
 			UpgradeBtnText.text = LanguageManager.Ins.SetString("Upgrade");
 			//UpgradeCost.text = ExtensionMethods.ToCurrencyString()
@@ -94,7 +104,19 @@ public class DialogHeroInfo : DialogController
 			PurchaseCost.text = ThousandCommaText.GetThousandComma((int)chart.Cost);
 
 			PurchaseBtn.onClick.RemoveAllListeners();
-			PurchaseBtn.onClick.AddListener(() => { });
+			PurchaseBtn.onClick.AddListener(() =>
+			{
+				if (StageManager.Ins.PlayerData.SummonHero(data, chart.Cost))
+				{
+					StageManager.Ins.ChangeGem(-chart.Cost);
+					SetButtons(data, chart);
+					DialogHero._DialogHero.SetHeroes();
+				}
+				else
+				{
+					Debug.Log("보석이 모자랍니다.");
+				}
+			});
 		}
 	}
 

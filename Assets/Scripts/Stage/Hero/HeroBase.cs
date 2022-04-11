@@ -10,25 +10,26 @@ using UnityEngine.Events;
 public class HeroBase : MonoBehaviour
 {
     public static List<HeroBase> Heroes = new List<HeroBase>();
-
-    public Hero Data;
+        
+    public Stat Stat;
     [HideInInspector] public HeroUi Ui;
     [HideInInspector] public SkillController SkillCon;
     [HideInInspector] public AttackRange Range;
     [HideInInspector] public HeroTween Tween;
-    public Transform ProjectileAnchor;
+    public Transform ProjectileAnchor;    
 
-    public void Init(Hero data)
+    public void Init(HeroData data, SlotData slotData)
     {
-        Data = data;
+        Stat = new Stat();
+        Stat.InitData(data, slotData.Lv);
 
         Range = GetComponent<AttackRange>();
 
         Ui = GetComponent<HeroUi>();        
-        Ui.SetUp(Data);
+        Ui.SetUp(data);
 
         SkillCon = GetComponent<SkillController>();
-        SkillCon.Init(this);
+        SkillCon.Init(this, data);
 
         Tween = GetComponent<HeroTween>();
         Tween.SetTween();
@@ -77,7 +78,7 @@ public class HeroBase : MonoBehaviour
 
     public void ChangeSpeed(float value)
     {
-        Data.ChangeSpeed(value);    
+        Stat.ChangeSpeed(value);    
     }
     
 

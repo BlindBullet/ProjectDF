@@ -14,46 +14,17 @@ public class HeroUi : MonoBehaviour
     public Image IconImg;
     public Image IconBg;
     public TextMeshProUGUI LvText;
-    public Button LvUpBtn;
-    public TextMeshProUGUI LvUpBtnText;
-    public TextMeshProUGUI LvUpCostText;
     public Image SkillCoolTimeFrame;
-    public GameObject[] Stars;
-    Hero data;
-    Material lvUpBtnMat;
+    public GameObject[] Stars;    
     HeroBase me;
 
-    private void Start()
+    public void SetUp(HeroData data)
     {
-        StageManager.Ins.GoldChanged += SetLvUpBtn;
-
-        Image uiImage = LvUpBtn.GetComponent<Image>();
-        uiImage.material = new Material(uiImage.material);
-
-        lvUpBtnMat = LvUpBtn.GetComponent<Image>().material;        
-    }
-
-    public void SetUp(Hero data)
-    {
-        me = GetComponent<HeroBase>();
-        this.data = data;
+        me = GetComponent<HeroBase>();        
         HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];        
-        LvUpBtnText.text = LanguageManager.Ins.SetString("level_up");
         
-        LvUpBtn.onClick.RemoveAllListeners();
-        LvUpBtn.onClick.AddListener(() => 
-        {
-            if (data.LevelUp())
-            {
-                LvUp(data);
-            }
-        });
-
-        SetLvText(data.Lv);
-        SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
         SetIcon(chart);
-        SetStars(chart.Grade);
-        SetLvUpBtn(0);
+        SetStars(chart.Grade);        
         SetIconBtn();
     }
 
@@ -64,55 +35,20 @@ public class HeroUi : MonoBehaviour
         IconBg.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Attr.ToString());
     }
 
-    public void SetCoolTimeFrame(float value)
-    {
-        SkillCoolTimeFrame.fillAmount = value;
-    }
-
-    public void LvUp(Hero data)
-    {
-        SetLvText(data.Lv);
-        SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
-    }
-
-    void SetLvText(int lv)
+    public void SetLvText(int lv)
     {
         LvText.text = lv.ToString();
     }
 
-    void SetLvUpCost(double cost)
+    public void SetCoolTimeFrame(float value)
     {
-        LvUpCostText.text = ExtensionMethods.ToCurrencyString(cost);
+        SkillCoolTimeFrame.fillAmount = value;
     }
-
-    void SetLvUpBtn(double value)
-    {
-        if(StageManager.Ins.PlayerData.Gold >= ConstantData.GetLvUpCost(data.Lv))
-        {
-            LvUpBtnEnable();
-        }
-        else
-        {
-            LvUpBtnDisable();
-        }
-    }
-
+        
     void SetIconBtn()
     {
         IconBtn.onClick.RemoveAllListeners();
         IconBtn.onClick.AddListener(() => me.SkillCon.UseSkill());
-    }
-
-    public void LvUpBtnEnable()
-    {
-        LvUpBtn.enabled = true;
-        lvUpBtnMat.DisableKeyword("GREYSCALE_ON");        
-    }
-
-    public void LvUpBtnDisable()
-    {
-        LvUpBtn.enabled = false;
-        lvUpBtnMat.EnableKeyword("GREYSCALE_ON");        
     }
 
     void SetStars(int grade)
@@ -121,10 +57,5 @@ public class HeroUi : MonoBehaviour
         {
             Stars[i].SetActive(true);
         }
-    }
-
-    private void OnDisable()
-    {
-        StageManager.Ins.GoldChanged -= SetLvUpBtn;
     }
 }

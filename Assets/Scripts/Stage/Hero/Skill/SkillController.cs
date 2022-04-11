@@ -15,13 +15,13 @@ public class SkillController : MonoBehaviour
     Coroutine cAttack = null;
     Coroutine cSkill = null;
 
-    public void Init(HeroBase heroBase)
+    public void Init(HeroBase heroBase, HeroData data)
     {
         me = heroBase;
-        HeroChart heroChart = CsvData.Ins.HeroChart[me.Data.Id][me.Data.Grade - 1];
+        HeroChart heroChart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];
 
-        Attack = new Skill(heroChart.BasicAttack, me.Data.AtkLv);
-        Skill = new Skill(heroChart.Skill, me.Data.SkillLv);
+        Attack = new Skill(heroChart.BasicAttack, 1);
+        Skill = new Skill(heroChart.Skill, 1);
 
         attack = new BasicAttack(heroChart.BasicAttack);
         
@@ -100,7 +100,7 @@ public class SkillController : MonoBehaviour
 
         if (data.Anim == "Attack")
         {
-            me.Tween.Attack(me.Data.Spd > 1f ? me.Data.Spd : 1f, me.Range.AllTargetColl[0].GetComponent<EnemyBase>());
+            me.Tween.Attack(me.Stat.Spd > 1f ? me.Stat.Spd : 1f, me.Range.AllTargetColl[0].GetComponent<EnemyBase>());
             
         }
         else
@@ -111,9 +111,9 @@ public class SkillController : MonoBehaviour
         float totalTime = skill.Data.TotalFrame / 30f;
         float progressTime = 0;        
 
-        if (me.Data.Spd > 1f && data.Type == SkillType.Attack)
+        if (me.Stat.Spd > 1f && data.Type == SkillType.Attack)
         {
-            totalTime = totalTime / me.Data.Spd;
+            totalTime = totalTime / me.Stat.Spd;
         }
 
         for (int i = 0; i < data.FireFrame.Length; i++)
@@ -122,8 +122,8 @@ public class SkillController : MonoBehaviour
             {
                 if(data.Type == SkillType.Attack)
                 {
-                    progressTime += data.FireFrame[i] / 30f / me.Data.Spd;
-                    yield return new WaitForSeconds(data.FireFrame[i] / 30f / me.Data.Spd);
+                    progressTime += data.FireFrame[i] / 30f / me.Stat.Spd;
+                    yield return new WaitForSeconds(data.FireFrame[i] / 30f / me.Stat.Spd);
                 }
                 else
                 {
@@ -135,8 +135,8 @@ public class SkillController : MonoBehaviour
             {
                 if (data.Type == SkillType.Attack)
                 {
-                    progressTime += (data.FireFrame[i] - data.FireFrame[i - 1]) / 30f / me.Data.Spd;
-                    yield return new WaitForSeconds((data.FireFrame[i] - data.FireFrame[i - 1]) / 30f / me.Data.Spd);
+                    progressTime += (data.FireFrame[i] - data.FireFrame[i - 1]) / 30f / me.Stat.Spd;
+                    yield return new WaitForSeconds((data.FireFrame[i] - data.FireFrame[i - 1]) / 30f / me.Stat.Spd);
                 }
                 else
                 {

@@ -33,7 +33,7 @@ public class AttackRange : MonoBehaviour
 
 	public void SearchTarget()
 	{
-		SetRange(heroBase.Data.Range);
+		SetRange(heroBase.Stat.Range);
 		CalcRange();
 		AllTargetColl.Clear();
 

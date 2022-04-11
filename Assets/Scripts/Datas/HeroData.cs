@@ -9,6 +9,7 @@ public class HeroData
     public string Id;
     public int Grade;    
     public bool IsOwn = false;
+    public int DeploySlotNo;
     
     public void Init(List<HeroChart> chart)
     {
@@ -17,6 +18,7 @@ public class HeroData
         Id = chart[0].Id;
         Grade = chart[0].Grade;
         IsOwn = false;
+        DeploySlotNo = -1;
     }
 
     public void Upgrade()

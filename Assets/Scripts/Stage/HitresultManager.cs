@@ -133,15 +133,15 @@ public class HitresultManager : MonoSingleton<HitresultManager>
                         switch (hitresults[i].FactorOwner)
                         {
                             case FactorOwner.Caster:
-                                double dmg = hitresults[i].Value + (caster.Data.Atk * (hitresults[i].ValuePercent / 100f));
-                                bool isCrit = Random.Range(0f, 100f) < caster.Data.CritChance ? true : false;
+                                double dmg = hitresults[i].Value + (caster.Stat.Atk * (hitresults[i].ValuePercent / 100f));
+                                bool isCrit = Random.Range(0f, 100f) < caster.Stat.CritChance ? true : false;
                                 double resultDmg = 0;
 
                                 if (isCrit)
-                                    dmg = dmg * (1 + (caster.Data.CritDmg / 100f));
+                                    dmg = dmg * (1 + (caster.Stat.CritDmg / 100f));
 
                                 Vector3 pos = target.transform.position;
-                                resultDmg = target.TakeDmg(dmg, caster.Data.Attr, isCrit, hitresults[i].StiffTime);
+                                resultDmg = target.TakeDmg(dmg, caster.Stat.Attr, isCrit, hitresults[i].StiffTime);
                                 FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString(), isCrit);
                                 break;
                             case FactorOwner.Target:
