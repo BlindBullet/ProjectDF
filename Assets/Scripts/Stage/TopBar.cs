@@ -18,7 +18,7 @@ public class TopBar : MonoBehaviour
         StageManager.Ins.GemChanged += SetGemText;
     }
 
-    public void Init()
+    public void Setup()
     {
         SetGoldText(0);
         SetGemText(0);

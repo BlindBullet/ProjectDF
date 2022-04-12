@@ -6,7 +6,8 @@ using System;
 
 [System.Serializable]
 public class PlayerData
-{    
+{
+	public int PlayAppCount;
 	public double Gold;
 	public double Magicite;
 	public double Gem;
@@ -16,6 +17,7 @@ public class PlayerData
 
 	public void Init()
 	{
+		PlayAppCount = 1;
 		Gold = 0;
 		Magicite = 0;
 		Gem = 500;
@@ -114,6 +116,12 @@ public class PlayerData
 		Save();
 	}
 
+	public void IncAppCount()
+	{
+		PlayAppCount++;
+		Save();
+	}
+
 	public void Save()
 	{   
 		ES3.Save<PlayerData>("PlayerData", this);
@@ -128,10 +136,14 @@ public class PlayerData
 			Init();           
 		}
 		else
-		{            
+		{
+			PlayAppCount = data.PlayAppCount;
 			Gold = data.Gold;
+			Magicite = data.Magicite;
 			Gem = data.Gem;
 			Stage = data.Stage;
+			Heroes = data.Heroes;
+			Slots = data.Slots;
 		}
 	}
 

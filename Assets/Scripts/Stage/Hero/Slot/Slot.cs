@@ -35,6 +35,7 @@ public class Slot : MonoBehaviour
 		LvUpBtn.onClick.AddListener(() => 
 		{
 			LevelUp();
+			StageManager.Ins.PlayerData.Save();
 		});
 	}
 
