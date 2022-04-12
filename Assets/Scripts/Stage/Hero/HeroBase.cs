@@ -93,4 +93,12 @@ public class HeroBase : MonoBehaviour
 		Destroy(this.gameObject);
 	}
 
+	public IEnumerator Lose()
+	{
+		SkillCon.Stop();
+		//Ui.Die();
+		yield return null;
+	}
+
+
 }

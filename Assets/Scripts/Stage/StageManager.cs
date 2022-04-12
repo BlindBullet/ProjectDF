@@ -112,9 +112,31 @@ public class StageManager : MonoSingleton<StageManager>
 	{
 		TopBar.SetStageText(stageNo);
 
+		yield return new WaitForSeconds(1f);
+
+		bool isBossStage = false;
+
+		List<StageChart> stageCharts = CsvData.Ins.StageChart[stageNo];
+
+		for(int i = 0; i < stageCharts.Count; i++)
+		{
+			if (stageCharts[i].Boss != null)
+				isBossStage = true;
+		}
+
+		if (isBossStage)
+			yield return StartCoroutine(BossSequence());
+
 		yield return new WaitForSeconds(2f);
 
 		cStageSequence = StartCoroutine(ProgressStage(stageNo));
+	}
+
+	IEnumerator BossSequence()
+	{		
+		DialogManager.Ins.OpenBossWarning();
+
+		yield return new WaitForSeconds(6f);
 	}
 
 	IEnumerator ProgressStage(int stageNo)
@@ -143,8 +165,15 @@ public class StageManager : MonoSingleton<StageManager>
 		StartCoroutine(SetStage(PlayerData.Stage));   
 	}
 
-	public void LoseStage()
+	public IEnumerator LoseStage()
 	{
+		for(int i = 0; i < HeroBase.Heroes.Count; i++)
+		{
+			StartCoroutine(HeroBase.Heroes[i].Lose());
+		}
+
+		yield return new WaitForSeconds(1f);
+
 
 	}
 

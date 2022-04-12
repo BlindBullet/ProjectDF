@@ -26,15 +26,21 @@ public class DialogManager : SingletonObject<DialogManager> {
 	}
 
 	public void OpenHero()
-    {
+	{
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogHero") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogHero>().OpenDialog();
 	}
 
 	public void OpenHeroInfo(HeroData data)
-    {
+	{
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogHeroInfo") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogHeroInfo>().OpenDialog(data);
+	}
+
+	public void OpenBossWarning()
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogBossWarning") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogBossWarning>().OpenDialog();
 	}
 
 }

@@ -17,10 +17,10 @@ public class DialogController : MonoBehaviour
 	public bool EnabledBackkey;
 
 	public enum DialogTween
-    {
+	{
 		None,
 
-    }
+	}
 
 	public void Show(bool enabledBackkey)
 	{
@@ -36,7 +36,7 @@ public class DialogController : MonoBehaviour
 		}
 
 		if(CloseBtn != null)
-        {
+		{
 			CloseBtn.onClick.RemoveAllListeners();
 			CloseBtn.onClick.AddListener(() => CloseDialog());
 		}
@@ -46,22 +46,22 @@ public class DialogController : MonoBehaviour
 	}
 
 	void Open()
-    {
-        switch (OpenTween)
-        {
+	{
+		switch (OpenTween)
+		{
 			case DialogTween.None:
 				break;
-        }
-    }
+		}
+	}
 
 	void Close()
-    {
-        switch (CloseTween)
-        {
+	{
+		switch (CloseTween)
+		{
 			case DialogTween.None:
 				break;
-        }
-    }
+		}
+	}
 
 	public virtual void CloseDialog()
 	{
