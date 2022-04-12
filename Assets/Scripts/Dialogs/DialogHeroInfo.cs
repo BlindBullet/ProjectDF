@@ -26,9 +26,11 @@ public class DialogHeroInfo : DialogController
 	public Button UpgradeBtn;
 	public TextMeshProUGUI DeployBtnText;    
 	public Button DeployBtn;
-	
+	HeroData data;
+
 	public void OpenDialog(HeroData data)
 	{
+		this.data = data;
 		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
 		HeroChart chart = null;
 
@@ -86,7 +88,7 @@ public class DialogHeroInfo : DialogController
 				DeployBtnText.text = LanguageManager.Ins.SetString("Deploy");
 
 				DeployBtn.onClick.RemoveAllListeners();
-				DeployBtn.onClick.AddListener(() => { });
+				DeployBtn.onClick.AddListener(() => { SetDeploy(); });
 			}
 			
 			PurchaseBtn.gameObject.SetActive(false);
@@ -95,7 +97,7 @@ public class DialogHeroInfo : DialogController
 			//UpgradeCost.text = ExtensionMethods.ToCurrencyString()
 
 			UpgradeBtn.onClick.RemoveAllListeners();
-			UpgradeBtn.onClick.AddListener(() => { });
+			UpgradeBtn.onClick.AddListener(() => {  });
 		}
 		else
 		{
@@ -119,5 +121,12 @@ public class DialogHeroInfo : DialogController
 			});
 		}
 	}
+
+	void SetDeploy()
+	{
+		DialogHero._DialogHero.SetDeployState(data);
+		CloseDialog();
+	}
+
 
 }

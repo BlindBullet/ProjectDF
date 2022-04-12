@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.U2D;
+using DG.Tweening;
 
 public class HeroIcon : MonoBehaviour
 {
@@ -14,9 +15,20 @@ public class HeroIcon : MonoBehaviour
 	public GameObject LockPanel;
 	public GameObject LockIcon;
 	public GameObject[] Stars;
+	public GameObject SelectedFrame;
+	public HeroData Data;
+	Material selectedFrameMat;
+
+	private void Awake()
+	{
+		Image selectedFrameImg = SelectedFrame.GetComponent<Image>();
+		selectedFrameImg.material = new Material(selectedFrameImg.material);
+		selectedFrameMat = selectedFrameImg.material;
+	}
 
 	public void Setup(HeroData data, Action<HeroData> action = null)
 	{
+		Data = data;
 		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
 		HeroChart chart = null;
 
@@ -62,6 +74,32 @@ public class HeroIcon : MonoBehaviour
 		{
 			Stars[i].SetActive(true);
 		}
+	}
+
+	public void ShowSelectedFrame()
+	{
+		SelectedFrame.SetActive(true);
+		selectedFrameMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetId("SF");
+	}
+
+	public void CloseSelectedFrame()
+	{
+		DOTween.Kill("SF");
+		SelectedFrame.SetActive(false);
+	}
+
+	public void DiasbleBtns(bool lockPanelOff = false)
+	{
+		if(!lockPanelOff)
+			LockPanel.SetActive(true);
+
+		Btn.enabled = false;
+	}
+
+	public void EnableBtns()
+	{
+		LockPanel.SetActive(false);
+		Btn.enabled = true;
 	}
 
 }

@@ -78,6 +78,7 @@ public class StageManager : MonoSingleton<StageManager>
 		obj.transform.SetAsFirstSibling();
 		obj.GetComponent<HeroBase>().Init(heroData, PlayerData.Slots[slotNo - 1]);
 		heroData.DeployHero(slotNo);
+		PlayerData.Save();
 	}
 
 	void SetSlots()

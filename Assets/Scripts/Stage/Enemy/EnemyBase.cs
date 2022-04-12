@@ -39,9 +39,7 @@ public class EnemyBase : MonoBehaviour
 		SpriteCon = GetComponent<EnemySpriteController>();
 		SpriteCon.Setup(chart);
 
-		Rb.mass = chart.Weight;
-		Rb.drag = 1f;
-		Rb.angularDrag = 1f;
+		Rb.mass = chart.Weight;		
 		cMove = StartCoroutine(MoveSequence());
 		Enemies.Add(this);
 	}
@@ -114,9 +112,7 @@ public class EnemyBase : MonoBehaviour
 		StageManager.Ins.GetGold(Stat.Gold);
 		StopCoroutine(cMove);
 
-		Rb.mass = 100f;
-		Rb.drag = 100f;
-		Rb.angularDrag = 100f;
+		Rb.mass = 100f;		
 		Rb.velocity = Vector2.zero;
 
 		Enemies.Remove(this);

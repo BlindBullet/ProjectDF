@@ -67,6 +67,8 @@ public class PlayerData
 				Heroes.Add(data);
 			}   
 		}
+
+		Save();
 	}
 
 	public bool SummonHero(HeroData data, double cost)
@@ -85,21 +87,6 @@ public class PlayerData
 		else
 		{
 			return false;
-		}
-	}
-
-	public void DeployHero(HeroData data, int slotNo)
-	{
-		for(int i = 0; i < Heroes.Count; i++)
-		{
-			if (Heroes[i].Id == data.Id)
-			{
-				Heroes[i].SlotNo = slotNo;
-			}
-			else if(Heroes[i].SlotNo == slotNo)
-			{
-				Heroes[i].SlotNo = -1;
-			}
 		}
 	}
 
