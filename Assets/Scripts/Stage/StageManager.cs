@@ -9,7 +9,8 @@ public class StageManager : MonoSingleton<StageManager>
 	public PlayerStat PlayerStat = new PlayerStat();
 	public TopBar TopBar;
 	public Transform PlayerLine;
-		
+	public LoseStagePanel LoseStagePanel;	
+
 	public List<Slot> Slots = new List<Slot>();
 
 	public event UnityAction<double> GoldChanged;
@@ -193,18 +194,21 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 
 		yield return new WaitForSeconds(2f);
+				
+		StartCoroutine(LoseStagePanel.FadeIn());
 
-		//for (int i = HeroBase.Heroes.Count - 1; i >= 0 ; i++)
-		//{
-		//	HeroBase.Heroes[i].Destroy();
-		//}
+		yield return new WaitForSeconds(2f);
 
 		for(int i = EnemyBase.Enemies.Count - 1; i >= 0 ; i--)
 		{
 			EnemyBase.Enemies[i].Destroy();
 		}
 
-		if(!CheckBossStage(PlayerData.Stage - 1))
+		yield return new WaitForSeconds(1f);
+
+		StartCoroutine(LoseStagePanel.FadeOut());
+
+		if (!CheckBossStage(PlayerData.Stage - 1))
 			PlayerData.ChangeStage(-1);
 
 		Load();
