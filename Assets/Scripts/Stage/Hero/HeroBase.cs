@@ -85,14 +85,14 @@ public class HeroBase : MonoBehaviour
 	public void Destroy()
 	{
 		SkillCon.Stop();
+		Heroes.Remove(this);
 		Destroy(this.gameObject);
 	}
 
-	public IEnumerator Lose()
+	public void Lose()
 	{
 		SkillCon.Stop();
-		//Ui.Die();
-		yield return null;
+		StartCoroutine(Ui.Die());		
 	}
 
 

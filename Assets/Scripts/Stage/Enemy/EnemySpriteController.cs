@@ -13,14 +13,10 @@ public class EnemySpriteController : MonoBehaviour
 	Material frameMat;
 	Material modelMat;
 	Material bgMat;
-
-	private void Awake()
-	{
-		
-	}
+	Vector2 originPos;
 
 	public void Setup(EnemyChart chart)
-	{
+	{		
 		Model.transform.localPosition = Vector3.zero;
 		frameMat = Frame.transform.GetComponent<Renderer>().material;
 		modelMat = Model.transform.GetComponent<Renderer>().material;
@@ -36,6 +32,8 @@ public class EnemySpriteController : MonoBehaviour
 
 	public void Hit(bool isCrit, float stiffTime)
 	{
+		Model.transform.localPosition = Vector3.zero;
+
 		frameMat.SetColor("_HitEffectColor", Color.red);
 		frameMat.SetFloat("_HitEffectBlend", 0.6f);
 		frameMat.DOFloat(0f, "_HitEffectBlend", 0.5f).SetEase(Ease.InOutBounce);

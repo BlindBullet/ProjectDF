@@ -8,6 +8,7 @@ public class Slot : MonoBehaviour
 {
 	public int No;	
 	public Button LvUpBtn;
+	public GameObject LvObj;
 	public TextMeshProUGUI LvText;
 	public TextMeshProUGUI LvUpBtnText;
 	public TextMeshProUGUI LvUpCostText;
@@ -27,6 +28,10 @@ public class Slot : MonoBehaviour
 	public void Init(SlotData data)
 	{
 		this.data = data;
+
+		LvUpBtn.enabled = true;
+		LvObj.SetActive(true);
+
 		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
 		SetLvUpBtnState(0);
 		SetLvText();
@@ -88,5 +93,13 @@ public class Slot : MonoBehaviour
 		LvUpBtn.enabled = false;
 		lvUpBtnMat.EnableKeyword("GREYSCALE_ON");
 	}
+
+	public void Lose()
+	{
+		LvUpBtn.enabled = false;
+		LvObj.SetActive(false);
+	}
+
+
 
 }

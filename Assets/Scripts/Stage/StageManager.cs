@@ -8,6 +8,7 @@ public class StageManager : MonoSingleton<StageManager>
 	public PlayerData PlayerData = new PlayerData();
 	public PlayerStat PlayerStat = new PlayerStat();
 	public TopBar TopBar;
+	public Transform PlayerLine;
 		
 	public List<Slot> Slots = new List<Slot>();
 
@@ -43,9 +44,10 @@ public class StageManager : MonoSingleton<StageManager>
 
 	void SetHeroes()
 	{
-		if (PlayerData.PlayAppCount == 1)
+		if (PlayerData.IsFirstPlay)
 		{
 			SetStartHeroes();
+			PlayerData.RunFirstPlay();
 		}
 		else
 		{
@@ -115,22 +117,27 @@ public class StageManager : MonoSingleton<StageManager>
 
 		yield return new WaitForSeconds(1f);
 
-		bool isBossStage = false;
-
-		List<StageChart> stageCharts = CsvData.Ins.StageChart[stageNo];
-
-		for(int i = 0; i < stageCharts.Count; i++)
-		{
-			if (stageCharts[i].Boss != null)
-				isBossStage = true;
-		}
-
-		if (isBossStage)
+		if (CheckBossStage(stageNo))
 			yield return StartCoroutine(BossSequence());
 
 		yield return new WaitForSeconds(2f);
 
 		cStageSequence = StartCoroutine(ProgressStage(stageNo));
+	}
+
+	bool CheckBossStage(int stageNo)
+	{
+		bool isBossStage = false;
+
+		List<StageChart> stageCharts = CsvData.Ins.StageChart[stageNo];
+
+		for (int i = 0; i < stageCharts.Count; i++)
+		{
+			if (stageCharts[i].Boss != null)
+				isBossStage = true;
+		}
+
+		return isBossStage;
 	}
 
 	IEnumerator BossSequence()
@@ -162,22 +169,53 @@ public class StageManager : MonoSingleton<StageManager>
 
 	void WinStage()
 	{
-		PlayerData.NextStage();
+		PlayerData.ChangeStage(1);
 		StartCoroutine(SetStage(PlayerData.Stage));   
 	}
 
-	public IEnumerator LoseStage()
+	public void LoseStage()
 	{
-		for(int i = 0; i < HeroBase.Heroes.Count; i++)
-		{
-			StartCoroutine(HeroBase.Heroes[i].Lose());
-		}
-
-		yield return new WaitForSeconds(1f);
-
-
+		StopCoroutine(cStageSequence);		
+		StartCoroutine(LoseStageSequence());
 	}
 
+	public IEnumerator LoseStageSequence()
+	{
+		for(int i = 0; i < EnemyBase.Enemies.Count; i++)
+		{
+			EnemyBase.Enemies[i].Stop();
+		}
+
+		for(int i = 0; i < HeroBase.Heroes.Count; i++)
+		{
+			HeroBase.Heroes[i].Lose();
+			Slots[i].Lose();
+		}
+
+		yield return new WaitForSeconds(2f);
+
+		//for (int i = HeroBase.Heroes.Count - 1; i >= 0 ; i++)
+		//{
+		//	HeroBase.Heroes[i].Destroy();
+		//}
+
+		for(int i = EnemyBase.Enemies.Count - 1; i >= 0 ; i--)
+		{
+			EnemyBase.Enemies[i].Destroy();
+		}
+
+		if(!CheckBossStage(PlayerData.Stage - 1))
+			PlayerData.ChangeStage(-1);
+
+		Load();
+
+		ReStart();
+	}
+
+	void ReStart()
+	{
+
+	}
 	
 	public void GetGold(double value)
 	{

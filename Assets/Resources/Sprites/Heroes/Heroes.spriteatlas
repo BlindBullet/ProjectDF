@@ -75,7 +75,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 09c39018bd8e67c4daa7eae4d23aff11, type: 3}
   - {fileID: 21300000, guid: 9d4f251881ab7b34c8007e96dd386f69, type: 3}
   - {fileID: 21300000, guid: 5de028488c39b84438bc7a5d4a80d0ad, type: 3}
-  - {fileID: 21300000, guid: 247c8b98097fabe4db765aac588c93aa, type: 3}
   - {fileID: 21300000, guid: 5eff62b976b52ca4fbeadc932895c054, type: 3}
   - {fileID: 21300000, guid: aa20f3b98d0dd734b82b258a486daae1, type: 3}
   - {fileID: 21300000, guid: 70b2f60a4cae03141b4ad300ae667186, type: 3}
@@ -93,6 +92,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f46776ce5e69c654faba4066d0bda04b, type: 3}
   - {fileID: 21300000, guid: 216e5dde2e5683245b1ed21cf3ad691c, type: 3}
   - {fileID: 21300000, guid: d1a8115f8887e5c4f86f0789d307abbc, type: 3}
+  - {fileID: 21300000, guid: 4d9f0a7ff90995a458da42ad90426aad, type: 3}
   - {fileID: 21300000, guid: 8e2eacafecb2f574d889b2d73423e796, type: 3}
   m_PackedSpriteNamesToIndex:
   - f038
@@ -109,7 +109,6 @@ SpriteAtlas:
   - f009
   - f058
   - f053
-  - f029
   - f050
   - f016
   - f036
@@ -127,6 +126,7 @@ SpriteAtlas:
   - f023
   - f027
   - f028
+  - f108
   - f003
   m_RenderDataMap: {}
   m_Tag: Heroes

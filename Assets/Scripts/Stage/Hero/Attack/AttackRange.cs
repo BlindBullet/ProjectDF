@@ -7,7 +7,7 @@ public class AttackRange : MonoBehaviour
 	Vector3 RadarPos;
 	public float Size;
 	bool isBinding = true;
-	float offsetY = 0.5f;
+	float offsetY = -0.75f;
 
 	HeroBase heroBase;
 	public bool isTargeting = false;
@@ -92,20 +92,20 @@ public class AttackRange : MonoBehaviour
 	}
 
 	public List<EnemyBase> SearchTarget(ResultGroupChart data, EnemyBase enemy)
-    {
+	{
 		List<EnemyBase> result = new List<EnemyBase>();
 		Collider2D[] _colls = null;
 
-        switch (data.RangeType)
-        {
+		switch (data.RangeType)
+		{
 			case RangeType.Circle:
 				_colls = Physics2D.OverlapCircleAll(enemy.transform.position, data.RnageSize[0]);
 								
 				break;
-        }
+		}
 
 		if(_colls != null)
-        {
+		{
 			foreach (Collider2D member in _colls)
 			{
 				if (member.CompareTag("Enemy"))

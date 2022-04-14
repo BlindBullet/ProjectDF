@@ -7,6 +7,7 @@ using System;
 [System.Serializable]
 public class PlayerData
 {
+	public bool IsFirstPlay;
 	public int PlayAppCount;
 	public double Gold;
 	public double Magicite;
@@ -17,6 +18,7 @@ public class PlayerData
 
 	public void Init()
 	{
+		IsFirstPlay = true;
 		PlayAppCount = 1;
 		Gold = 0;
 		Magicite = 0;
@@ -110,15 +112,21 @@ public class PlayerData
 		Save();
 	}
 
-	public void NextStage()
+	public void ChangeStage(int count)
 	{
-		Stage++;
+		Stage += count;
 		Save();
 	}
 
 	public void IncAppCount()
 	{
 		PlayAppCount++;
+		Save();
+	}
+
+	public void RunFirstPlay()
+	{
+		IsFirstPlay = false;
 		Save();
 	}
 
@@ -147,4 +155,5 @@ public class PlayerData
 		}
 	}
 
+	
 }

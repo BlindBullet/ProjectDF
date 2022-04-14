@@ -60,7 +60,10 @@ public class EnemyBase : MonoBehaviour
 			if (transform.position.x > max.x)
 				xSpd = -Stat.Spd;
 
-			Rb.velocity = new Vector2(xSpd, isPushing ? 0 : -Stat.Spd);			
+			Rb.velocity = new Vector2(xSpd, isPushing ? 0 : -Stat.Spd);
+
+			if (transform.position.y <= StageManager.Ins.PlayerLine.position.y)
+				StageManager.Ins.LoseStage();
 
 			yield return null;
 		}
@@ -166,5 +169,20 @@ public class EnemyBase : MonoBehaviour
 		cPush = null;
 	}
 
+	public void Stop()
+	{
+		StopCoroutine(cMove);
 
+		Rb.mass = 100f;
+		Rb.velocity = Vector2.zero;
+	}
+
+	public void Destroy()
+	{
+		transform.position = new Vector3(0, 20f, 0);
+		ObjectManager.Ins.Push<EnemyBase>(this);
+		Enemies.Remove(this);
+	}
+
+	
 }
