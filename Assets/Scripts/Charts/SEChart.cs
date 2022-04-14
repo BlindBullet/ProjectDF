@@ -5,6 +5,7 @@ using UnityEngine;
 public class SEChart
 {
     public string Id { get; set; }
+    public int Lv { get; set; }
     public string Desc { get; set; }
     public SEConType ConType { get; set; }
     public string CParam1 { get; set; }

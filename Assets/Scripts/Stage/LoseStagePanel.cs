@@ -46,6 +46,7 @@ public class LoseStagePanel : MonoBehaviour
 		}
 
 		Fx.Destroyed = 1f;
+		this.gameObject.SetActive(false);
 	}
 
 }

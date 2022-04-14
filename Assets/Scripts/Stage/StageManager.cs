@@ -194,7 +194,8 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 
 		yield return new WaitForSeconds(2f);
-				
+
+		LoseStagePanel.gameObject.SetActive(true);
 		StartCoroutine(LoseStagePanel.FadeIn());
 
 		yield return new WaitForSeconds(2f);
@@ -206,7 +207,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 		yield return new WaitForSeconds(1f);
 
-		StartCoroutine(LoseStagePanel.FadeOut());
+		StartCoroutine(LoseStagePanel.FadeOut());		
 
 		if (!CheckBossStage(PlayerData.Stage - 1))
 			PlayerData.ChangeStage(-1);

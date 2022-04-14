@@ -18,6 +18,7 @@ public class HeroChart
 	public string Skill { get; set; }	
 	public double Cost { get; set; }
 	public string CollectionEffect { get; set; }
+	public string CEDesc { get; set; }
 
 }
 

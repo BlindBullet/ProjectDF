@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class DialogHeroInfo : DialogController
 {
@@ -44,7 +45,7 @@ public class DialogHeroInfo : DialogController
 		HeroIcon.Setup(data);
 		SetStat(chart);
 		SetSkill(chart.Skill);
-		SetCE(chart.CollectionEffect);
+		SetCE(chart.CollectionEffect, chart);
 		SetButtons(data, chart);
 		Show(true);
 	}
@@ -71,11 +72,24 @@ public class DialogHeroInfo : DialogController
 		SkillDesc.text = LanguageManager.Ins.SetString(skill.Desc);
 	}
 
-	void SetCE(string id)
+	void SetCE(string id, HeroChart chart)
 	{
-		SEChart se = CsvData.Ins.SEChart[id];
+		SEChart se = CsvData.Ins.SEChart[id][chart.Grade];
 		CEName.text = LanguageManager.Ins.SetString("CollectionEffect");
-		CEDesc.text = LanguageManager.Ins.SetString(se.Desc);
+		
+		switch (se.EffectType)
+		{
+			case SEEffectType.StatChange:
+				CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), se.EParam3);
+				break;
+			case SEEffectType.AddCurrency:
+				CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), se.EParam3);
+				break;
+			case SEEffectType.StartStage:
+				CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), se.EParam2);
+				break;
+		}
+		
 	}
 
 	void SetButtons(HeroData data, HeroChart chart)

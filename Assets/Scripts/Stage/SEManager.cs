@@ -31,7 +31,7 @@ public class SEManager : MonoSingleton<SEManager>
 			{
 				if(heroCharts[k].Grade == heroes[i].Grade)
 				{
-					SEChart se = CsvData.Ins.SEChart[heroCharts[k].CollectionEffect];
+					SEChart se = CsvData.Ins.SEChart[heroCharts[k].CollectionEffect][heroCharts[k].Grade];
 					seList.Add(se);
 				}
 			}
