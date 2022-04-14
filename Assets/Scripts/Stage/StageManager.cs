@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class StageManager : MonoSingleton<StageManager>
 {
 	public PlayerData PlayerData = new PlayerData();
+	public PlayerStat PlayerStat = new PlayerStat();
 	public TopBar TopBar;
 		
 	public List<Slot> Slots = new List<Slot>();
@@ -23,20 +24,12 @@ public class StageManager : MonoSingleton<StageManager>
 		PlayerData = new PlayerData();
 		PlayerData.Load();
 
-		if (PlayerData.PlayAppCount == 1)
-			Init();
-		else
-			Load();
+		PlayerStat = new PlayerStat();
+		PlayerStat.Init();
+		
+		Load();
 
 		PlayerData.IncAppCount();
-	}
-
-	public void Init()
-	{
-		TopBar.Setup();
-		SetSlots();
-		SetStartHeroes();
-		StartCoroutine(SetStage(PlayerData.Stage));        
 	}
 
 	void Load()
@@ -44,16 +37,24 @@ public class StageManager : MonoSingleton<StageManager>
 		TopBar.Setup();
 		SetSlots();
 		SetHeroes();
+		SEManager.Ins.Apply();
 		StartCoroutine(SetStage(PlayerData.Stage));
 	}
 
 	void SetHeroes()
 	{
-		for(int i = 0; i < PlayerData.Heroes.Count; i++)
+		if (PlayerData.PlayAppCount == 1)
 		{
-			if(PlayerData.Heroes[i].SlotNo > 0)
+			SetStartHeroes();
+		}
+		else
+		{
+			for (int i = 0; i < PlayerData.Heroes.Count; i++)
 			{
-				DeployHero(PlayerData.Heroes[i], PlayerData.Heroes[i].SlotNo);
+				if (PlayerData.Heroes[i].SlotNo > 0)
+				{
+					DeployHero(PlayerData.Heroes[i], PlayerData.Heroes[i].SlotNo);
+				}
 			}
 		}
 	}
@@ -136,7 +137,7 @@ public class StageManager : MonoSingleton<StageManager>
 	{		
 		DialogManager.Ins.OpenBossWarning();
 
-		yield return new WaitForSeconds(6f);
+		yield return new WaitForSeconds(4f);
 	}
 
 	IEnumerator ProgressStage(int stageNo)

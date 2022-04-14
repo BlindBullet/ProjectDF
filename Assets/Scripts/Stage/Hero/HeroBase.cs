@@ -12,7 +12,7 @@ public class HeroBase : MonoBehaviour
 {
 	public static List<HeroBase> Heroes = new List<HeroBase>();
 	
-	public Stat Stat;
+	public HeroStat Stat;
 	[HideInInspector] public HeroUi Ui;
 	[HideInInspector] public SkillController SkillCon;
 	[HideInInspector] public AttackRange Range;
@@ -23,7 +23,7 @@ public class HeroBase : MonoBehaviour
 	public void Init(HeroData data, SlotData slotData)
 	{
 		Data = data;
-		Stat = new Stat();
+		Stat = new HeroStat();
 		Stat.InitData(data, slotData.Lv);
 
 		Range = GetComponent<AttackRange>();
@@ -80,11 +80,6 @@ public class HeroBase : MonoBehaviour
 
 			yield return null;
 		}
-	}
-
-	public void ChangeSpeed(float value)
-	{
-		Stat.ChangeSpeed(value);    
 	}
 
 	public void Destroy()

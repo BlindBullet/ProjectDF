@@ -54,6 +54,7 @@ public class DeploySlot : MonoBehaviour
 		StageManager.Ins.DeployHero(data, SlotNo);		
 		HeroIcon.Setup(data, OpenHeroInfo);		
 		DialogHero._DialogHero.EndDeployState();
+		SEManager.Ins.Apply();
 	}
 
 	public void EndDeployState()
