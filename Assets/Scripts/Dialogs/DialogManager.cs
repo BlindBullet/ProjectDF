@@ -43,4 +43,16 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogBossWarning>().OpenDialog();
 	}
 
+	public void OpenRelic()
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogRelic") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogRelic>().OpenDialog();
+	}
+
+	public void OpenRelicInfo(RelicData data)
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogRelicInfo") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogRelicInfo>().OpenDialog(data);
+	}
+
 }

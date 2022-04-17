@@ -17,9 +17,9 @@ public class SEManager : MonoSingleton<SEManager>
 	{
 		List<SEChart> seList = new List<SEChart>();
 
+		//영웅 콜렉션 효과 불러오기
 		List<HeroData> heroes = StageManager.Ins.PlayerData.Heroes;
 
-		//영웅 콜렉션 효과 불러오기
 		for (int i = 0; i < heroes.Count; i++)
 		{
 			if (!heroes[i].IsOwn)
@@ -31,14 +31,41 @@ public class SEManager : MonoSingleton<SEManager>
 			{
 				if(heroCharts[k].Grade == heroes[i].Grade)
 				{
-					SEChart se = CsvData.Ins.SEChart[heroCharts[k].CollectionEffect][heroCharts[k].Grade];
+					List<SEChart> charts = CsvData.Ins.SEChart[heroCharts[k].CollectionEffect];
+					SEChart se = null;
+
+					for(int j = 0; j < charts.Count; j++)
+					{
+						if (charts[j].Lv == heroes[i].Grade)
+							se = charts[j];
+					}
+					
 					seList.Add(se);
 				}
 			}
 		}
 
 		//유물 효과 불러오기
+		List<RelicData> relics = StageManager.Ins.PlayerData.Relics;
 
+		for(int i = 0; i < relics.Count; i++)
+		{
+			if (!relics[i].isOwn)
+				continue;
+
+			RelicChart chart = CsvData.Ins.RelicChart[relics[i].Id];
+
+			List<SEChart> charts = CsvData.Ins.SEChart[chart.Effect];
+			SEChart se = null;
+
+			for (int j = 0; j < charts.Count; j++)
+			{
+				if (charts[j].Lv == relics[i].Lv)
+					se = charts[j];
+			}
+
+			seList.Add(se);
+		}
 
 		InitAllStat();
 		ApplyAllSe(seList);

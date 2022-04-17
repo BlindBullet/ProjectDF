@@ -8,6 +8,7 @@ public class LoseStagePanel : MonoBehaviour
 
 	public IEnumerator FadeIn()
 	{
+		transform.SetAsLastSibling();
 		Fx.Destroyed = 1f;
 
 		float _time = 2f;

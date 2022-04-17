@@ -105,7 +105,7 @@ public class StageManager : MonoSingleton<StageManager>
 	}
 
 	void SetSlots()
-	{
+	{		
 		for(int i = 0; i < Slots.Count; i++)
 		{
 			Slots[i].Init(PlayerData.Slots[i]);

@@ -1,5 +1,5 @@
 ﻿Id,StrName,StrDesc,Model,Attr,Size,Weight,Hp,Spd,Gold,Skill
-10001,enemy_name_10001,enemy_desc_10001,GoblinGrunt,Green,0.5,2,10,1,10,
+10001,enemy_name_10001,enemy_desc_10001,GoblinGrunt,Green,0.5,2,50,1,10,
 10002,enemy_name_10002,enemy_desc_10002,OrcSwordman,Red,0.6,1,200,0.5,10,
-10003,enemy_name_10003,enemy_desc_10003,OrcWarlock,Blue,0.7,1,100,0.3,20,
-20001,enemy_name_20001,enemy_desc_20001,OrcWarlock,Green,1,1,1000,0.2,50,
+10003,enemy_name_10003,enemy_desc_10003,OrcWarlock,Blue,0.7,1,300,0.3,20,
+20001,enemy_name_20001,enemy_desc_20001,OrcWarlock,Green,1,1,2000,0.2,50,

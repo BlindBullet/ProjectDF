@@ -4,10 +4,9 @@ using UnityEngine;
 using CodeStage.AntiCheat.ObscuredTypes;
 using System;
 
-[System.Serializable]
 public class HeroStat
 {    
-	public double Atk;
+	public double Atk;	
 	public float Spd;
 	public float Range;
 	public float CritChance;
@@ -19,13 +18,15 @@ public class HeroStat
 	public float SpdDec;
 	public float RangeInc;
 	public float RangeDec;
+	public float CooltimeDec;
 	int lv;
+	HeroChart chart = null;
 
 	public void InitData(HeroData data, int lv)
 	{
-		HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade];
+		chart = CsvData.Ins.HeroChart[data.Id][data.Grade];
 
-		Atk = chart.Atk;        
+		Atk = chart.Atk;		
 		Attr = chart.Attr;        
 		Spd = chart.Spd;
 		Range = chart.Range;
@@ -37,6 +38,7 @@ public class HeroStat
 		SpdDec = 0;
 		RangeInc = 0;
 		RangeDec = 0;
+		CooltimeDec = 0;
 
 		ChangeLv(lv);
 	}
@@ -48,8 +50,12 @@ public class HeroStat
 	}
 
 	public void CalcStat()
-	{
+	{	
+		Atk = chart.Atk * Mathf.Pow(ConstantData.AtkLvUpFactor, lv - 1);		
 		Atk = Atk * (1 + (AtkInc / 100f));
+
+		Spd = chart.Spd * (1 + (SpdInc / 100f));
+		Range = chart.Range * (1 + (RangeInc / 100f));
 	}
 
 }

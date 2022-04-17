@@ -14,19 +14,22 @@ public class PlayerData
 	public double Gem;
 	public int Stage;
 	public List<SlotData> Slots = new List<SlotData>();
-	public List<HeroData> Heroes = new List<HeroData>();	
+	public List<HeroData> Heroes = new List<HeroData>();
+	public List<RelicData> Relics = new List<RelicData>();
+
 
 	public void Init()
 	{
 		IsFirstPlay = true;
 		PlayAppCount = 1;
 		Gold = 0;
-		Magicite = 0;
+		Magicite = 100000000f;
 		Gem = 500;
 		Stage = 1;
 		ResisterHeroes();
+		ResisterRelics();
 
-		for(int i = 0; i < 5; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			SlotData data = new SlotData();
 			data.Init(i + 1);
@@ -71,8 +74,6 @@ public class PlayerData
 				Heroes.Add(data);
 			}   
 		}
-
-		Save();
 	}
 
 	public bool SummonHero(HeroData data, double cost)
@@ -91,6 +92,27 @@ public class PlayerData
 		else
 		{
 			return false;
+		}
+	}
+
+	void ResisterRelics()
+	{
+		foreach(KeyValuePair<string, RelicChart> elem in CsvData.Ins.RelicChart)
+		{
+			bool alreadyOwn = false;
+
+			for(int i = 0; i < Relics.Count; i++)
+			{
+				if (elem.Key == Relics[i].Id)
+					alreadyOwn = true;
+			}
+
+			if (!alreadyOwn)
+			{
+				RelicData data = new RelicData();
+				data.Init(elem.Key);
+				Relics.Add(data);
+			}
 		}
 	}
 
@@ -144,15 +166,21 @@ public class PlayerData
 			Init();           
 		}
 		else
-		{
+		{			
 			PlayAppCount = data.PlayAppCount;
 			Gold = data.Gold;
 			Magicite = data.Magicite;
 			Gem = data.Gem;
 			Stage = data.Stage;
 			Heroes = data.Heroes;
+			Relics = data.Relics;
 			Slots = data.Slots;
+
+			ResisterHeroes();
+			ResisterRelics();
 		}
+
+		Save();
 	}
 
 	
