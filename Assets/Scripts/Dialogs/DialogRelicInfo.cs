@@ -28,6 +28,7 @@ public class DialogRelicInfo : DialogController
 		Name.text = LanguageManager.Ins.SetString(chart.Name);
 		RelicIcon.SetIcon(data);
 		SetDesc(data, chart);
+		LvUpBtnText.text = LanguageManager.Ins.SetString("Upgrade");
 		SetLvUpBtn(data, chart);
 
 		Show(true);

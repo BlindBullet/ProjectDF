@@ -13,6 +13,7 @@ public class PlayerData
 	public double Magicite;
 	public double Gem;
 	public int Stage;
+	public int AscensionCount;
 	public List<SlotData> Slots = new List<SlotData>();
 	public List<HeroData> Heroes = new List<HeroData>();
 	public List<RelicData> Relics = new List<RelicData>();
@@ -23,9 +24,10 @@ public class PlayerData
 		IsFirstPlay = true;
 		PlayAppCount = 1;
 		Gold = 0;
-		Magicite = 100000000f;
+		Magicite = 0f;
 		Gem = 500;
 		Stage = 1;
+		AscensionCount = 0;
 		ResisterHeroes();
 		ResisterRelics();
 
@@ -139,6 +141,25 @@ public class PlayerData
 		Stage += count;
 		Save();
 	}
+
+	public void Ascension()
+	{		
+		Stage = StageManager.Ins.PlayerStat.StartStage;
+
+		Gold = 0;
+
+		Slots.Clear();
+
+		for (int i = 0; i < 5; i++)
+		{
+			SlotData data = new SlotData();
+			data.Init(i + 1);
+			Slots.Add(data);
+		}
+
+		AscensionCount++;
+		Save();
+	}	
 
 	public void IncAppCount()
 	{

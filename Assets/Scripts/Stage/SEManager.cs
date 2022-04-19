@@ -407,7 +407,7 @@ public class SEManager : MonoSingleton<SEManager>
 				switch (chart.EParam1)
 				{
 					case "Inc":
-						StageManager.Ins.PlayerStat.StartStage += int.Parse(chart.EParam2);
+						StageManager.Ins.PlayerStat.StartStage += int.Parse(chart.EParam2);						
 						break;
 					case "Dec":
 						StageManager.Ins.PlayerStat.StartStage -= int.Parse(chart.EParam2);

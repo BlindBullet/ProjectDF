@@ -89,6 +89,11 @@ public class HeroBase : MonoBehaviour
 		Destroy(this.gameObject);
 	}
 
+	public void Stop()
+	{
+		SkillCon.Stop();
+	}
+
 	public void Lose()
 	{
 		SkillCon.Stop();

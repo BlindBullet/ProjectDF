@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,8 @@ public class StageManager : MonoSingleton<StageManager>
 	public PlayerStat PlayerStat = new PlayerStat();
 	public TopBar TopBar;
 	public Transform PlayerLine;
-	public LoseStagePanel LoseStagePanel;	
+	public LoseStagePanel LoseStagePanel;
+	public AscensionSequence AscensionSequence;
 
 	public List<Slot> Slots = new List<Slot>();
 
@@ -39,7 +41,7 @@ public class StageManager : MonoSingleton<StageManager>
 		TopBar.Setup();
 		SetSlots();
 		SetHeroes();
-		SEManager.Ins.Apply();
+		SEManager.Ins.Apply();		
 		StartCoroutine(SetStage(PlayerData.Stage));
 	}
 
@@ -213,13 +215,54 @@ public class StageManager : MonoSingleton<StageManager>
 			PlayerData.ChangeStage(-1);
 
 		Load();
+	}	
 
-		ReStart();
+	public void StartAscension(bool isAdAscension = false)
+	{
+		StopCoroutine(cStageSequence);
+
+		//보상 주기
+		double rewardAmount = ConstantData.AscensionBasicReward;
+
+		if (isAdAscension)
+			rewardAmount = rewardAmount * 2f;	
+		
+		PlayerData.ChangeMagicite(rewardAmount);
+		PlayerData.Ascension();
+
+		for (int i = 0; i < EnemyBase.Enemies.Count; i++)
+		{
+			EnemyBase.Enemies[i].Stop();
+		}
+
+		for (int i = 0; i < HeroBase.Heroes.Count; i++)
+		{
+			HeroBase.Heroes[i].Stop();
+		}
+
+		StartCoroutine(Ascension());
 	}
 
-	void ReStart()
-	{
+	public IEnumerator Ascension()
+	{		
+		//연출
+		AscensionSequence.gameObject.SetActive(true);
 
+		yield return StartCoroutine(AscensionSequence.FadeIn());
+
+		for (int i = EnemyBase.Enemies.Count - 1; i >= 0; i--)
+		{
+			EnemyBase.Enemies[i].Destroy();
+		}
+
+		for(int i = HeroBase.Heroes.Count - 1; i >= 0; i--)
+		{
+			HeroBase.Heroes[i].Destroy();
+		}
+
+		Load();
+
+		StartCoroutine(AscensionSequence.FadeOut());
 	}
 	
 	public void GetGold(double value)
@@ -244,14 +287,6 @@ public class StageManager : MonoSingleton<StageManager>
 	{
 		PlayerData.ChangeMagicite(value);
 		MagiciteChanged(value);
-	}
-
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.K))
-		{
-			ChangeGold(100f);
-		}
 	}
 
 }

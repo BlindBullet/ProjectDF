@@ -7,6 +7,7 @@ public class PlayerUi : MonoBehaviour
 {
     public Button HeroBtn;
     public Button RelicBtn;
+    public Button AscensionBtn;
 
     private void Start()
     {
@@ -15,5 +16,8 @@ public class PlayerUi : MonoBehaviour
 
         RelicBtn.onClick.RemoveAllListeners();
         RelicBtn.onClick.AddListener(() => DialogManager.Ins.OpenRelic());
+
+        AscensionBtn.onClick.RemoveAllListeners();
+        AscensionBtn.onClick.AddListener(() => DialogManager.Ins.OpenAscension());
     }
 }

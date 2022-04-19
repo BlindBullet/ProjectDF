@@ -55,4 +55,12 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogRelicInfo>().OpenDialog(data);
 	}
 
+	public void OpenAscension()
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogAscension") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogAscension>().OpenDialog();
+	}
+
+
+
 }
