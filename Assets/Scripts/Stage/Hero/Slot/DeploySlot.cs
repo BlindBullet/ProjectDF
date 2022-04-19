@@ -46,7 +46,7 @@ public class DeploySlot : MonoBehaviour
 	void OpenArrow()
 	{
 		Arrow.SetActive(true);
-		Arrow.transform.DOMoveY(Arrow.transform.position.y - 1f, 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+		Arrow.transform.DOMoveY(Arrow.transform.position.y - 1f, 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetId("DeployArrow" + data.Id);
 	}
 
 	void Deploy(HeroData data)
@@ -60,12 +60,13 @@ public class DeploySlot : MonoBehaviour
 	public void EndDeployState()
 	{
 		isDeploying = false;
+		DOTween.Kill("DeployArrow" + data.Id);
 		Arrow.SetActive(false);
 		Btn.gameObject.SetActive(false);
 	}
 
 	private void OnDisable()
-	{
+	{	
 		Slots.Remove(this);
 	}
 

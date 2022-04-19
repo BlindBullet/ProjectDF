@@ -23,7 +23,7 @@ public class HeroIcon : MonoBehaviour
 	{
 		Image selectedFrameImg = SelectedFrame.GetComponent<Image>();
 		selectedFrameImg.material = new Material(selectedFrameImg.material);
-		selectedFrameMat = selectedFrameImg.material;
+		selectedFrameMat = selectedFrameImg.material;		
 	}
 
 	public void Setup(HeroData data, Action<HeroData> action = null)
@@ -78,14 +78,14 @@ public class HeroIcon : MonoBehaviour
 
 	public void ShowSelectedFrame()
 	{
-		SelectedFrame.SetActive(true);
-		selectedFrameMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetId("SF");
+		//SelectedFrame.SetActive(true);
+		//selectedFrameMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetId("SF");
 	}
 
 	public void CloseSelectedFrame()
 	{
-		DOTween.Kill("SF");
-		SelectedFrame.SetActive(false);
+		//DOTween.Kill("SF");
+		//SelectedFrame.SetActive(false);
 	}
 
 	public void DiasbleBtns(bool lockPanelOff = false)

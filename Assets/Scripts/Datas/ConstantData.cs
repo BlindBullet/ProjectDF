@@ -13,7 +13,7 @@ public static class ConstantData
     public static ObscuredFloat EnemyLvUpFactor = 1.2f;
     public static ObscuredFloat EnemyHpFactor = 1.1f;
     public static ObscuredFloat EnemyGoldFactor = 1.1f;
-    public static ObscuredInt PossibleAscensionStage = 30;
+    public static ObscuredInt PossibleAscensionStage = 2;
     public static ObscuredDouble AscensionBasicReward = 50f;
     public static ObscuredFloat AscensionRewardFactor = 1.1f;
 
