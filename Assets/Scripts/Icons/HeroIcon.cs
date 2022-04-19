@@ -78,14 +78,16 @@ public class HeroIcon : MonoBehaviour
 
 	public void ShowSelectedFrame()
 	{
-		//SelectedFrame.SetActive(true);
-		//selectedFrameMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetId("SF");
+		SelectedFrame.SetActive(true);
+		selectedFrameMat.EnableKeyword("SHINE_ON");
+		selectedFrameMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetId("SF" + Data.Id);
 	}
 
 	public void CloseSelectedFrame()
 	{
-		//DOTween.Kill("SF");
-		//SelectedFrame.SetActive(false);
+		DOTween.Kill("SF" + Data.Id);
+		selectedFrameMat.DisableKeyword("SHINE_ON");
+		SelectedFrame.SetActive(false);
 	}
 
 	public void DiasbleBtns(bool lockPanelOff = false)

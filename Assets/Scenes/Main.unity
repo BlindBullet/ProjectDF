@@ -12198,6 +12198,7 @@ MonoBehaviour:
     Magicite: 0
     Gem: 0
     Stage: 0
+    AscensionCount: 0
     Slots: []
     Heroes: []
     Relics: []
