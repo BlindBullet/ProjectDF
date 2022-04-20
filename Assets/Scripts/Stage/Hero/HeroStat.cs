@@ -44,16 +44,14 @@ public class HeroStat
 	}
 
 	public void ChangeLv(int lv)
-	{
+	{		
 		this.lv = lv;
 		CalcStat();
 	}
 
 	public void CalcStat()
-	{	
-		Atk = chart.Atk * Mathf.Pow(ConstantData.AtkLvUpFactor, lv - 1);		
-		Atk = Atk * (1 + (AtkInc / 100f));
-
+	{		
+		Atk = ConstantData.GetHeroAtk(chart.Atk, lv) * (1 + (AtkInc / 100f));
 		Spd = chart.Spd * (1 + (SpdInc / 100f));
 		Range = chart.Range * (1 + (RangeInc / 100f));
 	}

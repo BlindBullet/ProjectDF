@@ -81,7 +81,7 @@ public class SEManager : MonoSingleton<SEManager>
 		//배치 영웅 스탯 초기화
 		for (int i = 0; i < slots.Count; i++)
 		{
-			HeroBase.Heroes[i].Stat.InitData(HeroBase.Heroes[i].Data, slots[i].No);
+			HeroBase.Heroes[i].Stat.InitData(HeroBase.Heroes[i].Data, slots[i].Lv);
 		}
 	}
 
