@@ -18,19 +18,14 @@ public class GameManager : MonoSingleton<GameManager>
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.A))
-		{
-			HeroData data = StageManager.Ins.PlayerData.Heroes[5];
-			StageManager.Ins.DeployHero(data, 1);
+		{	
+			Debug.Log(TimeManager.Ins.ReceivedTime);
+			Debug.Log(TimeManager.Ins.SinceTime);
 		}
 
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			//CharacterSpawner.Ins.SpawnEnemy("Astronaut");
-
-			EnemySpawner.Ins.SpawnEnemy("Diablo", 1);
-			EnemySpawner.Ins.SpawnEnemy("Troll", 1);
-			EnemySpawner.Ins.SpawnEnemy("Skeleton", 1);
-			//CharacterSpawner.Ins.SpawnEnemy("Gremlin");
+			TimeManager.Ins.GetTime();			
 		}
 	}
 

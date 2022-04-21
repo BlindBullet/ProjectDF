@@ -883,19 +883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbdf7f2cc48e65488dc5a19c99f2f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stat:
-    Atk: 0
-    Spd: 0
-    Range: 0
-    CritChance: 0
-    CritDmg: 0
-    Attr: 0
-    AtkInc: 0
-    AtkDec: 0
-    SpdInc: 0
-    SpdDec: 0
-    RangeInc: 0
-    RangeDec: 0
   Ui: {fileID: 0}
   SkillCon: {fileID: 0}
   Range: {fileID: 0}
