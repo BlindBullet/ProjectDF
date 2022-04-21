@@ -16,7 +16,7 @@ public class StageManager : MonoSingleton<StageManager>
 	public List<Slot> Slots = new List<Slot>();
 
 	public event UnityAction<double> GoldChanged;
-	public event UnityAction<double> GemChanged;
+	public event UnityAction<double> SoulStoneChanged;
 	public event UnityAction<double> MagiciteChanged;
 
 	[HideInInspector]
@@ -280,10 +280,10 @@ public class StageManager : MonoSingleton<StageManager>
 		GoldChanged(value);
 	}
 
-	public void ChangeGem(double value)
+	public void ChangeSoulStone(double value)
 	{
-		PlayerData.ChangeGem(value);
-		GemChanged(value);
+		PlayerData.ChangeSoulStone(value);
+		SoulStoneChanged(value);
 	}
 
 	public void ChangeMagicite(double value)

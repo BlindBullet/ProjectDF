@@ -378,14 +378,14 @@ public class SEManager : MonoSingleton<SEManager>
 								break;
 						}
 						break;
-					case "Gem":
+					case "SoulStone":
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.AddGem += float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.GetSoulStoneRate += float.Parse(chart.EParam3);
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.AddGem -= float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.GetSoulStoneRate -= float.Parse(chart.EParam3);
 								break;
 						}
 						break;

@@ -9,7 +9,7 @@ public class PlayerStat
 	public ObscuredInt StartStage;
 	public ObscuredFloat AddGold;
 	public ObscuredFloat AddMagicite;
-	public ObscuredFloat AddGem;
+	public ObscuredFloat GetSoulStoneRate;
 	public ObscuredFloat EnemyHpInc;
 	public ObscuredFloat EnemyHpDec;
 	public ObscuredFloat EnemySpdInc;
@@ -29,7 +29,7 @@ public class PlayerStat
 		StartStage = 1;
 		AddGold = 0;
 		AddMagicite = 0;
-		AddGem = 0;
+		GetSoulStoneRate = 0;
 		EnemyHpInc = 0;
 		EnemyHpDec = 0;
 		EnemySpdInc = 0;

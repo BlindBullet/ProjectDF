@@ -28,9 +28,21 @@ public class DialogHeroInfo : DialogController
 	public TextMeshProUGUI DeployBtnText;    
 	public Button DeployBtn;
 	HeroData data;
+	Material purchaseBtnMat;
+	Material upgradeBtnMat;
 
 	public void OpenDialog(HeroData data)
 	{
+		//Image uiImage = PurchaseBtn.GetComponent<Image>();
+		//uiImage.material = new Material(uiImage.material);
+		//Image uiImage2 = UpgradeBtn.GetComponent<Image>();
+		//uiImage2.material = new Material(uiImage.material);
+
+		purchaseBtnMat = PurchaseBtn.GetComponent<Image>().material;
+		PurchaseBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
+		upgradeBtnMat = PurchaseBtn.GetComponent<Image>().material;
+		UpgradeBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
+
 		this.data = data;
 		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
 		HeroChart chart = null;
@@ -108,10 +120,30 @@ public class DialogHeroInfo : DialogController
 			PurchaseBtn.gameObject.SetActive(false);
 			UpgradeBtn.gameObject.SetActive(true);
 			UpgradeBtnText.text = LanguageManager.Ins.SetString("Upgrade");
-			//UpgradeCost.text = ExtensionMethods.ToCurrencyString()
 
-			UpgradeBtn.onClick.RemoveAllListeners();
-			UpgradeBtn.onClick.AddListener(() => {  });
+			double cost = ConstantData.GetHeroUpgradeCost(data.Grade);
+
+			UpgradeCost.text = cost.ToCurrencyString();
+
+			if (StageManager.Ins.PlayerData.SoulStone >= cost)
+			{
+				upgradeBtnMat.DisableKeyword("GREYSCALE_ON");
+				UpgradeBtn.onClick.RemoveAllListeners();
+				UpgradeBtn.onClick.AddListener(() => 
+				{
+					if (StageManager.Ins.PlayerData.UpgradeHero(data))
+					{
+						StageManager.Ins.ChangeSoulStone(-cost);
+						HeroIcon.Setup(data);
+						SetButtons(data, chart);
+						DialogHero._DialogHero.SetHeroes();
+					}
+				});
+			}
+			else
+			{
+				upgradeBtnMat.EnableKeyword("GREYSCALE_ON");
+			}
 		}
 		else
 		{
@@ -119,20 +151,25 @@ public class DialogHeroInfo : DialogController
 			PurchaseBtnText.text = LanguageManager.Ins.SetString("Summon");
 			PurchaseCost.text = ThousandCommaText.GetThousandComma((int)chart.Cost);
 
-			PurchaseBtn.onClick.RemoveAllListeners();
-			PurchaseBtn.onClick.AddListener(() =>
+			if (StageManager.Ins.PlayerData.SoulStone >= chart.Cost)
 			{
-				if (StageManager.Ins.PlayerData.SummonHero(data, chart.Cost))
+				purchaseBtnMat.DisableKeyword("GREYSCALE_ON");
+				PurchaseBtn.onClick.RemoveAllListeners();
+				PurchaseBtn.onClick.AddListener(() =>
 				{
-					StageManager.Ins.ChangeGem(-chart.Cost);
-					SetButtons(data, chart);
-					DialogHero._DialogHero.SetHeroes();
-				}
-				else
-				{
-					Debug.Log("보석이 모자랍니다.");
-				}
-			});
+					if (StageManager.Ins.PlayerData.SummonHero(data, chart.Cost))
+					{
+						StageManager.Ins.ChangeSoulStone(-chart.Cost);
+						HeroIcon.Setup(data);
+						SetButtons(data, chart);
+						DialogHero._DialogHero.SetHeroes();
+					}
+				});
+			}
+			else
+			{
+				purchaseBtnMat.EnableKeyword("GREYSCALE_ON");
+			}
 		}
 	}
 

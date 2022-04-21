@@ -57,9 +57,16 @@ public class TimeManager : MonoSingleton<TimeManager>
 
 		while (true)
 		{
-			yield return new WaitForSeconds(1f);
+			if(Time.timeScale > 0)
+			{
+				yield return new WaitForSeconds(1f / Time.timeScale);
+			}
+			else
+			{
+				yield return null;
+			}
 
-			SinceTime += 1f;
+			SinceTime += 1f / Time.timeScale;
 		}
 	}
 }

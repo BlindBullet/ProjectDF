@@ -59,6 +59,11 @@ public static class ConstantData
 		return CalcValue(AscensionBasicReward, AscensionRewardFactor, stageNo - PossibleAscensionStage);
 	}
 
+	public static double GetHeroUpgradeCost(int currentGrade)
+	{
+		return currentGrade * 100f;
+	}
+
 	static double CalcValue(double beginValue, float growthRate, int lv)
 	{
 		return Math.Round(beginValue * (Mathf.Pow(growthRate, lv) - 1) / (growthRate - 1));

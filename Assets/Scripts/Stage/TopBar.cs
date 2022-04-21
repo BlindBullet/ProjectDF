@@ -9,17 +9,17 @@ public class TopBar : MonoBehaviour
 {
     public TextMeshProUGUI GoldText;
     public TextMeshProUGUI MagiciteText;
-    public TextMeshProUGUI GemText;
+    public TextMeshProUGUI SoulStoneText;
     public TextMeshProUGUI StageText;
 
     public void Setup()
     {
         StageManager.Ins.GoldChanged += SetGoldText;
-        StageManager.Ins.GemChanged += SetGemText;
+        StageManager.Ins.SoulStoneChanged += SetSoulStoneText;
         StageManager.Ins.MagiciteChanged += SetMagiciteText;
 
         SetGoldText(0);
-        SetGemText(0);
+        SetSoulStoneText(0);
         SetMagiciteText(0);
         //GoldText.text = ExtensionMethods.ToCurrencyString(StageManager.Ins.PlayerData.Gold);
     }
@@ -39,9 +39,9 @@ public class TopBar : MonoBehaviour
         MagiciteText.text = ExtensionMethods.ToCurrencyString(StageManager.Ins.PlayerData.Magicite);
     }
 
-    public void SetGemText(double value)
+    public void SetSoulStoneText(double value)
     {
-        GemText.text = ExtensionMethods.ToCurrencyString(StageManager.Ins.PlayerData.Gem);
+        SoulStoneText.text = ExtensionMethods.ToCurrencyString(StageManager.Ins.PlayerData.SoulStone);
     }
 
     

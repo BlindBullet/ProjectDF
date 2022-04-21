@@ -270,7 +270,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5c62ded4fed86ca47bc8108b9258fef4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb9cdb91e1b87854ebc38ea404eb0513, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5493,6 +5493,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 423198408}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &460928144
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Waterfall
+  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - EValue: 0
+    - Light: 0.5
+    - TValue: 0.46
+    - _Alpha: 0.354
+    - _ColorMask: 15
+    - _Distortion: 1.201
+    - _Speed: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - Lightcolor: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &461589083
 GameObject:
   m_ObjectHideFlags: 0
@@ -6908,7 +6952,7 @@ GameObject:
   - component: {fileID: 655664977}
   - component: {fileID: 655664976}
   m_Layer: 5
-  m_Name: Status_Gem
+  m_Name: Status_SoulStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8235,7 +8279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoldText: {fileID: 4926634119988547118}
   MagiciteText: {fileID: 1668023542}
-  GemText: {fileID: 544747016}
+  SoulStoneText: {fileID: 544747016}
   StageText: {fileID: 1776070467}
 --- !u!1001 &846867396
 PrefabInstance:
@@ -9124,50 +9168,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 938880300}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &952030159
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Waterfall
-  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - EValue: -0.83
-    - Light: 0.5
-    - TValue: 0.6
-    - _Alpha: 1
-    - _ColorMask: 15
-    - _Distortion: 2
-    - _Speed: 1.27
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - Lightcolor: {r: 1, g: 0, b: 0.010199547, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &953805558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12758,7 +12758,7 @@ MonoBehaviour:
     PlayAppCount: 0
     Gold: 0
     Magicite: 0
-    Gem: 0
+    SoulStone: 0
     Stage: 0
     AscensionCount: 0
     Slots: []
@@ -14873,6 +14873,7 @@ MonoBehaviour:
   - www.daum.net
   - www.yahoo.com
   - www.yahoo.co.jp
+  SinceTime: 0
 --- !u!4 &1940133738
 Transform:
   m_ObjectHideFlags: 0
@@ -15041,7 +15042,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 952030159}
+  - {fileID: 460928144}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15102,13 +15103,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ForceMaterial: {fileID: 0}
   ActiveChange: 1
-  _Alpha: 1
+  _Alpha: 0.354
   __MainTex2: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
-  Liquid: 2
-  Speed: 1.27
-  EValue: -0.83
-  TValue: 0.6
-  LightColor: {r: 1, g: 0, b: 0.010199547, a: 1}
+  Liquid: 1.201
+  Speed: 1
+  EValue: 0
+  TValue: 0.46
+  LightColor: {r: 1, g: 0, b: 0, a: 1}
   Light: 0.5
   ShaderChange: 0
   ActiveUpdate: 1

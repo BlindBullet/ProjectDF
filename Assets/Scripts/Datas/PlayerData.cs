@@ -11,7 +11,7 @@ public class PlayerData
 	public int PlayAppCount;
 	public double Gold;
 	public double Magicite;
-	public double Gem;
+	public double SoulStone;
 	public int Stage;
 	public int AscensionCount;
 	public List<SlotData> Slots = new List<SlotData>();
@@ -25,7 +25,7 @@ public class PlayerData
 		PlayAppCount = 1;
 		Gold = 0;
 		Magicite = 0f;
-		Gem = 500;
+		SoulStone = 500f;
 		Stage = 1;
 		AscensionCount = 0;
 		ResisterHeroes();
@@ -80,12 +80,33 @@ public class PlayerData
 
 	public bool SummonHero(HeroData data, double cost)
 	{
-		if(Gem >= cost)
+		if(SoulStone >= cost)
 		{			
 			for (int i = 0; i < Heroes.Count; i++)
 			{
 				if (Heroes[i] == data)
 					Heroes[i].IsOwn = true;
+			}
+
+			Save();
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public bool UpgradeHero(HeroData data)
+	{		
+		double cost = ConstantData.GetHeroUpgradeCost(data.Grade);
+
+		if (SoulStone >= cost)
+		{
+			for (int i = 0; i < Heroes.Count; i++)
+			{
+				if (Heroes[i] == data)
+					Heroes[i].Upgrade();
 			}
 
 			Save();
@@ -124,9 +145,9 @@ public class PlayerData
 		Save();
 	}
 
-	public void ChangeGem(double amount)
+	public void ChangeSoulStone(double amount)
 	{
-		Gem += amount;
+		SoulStone += amount;
 		Save();
 	}
 
@@ -191,7 +212,7 @@ public class PlayerData
 			PlayAppCount = data.PlayAppCount;
 			Gold = data.Gold;
 			Magicite = data.Magicite;
-			Gem = data.Gem;
+			SoulStone = data.SoulStone;
 			Stage = data.Stage;
 			Heroes = data.Heroes;
 			Relics = data.Relics;
