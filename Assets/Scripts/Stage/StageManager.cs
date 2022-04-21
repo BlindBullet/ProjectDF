@@ -225,7 +225,7 @@ public class StageManager : MonoSingleton<StageManager>
 		StopCoroutine(cStageSequence);
 
 		//보상 주기
-		double rewardAmount = ConstantData.AscensionBasicReward;
+		double rewardAmount = ConstantData.GetAscensionMagicite(PlayerData.Stage);
 
 		if (isAdAscension)
 			rewardAmount = rewardAmount * 2f;	

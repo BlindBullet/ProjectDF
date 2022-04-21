@@ -45,7 +45,7 @@ public class DialogAscension : DialogController
 		else
 		{
 			StartStageDesc.text = string.Format(LanguageManager.Ins.SetString("popup_ascension_start_stage_desc"), StageManager.Ins.PlayerStat.StartStage);
-			double rewardAmount = ConstantData.AscensionBasicReward;
+			double rewardAmount = ConstantData.GetAscensionMagicite(StageManager.Ins.PlayerData.Stage);
 			string addMagicite = StageManager.Ins.PlayerStat.AddMagicite > 0 ? "(+" + StageManager.Ins.PlayerStat.AddMagicite + ")" : "";
 			RewardAmount.text = rewardAmount.ToCurrencyString() + addMagicite;
 		}

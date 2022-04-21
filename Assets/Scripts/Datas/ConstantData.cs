@@ -54,6 +54,11 @@ public static class ConstantData
 		return CalcValue(basicGold, EnemyGoldGR, stageNo);
 	}
 
+	public static double GetAscensionMagicite(int stageNo)
+	{
+		return CalcValue(AscensionBasicReward, AscensionRewardFactor, stageNo - PossibleAscensionStage);
+	}
+
 	static double CalcValue(double beginValue, float growthRate, int lv)
 	{
 		return Math.Round(beginValue * (Mathf.Pow(growthRate, lv) - 1) / (growthRate - 1));
