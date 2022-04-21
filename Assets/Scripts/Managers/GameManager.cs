@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoSingleton<GameManager>
 {
 
-	private void Start()
+	private void Awake()
 	{
 		DialogManager.Ins.SetDialogTransform();
-		SaveLoadManager.Ins.LoadAllDatas();
+		//SaveLoadManager.Ins.LoadAllDatas();
 
 	}
 

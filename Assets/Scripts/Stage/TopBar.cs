@@ -12,15 +12,12 @@ public class TopBar : MonoBehaviour
     public TextMeshProUGUI GemText;
     public TextMeshProUGUI StageText;
 
-    private void Start()
+    public void Setup()
     {
         StageManager.Ins.GoldChanged += SetGoldText;
         StageManager.Ins.GemChanged += SetGemText;
         StageManager.Ins.MagiciteChanged += SetMagiciteText;
-    }
 
-    public void Setup()
-    {
         SetGoldText(0);
         SetGemText(0);
         SetMagiciteText(0);

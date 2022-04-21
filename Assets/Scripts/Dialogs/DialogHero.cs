@@ -13,7 +13,7 @@ public class DialogHero : DialogController
 	public Transform HeroIconsTrf;
 	public List<HeroIcon> HeroIcons = new List<HeroIcon>();
 	public List<DeploySlot> DeploySlots = new List<DeploySlot>();
-
+	
 	public void OpenDialog()
 	{
 		TitleText.text = LanguageManager.Ins.SetString("title_dialog_hero");

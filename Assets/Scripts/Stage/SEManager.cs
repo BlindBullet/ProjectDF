@@ -7,11 +7,10 @@ public class SEManager : MonoSingleton<SEManager>
 	//게임 시작시 모든 캐릭터 콜렉션 효과 및 유물 효과를 적용.
 	//캐릭터 배치 변경시 모든 캐릭터 콜렉션 효과 및 유물 효과를 재적용.
 	//캐릭터 등급업시 모든 캐릭터 콜렉션 효과 및 유물 효과를 재적용.
-
-	//재적용 방법
+		
 	//플레이어 스탯 초기화
 	//배치 영웅 스탯 초기화
-	//그리고 적용
+	//효과 적용
 
 	public void Apply()
 	{
@@ -76,10 +75,10 @@ public class SEManager : MonoSingleton<SEManager>
 		//플레이어 스탯 초기화
 		StageManager.Ins.PlayerStat.Init();
 
-		List<SlotData> slots = StageManager.Ins.PlayerData.Slots;		
-
-		//배치 영웅 스탯 초기화
-		for (int i = 0; i < slots.Count; i++)
+		List<SlotData> slots = StageManager.Ins.PlayerData.Slots;
+		
+		//배치 영웅 스탯 초기화		
+		for (int i = 0; i < HeroBase.Heroes.Count; i++)
 		{
 			HeroBase.Heroes[i].Stat.InitData(HeroBase.Heroes[i].Data, slots[i].Lv);
 		}
@@ -214,17 +213,17 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.CParam3)
 						{
 							case "High":
-								if (count >= int.Parse(chart.CParam4))
+								if (count >= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
 							case "Low":
-								if (count <= int.Parse(chart.CParam4))
+								if (count <= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
 							default:
-								if (count == int.Parse(chart.CParam4))
+								if (count == int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;									
@@ -251,24 +250,24 @@ public class SEManager : MonoSingleton<SEManager>
 					case "Grade":
 						for (int i = 0; i < HeroBase.Heroes.Count; i++)
 						{
-							if (HeroBase.Heroes[i].Data.Grade >= int.Parse(chart.CParam2[0]))
+							if (HeroBase.Heroes[i].Data.Grade >= int.Parse(chart.CParam2[0], System.Globalization.CultureInfo.InvariantCulture))
 								count++;
 						}
 
 						switch (chart.CParam3)
 						{
 							case "High":
-								if (count >= int.Parse(chart.CParam4))
+								if (count >= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
 							case "Low":
-								if (count <= int.Parse(chart.CParam4))
+								if (count <= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
 							default:
-								if (count == int.Parse(chart.CParam4))
+								if (count == int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
@@ -286,12 +285,12 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.CParam3)
 						{
 							case "High":
-								if (gradeSum >= int.Parse(chart.CParam4))
+								if (gradeSum >= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
 							case "Low":
-								if (gradeSum <= int.Parse(chart.CParam4))
+								if (gradeSum <= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
@@ -302,7 +301,7 @@ public class SEManager : MonoSingleton<SEManager>
 						{
 							for(int k = 0; k < HeroBase.Heroes.Count; k++)
 							{
-								if(HeroBase.Heroes[k].Data.SlotNo == int.Parse(chart.CParam2[i]))
+								if(HeroBase.Heroes[k].Data.SlotNo == int.Parse(chart.CParam2[i], System.Globalization.CultureInfo.InvariantCulture))
 								{
 									switch (chart.CParam3)
 									{
@@ -331,15 +330,15 @@ public class SEManager : MonoSingleton<SEManager>
 											switch (chart.CParam4)
 											{
 												case "High":
-													if (HeroBase.Heroes[k].Data.Grade >= int.Parse(chart.CParam4))
+													if (HeroBase.Heroes[k].Data.Grade >= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
 														count++;
 													break;
 												case "Low":
-													if (HeroBase.Heroes[k].Data.Grade <= int.Parse(chart.CParam4))
+													if (HeroBase.Heroes[k].Data.Grade <= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
 														count++;
 													break;
 												default:
-													if (HeroBase.Heroes[k].Data.Grade == int.Parse(chart.CParam4))
+													if (HeroBase.Heroes[k].Data.Grade == int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
 														count++;
 													break;
 											}											

@@ -1,11 +1,12 @@
-﻿#if UNITY_EDITOR
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
+#endif
 
 namespace AllIn1SpriteShader
 {
@@ -853,4 +854,3 @@ namespace AllIn1SpriteShader
         #endregion
     }
 }
-#endif

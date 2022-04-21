@@ -1,0 +1,119 @@
+{
+    "m_SelectedDeviceId": "ce031603b9e65a3903",
+    "m_SelectedPackage": {
+        "deviceId": "ce031603b9e65a3903",
+        "name": "com.MKGames.ProjectDF",
+        "processId": 22261,
+        "exited": false
+    },
+    "m_SelectedPriority": 0,
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.MKGames.ProjectDF",
+            "processId": 12737,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.MKGames.ProjectDF",
+            "processId": 14866,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.sec.android.app.launcher",
+            "processId": 8556,
+            "exited": false
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.MKGames.ProjectDF",
+            "processId": 15643,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.MKGames.ProjectDF",
+            "processId": 17478,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.MKGames.ProjectDF",
+            "processId": 18350,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.samsung.android.MtpApplication",
+            "processId": 19882,
+            "exited": false
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.MKGames.ProjectDF",
+            "processId": 19783,
+            "exited": false
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.MKGames.ProjectDF",
+            "processId": 22261,
+            "exited": false
+        }
+    ],
+    "m_Tags": {
+        "m_Entries": [
+            {
+                "m_Name": "Filter by all listed tags",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "No Filter",
+                "m_Selected": true
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Tag Control...",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Unity",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "CRASH",
+                "m_Selected": false
+            }
+        ]
+    },
+    "m_MemoryViewerState": {
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "MemoryGroup": 2,
+        "Behavior": 0
+    },
+    "m_Filter": "",
+    "m_FilterIsRegularExpression": false,
+    "m_SymbolPaths": []
+}

@@ -22,13 +22,13 @@ public class DialogRelicInfo : DialogController
 		uiImage.material = new Material(uiImage.material);
 
 		lvUpBtnMat = LvUpBtn.GetComponent<Image>().material;
+		LvUpBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
 
 		RelicChart chart = CsvData.Ins.RelicChart[data.Id];
 
 		Name.text = LanguageManager.Ins.SetString(chart.Name);
 		RelicIcon.SetIcon(data);
-		SetDesc(data, chart);
-		LvUpBtnText.text = LanguageManager.Ins.SetString("Upgrade");
+		SetDesc(data, chart);		
 		SetLvUpBtn(data, chart);
 
 		Show(true);
@@ -71,6 +71,7 @@ public class DialogRelicInfo : DialogController
 
 		if (data.isOwn)
 		{
+			LvUpBtnText.text = LanguageManager.Ins.SetString("Upgrade");
 			double cost = chart.LvUpCost * (1 + Mathf.Pow(chart.LvUpCostIncRate, data.Lv));
 
 			LvUpCostText.text = cost.ToCurrencyString();
@@ -100,6 +101,7 @@ public class DialogRelicInfo : DialogController
 		}
 		else
 		{
+			LvUpBtnText.text = LanguageManager.Ins.SetString("Purchase");
 			double cost = chart.Price;
 
 			if (StageManager.Ins.PlayerData.Magicite >= cost)

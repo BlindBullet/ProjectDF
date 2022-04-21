@@ -327,7 +327,8 @@
 			#pragma shader_feature ATLAS_ON
 			#pragma shader_feature PREMULTIPLYALPHA_ON
 
-			#pragma shader_feature UNITY_UI_CLIP_RECT
+			#pragma multi_compile _ UNITY_UI_CLIP_RECT
+            #pragma multi_compile _ UNITY_UI_ALPHACLIP
 
             #include "UnityCG.cginc"
 			#include "AllIn1OneShaderFunctions.cginc"
@@ -805,8 +806,9 @@
 				i.uv = floor(i.uv * _PixelateSize) / _PixelateSize;
 				#endif
 
-				half4 col = tex2D(_MainTex, i.uv) * i.color;
+				half4 col = tex2D(_MainTex, i.uv);
 				half originalAlpha = col.a;
+				col *= i.color;
 				#if PREMULTIPLYALPHA_ON
 				col.rgb *= col.a;
 				#endif
@@ -998,7 +1000,7 @@
 
 				//OUTLINE-------------------------------------------------------------
 				#if OUTBASE_ON
-					#ifdef OUTBASEPIXELPERF_ON
+					#if OUTBASEPIXELPERF_ON
 					half2 destUv = half2(_OutlinePixelWidth * _MainTex_TexelSize.x, _OutlinePixelWidth * _MainTex_TexelSize.y);
 					#else
 					half2 destUv = half2(_OutlineWidth * _MainTex_TexelSize.x * 200, _OutlineWidth * _MainTex_TexelSize.y * 200);
@@ -1043,8 +1045,8 @@
 					#endif
 
 					result *= (1 - originalAlpha) * _OutlineAlpha;
-
-					half4 outline = _OutlineColor;
+				
+					half4 outline = _OutlineColor * i.color.a;
 					outline.rgb *= _OutlineGlow;
 					outline.a = result;
 					#if ONLYOUTLINE_ON
@@ -1150,6 +1152,10 @@
 				#if UNITY_UI_CLIP_RECT
 				half2 clipMask = saturate((_ClipRect.zw - _ClipRect.xy - abs(i.mask.xy)) * i.mask.zw);
                 col.a *= clipMask.x * clipMask.y;
+                #endif
+
+				#if UNITY_UI_ALPHACLIP
+                clip (col.a - 0.001);
                 #endif
 
 				#if ALPHACUTOFF_ON

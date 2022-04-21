@@ -8,40 +8,40 @@ public class Slot : MonoBehaviour
 {
 	public int No;	
 	public Button LvUpBtn;
+	public Image GoldIconImg;
 	public GameObject LvObj;
 	public TextMeshProUGUI LvText;
 	public TextMeshProUGUI LvUpBtnText;
 	public TextMeshProUGUI LvUpCostText;
-	Material lvUpBtnMat;
+	Material lvUpBtnMat;	
 	SlotData data;
-
-	private void Start()
-	{
-		StageManager.Ins.GoldChanged += SetLvUpBtnState;
-
-		Image uiImage = LvUpBtn.GetComponent<Image>();
-		uiImage.material = new Material(uiImage.material);
-
-		lvUpBtnMat = LvUpBtn.GetComponent<Image>().material;
-	}
 
 	public void Init(SlotData data)
 	{
+		Image uiImage = LvUpBtn.GetComponent<Image>();
+		uiImage.material = new Material(uiImage.material);
+		lvUpBtnMat = LvUpBtn.GetComponent<Image>().material;
+
+		LvUpBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
+
+		lvUpBtnMat.DisableKeyword("GREYSCALE_ON");
+
+		StageManager.Ins.GoldChanged += SetLvUpBtnState;
+
 		this.data = data;
 
-		LvUpBtn.enabled = true;
+		LvUpBtn.onClick.RemoveAllListeners();
+		LvUpBtn.onClick.AddListener(() =>
+		{
+			LevelUp();
+			StageManager.Ins.PlayerData.Save();
+		});
+
 		LvObj.SetActive(true);
 
 		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
 		SetLvUpBtnState(0);
 		SetLvText();
-
-		LvUpBtn.onClick.RemoveAllListeners();
-		LvUpBtn.onClick.AddListener(() => 
-		{
-			LevelUp();
-			StageManager.Ins.PlayerData.Save();
-		});
 	}
 
 	void LevelUp()
@@ -100,6 +100,10 @@ public class Slot : MonoBehaviour
 		LvObj.SetActive(false);
 	}
 
+	private void OnDisable()
+	{
+		StageManager.Ins.GoldChanged -= SetLvUpBtnState;
+	}
 
 
 }

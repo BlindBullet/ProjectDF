@@ -181,7 +181,7 @@ public class PlayerData
 	public void Load()
 	{
 		PlayerData data = ES3.Load<PlayerData>("PlayerData", defaultValue: null);
-
+		
 		if(data == null)
 		{
 			Init();           

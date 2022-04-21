@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 6e4dd5e291fc67e41a87f021b43571f5, type: 2}
+  m_Material: {fileID: 2100000, guid: e92b30b404e434a46b68448430cef164, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -823,6 +823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   No: 0
   LvUpBtn: {fileID: 3905213252024919780}
+  GoldIconImg: {fileID: 0}
   LvObj: {fileID: 3536953746092149817}
   LvText: {fileID: 597387487961812548}
   LvUpBtnText: {fileID: 3377405011552776508}

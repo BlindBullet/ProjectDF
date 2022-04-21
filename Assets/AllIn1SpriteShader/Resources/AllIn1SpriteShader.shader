@@ -798,8 +798,9 @@
 				i.uv = floor(i.uv * _PixelateSize) / _PixelateSize;
 				#endif
 
-				half4 col = tex2D(_MainTex, i.uv) * i.color;
+				half4 col = tex2D(_MainTex, i.uv);
 				half originalAlpha = col.a;
+				col *= i.color;
 				#if PREMULTIPLYALPHA_ON
 				col.rgb *= col.a;
 				#endif
@@ -991,7 +992,7 @@
 
 				//OUTLINE-------------------------------------------------------------
 				#if OUTBASE_ON
-					#ifdef OUTBASEPIXELPERF_ON
+					#if OUTBASEPIXELPERF_ON
 					half2 destUv = half2(_OutlinePixelWidth * _MainTex_TexelSize.x, _OutlinePixelWidth * _MainTex_TexelSize.y);
 					#else
 					half2 destUv = half2(_OutlineWidth * _MainTex_TexelSize.x * 200, _OutlineWidth * _MainTex_TexelSize.y * 200);
@@ -1037,7 +1038,7 @@
 
 					result *= (1 - originalAlpha) * _OutlineAlpha;
 
-					half4 outline = _OutlineColor;
+					half4 outline = _OutlineColor * i.color.a;
 					outline.rgb *= _OutlineGlow;
 					outline.a = result;
 					#if ONLYOUTLINE_ON

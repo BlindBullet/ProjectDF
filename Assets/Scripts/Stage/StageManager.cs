@@ -39,21 +39,23 @@ public class StageManager : MonoSingleton<StageManager>
 	void Load()
 	{
 		TopBar.Setup();
+
 		SetSlots();
 		SetHeroes();
-		SEManager.Ins.Apply();		
+		
+		SEManager.Ins.Apply();
 		StartCoroutine(SetStage(PlayerData.Stage));
 	}
 
 	void SetHeroes()
 	{
 		if (PlayerData.IsFirstPlay)
-		{
+		{			
 			SetStartHeroes();
 			PlayerData.RunFirstPlay();
 		}
 		else
-		{
+		{		
 			for (int i = 0; i < PlayerData.Heroes.Count; i++)
 			{
 				if (PlayerData.Heroes[i].SlotNo > 0)
@@ -65,7 +67,7 @@ public class StageManager : MonoSingleton<StageManager>
 	}
 
 	void SetStartHeroes()
-	{
+	{		
 		for (int i = 0; i < ConstantData.StartHeroes.Length; i++)
 		{
 			HeroData heroData = null;
@@ -78,8 +80,8 @@ public class StageManager : MonoSingleton<StageManager>
 					break;
 				}
 			}
-
-			HeroChart chart = CsvData.Ins.HeroChart[heroData.Id][heroData.Grade];
+				
+			HeroChart chart = CsvData.Ins.HeroChart[heroData.Id][heroData.Grade];	
 			GameObject obj = Instantiate(Resources.Load("Prefabs/Icons/DeployHeroIcon") as GameObject, Slots[i].transform);
 			obj.transform.SetAsFirstSibling();
 			obj.GetComponent<HeroBase>().Init(heroData, PlayerData.Slots[i]);
@@ -110,6 +112,7 @@ public class StageManager : MonoSingleton<StageManager>
 	{		
 		for(int i = 0; i < Slots.Count; i++)
 		{
+			Slots[i].No = i + 1;
 			Slots[i].Init(PlayerData.Slots[i]);
 		}
 	}

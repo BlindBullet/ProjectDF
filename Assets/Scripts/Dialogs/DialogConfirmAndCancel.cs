@@ -12,8 +12,7 @@ public class DialogConfirmAndCancel : DialogController
 	public Button ConfirmBtn;
 	public TextMeshProUGUI ConfirmBtnText;
 	public Button CancelBtn;
-	public TextMeshProUGUI CancelBtnText;
-	public Button CloseBtn;
+	public TextMeshProUGUI CancelBtnText;	
 
 	public void SetDialog(string title, string desc, Action action)
 	{
@@ -33,9 +32,6 @@ public class DialogConfirmAndCancel : DialogController
 
 		CancelBtn.onClick.RemoveAllListeners();
 		CancelBtn.onClick.AddListener(() => CloseDialog());
-
-		CloseBtn.onClick.RemoveAllListeners();
-		CloseBtn.onClick.AddListener(() => CloseDialog());
 
 	}
 }
