@@ -6,6 +6,7 @@ public class StageChart
 {
     public int No { get; set; }
     public float Time { get; set; }
+    public string Bg { get; set; }
     public string[] Enemies { get; set; }
     public int[] Count { get; set; }
     public string Boss { get; set; }

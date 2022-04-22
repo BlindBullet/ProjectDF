@@ -9,24 +9,17 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 	public void Spawn(int stageNo)
 	{
 		List<StageChart> datas = new List<StageChart>();
-		int lastResisteredNo = CsvData.Ins.StageChart[CsvData.Ins.StageChart.Count - 1][0].No;
-
-		if (CsvData.Ins.StageChart.ContainsKey(stageNo))
-		{
-			datas = CsvData.Ins.StageChart[stageNo];
-		}	
-		else
-		{	
-			datas = CsvData.Ins.StageChart[stageNo - (lastResisteredNo * (stageNo / lastResisteredNo))]; 
-		}
-
+		int _stageNo = StageManager.Ins.GetStageNo(stageNo);
+		
+		datas = CsvData.Ins.StageChart[_stageNo];
+		
 		for(int i = 0; i < datas.Count; i++)
 		{
-			StartCoroutine(SpawnSequence(datas[i], i == datas.Count - 1 ? true : false));
+			StartCoroutine(SpawnSequence(datas[i], stageNo, i == datas.Count - 1 ? true : false));
 		}
 	}
 
-	IEnumerator SpawnSequence(StageChart chart, bool isLast)
+	IEnumerator SpawnSequence(StageChart chart, int stageNo, bool isLast)
 	{
 		yield return new WaitForSeconds(chart.Time);
 
@@ -36,13 +29,13 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 			{
 				for (int k = 0; k < chart.Count[i]; k++)
 				{
-					SpawnEnemy(chart.Enemies[i], chart.No);
+					SpawnEnemy(chart.Enemies[i], stageNo);
 				}
 			}
 		}
 
 		if (chart.Boss != null)
-			SpawnEnemy(chart.Boss, chart.No, true);
+			SpawnEnemy(chart.Boss, stageNo, true);
 
 		if (isLast)
 		{

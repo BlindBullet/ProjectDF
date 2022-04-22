@@ -21,6 +21,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 	[HideInInspector]
 	public bool LastEnemiesSpawned;
+	GameObject Bg = null;
 	Coroutine cStageSequence = null;
 
 	private void Start()
@@ -117,8 +118,38 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 	}
 
+	void SetBg(int stageNo)
+	{
+		int _stageNo = GetStageNo(stageNo);		
+		StageChart chart = CsvData.Ins.StageChart[_stageNo][0];
+		
+		if(chart.Bg != null)
+		{
+			if (Bg != null)
+				Destroy(Bg);
+
+			Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);
+		}	
+		else if(chart.Bg == null && Bg == null)
+		{
+			for(int i = _stageNo - 1; i >= 0; i--)
+			{
+				StageChart _chart = CsvData.Ins.StageChart[i][0];
+
+				if (_chart.Bg == null)
+					continue;
+				else
+				{
+					Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + _chart.Bg) as GameObject);
+					break;
+				}
+			}
+		}
+	}
+
 	IEnumerator SetStage(int stageNo)
 	{
+		SetBg(stageNo);
 		TopBar.SetStageText(stageNo);
 
 		yield return new WaitForSeconds(1f);
@@ -134,8 +165,9 @@ public class StageManager : MonoSingleton<StageManager>
 	bool CheckBossStage(int stageNo)
 	{
 		bool isBossStage = false;
+		int _stageNo = GetStageNo(stageNo);
 
-		List<StageChart> stageCharts = CsvData.Ins.StageChart[stageNo];
+		List<StageChart> stageCharts = CsvData.Ins.StageChart[_stageNo];
 
 		for (int i = 0; i < stageCharts.Count; i++)
 		{
@@ -144,6 +176,19 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 
 		return isBossStage;
+	}
+
+	public int GetStageNo(int stageNo)
+	{
+		int result = stageNo;		
+		int lastResisteredNo = CsvData.Ins.StageChart[CsvData.Ins.StageChart.Count][0].No;
+		
+		if (stageNo > lastResisteredNo)
+		{
+			result = (stageNo % lastResisteredNo) == 0 ? lastResisteredNo : (stageNo % lastResisteredNo);						
+		}
+
+		return result;
 	}
 
 	IEnumerator BossSequence()
@@ -171,7 +216,6 @@ public class StageManager : MonoSingleton<StageManager>
 
 		WinStage();
 	}
-
 
 	void WinStage()
 	{
