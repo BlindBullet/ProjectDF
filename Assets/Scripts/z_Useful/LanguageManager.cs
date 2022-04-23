@@ -51,13 +51,13 @@ public class LanguageManager : SingletonObject<LanguageManager> {
 				{
 					Debug.LogWarning(id + ": 스트링 값이 비어있습니다.");
 				}
-				return dicData[id].Korean;
+				return dicData[id].Korean.Replace("\\n", "\n");
 			case LanguageType.English:
 				if (dicData[id].English == "")
 				{
 					Debug.LogWarning(id + ": 스트링 값이 비어있습니다.");
 				}
-				return dicData[id].English;
+				return dicData[id].English.Replace("\\n","\n");
 			default:
 				Debug.LogWarning("현재 선택된 언어에 맞는 컬럼이 스트링 테이블에 없습니다.");
 				return "";

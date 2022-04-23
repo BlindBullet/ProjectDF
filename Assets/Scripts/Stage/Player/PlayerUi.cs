@@ -5,19 +5,40 @@ using UnityEngine.UI;
 
 public class PlayerUi : MonoBehaviour
 {
-    public Button HeroBtn;
-    public Button RelicBtn;
-    public Button AscensionBtn;
+	public Button HeroBtn;
+	public Button RelicBtn;
+	public Button AscensionBtn;
+	public GameObject AscensionNotify;
 
-    private void Start()
-    {
-        HeroBtn.onClick.RemoveAllListeners();
-        HeroBtn.onClick.AddListener(() => DialogManager.Ins.OpenHero());
 
-        RelicBtn.onClick.RemoveAllListeners();
-        RelicBtn.onClick.AddListener(() => DialogManager.Ins.OpenRelic());
+	private void Start()
+	{
+		HeroBtn.onClick.RemoveAllListeners();
+		HeroBtn.onClick.AddListener(() => DialogManager.Ins.OpenHero());
 
-        AscensionBtn.onClick.RemoveAllListeners();
-        AscensionBtn.onClick.AddListener(() => DialogManager.Ins.OpenAscension());
-    }
+		RelicBtn.onClick.RemoveAllListeners();
+		RelicBtn.onClick.AddListener(() => DialogManager.Ins.OpenRelic());
+
+		AscensionBtn.onClick.RemoveAllListeners();
+		AscensionBtn.onClick.AddListener(() => DialogManager.Ins.OpenAscension());
+
+		StageManager.Ins.StageChanged += SetAscensionNotify;
+
+		SetAscensionNotify();
+	}
+
+	void SetAscensionNotify()
+	{
+		if(StageManager.Ins.PlayerData.Stage >= ConstantData.PossibleAscensionStage)
+		{
+			AscensionNotify.SetActive(true);
+		}
+		else
+		{
+			AscensionNotify.SetActive(false);
+		}
+	}
+
+
+
 }

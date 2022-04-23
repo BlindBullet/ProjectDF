@@ -12,7 +12,7 @@ public static class ConstantData
 	public static ObscuredFloat HeroAtkGR = 1.2f;
 	public static ObscuredFloat EnemyHpGR = 1.3f;	
 	public static ObscuredFloat EnemyGoldGR = 1.2f;
-	public static ObscuredInt PossibleAscensionStage = 2;
+	public static ObscuredInt PossibleAscensionStage = 10;
 	public static ObscuredDouble AscensionBasicReward = 50f;
 	public static ObscuredFloat AscensionRewardFactor = 1.1f;
 
@@ -29,10 +29,6 @@ public static class ConstantData
 	public static double GetEnemyHp(double basicHp, int stageNo, bool isBoss)
 	{
 		if (isBoss)
-		{
-
-		}
-		else
 		{
 
 		}
@@ -56,7 +52,7 @@ public static class ConstantData
 
 	public static double GetAscensionMagicite(int stageNo)
 	{
-		return CalcValue(AscensionBasicReward, AscensionRewardFactor, stageNo - PossibleAscensionStage);
+		return CalcValue(AscensionBasicReward, AscensionRewardFactor, stageNo - PossibleAscensionStage + 1);
 	}
 
 	public static double GetHeroUpgradeCost(int currentGrade)

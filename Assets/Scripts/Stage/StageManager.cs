@@ -18,6 +18,7 @@ public class StageManager : MonoSingleton<StageManager>
 	public event UnityAction<double> GoldChanged;
 	public event UnityAction<double> SoulStoneChanged;
 	public event UnityAction<double> MagiciteChanged;
+	public event UnityAction StageChanged;
 
 	[HideInInspector]
 	public bool LastEnemiesSpawned;
@@ -219,8 +220,14 @@ public class StageManager : MonoSingleton<StageManager>
 
 	void WinStage()
 	{
-		PlayerData.ChangeStage(1);
+		ChangeStage(1);
 		StartCoroutine(SetStage(PlayerData.Stage));   
+	}
+
+	void ChangeStage(int count)
+	{
+		PlayerData.ChangeStage(count);
+		StageChanged();
 	}
 
 	public void LoseStage()
@@ -256,10 +263,10 @@ public class StageManager : MonoSingleton<StageManager>
 
 		yield return new WaitForSeconds(1f);
 
-		StartCoroutine(LoseStagePanel.FadeOut());		
+		StartCoroutine(LoseStagePanel.FadeOut());
 
 		if (!CheckBossStage(PlayerData.Stage - 1))
-			PlayerData.ChangeStage(-1);
+			ChangeStage(-1);
 
 		Load();
 	}	
@@ -276,6 +283,7 @@ public class StageManager : MonoSingleton<StageManager>
 		
 		PlayerData.ChangeMagicite(rewardAmount);
 		PlayerData.Ascension();
+		StageChanged();
 
 		for (int i = 0; i < EnemyBase.Enemies.Count; i++)
 		{
