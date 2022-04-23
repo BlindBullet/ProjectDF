@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeStage.AntiCheat.ObscuredTypes;
+using CodeStage.AntiCheat.Storage;
 using System;
 
 [System.Serializable]
@@ -195,12 +196,12 @@ public class PlayerData
 	}
 
 	public void Save()
-	{   
+	{	
 		ES3.Save<PlayerData>("PlayerData", this);
 	}
 
 	public void Load()
-	{
+	{		
 		PlayerData data = ES3.Load<PlayerData>("PlayerData", defaultValue: null);
 		
 		if(data == null)

@@ -27,6 +27,7 @@ public class EnemySpriteController : MonoBehaviour
 		modelMat.SetFloat("_FadeAmount", 0f);
 
 		Model.sprite = Resources.Load<SpriteAtlas>("Sprites/Enemies/Enemies").GetSprite(chart.Model);
+		Frame.sprite = Resources.Load<Sprite>("Sprites/Heroes/Frames/" + chart.Attr.ToString());
 		Bg.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Attr.ToString());
 	}
 
@@ -34,9 +35,9 @@ public class EnemySpriteController : MonoBehaviour
 	{
 		Model.transform.localPosition = Vector3.zero;
 
-		frameMat.SetColor("_HitEffectColor", Color.red);
-		frameMat.SetFloat("_HitEffectBlend", 0.6f);
-		frameMat.DOFloat(0f, "_HitEffectBlend", 0.5f).SetEase(Ease.InOutBounce);
+		modelMat.SetColor("_HitEffectColor", Color.red);
+		modelMat.SetFloat("_HitEffectBlend", 0.6f);
+		modelMat.DOFloat(0f, "_HitEffectBlend", 0.5f).SetEase(Ease.InOutBounce);
 
 		if(stiffTime > 0f)
 		{
