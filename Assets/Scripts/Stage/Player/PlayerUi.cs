@@ -9,7 +9,8 @@ public class PlayerUi : MonoBehaviour
 	public Button RelicBtn;
 	public Button AscensionBtn;
 	public GameObject AscensionNotify;
-
+	public Button QuestBtn;
+	public GameObject QuestNotify;
 
 	private void Start()
 	{
@@ -25,6 +26,9 @@ public class PlayerUi : MonoBehaviour
 		StageManager.Ins.StageChanged += SetAscensionNotify;
 
 		SetAscensionNotify();
+
+		QuestBtn.onClick.RemoveAllListeners();
+		QuestBtn.onClick.AddListener(() => DialogManager.Ins.OpenQuest());
 	}
 
 	void SetAscensionNotify()

@@ -18,7 +18,8 @@ public class PlayerData
 	public List<SlotData> Slots = new List<SlotData>();
 	public List<HeroData> Heroes = new List<HeroData>();
 	public List<RelicData> Relics = new List<RelicData>();
-
+	public List<QuestData> Quests = new List<QuestData>();
+	public int ClearQuestCount;
 
 	public void Init()
 	{
@@ -29,8 +30,11 @@ public class PlayerData
 		SoulStone = 500f;
 		Stage = 1;
 		AscensionCount = 0;
+		ClearQuestCount = 0;
+
 		ResisterHeroes();
 		ResisterRelics();
+		ResisterQuests();
 
 		for (int i = 0; i < 5; i++)
 		{
@@ -45,6 +49,22 @@ public class PlayerData
 		}
 
 		Save();
+	}
+
+	private void ResisterQuests()
+	{
+		int count = 0;
+
+		foreach(KeyValuePair<string, QuestChart> elem in CsvData.Ins.QuestChart)
+		{
+			QuestData data = new QuestData();
+			data.Init(elem.Value);
+			Quests.Add(data);
+			count++;
+
+			if (count >= 3)
+				break;
+		}
 	}
 
 	public void AddHero(string id)
@@ -218,6 +238,7 @@ public class PlayerData
 			Heroes = data.Heroes;
 			Relics = data.Relics;
 			Slots = data.Slots;
+			Quests = data.Quests;
 
 			ResisterHeroes();
 			ResisterRelics();

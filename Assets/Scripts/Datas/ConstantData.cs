@@ -15,6 +15,7 @@ public static class ConstantData
 	public static ObscuredInt PossibleAscensionStage = 10;
 	public static ObscuredDouble AscensionBasicReward = 50f;
 	public static ObscuredFloat AscensionRewardFactor = 1.1f;
+	public static ObscuredInt[] QuestLvPerClearCount = { 5, 20, 40, 60, 80, 100, 150,  };
 
 	public static double GetLvUpCost(int lv)
 	{

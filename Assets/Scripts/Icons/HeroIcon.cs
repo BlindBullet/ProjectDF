@@ -11,19 +11,22 @@ public class HeroIcon : MonoBehaviour
 	public Button Btn;
 	public Image IconBg;
 	public Image IconImg;
-	public Image IconFrame;
-	public GameObject LockPanel;
+	public Image IconFrame;	
 	public GameObject LockIcon;
 	public GameObject[] Stars;
 	public GameObject SelectedFrame;
 	public HeroData Data;
 	Material selectedFrameMat;
+	Material iconImgMat;
 
 	private void Awake()
 	{
 		Image selectedFrameImg = SelectedFrame.GetComponent<Image>();
 		selectedFrameImg.material = new Material(selectedFrameImg.material);
-		selectedFrameMat = selectedFrameImg.material;		
+		selectedFrameMat = selectedFrameImg.material;
+
+		IconImg.material = new Material(IconImg.material);
+		iconImgMat = IconImg.material;
 	}
 
 	public void Setup(HeroData data, Action<HeroData> action = null)
@@ -63,8 +66,13 @@ public class HeroIcon : MonoBehaviour
 	{
 		if (!isOpen)
 		{
-			LockPanel.SetActive(true);
+			iconImgMat.EnableKeyword("GREYSCALE_ON");			
 			LockIcon.SetActive(true);
+		}
+		else
+		{
+			iconImgMat.DisableKeyword("GREYSCALE_ON");
+			LockIcon.SetActive(false);
 		}
 	}
 	
@@ -92,15 +100,18 @@ public class HeroIcon : MonoBehaviour
 
 	public void DiasbleBtns(bool lockPanelOff = false)
 	{
-		if(!lockPanelOff)
-			LockPanel.SetActive(true);
+		if (!lockPanelOff)
+		{
+			iconImgMat.EnableKeyword("GREYSCALE_ON");			
+		}
+			
 
 		Btn.enabled = false;
 	}
 
 	public void EnableBtns()
 	{
-		LockPanel.SetActive(false);
+		iconImgMat.DisableKeyword("GREYSCALE_ON");		
 		Btn.enabled = true;
 	}
 

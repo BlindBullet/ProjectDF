@@ -61,6 +61,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogAscension>().OpenDialog();
 	}
 
-
+	public void OpenQuest()
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogQuest") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogQuest>().OpenDialog();
+	}
 
 }

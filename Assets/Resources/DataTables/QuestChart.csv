@@ -1,0 +1,11 @@
+﻿Id,Lv,Name,Time,NeedGrade,NeedAttr,RewardType,RewardValue
+Quest1,1,str_name_Quest1,30,,Red|Blue,Gold,30
+Quest2,1,str_name_Quest2,50,2,Green|Green,SoulStone,5
+Quest3,1,str_name_Quest3,70,,Blue|Green|Red,GameSpeed,30
+Quest4,2,str_name_Quest4,90,2,Red|Blue,Gold,30
+Quest5,2,str_name_Quest5,110,2,Green|Green,SoulStone,5
+Quest6,2,str_name_Quest6,130,2,Blue|Green|Red,GameSpeed,30
+Quest7,3,str_name_Quest7,150,3,Red|Blue,Gold,30
+Quest8,3,str_name_Quest8,170,3,Green|Green,SoulStone,5
+Quest9,3,str_name_Quest9,190,3,Blue|Green|Red,GameSpeed,30
+Quest10,4,str_name_Quest10,210,4,Red|Red|Blue|Blue,Gold,30
