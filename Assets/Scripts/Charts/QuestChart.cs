@@ -9,6 +9,7 @@ public class QuestChart
     public string Name { get; set; }    
     public int Time { get; set; }
     public int NeedGrade { get; set; }
+    public int NeedGradeCount { get; set; }
     public Attr[] NeedAttr { get; set; }
     public QuestReward RewardType { get; set; }
     public float RewardValue { get; set; }

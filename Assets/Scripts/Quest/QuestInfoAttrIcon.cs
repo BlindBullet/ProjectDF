@@ -1,18 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestInfoAttrIcon : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public Image AttrImg;
+	public GameObject CheckObj;
+	public Attr Attr;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void SetIcon(Attr attr)
+	{
+		AttrImg.sprite = Resources.Load<Sprite>("Sprites/Icons/" + attr.ToString());
+		Attr = attr;
+		CheckObj.SetActive(false);
+	}
+
+	public void Check(bool isCheck)
+	{
+		if (isCheck)
+		{
+			CheckObj.SetActive(true);
+		}
+		else
+		{
+			CheckObj.SetActive(false);
+		}
+	}
 }

@@ -74,7 +74,10 @@ public class QuestBar : MonoBehaviour
 			AchieveBtn.gameObject.SetActive(false);
 			DisPatchBtn.gameObject.SetActive(true);
 			DisPatchBtn.onClick.RemoveAllListeners();
-			DisPatchBtn.onClick.AddListener(() => { });
+			DisPatchBtn.onClick.AddListener(() => 
+			{
+				DialogManager.Ins.OpenQuestInfo(data);
+			});
 		}
 	}
 

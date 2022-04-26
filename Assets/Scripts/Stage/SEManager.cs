@@ -301,7 +301,7 @@ public class SEManager : MonoSingleton<SEManager>
 						{
 							for(int k = 0; k < HeroBase.Heroes.Count; k++)
 							{
-								if(HeroBase.Heroes[k].Data.SlotNo == int.Parse(chart.CParam2[i], System.Globalization.CultureInfo.InvariantCulture))
+								if(HeroBase.Heroes[k].Data.SlotNo == int.Parse(chart.CParam2[i]))
 								{
 									switch (chart.CParam3)
 									{
@@ -330,15 +330,15 @@ public class SEManager : MonoSingleton<SEManager>
 											switch (chart.CParam4)
 											{
 												case "High":
-													if (HeroBase.Heroes[k].Data.Grade >= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
+													if (HeroBase.Heroes[k].Data.Grade >= int.Parse(chart.CParam5))
 														count++;
 													break;
 												case "Low":
-													if (HeroBase.Heroes[k].Data.Grade <= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
+													if (HeroBase.Heroes[k].Data.Grade <= int.Parse(chart.CParam5))
 														count++;
 													break;
 												default:
-													if (HeroBase.Heroes[k].Data.Grade == int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
+													if (HeroBase.Heroes[k].Data.Grade == int.Parse(chart.CParam5))
 														count++;
 													break;
 											}											

@@ -18,19 +18,17 @@ public class HeroIcon : MonoBehaviour
 	public HeroData Data;
 	Material selectedFrameMat;
 	Material iconImgMat;
-
-	private void Awake()
-	{
-		Image selectedFrameImg = SelectedFrame.GetComponent<Image>();
-		selectedFrameImg.material = new Material(selectedFrameImg.material);
-		selectedFrameMat = selectedFrameImg.material;
-
-		IconImg.material = new Material(IconImg.material);
-		iconImgMat = IconImg.material;
-	}
+	public bool Dispatched = false;
 
 	public void Setup(HeroData data, Action<HeroData> action = null)
 	{
+		Image selectedFrameImg = SelectedFrame.GetComponent<Image>();
+		selectedFrameImg.material = new Material(selectedFrameImg.materialForRendering);
+		selectedFrameMat = selectedFrameImg.materialForRendering;
+
+		IconImg.material = new Material(IconImg.materialForRendering);
+		iconImgMat = IconImg.materialForRendering;
+
 		Data = data;
 		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
 		HeroChart chart = null;
@@ -50,9 +48,32 @@ public class HeroIcon : MonoBehaviour
 		SetLock(data.IsOwn);
 	}
 
-	public void Setup(HeroData data, int slotNo, Action<HeroData> action = null)
+	public void Setup(HeroData data, HeroIcon icon, Action<HeroIcon, HeroData> action = null)
 	{
+		Image selectedFrameImg = SelectedFrame.GetComponent<Image>();
+		selectedFrameImg.material = new Material(selectedFrameImg.materialForRendering);
+		selectedFrameMat = selectedFrameImg.materialForRendering;
 
+		IconImg.material = new Material(IconImg.materialForRendering);
+		iconImgMat = IconImg.materialForRendering;
+
+		Data = data;
+		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
+		HeroChart chart = null;
+
+		for (int i = 0; i < chartList.Count; i++)
+		{
+			if (chartList[i].Grade == data.Grade)
+				chart = chartList[i];
+		}
+
+
+		Btn.onClick.RemoveAllListeners();
+		Btn.onClick.AddListener(() => { if (action != null) action(this, data); });
+
+		SetIcon(chart);
+		SetStars(chart.Grade);
+		SetLock(data.IsOwn);
 	}
 
 	void SetIcon(HeroChart chart)
@@ -66,12 +87,12 @@ public class HeroIcon : MonoBehaviour
 	{
 		if (!isOpen)
 		{
-			iconImgMat.EnableKeyword("GREYSCALE_ON");			
+			IconGreyScale(true);
 			LockIcon.SetActive(true);
 		}
 		else
 		{
-			iconImgMat.DisableKeyword("GREYSCALE_ON");
+			IconGreyScale(false);
 			LockIcon.SetActive(false);
 		}
 	}
@@ -98,20 +119,31 @@ public class HeroIcon : MonoBehaviour
 		SelectedFrame.SetActive(false);
 	}
 
+	public void IconGreyScale(bool on)
+	{
+		if (on)
+		{
+			iconImgMat.EnableKeyword("GREYSCALE_ON");
+		}
+		else
+		{
+			iconImgMat.DisableKeyword("GREYSCALE_ON");
+		}
+	}
+
 	public void DiasbleBtns(bool lockPanelOff = false)
 	{
 		if (!lockPanelOff)
 		{
-			iconImgMat.EnableKeyword("GREYSCALE_ON");			
-		}
-			
+			IconGreyScale(true);
+		}	
 
 		Btn.enabled = false;
 	}
 
 	public void EnableBtns()
 	{
-		iconImgMat.DisableKeyword("GREYSCALE_ON");		
+		IconGreyScale(false);
 		Btn.enabled = true;
 	}
 
