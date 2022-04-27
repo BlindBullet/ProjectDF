@@ -25,7 +25,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			TimeManager.Ins.GetTime();			
+			StartCoroutine(TimeManager.Ins.GetTime());			
 		}
 	}
 

@@ -8,6 +8,7 @@ public class StageManager : MonoSingleton<StageManager>
 {
 	public PlayerData PlayerData = new PlayerData();
 	public PlayerStat PlayerStat = new PlayerStat();
+	public PlayerUi PlayerUi;
 	public TopBar TopBar;
 	public Transform PlayerLine;
 	public LoseStagePanel LoseStagePanel;
@@ -18,7 +19,7 @@ public class StageManager : MonoSingleton<StageManager>
 	public event UnityAction<double> GoldChanged;
 	public event UnityAction<double> SoulStoneChanged;
 	public event UnityAction<double> MagiciteChanged;
-	public event UnityAction StageChanged;
+	public event UnityAction StageChanged;	
 
 	[HideInInspector]
 	public bool LastEnemiesSpawned;
@@ -343,5 +344,6 @@ public class StageManager : MonoSingleton<StageManager>
 		PlayerData.ChangeMagicite(value);
 		MagiciteChanged(value);
 	}
+
 
 }

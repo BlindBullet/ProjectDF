@@ -215,6 +215,14 @@ public class PlayerData
 		Save();
 	}
 
+	public void CheckAllQuestComplete()
+	{
+		for(int i = 0; i < Quests.Count; i++)
+		{
+			Quests[i].CheckCompelete();
+		}
+	}
+
 	public void Save()
 	{	
 		ES3.Save<PlayerData>("PlayerData", this);

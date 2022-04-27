@@ -6,7 +6,7 @@ using TMPro;
 
 public class DialogQuest : DialogController
 {
-	public static DialogQuest _DialogQuest = null;
+	public static DialogQuest Quest = null;
 
 	public TextMeshProUGUI Title;
 	public TextMeshProUGUI Desc;
@@ -23,10 +23,12 @@ public class DialogQuest : DialogController
 		ResetBtn.onClick.RemoveAllListeners();
 		ResetBtn.onClick.AddListener(() => ResetQuest());
 
+		Quest = this;
+
 		Show(true);
 	}
 
-	void SetQuests()
+	public void SetQuests()
 	{
 		for(int i = 0; i < QuestBars.Length; i++)
 		{
@@ -40,5 +42,10 @@ public class DialogQuest : DialogController
 		SetQuests();
 	}
 
+	private void OnDisable()
+	{
+		StageManager.Ins.PlayerUi.SetQuestNotify();
+		Quest = null;
+	}
 
 }

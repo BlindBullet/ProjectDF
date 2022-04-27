@@ -17,22 +17,30 @@ public class DialogQuestInfo : DialogController
 	public Transform HeroListTrf;
 	public List<HeroData> DispatchHeroes = new List<HeroData>();
 	public List<HeroIcon> HeroIcons = new List<HeroIcon>();
+	bool fillCondition = false;
+	QuestChart chart = null;
+	QuestData data = null;
 
 	public void OpenDialog(QuestData data)
 	{
-		QuestChart chart = CsvData.Ins.QuestChart[data.Id];
+		this.data = data;
+		this.chart = CsvData.Ins.QuestChart[data.Id];
 		Title.text = LanguageManager.Ins.SetString(chart.Name);
 		RewardIcon.SetIcon(chart);
 
-		SetEmptyIcons(chart);
-		SetConditions(chart);
+		SetEmptyIcons();
+		SetConditions();
 		SetHeroes();
 
+		DispatchBtn.onClick.RemoveAllListeners();
+		DispatchBtn.onClick.AddListener(() => StartCoroutine(RunDispatch()));
+
+		fillCondition = false;
 		QuestInfo = this;
 		Show(false);
 	}
 
-	void SetEmptyIcons(QuestChart chart)
+	void SetEmptyIcons()
 	{
 		for(int i = 0; i < chart.NeedAttr.Length; i++)
 		{
@@ -41,7 +49,7 @@ public class DialogQuestInfo : DialogController
 		}
 	}
 
-	void SetConditions(QuestChart chart)
+	void SetConditions()
 	{
 		if(chart.NeedGradeCount > 0)
 		{
@@ -130,18 +138,79 @@ public class DialogQuestInfo : DialogController
 	public void AddDispatchHero(HeroData data)
 	{
 		DispatchHeroes.Add(data);
-
+		CheckCondition();
 	}
 
 	public void RemoveDispatchHero(HeroData data)
 	{
 		DispatchHeroes.Remove(data);
+		CheckCondition();
 	}
 
+	void CheckCondition()
+	{		
+		bool[] fillAttrCon = new bool[chart.NeedAttr.Length];
+		int fillGradeCount = 0;
+		
+		for(int i = 0; i < chart.NeedAttr.Length; i++)
+		{
+			AttrIcons[i].Check(false);
+			fillAttrCon[i] = false;
+		}
 
-	void RunDispatch()
+		for(int i = 0; i < DispatchHeroes.Count; i++)
+		{
+			if(DispatchHeroes[i].Grade >= chart.NeedGrade)
+			{
+				fillGradeCount++;
+			}
+
+			HeroChart heroChart = CsvData.Ins.HeroChart[DispatchHeroes[i].Id][DispatchHeroes[i].Grade];
+
+			for(int k = 0; k < chart.NeedAttr.Length; k++)
+			{
+				if(chart.NeedAttr[k] == heroChart.Attr)
+				{
+					fillAttrCon[k] = true;
+					AttrIcons[k].Check(true);
+					break;
+				}
+			}
+		}
+
+		GradeIcon.SetCountText(fillGradeCount, chart.NeedGradeCount);
+
+		fillCondition = true;
+
+		if (fillGradeCount < chart.NeedGradeCount)
+		{
+			fillCondition = false;
+		}
+
+		for (int i = 0; i < fillAttrCon.Length; i++)
+		{
+			if (fillAttrCon[i] == false)
+			{
+				fillCondition = false;
+				break;
+			}
+		}
+	}
+
+	IEnumerator RunDispatch()
 	{
+		if (fillCondition)
+		{			
+			yield return StartCoroutine(TimeManager.Ins.GetTime());
 
+			data.Dispatch(TimeManager.Ins.ReceivedTime, DispatchHeroes);
+			DialogQuest.Quest.SetQuests();
+			CloseDialog();
+		}
+		else
+		{
+			Debug.Log("조건을 충족하지 못함.");
+		}
 	}
 
 	private void OnDisable()

@@ -14,12 +14,12 @@ public class TimeManager : MonoSingleton<TimeManager>
 
 	void Start()
 	{
-		GetTime();
+		StartCoroutine(GetTime());
 	}
 
-	public void GetTime()
+	public IEnumerator GetTime()
 	{
-		StartCoroutine(WebChk());
+		yield return StartCoroutine(WebChk());
 
 		if (cTimer != null)
 			StopCoroutine(cTimer);

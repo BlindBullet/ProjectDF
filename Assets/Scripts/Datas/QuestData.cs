@@ -28,4 +28,31 @@ public class QuestData
 		IsComplete = false;
 		DispatchHeroes.Clear();
 	}
+
+	public void Dispatch(DateTime startTime, List<HeroData> heroes)
+	{
+		IsDiapatch = true;
+		StartTime = startTime;
+		
+		for(int i = 0; i < heroes.Count; i++)
+		{
+			DispatchHeroes.Add(heroes[i].Id);
+		}
+	}
+
+	public void CheckCompelete()
+	{
+		if (!IsDiapatch)
+			return;
+
+		QuestChart chart = CsvData.Ins.QuestChart[Id];
+
+		double totalTime = chart.Time * 60f;
+		TimeSpan timeSpan = TimeManager.Ins.ReceivedTime - StartTime;
+		double progressTime = timeSpan.TotalSeconds + TimeManager.Ins.SinceTime;
+
+		if (progressTime >= totalTime)
+			IsComplete = true;
+	}
+
 }

@@ -39,23 +39,25 @@ public class QuestBar : MonoBehaviour
 		if (data.IsDiapatch)
 		{
 			if (data.IsComplete)
-			{	
+			{				
 				QuestTimeText.gameObject.SetActive(false);
 				QuestProgressBar.SetActive(false);
+				DisPatchBtn.gameObject.SetActive(false);
 
 				AchieveBtn.gameObject.SetActive(true);
 				AchieveBtn.onClick.RemoveAllListeners();
 				AchieveBtn.onClick.AddListener(() => 
-				{ 
-
+				{
+					QuestManager.Ins.ClearQuest(data);
+					DialogQuest.Quest.SetQuests();
 				});
 			}
 			else
 			{
 				QuestProgressBar.SetActive(true);
 				QuestTimeText.gameObject.SetActive(false);
-				DateTime startTime = data.StartTime;
-				TimeSpan timeSpan = startTime - DateTime.Now;
+				DateTime startTime = data.StartTime;				
+				TimeSpan timeSpan = DateTime.UtcNow - startTime;
 				StartCoroutine(TimeProgress(chart.Time, timeSpan));
 
 				AchieveBtn.gameObject.SetActive(false);
@@ -84,14 +86,14 @@ public class QuestBar : MonoBehaviour
 	IEnumerator TimeProgress(int totalMin, TimeSpan timeSpan)
 	{
 		double totalSec = totalMin * 60f;
-		double progressSec = timeSpan.TotalSeconds;
-
+		double progressSec = totalSec - timeSpan.TotalSeconds;
+		
 		while (true)
-		{	
+		{
 			int hour = (int)(progressSec / 3600f);
 			int min = (int)((progressSec % 3600f) / 60f);
 			int sec = (int)((progressSec % 3600f) % 60f);
-
+			
 			string hourStr = hour < 10 ? "0" + hour : hour.ToString();
 			string minStr = min < 10 ? "0" + min : min.ToString();
 			string secStr = sec < 10 ? "0" + sec : sec.ToString();

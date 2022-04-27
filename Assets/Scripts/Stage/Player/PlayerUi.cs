@@ -24,6 +24,7 @@ public class PlayerUi : MonoBehaviour
 		AscensionBtn.onClick.AddListener(() => DialogManager.Ins.OpenAscension());
 
 		StageManager.Ins.StageChanged += SetAscensionNotify;
+		StageManager.Ins.StageChanged += SetQuestNotify;
 
 		SetAscensionNotify();
 
@@ -43,6 +44,29 @@ public class PlayerUi : MonoBehaviour
 		}
 	}
 
+	public void SetQuestNotify()
+	{
+		StageManager.Ins.PlayerData.CheckAllQuestComplete();
 
+		bool isOn = false;
+
+		for(int i = 0; i < StageManager.Ins.PlayerData.Quests.Count; i++)
+		{
+			if (StageManager.Ins.PlayerData.Quests[i].IsComplete)
+			{
+				isOn = true;
+				break;
+			}	
+		}
+
+		if (isOn)
+		{
+			QuestNotify.SetActive(true);
+		}
+		else
+		{
+			QuestNotify.SetActive(false);
+		}
+	}
 
 }
