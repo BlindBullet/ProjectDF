@@ -33,7 +33,8 @@ public class QuestData
 	{
 		IsDiapatch = true;
 		StartTime = startTime;
-		
+		Debug.Log(startTime);
+
 		for(int i = 0; i < heroes.Count; i++)
 		{
 			DispatchHeroes.Add(heroes[i].Id);

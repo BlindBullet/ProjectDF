@@ -16,16 +16,48 @@ public class RewardIcon : MonoBehaviour
 
 		switch (chart.RewardType)
 		{
-			case QuestReward.Gold:
+			case RewardType.Gold:
 				Amount.text = chart.RewardValue + LanguageManager.Ins.SetString("Minute");
 				break;
-			case QuestReward.GameSpeed:
+			case RewardType.GameSpeed:
 				Amount.text = chart.RewardValue + LanguageManager.Ins.SetString("Minute");
 				break;
-			case QuestReward.SoulStone:								
+			case RewardType.SoulStone:								
 				Amount.text = chart.RewardValue.ToString();
 				break;
 		}
 	}
 
+	public void SetIcon(RewardType type, double value, RewardValueShowType valueShowType = RewardValueShowType.Time)
+	{
+		IconImg.sprite = Resources.Load<Sprite>("Sprites/Cost/" + type.ToString());
+
+		switch (type)
+		{
+			case RewardType.Gold:
+				if(valueShowType == RewardValueShowType.Time)
+				{
+					Amount.text = value + LanguageManager.Ins.SetString("Minute");
+				}
+				else if(valueShowType == RewardValueShowType.CalcValue)
+				{
+					Amount.text = value.ToCurrencyString();
+				}
+				break;
+			case RewardType.GameSpeed:
+				Amount.text = value + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.SoulStone:
+				Amount.text = value.ToString();
+				break;
+		}
+	}
+
+
+}
+
+public enum RewardValueShowType
+{
+	Time,
+	CalcValue,
 }

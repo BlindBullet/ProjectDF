@@ -16,6 +16,8 @@ public static class ConstantData
 	public static ObscuredDouble AscensionBasicReward = 50f;
 	public static ObscuredFloat AscensionRewardFactor = 1.1f;
 	public static ObscuredInt[] QuestLvPerClearCount = { 5, 20, 40, 60, 80, 100, 150,  };
+	public static ObscuredDouble TimeGold = 10f;
+	public static ObscuredInt KillEnemiesCount1Min = 15;
 
 	public static double GetLvUpCost(int lv)
 	{
@@ -60,6 +62,12 @@ public static class ConstantData
 	{
 		return currentGrade * 100f;
 	}
+
+	public static double GetGoldFromTime(float min, int stageNo)
+	{
+		return CalcValue(TimeGold, EnemyGoldGR, stageNo) * KillEnemiesCount1Min * min;
+	}
+
 
 	static double CalcValue(double beginValue, float growthRate, int lv)
 	{

@@ -22,13 +22,7 @@ public class HeroIcon : MonoBehaviour
 
 	public void Setup(HeroData data, Action<HeroData> action = null)
 	{
-		Image selectedFrameImg = SelectedFrame.GetComponent<Image>();
-		selectedFrameImg.material = new Material(selectedFrameImg.materialForRendering);
-		selectedFrameMat = selectedFrameImg.materialForRendering;
-
-		IconImg.material = new Material(IconImg.materialForRendering);
-		iconImgMat = IconImg.materialForRendering;
-
+		SetShader();
 		Data = data;
 		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
 		HeroChart chart = null;
@@ -50,13 +44,7 @@ public class HeroIcon : MonoBehaviour
 
 	public void Setup(HeroData data, HeroIcon icon, Action<HeroIcon, HeroData> action = null)
 	{
-		Image selectedFrameImg = SelectedFrame.GetComponent<Image>();
-		selectedFrameImg.material = new Material(selectedFrameImg.materialForRendering);
-		selectedFrameMat = selectedFrameImg.materialForRendering;
-
-		IconImg.material = new Material(IconImg.materialForRendering);
-		iconImgMat = IconImg.materialForRendering;
-
+		SetShader();
 		Data = data;
 		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
 		HeroChart chart = null;
@@ -74,6 +62,19 @@ public class HeroIcon : MonoBehaviour
 		SetIcon(chart);
 		SetStars(chart.Grade);
 		SetLock(data.IsOwn);
+	}
+
+	void SetShader()
+	{
+		Image selectedFrameImg = SelectedFrame.GetComponent<Image>();
+		selectedFrameImg.material = new Material(selectedFrameImg.materialForRendering);
+		selectedFrameMat = selectedFrameImg.materialForRendering;
+
+		IconImg.material = new Material(IconImg.materialForRendering);
+		iconImgMat = IconImg.materialForRendering;
+
+		iconImgMat.DisableKeyword("GREYSCALE_ON");
+		selectedFrameMat.DisableKeyword("SHINE_ON");
 	}
 
 	void SetIcon(HeroChart chart)

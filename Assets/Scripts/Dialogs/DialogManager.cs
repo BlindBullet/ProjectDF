@@ -73,5 +73,11 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogQuestInfo>().OpenDialog(data);
 	}
 
+	public void OpenReceiveReward(RewardType type, double value)
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogReceiveReward") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogReceiveReward>().OpenDialog(type, value);
+	}
+
 
 }

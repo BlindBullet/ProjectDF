@@ -16,9 +16,11 @@ public class QuestBar : MonoBehaviour
 	public TextMeshProUGUI QuestProgressText;
 	public Button AchieveBtn;
 	public Button DisPatchBtn;
+	QuestData data;
 
 	public void SetBar(QuestData data)
 	{
+		this.data = data;
 		QuestChart chart = CsvData.Ins.QuestChart[data.Id];
 		Name.text = LanguageManager.Ins.SetString(chart.Name);
 		RewardIcon.SetIcon(chart);
@@ -58,6 +60,7 @@ public class QuestBar : MonoBehaviour
 				QuestTimeText.gameObject.SetActive(false);
 				DateTime startTime = data.StartTime;				
 				TimeSpan timeSpan = DateTime.UtcNow - startTime;
+				Debug.Log(startTime + "    " + DateTime.UtcNow);
 				StartCoroutine(TimeProgress(chart.Time, timeSpan));
 
 				AchieveBtn.gameObject.SetActive(false);
@@ -86,14 +89,14 @@ public class QuestBar : MonoBehaviour
 	IEnumerator TimeProgress(int totalMin, TimeSpan timeSpan)
 	{
 		double totalSec = totalMin * 60f;
-		double progressSec = totalSec - timeSpan.TotalSeconds;
+		double progressSec = Math.Round(totalSec - timeSpan.TotalSeconds);
 		
 		while (true)
 		{
 			int hour = (int)(progressSec / 3600f);
 			int min = (int)((progressSec % 3600f) / 60f);
 			int sec = (int)((progressSec % 3600f) % 60f);
-			
+
 			string hourStr = hour < 10 ? "0" + hour : hour.ToString();
 			string minStr = min < 10 ? "0" + min : min.ToString();
 			string secStr = sec < 10 ? "0" + sec : sec.ToString();
@@ -102,8 +105,20 @@ public class QuestBar : MonoBehaviour
 			QuestProgressBarFill.fillAmount = (float)((totalSec - progressSec) / totalSec);
 
 			yield return new WaitForSeconds(1f);
-
+						
 			progressSec -= 1f;
+			Debug.Log(progressSec);
+
+			if (progressSec <= 0f)
+			{
+				Debug.Log("a");
+				QuestProgressText.text = hourStr + ":" + minStr + ":" + secStr;
+				QuestProgressBarFill.fillAmount = (float)((totalSec - progressSec) / totalSec);
+
+				StageManager.Ins.PlayerData.CheckAllQuestComplete();
+				SetBar(data);
+				yield break;
+			}
 		}
 	}
 

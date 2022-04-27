@@ -15,6 +15,7 @@ public class DialogQuest : DialogController
 
 	public void OpenDialog()
 	{
+		StageManager.Ins.PlayerData.CheckAllQuestComplete();
 		Title.text = LanguageManager.Ins.SetString("popup_quest_title");
 		Desc.text = LanguageManager.Ins.SetString("popup_quest_desc");
 
@@ -43,7 +44,7 @@ public class DialogQuest : DialogController
 	}
 
 	private void OnDisable()
-	{
+	{	
 		StageManager.Ins.PlayerUi.SetQuestNotify();
 		Quest = null;
 	}

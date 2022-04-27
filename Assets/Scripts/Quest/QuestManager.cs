@@ -24,7 +24,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 	{
 		//보상 전달
 		QuestChart _chart = CsvData.Ins.QuestChart[data.Id];
-		SendQuestReward(_chart);
+		SendReward(_chart);
 
 		//퀘스트를 새로운 퀘스트로 체인지
 		QuestChart chart = LotteryQuests()[0];
@@ -33,8 +33,25 @@ public class QuestManager : MonoSingleton<QuestManager>
 		StageManager.Ins.PlayerData.Save();
 	}
 
-	void SendQuestReward(QuestChart chart)
+	void SendReward(QuestChart chart)
 	{
+		double rewardValue = chart.RewardValue;
+
+		switch (chart.RewardType)
+		{
+			case RewardType.Gold:
+				rewardValue = ConstantData.GetGoldFromTime(chart.RewardValue, StageManager.Ins.PlayerData.Stage);
+				StageManager.Ins.ChangeGold(rewardValue);
+				break;
+			case RewardType.SoulStone:				
+				StageManager.Ins.ChangeMagicite(chart.RewardValue);
+				break;
+			case RewardType.GameSpeed:
+				
+				break;
+		}
+
+		DialogManager.Ins.OpenReceiveReward(chart.RewardType, rewardValue);
 
 	}
 
@@ -43,36 +60,25 @@ public class QuestManager : MonoSingleton<QuestManager>
 		int lv = GetQuestLevel();
 		List<QuestChart> questList = new List<QuestChart>();
 
-		if(lv == 1)
+		foreach (KeyValuePair<string, QuestChart> elem in CsvData.Ins.QuestChart)
 		{
-			foreach(KeyValuePair<string, QuestChart> elem in CsvData.Ins.QuestChart)
+			if(elem.Value.Lv == lv || elem.Value.Lv == lv - 1)
 			{
-				if (elem.Value.Lv == 1)
+				bool alreadyHave = false;
+
+				for(int i = 0; i < StageManager.Ins.PlayerData.Quests.Count; i++)
+				{
+					if (elem.Value.Id == StageManager.Ins.PlayerData.Quests[i].Id)
+					{
+						alreadyHave = true;
+						break;
+					}	
+				}
+
+				if(!alreadyHave)
 					questList.Add(elem.Value);
 			}
-		}
-		else
-		{
-			foreach (KeyValuePair<string, QuestChart> elem in CsvData.Ins.QuestChart)
-			{
-				if(elem.Value.Lv == lv || elem.Value.Lv == lv - 1)
-				{
-					bool alreadyHave = false;
-
-					for(int i = 0; i < StageManager.Ins.PlayerData.Quests.Count; i++)
-					{
-						if (elem.Value.Id == StageManager.Ins.PlayerData.Quests[i].Id)
-						{
-							alreadyHave = true;
-							break;
-						}	
-					}
-
-					if(!alreadyHave)
-						questList.Add(elem.Value);
-				}
-			}
-		}
+		}		
 
 		questList = Shuffle.ShuffleList(questList);
 		return questList;

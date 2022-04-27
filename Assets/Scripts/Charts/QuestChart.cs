@@ -11,12 +11,12 @@ public class QuestChart
     public int NeedGrade { get; set; }
     public int NeedGradeCount { get; set; }
     public Attr[] NeedAttr { get; set; }
-    public QuestReward RewardType { get; set; }
+    public RewardType RewardType { get; set; }
     public float RewardValue { get; set; }
 
 }
 
-public enum QuestReward
+public enum RewardType
 {
     None,
     Gold,

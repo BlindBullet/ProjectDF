@@ -611,6 +611,7 @@ MonoBehaviour:
     Grade: 0
     IsOwn: 0
     SlotNo: 0
+  Dispatched: 0
 --- !u!114 &3958707939493989932
 MonoBehaviour:
   m_ObjectHideFlags: 0
