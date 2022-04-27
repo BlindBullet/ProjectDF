@@ -59,8 +59,8 @@ public class QuestBar : MonoBehaviour
 				QuestProgressBar.SetActive(true);
 				QuestTimeText.gameObject.SetActive(false);
 				DateTime startTime = data.StartTime;				
-				TimeSpan timeSpan = DateTime.UtcNow - startTime;				
-				StartCoroutine(TimeProgress(chart.Time, timeSpan));
+				TimeSpan timeSpan = TimeManager.Ins.ReceivedTime - startTime;				
+				StartCoroutine(TimeProgress(chart.Time, timeSpan.TotalSeconds + TimeManager.Ins.SinceTime));
 
 				AchieveBtn.gameObject.SetActive(false);
 				DisPatchBtn.gameObject.SetActive(false);
@@ -85,10 +85,10 @@ public class QuestBar : MonoBehaviour
 		}
 	}
 
-	IEnumerator TimeProgress(int totalMin, TimeSpan timeSpan)
+	IEnumerator TimeProgress(int totalMin, double progressSec)
 	{
 		double totalSec = totalMin * 60f;
-		double progressSec = Math.Round(totalSec - timeSpan.TotalSeconds);
+		progressSec = Math.Round(totalSec - progressSec);
 		
 		while (true)
 		{

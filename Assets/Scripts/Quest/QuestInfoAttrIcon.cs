@@ -8,23 +8,23 @@ public class QuestInfoAttrIcon : MonoBehaviour
 {
 	public Image AttrImg;
 	public GameObject CheckObj;
-	public Attr Attr;
+	public Attr Attr;	
 
 	public void SetIcon(Attr attr)
 	{
 		AttrImg.sprite = Resources.Load<Sprite>("Sprites/Icons/" + attr.ToString());
-		Attr = attr;
+		Attr = attr;		
 		CheckObj.SetActive(false);
 	}
 
 	public void Check(bool isCheck)
 	{
 		if (isCheck)
-		{
+		{			
 			CheckObj.SetActive(true);
 		}
 		else
-		{
+		{		
 			CheckObj.SetActive(false);
 		}
 	}

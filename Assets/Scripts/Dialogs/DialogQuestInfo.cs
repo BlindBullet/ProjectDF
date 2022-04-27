@@ -169,7 +169,7 @@ public class DialogQuestInfo : DialogController
 
 			for(int k = 0; k < chart.NeedAttr.Length; k++)
 			{
-				if(chart.NeedAttr[k] == heroChart.Attr)
+				if(chart.NeedAttr[k] == heroChart.Attr && !fillAttrCon[k])
 				{
 					fillAttrCon[k] = true;
 					AttrIcons[k].Check(true);

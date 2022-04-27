@@ -32,8 +32,7 @@ public class QuestData
 	public void Dispatch(DateTime startTime, List<HeroData> heroes)
 	{
 		IsDiapatch = true;
-		StartTime = startTime;
-		Debug.Log(startTime);
+		StartTime = startTime;		
 
 		for(int i = 0; i < heroes.Count; i++)
 		{
