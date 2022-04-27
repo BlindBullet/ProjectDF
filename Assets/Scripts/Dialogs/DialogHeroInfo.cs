@@ -137,6 +137,13 @@ public class DialogHeroInfo : DialogController
 						HeroIcon.Setup(data);
 						SetButtons(data, chart);
 						DialogHero._DialogHero.SetHeroes();
+						DialogHero._DialogHero.SetDeploySlots();
+						
+						for(int i = 0; i < HeroBase.Heroes.Count; i++)
+						{
+							if (HeroBase.Heroes[i].Data == data)
+								HeroBase.Heroes[i].Ui.SetStars(data.Grade);
+						}
 					}
 				});
 			}

@@ -32,7 +32,7 @@ public class TimeManager : MonoSingleton<TimeManager>
 		UnityWebRequest request = new UnityWebRequest();
 
 		int randNo = UnityEngine.Random.Range(0, urls.Length);
-
+		
 		using (request = UnityWebRequest.Get(urls[randNo]))
 		{
 			yield return request.SendWebRequest();
@@ -46,7 +46,7 @@ public class TimeManager : MonoSingleton<TimeManager>
 			{
 				string date = request.GetResponseHeader("date"); //이곳에서 반송된 데이터에 시간 데이터가 존재				
 				ReceivedTime = DateTime.Parse(date).ToUniversalTime();
-				Debug.Log("UTC " + ReceivedTime);				
+				Debug.Log(urls[randNo] + " UTC " + ReceivedTime);				
 			}
 		}
 	}

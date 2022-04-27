@@ -103,6 +103,7 @@ public class DialogRelicInfo : DialogController
 		{
 			LvUpBtnText.text = LanguageManager.Ins.SetString("Purchase");
 			double cost = chart.Price;
+			LvUpCostText.text = cost.ToCurrencyString();
 
 			if (StageManager.Ins.PlayerData.Magicite >= cost)
 			{

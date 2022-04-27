@@ -823,7 +823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   No: 1
   LvUpBtn: {fileID: 3905213252024919780}
-  GoldIconImg: {fileID: 0}
+  GoldIconImg: {fileID: 3982832581336820120}
   LvObj: {fileID: 3536953746092149817}
   LvText: {fileID: 597387487961812548}
   LvUpBtnText: {fileID: 3377405011552776508}

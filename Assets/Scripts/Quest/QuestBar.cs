@@ -59,8 +59,7 @@ public class QuestBar : MonoBehaviour
 				QuestProgressBar.SetActive(true);
 				QuestTimeText.gameObject.SetActive(false);
 				DateTime startTime = data.StartTime;				
-				TimeSpan timeSpan = DateTime.UtcNow - startTime;
-				Debug.Log(startTime + "    " + DateTime.UtcNow);
+				TimeSpan timeSpan = DateTime.UtcNow - startTime;				
 				StartCoroutine(TimeProgress(chart.Time, timeSpan));
 
 				AchieveBtn.gameObject.SetActive(false);
@@ -106,12 +105,10 @@ public class QuestBar : MonoBehaviour
 
 			yield return new WaitForSeconds(1f);
 						
-			progressSec -= 1f;
-			Debug.Log(progressSec);
+			progressSec -= 1f;			
 
 			if (progressSec <= 0f)
-			{
-				Debug.Log("a");
+			{				
 				QuestProgressText.text = hourStr + ":" + minStr + ":" + secStr;
 				QuestProgressBarFill.fillAmount = (float)((totalSec - progressSec) / totalSec);
 

@@ -48,7 +48,7 @@ public class HeroUi : MonoBehaviour
 		IconBtn.onClick.AddListener(() => me.SkillCon.UseSkill());
 	}
 
-	void SetStars(int grade)
+	public void SetStars(int grade)
 	{
 		for (int i = 0; i < grade; i++)
 		{
