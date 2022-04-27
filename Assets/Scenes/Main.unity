@@ -1035,8 +1035,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2417,6 +2417,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2d198ab7db10145aa01343076050a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &900354566
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Waterfall
+  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - EValue: -0.18
+    - Light: 0.363
+    - TValue: 0.21
+    - _Alpha: 1
+    - _ColorMask: 15
+    - _Distortion: 1.52
+    - _Speed: 1.63
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - Lightcolor: {r: 1, g: 0.019174492, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &912475482
 GameObject:
   m_ObjectHideFlags: 0
@@ -4270,50 +4314,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587395860}
   m_CullTransparentMesh: 1
---- !u!21 &1606819758
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Waterfall
-  m_Shader: {fileID: 4800000, guid: 466d7fbc11190fe4e85de9024e79d4a6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: e70cf4e89425fd7429c94551a14b2ad2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - EValue: -0.18
-    - Light: 0.363
-    - TValue: 0.21
-    - _Alpha: 1
-    - _ColorMask: 15
-    - _Distortion: 1.52
-    - _Speed: 1.63
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - Lightcolor: {r: 1, g: 0.019174492, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1609082850
 GameObject:
   m_ObjectHideFlags: 0
@@ -4820,12 +4820,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 29
+  m_fontSizeMin: 29
+  m_fontSizeMax: 50
   m_fontStyle: 0
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
@@ -5056,11 +5056,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459852337861820113, guid: 855deddf1ae73ff428ee162c8c208924,
-        type: 3}
-      propertyPath: No
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8952812875202406561, guid: 855deddf1ae73ff428ee162c8c208924,
         type: 3}
@@ -5958,7 +5953,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1606819758}
+  - {fileID: 900354566}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6314,7 +6309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50.11K
+  m_text: 99.99AA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c4a2d43c6d389574baa38436a857209f, type: 2}
   m_sharedMaterial: {fileID: 7551340975690478451, guid: c4a2d43c6d389574baa38436a857209f,
@@ -6342,12 +6337,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 29
+  m_fontSizeMin: 35
+  m_fontSizeMax: 50
   m_fontStyle: 0
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
