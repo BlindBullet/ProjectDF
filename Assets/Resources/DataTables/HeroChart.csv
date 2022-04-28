@@ -1,9 +1,9 @@
 ﻿Id,StrName,StrDesc,Model,Attr,Grade,Atk,Spd,Range,BasicAttack,Skill,CollectionEffect,CEDesc,CostType,Cost
 10001,str_name_10001,str_desc_10001,f001,Red,1,10,1,13,Attack1,Skill1,TestSE1,str_desc_ce_10001,,
-10001,str_name_10001,str_desc_10001,f001,Red,2,10,1,13,Attack1,Skill1,TestSE2,str_desc_ce_10001,,
-10001,str_name_10001,str_desc_10001,f001,Red,3,10,1,13,Attack1,Skill1,TestSE3,str_desc_ce_10001,,
-10001,str_name_10001,str_desc_10001,f001,Red,4,10,1,13,Attack1,Skill1,TestSE4,str_desc_ce_10001,,
-10001,str_name_10001,str_desc_10001,f001,Red,5,10,1,13,Attack1,Skill1,TestSE5,str_desc_ce_10001,,
+10001,str_name_10001,str_desc_10001,f001,Red,2,11,1,13,Attack1,Skill1,TestSE2,str_desc_ce_10001,,
+10001,str_name_10001,str_desc_10001,f001,Red,3,12,1,13,Attack1,Skill1,TestSE3,str_desc_ce_10001,,
+10001,str_name_10001,str_desc_10001,f001,Red,4,13,1,13,Attack1,Skill1,TestSE4,str_desc_ce_10001,,
+10001,str_name_10001,str_desc_10001,f001,Red,5,14,1,13,Attack1,Skill1,TestSE5,str_desc_ce_10001,,
 10002,str_name_10002,str_desc_10002,f002,Green,1,10,1,13,Attack2,Skill2,TestSE6,str_desc_ce_10002,,
 10002,str_name_10002,str_desc_10002,f002,Green,2,10,1,13,Attack2,Skill2,TestSE7,str_desc_ce_10002,,
 10002,str_name_10002,str_desc_10002,f002,Green,3,10,1,13,Attack2,Skill2,TestSE8,str_desc_ce_10002,,

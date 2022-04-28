@@ -4,6 +4,7 @@ using UnityEngine;
 using CodeStage.AntiCheat.ObscuredTypes;
 using System;
 
+[System.Serializable]
 public class HeroStat
 {    
 	public double Atk;	

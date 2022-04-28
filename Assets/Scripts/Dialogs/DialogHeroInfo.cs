@@ -43,28 +43,33 @@ public class DialogHeroInfo : DialogController
 		upgradeBtnMat = PurchaseBtn.GetComponent<Image>().material;
 		UpgradeBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
 
-		this.data = data;
-		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
-		HeroChart chart = null;
-
-		for(int i = 0; i < chartList.Count; i++)
-		{
-			if (chartList[i].Grade == data.Grade)
-				chart = chartList[i];
-		}
-
-		SetHero(chart);
+		this.data = data;		
 		HeroIcon.Setup(data);
-		SetStat(chart);
-		SetSkill(chart.Skill);
-		SetCE(chart.CollectionEffect, chart);
-		SetButtons(data, chart);
+		SetHeroInfo(data);
 		Show(true);
 	}
 
 	void SetHero(HeroChart chart)
 	{
 		HeroName.text = LanguageManager.Ins.SetString(chart.StrName);
+	}
+
+	void SetHeroInfo(HeroData data)
+	{
+		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
+		HeroChart chart = null;
+
+		for (int i = 0; i < chartList.Count; i++)
+		{
+			if (chartList[i].Grade == data.Grade)
+				chart = chartList[i];
+		}
+
+		SetHero(chart);
+		SetStat(chart);
+		SetSkill(chart.Skill);
+		SetCE(chart.CollectionEffect, chart);
+		SetButtons(data, chart);
 	}
 
 	void SetStat(HeroChart chart)
@@ -134,16 +139,11 @@ public class DialogHeroInfo : DialogController
 					if (StageManager.Ins.PlayerData.UpgradeHero(data))
 					{
 						StageManager.Ins.ChangeSoulStone(-cost);
-						HeroIcon.Setup(data);
-						SetButtons(data, chart);
+						HeroIcon.Setup(data);						
 						DialogHero._DialogHero.SetHeroes();
 						DialogHero._DialogHero.SetDeploySlots();
-						
-						for(int i = 0; i < HeroBase.Heroes.Count; i++)
-						{
-							if (HeroBase.Heroes[i].Data == data)
-								HeroBase.Heroes[i].Ui.SetStars(data.Grade);
-						}
+						StageManager.Ins.DeployHero(data, data.SlotNo);
+						SetHeroInfo(data);						
 					}
 				});
 			}
