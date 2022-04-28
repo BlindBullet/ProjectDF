@@ -27,6 +27,11 @@ public class TimeManager : MonoSingleton<TimeManager>
 		cTimer = StartCoroutine(Timer());
 	}
 
+	public DateTime GetCurrentTime()
+	{
+		return ReceivedTime.AddSeconds(SinceTime);
+	}
+
 	IEnumerator WebChk()
 	{
 		UnityWebRequest request = new UnityWebRequest();
@@ -56,17 +61,9 @@ public class TimeManager : MonoSingleton<TimeManager>
 		SinceTime = 0f;
 
 		while (true)
-		{
-			if(Time.timeScale > 0)
-			{
-				yield return new WaitForSeconds(1f / Time.timeScale);
-			}
-			else
-			{
-				yield return null;
-			}
-
-			SinceTime += 1f / Time.timeScale;
+		{				
+			SinceTime += Time.deltaTime / Time.timeScale;			
+			yield return null;
 		}
 	}
 }

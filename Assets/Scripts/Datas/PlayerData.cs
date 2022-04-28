@@ -19,7 +19,8 @@ public class PlayerData
 	public List<HeroData> Heroes = new List<HeroData>();
 	public List<RelicData> Relics = new List<RelicData>();
 	public List<QuestData> Quests = new List<QuestData>();
-	public int ClearQuestCount;
+	public List<PlayerBuffData> PlayerBuffs = new List<PlayerBuffData>();
+	public int ClearQuestCount;	
 
 	public void Init()
 	{
@@ -34,7 +35,7 @@ public class PlayerData
 
 		ResisterHeroes();
 		ResisterRelics();
-		ResisterQuests();
+		ResisterQuests();		
 
 		for (int i = 0; i < 5; i++)
 		{
@@ -223,6 +224,35 @@ public class PlayerData
 		}
 	}
 
+	public void AddBuff(PlayerBuffType type, double durationTime, DateTime startTime)
+	{
+		bool alreadyHave = false;
+
+		for(int i = 0; i < PlayerBuffs.Count; i++)
+		{
+			if (PlayerBuffs[i].Type == type)
+			{
+				alreadyHave = true;
+				PlayerBuffs[i].AddDurationTime(durationTime);
+			}	
+		}
+
+		if (!alreadyHave)
+		{
+			PlayerBuffData data = new PlayerBuffData();
+			data.Init(type, startTime, durationTime);
+			PlayerBuffs.Add(data);
+		}
+
+		Save();
+	}
+
+	public void RemoveBuff(PlayerBuffData data)
+	{
+		PlayerBuffs.Remove(data);
+		Save();
+	}
+
 	public void Save()
 	{	
 		ES3.Save<PlayerData>("PlayerData", this);
@@ -247,6 +277,7 @@ public class PlayerData
 			Relics = data.Relics;
 			Slots = data.Slots;
 			Quests = data.Quests;
+			PlayerBuffs = data.PlayerBuffs;
 
 			ResisterHeroes();
 			ResisterRelics();

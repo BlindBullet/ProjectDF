@@ -5,10 +5,10 @@
 10004,1,str_name_quest_10004,30,,,Red|Red,Gold,30
 10005,1,str_name_quest_10005,30,,,Blue|Blue,Gold,30
 10006,1,str_name_quest_10006,50,2,1,Green|Green,SoulStone,5
-10007,1,str_name_quest_10007,70,,,Blue|Green|Red,GameSpeed,30
+10007,1,str_name_quest_10007,1,,,Blue|Green|Red,GameSpeed,1
 10008,1,str_name_quest_10008,90,2,1,Red|Blue,Gold,30
 10009,1,str_name_quest_10009,110,2,2,Green|Green,SoulStone,5
-10010,1,str_name_quest_10010,130,2,1,Blue|Green|Red,GameSpeed,30
+10010,1,str_name_quest_10010,1,2,1,Blue|Green|Red,GameSpeed,1
 20001,2,str_name_quest_20001,30,,,Red|Blue,Gold,30
 20002,2,str_name_quest_20002,30,,,Green|Red,Gold,30
 20003,2,str_name_quest_20003,30,,,Green|Blue,Gold,30

@@ -47,6 +47,7 @@ public class StageManager : MonoSingleton<StageManager>
 		SetHeroes();
 		
 		SEManager.Ins.Apply();
+		PlayerBuffManager.Ins.RunAllBuffs();
 		StartCoroutine(SetStage(PlayerData.Stage));
 	}
 
@@ -345,5 +346,9 @@ public class StageManager : MonoSingleton<StageManager>
 		MagiciteChanged(value);
 	}
 
+	public void AddPlayerBuff(PlayerBuffType type, double durationTime)
+	{
+		PlayerBuffManager.Ins.AddBuff(type, durationTime);		
+	}
 
 }

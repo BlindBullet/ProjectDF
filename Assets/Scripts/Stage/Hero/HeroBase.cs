@@ -11,7 +11,7 @@ using UnityEngine.Events;
 public class HeroBase : MonoBehaviour
 {
 	public static List<HeroBase> Heroes = new List<HeroBase>();
-	
+		
 	public HeroStat Stat;
 	[HideInInspector] public HeroUi Ui;
 	[HideInInspector] public SkillController SkillCon;

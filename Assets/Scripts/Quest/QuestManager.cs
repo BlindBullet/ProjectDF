@@ -47,7 +47,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 				StageManager.Ins.ChangeMagicite(chart.RewardValue);
 				break;
 			case RewardType.GameSpeed:
-				
+				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GameSpeed, chart.RewardValue);
 				break;
 		}
 
