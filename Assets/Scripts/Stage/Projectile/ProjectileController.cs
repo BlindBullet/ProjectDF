@@ -11,14 +11,14 @@ public class ProjectileController : MonoBehaviour
 	int penCount;
 
 	public void Setup(ProjectileChart data, List<HitresultChart> hitresults, HeroBase caster)
-    {
+	{
 		this.data = data;
 		this.hitresults = hitresults;
 		this.caster = caster;
 		penCount = data.PenCount;
 
 		StartCoroutine(MoveSequence());
-    }
+	}
 
 	IEnumerator MoveSequence()
 	{
@@ -37,12 +37,12 @@ public class ProjectileController : MonoBehaviour
 			time += Time.deltaTime;
 
 			if(time >= data.Lifetime)
-            {
+			{
 				if (data.DestroyFx != null)
 					EffectManager.Ins.ShowFx(data.DestroyFx, this.transform.position);
 
 				if(data.DestroyResultGroupId != null)
-                {
+				{
 					List<ResultGroupChart> destroyResultGroups = CsvData.Ins.ResultGroupChart[data.DestroyResultGroupId];
 					HitresultManager.Ins.RunResultGroup(destroyResultGroups, transform.position, caster);
 				}
@@ -64,13 +64,13 @@ public class ProjectileController : MonoBehaviour
 			HitresultManager.Ins.SendHitresult(hitresults, enemyBase, caster);
 			
 			if (data.HitResultGroupId != null)
-            {
+			{
 				List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitResultGroupId];
 				HitresultManager.Ins.RunResultGroup(hitResultGroups, transform.position, caster);
 			}
 
 			if(penCount == 0)
-            {
+			{
 				if (data.HitDestroyFx != null)
 					EffectManager.Ins.ShowFx(data.HitDestroyFx, this.transform.position);
 
@@ -78,7 +78,7 @@ public class ProjectileController : MonoBehaviour
 					EffectManager.Ins.ShowFx(data.DestroyFx, this.transform.position);
 
 				if (data.DestroyResultGroupId != null)
-                {
+				{
 					List<ResultGroupChart> destroyResultGroups = CsvData.Ins.ResultGroupChart[data.DestroyResultGroupId];
 					HitresultManager.Ins.RunResultGroup(destroyResultGroups, transform.position, caster);
 				}

@@ -1,7 +1,7 @@
 ﻿Id,Name,Desc,Lv,Type,CoolTime,CoolDealy,Anim,BeginFx,OnHit,TotalFrame,FireFrame,ResultGroup
 Attack1,,,1,Attack,,,Attack,,True,30,3,Attack1
 Attack2,,,1,Attack,,,Attack,,True,30,3,Attack2
-Skill1,str_name_Skill1,str_desc_Skill1,1,Active,10,1,Attack,,,6,3,Skill1
+Skill1,str_name_Skill1,str_desc_Skill1,1,Active,10,1,Attack,,,30,5|10|15|20|25|30,Skill1_1|Skill1_2|Skill1_3|Skill1_4|Skill1_5|Skill1_6
 Skill2,str_name_Skill2,str_desc_Skill2,1,Active,10,1,Attack,,,6,3,Skill2
 Skill3,str_name_Skill3,str_desc_Skill3,1,Active,10,1,Attack,,,6,3,Skill3
 Skill4,str_name_Skill4,str_desc_Skill4,1,Active,10,1,Attack,,,6,3,Skill4
