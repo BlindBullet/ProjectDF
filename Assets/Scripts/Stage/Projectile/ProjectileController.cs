@@ -49,8 +49,7 @@ public class ProjectileController : MonoBehaviour
 
 				this.transform.position = new Vector3(0, -100f, 0);
 				ObjectManager.Ins.Push<ProjectileController>(this);
-			}
-				
+			}				
 
 			yield return null;
 		}		

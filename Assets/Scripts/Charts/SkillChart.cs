@@ -8,7 +8,7 @@ public class SkillChart
     public string Name { get; set; }
     public string Desc { get; set; }
     public int Lv { get; set; }
-    public SkillType Type { get; set; }
+    public SkillType Type { get; set; }    
     public float CoolTime { get; set; }
     public float CoolDealy { get; set; }
     public string Anim { get; set; }
@@ -24,5 +24,7 @@ public enum SkillType
 {
     None,
     Attack,
-    Active,
+    Active,    
+    ActiveEnemyTarget,
+
 }

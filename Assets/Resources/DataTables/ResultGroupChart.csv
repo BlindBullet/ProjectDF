@@ -9,6 +9,6 @@ Skill1_5,1,100,Enemy,,,,,,,dmg_100,TestProjectile7
 Skill1_6,1,100,Enemy,,,,,,,dmg_100,TestProjectile8
 Skill2,1,100,Hero,All,,,,,,buff_atk_100p,
 Skill3,1,100,Me,,,,,,,buff_atk_200p,
-Skill4,1,100,Enemy,,,,,,,dmg_100,TestProjectile
-Skill5,1,100,Enemy,,,,,,,dmg_100,TestProjectile
-Explosion,1,100,Enemy,,,Circle,100,1,,dmg_100,
+Skill4,1,100,Enemy,All,,,,,,dmg_100,TestProjectile9
+Skill5,1,100,Enemy,Closest,3,,,,,dmg_100,TestProjectile9
+Explosion,1,100,Enemy,All,,Circle,100,1,,dmg_100,

@@ -67,6 +67,15 @@ public class SkillController : MonoBehaviour
 	{
 		if (Skill.CoolTime < Skill._CoolTime)
 			return;
+
+		if(Skill.Data.Type == SkillType.ActiveEnemyTarget)
+		{
+			if (me.Range.AllTargetColl.Count <= 0 || EnemyBase.Enemies.Count <= 0)
+			{
+				Debug.Log("적이 있을 떄만 사용가능한 스킬입니다.");
+				return;
+			}
+		}		
 		
 		if (cAttack != null)
 		{
@@ -74,11 +83,11 @@ public class SkillController : MonoBehaviour
 			cAttack = null;
 		}
 
-		if(cSkill == null)
+		if (cSkill == null)
 		{
 			cSkill = StartCoroutine(SkillSequence(Skill));
 			Skill.InitCoolTime();
-		}
+		}		
 	}
 
 	IEnumerator SkillSequence(Skill skill)
