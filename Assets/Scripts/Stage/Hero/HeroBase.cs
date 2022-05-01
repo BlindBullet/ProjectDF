@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(AttackRange))]
 [RequireComponent(typeof(SkillController))]
+[RequireComponent(typeof(BuffController))]
 [RequireComponent(typeof(HeroTween))]
 [RequireComponent(typeof(HeroUi))]
 public class HeroBase : MonoBehaviour
@@ -15,6 +16,7 @@ public class HeroBase : MonoBehaviour
 	public HeroStat Stat;
 	[HideInInspector] public HeroUi Ui;
 	[HideInInspector] public SkillController SkillCon;
+	[HideInInspector] public BuffController BuffCon;
 	[HideInInspector] public AttackRange Range;
 	[HideInInspector] public HeroTween Tween;
 	public Transform ProjectileAnchor;
@@ -33,6 +35,9 @@ public class HeroBase : MonoBehaviour
 
 		SkillCon = GetComponent<SkillController>();
 		SkillCon.Init(this, data);
+
+		BuffCon = GetComponent<BuffController>();
+		BuffCon.Init(this);
 
 		Tween = GetComponent<HeroTween>();
 		Tween.SetTween();

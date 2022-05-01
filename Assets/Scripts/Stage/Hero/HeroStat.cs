@@ -51,7 +51,7 @@ public class HeroStat
 	}
 
 	public void CalcStat()
-	{		
+	{
 		Atk = ConstantData.GetHeroAtk(chart.Atk, lv) * (1 + (AtkInc / 100f));
 		Spd = chart.Spd * (1 + (SpdInc / 100f));
 		Range = chart.Range * (1 + (RangeInc / 100f));
