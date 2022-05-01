@@ -539,18 +539,7 @@ public class SEManager : MonoSingleton<SEManager>
 								target.Stat.SpdDec += float.Parse(chart.EParam3);
 								break;
 						}
-						break;
-					case "Range":
-						switch (chart.EParam1)
-						{
-							case "Inc":
-								target.Stat.RangeInc += float.Parse(chart.EParam3);
-								break;
-							case "Dec":
-								target.Stat.RangeDec += float.Parse(chart.EParam3);
-								break;
-						}
-						break;
+						break;					
 					case "CritChance":
 						switch (chart.EParam1)
 						{

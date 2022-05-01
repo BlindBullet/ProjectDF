@@ -12,9 +12,7 @@ public class DialogHeroInfo : DialogController
 	public TextMeshProUGUI AtkTitle;
 	public TextMeshProUGUI Atk;
 	public TextMeshProUGUI SpdTitle;
-	public TextMeshProUGUI Spd;
-	public TextMeshProUGUI RangeTitle;
-	public TextMeshProUGUI Range;
+	public TextMeshProUGUI Spd;	
 	public TextMeshProUGUI SkillName;
 	public TextMeshProUGUI SkillDesc;
 	public TextMeshProUGUI CEName;
@@ -77,9 +75,7 @@ public class DialogHeroInfo : DialogController
 		AtkTitle.text = LanguageManager.Ins.SetString("Atk");
 		Atk.text = ExtensionMethods.ToCurrencyString(chart.Atk);
 		SpdTitle.text = LanguageManager.Ins.SetString("Spd");
-		Spd.text = ExtensionMethods.ToCurrencyString(chart.Spd);
-		RangeTitle.text = LanguageManager.Ins.SetString("Range");
-		Range.text = ExtensionMethods.ToCurrencyString(chart.Range);
+		Spd.text = ExtensionMethods.ToCurrencyString(chart.Spd);		
 	}
 
 	void SetSkill(string id)

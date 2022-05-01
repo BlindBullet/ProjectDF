@@ -8,17 +8,14 @@ using System;
 public class HeroStat
 {    
 	public double Atk;	
-	public float Spd;
-	public float Range;
+	public float Spd;	
 	public float CritChance;
 	public float CritDmg;    
 	public Attr Attr;    
 	public float AtkInc;
 	public float AtkDec;
 	public float SpdInc;
-	public float SpdDec;
-	public float RangeInc;
-	public float RangeDec;
+	public float SpdDec;	
 	public float CooltimeDec;
 	int lv;
 	HeroChart chart = null;
@@ -29,16 +26,13 @@ public class HeroStat
 
 		Atk = chart.Atk;		
 		Attr = chart.Attr;        
-		Spd = chart.Spd;
-		Range = chart.Range;
+		Spd = chart.Spd;		
 		CritChance = 0f;
 		CritDmg = 100f;
 		AtkInc = 0;
 		AtkDec = 0;
 		SpdInc = 0;
-		SpdDec = 0;
-		RangeInc = 0;
-		RangeDec = 0;
+		SpdDec = 0;		
 		CooltimeDec = 0;
 
 		ChangeLv(lv);
@@ -53,8 +47,7 @@ public class HeroStat
 	public void CalcStat()
 	{
 		Atk = ConstantData.GetHeroAtk(chart.Atk, lv) * (1 + (AtkInc / 100f));
-		Spd = chart.Spd * (1 + (SpdInc / 100f));
-		Range = chart.Range * (1 + (RangeInc / 100f));
+		Spd = chart.Spd * (1 + (SpdInc / 100f));		
 	}
 
 }
