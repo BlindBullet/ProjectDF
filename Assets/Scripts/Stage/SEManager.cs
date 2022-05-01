@@ -92,8 +92,8 @@ public class SEManager : MonoSingleton<SEManager>
 		}
 
 		for(int i = 0; i < HeroBase.Heroes.Count; i++)
-		{
-			HeroBase.Heroes[i].Stat.CalcStat();
+		{			
+			HeroBase.Heroes[i].BuffCon.CalcStat();
 		}
 	}
 
@@ -544,10 +544,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.CritChance += float.Parse(chart.EParam3);
+								target.Stat.CritChanceInc += float.Parse(chart.EParam3);
 								break;
 							case "Dec":
-								target.Stat.CritChance -= float.Parse(chart.EParam3);
+								target.Stat.CritChanceDec += float.Parse(chart.EParam3);
 								break;
 						}
 						break;
@@ -555,10 +555,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.CritDmg += float.Parse(chart.EParam3);
+								target.Stat.CritDmgInc += float.Parse(chart.EParam3);
 								break;
 							case "Dec":
-								target.Stat.CritDmg -= float.Parse(chart.EParam3);
+								target.Stat.CritDmgDec += float.Parse(chart.EParam3);
 								break;
 						}
 						break;

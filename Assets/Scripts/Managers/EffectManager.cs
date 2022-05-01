@@ -10,20 +10,20 @@ public class EffectManager : SingletonObject<EffectManager>
 	public GameObject SpawnEffect(string key)
 	{
 		var obj = ObjectManager.Ins.Pop<Transform>(GetEffectPrefab(key)).gameObject;
-        var longest = float.MinValue;
+		var longest = float.MinValue;
 
-        foreach (var elem in obj.GetComponentsInChildren<ParticleSystem>())
-        {
-            if (elem.main.duration > longest && !elem.main.loop)
-            {
-                longest = elem.main.duration;
-            }
-        }
-        if (longest > 0)
-        {
-            StartCoroutine(EffectConditionSequence(obj.transform, longest + 0.01f));
-        }
-        return obj;
+		foreach (var elem in obj.GetComponentsInChildren<ParticleSystem>())
+		{
+			if (elem.main.duration > longest && !elem.main.loop)
+			{
+				longest = elem.main.duration;
+			}
+		}
+		if (longest > 0)
+		{
+			StartCoroutine(EffectConditionSequence(obj.transform, longest + 0.01f));
+		}
+		return obj;
 	}
 
 	public GameObject SpawnEffect(string key, float duration)
@@ -61,42 +61,42 @@ public class EffectManager : SingletonObject<EffectManager>
 		yield return new WaitForSeconds(duration);
 		trf.PushToPool();
 	}
-		
-	//public void ShowFx(string id, CharacterAnchor targetAnchor)
-	//{
-	//	if (!LoadData.Ins.FxData.ContainsKey(id))
-	//	{
-	//		Debug.Log("FxData 테이블에는 해당 " + id + "가 없습니다.");
-	//		return;
-	//	}
 
-	//	FxData fxData = LoadData.Ins.FxData[id];
-	//	GameObject fx = SpawnEffect(fxData.FxResource);
-				
-	//	if(fxData.SpawnAnchor == "" || fxData.SpawnAnchor == "None")
-	//	{
-	//		fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
-	//	}
-	//	else
-	//	{
-	//		Transform fxTrf = targetAnchor.GetAnchor(fxData.SpawnAnchor);
+	public void ShowFx(string id, CharacterAnchor targetAnchor)
+	{
+		if (!CsvData.Ins.FxChart.ContainsKey(id))
+		{
+			Debug.Log("FxData 테이블에는 해당 " + id + "가 없습니다.");
+			return;
+		}
 
-	//		if (fxData.Binding)
-	//		{
-	//			fx.transform.position = fxTrf.position;
-	//			fx.transform.SetParent(fxTrf.transform);
-	//			fx.transform.position = new Vector3(fx.transform.position.x + fxData.SpawnPosX, fx.transform.position.y + fxData.SpawnPosY, fx.transform.position.z);
-	//		}
-	//		else
-	//		{
-	//			fx.transform.position = fxTrf.position;
-	//			fx.transform.position = new Vector3(fx.transform.position.x + fxData.SpawnPosX, fx.transform.position.y + fxData.SpawnPosY, fx.transform.position.z);
-	//		}
-	//	}
+		FxChart fxData = CsvData.Ins.FxChart[id];
+		GameObject fx = SpawnEffect(fxData.FxResource);
 
-	//	if (fxData.SoundResource != "")
-	//		SoundManager.Ins.PlaySFX(fxData.SoundResource);
-	//}
+		if (fxData.SpawnAnchor == "" || fxData.SpawnAnchor == "None")
+		{
+			fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
+		}
+		else
+		{
+			Transform fxTrf = targetAnchor.GetAnchor(fxData.SpawnAnchor);
+
+			if (fxData.Binding)
+			{
+				fx.transform.position = fxTrf.position;
+				fx.transform.SetParent(fxTrf.transform);
+				fx.transform.position = new Vector3(fx.transform.position.x + fxData.SpawnPosX, fx.transform.position.y + fxData.SpawnPosY, fx.transform.position.z);
+			}
+			else
+			{
+				fx.transform.position = fxTrf.position;
+				fx.transform.position = new Vector3(fx.transform.position.x + fxData.SpawnPosX, fx.transform.position.y + fxData.SpawnPosY, fx.transform.position.z);
+			}
+		}
+
+		if (fxData.SoundResource != "")
+			SoundManager.Ins.PlaySFX(fxData.SoundResource);
+	}
 
 	public void ShowFx(string id, Transform fxTrf)
 	{
@@ -133,7 +133,7 @@ public class EffectManager : SingletonObject<EffectManager>
 	}
 
 	public void ShowFx(string id, Vector3 pos)
-    {
+	{
 		if (!CsvData.Ins.FxChart.ContainsKey(id))
 		{
 			Debug.Log("FxData 테이블에는 해당 " + id + "가 없습니다.");

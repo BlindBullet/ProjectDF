@@ -43,9 +43,10 @@ public enum StatType
 {
     None,
     Atk,
+    Spd,
     MaxHp,
     CurHp,
-    CritRate,
+    CritChance,
     CritDmg,
 
 }

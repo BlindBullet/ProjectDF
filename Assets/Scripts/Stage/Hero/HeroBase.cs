@@ -9,6 +9,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(BuffController))]
 [RequireComponent(typeof(HeroTween))]
 [RequireComponent(typeof(HeroUi))]
+[RequireComponent(typeof(CharacterAnchor))]
 public class HeroBase : MonoBehaviour
 {
 	public static List<HeroBase> Heroes = new List<HeroBase>();
@@ -19,6 +20,7 @@ public class HeroBase : MonoBehaviour
 	[HideInInspector] public BuffController BuffCon;
 	[HideInInspector] public AttackRange Range;
 	[HideInInspector] public HeroTween Tween;
+	public CharacterAnchor Anchor;
 	public Transform ProjectileAnchor;
 	public HeroData Data;
 

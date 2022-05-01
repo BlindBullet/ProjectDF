@@ -49,7 +49,7 @@ public class EnemyBase : MonoBehaviour
 		float scaleX = Model.transform.localScale.x;
 
 		while (true)
-		{	
+		{
 			Vector3 dir = Vector3.down;
 			float xSpd = 0f;
 			Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));

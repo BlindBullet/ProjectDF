@@ -15,7 +15,11 @@ public class HeroStat
 	public float AtkInc;
 	public float AtkDec;
 	public float SpdInc;
-	public float SpdDec;	
+	public float SpdDec;
+	public float CritChanceInc;
+	public float CritChanceDec;
+	public float CritDmgInc;
+	public float CritDmgDec;
 	public float CooltimeDec;
 	int lv;
 	HeroChart chart = null;
@@ -32,7 +36,11 @@ public class HeroStat
 		AtkInc = 0;
 		AtkDec = 0;
 		SpdInc = 0;
-		SpdDec = 0;		
+		SpdDec = 0;
+		CritChanceInc = 0;
+		CritChanceDec = 0;
+		CritDmgInc = 0;
+		CritDmgDec = 0;
 		CooltimeDec = 0;
 
 		ChangeLv(lv);
@@ -47,7 +55,9 @@ public class HeroStat
 	public void CalcStat()
 	{
 		Atk = ConstantData.GetHeroAtk(chart.Atk, lv) * (1 + (AtkInc / 100f));
-		Spd = chart.Spd * (1 + (SpdInc / 100f));		
+		Spd = chart.Spd * (1 + (SpdInc / 100f));
+		CritChance = CritChanceInc - CritChanceDec;
+		CritDmg = CritDmgInc - CritDmgDec;
 	}
 
 }

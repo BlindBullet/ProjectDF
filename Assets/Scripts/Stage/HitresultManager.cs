@@ -172,16 +172,20 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			{
 				if (hitresults[i].HitFx != null)
 				{
-					EffectManager.Ins.ShowFx(hitresults[i].HitFx, target.transform);
+					EffectManager.Ins.ShowFx(hitresults[i].HitFx, target.Anchor);
 				}
-
+								
 				switch (hitresults[i].Type)
 				{
 					case HitType.Buff:
-
+						BuffData buff = new BuffData();
+						buff.SetData(hitresults[i]);
+						target.BuffCon.TakeBuff(buff);
 						break;
 					case HitType.Debuff:
-
+						BuffData debuff = new BuffData();
+						debuff.SetData(hitresults[i]);
+						target.BuffCon.TakeBuff(debuff);
 						break;						
 				}
 			}
