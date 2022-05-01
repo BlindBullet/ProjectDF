@@ -42,7 +42,7 @@ public class SkillController : MonoBehaviour
 	{
 		while (true)
 		{
-			if (me.Range.AllTargetColl.Count > 0 && EnemyBase.Enemies.Count > 0)
+			if (me.Range.Targets.Count > 0 && EnemyBase.Enemies.Count > 0)
 			{
 				if (cSkill == null)
 				{                    
@@ -70,7 +70,7 @@ public class SkillController : MonoBehaviour
 
 		if(Skill.Data.Type == SkillType.ActiveEnemyTarget)
 		{
-			if (me.Range.AllTargetColl.Count <= 0 || EnemyBase.Enemies.Count <= 0)
+			if (me.Range.Targets.Count <= 0 || EnemyBase.Enemies.Count <= 0)
 			{
 				Debug.Log("적이 있을 떄만 사용가능한 스킬입니다.");
 				return;
@@ -109,8 +109,8 @@ public class SkillController : MonoBehaviour
 
 		if (data.Anim == "Attack")
 		{
-			if (me.Range.AllTargetColl.Count > 0)
-				me.Tween.Attack(me.Stat.Spd > 1f ? me.Stat.Spd : 1f, me.Range.AllTargetColl[0].GetComponent<EnemyBase>());
+			if (me.Range.Targets.Count > 0)
+				me.Tween.Attack(me.Stat.Spd > 1f ? me.Stat.Spd : 1f, me.Range.Targets[0]);
 		}
 		else
 		{

@@ -70,14 +70,14 @@ public class HeroBase : MonoBehaviour
 	IEnumerator LookTarget()
 	{
 		while (true)
-		{
-			if (Range.AllTargetColl.Count <= 0)
+		{			
+			if (Range.Targets.Count <= 0)
 			{
 				Tween.Icon.rotation = Quaternion.identity;                
 			}
 			else
 			{
-				EnemyBase target = Range.AllTargetColl[0].GetComponent<EnemyBase>();
+				EnemyBase target = Range.Targets[0];
 				Vector3 dir = target.transform.position - Tween.Icon.position;
 				float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 				Tween.Icon.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);

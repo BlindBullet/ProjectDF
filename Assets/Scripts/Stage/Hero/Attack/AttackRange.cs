@@ -3,52 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackRange : MonoBehaviour
-{	
-	Vector3 RadarPos;
-	public float Size;
-	bool isBinding = true;
-	float offsetY = -0.75f;
-
+{		
 	HeroBase heroBase;
 	public bool isTargeting = false;
 	Coroutine cSearch = null;
+		
+	public List<EnemyBase> Targets = new List<EnemyBase>();
 
-	[SerializeField]
-	Collider2D[] allColl;
-	
-	public List<Collider2D> AllTargetColl = new List<Collider2D>();
-
-	public void SetRange(float size)
-	{		
-		this.Size = size;
-	}
-
-	public void CalcRange()
-	{	
-		RadarPos = transform.position.WithY(transform.position.y + offsetY);
-		Vector3 startPos = RadarPos;
-
-		allColl = Physics2D.OverlapCircleAll(startPos, Size);		
-	}
+	Vector2 min;
+	Vector2 max;
 
 	public void SearchTarget()
 	{
-		SetRange(heroBase.Stat.Range);
-		CalcRange();
-		AllTargetColl.Clear();
+		Targets.Clear();
 
-		foreach (Collider2D member in allColl)
-		{	
-			if (member.gameObject.CompareTag("Enemy"))
+		for(int i = 0; i < EnemyBase.Enemies.Count; i++)
+		{
+			if(EnemyBase.Enemies[i].transform.position.x > min.x && EnemyBase.Enemies[i].transform.position.x < max.x
+				&& EnemyBase.Enemies[i].transform.position.y > min.y && EnemyBase.Enemies[i].transform.position.y < max.y)
 			{
-				if (member.GetComponent<EnemyBase>().Stat.CurHp > 0)
-				{					
-					AllTargetColl.Add(member);
-				}
-			}						
+				if(EnemyBase.Enemies[i].Stat.CurHp > 0f)
+					Targets.Add(EnemyBase.Enemies[i]);
+			}
 		}
 
-		AllTargetColl.Sort(delegate (Collider2D A, Collider2D B)
+		Targets.Sort(delegate (EnemyBase A, EnemyBase B)
 		{
 			float distA = Vector3.Distance(transform.position, A.transform.position);
 			float distB = Vector3.Distance(transform.position, B.transform.position);
@@ -64,6 +43,9 @@ public class AttackRange : MonoBehaviour
 	{
 		heroBase = data;
 
+		min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+		max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
 		if (cSearch != null)
 		{
 			StopCoroutine(cSearch);
@@ -78,7 +60,7 @@ public class AttackRange : MonoBehaviour
 		{
 			SearchTarget();
 			
-			if (AllTargetColl.Count > 0)
+			if(Targets.Count > 0)
 			{
 				isTargeting = true;
 			}
@@ -88,7 +70,7 @@ public class AttackRange : MonoBehaviour
 			}
 
 			yield return null;
-		}
+		}		
 	}
 
 	public List<EnemyBase> SearchTarget(ResultGroupChart data, EnemyBase enemy)
@@ -116,11 +98,6 @@ public class AttackRange : MonoBehaviour
 		}
 
 		return result;
-	}
-
-	public void OnDrawGizmos()
-	{
-		Gizmos.DrawWireSphere(transform.position.WithY(transform.position.y + offsetY), Size);
 	}
 
 }

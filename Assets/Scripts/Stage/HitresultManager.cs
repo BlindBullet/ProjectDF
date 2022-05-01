@@ -266,16 +266,16 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 		switch (data.TargetDetail)
 		{
 			case TargetDetail.All:
-				for (int i = 0; i < caster.Range.AllTargetColl.Count; i++)
+				for (int i = 0; i < caster.Range.Targets.Count; i++)
 				{
-					targets.Add(caster.Range.AllTargetColl[i].GetComponent<EnemyBase>());
+					targets.Add(caster.Range.Targets[i]);
 				}
 				break;
 			case TargetDetail.Closest:
 				for (int i = 0; i < data.TargetCount; i++)
 				{
-					if (i < caster.Range.AllTargetColl.Count)
-						targets.Add(caster.Range.AllTargetColl[i].GetComponent<EnemyBase>());
+					if (i < caster.Range.Targets.Count)
+						targets.Add(caster.Range.Targets[i]);
 				}
 				break;
 		}
