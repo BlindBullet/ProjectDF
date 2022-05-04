@@ -100,23 +100,47 @@ public class PlayerData
 		}
 	}
 
-	public bool SummonHero(HeroData data, double cost)
+	public bool SummonHero(HeroData data, HeroChart chart)
 	{
-		if(SoulStone >= cost)
-		{			
+		bool result = false;
+
+		switch (chart.CostType)
+		{
+			case CostType.Gold:
+				if (Gold >= chart.Cost)
+				{
+					result = true;
+					StageManager.Ins.ChangeGold(-chart.Cost);
+				}
+				break;
+			case CostType.Magicite:
+				if (Magicite >= chart.Cost)
+				{
+					result = true;
+					StageManager.Ins.ChangeMagicite(-chart.Cost);
+				}
+				break;
+			case CostType.SoulStone:
+				if (SoulStone >= chart.Cost)
+				{
+					result = true;
+					StageManager.Ins.ChangeSoulStone(-chart.Cost);
+				}				
+				break;
+		}
+
+		if (result)
+		{
 			for (int i = 0; i < Heroes.Count; i++)
 			{
 				if (Heroes[i] == data)
 					Heroes[i].IsOwn = true;
 			}
+		}
 
-			Save();
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		Save();
+
+		return result;
 	}
 
 	public bool UpgradeHero(HeroData data)

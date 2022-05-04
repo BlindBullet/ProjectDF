@@ -35,6 +35,6 @@ public enum CostType
 {
 	None,
 	Gold,
-	Gem,
 	Magicite,
+	SoulStone,
 }

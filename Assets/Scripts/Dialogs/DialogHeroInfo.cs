@@ -19,6 +19,7 @@ public class DialogHeroInfo : DialogController
 	public TextMeshProUGUI CEDesc;
 	public TextMeshProUGUI PurchaseBtnText;
 	public TextMeshProUGUI PurchaseCost;
+	public Image PurchaseCostIcon;
 	public Button PurchaseBtn;
 	public TextMeshProUGUI UpgradeBtnText;
 	public TextMeshProUGUI UpgradeCost;
@@ -152,17 +153,35 @@ public class DialogHeroInfo : DialogController
 		{
 			PurchaseBtn.gameObject.SetActive(true);
 			PurchaseBtnText.text = LanguageManager.Ins.SetString("Summon");
-			PurchaseCost.text = ThousandCommaText.GetThousandComma((int)chart.Cost);
+			PurchaseCostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/" + chart.CostType.ToString());
+			PurchaseCost.text = chart.Cost.ToCurrencyString();
 
-			if (StageManager.Ins.PlayerData.SoulStone >= chart.Cost)
+			bool haveCost = false;
+
+			switch (chart.CostType)
+			{				
+				case CostType.Gold:
+					if (StageManager.Ins.PlayerData.Gold >= chart.Cost)
+						haveCost = true;
+					break;
+				case CostType.SoulStone:
+					if (StageManager.Ins.PlayerData.SoulStone >= chart.Cost)
+						haveCost = true;
+					break;
+				case CostType.Magicite:
+					if (StageManager.Ins.PlayerData.Magicite >= chart.Cost)
+						haveCost = true;
+					break;
+			}
+
+			if (haveCost)
 			{
 				purchaseBtnMat.DisableKeyword("GREYSCALE_ON");
 				PurchaseBtn.onClick.RemoveAllListeners();
 				PurchaseBtn.onClick.AddListener(() =>
 				{
-					if (StageManager.Ins.PlayerData.SummonHero(data, chart.Cost))
-					{
-						StageManager.Ins.ChangeSoulStone(-chart.Cost);
+					if (StageManager.Ins.PlayerData.SummonHero(data, chart))
+					{						
 						HeroIcon.Setup(data);
 						SetButtons(data, chart);
 						DialogHero._DialogHero.SetHeroes();

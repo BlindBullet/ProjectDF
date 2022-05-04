@@ -3700,6 +3700,7 @@ MonoBehaviour:
   CEDesc: {fileID: 6882817532031544030}
   PurchaseBtnText: {fileID: 8677660582993751508}
   PurchaseCost: {fileID: 4152864261431264159}
+  PurchaseCostIcon: {fileID: 4152864261084166675}
   PurchaseBtn: {fileID: 8677660581248815651}
   UpgradeBtnText: {fileID: 3599942147500954605}
   UpgradeCost: {fileID: 8416373586886121764}
