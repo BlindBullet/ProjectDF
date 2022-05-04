@@ -232,7 +232,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 						}
 						break;
 					case HitType.Push:                        
-						//target.Push(hitresults[i].Value, hitresults[i].DurationTime);                        
+						target.Push(hitresults[i].Value, hitresults[i].DurationTime);                        
 						break;
 					case HitType.Stun:
 

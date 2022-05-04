@@ -39,14 +39,28 @@ public class EnemyBase : MonoBehaviour
 		SpriteCon = GetComponent<EnemySpriteController>();
 		SpriteCon.Setup(chart);
 
-		Rb.mass = chart.Weight;		
-		cMove = StartCoroutine(MoveSequence());
+		Rb.mass = chart.Weight;
+		Move();
 		Enemies.Add(this);
+	}
+
+	void Move()
+	{
+		if (cMove == null)
+		{
+			cMove = StartCoroutine(MoveSequence());
+		}	
+		else
+		{
+			StopCoroutine(cMove);
+			cMove = StartCoroutine(MoveSequence());
+		}
 	}
 
 	IEnumerator MoveSequence()
 	{
 		float scaleX = Model.transform.localScale.x;
+		Rb.mass = 1f;
 
 		while (true)
 		{
@@ -60,14 +74,22 @@ public class EnemyBase : MonoBehaviour
 			if (transform.position.x > max.x)
 				xSpd = -Stat.Spd;
 
-			Rb.velocity = new Vector2(xSpd, isPushing ? 0 : -Stat.Spd);
+			Rb.velocity = new Vector2(xSpd, -Stat.Spd);
 
 			if (transform.position.y <= StageManager.Ins.PlayerLine.position.y)
 				StageManager.Ins.LoseStage();
 
 			yield return null;
 		}
-		
+	}
+
+	void StopMove()
+	{
+		if(cMove != null)
+			StopCoroutine(cMove);
+
+		Rb.velocity = Vector2.zero;
+		cMove = null;
 	}
 
 	public double TakeDmg(double atk, Attr attr, bool isCrit, float stiffTime)
@@ -113,7 +135,7 @@ public class EnemyBase : MonoBehaviour
 	public void Die()
 	{	
 		StageManager.Ins.GetGold(Stat.Gold);
-		StopCoroutine(cMove);
+		StopMove();
 
 		Rb.mass = 100f;		
 		Rb.velocity = Vector2.zero;
@@ -147,7 +169,9 @@ public class EnemyBase : MonoBehaviour
 
 	public void Push(float value, float time)
 	{
-		if(cPush == null)
+		StopMove();
+
+		if (cPush == null)
 		{
 			cPush = StartCoroutine(PushSequence(value, time));
 		}	
@@ -161,12 +185,14 @@ public class EnemyBase : MonoBehaviour
 	IEnumerator PushSequence(float value, float time)
 	{
 		isPushing = true;
-		Rb.AddForce(new Vector2(0, value), ForceMode2D.Impulse);
+		Rb.mass = 100f;
+		Rb.AddForce(new Vector2(0, value * 1000f));
 
 		yield return new WaitForSeconds(time);
 
 		isPushing = false;
 		cPush = null;
+		Move();
 	}
 
 	public void Stop()
