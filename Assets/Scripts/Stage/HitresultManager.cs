@@ -235,7 +235,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 						target.Push(hitresults[i].Value, hitresults[i].DurationTime);                        
 						break;
 					case HitType.Stun:
-
+						target.Stun(hitresults[i].DurationTime);
 						break;
 				}
 			}
@@ -243,9 +243,6 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			{
 				Debug.Log("미스");
 			}
-
-			//온힛 추가 예정?
-
 		}
 	}
 

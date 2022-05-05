@@ -12,3 +12,5 @@ Skill3,1,100,Me,,,,,,,buff_atk_200p,
 Skill4,1,100,Enemy,All,,,,,,dmg_100,TestProjectile9
 Skill5,1,100,Enemy,Closest,3,,,,,dmg_100,TestProjectile9
 Explosion,1,100,Enemy,All,,Circle,100,1,,dmg_100,
+TestStun,1,100,Enemy,All,,,,,,test_stun,
+TestPush,1,100,Enemy,All,,,,,,test_push,

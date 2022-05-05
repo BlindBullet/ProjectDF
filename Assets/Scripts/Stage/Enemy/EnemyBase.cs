@@ -15,9 +15,9 @@ public class EnemyBase : MonoBehaviour
 	[HideInInspector] public Rigidbody2D Rb;
 	[HideInInspector] public EnemySpriteController SpriteCon;
 	CircleCollider2D col;
-	Coroutine cMove = null;	
-	bool isPushing = false;
+	Coroutine cMove = null;		
 	Coroutine cPush = null;
+	Coroutine cStun = null;
 	bool isBoss = false;
 		
 	public TextMeshPro HpText;
@@ -183,16 +183,43 @@ public class EnemyBase : MonoBehaviour
 	}
 
 	IEnumerator PushSequence(float value, float time)
-	{
-		isPushing = true;
+	{		
 		Rb.mass = 100f;
 		Rb.AddForce(new Vector2(0, value * 1000f));
 
 		yield return new WaitForSeconds(time);
-
-		isPushing = false;
+			
 		cPush = null;
-		Move();
+
+		if(cStun == null)
+			Move();
+	}
+
+	public void Stun(float time)
+	{
+		StopMove();
+
+		if(cStun == null)
+		{
+			cStun = StartCoroutine(StunSequence(time));
+		}
+		else
+		{
+			StopCoroutine(cStun);
+			cStun = StartCoroutine(StunSequence(time));
+		}
+	}
+
+	IEnumerator StunSequence(float time)
+	{
+		Rb.mass = 100f;
+
+		yield return new WaitForSeconds(time);
+
+		cStun = null;
+
+		if (cPush == null)
+			Move();
 	}
 
 	public void Stop()

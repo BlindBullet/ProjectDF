@@ -1,5 +1,6 @@
 ﻿Id,Prob,Type,HitFx,DurationFx,FactorOwner,FactorType,StatType,Value,ValuePercent,DurationTime,StiffTime,AddOnhitResultGroupId
 dmg_100,100,Dmg,TestHitFx,,Caster,Atk,,,100,,0,
-dmg_100,100,Push,,,,,,5,,1,,
 buff_atk_100p,100,Buff,TestHitFx,,Target,,Atk,,100,5,,
 buff_atk_200p,100,Buff,TestHitFx,,Target,,Atk,,200,10,,
+test_stun,100,Stun,,,,,,,,3,,
+test_push,100,Push,,,,,,30,,1,,
