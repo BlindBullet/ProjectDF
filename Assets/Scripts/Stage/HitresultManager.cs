@@ -224,7 +224,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 
 								Vector3 pos = target.transform.position;
 								resultDmg = target.TakeDmg(dmg, caster.Stat.Attr, isCrit, hitresults[i].StiffTime);
-								FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToString(), isCrit);
+								FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit);
 								break;
 							case FactorOwner.Target:
 

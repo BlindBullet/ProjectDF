@@ -7,6 +7,7 @@ using TMPro;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(EnemySkillController))]
+[RequireComponent(typeof(EnemyBuffController))]
 public class EnemyBase : MonoBehaviour
 {
 	public static List<EnemyBase> Enemies = new List<EnemyBase>();
@@ -23,6 +24,7 @@ public class EnemyBase : MonoBehaviour
 	bool isDie = false;
 	public bool isStunned = false;
 	public EnemySkillController SkillCon;
+	public EnemyBuffController BuffCon;
 
 	public TextMeshPro HpText;
 
@@ -45,6 +47,9 @@ public class EnemyBase : MonoBehaviour
 
 		SkillCon = GetComponent<EnemySkillController>();
 		SkillCon.Setup(this, chart);
+
+		BuffCon = GetComponent<EnemyBuffController>();
+		BuffCon.Setup(this);
 
 		Rb.mass = chart.Weight;
 		Move();
@@ -129,6 +134,23 @@ public class EnemyBase : MonoBehaviour
 			Die();
 
 		return atk;
+	}
+
+	public void TakeHeal(float value)
+	{
+		double resultValue = Stat.MaxHp * (value / 100f);
+		
+		if (Stat.CurHp + resultValue >= Stat.MaxHp)
+		{
+			resultValue = Stat.MaxHp - Stat.CurHp;			
+		}
+
+		Stat.CurHp = Stat.CurHp + resultValue;
+
+		SetHp();
+
+		if(resultValue > 0f)
+			FloatingTextManager.Ins.ShowHeal(this.transform.position, resultValue.ToCurrencyString());
 	}
 
 	void SetHp()

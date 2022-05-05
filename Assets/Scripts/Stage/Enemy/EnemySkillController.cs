@@ -69,12 +69,38 @@ public class EnemySkillController : MonoBehaviour
 
 		List<EnemyBase> targets = SearchTarget(skill);
 
-		Debug.Log(targets.Count);
+		yield return new WaitForSeconds(skill.Data.FireFrame / 30f);
 
+		for (int i = 0; i < targets.Count; i++)
+		{
+			SendHitresult(targets[i], skill);
+		}
 
+		yield return new WaitForSeconds((skill.Data.TotalFrame - skill.Data.FireFrame) / 30f);
+		
 		skill.InitCoolTime();
+	}
 
-		yield return null;
+	void SendHitresult(EnemyBase target, EnemySkill skill)
+	{
+		if (skill.Data.HitFx != null)
+			EffectManager.Ins.ShowFx(skill.Data.HitFx, target.transform);
+
+		switch (skill.Data.HitType)
+		{
+			case EnemySkillHitType.Heal:
+				target.TakeHeal(float.Parse(skill.Data.Param1));
+				break;
+			case EnemySkillHitType.Immune:
+
+				break;
+			case EnemySkillHitType.SpdUp:
+
+				break;
+			case EnemySkillHitType.Summon:
+
+				break;
+		}
 	}
 
 	List<EnemyBase> SearchTarget(EnemySkill skill)
@@ -98,14 +124,15 @@ public class EnemySkillController : MonoBehaviour
 				break;
 			case EnemySkillTargetType.Close:
 				List<EnemyBase> _targets = EnemyBase.Enemies.OrderBy(a => Vector2.Distance(me.transform.position, a.transform.position)).ToList();
+
 				for(int i = 0; i < skill.Data.TargetCount + 1; i++)
 				{
 					if(_targets.Count >= i + 1)
 					{
 						if (_targets[i] != me)
-							result.Add(me);
+							result.Add(_targets[i]);
 					}
-				}
+				}				
 				break;
 		}
 

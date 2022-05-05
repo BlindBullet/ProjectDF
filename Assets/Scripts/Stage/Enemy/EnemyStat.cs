@@ -21,4 +21,8 @@ public class EnemyStat
 		Spd = data.Spd;
 		Attr = data.Attr;
 	}
+
+	
+
+
 }
