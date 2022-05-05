@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class EnemySkillController : MonoBehaviour
 {
@@ -63,12 +64,53 @@ public class EnemySkillController : MonoBehaviour
 	{
 		Debug.Log(skill.Data.Id + " »ç¿ë");
 
+		if (skill.Data.BeginFx != null)
+			EffectManager.Ins.ShowFx(skill.Data.BeginFx, this.transform);
+
+		List<EnemyBase> targets = SearchTarget(skill);
+
+		Debug.Log(targets.Count);
+
 
 		skill.InitCoolTime();
 
 		yield return null;
 	}
 
+	List<EnemyBase> SearchTarget(EnemySkill skill)
+	{
+		List<EnemyBase> result = new List<EnemyBase>();
+
+		switch (skill.Data.Target)
+		{
+			case EnemySkillTargetType.Me:
+				result.Add(me);
+				break;
+			case EnemySkillTargetType.All:
+				result = EnemyBase.Enemies;
+				break;
+			case EnemySkillTargetType.AllNotMe:
+				for(int i = 0; i < EnemyBase.Enemies.Count; i++)
+				{
+					if (EnemyBase.Enemies[i] != me)
+						result.Add(me);
+				}
+				break;
+			case EnemySkillTargetType.Close:
+				List<EnemyBase> _targets = EnemyBase.Enemies.OrderBy(a => Vector2.Distance(me.transform.position, a.transform.position)).ToList();
+				for(int i = 0; i < skill.Data.TargetCount + 1; i++)
+				{
+					if(_targets.Count >= i + 1)
+					{
+						if (_targets[i] != me)
+							result.Add(me);
+					}
+				}
+				break;
+		}
+
+		return result;
+	}
 
 
 }
