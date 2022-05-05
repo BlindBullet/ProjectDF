@@ -17,6 +17,7 @@ public class CsvData : SingletonObject<CsvData>
 	public Dictionary<string, List<SEChart>> SEChart = new Dictionary<string, List<SEChart>>();
 	public Dictionary<string, RelicChart> RelicChart = new Dictionary<string, RelicChart>();
 	public Dictionary<string, QuestChart> QuestChart = new Dictionary<string, QuestChart>();
+	public Dictionary<string, EnemySkillChart> EnemySkillChart = new Dictionary<string, EnemySkillChart>();
 
 
 	protected override void OnCreate()
@@ -36,6 +37,7 @@ public class CsvData : SingletonObject<CsvData>
 		SEChart = CsvParser.Ins.ParseDupeKeyToDict(SEChart, "DataTables/StatusEffectChart");
 		RelicChart = CsvParser.Ins.ParseToDict(RelicChart, "DataTables/RelicChart");
 		QuestChart = CsvParser.Ins.ParseToDict(QuestChart, "DataTables/QuestChart");
+		EnemySkillChart = CsvParser.Ins.ParseToDict(EnemySkillChart, "DataTables/EnemySkillChart");
 
 
 	}

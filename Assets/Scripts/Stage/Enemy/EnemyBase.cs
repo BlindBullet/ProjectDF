@@ -6,6 +6,7 @@ using UnityEngine.U2D;
 using TMPro;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(EnemySkillController))]
 public class EnemyBase : MonoBehaviour
 {
 	public static List<EnemyBase> Enemies = new List<EnemyBase>();
@@ -19,7 +20,10 @@ public class EnemyBase : MonoBehaviour
 	Coroutine cPush = null;
 	Coroutine cStun = null;
 	bool isBoss = false;
-		
+	bool isDie = false;
+	public bool isStunned = false;
+	public EnemySkillController SkillCon;
+
 	public TextMeshPro HpText;
 
 	public void Setup(EnemyChart chart, int stageNo, bool isBoss = false)
@@ -38,6 +42,9 @@ public class EnemyBase : MonoBehaviour
 
 		SpriteCon = GetComponent<EnemySpriteController>();
 		SpriteCon.Setup(chart);
+
+		SkillCon = GetComponent<EnemySkillController>();
+		SkillCon.Setup(this, chart);
 
 		Rb.mass = chart.Weight;
 		Move();
@@ -118,7 +125,7 @@ public class EnemyBase : MonoBehaviour
 
 		SpriteCon.Hit(isCrit, stiffTime);
 
-		if (Stat.CurHp <= 0)
+		if (Stat.CurHp <= 0 && !isDie)
 			Die();
 
 		return atk;
@@ -133,7 +140,10 @@ public class EnemyBase : MonoBehaviour
 	}
 
 	public void Die()
-	{	
+	{
+		isDie = true;
+		SkillCon.UseDieSkill();
+
 		StageManager.Ins.GetGold(Stat.Gold);
 		StopMove();
 
@@ -183,7 +193,8 @@ public class EnemyBase : MonoBehaviour
 	}
 
 	IEnumerator PushSequence(float value, float time)
-	{		
+	{
+		isStunned = true;
 		Rb.mass = 100f;
 		Rb.AddForce(new Vector2(0, value * 1000f));
 
@@ -192,7 +203,10 @@ public class EnemyBase : MonoBehaviour
 		cPush = null;
 
 		if(cStun == null)
+		{
 			Move();
+			isStunned = false;
+		}	
 	}
 
 	public void Stun(float time)
@@ -212,6 +226,7 @@ public class EnemyBase : MonoBehaviour
 
 	IEnumerator StunSequence(float time)
 	{
+		isStunned = true;
 		Rb.mass = 100f;
 
 		yield return new WaitForSeconds(time);
@@ -219,7 +234,10 @@ public class EnemyBase : MonoBehaviour
 		cStun = null;
 
 		if (cPush == null)
+		{
+			isStunned = false;
 			Move();
+		}
 	}
 
 	public void Stop()
