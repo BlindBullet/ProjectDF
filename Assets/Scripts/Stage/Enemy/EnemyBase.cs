@@ -106,23 +106,67 @@ public class EnemyBase : MonoBehaviour
 
 	public double TakeDmg(double atk, Attr attr, bool isCrit, float stiffTime)
 	{
+		float def = 0f;
+
 		switch (attr)
 		{
 			case Attr.None:
 				break;
 			case Attr.Red:
+				if (Stat.Immunes.Contains(Attr.Red))
+				{
+					atk = 0f;
+					break;
+				}
+
 				if (Stat.Attr == Attr.Green)
 					atk = atk * 2f;
+
+				def += Stat.Def;
+
+				if (Stat.AttrDefs.ContainsKey(Attr.Red))
+					def += Stat.AttrDefs[Attr.Red];
+
+				atk = atk - (atk * (def / 100f));
 				break;
 			case Attr.Green:
+				if (Stat.Immunes.Contains(Attr.Green))
+				{
+					atk = 0f;
+					break;
+				}
+					
 				if (Stat.Attr == Attr.Blue)
 					atk = atk * 2f;
+
+				def += Stat.Def;
+
+				if (Stat.AttrDefs.ContainsKey(Attr.Green))
+					def += Stat.AttrDefs[Attr.Green];
+
+				atk = atk - (atk * (def / 100f));
 				break;
 			case Attr.Blue:
+				if (Stat.Immunes.Contains(Attr.Blue))
+				{
+					atk = 0f;
+					break;
+				}	
+
 				if (Stat.Attr == Attr.Red)
 					atk = atk * 2f;
+
+				def += Stat.Def;
+
+				if (Stat.AttrDefs.ContainsKey(Attr.Blue))
+					def += Stat.AttrDefs[Attr.Blue];
+
+				atk = atk - (atk * (def / 100f));
 				break;
 		}
+
+		if (atk < 0f)
+			atk = 0f;
 
 		atk = Math.Round(atk);
 		Stat.CurHp -= atk;
