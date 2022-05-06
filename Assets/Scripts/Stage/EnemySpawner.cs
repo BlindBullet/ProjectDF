@@ -53,6 +53,15 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 		enemy.Setup(chart, stageNo, isBoss);
 	}
 
+	public void SpawnSummonEnemy(string id, Vector2 pos)
+	{
+		EnemyChart chart = CsvData.Ins.EnemyChart[id];
+		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/EnemyObj") as GameObject);
+		enemy.transform.localScale = new Vector2(chart.Size, chart.Size);
+		enemy.transform.position = pos.WithY(pos.y + 1f);
+		enemy.Setup(chart, StageManager.Ins.PlayerData.Stage);
+	}
+
 	Vector2 CalcSpawnPos()
 	{
 		Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
@@ -85,7 +94,5 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 
 		return new Vector2(randX, randY);
 	}
-
-
-
+	
 }

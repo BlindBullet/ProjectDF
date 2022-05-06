@@ -98,7 +98,10 @@ public class EnemySkillController : MonoBehaviour
 				target.BuffCon.TakeBuff(new EnemyBuff(skill.Data.Id));
 				break;
 			case EnemySkillHitType.Summon:
-				Debug.Log("a");
+				for(int i = 0; i < int.Parse(skill.Data.Param2); i++)
+				{
+					EnemySpawner.Ins.SpawnSummonEnemy(skill.Data.Param1, this.transform.position);
+				}
 				break;
 		}
 	}
