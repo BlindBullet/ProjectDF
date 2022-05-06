@@ -55,8 +55,8 @@ public class EnemySkillController : MonoBehaviour
 	public void UseDieSkill()
 	{
 		for(int i = 0; i < DieSkills.Count; i++)
-		{
-			StartCoroutine(UseSkill(DieSkills[i]));
+		{	
+			StartCoroutine(UseSkill(DieSkills[i]));			
 		}
 	}
 
@@ -92,13 +92,13 @@ public class EnemySkillController : MonoBehaviour
 				target.TakeHeal(float.Parse(skill.Data.Param1));
 				break;
 			case EnemySkillHitType.Immune:
-
+				target.BuffCon.TakeBuff(new EnemyBuff(skill.Data.Id));
 				break;
-			case EnemySkillHitType.SpdUp:
-
+			case EnemySkillHitType.Buff:
+				target.BuffCon.TakeBuff(new EnemyBuff(skill.Data.Id));
 				break;
 			case EnemySkillHitType.Summon:
-
+				Debug.Log("a");
 				break;
 		}
 	}

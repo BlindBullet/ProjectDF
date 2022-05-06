@@ -16,6 +16,9 @@ public class EnemySkillChart
     public EnemySkillHitType HitType { get; set; }
     public string Param1 { get; set; }
     public string Param2 { get; set; }
+    public string Param3 { get; set; }
+    public string Param4 { get; set; }
+    public string DurationFx { get; set; }
 
 }
 
@@ -41,7 +44,7 @@ public enum EnemySkillHitType
 {
     Summon,
     Immune,
-    SpdUp,
+    Buff,
     Heal,
 
 }

@@ -1,5 +1,6 @@
-﻿Id,UseConType,UseConValue,Target,TargetCount,BeginFx,TotalFrame,FireFrame,HitFx,HitType,Param1,Param2
-TestSkill1,Die,,Me,,,,,,Summon,10001,5
-TestSkill2,CoolTime,5,Me,,,,,,Immune,Red,5
-TestSkill3,Die,,Close,6,,,,,Heal,30,
-TestSkill4,CoolTime,5,All,,,,,,SpdUp,100,5
+﻿Id,UseConType,UseConValue,Target,TargetCount,BeginFx,TotalFrame,FireFrame,HitFx,HitType,Param1,Param2,Param3,Param4,DurationFx
+TestSkill1,Die,,Me,,,,,,Summon,10001,5,,,
+TestSkill2,CoolTime,5,Me,,,,,,Immune,Red,5,,,
+TestSkill3,Die,,Close,6,,,,,Buff,Spd,100,5,,
+TestSkill4,CoolTime,5,All,,,,,,Heal,30,,,,
+TestSkill5,CoolTime,5,All,,,,,,Buff,Def,,30,5,

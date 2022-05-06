@@ -174,14 +174,6 @@ public class EnemyBase : MonoBehaviour
 
 		Enemies.Remove(this);
 
-		if (isBoss)
-		{
-			for(int i = 0; i < Enemies.Count; i++)
-			{
-				Enemies[i].Die();
-			}
-		}	
-
 		StartCoroutine(DieSequence());
 	}
 
