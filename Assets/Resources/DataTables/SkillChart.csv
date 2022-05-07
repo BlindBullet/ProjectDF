@@ -54,11 +54,11 @@ attack_10010_2,,,Attack,,,Attack,,True,30,3,attack_red
 attack_10010_3,,,Attack,,,Attack,,True,30,3,attack_red
 attack_10010_4,,,Attack,,,Attack,,True,30,3,attack_red
 attack_10010_5,,,Attack,,,Attack,,True,30,3,attack_red
-skill_10001_1,str_name_skill_10001_1,str_desc_skill_10001_1,ActiveEnemyTarget,10,1,Attack,,,6,3,Skill4
-skill_10001_2,str_name_skill_10001_2,str_desc_skill_10001_2,ActiveEnemyTarget,10,1,Attack,,,6,3,Skill4
-skill_10001_3,str_name_skill_10001_3,str_desc_skill_10001_3,ActiveEnemyTarget,10,1,Attack,,,6,3,Skill4
-skill_10001_4,str_name_skill_10001_4,str_desc_skill_10001_4,ActiveEnemyTarget,10,1,Attack,,,6,3,Skill4
-skill_10001_5,str_name_skill_10001_5,str_desc_skill_10001_5,ActiveEnemyTarget,10,1,Attack,,,6,3,Skill4
+skill_10001_1,str_name_skill_10001_1,str_desc_skill_10001_1,Active,40,10,Attack,,,6,3,skill_10001_1
+skill_10001_2,str_name_skill_10001_2,str_desc_skill_10001_2,Active,40,15,Attack,,,6,3,skill_10001_2
+skill_10001_3,str_name_skill_10001_3,str_desc_skill_10001_3,Active,40,20,Attack,,,6,3,skill_10001_3
+skill_10001_4,str_name_skill_10001_4,str_desc_skill_10001_4,Active,40,25,Attack,,,6,3,skill_10001_4
+skill_10001_5,str_name_skill_10001_5,str_desc_skill_10001_5,Active,40,30,Attack,,,6,3,skill_10001_5
 skill_10002_1,str_name_skill_10002_1,str_desc_skill_10002_1,ActiveEnemyTarget,10,1,Attack,,,6,3,Skill4
 skill_10002_2,str_name_skill_10002_2,str_desc_skill_10002_2,ActiveEnemyTarget,10,1,Attack,,,6,3,Skill4
 skill_10002_3,str_name_skill_10002_3,str_desc_skill_10002_3,ActiveEnemyTarget,10,1,Attack,,,6,3,Skill4

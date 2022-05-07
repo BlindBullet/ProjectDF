@@ -17,3 +17,8 @@ TestPush,1,100,Enemy,All,,,,,,test_push,
 attack_red,1,100,Enemy,Closest,1,,,,,dmg_100,TestProjectile
 attack_green,1,100,Enemy,Closest,1,,,,,dmg_100,TestProjectile
 attack_blue,1,100,Enemy,Closest,1,,,,,dmg_100,TestProjectile
+skill_10001_1,1,100,Me,,,,,,,skill_10001_1,
+skill_10001_2,1,100,Me,,,,,,,skill_10001_2,
+skill_10001_3,1,100,Me,,,,,,,skill_10001_3,
+skill_10001_4,1,100,Me,,,,,,,skill_10001_4,
+skill_10001_5,1,100,Me,,,,,,,skill_10001_5,

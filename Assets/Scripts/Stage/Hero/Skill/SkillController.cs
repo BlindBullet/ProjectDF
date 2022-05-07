@@ -81,8 +81,7 @@ public class SkillController : MonoBehaviour
 
 		if (cSkill == null)
 		{
-			cSkill = StartCoroutine(SkillSequence(Skill));
-			Skill.InitCoolTime();
+			cSkill = StartCoroutine(SkillSequence(Skill));			
 		}		
 	}
 
@@ -157,6 +156,8 @@ public class SkillController : MonoBehaviour
 
 		if (totalTime - progressTime > 0)
 			yield return new WaitForSeconds(totalTime - progressTime);
+		
+		skill.InitCoolTime();
 
 		cAttack = null;
 		cSkill = null;        

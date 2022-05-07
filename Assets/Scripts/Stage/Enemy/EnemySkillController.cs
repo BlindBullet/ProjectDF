@@ -12,6 +12,9 @@ public class EnemySkillController : MonoBehaviour
 
 	public void Setup(EnemyBase enemyBase, EnemyChart chart)
 	{
+		Skills.Clear();
+		DieSkills.Clear();
+
 		me = enemyBase;
 
 		if (chart.Skill == null)
