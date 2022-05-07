@@ -68,7 +68,7 @@ public class SkillController : MonoBehaviour
 		{
 			if (me.Range.Targets.Count <= 0 || EnemyBase.Enemies.Count <= 0)
 			{
-				Debug.Log("적이 있을 떄만 사용가능한 스킬입니다.");
+				DialogManager.Ins.OpenCautionBar("cant_use_skill_desc_1");				
 				return;
 			}
 		}		

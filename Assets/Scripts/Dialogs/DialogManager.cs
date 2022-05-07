@@ -15,7 +15,7 @@ public class DialogManager : SingletonObject<DialogManager> {
 
 	public void OpenCautionBar(string cautionText)
 	{
-		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/Dialog Caution Bar") as GameObject, DialogTrf);
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogCautionBar") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogCautionBar>().SetDialog(cautionText);
 	}
 
