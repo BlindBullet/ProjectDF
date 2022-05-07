@@ -6,8 +6,7 @@ public class SkillChart
 {
     public string Id { get; set; }    
     public string Name { get; set; }
-    public string Desc { get; set; }
-    public int Lv { get; set; }
+    public string Desc { get; set; }    
     public SkillType Type { get; set; }    
     public float CoolTime { get; set; }
     public float CoolDealy { get; set; }

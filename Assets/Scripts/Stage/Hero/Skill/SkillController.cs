@@ -5,9 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class SkillController : MonoBehaviour
-{
-	BasicAttack attack;
-
+{	
 	public Skill Attack;
 	public Skill Skill;
 
@@ -20,11 +18,9 @@ public class SkillController : MonoBehaviour
 		me = heroBase;
 		HeroChart heroChart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];
 
-		Attack = new Skill(heroChart.BasicAttack, 1);
-		Skill = new Skill(heroChart.Skill, 1);
+		Attack = new Skill(heroChart.BasicAttack);
+		Skill = new Skill(heroChart.Skill);
 
-		attack = new BasicAttack(heroChart.BasicAttack);
-		
 		StartCoroutine(UseAttack());
 	}
 
@@ -105,7 +101,7 @@ public class SkillController : MonoBehaviour
 		}
 
 		if (data.BeginFx != null)
-			EffectManager.Ins.ShowFx(attack.Data.BeginFx, this.transform);
+			EffectManager.Ins.ShowFx(Attack.Data.BeginFx, this.transform);
 
 		if (data.Anim == "Attack")
 		{
@@ -174,16 +170,14 @@ public class SkillController : MonoBehaviour
 
 public class Skill
 {
-	public string Id;
-	public int Lv;    
+	public string Id;	    
 	public float CoolTime;
 	public float _CoolTime;
 	public SkillChart Data;
 
-	public Skill(string id, int lv)
+	public Skill(string id)
 	{
-		Id = id;
-		Lv = lv;
+		Id = id;		
 		CoolTime = 0;
 		SetData();
 		_CoolTime = Data.CoolTime;
@@ -194,23 +188,12 @@ public class Skill
 		foreach(KeyValuePair<string, SkillChart> elem in CsvData.Ins.SkillChart)
 		{
 			if(elem.Key == Id)
-			{
-				if(elem.Value.Lv == Lv)
-				{
-					Data = elem.Value;                    
-				}
+			{	
+				Data = elem.Value;                    				
 			}
 		}
 	}
-
-	public void IncreaseLv()
-	{
-		Lv++;
-		CoolTime = 0;
-		SetData();
-		_CoolTime = Data.CoolTime;
-	}
-
+		
 	public void ProgressCoolTime()
 	{
 		CoolTime += Time.deltaTime;
@@ -224,16 +207,4 @@ public class Skill
 		CoolTime = 0;
 	}
 
-}
-
-public class BasicAttack
-{
-	public string Id;
-	public AttackChart Data;
-
-	public BasicAttack(string id)
-	{
-		Id = id;
-		Data = CsvData.Ins.AttackChart[id];
-	}
 }
