@@ -84,8 +84,16 @@ public class StageManager : MonoSingleton<StageManager>
 					break;
 				}
 			}
-				
-			HeroChart chart = CsvData.Ins.HeroChart[heroData.Id][heroData.Grade];	
+
+			List<HeroChart> charts = CsvData.Ins.HeroChart[heroData.Id];
+			HeroChart chart = null;
+
+			for (int k = 0; k < charts.Count; k++)
+			{
+				if (heroData.Grade == charts[k].Grade)
+					chart = charts[k];
+			}
+
 			GameObject obj = Instantiate(Resources.Load("Prefabs/Icons/DeployHeroIcon") as GameObject, Slots[i].transform);
 			obj.transform.SetAsFirstSibling();
 			obj.GetComponent<HeroBase>().Init(heroData, PlayerData.Slots[i]);
@@ -104,7 +112,15 @@ public class StageManager : MonoSingleton<StageManager>
 			}	
 		}
 
-		HeroChart chart = CsvData.Ins.HeroChart[heroData.Id][heroData.Grade];
+		List<HeroChart> charts = CsvData.Ins.HeroChart[heroData.Id];
+		HeroChart chart = null;
+
+		for(int i = 0; i < charts.Count; i++)
+		{
+			if (heroData.Grade == charts[i].Grade)
+				chart = charts[i];
+		}
+
 		GameObject obj = Instantiate(Resources.Load("Prefabs/Icons/DeployHeroIcon") as GameObject, Slots[slotNo - 1].transform);
 		obj.transform.SetAsFirstSibling();
 		obj.GetComponent<HeroBase>().Init(heroData, PlayerData.Slots[slotNo - 1]);

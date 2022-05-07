@@ -88,7 +88,14 @@ public class DialogHeroInfo : DialogController
 
 	void SetCE(string id, HeroChart chart)
 	{
-		SEChart se = CsvData.Ins.SEChart[id][chart.Grade];
+		List<SEChart> ses = CsvData.Ins.SEChart[id];
+		SEChart se = null;
+		for(int i = 0; i < ses.Count; i++)
+		{
+			if (ses[i].Lv == chart.Grade)
+				se = ses[i];
+		}
+
 		CEName.text = LanguageManager.Ins.SetString("CollectionEffect");
 		
 		switch (se.EffectType)
@@ -120,33 +127,41 @@ public class DialogHeroInfo : DialogController
 			}
 			
 			PurchaseBtn.gameObject.SetActive(false);
-			UpgradeBtn.gameObject.SetActive(true);
-			UpgradeBtnText.text = LanguageManager.Ins.SetString("Upgrade");
-
-			double cost = ConstantData.GetHeroUpgradeCost(data.Grade);
-
-			UpgradeCost.text = cost.ToCurrencyString();
-
-			if (StageManager.Ins.PlayerData.SoulStone >= cost)
+			Debug.Log(data.Grade);
+			if(data.Grade >= 5)
 			{
-				upgradeBtnMat.DisableKeyword("GREYSCALE_ON");
-				UpgradeBtn.onClick.RemoveAllListeners();
-				UpgradeBtn.onClick.AddListener(() => 
-				{
-					if (StageManager.Ins.PlayerData.UpgradeHero(data))
-					{
-						StageManager.Ins.ChangeSoulStone(-cost);
-						HeroIcon.Setup(data);						
-						DialogHero._DialogHero.SetHeroes();
-						DialogHero._DialogHero.SetDeploySlots();
-						StageManager.Ins.DeployHero(data, data.SlotNo);
-						SetHeroInfo(data);						
-					}
-				});
+				UpgradeBtn.gameObject.SetActive(false);
 			}
 			else
 			{
-				upgradeBtnMat.EnableKeyword("GREYSCALE_ON");
+				UpgradeBtn.gameObject.SetActive(true);
+				UpgradeBtnText.text = LanguageManager.Ins.SetString("Upgrade");
+
+				double cost = ConstantData.GetHeroUpgradeCost(data.Grade);
+
+				UpgradeCost.text = cost.ToCurrencyString();
+
+				if (StageManager.Ins.PlayerData.SoulStone >= cost)
+				{
+					upgradeBtnMat.DisableKeyword("GREYSCALE_ON");
+					UpgradeBtn.onClick.RemoveAllListeners();
+					UpgradeBtn.onClick.AddListener(() =>
+					{
+						if (StageManager.Ins.PlayerData.UpgradeHero(data))
+						{
+							StageManager.Ins.ChangeSoulStone(-cost);
+							HeroIcon.Setup(data);
+							DialogHero._DialogHero.SetHeroes();
+							DialogHero._DialogHero.SetDeploySlots();
+							StageManager.Ins.DeployHero(data, data.SlotNo);
+							SetHeroInfo(data);
+						}
+					});
+				}
+				else
+				{
+					upgradeBtnMat.EnableKeyword("GREYSCALE_ON");
+				}
 			}
 		}
 		else

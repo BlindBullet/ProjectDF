@@ -26,7 +26,15 @@ public class HeroStat
 
 	public void InitData(HeroData data, int lv)
 	{
-		chart = CsvData.Ins.HeroChart[data.Id][data.Grade];
+		//HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];
+		List<HeroChart> charts = CsvData.Ins.HeroChart[data.Id];
+		chart = null;
+
+		for (int i = 0; i < charts.Count; i++)
+		{
+			if (data.Grade == charts[i].Grade)
+				chart = charts[i];
+		}
 
 		Atk = chart.Atk;		
 		Attr = chart.Attr;        

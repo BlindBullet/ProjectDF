@@ -4,11 +4,11 @@ Skill2,str_name_Skill2,str_desc_Skill2,ActiveEnemyTarget,10,1,Attack,,,6,3,TestS
 Skill3,str_name_Skill3,str_desc_Skill3,ActiveEnemyTarget,10,1,Attack,,,6,3,TestPush
 Skill4,str_name_Skill4,str_desc_Skill4,ActiveEnemyTarget,10,1,Attack,,,6,3,Skill4
 Skill5,str_name_Skill5,str_desc_Skill5,ActiveEnemyTarget,10,1,Attack,,,6,3,Skill5
-attack_10001_1,,,Attack,,,Attack,,True,30,3,attack_red
-attack_10001_2,,,Attack,,,Attack,,True,30,3,attack_red
-attack_10001_3,,,Attack,,,Attack,,True,30,3,attack_red
-attack_10001_4,,,Attack,,,Attack,,True,30,3,attack_red
-attack_10001_5,,,Attack,,,Attack,,True,30,3,attack_red
+attack_10001_1,,,Attack,,,Attack,,True,30,3,attack_10001_1
+attack_10001_2,,,Attack,,,Attack,,True,30,3,attack_10001_2
+attack_10001_3,,,Attack,,,Attack,,True,30,3,attack_10001_3
+attack_10001_4,,,Attack,,,Attack,,True,30,3,attack_10001_4
+attack_10001_5,,,Attack,,,Attack,,True,30,3,attack_10001_5
 attack_10002_1,,,Attack,,,Attack,,True,30,3,attack_green
 attack_10002_2,,,Attack,,,Attack,,True,30,3,attack_green
 attack_10002_3,,,Attack,,,Attack,,True,30,3,attack_green
