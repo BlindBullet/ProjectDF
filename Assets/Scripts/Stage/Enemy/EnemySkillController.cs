@@ -55,8 +55,8 @@ public class EnemySkillController : MonoBehaviour
 	public void UseDieSkill()
 	{
 		for(int i = 0; i < DieSkills.Count; i++)
-		{	
-			StartCoroutine(UseSkill(DieSkills[i]));			
+		{
+			StartCoroutine(UseSkill(DieSkills[i]));
 		}
 	}
 

@@ -30,6 +30,8 @@ public class EnemyBase : MonoBehaviour
 
 	public void Setup(EnemyChart chart, int stageNo, bool isBoss = false)
 	{
+		isDie = false;
+
 		Stat = new EnemyStat();
 		Stat.SetStat(chart, stageNo, isBoss);
 				
@@ -175,7 +177,9 @@ public class EnemyBase : MonoBehaviour
 		SpriteCon.Hit(isCrit, stiffTime);
 
 		if (Stat.CurHp <= 0 && !isDie)
+		{
 			Die();
+		}	
 
 		return atk;
 	}
@@ -207,26 +211,25 @@ public class EnemyBase : MonoBehaviour
 
 	public void Die()
 	{
-		isDie = true;
-		SkillCon.UseDieSkill();
-
-		StageManager.Ins.GetGold(Stat.Gold);
-		StopMove();
-
-		Rb.mass = 100f;		
-		Rb.velocity = Vector2.zero;
-
-		Enemies.Remove(this);
-
+		isDie = true;		
 		StartCoroutine(DieSequence());
 	}
 
 	IEnumerator DieSequence()
-	{
+	{	
+		StopMove();
+		Rb.mass = 100f;
+		Rb.velocity = Vector2.zero;
+
+		SkillCon.UseDieSkill();
+
+		Enemies.Remove(this);
+
 		SpriteCon.Die();
 
 		yield return new WaitForSeconds(0.5f);
 
+		StageManager.Ins.GetGold(Stat.Gold);
 		col.enabled = false;
 
 		yield return new WaitForSeconds(1f);
