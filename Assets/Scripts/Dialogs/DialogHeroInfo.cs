@@ -12,7 +12,9 @@ public class DialogHeroInfo : DialogController
 	public TextMeshProUGUI AtkTitle;
 	public TextMeshProUGUI Atk;
 	public TextMeshProUGUI SpdTitle;
-	public TextMeshProUGUI Spd;	
+	public TextMeshProUGUI Spd;
+	public TextMeshProUGUI AttrTitle;
+	public Image AttrIcon;
 	public TextMeshProUGUI SkillName;
 	public TextMeshProUGUI SkillDesc;
 	public TextMeshProUGUI CEName;
@@ -76,19 +78,22 @@ public class DialogHeroInfo : DialogController
 		AtkTitle.text = LanguageManager.Ins.SetString("Atk");
 		Atk.text = ExtensionMethods.ToCurrencyString(chart.Atk);
 		SpdTitle.text = LanguageManager.Ins.SetString("Spd");
-		Spd.text = ExtensionMethods.ToCurrencyString(chart.Spd);		
+		Spd.text = ExtensionMethods.ToCurrencyString(chart.Spd);	
+		AttrTitle.text = LanguageManager.Ins.SetString("Attr");
+		AttrIcon.sprite = Resources.Load<Sprite>("Sprites/Icons/" + chart.Attr.ToString());
 	}
 
 	void SetSkill(string id)
 	{
 		SkillChart skill = CsvData.Ins.SkillChart[id];
-		SkillName.text = LanguageManager.Ins.SetString(skill.Name);
+		SkillName.text = LanguageManager.Ins.SetString("Skill");
 		SkillDesc.text = LanguageManager.Ins.SetString(skill.Desc);
 	}
 
 	void SetCE(string id, HeroChart chart)
 	{
 		List<SEChart> ses = CsvData.Ins.SEChart[id];
+
 		SEChart se = null;
 		for(int i = 0; i < ses.Count; i++)
 		{
@@ -127,7 +132,7 @@ public class DialogHeroInfo : DialogController
 			}
 			
 			PurchaseBtn.gameObject.SetActive(false);
-			Debug.Log(data.Grade);
+			
 			if(data.Grade >= 5)
 			{
 				UpgradeBtn.gameObject.SetActive(false);

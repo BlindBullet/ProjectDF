@@ -89,18 +89,11 @@ public class SkillController : MonoBehaviour
 	{
 		SkillChart data = skill.Data;
 
-		switch (data.Type)
-		{
-			case SkillType.Attack:
-
-				break;
-			case SkillType.Active:
-
-				break;
-		}
+		if (data.CastFx != null)
+			EffectManager.Ins.ShowFx(skill.Data.CastFx, me.Anchor);
 
 		if (data.BeginFx != null)
-			EffectManager.Ins.ShowFx(Attack.Data.BeginFx, this.transform);
+			EffectManager.Ins.ShowFx(skill.Data.BeginFx, me.Anchor);
 
 		if (data.Anim == "Attack")
 		{

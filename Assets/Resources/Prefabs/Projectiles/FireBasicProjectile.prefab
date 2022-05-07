@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2170817930840441294}
   - component: {fileID: 2170817930840441293}
   m_Layer: 0
-  m_Name: TestProjectile3
+  m_Name: FireBasicProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
