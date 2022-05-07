@@ -5,8 +5,7 @@ using UnityEngine;
 public class CsvData : SingletonObject<CsvData>
 {
 	public Dictionary<string, StringChart> StringChart = new Dictionary<string, StringChart>();
-	public Dictionary<string, List<HeroChart>> HeroChart = new Dictionary<string, List<HeroChart>>();
-	public Dictionary<string, AttackChart> AttackChart = new Dictionary<string, AttackChart>();
+	public Dictionary<string, List<HeroChart>> HeroChart = new Dictionary<string, List<HeroChart>>();	
 	public Dictionary<string, FxChart> FxChart = new Dictionary<string, FxChart>();
 	public Dictionary<string, List<ProjectileChart>> ProjectileChart = new Dictionary<string, List<ProjectileChart>>();
 	public Dictionary<string, SkillChart> SkillChart = new Dictionary<string, SkillChart>();
@@ -25,8 +24,7 @@ public class CsvData : SingletonObject<CsvData>
 		base.OnCreate();
 				
 		StringChart = CsvParser.Ins.ParseToDict(StringChart, "DataTables/StringChart");
-		HeroChart = CsvParser.Ins.ParseDupeKeyToDict(HeroChart, "DataTables/HeroChart");
-		AttackChart = CsvParser.Ins.ParseToDict(AttackChart, "DataTables/AttackChart");
+		HeroChart = CsvParser.Ins.ParseDupeKeyToDict(HeroChart, "DataTables/HeroChart");		
 		FxChart = CsvParser.Ins.ParseToDict(FxChart, "DataTables/FxChart");
 		ProjectileChart = CsvParser.Ins.ParseDupeKeyToDict(ProjectileChart, "DataTables/ProjectileChart");
 		SkillChart = CsvParser.Ins.ParseToDict(SkillChart, "DataTables/SkillChart");
