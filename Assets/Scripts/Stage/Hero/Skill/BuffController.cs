@@ -37,6 +37,7 @@ public class BuffController : MonoBehaviour
 		float spdAdd = 0;
 		float critChanceAdd = 0;
 		float critDmgAdd = 0;
+		int penCountAdd = 0;
 
 		for(int i = 0; i < Buffs.Count; i++)
 		{
@@ -83,6 +84,17 @@ public class BuffController : MonoBehaviour
 							break;
 						case HitType.Debuff:
 							critDmgAdd -= Buffs[i].Data.ValuePercent;
+							break;
+					}
+					break;
+				case StatType.PenCount:
+					switch (Buffs[i].Data.Type)
+					{
+						case HitType.Buff:
+							penCountAdd += (int)Buffs[i].Data.Value;
+							break;
+						case HitType.Debuff:
+							penCountAdd -= (int)Buffs[i].Data.Value;
 							break;
 					}
 					break;

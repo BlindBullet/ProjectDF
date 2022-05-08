@@ -21,6 +21,10 @@ public class HeroStat
 	public float CritDmgInc;
 	public float CritDmgDec;
 	public float CooltimeDec;
+	public int PenCount;
+	public int PenCountInc;
+	public int PenCountDec;
+
 	int lv;
 	HeroChart chart = null;
 
@@ -50,6 +54,9 @@ public class HeroStat
 		CritDmgInc = 0;
 		CritDmgDec = 0;
 		CooltimeDec = 0;
+		PenCount = chart.PenCount;
+		PenCountInc = 0;
+		PenCountDec = 0;
 
 		ChangeLv(lv);
 	}
@@ -66,6 +73,7 @@ public class HeroStat
 		Spd = chart.Spd * (1 + (SpdInc / 100f));
 		CritChance = CritChanceInc - CritChanceDec;
 		CritDmg = CritDmgInc - CritDmgDec;
+		PenCount = chart.PenCount + PenCountInc - PenCountDec;
 	}
 
 }

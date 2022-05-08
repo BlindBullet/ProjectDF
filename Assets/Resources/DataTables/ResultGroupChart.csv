@@ -27,3 +27,8 @@ skill_10001_2,1,100,Me,,,,,,,skill_10001_2,
 skill_10001_3,1,100,Me,,,,,,,skill_10001_3,
 skill_10001_4,1,100,Me,,,,,,,skill_10001_4,
 skill_10001_5,1,100,Me,,,,,,,skill_10001_5,
+attack_10002_1,1,100,Enemy,Closest,1,,,,,dmg_100,attack_10002_1
+attack_10002_2,1,100,Enemy,Closest,1,,,,,dmg_100,attack_10002_2
+attack_10002_3,1,100,Enemy,Closest,1,,,,,dmg_100,attack_10002_3
+attack_10002_4,1,100,Enemy,Closest,1,,,,,dmg_100,attack_10002_4
+attack_10002_5,1,100,Enemy,Closest,1,,,,,dmg_100,attack_10002_5

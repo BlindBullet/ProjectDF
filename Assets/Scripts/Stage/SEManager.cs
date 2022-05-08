@@ -562,6 +562,17 @@ public class SEManager : MonoSingleton<SEManager>
 								break;
 						}
 						break;
+					case "PenCount":
+						switch (chart.EParam1)
+						{
+							case "Inc":
+								target.Stat.PenCountInc += int.Parse(chart.EParam3);
+								break;
+							case "Dec":
+								target.Stat.PenCountDec += int.Parse(chart.EParam3);
+								break;
+						}
+						break;
 				}
 				break;
 		}

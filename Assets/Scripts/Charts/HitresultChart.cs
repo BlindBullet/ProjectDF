@@ -49,5 +49,6 @@ public enum StatType
     CurHp,
     CritChance,
     CritDmg,
+    PenCount,
 
 }

@@ -9,7 +9,7 @@ public class ProjectileController : MonoBehaviour
 	List<HitresultChart> hitresults = new List<HitresultChart>();
 	public Transform ModelTrf;
 	HeroBase caster;
-	int penCount;
+	int penCount = 0;
 	Vector2 dir;
 	EnemyBase target;
 	Vector2 targetPos;
@@ -34,8 +34,9 @@ public class ProjectileController : MonoBehaviour
 			existTarget = true;
 			this.target = target;
 			targetPos = target.transform.position;
-		}		
+		}
 
+		penCount = caster.Stat.PenCount;
 		mTimerCurrent = 0f;		
 
 		StartCoroutine(MoveSequence());
@@ -86,7 +87,7 @@ public class ProjectileController : MonoBehaviour
 					//마지막 방향 및 속도를 구해야함.
 
 					if (mTimerCurrent >= 1f)
-					{
+					{						
 						DestroySequence();
 					}
 					else
@@ -102,7 +103,8 @@ public class ProjectileController : MonoBehaviour
 						transform.position = BezierValue(pos1, pos2, mTimerCurrent);
 
 						if (mTimerCurrent < 1f)
-						{							
+						{
+					
 							dir = (transform.position.WithZ(0f) - _pos.WithZ(0f)).normalized;
 						}
 					}
@@ -162,7 +164,7 @@ public class ProjectileController : MonoBehaviour
 				HitresultManager.Ins.RunResultGroup(hitResultGroups, transform.position, caster);
 			}
 
-			if(penCount == 0)
+			if(penCount <= 0)
 			{
 				if (data.HitDestroyFx != null)
 					EffectManager.Ins.ShowFx(data.HitDestroyFx, this.transform.position);
