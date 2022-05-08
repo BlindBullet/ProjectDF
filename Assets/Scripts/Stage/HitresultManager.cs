@@ -123,9 +123,9 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			SendHitresult(hitresults, target, caster);
 		}
 		else
-		{
+		{			
 			Vector2 dir = Vector2.up;
-
+			
 			switch (type)
 			{
 				case SkillType.None:
@@ -144,8 +144,9 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 					break;
 			}
 
-			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+			//float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 			//caster.ProjectileAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			dir.Normalize();
 
 			//프로젝타일 발사
 			List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart[data.Projectile];
@@ -153,9 +154,9 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			for (int i = 0; i < projectiles.Count; i++)
 			{
 				ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
-				projectile.transform.rotation = Quaternion.AngleAxis(angle - 90 + projectiles[i].Angle, Vector3.forward);
+				//projectile.transform.rotation = Quaternion.AngleAxis(angle - 90 + projectiles[i].Angle, Vector3.forward);
 				projectile.transform.position = caster.ProjectileAnchor.position.WithX(caster.ProjectileAnchor.position.x + projectiles[i].PosX);
-				projectile.Setup(projectiles[i], hitresults, caster);
+				projectile.Setup(projectiles[i], hitresults, caster, dir, target);
 			}
 		}		
 	}

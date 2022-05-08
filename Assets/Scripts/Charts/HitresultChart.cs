@@ -16,7 +16,7 @@ public class HitresultChart
     public float ValuePercent { get; set; }
     public float DurationTime { get; set; }
     public float StiffTime { get; set; }
-    public string AddOnhitResultGroupId { get; set; }    
+    
 
 }
 
@@ -28,6 +28,7 @@ public enum HitType
     Debuff,
     Push,
     Stun,
+    Summon,
 
 }
 
