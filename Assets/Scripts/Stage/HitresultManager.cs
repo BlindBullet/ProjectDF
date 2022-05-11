@@ -208,7 +208,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 				if (hitresults[i].HitFx != null)
 				{                    
 					EffectManager.Ins.ShowFx(hitresults[i].HitFx, target.transform);
-				}   
+				}
 
 				switch (hitresults[i].Type)
 				{
@@ -222,7 +222,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 
 								if (isCrit)
 									dmg = dmg * (1 + (caster.Stat.CritDmg / 100f));
-
+								
 								Vector3 pos = target.transform.position;
 								resultDmg = target.TakeDmg(dmg, caster.Stat.Attr, isCrit, hitresults[i].StiffTime);
 								FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit);
@@ -231,7 +231,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 
 								break;
 						}
-						break;
+						break;					
 					case HitType.Push:                        
 						target.Push(hitresults[i].Value, hitresults[i].DurationTime);                        
 						break;

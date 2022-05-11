@@ -96,6 +96,44 @@ public class EnemyBuffController : MonoBehaviour
 							break;
 					}
 					break;
+				case EnemySkillHitType.Debuff:
+					switch (Buffs[i].Data.Param1)
+					{
+						case "Spd":
+							addSpd -= float.Parse(Buffs[i].Data.Param2);
+							break;
+						case "Def":
+							if (Buffs[i].Data.Param2 == null)
+							{
+								addDef -= float.Parse(Buffs[i].Data.Param3);
+							}
+							else
+							{
+								switch (Buffs[i].Data.Param2)
+								{
+									case "Red":
+										if (attrDefs.ContainsKey(Attr.Red))
+											attrDefs[Attr.Red] -= float.Parse(Buffs[i].Data.Param3);
+										else
+											attrDefs[Attr.Red] = float.Parse(Buffs[i].Data.Param3);
+										break;
+									case "Green":
+										if (attrDefs.ContainsKey(Attr.Green))
+											attrDefs[Attr.Green] -= float.Parse(Buffs[i].Data.Param3);
+										else
+											attrDefs[Attr.Green] = float.Parse(Buffs[i].Data.Param3);
+										break;
+									case "Blue":
+										if (attrDefs.ContainsKey(Attr.Blue))
+											attrDefs[Attr.Blue] -= float.Parse(Buffs[i].Data.Param3);
+										else
+											attrDefs[Attr.Blue] = float.Parse(Buffs[i].Data.Param3);
+										break;
+								}
+							}
+							break;
+					}
+					break;
 				case EnemySkillHitType.Immune:
 					switch (Buffs[i].Data.Param1)
 					{
@@ -138,6 +176,17 @@ public class EnemyBuff
 		switch (Data.HitType)
 		{
 			case EnemySkillHitType.Buff:
+				switch (Data.Param1)
+				{
+					case "Spd":
+						DurationTime = float.Parse(Data.Param3);
+						break;
+					case "Def":
+						DurationTime = float.Parse(Data.Param4);
+						break;
+				}
+				break;
+			case EnemySkillHitType.Debuff:
 				switch (Data.Param1)
 				{
 					case "Spd":

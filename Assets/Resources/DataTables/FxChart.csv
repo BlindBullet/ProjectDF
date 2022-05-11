@@ -1,2 +1,4 @@
 ﻿Id,FxResource,SpawnAnchor,SpawnPosX,SpawnPosY,Binding,SoundResource
 TestHitFx,TestHitFx,Center,,,,
+Ise Attack,Ise Attack,,,2.86,,Skill 8
+EntangleVine,EntangleVine,Center,,,,

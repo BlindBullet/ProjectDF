@@ -65,8 +65,6 @@ public class EnemySkillController : MonoBehaviour
 
 	IEnumerator UseSkill(EnemySkill skill)
 	{
-		Debug.Log(skill.Data.Id + " »ç¿ë");
-
 		if (skill.Data.BeginFx != null)
 			EffectManager.Ins.ShowFx(skill.Data.BeginFx, this.transform);
 

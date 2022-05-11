@@ -73,7 +73,7 @@ public class EffectManager : SingletonObject<EffectManager>
 		FxChart fxData = CsvData.Ins.FxChart[id];
 		GameObject fx = SpawnEffect(fxData.FxResource);
 
-		if (fxData.SpawnAnchor == "" || fxData.SpawnAnchor == "None")
+		if (fxData.SpawnAnchor == "" || fxData.SpawnAnchor == "None" || fxData.SpawnAnchor == null)
 		{
 			fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
 		}
@@ -120,11 +120,13 @@ public class EffectManager : SingletonObject<EffectManager>
 				fx.transform.position = fxTrf.position;
 				fx.transform.SetParent(fxTrf.transform);
 				fx.transform.position = new Vector3(fx.transform.position.x + fxData.SpawnPosX, fx.transform.position.y + fxData.SpawnPosY, fx.transform.position.z);
+				fx.transform.localScale = new Vector3(fx.transform.localScale.x, fx.transform.localScale.y, 1);
 			}
 			else
 			{
 				fx.transform.position = fxTrf.position;
 				fx.transform.position = new Vector3(fx.transform.position.x + fxData.SpawnPosX, fx.transform.position.y + fxData.SpawnPosY, fx.transform.position.z);
+				fx.transform.localScale = new Vector3(fx.transform.localScale.x, fx.transform.localScale.y, 1);
 			}
 		}
 

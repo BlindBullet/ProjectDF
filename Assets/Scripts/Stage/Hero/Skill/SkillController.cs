@@ -93,7 +93,9 @@ public class SkillController : MonoBehaviour
 			EffectManager.Ins.ShowFx(skill.Data.CastFx, me.Anchor);
 
 		if (data.BeginFx != null)
-			EffectManager.Ins.ShowFx(skill.Data.BeginFx, me.Anchor);
+		{	
+			EffectManager.Ins.ShowFx(skill.Data.BeginFx, me.Anchor);			
+		}	
 
 		if (data.Anim == "Attack")
 		{

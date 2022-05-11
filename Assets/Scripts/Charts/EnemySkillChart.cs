@@ -45,6 +45,7 @@ public enum EnemySkillHitType
     Summon,
     Immune,
     Buff,
+    Debuff,
     Heal,
 
 }
