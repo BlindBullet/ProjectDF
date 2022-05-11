@@ -110,9 +110,9 @@ public class SkillController : MonoBehaviour
 		float totalTime = skill.Data.TotalFrame / 30f;
 		float progressTime = 0;
 
-		if (me.Stat.Spd > 1f && data.Type == SkillType.Attack)
+		if (data.Type == SkillType.Attack)
 		{
-			totalTime = totalTime / me.Stat.Spd;
+			totalTime = totalTime / me.Stat.Spd;			
 		}
 
 		for (int i = 0; i < data.FireFrame.Length; i++)
@@ -121,8 +121,8 @@ public class SkillController : MonoBehaviour
 			{
 				if (data.Type == SkillType.Attack)
 				{
-					progressTime += data.FireFrame[i] / 30f / me.Stat.Spd;
-					yield return new WaitForSeconds(data.FireFrame[i] / 30f / me.Stat.Spd);
+					progressTime += (data.FireFrame[i] / 30f) / me.Stat.Spd;
+					yield return new WaitForSeconds((data.FireFrame[i] / 30f) / me.Stat.Spd);
 				}
 				else
 				{
@@ -134,7 +134,7 @@ public class SkillController : MonoBehaviour
 			{
 				if (data.Type == SkillType.Attack)
 				{
-					progressTime += (data.FireFrame[i] - data.FireFrame[i - 1]) / 30f / me.Stat.Spd;
+					progressTime += ((data.FireFrame[i] - data.FireFrame[i - 1]) / 30f) / me.Stat.Spd;
 					yield return new WaitForSeconds((data.FireFrame[i] - data.FireFrame[i - 1]) / 30f / me.Stat.Spd);
 				}
 				else
@@ -150,7 +150,9 @@ public class SkillController : MonoBehaviour
 		}
 
 		if (totalTime - progressTime > 0)
-			yield return new WaitForSeconds(totalTime - progressTime);
+		{
+			yield return new WaitForSeconds(totalTime - progressTime);			
+		}	
 		
 		skill.InitCoolTime();
 

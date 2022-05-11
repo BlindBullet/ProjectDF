@@ -78,7 +78,7 @@ public class DialogHeroInfo : DialogController
 		AtkTitle.text = LanguageManager.Ins.SetString("Atk");
 		Atk.text = ExtensionMethods.ToCurrencyString(chart.Atk);
 		SpdTitle.text = LanguageManager.Ins.SetString("Spd");
-		Spd.text = ExtensionMethods.ToCurrencyString(chart.Spd);	
+		Spd.text = chart.Spd.ToString();
 		AttrTitle.text = LanguageManager.Ins.SetString("Attr");
 		AttrIcon.sprite = Resources.Load<Sprite>("Sprites/Icons/" + chart.Attr.ToString());
 	}
