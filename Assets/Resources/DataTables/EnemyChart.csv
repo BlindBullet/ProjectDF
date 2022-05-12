@@ -1,5 +1,12 @@
 ﻿Id,StrName,StrDesc,Model,Attr,Size,Weight,Hp,Spd,Gold,Skill
-10001,enemy_name_10001,enemy_desc_10001,GoblinGrunt,Green,0.5,1,100,1,10,
-10002,enemy_name_10002,enemy_desc_10002,OrcSwordman,Red,0.6,1,100,0.5,10,TestSkill5
-10003,enemy_name_10003,enemy_desc_10003,OrcWarlock,Blue,0.7,1,100,0.3,20,TestSkill3
-20001,enemy_name_20001,enemy_desc_20001,OrcWarlock,Green,1,1,100,0.2,50,TestSkill4
+10001,enemy_name_10001,enemy_desc_10001,GoblinArcher,Green,0.3,1,100,1,10,
+10002,enemy_name_10002,enemy_desc_10002,GoblinBomber,Red,0.5,1,100,0.5,10,
+10003,enemy_name_10003,enemy_desc_10003,GoblinChampion,Blue,0.5,1,100,0.3,20,
+10004,enemy_name_10004,enemy_desc_10004,GoblinDefander,Blue,0.5,1,100,1,10,
+10005,enemy_name_10005,enemy_desc_10005,GoblinElite,Green,0.5,1,100,0.5,10,
+10006,enemy_name_10006,enemy_desc_10006,GoblinFlagBearer,Red,0.5,1,100,0.3,20,
+10007,enemy_name_10007,enemy_desc_10007,GoblinMage,Blue,0.5,1,100,1,10,
+10008,enemy_name_10008,enemy_desc_10008,GoblinRaider,Green,0.5,1,100,0.5,10,
+10009,enemy_name_10009,enemy_desc_10009,GoblinReaper,Red,0.5,1,100,0.3,20,
+10010,enemy_name_10010,enemy_desc_10010,GoblinZombie,Red,0.5,1,100,1,10,
+20001,enemy_name_20001,enemy_desc_20001,GoblinKing,Green,1,1,100,0.2,50,

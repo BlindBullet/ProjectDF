@@ -685,7 +685,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385728697}
   m_CullTransparentMesh: 1
---- !u!21 &453199808
+--- !u!21 &386410532
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -6411,7 +6411,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 453199808}
+  - {fileID: 386410532}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
