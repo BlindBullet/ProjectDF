@@ -98,6 +98,42 @@ public class EffectManager : SingletonObject<EffectManager>
 			SoundManager.Ins.PlaySFX(fxData.SoundResource);
 	}
 
+	public void ShowFx(string id, CharacterAnchor targetAnchor, float durationTime)
+	{
+		if (!CsvData.Ins.FxChart.ContainsKey(id))
+		{
+			Debug.Log("FxData 테이블에는 해당 " + id + "가 없습니다.");
+			return;
+		}
+
+		FxChart fxData = CsvData.Ins.FxChart[id];
+		GameObject fx = SpawnEffect(fxData.FxResource, durationTime);
+
+		if (fxData.SpawnAnchor == "" || fxData.SpawnAnchor == "None" || fxData.SpawnAnchor == null)
+		{
+			fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
+		}
+		else
+		{
+			Transform fxTrf = targetAnchor.GetAnchor(fxData.SpawnAnchor);
+
+			if (fxData.Binding)
+			{
+				fx.transform.position = fxTrf.position;
+				fx.transform.SetParent(fxTrf.transform);
+				fx.transform.position = new Vector3(fx.transform.position.x + fxData.SpawnPosX, fx.transform.position.y + fxData.SpawnPosY, fx.transform.position.z);
+			}
+			else
+			{
+				fx.transform.position = fxTrf.position;
+				fx.transform.position = new Vector3(fx.transform.position.x + fxData.SpawnPosX, fx.transform.position.y + fxData.SpawnPosY, fx.transform.position.z);
+			}
+		}
+
+		if (fxData.SoundResource != "")
+			SoundManager.Ins.PlaySFX(fxData.SoundResource);
+	}
+
 	public void ShowFx(string id, Transform fxTrf)
 	{
 		if (!CsvData.Ins.FxChart.ContainsKey(id))

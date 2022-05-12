@@ -29,6 +29,7 @@ public class DialogHeroInfo : DialogController
 	public TextMeshProUGUI DeployBtnText;    
 	public Button DeployBtn;
 	HeroData data;
+	HeroChart chart;
 	Material purchaseBtnMat;
 	Material upgradeBtnMat;
 
@@ -44,6 +45,15 @@ public class DialogHeroInfo : DialogController
 		upgradeBtnMat = PurchaseBtn.GetComponent<Image>().material;
 		UpgradeBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
 
+		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
+		chart = null;
+
+		for (int i = 0; i < chartList.Count; i++)
+		{
+			if (chartList[i].Grade == data.Grade)
+				chart = chartList[i];
+		}
+
 		this.data = data;		
 		HeroIcon.Setup(data);
 		SetHeroInfo(data);
@@ -57,15 +67,6 @@ public class DialogHeroInfo : DialogController
 
 	void SetHeroInfo(HeroData data)
 	{
-		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
-		HeroChart chart = null;
-
-		for (int i = 0; i < chartList.Count; i++)
-		{
-			if (chartList[i].Grade == data.Grade)
-				chart = chartList[i];
-		}
-
 		SetHero(chart);
 		SetStat(chart);
 		SetSkill(chart.Skill);

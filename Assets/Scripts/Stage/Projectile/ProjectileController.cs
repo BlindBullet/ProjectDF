@@ -115,6 +115,15 @@ public class ProjectileController : MonoBehaviour
 
 			if(time >= data.Lifetime)
 			{
+				if (data.DestroyFx != null)
+					EffectManager.Ins.ShowFx(data.DestroyFx, this.transform.position);
+
+				if (data.DestroyResult != null)
+				{
+					List<ResultGroupChart> destroyResultGroups = CsvData.Ins.ResultGroupChart[data.DestroyResult];
+					HitresultManager.Ins.RunResultGroup(destroyResultGroups, transform.position, caster);
+				}
+
 				DestroySequence();
 			}				
 
@@ -124,15 +133,6 @@ public class ProjectileController : MonoBehaviour
 
 	void DestroySequence()
 	{
-		if (data.DestroyFx != null)
-			EffectManager.Ins.ShowFx(data.DestroyFx, this.transform.position);
-
-		if (data.DestroyResultGroupId != null)
-		{
-			List<ResultGroupChart> destroyResultGroups = CsvData.Ins.ResultGroupChart[data.DestroyResultGroupId];
-			HitresultManager.Ins.RunResultGroup(destroyResultGroups, transform.position, caster);
-		}
-
 		this.transform.position = new Vector3(0, -100f, 0);
 		ObjectManager.Ins.Push<ProjectileController>(this);
 	}
@@ -158,17 +158,19 @@ public class ProjectileController : MonoBehaviour
 			EnemyBase enemyBase = collision.GetComponent<EnemyBase>();
 			HitresultManager.Ins.SendHitresult(hitresults, enemyBase, caster);
 			
-			if (data.HitResultGroupId != null)
-			{
-				List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitResultGroupId];
-				HitresultManager.Ins.RunResultGroup(hitResultGroups, transform.position, caster);
-			}
-
 			if(penCount <= 0)
 			{
 				if (data.HitDestroyFx != null)
-					EffectManager.Ins.ShowFx(data.HitDestroyFx, this.transform.position);
-				
+				{
+					EffectManager.Ins.ShowFx(data.HitDestroyFx, this.transform.position);					
+				}
+
+				if (data.HitDestroyResult != null)
+				{
+					List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitDestroyResult];
+					HitresultManager.Ins.RunResultGroup(hitResultGroups, transform.position, caster);
+				}
+
 				penCount--;
 								
 				DestroySequence();				

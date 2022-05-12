@@ -19,8 +19,8 @@ public class ProjectileChart
     public string DurationFx { get; set; }
     public string HitDestroyFx { get; set; }
     public string DestroyFx { get; set; }    
-    public string HitResultGroupId { get; set; }
-    public string DestroyResultGroupId { get; set; }
+    public string HitDestroyResult { get; set; }
+    public string DestroyResult { get; set; }
 }
 
 public enum PMoveType

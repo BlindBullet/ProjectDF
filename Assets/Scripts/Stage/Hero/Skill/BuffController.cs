@@ -112,7 +112,7 @@ public class BuffController : MonoBehaviour
 		AddBuff(buff);
 				
 		if (buff.Data.DurationFx != null)
-			EffectManager.Ins.ShowFx(buff.Data.DurationFx, me.Anchor);
+			EffectManager.Ins.ShowFx(buff.Data.DurationFx, me.Anchor, buff.DurationTime);
 
 		yield return new WaitForSeconds(buff.DurationTime);
 
