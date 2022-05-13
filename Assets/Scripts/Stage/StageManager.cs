@@ -140,7 +140,7 @@ public class StageManager : MonoSingleton<StageManager>
 	void SetBg(int stageNo)
 	{
 		int _stageNo = GetStageNo(stageNo);		
-		StageChart chart = CsvData.Ins.StageChart[_stageNo][0];
+		StageChart chart = CsvData.Ins.StageChart[_stageNo.ToString()];
 		
 		if(chart.Bg != null)
 		{
@@ -153,7 +153,7 @@ public class StageManager : MonoSingleton<StageManager>
 		{
 			for(int i = _stageNo - 1; i >= 0; i--)
 			{
-				StageChart _chart = CsvData.Ins.StageChart[i][0];
+				StageChart _chart = CsvData.Ins.StageChart[i.ToString()];
 
 				if (_chart.Bg == null)
 					continue;
@@ -186,13 +186,10 @@ public class StageManager : MonoSingleton<StageManager>
 		bool isBossStage = false;
 		int _stageNo = GetStageNo(stageNo);
 
-		List<StageChart> stageCharts = CsvData.Ins.StageChart[_stageNo];
+		StageChart chart = CsvData.Ins.StageChart[_stageNo.ToString()];
 
-		for (int i = 0; i < stageCharts.Count; i++)
-		{
-			if (stageCharts[i].Boss != null)
-				isBossStage = true;
-		}
+		if (chart.Boss != null)
+			isBossStage = true;
 
 		return isBossStage;
 	}
@@ -200,7 +197,7 @@ public class StageManager : MonoSingleton<StageManager>
 	public int GetStageNo(int stageNo)
 	{
 		int result = stageNo;		
-		int lastResisteredNo = CsvData.Ins.StageChart[CsvData.Ins.StageChart.Count][0].No;
+		int lastResisteredNo = CsvData.Ins.StageChart[CsvData.Ins.StageChart.Count.ToString()].No;
 		
 		if (stageNo > lastResisteredNo)
 		{
@@ -340,7 +337,6 @@ public class StageManager : MonoSingleton<StageManager>
 	
 	public void GetGold(double value)
 	{
-
 		ChangeGold(value);
 	}
 

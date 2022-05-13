@@ -5,44 +5,43 @@ using UnityEngine;
 public class EnemySpawner : SingletonObject<EnemySpawner>
 {
 
-
 	public void Spawn(int stageNo)
-	{
-		List<StageChart> datas = new List<StageChart>();
+	{		
 		int _stageNo = StageManager.Ins.GetStageNo(stageNo);
 		
-		datas = CsvData.Ins.StageChart[_stageNo];
+		StageChart data = CsvData.Ins.StageChart[_stageNo.ToString()];		
 		
-		for(int i = 0; i < datas.Count; i++)
+		for(int i = 0; i < data.Count.Length; i++)
 		{
-			StartCoroutine(SpawnSequence(datas[i], stageNo, i == datas.Count - 1 ? true : false));
+			StartCoroutine(SpawnSequence(data, stageNo, i, i * 2f, i == data.Count.Length - 1 ? true : false));
 		}
+
+		if (data.Boss != null)
+			StartCoroutine(SpawnSequence(data, stageNo, -1, 3f, false));
 	}
 
-	IEnumerator SpawnSequence(StageChart chart, int stageNo, bool isLast)
+	IEnumerator SpawnSequence(StageChart chart, int stageNo, int no, float spawnTime, bool isLast = false)
 	{
-		yield return new WaitForSeconds(chart.Time);
+		yield return new WaitForSeconds(spawnTime);
 
-		if(chart.Enemies != null)
+		if(no == -1)
 		{
-			for (int i = 0; i < chart.Enemies.Length; i++)
+			SpawnEnemy(chart.Boss, stageNo, true);
+		}
+		else
+		{
+			for (int k = 0; k < chart.Count[no]; k++)
 			{
-				for (int k = 0; k < chart.Count[i]; k++)
-				{
-					SpawnEnemy(chart.Enemies[i], stageNo);
-				}
+				int randNo = LotteryCalculator.LotteryIntWeight(chart.Probs);
+				SpawnEnemy(chart.Enemies[randNo], stageNo);
 			}
 		}
-
-		if (chart.Boss != null)
-			SpawnEnemy(chart.Boss, stageNo, true);
-
+		
 		if (isLast)
 		{
 			StageManager.Ins.LastEnemiesSpawned = true;
 		}
 	}
-
 
 	public void SpawnEnemy(string id, int stageNo, bool isBoss = false)
 	{

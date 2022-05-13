@@ -7,11 +7,11 @@ using System;
 public static class ConstantData
 {
 	public static ObscuredString[] StartHeroes = { "10001", "10002", "10003", "10004", "10005", };
-	public static ObscuredDouble StartGold = 100f;
-	public static ObscuredFloat LvUpGoldGR = 1.2f;
+	public static ObscuredDouble StartLvUpGold = 10f;
+	public static ObscuredFloat LvUpGoldGR = 1.25f;
 	public static ObscuredFloat HeroAtkGR = 1.2f;
 	public static ObscuredFloat EnemyHpGR = 1.3f;	
-	public static ObscuredFloat EnemyGoldGR = 1.2f;
+	public static ObscuredFloat EnemyGoldGR = 1.15f;
 	public static ObscuredInt PossibleAscensionStage = 10;
 	public static ObscuredDouble AscensionBasicReward = 50f;
 	public static ObscuredFloat AscensionRewardFactor = 1.1f;
@@ -20,8 +20,8 @@ public static class ConstantData
 	public static ObscuredInt KillEnemiesCount1Min = 15;
 
 	public static double GetLvUpCost(int lv)
-	{
-		return CalcValue(StartGold, LvUpGoldGR, lv);		
+	{		
+		return CalcValue(StartLvUpGold, LvUpGoldGR, lv);		
 	}
 
 	public static double GetHeroAtk(double basicAtk, int lv)

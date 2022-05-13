@@ -230,6 +230,7 @@ public class EnemyBase : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 
 		StageManager.Ins.GetGold(Stat.Gold);
+		FloatingTextManager.Ins.ShowGold(this.transform.position, "+" + Stat.Gold.ToCurrencyString());
 		col.enabled = false;
 
 		yield return new WaitForSeconds(1f);

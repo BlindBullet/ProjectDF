@@ -19,7 +19,7 @@ public class Slot : MonoBehaviour
 	public void Init(SlotData data)
 	{
 		Image uiImage = LvUpBtn.GetComponent<Image>();
-		uiImage.material = new Material(uiImage.material);
+		uiImage.material = new Material(uiImage.materialForRendering);
 		lvUpBtnMat = LvUpBtn.GetComponent<Image>().material;
 
 		LvUpBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
@@ -57,6 +57,7 @@ public class Slot : MonoBehaviour
 			}
 		}
 
+		SetLvUpBtnState(0);
 		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
 		SetLvText();
 	}
