@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 using Random = UnityEngine.Random;
+using DG.Tweening;
 
 [RequireComponent(typeof(MinionFSM))]
 [RequireComponent(typeof(MinionAttackController))]
@@ -17,7 +18,7 @@ public class MinionBase : MonoBehaviour
 	//타겟을 다시 찾고, 해당 타겟한테 이동.
 	//소환 시간이 끝나면 죽음.
 
-	public MinionStat Stat;		
+	public MinionStat Stat;
 	public EnemyBase Target;
 	public MinionUi Ui;
 	public MinionAttackController AttackCon;
@@ -115,6 +116,16 @@ public class MinionBase : MonoBehaviour
 
 			yield return null;
 		}
+	}
+
+	public void IdleMove()
+	{
+		transform.DOMove(transform.position.WithY(transform.position.y + 0.05f), 0.5f).SetLoops(-1, LoopType.Yoyo).SetId("IdleMove");
+	}
+
+	public void StopIdleMove()
+	{
+		DOTween.Kill("IdleMove");
 	}
 
 	public void Move()

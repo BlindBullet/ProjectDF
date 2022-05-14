@@ -20,6 +20,7 @@ public class MinionFSM : MonoBehaviour
 		protected override void Begin()
 		{
 			Owner.me.SearchTarget();
+			Owner.me.IdleMove();
 		}
 
 		protected override void Update()
@@ -44,7 +45,7 @@ public class MinionFSM : MonoBehaviour
 
 		protected override void End()
 		{
-
+			Owner.me.StopIdleMove();
 		}
 	}
 
