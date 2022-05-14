@@ -6,8 +6,10 @@ using System.Linq;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(MinionFSM))]
+[RequireComponent(typeof(MinionAttackController))]
 public class MinionBase : MonoBehaviour
-{	
+{
+	public static List<MinionBase> Minions = new List<MinionBase>();
 	//무브 상태, 공격 상태
 	//히트리절트와 프로젝타일만 사용.
 	//타겟 = 라인에서 가장 가까운 적
@@ -17,8 +19,10 @@ public class MinionBase : MonoBehaviour
 
 	public MinionStat Stat;		
 	public EnemyBase Target;
+	public MinionUi Ui;
+	public MinionAttackController AttackCon;
 	public Transform ModelTrf;
-	public bool IsDie = false;
+	[HideInInspector] public bool IsDie = false;
 	Vector2 min;
 	Vector2 max;
 	MinionChart data;
@@ -30,8 +34,12 @@ public class MinionBase : MonoBehaviour
 
 	public void Init(MinionChart chart, HeroBase caster, float durationTime)
 	{
+		this.transform.localScale = new Vector3(chart.Size, chart.Size, 1);
+
 		data = chart;
-		Stat = new MinionStat(chart, caster);
+		Ui.Setup(chart);
+		//Stat = new MinionStat(chart, caster);
+		AttackCon.SetController(this, data);
 
 		min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
 		max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
@@ -45,12 +53,23 @@ public class MinionBase : MonoBehaviour
 
 		StartCoroutine(UnsummonSequence(durationTime));
 		GetComponent<MinionFSM>().SetFSM(this);
+
+		Minions.Add(this);
 	}
 
 	private void Start()
 	{
 		MinionChart chart = CsvData.Ins.MinionChart["M2"];
 		data = chart;
+
+		Stat = new MinionStat();
+		Stat.Setup(10, chart.Spd);
+
+		AttackCon.SetController(this, data);
+
+		this.transform.localScale = new Vector3(chart.Size, chart.Size, 1);
+
+		Ui.Setup(chart);
 
 		min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
 		max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
@@ -88,11 +107,12 @@ public class MinionBase : MonoBehaviour
 						{
 							Target = enemies[i];
 							targetPos = Target.transform.position;
-							break;
+							yield break;
 						}
 					}
 				}
 			}
+
 			yield return null;
 		}
 	}
@@ -114,10 +134,12 @@ public class MinionBase : MonoBehaviour
 
 	IEnumerator MoveSequence()
 	{
+		yield return new WaitForSeconds(1f);
+
 		pos = transform.position;
 		targetPos = Target.transform.position;
 		mTimerCurrent = 0f;
-
+		
 		Vector3 _pos;
 		Vector2 pos1R = Vector2.zero;
 		Vector2 pos2R = Vector2.zero;
@@ -145,43 +167,45 @@ public class MinionBase : MonoBehaviour
 
 		while (true)
 		{
+			dir = (Target.transform.position - this.transform.position).normalized;
 			ModelTrf.up = dir;
+
+			if(Target.Stat.CurHp <= 0f)
+			{
+				Target = null;
+				yield break;
+			}
 
 			switch (data.MoveType)
 			{
 				case MoveType.Direct:
-					transform.Translate(dir * 5f * Time.deltaTime);
+					if(Target != null)
+					{	
+						transform.Translate(dir * 5f * Time.deltaTime);
+					}
+					else
+					{
+
+					}
 					break;
 				case MoveType.Curve:
 					mTimerCurrent += Time.deltaTime * (5f / 20f);
 					_pos = transform.position.WithZ(0f);
 
-					if (mTimerCurrent >= 1f)
+					if (Target.Stat.CurHp > 0f)
 					{
-						Target = null;
+						targetPos = Target.transform.position;
 					}
-					else
+
+					Vector2 pos1 = new Vector2(pos.x + pos1R.x, pos.y + pos1R.y);
+					Vector2 pos2 = new Vector2(targetPos.x + pos2R.x, targetPos.y + pos2R.y);
+
+					transform.position = BezierValue(pos1, pos2, mTimerCurrent);
+
+					if (mTimerCurrent < 1f)
 					{
-						if (Target.Stat.CurHp > 0f)
-						{
-							targetPos = Target.transform.position;
-						}
-						else
-						{
-							Target = null;
-							yield break;
-						}
-
-						Vector2 pos1 = new Vector2(pos.x + pos1R.x, pos.y + pos1R.y);
-						Vector2 pos2 = new Vector2(targetPos.x + pos2R.x, targetPos.y + pos2R.y);
-
-						transform.position = BezierValue(pos1, pos2, mTimerCurrent);
-
-						if (mTimerCurrent < 1f)
-						{
-							dir = (transform.position.WithZ(0f) - _pos.WithZ(0f)).normalized;
-						}
-					}
+						dir = (transform.position.WithZ(0f) - _pos.WithZ(0f)).normalized;
+					}					
 					break;
 			}
 
@@ -200,6 +224,21 @@ public class MinionBase : MonoBehaviour
 	public void Unsummon()
 	{
 
+		Minions.Remove(this);
+	}
+
+	public bool CalcRange()
+	{
+		bool result = false;
+
+		float dist = Vector2.Distance(this.transform.position, Target.transform.position);
+
+		if(dist <= data.Range)
+		{
+			result = true;
+		}
+
+		return result;
 	}
 
 	Vector2 BezierValue(Vector2 p1, Vector2 p2, float value)
@@ -224,9 +263,15 @@ public class MinionStat
 	public double Atk;
 	public float Spd;
 
-	public MinionStat(MinionChart chart, HeroBase caster)
+	public void Setup(double atk, float spd)
 	{
-		Atk = caster.Stat.Atk * (chart.AtkP / 100f);
-		Spd = chart.Spd;
+		Atk = atk;
+		Spd = spd;
+
 	}
+	//public MinionStat(MinionChart chart, HeroBase caster)
+	//{
+	//	Atk = caster.Stat.Atk * (chart.AtkP / 100f);
+	//	Spd = chart.Spd;
+	//}
 }

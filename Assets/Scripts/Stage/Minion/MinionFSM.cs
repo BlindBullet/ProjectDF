@@ -26,7 +26,14 @@ public class MinionFSM : MonoBehaviour
 		{			
 			if(Owner.me.Target != null)
 			{
-				Invoke<MoveState>();
+				if (Owner.me.CalcRange())
+				{
+					Invoke<AttackState>();
+				}
+				else
+				{
+					Invoke<MoveState>();
+				}
 			}
 
 			if (Owner.me.IsDie)
@@ -55,6 +62,11 @@ public class MinionFSM : MonoBehaviour
 				Invoke<IdleState>();
 			}
 
+			if (Owner.me.Target != null && Owner.me.CalcRange())
+			{
+				Invoke<AttackState>();
+			}
+
 			if (Owner.me.IsDie)
 			{
 				Invoke<DieState>();
@@ -71,12 +83,15 @@ public class MinionFSM : MonoBehaviour
 	{
 		protected override void Begin()
 		{
-
+			Owner.me.AttackCon.Attack();
 		}
 
 		protected override void Update()
 		{
-
+			if (Owner.me.Target == null || Owner.me.Target.Stat.CurHp <= 0f)
+			{
+				Invoke<IdleState>();
+			}
 
 			if (Owner.me.IsDie)
 			{
@@ -86,7 +101,7 @@ public class MinionFSM : MonoBehaviour
 
 		protected override void End()
 		{
-
+			Owner.me.AttackCon.StopAttack();
 		}
 	}
 

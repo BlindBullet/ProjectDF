@@ -206,9 +206,11 @@ GameObject:
   - component: {fileID: 5447382863262340665}
   - component: {fileID: 1609258559818933813}
   - component: {fileID: 5797512158350020136}
+  - component: {fileID: 6393872954692996480}
+  - component: {fileID: 4298938163879410768}
   m_Layer: 0
   m_Name: MinionObj
-  m_TagString: Untagged
+  m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,7 +224,7 @@ Transform:
   m_GameObject: {fileID: 5447382863262340664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5447382862174371981}
   m_Father: {fileID: 0}
@@ -241,6 +243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
+  Ui: {fileID: 6393872954692996480}
+  AttackCon: {fileID: 4298938163879410768}
   ModelTrf: {fileID: 5447382862174371981}
   IsDie: 0
 --- !u!114 &5797512158350020136
@@ -253,6 +257,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 206ea2bae1edc0146a0c0ea9bb97a2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6393872954692996480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447382863262340664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bfb4e02c67381449c4d4f3ff02d9e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bg: {fileID: 5447382862511234941}
+  MinionImg: {fileID: 5447382864131019457}
+  Frame: {fileID: 5447382862869965833}
+--- !u!114 &4298938163879410768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447382863262340664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e101e937af002488f99765f7864533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5447382864131019459
