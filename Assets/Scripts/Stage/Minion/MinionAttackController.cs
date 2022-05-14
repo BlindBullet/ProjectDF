@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MinionAttackController : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class MinionAttackController : MonoBehaviour
 		{
 			if (me.Target != null && me.Target.Stat.CurHp > 0f)
 			{
-				Vector2 dir = (me.Target.transform.position - me.transform.position).normalized;
+				Vector3 dir = (me.Target.transform.position - me.transform.position).normalized;
 				me.ModelTrf.up = dir;
 
 				//°ø°Ý½Ã ¹«ºù
@@ -51,7 +52,15 @@ public class MinionAttackController : MonoBehaviour
 					default:
 						if (!me.CalcRange())
 						{
-							me.transform.Translate(dir * 5f * Time.deltaTime);
+							me.transform.DOMove(me.Target.transform.position - (dir * 2f), 1f).SetEase(Ease.Linear);
+						}
+						else
+						{
+							if (data.Range / 3f <= Vector2.Distance(me.transform.position, me.Target.transform.position))
+							{
+								me.transform.DOMove(me.transform.position - (dir * (data.Range / 6f)), 1f).SetEase(Ease.Linear);
+								yield return new WaitForSeconds(1f);
+							}
 						}
 						break;
 				}
