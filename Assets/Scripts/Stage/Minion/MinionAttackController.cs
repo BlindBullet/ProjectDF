@@ -9,11 +9,13 @@ public class MinionAttackController : MonoBehaviour
 	MinionChart data;
 	Coroutine cAttack = null;
 	Coroutine cAttackMove = null;
+	Vector3 dir;
 
 	public void SetController(MinionBase minionBase, MinionChart chart)
 	{
 		me = minionBase;
 		data = chart;
+		dir = Vector3.up;
 	}
 
 	public void Attack()
@@ -27,9 +29,21 @@ public class MinionAttackController : MonoBehaviour
 
 	IEnumerator AttackSequence()
 	{
-		
-		yield return null;
-				
+		while (true)
+		{
+			yield return new WaitForSeconds(1f / data.Spd);
+
+			List<HitresultChart> hitresults = CsvData.Ins.HitresultChart[data.Hitresult];
+			List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart[data.Projectile];
+
+			for (int i = 0; i < projectiles.Count; i++)
+			{
+				ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
+				//projectile.transform.rotation = Quaternion.AngleAxis(angle - 90 + projectiles[i].Angle, Vector3.forward);
+				projectile.transform.position = me.ProjectileAnchor.position.WithX(me.ProjectileAnchor.position.x + projectiles[i].PosX);
+				projectile.Setup(projectiles[i], hitresults, me, dir, me.Target);
+			}
+		}		
 	}
 
 	IEnumerator AttackMoveSequence()
@@ -38,7 +52,7 @@ public class MinionAttackController : MonoBehaviour
 		{
 			if (me.Target != null && me.Target.Stat.CurHp > 0f)
 			{
-				Vector3 dir = (me.Target.transform.position - me.transform.position).normalized;
+				dir = (me.Target.transform.position - me.transform.position).normalized;
 				me.ModelTrf.up = dir;
 
 				//°ø°Ý½Ã ¹«ºù

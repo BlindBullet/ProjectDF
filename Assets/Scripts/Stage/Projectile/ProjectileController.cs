@@ -43,6 +43,14 @@ public class ProjectileController : MonoBehaviour
 		StartCoroutine(MoveSequence());
 	}
 
+	public void Setup(ProjectileChart data, List<HitresultChart> hitresults, MinionBase minion, Vector2 dir, EnemyBase target = null)
+	{
+		//프로젝타일을 만든 주체가 소환수인지 영웅인지를 구분
+		//소환수의 히트리절트를 전달하는 메서드 추가
+		//
+
+	}
+
 	IEnumerator MoveSequence()
 	{
 		float time = 0;

@@ -19,10 +19,11 @@ public class MinionBase : MonoBehaviour
 	//소환 시간이 끝나면 죽음.
 
 	public MinionStat Stat;
-	public EnemyBase Target;
+	[HideInInspector] public EnemyBase Target;
 	public MinionUi Ui;
 	public MinionAttackController AttackCon;
 	public Transform ModelTrf;
+	public Transform ProjectileAnchor;
 	[HideInInspector] public bool IsDie = false;
 	Vector2 min;
 	Vector2 max;
@@ -32,7 +33,7 @@ public class MinionBase : MonoBehaviour
 	Vector2 dir;
 	Vector2 targetPos;
 	float mTimerCurrent = 0f;
-
+	
 	public void Init(MinionChart chart, HeroBase caster, float durationTime)
 	{
 		this.transform.localScale = new Vector3(chart.Size, chart.Size, 1);
