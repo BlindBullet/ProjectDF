@@ -96,7 +96,7 @@ public class MinionBase : MonoBehaviour
 		{
 			if (EnemyBase.Enemies.Count > 0)
 			{
-				List<EnemyBase> enemies = EnemyBase.Enemies.OrderBy(a => Vector2.Distance(a.transform.position, StageManager.Ins.PlayerLine.position)).ToList();
+				List<EnemyBase> enemies = EnemyBase.Enemies.OrderBy(a => Vector2.Distance(a.transform.position, this.transform.position)).ToList();
 
 				for (int i = 0; i < enemies.Count; i++)
 				{
@@ -133,9 +133,7 @@ public class MinionBase : MonoBehaviour
 	}
 
 	IEnumerator MoveSequence()
-	{
-		yield return new WaitForSeconds(1f);
-
+	{		
 		pos = transform.position;
 		targetPos = Target.transform.position;
 		mTimerCurrent = 0f;

@@ -40,6 +40,9 @@ public class MinionAttackController : MonoBehaviour
 				Vector2 dir = (me.Target.transform.position - me.transform.position).normalized;
 				me.ModelTrf.up = dir;
 
+				//공격시 무빙
+				//적이 사정거리보다 멀어질 때 따라가기
+				//적이 일정 범위 이하로 가까워지면 뒤로 물러서기
 				switch (data.MoveType)
 				{
 					case MoveType.None:
