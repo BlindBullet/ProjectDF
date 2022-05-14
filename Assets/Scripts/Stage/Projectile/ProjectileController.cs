@@ -25,6 +25,7 @@ public class ProjectileController : MonoBehaviour
 		this.hitresults = hitresults;
 		this.caster = caster;
 		this.dir = dir;
+
 		if(target == null)
 		{
 			existTarget = false;

@@ -51,7 +51,7 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: d8c80516cdde9bd4597d3e10315c7763, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Forest Fairy Filia
+  - ForestFairy
   m_RenderDataMap: {}
   m_Tag: Minions
   m_IsVariant: 0
