@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjectileChart
 {
     public string Id { get; set; }
-    public PMoveType MoveType { get; set; }        
+    public MoveType MoveType { get; set; }        
     public float PosX { get; set; }
     public float Angle { get; set; }
     public float Speed { get; set; }    
@@ -23,7 +23,7 @@ public class ProjectileChart
     public string DestroyResult { get; set; }
 }
 
-public enum PMoveType
+public enum MoveType
 {
     None,
     Direct,

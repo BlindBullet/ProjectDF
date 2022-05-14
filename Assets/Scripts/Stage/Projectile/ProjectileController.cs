@@ -50,7 +50,7 @@ public class ProjectileController : MonoBehaviour
 		Vector2 pos1R = Vector2.zero;
 		Vector2 pos2R = Vector2.zero;
 
-		if(data.MoveType == PMoveType.Curve)
+		if(data.MoveType == MoveType.Curve)
 		{
 			if (data.BPos1R != null)
 			{				
@@ -77,10 +77,10 @@ public class ProjectileController : MonoBehaviour
 
 			switch (data.MoveType)
 			{
-				case PMoveType.Direct:
+				case MoveType.Direct:
 					transform.Translate(dir * data.Speed * Time.deltaTime);
 					break;
-				case PMoveType.Curve:
+				case MoveType.Curve:
 					mTimerCurrent += Time.deltaTime * (data.Speed / 20f);
 					_pos = transform.position.WithZ(0f);
 					
