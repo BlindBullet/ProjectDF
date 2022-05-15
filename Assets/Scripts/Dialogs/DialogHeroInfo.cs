@@ -86,9 +86,17 @@ public class DialogHeroInfo : DialogController
 
 	void SetSkill(string id)
 	{
-		SkillChart skill = CsvData.Ins.SkillChart[id];
+		List<SkillChart> skills = CsvData.Ins.SkillChart[id];
+		SkillChart skill = null;
+
+		for(int i = 0; i < skills.Count; i++)
+		{
+			if (skills[i].Grade == data.Grade)
+				skill = skills[i];
+		}
+
 		SkillName.text = LanguageManager.Ins.SetString("Skill");
-		SkillDesc.text = LanguageManager.Ins.SetString(skill.Desc);
+		SkillDesc.text = string.Format(LanguageManager.Ins.SetString(skill.Desc), skill.CoolTime.ToString());
 	}
 
 	void SetCE(string id, HeroChart chart)

@@ -8,7 +8,7 @@ public class CsvData : SingletonObject<CsvData>
 	public Dictionary<string, List<HeroChart>> HeroChart = new Dictionary<string, List<HeroChart>>();	
 	public Dictionary<string, FxChart> FxChart = new Dictionary<string, FxChart>();
 	public Dictionary<string, List<ProjectileChart>> ProjectileChart = new Dictionary<string, List<ProjectileChart>>();
-	public Dictionary<string, SkillChart> SkillChart = new Dictionary<string, SkillChart>();
+	public Dictionary<string, List<SkillChart>> SkillChart = new Dictionary<string, List<SkillChart>>();
 	public Dictionary<string, List<ResultGroupChart>> ResultGroupChart = new Dictionary<string, List<ResultGroupChart>>();
 	public Dictionary<string, List<HitresultChart>> HitresultChart = new Dictionary<string, List<HitresultChart>>();
 	public Dictionary<string, StageChart> StageChart = new Dictionary<string, StageChart>();
@@ -28,7 +28,7 @@ public class CsvData : SingletonObject<CsvData>
 		HeroChart = CsvParser.Ins.ParseDupeKeyToDict(HeroChart, "DataTables/HeroChart");		
 		FxChart = CsvParser.Ins.ParseToDict(FxChart, "DataTables/FxChart");
 		ProjectileChart = CsvParser.Ins.ParseDupeKeyToDict(ProjectileChart, "DataTables/ProjectileChart");
-		SkillChart = CsvParser.Ins.ParseToDict(SkillChart, "DataTables/SkillChart");
+		SkillChart = CsvParser.Ins.ParseDupeKeyToDict(SkillChart, "DataTables/SkillChart");
 		ResultGroupChart = CsvParser.Ins.ParseDupeKeyToDict(ResultGroupChart, "DataTables/ResultGroupChart");
 		HitresultChart = CsvParser.Ins.ParseDupeKeyToDict(HitresultChart, "DataTables/HitresultChart");
 		StageChart = CsvParser.Ins.ParseToDict(StageChart, "DataTables/StageChart");

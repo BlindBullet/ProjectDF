@@ -18,8 +18,8 @@ public class SkillController : MonoBehaviour
 		me = heroBase;
 		HeroChart heroChart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];
 
-		Attack = new Skill(heroChart.BasicAttack);
-		Skill = new Skill(heroChart.Skill);
+		Attack = new Skill(heroChart.BasicAttack, data.Grade);
+		Skill = new Skill(heroChart.Skill, data.Grade);
 
 		StartCoroutine(UseAttack());
 	}
@@ -168,14 +168,16 @@ public class SkillController : MonoBehaviour
 
 public class Skill
 {
-	public string Id;	    
+	public string Id;
+	public int Grade;
 	public float CoolTime;
 	public float _CoolTime;
 	public SkillChart Data;
 
-	public Skill(string id)
+	public Skill(string id, int grade)
 	{
-		Id = id;		
+		Id = id;
+		Grade = grade;
 		CoolTime = 0;
 		SetData();
 		_CoolTime = Data.CoolTime;
@@ -183,11 +185,13 @@ public class Skill
 
 	void SetData()
 	{
-		foreach(KeyValuePair<string, SkillChart> elem in CsvData.Ins.SkillChart)
+		List<SkillChart> charts = CsvData.Ins.SkillChart[Id];
+
+		for(int i = 0; i < charts.Count; i++)
 		{
-			if(elem.Key == Id)
-			{	
-				Data = elem.Value;                    				
+			if(charts[i].Grade == Grade)
+			{
+				Data = charts[i];
 			}
 		}
 	}
