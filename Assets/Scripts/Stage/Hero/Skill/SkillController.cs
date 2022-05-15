@@ -11,6 +11,7 @@ public class SkillController : MonoBehaviour
 
 	HeroBase me;    
 	Coroutine cAttack = null;
+	Coroutine cAttackSeq = null;
 	Coroutine cSkill = null;
 
 	public void Init(HeroBase heroBase, HeroData data)
@@ -21,12 +22,14 @@ public class SkillController : MonoBehaviour
 		Attack = new Skill(heroChart.BasicAttack, data.Grade);
 		Skill = new Skill(heroChart.Skill, data.Grade);
 
-		StartCoroutine(UseAttack());
+		cAttackSeq = StartCoroutine(UseAttack());
+		StartCoroutine(ProgressSkill());
 	}
 
 	public void ReStart()
 	{
-		StartCoroutine(UseAttack());
+		cAttackSeq = StartCoroutine(UseAttack());
+		StartCoroutine(ProgressSkill());
 	}
 
 	public void Stop()
@@ -34,7 +37,21 @@ public class SkillController : MonoBehaviour
 		StopAllCoroutines();
 	}
 
-	public IEnumerator UseAttack()
+	public void ChangeAttack(string id)
+	{
+		StopCoroutine(cAttackSeq);
+
+		if(cAttack != null)
+		{
+			StopCoroutine(cAttack);
+			cAttack = null;
+		}
+
+		Attack = new Skill(id, me.Data.Grade);
+		cAttackSeq = StartCoroutine(UseAttack());
+	}
+
+	IEnumerator UseAttack()
 	{
 		while (true)
 		{
@@ -45,15 +62,23 @@ public class SkillController : MonoBehaviour
 					if (cAttack == null)
 					{
 						cAttack = StartCoroutine(SkillSequence(Attack));                 
-					}   
+					}
 				}                
 			}
 
-			if(cSkill == null)
+			yield return null;
+		}
+	}
+
+	IEnumerator ProgressSkill()
+	{
+		while (true)
+		{
+			if (cSkill == null)
 			{
 				Skill.ProgressCoolTime();
 				me.Ui.SetCoolTimeFrame(Skill.CoolTime / Skill._CoolTime);
-			}   
+			}
 
 			yield return null;
 		}

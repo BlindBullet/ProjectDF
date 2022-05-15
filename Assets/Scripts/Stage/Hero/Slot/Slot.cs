@@ -103,6 +103,7 @@ public class Slot : MonoBehaviour
 
 	private void OnDisable()
 	{
+		lvUpBtnMat.EnableKeyword("GREYSCALE_ON");
 		StageManager.Ins.GoldChanged -= SetLvUpBtnState;
 	}
 
