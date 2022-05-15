@@ -16,6 +16,7 @@ public class MinionChart
     public float Range { get; set; }
     public float AtkP { get; set; }
     public float Spd { get; set; }
+    public int PenCount { get; set; }
     public Attr Attr { get; set; }
     public string Hitresult { get; set; }
     public string Projectile { get; set; }

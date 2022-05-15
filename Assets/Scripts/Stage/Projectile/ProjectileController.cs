@@ -9,6 +9,7 @@ public class ProjectileController : MonoBehaviour
 	List<HitresultChart> hitresults = new List<HitresultChart>();
 	public Transform ModelTrf;
 	HeroBase caster;
+	MinionBase minion;
 	int penCount = 0;
 	Vector2 dir;
 	EnemyBase target;
@@ -24,6 +25,7 @@ public class ProjectileController : MonoBehaviour
 		this.data = data;
 		this.hitresults = hitresults;
 		this.caster = caster;
+		this.minion = null;
 		this.dir = dir;
 
 		if(target == null)
@@ -47,8 +49,29 @@ public class ProjectileController : MonoBehaviour
 	{
 		//프로젝타일을 만든 주체가 소환수인지 영웅인지를 구분
 		//소환수의 히트리절트를 전달하는 메서드 추가
-		//
+		
+		pos = new Vector2(this.transform.position.x, this.transform.position.y);
+		this.data = data;
+		this.hitresults = hitresults;
+		this.caster = null;
+		this.minion = minion;
+		this.dir = dir;
 
+		if (target == null)
+		{
+			existTarget = false;
+		}
+		else
+		{
+			existTarget = true;
+			this.target = target;
+			targetPos = target.transform.position;
+		}
+
+		penCount = minion.Stat.PenCount;
+		mTimerCurrent = 0f;
+
+		StartCoroutine(MoveSequence());
 	}
 
 	IEnumerator MoveSequence()
@@ -124,13 +147,16 @@ public class ProjectileController : MonoBehaviour
 
 			if(time >= data.Lifetime)
 			{
-				if (data.DestroyFx != null)
-					EffectManager.Ins.ShowFx(data.DestroyFx, this.transform.position);
-
-				if (data.DestroyResult != null)
+				if(caster != null)
 				{
-					List<ResultGroupChart> destroyResultGroups = CsvData.Ins.ResultGroupChart[data.DestroyResult];
-					HitresultManager.Ins.RunResultGroup(destroyResultGroups, transform.position, caster);
+					if (data.DestroyFx != null)
+						EffectManager.Ins.ShowFx(data.DestroyFx, this.transform.position);
+
+					if (data.DestroyResult != null)
+					{
+						List<ResultGroupChart> destroyResultGroups = CsvData.Ins.ResultGroupChart[data.DestroyResult];
+						HitresultManager.Ins.RunResultGroup(destroyResultGroups, transform.position, caster);
+					}
 				}
 
 				DestroySequence();
@@ -165,19 +191,30 @@ public class ProjectileController : MonoBehaviour
 		if (collision.CompareTag("Enemy"))
 		{	
 			EnemyBase enemyBase = collision.GetComponent<EnemyBase>();
-			HitresultManager.Ins.SendHitresult(hitresults, enemyBase, caster);
+
+			if(caster != null && minion == null)
+			{
+				HitresultManager.Ins.SendHitresult(hitresults, enemyBase, caster);
+			}
+			else if(minion != null && caster == null)
+			{
+				HitresultManager.Ins.SendHitresult(hitresults, enemyBase, minion);
+			}
 			
 			if(penCount <= 0)
 			{
-				if (data.HitDestroyFx != null)
+				if(caster != null)
 				{
-					EffectManager.Ins.ShowFx(data.HitDestroyFx, this.transform.position);					
-				}
+					if (data.HitDestroyFx != null)
+					{
+						EffectManager.Ins.ShowFx(data.HitDestroyFx, this.transform.position);
+					}
 
-				if (data.HitDestroyResult != null)
-				{
-					List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitDestroyResult];
-					HitresultManager.Ins.RunResultGroup(hitResultGroups, transform.position, caster);
+					if (data.HitDestroyResult != null)
+					{
+						List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitDestroyResult];
+						HitresultManager.Ins.RunResultGroup(hitResultGroups, transform.position, caster);
+					}
 				}
 
 				penCount--;

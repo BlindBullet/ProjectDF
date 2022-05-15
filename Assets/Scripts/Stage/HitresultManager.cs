@@ -197,6 +197,56 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 		}
 	}
 
+	public void SendHitresult(List<HitresultChart> hitresults, EnemyBase target, MinionBase minion)
+	{
+		for (int i = 0; i < hitresults.Count; i++)
+		{
+			float randNo = Random.Range(0, 100);
+
+			if (hitresults[i].Prob >= randNo)
+			{
+				if (hitresults[i].HitFx != null)
+				{
+					EffectManager.Ins.ShowFx(hitresults[i].HitFx, target.transform);
+				}
+
+				switch (hitresults[i].Type)
+				{
+					case HitType.Dmg:
+						switch (hitresults[i].FactorOwner)
+						{
+							case FactorOwner.Caster:
+								double dmg = hitresults[i].Value + (minion.Stat.Atk * (hitresults[i].ValuePercent / 100f));
+								bool isCrit = Random.Range(0f, 100f) < minion.Stat.CritChance ? true : false;
+								double resultDmg = 0;
+
+								if (isCrit)
+									dmg = dmg * (1 + (minion.Stat.CritDmg / 100f));
+
+								Vector3 pos = target.transform.position;
+								resultDmg = target.TakeDmg(dmg, minion.Stat.Attr, isCrit, hitresults[i].StiffTime);
+								FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit);
+								break;
+							case FactorOwner.Target:
+
+								break;
+						}
+						break;
+					case HitType.Push:
+						target.Push(hitresults[i].Value, hitresults[i].DurationTime);
+						break;
+					case HitType.Stun:
+						target.Stun(hitresults[i].DurationTime);
+						break;
+				}
+			}
+			else
+			{
+				Debug.Log("¹Ì½º");
+			}
+		}
+	}
+
 	public void SendHitresult(List<HitresultChart> hitresults, EnemyBase target, HeroBase caster)
 	{
 		for (int i = 0; i < hitresults.Count; i++)

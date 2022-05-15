@@ -38,12 +38,11 @@ public class MinionAttackController : MonoBehaviour
 
 			for (int i = 0; i < projectiles.Count; i++)
 			{
-				ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
-				//projectile.transform.rotation = Quaternion.AngleAxis(angle - 90 + projectiles[i].Angle, Vector3.forward);
+				ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);				
 				projectile.transform.position = me.ProjectileAnchor.position.WithX(me.ProjectileAnchor.position.x + projectiles[i].PosX);
 				projectile.Setup(projectiles[i], hitresults, me, dir, me.Target);
 			}
-		}		
+		}
 	}
 
 	IEnumerator AttackMoveSequence()
@@ -54,10 +53,7 @@ public class MinionAttackController : MonoBehaviour
 			{
 				dir = (me.Target.transform.position - me.transform.position).normalized;
 				me.ModelTrf.up = dir;
-
-				//공격시 무빙
-				//적이 사정거리보다 멀어질 때 따라가기
-				//적이 일정 범위 이하로 가까워지면 뒤로 물러서기
+								
 				switch (data.MoveType)
 				{
 					case MoveType.None:

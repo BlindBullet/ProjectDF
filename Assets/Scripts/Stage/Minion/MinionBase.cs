@@ -65,7 +65,7 @@ public class MinionBase : MonoBehaviour
 		data = chart;
 
 		Stat = new MinionStat();
-		Stat.Setup(10, chart.Spd);
+		Stat.Setup(10, chart.Spd, chart.Attr);
 
 		AttackCon.SetController(this, data);
 
@@ -272,16 +272,28 @@ public class MinionStat
 {
 	public double Atk;
 	public float Spd;
+	public int PenCount;
+	public float CritChance;
+	public float CritDmg;
+	public Attr Attr;
 
-	public void Setup(double atk, float spd)
+	public void Setup(double atk, float spd, Attr attr)
 	{
 		Atk = atk;
 		Spd = spd;
-
+		PenCount = 0;
+		CritChance = 0f;
+		CritDmg = 100f;
+		Attr = attr;
 	}
+
 	//public MinionStat(MinionChart chart, HeroBase caster)
 	//{
 	//	Atk = caster.Stat.Atk * (chart.AtkP / 100f);
 	//	Spd = chart.Spd;
+	//	PenCount = chart.PenCount;
+	//	CritChance = 0f;
+	//	CritDmg = 100f;
+	//	Attr = chart.Attr;
 	//}
 }

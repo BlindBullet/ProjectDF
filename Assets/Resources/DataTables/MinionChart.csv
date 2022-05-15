@@ -1,4 +1,4 @@
-﻿Id,Model,Size,MoveType,MoveSpd,BPos1,BPos1R,BPos2,BPos2R,Range,AtkP,Spd,Attr,Hitresult,Projectile
-M1,ForestFairy,0.25,Direct,1,,,,,2,100,1,Red,dmg_100,TestProjectile
-M2,ForestFairy,0.25,Curve,1,0|0,2|0,0|-2,2|0,2,100,1,Green,dmg_100,TestProjectile
-M3,ForestFairy,0.25,None,0,,,,,2,100,1,Blue,dmg_100,TestProjectile
+﻿Id,Model,Size,MoveType,MoveSpd,BPos1,BPos1R,BPos2,BPos2R,Range,AtkP,Spd,PenCount,Attr,Hitresult,Projectile
+M1,ForestFairy,0.25,Direct,1,,,,,2,100,1,0,Red,dmg_100,TestProjectile
+M2,ForestFairy,0.25,Curve,1,0|0,2|0,0|-2,2|0,2,100,5,0,Green,dmg_100,TestProjectile
+M3,ForestFairy,0.25,None,0,,,,,2,100,5,0,Blue,dmg_100,TestProjectile
