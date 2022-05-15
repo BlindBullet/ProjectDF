@@ -206,6 +206,10 @@ public class PlayerData
 	public void ChangeStage(int count)
 	{
 		Stage += count;
+
+		if (Stage < 1)
+			Stage = 1;
+
 		Save();
 	}
 

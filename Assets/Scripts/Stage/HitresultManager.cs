@@ -164,7 +164,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 	public void SendHitresult(ResultGroupChart data, HeroBase caster, HeroBase target)
 	{
 		List<HitresultChart> hitresults = CsvData.Ins.HitresultChart[data.Hitresult];
-
+		
 		for(int i = 0; i < hitresults.Count; i++)
 		{
 			float randNo = Random.Range(0, 100);
@@ -187,7 +187,17 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 						BuffData debuff = new BuffData();
 						debuff.SetData(hitresults[i]);
 						target.BuffCon.TakeBuff(debuff);
-						break;						
+						break;
+					case HitType.Summon:						
+						for(int k = 0; k < hitresults[i].SummonIds.Length; k++)
+						{
+							MinionChart minionChart = CsvData.Ins.MinionChart[hitresults[i].SummonIds[k]];
+							MinionBase minion = ObjectManager.Ins.Pop<MinionBase>(Resources.Load("Prefabs/Characters/Minions/MinionObj") as GameObject);
+							minion.transform.localScale = new Vector2(minionChart.Size, minionChart.Size);
+							minion.transform.position = new Vector2(target.ProjectileAnchor.position.x + hitresults[i].SummonPosX[k], StageManager.Ins.PlayerLine.position.y + 1f + hitresults[i].SummonPosY[k]);
+							minion.Init(minionChart, target, hitresults[i].DurationTime);							
+						}						
+						break;
 				}
 			}
 			else

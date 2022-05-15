@@ -1,4 +1,5 @@
 ﻿Id,Seq,Prob,TargetType,TargetDetail,TargetCount,RangeType,RnageSize,DelayTime,DelayBeginFx,Hitresult,Projectile
+TestSummon,1,100,Me,,,,,,,test_summon,
 Skill1_1,1,100,Enemy,,,,,,,dmg_100,TestProjectile3
 Skill1_2,1,100,Enemy,,,,,,,dmg_100,TestProjectile4
 Skill1_3,1,100,Enemy,,,,,,,dmg_100,TestProjectile5

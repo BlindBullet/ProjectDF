@@ -16,6 +16,7 @@ public class MinionBase : MonoBehaviour
 	//타겟 = 라인에서 가장 가까운 적
 	//타겟이 죽으면 공격 상태에서 무브 상태로 변경.
 	//타겟을 다시 찾고, 해당 타겟한테 이동.
+	//스테이지가 끝나면 제자리로 돌아감.
 	//소환 시간이 끝나면 죽음.
 
 	public MinionStat Stat;
@@ -29,6 +30,7 @@ public class MinionBase : MonoBehaviour
 	Vector2 max;
 	MinionChart data;
 	Coroutine cMove = null;
+	Vector3 originPos;
 	Vector2 pos;
 	Vector2 dir;
 	Vector2 targetPos;
@@ -40,7 +42,7 @@ public class MinionBase : MonoBehaviour
 
 		data = chart;
 		Ui.Setup(chart);
-		//Stat = new MinionStat(chart, caster);
+		Stat = new MinionStat(chart, caster);
 		AttackCon.SetController(this, data);
 
 		min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
@@ -50,41 +52,51 @@ public class MinionBase : MonoBehaviour
 		IsDie = false;
 		cMove = null;
 
+		originPos = transform.position;
 		pos = transform.position;
 		dir = Vector2.up;
 
-		StartCoroutine(UnsummonSequence(durationTime));
-		GetComponent<MinionFSM>().SetFSM(this);
-
+		StartCoroutine(SummonSequence(durationTime));
 		Minions.Add(this);
 	}
 
-	private void Start()
+	//private void Start()
+	//{
+	//	MinionChart chart = CsvData.Ins.MinionChart["M2"];
+	//	data = chart;
+
+	//	Stat = new MinionStat();
+	//	Stat.Setup(10, chart.Spd, chart.Attr);
+
+	//	AttackCon.SetController(this, data);
+
+	//	this.transform.localScale = new Vector3(chart.Size, chart.Size, 1);
+
+	//	Ui.Setup(chart);		
+
+	//	min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+	//	max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+	//	Target = null;
+	//	IsDie = false;
+	//	cMove = null;
+
+	//	originPos = transform.position;
+	//	pos = transform.position;
+	//	dir = Vector2.up;
+
+	//	StartCoroutine(SummonSequence(5f));
+	//	Minions.Add(this);
+	//}
+
+	IEnumerator SummonSequence(float durationTime)
 	{
-		MinionChart chart = CsvData.Ins.MinionChart["M2"];
-		data = chart;
+		Ui.Summon();
 
-		Stat = new MinionStat();
-		Stat.Setup(10, chart.Spd, chart.Attr);
+		yield return new WaitForSeconds(1.5f);
 
-		AttackCon.SetController(this, data);
-
-		this.transform.localScale = new Vector3(chart.Size, chart.Size, 1);
-
-		Ui.Setup(chart);
-
-		min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-		max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-		Target = null;
-		IsDie = false;
-		cMove = null;
-
-		pos = transform.position;
-		dir = Vector2.up;
-
-		StartCoroutine(UnsummonSequence(10000f));
 		GetComponent<MinionFSM>().SetFSM(this);
+		StartCoroutine(UnsummonTimer(durationTime));
 	}
 
 	public void SearchTarget()
@@ -176,7 +188,7 @@ public class MinionBase : MonoBehaviour
 		}
 
 		while (true)
-		{
+		{			
 			dir = (Target.transform.position - this.transform.position).normalized;
 			ModelTrf.up = dir;
 
@@ -224,7 +236,7 @@ public class MinionBase : MonoBehaviour
 	}
 
 
-	IEnumerator UnsummonSequence(float durationTime)
+	IEnumerator UnsummonTimer(float durationTime)
 	{
 		yield return new WaitForSeconds(durationTime);
 
@@ -233,8 +245,17 @@ public class MinionBase : MonoBehaviour
 
 	public void Unsummon()
 	{
+		StartCoroutine(UnsummonSequence());
+	}
 
+	IEnumerator UnsummonSequence()
+	{
+		Ui.Unsummon();
 		Minions.Remove(this);
+
+		yield return new WaitForSeconds(2f);
+
+		ObjectManager.Ins.Push<MinionBase>(this);
 	}
 
 	public bool CalcRange()
@@ -265,6 +286,19 @@ public class MinionBase : MonoBehaviour
 		return f;
 	}
 
+	public void BackToOriginPos()
+	{
+		StopIdleMove();
+
+		dir = (originPos - this.transform.position).normalized;
+		ModelTrf.up = dir;
+
+		Sequence seq = DOTween.Sequence();
+		seq.Append(this.transform.DOMove(originPos, 2f).SetEase(Ease.Linear))
+			.AppendCallback(()=> IdleMove());		
+	}
+
+
 
 }
 
@@ -277,6 +311,16 @@ public class MinionStat
 	public float CritDmg;
 	public Attr Attr;
 
+	public MinionStat(MinionChart chart, HeroBase caster)
+	{
+		Atk = caster.Stat.Atk * (chart.AtkP / 100f);
+		Spd = chart.Spd;
+		PenCount = chart.PenCount;
+		CritChance = 0f;
+		CritDmg = 100f;
+		Attr = chart.Attr;
+	}
+
 	public void Setup(double atk, float spd, Attr attr)
 	{
 		Atk = atk;
@@ -287,13 +331,5 @@ public class MinionStat
 		Attr = attr;
 	}
 
-	//public MinionStat(MinionChart chart, HeroBase caster)
-	//{
-	//	Atk = caster.Stat.Atk * (chart.AtkP / 100f);
-	//	Spd = chart.Spd;
-	//	PenCount = chart.PenCount;
-	//	CritChance = 0f;
-	//	CritDmg = 100f;
-	//	Attr = chart.Attr;
-	//}
+	
 }

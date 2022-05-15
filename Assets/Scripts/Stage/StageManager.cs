@@ -257,8 +257,13 @@ public class StageManager : MonoSingleton<StageManager>
 		{
 			EnemyBase.Enemies[i].Stop();
 		}
+		
+		for (int i = 0; i < MinionBase.Minions.Count; i++)
+		{
+			MinionBase.Minions[i].IsDie = true;
+		}
 
-		for(int i = 0; i < HeroBase.Heroes.Count; i++)
+		for (int i = 0; i < HeroBase.Heroes.Count; i++)
 		{
 			HeroBase.Heroes[i].Lose();
 			Slots[i].Lose();
@@ -280,7 +285,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 		StartCoroutine(LoseStagePanel.FadeOut());
 
-		if (!CheckBossStage(PlayerData.Stage - 1))
+		if (!CheckBossStage(PlayerData.Stage - 1 < 1 ? 1 : PlayerData.Stage - 1))
 			ChangeStage(-1);
 
 		Load();

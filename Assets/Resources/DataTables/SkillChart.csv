@@ -14,6 +14,7 @@ attack_blue2,,,Attack,,,Attack,,,30,3,attack_blue2
 attack_blue3,,,Attack,,,Attack,,,30,3,attack_blue3
 attack_blue4,,,Attack,,,Attack,,,30,3,attack_blue4
 attack_blue5,,,Attack,,,Attack,,,30,3,attack_blue5
+TestSummon,str_name_TestSummon,str_desc_TestSummon,Active,5,1,Attack,,,30,3,TestSummon
 Skill4,str_name_Skill4,str_desc_Skill4,Active,10,1,Attack,,,30,5|10|15|20|25|30,Skill1_1|Skill1_2|Skill1_3|Skill1_4|Skill1_5|Skill1_6
 Skill4,str_name_Skill4,str_desc_Skill4,ActiveEnemyTarget,10,1,Attack,,,6,3,TestStun
 Skill4,str_name_Skill4,str_desc_Skill4,ActiveEnemyTarget,10,1,Attack,,,6,3,TestPush
