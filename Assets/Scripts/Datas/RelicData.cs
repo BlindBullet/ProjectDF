@@ -22,11 +22,32 @@ public class RelicData
 		RelicChart chart = CsvData.Ins.RelicChart[Id];
 		double cost = chart.Price;
 
-		if(StageManager.Ins.PlayerData.Magicite >= cost)
+		switch (chart.PriceCostType)
 		{
-			StageManager.Ins.ChangeMagicite(-cost);
-			isOwn = true;
-			return true;
+			case CostType.Gold:
+				if (StageManager.Ins.PlayerData.Gold >= cost)
+				{
+					StageManager.Ins.ChangeGold(-cost);
+					isOwn = true;
+					return true;
+				}
+				break;
+			case CostType.Magicite:
+				if (StageManager.Ins.PlayerData.Magicite >= cost)
+				{
+					StageManager.Ins.ChangeMagicite(-cost);
+					isOwn = true;
+					return true;
+				}
+				break;
+			case CostType.SoulStone:
+				if (StageManager.Ins.PlayerData.SoulStone >= cost)
+				{
+					StageManager.Ins.ChangeSoulStone(-cost);
+					isOwn = true;
+					return true;
+				}
+				break;
 		}
 
 		return false;

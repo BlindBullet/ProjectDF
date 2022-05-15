@@ -71,6 +71,7 @@ public class DialogRelicInfo : DialogController
 
 		if (data.isOwn)
 		{
+			LvUpCostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/Magicite");
 			LvUpBtnText.text = LanguageManager.Ins.SetString("Upgrade");
 			double cost = chart.LvUpCost * (1 + Mathf.Pow(chart.LvUpCostIncRate, data.Lv));
 
@@ -101,11 +102,29 @@ public class DialogRelicInfo : DialogController
 		}
 		else
 		{
+			LvUpCostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/" + chart.PriceCostType.ToString());
 			LvUpBtnText.text = LanguageManager.Ins.SetString("Purchase");
 			double cost = chart.Price;
 			LvUpCostText.text = cost.ToCurrencyString();
+			bool canPurchase = false;
 
-			if (StageManager.Ins.PlayerData.Magicite >= cost)
+			switch (chart.PriceCostType)
+			{
+				case CostType.Gold:
+					if (StageManager.Ins.PlayerData.Gold >= cost)					
+						canPurchase = true;					
+					break;
+				case CostType.Magicite:
+					if(StageManager.Ins.PlayerData.Magicite >= cost)					
+						canPurchase = true;					
+					break;
+				case CostType.SoulStone:
+					if (StageManager.Ins.PlayerData.SoulStone >= cost)					
+						canPurchase = true;					
+					break;
+			}
+
+			if (canPurchase)
 			{
 				LvUpBtn.enabled = true;
 				lvUpBtnMat.DisableKeyword("GREYSCALE_ON");

@@ -10,7 +10,7 @@ public static class ConstantData
 	public static ObscuredDouble StartLvUpGold = 10f;
 	public static ObscuredFloat LvUpGoldGR = 1.25f;
 	public static ObscuredDouble StartEnchantCost = 10f;
-	public static ObscuredFloat EnchantGR = 1.25f;
+	public static ObscuredFloat EnchantGR = 1.3f;
 	public static ObscuredFloat HeroAtkGR = 1.2f;
 	public static ObscuredFloat EnemyHpGR = 1.3f;	
 	public static ObscuredFloat EnemyGoldGR = 1.15f;
