@@ -234,7 +234,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0.000030517156, y: -178}
-  m_SizeDelta: {x: 1080, y: 1005.6}
+  m_SizeDelta: {x: 1080, y: 941.8099}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2923724151783813008
 CanvasRenderer:
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 180, y: 180}
-  m_Spacing: {x: 15, y: 20}
+  m_Spacing: {x: 15, y: 50}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &4114726401170531529
@@ -911,7 +911,7 @@ MonoBehaviour:
   EnabledBackkey: 0
   TitleText: {fileID: 2923724152063155111}
   HeroIconsTrf: {fileID: 2923724152485360357}
-  HeroListObjs: []
+  HeroIcons: []
   DeploySlots:
   - {fileID: 1767528369758437451}
   - {fileID: 2464309619855827661}

@@ -97,6 +97,7 @@ public class StageManager : MonoSingleton<StageManager>
 			GameObject obj = Instantiate(Resources.Load("Prefabs/Icons/DeployHeroIcon") as GameObject, Slots[i].transform);
 			obj.transform.SetAsFirstSibling();
 			obj.GetComponent<HeroBase>().Init(heroData, PlayerData.Slots[i]);
+			Slots[i].SetEnchantLabel(heroData);
 			heroData.DeployHero(i + 1);
 		}
 	}
@@ -125,6 +126,8 @@ public class StageManager : MonoSingleton<StageManager>
 		obj.transform.SetAsFirstSibling();
 		obj.GetComponent<HeroBase>().Init(heroData, PlayerData.Slots[slotNo - 1]);
 		heroData.DeployHero(slotNo);
+		Slots[slotNo - 1].SetEnchantLabel(heroData);
+				
 		PlayerData.Save();
 	}
 

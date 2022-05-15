@@ -27,7 +27,7 @@ public class PlayerData
 		IsFirstPlay = true;
 		PlayAppCount = 1;
 		Gold = 0;
-		Magicite = 0f;
+		Magicite = 5000000f;
 		SoulStone = 5000000f;
 		Stage = 1;
 		AscensionCount = 0;
@@ -153,6 +153,27 @@ public class PlayerData
 			{
 				if (Heroes[i] == data)
 					Heroes[i].Upgrade();
+			}
+
+			Save();
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public bool EnchantHero(HeroData data)
+	{
+		double cost = ConstantData.GetHeroEnchantCost(data.EnchantLv);
+
+		if(Magicite >= cost)
+		{
+			for(int i = 0; i < Heroes.Count; i++)
+			{
+				if (Heroes[i] == data)
+					Heroes[i].EnchantLvUp();
 			}
 
 			Save();

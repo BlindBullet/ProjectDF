@@ -1084,6 +1084,9 @@ MonoBehaviour:
     CritDmgInc: 0
     CritDmgDec: 0
     CooltimeDec: 0
+    PenCount: 0
+    PenCountInc: 0
+    PenCountDec: 0
   Ui: {fileID: 0}
   SkillCon: {fileID: 0}
   BuffCon: {fileID: 0}
@@ -1094,6 +1097,7 @@ MonoBehaviour:
   Data:
     Id: 
     Grade: 0
+    EnchantLv: 0
     IsOwn: 0
     SlotNo: 0
 --- !u!114 &2635919947509388237

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using UnityEngine.U2D;
 using DG.Tweening;
+using TMPro;
 
 public class HeroIcon : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class HeroIcon : MonoBehaviour
 	public GameObject LockIcon;
 	public GameObject[] Stars;
 	public GameObject SelectedFrame;
+	public GameObject EnchantLabelObj;
+	public TextMeshProUGUI EnchantLvText;
 	public HeroData Data;
 	Material selectedFrameMat;
 	Material iconImgMat;
@@ -37,7 +40,7 @@ public class HeroIcon : MonoBehaviour
 		Btn.onClick.RemoveAllListeners();
 		Btn.onClick.AddListener(() => { if (action != null) action(data); });
 
-		SetIcon(chart);
+		SetIcon(chart, data);
 		SetStars(chart.Grade);
 		SetLock(data.IsOwn);
 	}
@@ -59,7 +62,7 @@ public class HeroIcon : MonoBehaviour
 		Btn.onClick.RemoveAllListeners();
 		Btn.onClick.AddListener(() => { if (action != null) action(this, data); });
 
-		SetIcon(chart);
+		SetIcon(chart, data);
 		SetStars(chart.Grade);
 		SetLock(data.IsOwn);
 	}
@@ -77,11 +80,21 @@ public class HeroIcon : MonoBehaviour
 		selectedFrameMat.DisableKeyword("SHINE_ON");
 	}
 
-	void SetIcon(HeroChart chart)
+	void SetIcon(HeroChart chart, HeroData data)
 	{
 		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Heroes/Heroes").GetSprite(chart.Model);
 		IconFrame.sprite = Resources.Load<Sprite>("Sprites/Heroes/Frames/" + chart.Attr.ToString());
 		IconBg.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Attr.ToString());
+
+		if(data.EnchantLv > 0)
+		{
+			EnchantLabelObj.SetActive(true);
+			EnchantLvText.text = "+" + data.EnchantLv;
+		}
+		else
+		{
+			EnchantLabelObj.SetActive(false);
+		}		
 	}
 
 	void SetLock(bool isOpen)

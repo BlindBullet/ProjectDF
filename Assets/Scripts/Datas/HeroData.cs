@@ -7,7 +7,8 @@ using CodeStage.AntiCheat.ObscuredTypes;
 public class HeroData
 {
 	public string Id;
-	public int Grade;    
+	public int Grade;
+	public int EnchantLv;
 	public bool IsOwn = false;
 	public int SlotNo;
 	
@@ -17,6 +18,7 @@ public class HeroData
 
 		Id = chart[0].Id;
 		Grade = chart[0].Grade;
+		EnchantLv = 0;		
 		IsOwn = false;
 		SlotNo = -1;
 	}
@@ -24,6 +26,11 @@ public class HeroData
 	public void Upgrade()
 	{
 		Grade++;
+	}
+
+	public void EnchantLvUp()
+	{
+		EnchantLv++;
 	}
 
 	public void DeployHero(int slotNo)

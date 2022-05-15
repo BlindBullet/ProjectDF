@@ -26,6 +26,7 @@ public class HeroStat
 	public int PenCountDec;
 
 	int lv;
+	int enchantLv;
 	HeroChart chart = null;
 
 	public void InitData(HeroData data, int lv)
@@ -59,6 +60,7 @@ public class HeroStat
 		PenCountDec = 0;
 
 		ChangeLv(lv);
+		ChangeEnchantLv(data.EnchantLv);
 	}
 
 	public void ChangeLv(int lv)
@@ -67,9 +69,15 @@ public class HeroStat
 		CalcStat();
 	}
 
+	public void ChangeEnchantLv(int lv)
+	{
+		this.enchantLv = lv;
+		CalcStat();
+	}
+
 	public void CalcStat()
 	{
-		Atk = ConstantData.GetHeroAtk(chart.Atk, lv) * (1 + (AtkInc / 100f));
+		Atk = ConstantData.GetHeroAtk(chart.Atk, lv, enchantLv) * (1 + (AtkInc / 100f));
 		Spd = chart.Spd * (1 + (SpdInc / 100f));
 		CritChance = CritChanceInc - CritChanceDec;
 		CritDmg = CritDmgInc - CritDmgDec;

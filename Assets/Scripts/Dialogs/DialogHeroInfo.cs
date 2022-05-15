@@ -140,8 +140,41 @@ public class DialogHeroInfo : DialogController
 				DeployBtn.onClick.AddListener(() => { SetDeploy(); });
 			}
 			
-			PurchaseBtn.gameObject.SetActive(false);
-			
+			PurchaseBtn.gameObject.SetActive(true);
+			PurchaseBtnText.text = LanguageManager.Ins.SetString("Enchant");
+			double enchantCost = ConstantData.GetHeroEnchantCost(data.EnchantLv);
+			PurchaseCost.text = enchantCost.ToCurrencyString();
+			PurchaseCostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/Magicite");
+			PurchaseBtn.onClick.RemoveAllListeners();
+
+			if(StageManager.Ins.PlayerData.Magicite >= enchantCost)
+			{
+				purchaseBtnMat.DisableKeyword("GREYSCALE_ON");
+				PurchaseBtn.onClick.AddListener(() => 
+				{
+					if (StageManager.Ins.PlayerData.EnchantHero(data))
+					{
+						StageManager.Ins.ChangeMagicite(-enchantCost);
+						HeroIcon.Setup(data);
+						DialogHero._DialogHero.SetHeroes();
+						DialogHero._DialogHero.SetDeploySlots();
+						StageManager.Ins.Slots[data.SlotNo - 1].SetEnchantLabel(data);
+
+						for(int i = 0; i < HeroBase.Heroes.Count; i++)
+						{
+							if (HeroBase.Heroes[i].Data == data)
+								HeroBase.Heroes[i].Stat.ChangeEnchantLv(data.EnchantLv);
+						}
+
+						SetHeroInfo(data);
+					}
+				});
+			}
+			else
+			{
+				purchaseBtnMat.EnableKeyword("GREYSCALE_ON");
+			}
+
 			if(data.Grade >= 5)
 			{
 				UpgradeBtn.gameObject.SetActive(false);

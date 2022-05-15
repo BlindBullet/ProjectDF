@@ -13,6 +13,8 @@ public class Slot : MonoBehaviour
 	public TextMeshProUGUI LvText;
 	public TextMeshProUGUI LvUpBtnText;
 	public TextMeshProUGUI LvUpCostText;
+	public GameObject EnchantLabelObj;
+	public TextMeshProUGUI EnchantLvText;
 	Material lvUpBtnMat;	
 	SlotData data;
 
@@ -23,8 +25,6 @@ public class Slot : MonoBehaviour
 		lvUpBtnMat = LvUpBtn.GetComponent<Image>().material;
 
 		LvUpBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
-
-		lvUpBtnMat.DisableKeyword("GREYSCALE_ON");
 
 		StageManager.Ins.GoldChanged += SetLvUpBtnState;
 
@@ -86,13 +86,26 @@ public class Slot : MonoBehaviour
 	public void LvUpBtnEnable()
 	{
 		LvUpBtn.enabled = true;
-		lvUpBtnMat.DisableKeyword("GREYSCALE_ON");
+		lvUpBtnMat.SetFloat("_GreyscaleBlend", 0f);
 	}
 
 	public void LvUpBtnDisable()
 	{
 		LvUpBtn.enabled = false;
-		lvUpBtnMat.EnableKeyword("GREYSCALE_ON");
+		lvUpBtnMat.SetFloat("_GreyscaleBlend", 1f);
+	}
+
+	public void SetEnchantLabel(HeroData data)
+	{
+		if(data.EnchantLv > 0)
+		{
+			EnchantLabelObj.SetActive(true);
+			EnchantLvText.text = "+" + data.EnchantLv;
+		}
+		else
+		{
+			EnchantLabelObj.SetActive(false);
+		}
 	}
 
 	public void Lose()
@@ -102,8 +115,7 @@ public class Slot : MonoBehaviour
 	}
 
 	private void OnDisable()
-	{
-		lvUpBtnMat.EnableKeyword("GREYSCALE_ON");
+	{		
 		StageManager.Ins.GoldChanged -= SetLvUpBtnState;
 	}
 

@@ -9,6 +9,8 @@ public static class ConstantData
 	public static ObscuredString[] StartHeroes = { "10001", "10002", "10003", "10004", "10005", };
 	public static ObscuredDouble StartLvUpGold = 10f;
 	public static ObscuredFloat LvUpGoldGR = 1.25f;
+	public static ObscuredDouble StartEnchantCost = 10f;
+	public static ObscuredFloat EnchantGR = 1.25f;
 	public static ObscuredFloat HeroAtkGR = 1.2f;
 	public static ObscuredFloat EnemyHpGR = 1.3f;	
 	public static ObscuredFloat EnemyGoldGR = 1.15f;
@@ -24,9 +26,9 @@ public static class ConstantData
 		return CalcValue(StartLvUpGold, LvUpGoldGR, lv);		
 	}
 
-	public static double GetHeroAtk(double basicAtk, int lv)
+	public static double GetHeroAtk(double basicAtk, int lv, int enchantLv)
 	{
-		return CalcValue(basicAtk, HeroAtkGR, lv);
+		return CalcValue(basicAtk, HeroAtkGR, lv + enchantLv);
 	}
 
 	public static double GetEnemyHp(double basicHp, int stageNo, bool isBoss)
@@ -63,11 +65,15 @@ public static class ConstantData
 		return currentGrade * 100f;
 	}
 
+	public static double GetHeroEnchantCost(int currentEnchantLv)
+	{
+		return CalcValue(StartEnchantCost, EnchantGR, currentEnchantLv + 1);
+	}
+
 	public static double GetGoldFromTime(float min, int stageNo)
 	{
 		return CalcValue(TimeGold, EnemyGoldGR, stageNo) * KillEnemiesCount1Min * min;
 	}
-
 
 	static double CalcValue(double beginValue, float growthRate, int lv)
 	{
