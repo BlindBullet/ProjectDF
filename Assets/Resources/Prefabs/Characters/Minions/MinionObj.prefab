@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6853225862504473437}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ProjectileAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5447382862174371981}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5447382862511234940}
   - component: {fileID: 5447382862511234941}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 5447382862869965833}
   - component: {fileID: 8927191042279336813}
   - component: {fileID: 1274291618854753961}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 5797512158350020136}
   - component: {fileID: 6393872954692996480}
   - component: {fileID: 4298938163879410768}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MinionObj
   m_TagString: Minion
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5447382864131019456}
   - component: {fileID: 5447382864131019457}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5447382864145797663}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Minion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,6 +15,7 @@ public class ProjectileController : MonoBehaviour
 	EnemyBase target;
 	Vector2 targetPos;
 	Vector2 pos;
+	double playerAtk = 0f;
 	bool existTarget;
 
 	float mTimerCurrent = 0f;	
@@ -69,6 +70,36 @@ public class ProjectileController : MonoBehaviour
 		}
 
 		penCount = minion.Stat.PenCount;
+		mTimerCurrent = 0f;
+
+		StartCoroutine(MoveSequence());
+	}
+
+	public void Setup(ProjectileChart data, double atk, Vector2 dir, EnemyBase target = null)
+	{
+		//프로젝타일을 만든 주체가 소환수인지 영웅인지를 구분
+		//소환수의 히트리절트를 전달하는 메서드 추가
+
+		pos = new Vector2(this.transform.position.x, this.transform.position.y);
+		this.data = data;
+		this.hitresults = null;
+		this.caster = null;
+		this.minion = null;
+		this.dir = dir;		
+		playerAtk = atk;
+
+		if (target == null)
+		{
+			existTarget = false;
+		}
+		else
+		{
+			existTarget = true;
+			this.target = target;
+			targetPos = target.transform.position;
+		}
+
+		penCount = 0;
 		mTimerCurrent = 0f;
 
 		StartCoroutine(MoveSequence());
@@ -199,6 +230,12 @@ public class ProjectileController : MonoBehaviour
 			else if(minion != null && caster == null)
 			{
 				HitresultManager.Ins.SendHitresult(hitresults, enemyBase, minion);
+			}
+			else if(caster == null && minion == null && hitresults == null)
+			{
+				EffectManager.Ins.ShowFx(ConstantData.PlayerTouchAtkHitFx, enemyBase.transform);
+				double resultDmg = enemyBase.TakeDmg(playerAtk, Attr.None, false, 0f);
+				FloatingTextManager.Ins.ShowDmg(enemyBase.transform.position, resultDmg.ToCurrencyString(), false);
 			}
 			
 			if(penCount <= 0)

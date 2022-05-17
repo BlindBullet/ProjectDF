@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5972746148867030495}
   - component: {fileID: 7424511479053330507}
   - component: {fileID: 3658408803163416366}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,9 @@ GameObject:
   - component: {fileID: 7397524120955551650}
   - component: {fileID: 7397524120955551649}
   - component: {fileID: 2236004293113125651}
-  m_Layer: 0
+  - component: {fileID: 5296013684508591741}
+  - component: {fileID: 7369457786312021482}
+  m_Layer: 6
   m_Name: EnemyObj
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -224,10 +226,15 @@ MonoBehaviour:
     CurHp: 0
     Spd: 0
     Gold: 0
+    Def: 0
+    Immunes: 
     Attr: 0
   Model: {fileID: 7397524122027817337}
   Rb: {fileID: 0}
   SpriteCon: {fileID: 0}
+  isStunned: 0
+  SkillCon: {fileID: 0}
+  BuffCon: {fileID: 0}
   HpText: {fileID: 3658408803163416366}
 --- !u!50 &7397524120955551650
 Rigidbody2D:
@@ -281,6 +288,31 @@ MonoBehaviour:
   Model: {fileID: 7397524122027817338}
   Frame: {fileID: 7397524122807435553}
   Bg: {fileID: 7397524122035621397}
+--- !u!114 &5296013684508591741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7397524120955551648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5caeea2ab4aa749b3fa3a5fe2f3d17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7369457786312021482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7397524120955551648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5f98249d93d1649ab4a3a46358b3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Immunes: 
 --- !u!1 &7397524122027817337
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +324,7 @@ GameObject:
   - component: {fileID: 7397524122027817339}
   - component: {fileID: 7397524122027817338}
   - component: {fileID: 222891954361781038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +395,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &222891954361781038
@@ -392,7 +424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7397524122035621396}
   - component: {fileID: 7397524122035621397}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7397524122807435552}
   - component: {fileID: 7397524122807435553}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}

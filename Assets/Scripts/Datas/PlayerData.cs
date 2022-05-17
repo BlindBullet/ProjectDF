@@ -15,6 +15,7 @@ public class PlayerData
 	public double SoulStone;
 	public int Stage;
 	public int AscensionCount;
+	public int TouchAttackLv;
 	public List<SlotData> Slots = new List<SlotData>();
 	public List<HeroData> Heroes = new List<HeroData>();
 	public List<RelicData> Relics = new List<RelicData>();
@@ -32,6 +33,7 @@ public class PlayerData
 		Stage = 1;
 		AscensionCount = 0;
 		ClearQuestCount = 0;
+		TouchAttackLv = 1;
 
 		ResisterHeroes();
 		ResisterRelics();
@@ -316,18 +318,21 @@ public class PlayerData
 			Init();           
 		}
 		else
-		{			
+		{
+			IsFirstPlay = data.IsFirstPlay;
 			PlayAppCount = data.PlayAppCount;
 			Gold = data.Gold;
 			Magicite = data.Magicite;
 			SoulStone = data.SoulStone;
+			TouchAttackLv = data.TouchAttackLv;
+			AscensionCount = data.AscensionCount;
 			Stage = data.Stage;
 			Heroes = data.Heroes;
 			Relics = data.Relics;
 			Slots = data.Slots;
 			Quests = data.Quests;
 			PlayerBuffs = data.PlayerBuffs;
-
+			
 			ResisterHeroes();
 			ResisterRelics();
 		}

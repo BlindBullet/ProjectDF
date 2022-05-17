@@ -113,6 +113,8 @@ public class EnemyBase : MonoBehaviour
 		switch (attr)
 		{
 			case Attr.None:
+				def += Stat.Def;
+				atk = atk - (atk * (def / 100f));
 				break;
 			case Attr.Red:
 				if (Stat.Immunes.Contains(Attr.Red))

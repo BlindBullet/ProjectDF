@@ -7,17 +7,19 @@ TagManager:
   - Enemy
   - PlayerLine
   - Minion
+  - Field
+  - Supplies
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Hero
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Minion
+  - Field
+  - Supplies
   - 
   - 
   - 

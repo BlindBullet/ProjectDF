@@ -20,6 +20,7 @@ public static class ConstantData
 	public static ObscuredInt[] QuestLvPerClearCount = { 5, 20, 40, 60, 80, 100, 150,  };
 	public static ObscuredDouble TimeGold = 10f;
 	public static ObscuredInt KillEnemiesCount1Min = 15;
+	public static ObscuredString PlayerTouchAtkHitFx = "TestHitFx";
 
 	public static double GetLvUpCost(int lv)
 	{		
