@@ -6,13 +6,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
-{
-
+{	
 	private void Awake()
 	{
 		DialogManager.Ins.SetDialogTransform();
 		//SaveLoadManager.Ins.LoadAllDatas();
-
 	}
 
 	private void Update()

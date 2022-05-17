@@ -64,3 +64,6 @@ TagManager:
   - name: UI
     uniqueID: 2614187007
     locked: 0
+  - name: Supplies
+    uniqueID: 26750759
+    locked: 0

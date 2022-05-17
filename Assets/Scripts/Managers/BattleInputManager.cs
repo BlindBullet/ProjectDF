@@ -135,14 +135,13 @@ public class BattleInputManager : MonoBehaviour
 					}
 					else if(target.tag == SuppliesTag)
 					{
-						var characterObject = target.GetComponent<HeroBase>();
-						if (characterObject == null)
+						var supplies = target.GetComponent<SuppliesBase>();
+						if (supplies == null)
 						{
 							return;
 						}
 
-						_isDragging = true;
-						_selectedCharacter = characterObject;
+						supplies.GetReward();
 					}
 				}
 			}

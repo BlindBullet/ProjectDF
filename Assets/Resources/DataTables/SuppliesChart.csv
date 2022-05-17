@@ -1,0 +1,5 @@
+﻿Id,Icon,IconSize,ShowAd,RewardType,RewardValue
+1,Gold,2.3,,Gold,10
+2,Gold,2.3,True,Gold,30
+3,SoulStone,1.5,True,SoulStone,20
+4,GameSpeed,1,True,GameSpeed,20
