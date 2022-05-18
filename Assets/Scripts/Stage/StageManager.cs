@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class StageManager : MonoSingleton<StageManager>
 {
@@ -25,9 +26,12 @@ public class StageManager : MonoSingleton<StageManager>
 	public bool LastEnemiesSpawned;
 	GameObject Bg = null;
 	Coroutine cStageSequence = null;
+	float appearSuppliesProb = 0;
 
 	private void Start()
 	{
+		appearSuppliesProb = 0f;
+
 		PlayerData = new PlayerData();
 		PlayerData.Load();
 
@@ -177,11 +181,52 @@ public class StageManager : MonoSingleton<StageManager>
 		yield return new WaitForSeconds(1f);
 
 		if (CheckBossStage(stageNo))
+		{
 			yield return StartCoroutine(BossSequence());
+		}
+		else
+		{
+			if (CheckAppearSupplies())
+			{
+				StartCoroutine(AppearSupplies());
+			}
+		}	
 
 		yield return new WaitForSeconds(2f);
 
 		cStageSequence = StartCoroutine(ProgressStage(stageNo));
+	}
+
+	bool CheckAppearSupplies()
+	{
+		if(PlayerData.Stage < 3)
+		{
+			return false;
+		}
+		else
+		{
+			float randNo = Random.Range(0, 100);
+
+			if(randNo < appearSuppliesProb)
+			{
+				appearSuppliesProb = -50f;
+				return true;
+			}
+			else
+			{
+				appearSuppliesProb += 15f;
+				return false;
+			}
+		}
+	}
+
+	IEnumerator AppearSupplies()
+	{
+		yield return new WaitForSeconds(10f);
+				
+		int randNo = Random.Range(0, CsvData.Ins.SuppliesChart.Count);
+		var supplies = ObjectManager.Ins.Pop<SuppliesBase>(Resources.Load("Prefabs/Supplies/Supplies") as GameObject);
+		supplies.Setup(CsvData.Ins.SuppliesChart[(randNo + 1).ToString()]);
 	}
 
 	bool CheckBossStage(int stageNo)
