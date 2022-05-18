@@ -85,5 +85,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogAdReward>().OpenDialog(chart);
 	}
 
+	public void OpenAdReward(QuestChart chart)
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogAdReward") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogAdReward>().OpenDialog(chart);
+	}
 
 }

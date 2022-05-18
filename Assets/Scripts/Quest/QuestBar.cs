@@ -103,7 +103,7 @@ public class QuestBar : MonoBehaviour
 			QuestProgressText.text = hourStr + ":" + minStr + ":" + secStr;
 			QuestProgressBarFill.fillAmount = (float)((totalSec - progressSec) / totalSec);
 
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(1f * Time.timeScale);
 						
 			progressSec -= 1f;			
 

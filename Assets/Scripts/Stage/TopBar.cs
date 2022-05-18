@@ -54,14 +54,16 @@ public class TopBar : MonoBehaviour
 			int min = (int)((leftTime % 3600f) / 60f);			
 						
 			string hourStr = hour < 10 ? "0" + hour : hour.ToString();
-			string minStr = min < 10 ? "0" + (min + 1) : (min + 1).ToString();			
+			string minStr = "";  
 
 			if(hour <= 0)
 			{
+				minStr = (min + 1).ToString();
 				GameSpeedTimeText.text = minStr + "M";
 			}
 			else
 			{
+				minStr = min < 10 ? "0" + (min + 1) : (min + 1).ToString();
 				GameSpeedTimeText.text = hourStr + "H " + minStr + "M";
 			}
 			

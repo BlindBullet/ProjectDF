@@ -147,8 +147,7 @@ public class SuppliesBase : MonoBehaviour
 	{	
 		//±¤°í ÆË¾÷ ¿¬°á
 		DialogManager.Ins.OpenAdReward(data);
-		ObjectManager.Ins.Push<SuppliesBase>(this);
-		Time.timeScale = 0f;
+		ObjectManager.Ins.Push<SuppliesBase>(this);		
 	}
 
 

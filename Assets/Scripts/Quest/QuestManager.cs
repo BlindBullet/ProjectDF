@@ -34,24 +34,26 @@ public class QuestManager : MonoSingleton<QuestManager>
 	}
 
 	void SendReward(QuestChart chart)
-	{
-		double rewardValue = chart.RewardValue;
+	{		
+		DialogManager.Ins.OpenAdReward(chart);
 
-		switch (chart.RewardType)
-		{
-			case RewardType.Gold:
-				rewardValue = ConstantData.GetGoldFromTime(chart.RewardValue, StageManager.Ins.PlayerData.Stage);
-				StageManager.Ins.ChangeGold(rewardValue);
-				break;
-			case RewardType.SoulStone:				
-				StageManager.Ins.ChangeMagicite(chart.RewardValue);
-				break;
-			case RewardType.GameSpeed:
-				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GameSpeed, chart.RewardValue);
-				break;
-		}
+		//double rewardValue = chart.RewardValue;
 
-		DialogManager.Ins.OpenReceiveReward(chart.RewardType, rewardValue);
+		//switch (chart.RewardType)
+		//{
+		//	case RewardType.Gold:
+		//		rewardValue = ConstantData.GetGoldFromTime(chart.RewardValue, StageManager.Ins.PlayerData.Stage);
+		//		StageManager.Ins.ChangeGold(rewardValue);
+		//		break;
+		//	case RewardType.SoulStone:				
+		//		StageManager.Ins.ChangeMagicite(chart.RewardValue);
+		//		break;
+		//	case RewardType.GameSpeed:
+		//		StageManager.Ins.AddPlayerBuff(PlayerBuffType.GameSpeed, chart.RewardValue);
+		//		break;
+		//}
+
+		//DialogManager.Ins.OpenReceiveReward(chart.RewardType, rewardValue);
 	}
 
 	List<QuestChart> LotteryQuests()
