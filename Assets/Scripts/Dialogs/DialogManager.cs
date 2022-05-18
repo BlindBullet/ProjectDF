@@ -79,5 +79,11 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogReceiveReward>().OpenDialog(type, value);
 	}
 
+	public void OpenAdReward(SuppliesChart chart)
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogAdReward") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogAdReward>().OpenDialog(chart);
+	}
+
 
 }

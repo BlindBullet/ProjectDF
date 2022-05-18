@@ -52,7 +52,6 @@ public class QuestManager : MonoSingleton<QuestManager>
 		}
 
 		DialogManager.Ins.OpenReceiveReward(chart.RewardType, rewardValue);
-
 	}
 
 	List<QuestChart> LotteryQuests()

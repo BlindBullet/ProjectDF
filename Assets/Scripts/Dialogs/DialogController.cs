@@ -38,7 +38,11 @@ public class DialogController : MonoBehaviour
 		if(CloseBtn != null)
 		{
 			CloseBtn.onClick.RemoveAllListeners();
-			CloseBtn.onClick.AddListener(() => CloseDialog());
+			CloseBtn.onClick.AddListener(() => 
+			{
+				SetCloseBtn();
+				CloseDialog();
+			});
 		}
 
 		if (CloseBtnText != null)
@@ -61,6 +65,11 @@ public class DialogController : MonoBehaviour
 			case DialogTween.None:
 				break;
 		}
+	}
+
+	public virtual void SetCloseBtn()
+	{
+
 	}
 
 	public virtual void CloseDialog()

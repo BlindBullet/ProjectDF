@@ -41,14 +41,23 @@ public class RewardIcon : MonoBehaviour
 				}
 				else if(valueShowType == RewardValueShowType.CalcValue)
 				{
-					Amount.text = value.ToCurrencyString();
+					if(value <= 0)
+						Amount.text = "";
+					else					
+						Amount.text = value.ToCurrencyString();
 				}
 				break;
 			case RewardType.GameSpeed:
-				Amount.text = value + LanguageManager.Ins.SetString("Minute");
+				if (value <= 0)
+					Amount.text = "";
+				else
+					Amount.text = value + LanguageManager.Ins.SetString("Minute");
 				break;
 			case RewardType.SoulStone:
-				Amount.text = value.ToString();
+				if (value <= 0)
+					Amount.text = "";
+				else
+					Amount.text = value.ToString();
 				break;
 		}
 	}
