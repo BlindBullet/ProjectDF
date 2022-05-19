@@ -21,7 +21,9 @@ public class PlayerData
 	public List<RelicData> Relics = new List<RelicData>();
 	public List<QuestData> Quests = new List<QuestData>();
 	public List<PlayerBuffData> PlayerBuffs = new List<PlayerBuffData>();
-	public int ClearQuestCount;	
+	public int ClearQuestCount;
+	public bool OnBGM;
+	public bool OnSFX;
 
 	public void Init()
 	{
@@ -34,6 +36,8 @@ public class PlayerData
 		AscensionCount = 0;
 		ClearQuestCount = 0;
 		TouchAttackLv = 1;
+		OnBGM = true;
+		OnSFX = true;
 
 		ResisterHeroes();
 		ResisterRelics();
@@ -304,6 +308,18 @@ public class PlayerData
 		Save();
 	}
 
+	public void SetBGM(bool isOn)
+	{
+		OnBGM = isOn;
+		Save();
+	}
+
+	public void SetSFX(bool isOn)
+	{
+		OnSFX = isOn;
+		Save();
+	}
+
 	public void Save()
 	{	
 		ES3.Save<PlayerData>("PlayerData", this);
@@ -332,7 +348,9 @@ public class PlayerData
 			Slots = data.Slots;
 			Quests = data.Quests;
 			PlayerBuffs = data.PlayerBuffs;
-			
+			OnBGM = data.OnBGM;
+			OnSFX = data.OnSFX;
+
 			ResisterHeroes();
 			ResisterRelics();
 		}

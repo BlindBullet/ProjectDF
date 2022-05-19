@@ -91,4 +91,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogAdReward>().OpenDialog(chart);
 	}
 
+	public void OpenSetting()
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogSetting") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogSetting>().OpenDialog();
+	}
+
 }
