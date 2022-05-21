@@ -39,4 +39,8 @@ skill_10005_2,100,Buff,,ElementalAuraNature,Caster,,Atk,,60,10,,,,
 skill_10005_3,100,Buff,,ElementalAuraNature,Caster,,Atk,,80,10,,,,
 skill_10005_4,100,Buff,,ElementalAuraNature,Caster,,Atk,,100,10,,,,
 skill_10005_5,100,Buff,,ElementalAuraNature,Caster,,Atk,,150,10,,,,
-test_summon,100,Summon,,,,,,,,30,,M2|M2|M2,-1|0|1,0|0|0
+skill_10006_1,100,Summon,,,,,,,,30,,IceWolf_1|IceWolf_1|IceWolf_1,-1|0|1,0|0.5|0
+skill_10006_2,100,Summon,,,,,,,,30,,IceWolf_2|IceWolf_2|IceWolf_2,-1|0|1,0|0.5|0
+skill_10006_3,100,Summon,,,,,,,,30,,IceWolf_3|IceWolf_3|IceWolf_3,-1|0|1,0|0.5|0
+skill_10006_4,100,Summon,,,,,,,,30,,IceWolf_4|IceWolf_4|IceWolf_4,-1|0|1,0|0.5|0
+skill_10006_5,100,Summon,,,,,,,,30,,IceWolf_5|IceWolf_5|IceWolf_5,-1|0|1,0|0.5|0

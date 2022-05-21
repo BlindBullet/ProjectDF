@@ -282,15 +282,15 @@ public class SEManager : MonoSingleton<SEManager>
 
 						gradeSum = gradeSum / 5f;
 
-						switch (chart.CParam3)
+						switch (chart.CParam2[0])
 						{
 							case "High":
-								if (gradeSum >= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
+								if (gradeSum >= int.Parse(chart.CParam3, System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
 							case "Low":
-								if (gradeSum <= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
+								if (gradeSum <= int.Parse(chart.CParam3, System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
@@ -353,6 +353,88 @@ public class SEManager : MonoSingleton<SEManager>
 						else
 							return false;						
 						
+				}
+				break;
+			case SEConType.OwnHero:
+				List<HeroData> _heroes = StageManager.Ins.PlayerData.Heroes;
+				switch (chart.CParam1)
+				{
+					case "Attr":						
+						switch (chart.CParam2[0])
+						{
+							case "Red":
+								for (int i = 0; i < _heroes.Count; i++)
+								{
+									if (CsvData.Ins.HeroChart[_heroes[i].Id][_heroes[i].Grade - 1].Attr == Attr.Red)
+										count++;
+								}
+								break;
+							case "Green":
+								for (int i = 0; i < HeroBase.Heroes.Count; i++)
+								{
+									if (CsvData.Ins.HeroChart[_heroes[i].Id][_heroes[i].Grade - 1].Attr == Attr.Green)
+										count++;
+								}
+								break;
+							case "Blue":
+								for (int i = 0; i < HeroBase.Heroes.Count; i++)
+								{
+									if (CsvData.Ins.HeroChart[_heroes[i].Id][_heroes[i].Grade - 1].Attr == Attr.Blue)
+										count++;
+								}
+								break;
+							default:
+								for (int i = 0; i < HeroBase.Heroes.Count; i++)
+								{
+									if (CsvData.Ins.HeroChart[_heroes[i].Id][_heroes[i].Grade - 1].Attr == Attr.None)
+										count++;
+								}
+								break;
+						}
+
+						switch (chart.CParam3)
+						{
+							case "High":
+								if (count >= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
+									return true;
+								else
+									return false;
+							case "Low":
+								if (count <= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
+									return true;
+								else
+									return false;
+							default:
+								if (count == int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
+									return true;
+								else
+									return false;
+						}						
+					case "Grade":
+						for (int i = 0; i < _heroes.Count; i++)
+						{
+							if (_heroes[i].Grade >= int.Parse(chart.CParam2[0], System.Globalization.CultureInfo.InvariantCulture))
+								count++;
+						}
+
+						switch (chart.CParam3)
+						{
+							case "High":
+								if (count >= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
+									return true;
+								else
+									return false;
+							case "Low":
+								if (count <= int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
+									return true;
+								else
+									return false;
+							default:
+								if (count == int.Parse(chart.CParam4, System.Globalization.CultureInfo.InvariantCulture))
+									return true;
+								else
+									return false;
+						}						
 				}
 				break;
 		}

@@ -149,7 +149,7 @@ public class DialogHeroInfo : DialogController
 
 			if(StageManager.Ins.PlayerData.Magicite >= enchantCost)
 			{
-				purchaseBtnMat.DisableKeyword("GREYSCALE_ON");
+				purchaseBtnMat.SetFloat("_GreyscaleBlend", 0f);				
 				PurchaseBtn.onClick.AddListener(() => 
 				{
 					if (StageManager.Ins.PlayerData.EnchantHero(data))
@@ -172,7 +172,7 @@ public class DialogHeroInfo : DialogController
 			}
 			else
 			{
-				purchaseBtnMat.EnableKeyword("GREYSCALE_ON");
+				purchaseBtnMat.SetFloat("_GreyscaleBlend", 1f);				
 			}
 
 			if(data.Grade >= 5)
@@ -190,7 +190,7 @@ public class DialogHeroInfo : DialogController
 
 				if (StageManager.Ins.PlayerData.SoulStone >= cost)
 				{
-					upgradeBtnMat.DisableKeyword("GREYSCALE_ON");
+					upgradeBtnMat.SetFloat("_GreyscaleBlend", 0f);					
 					UpgradeBtn.onClick.RemoveAllListeners();
 					UpgradeBtn.onClick.AddListener(() =>
 					{
@@ -207,7 +207,7 @@ public class DialogHeroInfo : DialogController
 				}
 				else
 				{
-					upgradeBtnMat.EnableKeyword("GREYSCALE_ON");
+					upgradeBtnMat.SetFloat("_GreyscaleBlend", 1f);
 				}
 			}
 		}
@@ -238,7 +238,7 @@ public class DialogHeroInfo : DialogController
 
 			if (haveCost)
 			{
-				purchaseBtnMat.DisableKeyword("GREYSCALE_ON");
+				purchaseBtnMat.SetFloat("_GreyscaleBlend", 0f);				
 				PurchaseBtn.onClick.RemoveAllListeners();
 				PurchaseBtn.onClick.AddListener(() =>
 				{
@@ -252,7 +252,7 @@ public class DialogHeroInfo : DialogController
 			}
 			else
 			{
-				purchaseBtnMat.EnableKeyword("GREYSCALE_ON");
+				purchaseBtnMat.SetFloat("_GreyscaleBlend", 1f);				
 			}
 		}
 	}

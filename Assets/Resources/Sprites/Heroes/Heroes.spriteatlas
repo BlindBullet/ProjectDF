@@ -71,6 +71,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7993e0511bfa99646ac853a05311809f, type: 3}
   - {fileID: 21300000, guid: 9a013061c565ce04399d64e7143345f9, type: 3}
   - {fileID: 21300000, guid: e94a156180610414fa3a924be4484ca6, type: 3}
+  - {fileID: 21300000, guid: 28f2cea12a943b342bbd449f4be4fa47, type: 3}
   - {fileID: 21300000, guid: d33c0cc14a9a62d4fa62bffabdcac739, type: 3}
   - {fileID: 21300000, guid: f9dacdc12103df949a9004d3a244c645, type: 3}
   - {fileID: 21300000, guid: 9f42c4e115577fe41859c7bfed4edad0, type: 3}
@@ -178,6 +179,7 @@ SpriteAtlas:
   - f246
   - GoblinChampion
   - f228
+  - IceWolf
   - GoblinMage
   - f069
   - f224

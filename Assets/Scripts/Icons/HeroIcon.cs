@@ -76,8 +76,8 @@ public class HeroIcon : MonoBehaviour
 		IconImg.material = new Material(IconImg.materialForRendering);
 		iconImgMat = IconImg.materialForRendering;
 
-		iconImgMat.DisableKeyword("GREYSCALE_ON");
-		selectedFrameMat.DisableKeyword("SHINE_ON");
+		iconImgMat.SetFloat("_GreyscaleBlend", 0f);
+		selectedFrameMat.SetFloat("_ShineGlow", 0f);
 	}
 
 	void SetIcon(HeroChart chart, HeroData data)
@@ -122,14 +122,14 @@ public class HeroIcon : MonoBehaviour
 	public void ShowSelectedFrame()
 	{
 		SelectedFrame.SetActive(true);
-		selectedFrameMat.EnableKeyword("SHINE_ON");
+		selectedFrameMat.SetFloat("_ShineGlow", 1f);
 		selectedFrameMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetId("SF" + Data.Id);
 	}
 
 	public void CloseSelectedFrame()
 	{
 		DOTween.Kill("SF" + Data.Id);
-		selectedFrameMat.DisableKeyword("SHINE_ON");
+		selectedFrameMat.SetFloat("_ShineGlow", 0f);
 		SelectedFrame.SetActive(false);
 	}
 
@@ -137,11 +137,11 @@ public class HeroIcon : MonoBehaviour
 	{
 		if (on)
 		{
-			iconImgMat.EnableKeyword("GREYSCALE_ON");
+			iconImgMat.SetFloat("_GreyscaleBlend", 1f);			
 		}
 		else
 		{
-			iconImgMat.DisableKeyword("GREYSCALE_ON");
+			iconImgMat.SetFloat("_GreyscaleBlend", 0f);			
 		}
 	}
 

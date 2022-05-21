@@ -1726,7 +1726,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 130}
+  m_SizeDelta: {x: 220, y: 130}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &4152864260764631879
 CanvasRenderer:
@@ -2480,8 +2480,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 810, y: -99.787}
-  m_SizeDelta: {x: 250, y: 130}
+  m_AnchoredPosition: {x: 775, y: -99.787}
+  m_SizeDelta: {x: 220, y: 130}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &4152864261422472554
 CanvasRenderer:
@@ -2890,8 +2890,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 665, y: -99.787}
-  m_SizeDelta: {x: 250, y: 130}
+  m_AnchoredPosition: {x: 650, y: -99.787}
+  m_SizeDelta: {x: 220, y: 130}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &8459474683308920336
 CanvasRenderer:
@@ -2987,7 +2987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shaderTypes: 0
+  shaderTypes: 2
   normalStrength: 5
   normalSmoothing: 1
   computingNormal: 0
@@ -3481,7 +3481,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 130}
+  m_SizeDelta: {x: 220, y: 130}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &8677660581248815649
 CanvasRenderer:
@@ -3577,7 +3577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shaderTypes: 0
+  shaderTypes: 2
   normalStrength: 5
   normalSmoothing: 1
   computingNormal: 0

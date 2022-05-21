@@ -2,3 +2,8 @@
 M1,ForestFairy,0.25,Direct,1,,,,,2,100,1,0,Red,dmg_100,TestProjectile
 M2,ForestFairy,0.25,Curve,1,0|0,2|0,0|-2,2|0,2,100,5,0,Green,dmg_100,TestProjectile
 M3,ForestFairy,0.25,None,0,,,,,2,100,5,0,Blue,dmg_100,TestProjectile
+IceWolf_1,IceWolf,0.25,Curve,1,0|0,2|0,0|-2,2|0,1.5,50,3,0,Blue,dmg_100,attack_blue1
+IceWolf_2,IceWolf,0.25,Curve,1,0|0,2|0,0|-2,2|0,1.5,75,3,0,Blue,dmg_100,attack_blue1
+IceWolf_3,IceWolf,0.25,Curve,1,0|0,2|0,0|-2,2|0,1.5,100,3,0,Blue,dmg_100,attack_blue1
+IceWolf_4,IceWolf,0.25,Curve,1,0|0,2|0,0|-2,2|0,1.5,150,3,0,Blue,dmg_100,attack_blue1
+IceWolf_5,IceWolf,0.25,Curve,1,0|0,2|0,0|-2,2|0,1.5,200,3,0,Blue,dmg_100,attack_blue1

@@ -1,5 +1,4 @@
 ﻿Id,Seq,Prob,TargetType,TargetDetail,TargetCount,RangeType,RnageSize,DelayTime,DelayBeginFx,Hitresult,Projectile
-TestSummon,1,100,Me,,,,,,,test_summon,
 Skill1_1,1,100,Enemy,,,,,,,dmg_100,TestProjectile3
 Skill1_2,1,100,Enemy,,,,,,,dmg_100,TestProjectile4
 Skill1_3,1,100,Enemy,,,,,,,dmg_100,TestProjectile5
@@ -58,3 +57,8 @@ skill_10005_2,1,100,Hero,All,,,,,,skill_10005_2,
 skill_10005_3,1,100,Hero,All,,,,,,skill_10005_3,
 skill_10005_4,1,100,Hero,All,,,,,,skill_10005_4,
 skill_10005_5,1,100,Hero,All,,,,,,skill_10005_5,
+skill_10006_1,1,100,Me,,,,,,,skill_10006_1,
+skill_10006_2,1,100,Me,,,,,,,skill_10006_2,
+skill_10006_3,1,100,Me,,,,,,,skill_10006_3,
+skill_10006_4,1,100,Me,,,,,,,skill_10006_4,
+skill_10006_5,1,100,Me,,,,,,,skill_10006_5,

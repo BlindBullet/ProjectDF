@@ -29,6 +29,7 @@ public enum SEConType
 {
     None,
     DeployHero,
+    OwnHero,
 
 }
 

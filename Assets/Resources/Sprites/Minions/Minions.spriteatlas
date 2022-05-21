@@ -49,8 +49,10 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 28f2cea12a943b342bbd449f4be4fa47, type: 3}
   - {fileID: 21300000, guid: d8c80516cdde9bd4597d3e10315c7763, type: 3}
   m_PackedSpriteNamesToIndex:
+  - IceWolf
   - ForestFairy
   m_RenderDataMap: {}
   m_Tag: Minions

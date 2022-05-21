@@ -45,11 +45,11 @@ skill_10005,str_name_skill_10005,str_desc_skill_10005_2,ActiveEnemyTarget,2,30,1
 skill_10005,str_name_skill_10005,str_desc_skill_10005_3,ActiveEnemyTarget,3,30,1,Attack,,,30,3,skill_10005_3
 skill_10005,str_name_skill_10005,str_desc_skill_10005_4,ActiveEnemyTarget,4,30,1,Attack,,,30,3,skill_10005_4
 skill_10005,str_name_skill_10005,str_desc_skill_10005_5,ActiveEnemyTarget,5,30,1,Attack,,,30,3,skill_10005_5
-skill_10006,str_name_skill_10006,str_desc_skill_10006_1,ActiveEnemyTarget,1,10,1,Attack,,,6,3,Skill4
-skill_10006,str_name_skill_10006,str_desc_skill_10006_2,ActiveEnemyTarget,2,10,1,Attack,,,6,3,Skill4
-skill_10006,str_name_skill_10006,str_desc_skill_10006_3,ActiveEnemyTarget,3,10,1,Attack,,,6,3,Skill4
-skill_10006,str_name_skill_10006,str_desc_skill_10006_4,ActiveEnemyTarget,4,10,1,Attack,,,6,3,Skill4
-skill_10006,str_name_skill_10006,str_desc_skill_10006_5,ActiveEnemyTarget,5,10,1,Attack,,,6,3,Skill4
+skill_10006,str_name_skill_10006,str_desc_skill_10006_1,ActiveEnemyTarget,1,60,1,Attack,,,30,3,skill_10006_1
+skill_10006,str_name_skill_10006,str_desc_skill_10006_2,ActiveEnemyTarget,2,60,1,Attack,,,30,3,skill_10006_2
+skill_10006,str_name_skill_10006,str_desc_skill_10006_3,ActiveEnemyTarget,3,60,1,Attack,,,30,3,skill_10006_3
+skill_10006,str_name_skill_10006,str_desc_skill_10006_4,ActiveEnemyTarget,4,60,1,Attack,,,30,3,skill_10006_4
+skill_10006,str_name_skill_10006,str_desc_skill_10006_5,ActiveEnemyTarget,5,60,1,Attack,,,30,3,skill_10006_5
 skill_10007,str_name_skill_10007,str_desc_skill_10007_1,ActiveEnemyTarget,1,10,1,Attack,,,6,3,Skill4
 skill_10007,str_name_skill_10007,str_desc_skill_10007_2,ActiveEnemyTarget,2,10,1,Attack,,,6,3,Skill4
 skill_10007,str_name_skill_10007,str_desc_skill_10007_3,ActiveEnemyTarget,3,10,1,Attack,,,6,3,Skill4
