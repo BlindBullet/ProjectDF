@@ -18,6 +18,9 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 				case TargetType.Enemy:                    
 					yield return new WaitForSeconds(datas[i].DelayTime);
 
+					if (datas[i].DelayBeginFx != null)
+						EffectManager.Ins.ShowFx(datas[i].DelayBeginFx, pos);
+
 					List<EnemyBase> enemyTargets = SearchEnemyTargets(datas[i], pos);
 
 					//범위에 따라 타겟을 지정
@@ -39,6 +42,9 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			{
 				case TargetType.Enemy:
 					yield return new WaitForSeconds(datas[i].DelayTime);
+
+					if (datas[i].DelayBeginFx != null)
+						EffectManager.Ins.ShowFx(datas[i].DelayBeginFx, pos);
 
 					List<EnemyBase> enemyTargets = SearchEnemyTargets(datas[i], pos);
 

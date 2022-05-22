@@ -44,3 +44,8 @@ skill_10004_3,Curve,0,0,20,0|0,5|0,0|0,5|0,10,Projectile 19,,,Hit 19,skill_10004
 skill_10004_4,Curve,0,0,20,0|0,5|0,0|0,5|0,10,Projectile 19,,,Hit 19,skill_10004_4_add,,
 skill_10004_5,Curve,0,0,20,0|0,5|0,0|0,5|0,10,Projectile 19,,,Hit 19,skill_10004_5_add,,
 touch_attack_1,Direct,0,0,20,,,,,10,Touch1,,,,,,
+skill_10007_1,Direct,0,0,40,,,,,10,Empty,,,,skill_10007_1_add,,
+skill_10007_2,Direct,0,0,40,,,,,10,Empty,,,,skill_10007_2_add,,
+skill_10007_3,Direct,0,0,40,,,,,10,Empty,,,,skill_10007_3_add,,
+skill_10007_4,Direct,0,0,40,,,,,10,Empty,,,,skill_10007_4_add,,
+skill_10007_5,Direct,0,0,40,,,,,10,Empty,,,,skill_10007_5_add,,

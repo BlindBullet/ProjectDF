@@ -1,5 +1,6 @@
 ﻿Id,Prob,Type,HitFx,DurationFx,FactorOwner,FactorType,StatType,Value,ValuePercent,DurationTime,StiffTime,SummonIds,SummonPosX,SummonPosY
 dmg_100,100,Dmg,TestHitFx,,Caster,Atk,,,100,,0,,,
+dmg_0,100,Dmg,,,Caster,Atk,,,0,,0,,,
 buff_atk_100p,100,Buff,TestHitFx,,Target,,Atk,,100,5,,,,
 buff_atk_200p,100,Buff,TestHitFx,,Target,,Atk,,200,10,,,,
 test_stun,100,Stun,,,,,,,,3,,,,
@@ -44,3 +45,8 @@ skill_10006_2,100,Summon,,,,,,,,30,,IceWolf_2|IceWolf_2|IceWolf_2,-1|0|1,0|0.5|0
 skill_10006_3,100,Summon,,,,,,,,30,,IceWolf_3|IceWolf_3|IceWolf_3,-1|0|1,0|0.5|0
 skill_10006_4,100,Summon,,,,,,,,30,,IceWolf_4|IceWolf_4|IceWolf_4,-1|0|1,0|0.5|0
 skill_10006_5,100,Summon,,,,,,,,30,,IceWolf_5|IceWolf_5|IceWolf_5,-1|0|1,0|0.5|0
+skill_10007_1_add,100,Dmg,,,Caster,Atk,,,300,,0,,,
+skill_10007_2_add,100,Dmg,,,Caster,Atk,,,400,,0,,,
+skill_10007_3_add,100,Dmg,,,Caster,Atk,,,500,,0,,,
+skill_10007_4_add,100,Dmg,,,Caster,Atk,,,600,,0,,,
+skill_10007_5_add,100,Dmg,,,Caster,Atk,,,1000,,0,,,
