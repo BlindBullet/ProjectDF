@@ -84,3 +84,8 @@ ce_10007,2,DeployHero,Attr,Green,High,2,,Hero,Slot,1|3|5,,StatChange,Inc,CritCha
 ce_10007,3,DeployHero,Attr,Green,High,2,,Hero,Slot,1|3|5,,StatChange,Inc,CritChance,4.5,
 ce_10007,4,DeployHero,Attr,Green,High,2,,Hero,Slot,1|3|5,,StatChange,Inc,CritChance,6,
 ce_10007,5,DeployHero,Attr,Green,High,2,,Hero,Slot,1|3|5,,StatChange,Inc,CritChance,8,
+ce_10008,1,DeployHero,Attr,Red,High,2,,Hero,All,,,StatChange,Inc,Spd,5,
+ce_10008,2,DeployHero,Attr,Red,High,2,,Hero,All,,,StatChange,Inc,Spd,10,
+ce_10008,3,DeployHero,Attr,Red,High,2,,Hero,All,,,StatChange,Inc,Spd,15,
+ce_10008,4,DeployHero,Attr,Red,High,2,,Hero,All,,,StatChange,Inc,Spd,20,
+ce_10008,5,DeployHero,Attr,Red,High,2,,Hero,All,,,StatChange,Inc,Spd,25,
