@@ -37,7 +37,7 @@ public class GameManager : MonoSingleton<GameManager>
 			bPaused = true;
 
 			// todo : 어플리케이션을 내리는 순간에 처리할 행동들
-
+			StageManager.Ins.PlayerData.SetOfflineTime();
 		}
 		else
 		{
@@ -56,5 +56,9 @@ public class GameManager : MonoSingleton<GameManager>
 		SceneManager.LoadScene(0);
 	}
 
+	private void OnDestroy()
+	{
+		StageManager.Ins.PlayerData.SetOfflineTime();		
+	}
 
 }

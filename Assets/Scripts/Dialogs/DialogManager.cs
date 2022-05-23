@@ -97,4 +97,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogSetting>().OpenDialog();
 	}
 
+	public void OpenOfflineReward()
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogOfflineReward") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogOfflineReward>().OpenDialog();
+	}
+
 }

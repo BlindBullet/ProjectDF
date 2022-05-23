@@ -21,6 +21,7 @@ public static class ConstantData
 	public static ObscuredDouble TimeGold = 10f;
 	public static ObscuredInt KillEnemiesCount1Min = 15;
 	public static ObscuredString PlayerTouchAtkHitFx = "TestHitFx";
+	public static ObscuredDouble OfflineTimeGold = 5f;
 
 	public static double GetLvUpCost(int lv)
 	{		
@@ -72,6 +73,11 @@ public static class ConstantData
 	}
 
 	public static double GetGoldFromTime(float min, int stageNo)
+	{
+		return CalcValue(TimeGold, EnemyGoldGR, stageNo) * KillEnemiesCount1Min * min;
+	}
+
+	public static double GetGoldFromOfflineTime(double min, int stageNo)
 	{
 		return CalcValue(TimeGold, EnemyGoldGR, stageNo) * KillEnemiesCount1Min * min;
 	}

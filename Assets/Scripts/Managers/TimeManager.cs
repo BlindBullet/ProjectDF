@@ -11,12 +11,7 @@ public class TimeManager : MonoSingleton<TimeManager>
 	public DateTime ReceivedTime;
 	public float SinceTime = 0;
 	Coroutine cTimer = null;
-
-	void Start()
-	{
-		StartCoroutine(GetTime());
-	}
-
+	
 	public IEnumerator GetTime()
 	{
 		yield return StartCoroutine(WebChk());
