@@ -21,7 +21,7 @@ public class MinionUi : MonoBehaviour
 		mat.DisableKeyword("HOLOGRAM_ON");
 
 		Bg.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Attr.ToString());
-		MinionImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Minions/Minions").GetSprite(chart.Model);
+		MinionImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Characters").GetSprite(chart.Model);
 		Frame.sprite = Resources.Load<Sprite>("Sprites/Minions/Frames/" + chart.Attr.ToString());
 	}
 

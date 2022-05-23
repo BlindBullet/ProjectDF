@@ -222,8 +222,9 @@ public class ProjectileController : MonoBehaviour
 		if (collision.CompareTag("Enemy"))
 		{	
 			EnemyBase enemyBase = collision.GetComponent<EnemyBase>();
+			Vector2 pos = enemyBase.transform.position;
 
-			if(caster != null && minion == null)
+			if (caster != null && minion == null)
 			{
 				HitresultManager.Ins.SendHitresult(hitresults, enemyBase, caster);
 			}
@@ -235,23 +236,25 @@ public class ProjectileController : MonoBehaviour
 			{
 				EffectManager.Ins.ShowFx(ConstantData.PlayerTouchAtkHitFx, enemyBase.transform);
 				double resultDmg = enemyBase.TakeDmg(playerAtk, Attr.None, false, 0f);
-				FloatingTextManager.Ins.ShowDmg(enemyBase.transform.position, resultDmg.ToCurrencyString(), false);
+				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), false);
 			}
 			
 			if(penCount <= 0)
-			{
-				if(caster != null)
+			{	
+				if (data.HitDestroyFx != null)
 				{
-					if (data.HitDestroyFx != null)
-					{
-						EffectManager.Ins.ShowFx(data.HitDestroyFx, this.transform.position);
-					}
+					EffectManager.Ins.ShowFx(data.HitDestroyFx, pos);
+				}
 
-					if (data.HitDestroyResult != null)
-					{
-						List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitDestroyResult];
-						HitresultManager.Ins.RunResultGroup(hitResultGroups, transform.position, caster);
-					}
+				if (data.HitDestroyResult != null && caster != null && minion == null)
+				{
+					List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitDestroyResult];
+					HitresultManager.Ins.RunResultGroup(hitResultGroups, pos, caster);
+				}
+				else if(data.HitDestroyResult != null && caster == null && minion != null)
+				{						
+					List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitDestroyResult];
+					HitresultManager.Ins.RunResultGroup(hitResultGroups, pos, minion);
 				}
 
 				penCount--;

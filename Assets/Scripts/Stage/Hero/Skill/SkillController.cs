@@ -179,7 +179,7 @@ public class SkillController : MonoBehaviour
 			yield return new WaitForSeconds(totalTime - progressTime);			
 		}	
 		
-		skill.InitCoolTime();
+		skill.InitCoolTime(skill.Data.CoolDealy);
 
 		cAttack = null;
 		cSkill = null;        
@@ -229,9 +229,9 @@ public class Skill
 			CoolTime = _CoolTime;
 	}
 
-	public void InitCoolTime()
+	public void InitCoolTime(float delay)
 	{
-		CoolTime = 0;
+		CoolTime = -delay;
 	}
 
 }

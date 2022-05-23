@@ -21,10 +21,14 @@ public class MinionAttackController : MonoBehaviour
 	public void Attack()
 	{
 		if (cAttack == null)
+		{
 			cAttack = StartCoroutine(AttackSequence());
+		}
 
 		if (cAttackMove == null)
+		{
 			cAttackMove = StartCoroutine(AttackMoveSequence());
+		}	
 	}
 
 	IEnumerator AttackSequence()

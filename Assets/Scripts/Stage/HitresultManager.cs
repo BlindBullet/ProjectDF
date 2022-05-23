@@ -9,6 +9,11 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 		StartCoroutine(ResultGroupSequence(datas, pos, caster));
 	}
 
+	public void RunResultGroup(List<ResultGroupChart> datas, Vector2 pos, MinionBase minion)
+	{
+		StartCoroutine(ResultGroupSequence(datas, pos, minion));
+	}
+
 	public IEnumerator ResultGroupSequence(List<ResultGroupChart> datas, Vector2 pos, HeroBase caster, SkillType type)
 	{
 		for (int i = 0; i < datas.Count; i++)
@@ -40,7 +45,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 		{
 			switch (datas[i].TargetType)
 			{
-				case TargetType.Enemy:
+				case TargetType.Enemy:					
 					yield return new WaitForSeconds(datas[i].DelayTime);
 
 					if (datas[i].DelayBeginFx != null)
@@ -53,6 +58,31 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 					{
 						//히트리절트 전달
 						SendResultGroup(datas[i], caster, SkillType.None, enemyTargets[k]);
+					}
+					break;
+			}
+		}
+	}
+
+	public IEnumerator ResultGroupSequence(List<ResultGroupChart> datas, Vector2 pos, MinionBase minion)
+	{
+		for (int i = 0; i < datas.Count; i++)
+		{
+			switch (datas[i].TargetType)
+			{
+				case TargetType.Enemy:					
+					yield return new WaitForSeconds(datas[i].DelayTime);
+
+					if (datas[i].DelayBeginFx != null)
+						EffectManager.Ins.ShowFx(datas[i].DelayBeginFx, pos);
+
+					List<EnemyBase> enemyTargets = SearchEnemyTargets(datas[i], pos);
+
+					//범위에 따라 타겟을 지정
+					for (int k = 0; k < enemyTargets.Count; k++)
+					{
+						//히트리절트 전달
+						SendResultGroup(datas[i], minion, SkillType.None, enemyTargets[k]);
 					}
 					break;
 			}
@@ -167,6 +197,54 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 		}		
 	}
 
+	public void SendResultGroup(ResultGroupChart data, MinionBase minion, SkillType type, EnemyBase target = null)
+	{
+		List<HitresultChart> hitresults = CsvData.Ins.HitresultChart[data.Hitresult];
+
+		if (data.Hitresult != null && data.Projectile == null && target != null)
+		{
+			//히트리절트만 전달
+			SendHitresult(hitresults, target, minion);
+		}
+		else
+		{
+			Vector2 dir = Vector2.up;
+
+			switch (type)
+			{
+				case SkillType.None:
+					dir = Vector2.up;
+					break;
+				case SkillType.Attack:
+					if (target != null)
+						dir = target.transform.position - minion.ProjectileAnchor.position;
+					break;
+				case SkillType.Active:
+					dir = Vector2.up;
+					break;
+				case SkillType.ActiveEnemyTarget:
+					if (target != null)
+						dir = target.transform.position - minion.ProjectileAnchor.position;
+					break;
+			}
+
+			//float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+			//caster.ProjectileAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			dir.Normalize();
+
+			//프로젝타일 발사
+			List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart[data.Projectile];
+
+			for (int i = 0; i < projectiles.Count; i++)
+			{
+				ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
+				//projectile.transform.rotation = Quaternion.AngleAxis(angle - 90 + projectiles[i].Angle, Vector3.forward);
+				projectile.transform.position = minion.ProjectileAnchor.position.WithX(minion.ProjectileAnchor.position.x + projectiles[i].PosX);
+				projectile.Setup(projectiles[i], hitresults, minion, dir, target);
+			}
+		}
+	}
+
 	public void SendHitresult(ResultGroupChart data, HeroBase caster, HeroBase target)
 	{
 		List<HitresultChart> hitresults = CsvData.Ins.HitresultChart[data.Hitresult];
@@ -261,7 +339,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 				Debug.Log("미스");
 			}
 		}
-	}
+	}	
 
 	public void SendHitresult(List<HitresultChart> hitresults, EnemyBase target, HeroBase caster)
 	{
