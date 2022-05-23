@@ -90,9 +90,6 @@ public class EnemyBase : MonoBehaviour
 
 			Rb.velocity = new Vector2(xSpd, -Stat.Spd);
 
-			if (transform.position.y <= StageManager.Ins.PlayerLine.position.y)
-				StageManager.Ins.LoseStage();
-
 			yield return null;
 		}
 	}
@@ -301,6 +298,14 @@ public class EnemyBase : MonoBehaviour
 		{
 			isStunned = false;
 			Move();
+		}
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Player"))
+		{			
+			StageManager.Ins.LoseStage();
 		}
 	}
 
