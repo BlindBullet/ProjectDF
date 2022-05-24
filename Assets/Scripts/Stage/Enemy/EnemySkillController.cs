@@ -68,8 +68,7 @@ public class EnemySkillController : MonoBehaviour
 	IEnumerator UseSkill(EnemySkill skill)
 	{
 		usingSkill = true;
-		me.StopMove();
-		me.SpriteCon.Cast();
+		//me.SpriteCon.Cast();
 
 		if (skill.Data.BeginFx != null)
 			EffectManager.Ins.ShowFx(skill.Data.BeginFx, this.transform);
@@ -84,9 +83,6 @@ public class EnemySkillController : MonoBehaviour
 		}
 
 		yield return new WaitForSeconds((skill.Data.TotalFrame - skill.Data.FireFrame) / 30f);
-
-		if(me.Stat.CurHp > 0f)
-			me.Move();
 
 		skill.InitCoolTime();
 		usingSkill = false;

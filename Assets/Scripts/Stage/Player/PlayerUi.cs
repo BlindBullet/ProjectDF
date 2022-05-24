@@ -14,6 +14,7 @@ public class PlayerUi : MonoBehaviour
 	public TextMeshProUGUI AscensionBtnText;
 	public GameObject AscensionNotify;
 	public Button QuestBtn;
+	public GameObject QuestLockObj;
 	public TextMeshProUGUI QuestBtnText;
 	public GameObject QuestNotify;
 	public Button SettingBtn;
@@ -37,10 +38,7 @@ public class PlayerUi : MonoBehaviour
 		StageManager.Ins.StageChanged += SetQuestNotify;
 
 		SetAscensionNotify();
-
-		QuestBtnText.text = LanguageManager.Ins.SetString("Quest");
-		QuestBtn.onClick.RemoveAllListeners();
-		QuestBtn.onClick.AddListener(() => DialogManager.Ins.OpenQuest());
+		SetQuestBtn();
 
 		SettingBtnText.text = LanguageManager.Ins.SetString("Setting");
 		SettingBtn.onClick.RemoveAllListeners();
@@ -82,6 +80,29 @@ public class PlayerUi : MonoBehaviour
 		{
 			QuestNotify.SetActive(false);
 		}
+	}
+
+	public void SetQuestBtn()
+	{
+		QuestBtnText.text = LanguageManager.Ins.SetString("Quest");
+		QuestBtn.onClick.RemoveAllListeners();
+
+		if (StageManager.Ins.PlayerData.AscensionCount >= 1)
+		{
+			QuestLockObj.SetActive(false);			
+			QuestBtn.onClick.AddListener(() =>
+			{	
+				DialogManager.Ins.OpenQuest();				
+			});
+		}
+		else
+		{
+			QuestLockObj.SetActive(true);
+			QuestBtn.onClick.AddListener(() =>
+			{
+				DialogManager.Ins.OpenCautionBar("desc_locked_quest");
+			});
+		}			
 	}
 
 }

@@ -425,7 +425,7 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 
 		RestartStage();
-
+		PlayerUi.SetQuestBtn();
 		StartCoroutine(AscensionSequence.FadeOut());
 	}
 	
