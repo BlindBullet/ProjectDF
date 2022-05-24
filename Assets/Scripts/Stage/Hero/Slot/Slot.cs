@@ -15,6 +15,7 @@ public class Slot : MonoBehaviour
 	public TextMeshProUGUI LvUpCostText;
 	public GameObject EnchantLabelObj;
 	public TextMeshProUGUI EnchantLvText;
+	public TextMeshProUGUI AtkText;
 	Material lvUpBtnMat;	
 	SlotData data;
 
@@ -106,6 +107,11 @@ public class Slot : MonoBehaviour
 		{
 			EnchantLabelObj.SetActive(false);
 		}
+	}
+
+	public void SetAtk(double atk)
+	{
+		AtkText.text = atk.ToCurrencyString();
 	}
 
 	public void Lose()

@@ -105,6 +105,12 @@ public class BuffController : MonoBehaviour
 		me.Stat.Spd = me.Stat.Spd * (1 + (spdAdd / 100f));
 		me.Stat.CritChance = me.Stat.CritChance + critChanceAdd;
 		me.Stat.CritDmg = me.Stat.CritDmg + critDmgAdd;
+
+		for (int i = 0; i < StageManager.Ins.Slots.Count; i++)
+		{
+			if (StageManager.Ins.Slots[i].No == me.Data.SlotNo)
+				StageManager.Ins.Slots[i].SetAtk(me.Stat.Atk);
+		}
 	}
 
 	IEnumerator BuffSequence(BuffData buff)

@@ -28,9 +28,11 @@ public class HeroStat
 	int lv;
 	int enchantLv;
 	HeroChart chart = null;
+	HeroData data;
 
 	public void InitData(HeroData data, int lv)
 	{
+		this.data = data;
 		//HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];
 		List<HeroChart> charts = CsvData.Ins.HeroChart[data.Id];
 		chart = null;
@@ -82,6 +84,12 @@ public class HeroStat
 		CritChance = CritChanceInc - CritChanceDec;
 		CritDmg = CritDmgInc - CritDmgDec;
 		PenCount = chart.PenCount + PenCountInc - PenCountDec;
+
+		for(int i = 0; i < StageManager.Ins.Slots.Count; i++)
+		{
+			if (StageManager.Ins.Slots[i].No == data.SlotNo)
+				StageManager.Ins.Slots[i].SetAtk(Atk);
+		}
 	}
 
 }
