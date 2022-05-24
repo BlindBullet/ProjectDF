@@ -59,6 +59,18 @@ public class StageManager : MonoSingleton<StageManager>
 		StartCoroutine(SetStage(PlayerData.Stage));
 	}
 
+	void RestartStage()
+	{
+		TopBar.Setup();
+
+		SetSlots();
+		SetHeroes(PlayerData.IsFirstPlay);		
+
+		SEManager.Ins.Apply();
+		PlayerBuffManager.Ins.RunAllBuffs();
+		StartCoroutine(SetStage(PlayerData.Stage));
+	}
+
 	IEnumerator OpenOfflineReward(bool isFirstPlay)
 	{
 		yield return StartCoroutine(TimeManager.Ins.GetTime());
@@ -194,19 +206,8 @@ public class StageManager : MonoSingleton<StageManager>
 				if (_chart.Bg == null)
 					continue;
 				else
-				{
-					yield return new WaitForSeconds(2f);
-
-					LoseStagePanel.gameObject.SetActive(true);
-					StartCoroutine(LoseStagePanel.FadeIn());
-
-					yield return new WaitForSeconds(2f);
-
-					if (Bg != null)
-						Destroy(Bg);
-
-					Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);
-					StartCoroutine(LoseStagePanel.FadeOut());
+				{					
+					Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + _chart.Bg) as GameObject);
 					break;
 				}
 			}
@@ -376,7 +377,7 @@ public class StageManager : MonoSingleton<StageManager>
 		if (!CheckBossStage(PlayerData.Stage - 1 < 1 ? 1 : PlayerData.Stage - 1))
 			ChangeStage(-1);
 
-		Load();
+		RestartStage();
 	}	
 
 	public void StartAscension(bool isAdAscension = false)
@@ -423,7 +424,7 @@ public class StageManager : MonoSingleton<StageManager>
 			HeroBase.Heroes[i].Destroy();
 		}
 
-		Load();
+		RestartStage();
 
 		StartCoroutine(AscensionSequence.FadeOut());
 	}

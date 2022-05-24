@@ -32,9 +32,7 @@ public class EnemySpriteController : MonoBehaviour
 	}
 
 	public void Hit(bool isCrit, float stiffTime)
-	{
-		Model.transform.localPosition = Vector3.zero;
-
+	{		
 		modelMat.SetColor("_HitEffectColor", Color.red);
 		modelMat.SetFloat("_HitEffectBlend", 0.6f);
 		modelMat.DOFloat(0f, "_HitEffectBlend", 0.5f).SetEase(Ease.InOutBounce);
@@ -47,7 +45,15 @@ public class EnemySpriteController : MonoBehaviour
 		{
 			Model.transform.DOShakePosition(0.5f, isCrit ? new Vector2(0.25f, 0.25f) : new Vector2(0.05f, 0.05f), isCrit ? 25 : 10, 0).SetEase(Ease.InOutBounce);
 		}
-		
+
+		Model.transform.localPosition = Vector3.zero;
+	}
+
+	public void Cast()
+	{
+		Sequence seq = DOTween.Sequence();
+		seq.Append(Model.transform.DOShakePosition(0.5f, new Vector2(0.05f, 0.05f), 5, 0).SetEase(Ease.InOutBounce))
+			.AppendCallback(() => Model.transform.localPosition = Vector3.zero);		
 	}
 
 	public void Die()

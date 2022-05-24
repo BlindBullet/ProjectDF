@@ -9,6 +9,7 @@ public class EnemySkillController : MonoBehaviour
 	public List<EnemySkill> Skills = new List<EnemySkill>();
 	public List<EnemySkill> DieSkills = new List<EnemySkill>();
 	EnemyBase me;
+	bool usingSkill = false;
 
 	public void Setup(EnemyBase enemyBase, EnemyChart chart)
 	{
@@ -46,7 +47,8 @@ public class EnemySkillController : MonoBehaviour
 				{
 					if (Skills[i].ProgressCoolTime())
 					{
-						StartCoroutine(UseSkill(Skills[i]));
+						if(!usingSkill)
+							StartCoroutine(UseSkill(Skills[i]));
 					}
 				}
 			}
@@ -65,6 +67,10 @@ public class EnemySkillController : MonoBehaviour
 
 	IEnumerator UseSkill(EnemySkill skill)
 	{
+		usingSkill = true;
+		me.StopMove();
+		me.SpriteCon.Cast();
+
 		if (skill.Data.BeginFx != null)
 			EffectManager.Ins.ShowFx(skill.Data.BeginFx, this.transform);
 
@@ -78,8 +84,12 @@ public class EnemySkillController : MonoBehaviour
 		}
 
 		yield return new WaitForSeconds((skill.Data.TotalFrame - skill.Data.FireFrame) / 30f);
-		
+
+		if(me.Stat.CurHp > 0f)
+			me.Move();
+
 		skill.InitCoolTime();
+		usingSkill = false;
 	}
 
 	void SendHitresult(EnemyBase target, EnemySkill skill)

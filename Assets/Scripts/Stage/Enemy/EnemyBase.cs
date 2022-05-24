@@ -58,7 +58,7 @@ public class EnemyBase : MonoBehaviour
 		Enemies.Add(this);
 	}
 
-	void Move()
+	public void Move()
 	{
 		if (cMove == null)
 		{
@@ -94,7 +94,7 @@ public class EnemyBase : MonoBehaviour
 		}
 	}
 
-	void StopMove()
+	public void StopMove()
 	{
 		if(cMove != null)
 			StopCoroutine(cMove);
@@ -313,7 +313,8 @@ public class EnemyBase : MonoBehaviour
 
 	public void Stop()
 	{
-		StopCoroutine(cMove);
+		if(cMove != null)
+			StopCoroutine(cMove);
 
 		Rb.mass = 100f;
 		Rb.velocity = Vector2.zero;
