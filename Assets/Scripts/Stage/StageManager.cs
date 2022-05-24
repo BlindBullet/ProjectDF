@@ -155,17 +155,35 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 	}
 
-	void SetBg(int stageNo)
+	IEnumerator SetBg(int stageNo)
 	{
 		int _stageNo = GetStageNo(stageNo);		
 		StageChart chart = CsvData.Ins.StageChart[_stageNo.ToString()];
 		
 		if(chart.Bg != null)
 		{
-			if (Bg != null)
-				Destroy(Bg);
+			if(stageNo != 1)
+			{
+				yield return new WaitForSeconds(2f);
 
-			Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);
+				LoseStagePanel.gameObject.SetActive(true);
+				StartCoroutine(LoseStagePanel.FadeIn());
+
+				yield return new WaitForSeconds(2f);
+
+				if (Bg != null)
+					Destroy(Bg);
+
+				Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);
+				StartCoroutine(LoseStagePanel.FadeOut());
+			}
+			else
+			{
+				if (Bg != null)
+					Destroy(Bg);
+
+				Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);
+			}
 		}	
 		else if(chart.Bg == null && Bg == null)
 		{
@@ -177,7 +195,18 @@ public class StageManager : MonoSingleton<StageManager>
 					continue;
 				else
 				{
-					Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + _chart.Bg) as GameObject);
+					yield return new WaitForSeconds(2f);
+
+					LoseStagePanel.gameObject.SetActive(true);
+					StartCoroutine(LoseStagePanel.FadeIn());
+
+					yield return new WaitForSeconds(2f);
+
+					if (Bg != null)
+						Destroy(Bg);
+
+					Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);
+					StartCoroutine(LoseStagePanel.FadeOut());
 					break;
 				}
 			}
@@ -186,10 +215,10 @@ public class StageManager : MonoSingleton<StageManager>
 
 	IEnumerator SetStage(int stageNo)
 	{
-		SetBg(stageNo);
+		yield return StartCoroutine(SetBg(stageNo));
 		TopBar.SetStageText(stageNo);
 
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(0.5f);
 
 		if (CheckBossStage(stageNo))
 		{
