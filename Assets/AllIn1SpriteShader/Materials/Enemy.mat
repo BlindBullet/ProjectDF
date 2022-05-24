@@ -195,9 +195,9 @@ Material:
     - _TwistUvPosX: 0.5
     - _TwistUvPosY: 0.5
     - _TwistUvRadius: 0.75
-    - _WaveAmount: 5
+    - _WaveAmount: 2
     - _WaveSpeed: 1
-    - _WaveStrength: 3
+    - _WaveStrength: 2
     - _WaveX: 0.1
     - _WaveY: 0.1
     - _ZTestMode: 4

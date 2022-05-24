@@ -18,8 +18,8 @@ public static class ConstantData
 	public static ObscuredDouble AscensionBasicReward = 50f;
 	public static ObscuredFloat AscensionRewardFactor = 1.1f;
 	public static ObscuredInt[] QuestLvPerClearCount = { 5, 20, 40, 60, 80, 100, 150,  };
-	public static ObscuredDouble TimeGold = 10f;
-	public static ObscuredInt KillEnemiesCount1Min = 15;
+	public static ObscuredDouble TimeGold = 10f;	
+	public static ObscuredInt KillEnemiesCount1Min = 10;
 	public static ObscuredString PlayerTouchAtkHitFx = "TestHitFx";
 	public static ObscuredDouble OfflineTimeGold = 5f;
 
@@ -34,26 +34,12 @@ public static class ConstantData
 	}
 
 	public static double GetEnemyHp(double basicHp, int stageNo, bool isBoss)
-	{
-		if (isBoss)
-		{
-
-		}
-
+	{		
 		return CalcValue(basicHp, EnemyHpGR, stageNo);		
 	}
 
 	public static double GetEnemyGold(double basicGold, int stageNo, bool isBoss)
-	{
-		if (isBoss)
-		{
-
-		}
-		else
-		{
-
-		}
-
+	{		
 		return CalcValue(basicGold, EnemyGoldGR, stageNo);
 	}
 
@@ -79,7 +65,7 @@ public static class ConstantData
 
 	public static double GetGoldFromOfflineTime(double min, int stageNo)
 	{
-		return CalcValue(TimeGold, EnemyGoldGR, stageNo) * KillEnemiesCount1Min * min;
+		return CalcValue(OfflineTimeGold, EnemyGoldGR, stageNo) * KillEnemiesCount1Min * min;
 	}
 
 	static double CalcValue(double beginValue, float growthRate, int lv)
