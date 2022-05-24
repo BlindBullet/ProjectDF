@@ -445,22 +445,22 @@ public class SEManager : MonoSingleton<SEManager>
 	void ApplyPlayerTargetSE(SEChart chart)
 	{
 		switch (chart.EffectType)
-		{
-			case SEEffectType.AddCurrency:
+		{			
+			case SEEffectType.Stage:
 				switch (chart.EParam2)
 				{
-					case "Gold":
+					case "EnemyGold":
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.AddGold += float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.AddEnemyGold += float.Parse(chart.EParam3);
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.AddGold -= float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.AddEnemyGold -= float.Parse(chart.EParam3);
 								break;
 						}
 						break;
-					case "SoulStone":
+					case "SoulStoneRate":
 						switch (chart.EParam1)
 						{
 							case "Inc":
@@ -471,29 +471,61 @@ public class SEManager : MonoSingleton<SEManager>
 								break;
 						}
 						break;
-					case "Magicite":
+				}
+				break;
+			case SEEffectType.Ascension:
+				switch (chart.EParam2)
+				{
+					case "StartStage":
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.AddMagicite += float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.StartStage += int.Parse(chart.EParam2);
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.AddMagicite -= float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.StartStage -= int.Parse(chart.EParam2);
+								if (StageManager.Ins.PlayerStat.StartStage < 1)
+									StageManager.Ins.PlayerStat.StartStage = 1;
+								break;
+						}
+						break;
+					case "Amount":
+						switch (chart.EParam1)
+						{
+							case "Inc":
+								StageManager.Ins.PlayerStat.AddAscensionReward += float.Parse(chart.EParam3);
+								break;
+							case "Dec":
+								StageManager.Ins.PlayerStat.AddAscensionReward -= float.Parse(chart.EParam3);
 								break;
 						}
 						break;
 				}
 				break;
-			case SEEffectType.StartStage:
-				switch (chart.EParam1)
+			case SEEffectType.OfflineReward:
+				switch (chart.EParam2)
 				{
-					case "Inc":
-						StageManager.Ins.PlayerStat.StartStage += int.Parse(chart.EParam2);						
+					case "LimitTime":
+						switch (chart.EParam1)
+						{
+							case "Inc":
+								StageManager.Ins.PlayerStat.OfflineRewardLimitMin += int.Parse(chart.EParam3);
+								break;
+							case "Dec":
+								StageManager.Ins.PlayerStat.OfflineRewardLimitMin -= int.Parse(chart.EParam3);
+								break;
+						}
 						break;
-					case "Dec":
-						StageManager.Ins.PlayerStat.StartStage -= int.Parse(chart.EParam2);
-						if (StageManager.Ins.PlayerStat.StartStage < 1)
-							StageManager.Ins.PlayerStat.StartStage = 1;
+					case "Amount":
+						switch (chart.EParam1)
+						{
+							case "Inc":
+								StageManager.Ins.PlayerStat.OfflineRewardAdd += float.Parse(chart.EParam3);
+								break;
+							case "Dec":
+								StageManager.Ins.PlayerStat.OfflineRewardAdd -= float.Parse(chart.EParam3);
+								break;
+						}
 						break;
 				}
 				break;

@@ -47,6 +47,9 @@ public enum SEEffectType
     None,
     StatChange,
     AddCurrency,
+    Stage,
+    Ascension,
     StartStage,
+    OfflineReward,
 
 }

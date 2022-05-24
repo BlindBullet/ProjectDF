@@ -111,20 +111,7 @@ public class DialogHeroInfo : DialogController
 		}
 
 		CEName.text = LanguageManager.Ins.SetString("CollectionEffect");
-		
-		switch (se.EffectType)
-		{
-			case SEEffectType.StatChange:
-				CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), se.EParam3);
-				break;
-			case SEEffectType.AddCurrency:
-				CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), se.EParam3);
-				break;
-			case SEEffectType.StartStage:
-				CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), se.EParam2);
-				break;
-		}
-		
+		CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), se.EParam3);		
 	}
 
 	void SetButtons(HeroData data, HeroChart chart)

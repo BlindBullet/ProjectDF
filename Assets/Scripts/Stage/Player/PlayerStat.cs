@@ -7,8 +7,8 @@ using System;
 public class PlayerStat
 {
 	public ObscuredInt StartStage;
-	public ObscuredFloat AddGold;
-	public ObscuredFloat AddMagicite;
+	public ObscuredFloat AddEnemyGold;
+	public ObscuredFloat AddAscensionReward;
 	public ObscuredFloat GetSoulStoneRate;
 	public ObscuredFloat EnemyHpInc;
 	public ObscuredFloat EnemyHpDec;
@@ -22,13 +22,14 @@ public class PlayerStat
 	public ObscuredFloat BossHpDec;
 	public ObscuredFloat BossSpdInc;
 	public ObscuredFloat BossSpdDec;
-
+	public ObscuredInt OfflineRewardLimitMin;
+	public ObscuredFloat OfflineRewardAdd;
 
 	public void Init()
 	{
 		StartStage = 1;
-		AddGold = 0;
-		AddMagicite = 0;
+		AddEnemyGold = 0;
+		AddAscensionReward = 0;
 		GetSoulStoneRate = 0;
 		EnemyHpInc = 0;
 		EnemyHpDec = 0;
@@ -42,7 +43,8 @@ public class PlayerStat
 		BossHpDec = 0;
 		BossSpdInc = 0;
 		BossSpdDec = 0;
-
+		OfflineRewardLimitMin = 120;
+		OfflineRewardAdd = 0f;
 	}
 
 }

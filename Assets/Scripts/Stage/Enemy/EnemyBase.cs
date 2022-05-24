@@ -228,8 +228,10 @@ public class EnemyBase : MonoBehaviour
 
 		yield return new WaitForSeconds(0.5f);
 
-		StageManager.Ins.GetGold(Stat.Gold);
-		FloatingTextManager.Ins.ShowGold(this.transform.position, "+" + Stat.Gold.ToCurrencyString());
+		double getGold = Stat.Gold + (Stat.Gold * (StageManager.Ins.PlayerStat.AddEnemyGold / 100f));
+
+		StageManager.Ins.GetGold(getGold);
+		FloatingTextManager.Ins.ShowGold(this.transform.position, "+" + getGold.ToCurrencyString());
 		col.enabled = false;
 
 		yield return new WaitForSeconds(1f);
