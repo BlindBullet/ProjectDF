@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemySpawner : SingletonObject<EnemySpawner>
 {
-
 	public void Spawn(int stageNo)
 	{		
 		int _stageNo = StageManager.Ins.GetStageNo(stageNo);
@@ -18,6 +17,11 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 
 		if (data.Boss != null)
 			StartCoroutine(SpawnSequence(data, stageNo, -1, 3f, false));
+	}
+
+	public void StopSpawn()
+	{
+		StopAllCoroutines();
 	}
 
 	IEnumerator SpawnSequence(StageChart chart, int stageNo, int no, float spawnTime, bool isLast = false)

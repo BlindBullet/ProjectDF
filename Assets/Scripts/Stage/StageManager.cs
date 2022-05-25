@@ -219,7 +219,7 @@ public class StageManager : MonoSingleton<StageManager>
 		yield return StartCoroutine(SetBg(stageNo));
 		TopBar.SetStageText(stageNo);
 
-		yield return new WaitForSeconds(0.5f);
+		//yield return new WaitForSeconds(0.5f);
 
 		if (CheckBossStage(stageNo))
 		{
@@ -231,9 +231,7 @@ public class StageManager : MonoSingleton<StageManager>
 			{
 				StartCoroutine(AppearSupplies());
 			}
-		}	
-
-		yield return new WaitForSeconds(2f);
+		}
 
 		cStageSequence = StartCoroutine(ProgressStage(stageNo));
 	}
@@ -382,7 +380,8 @@ public class StageManager : MonoSingleton<StageManager>
 
 	public void StartAscension(bool isAdAscension = false)
 	{
-		StopCoroutine(cStageSequence);
+		if(cStageSequence != null)
+			StopCoroutine(cStageSequence);
 
 		//보상 주기
 		double rewardAmount = ConstantData.GetAscensionMagicite(PlayerData.Stage);
@@ -424,6 +423,7 @@ public class StageManager : MonoSingleton<StageManager>
 			HeroBase.Heroes[i].Destroy();
 		}
 
+		EnemySpawner.Ins.StopSpawn();
 		RestartStage();
 		PlayerUi.SetQuestBtn();
 		StartCoroutine(AscensionSequence.FadeOut());
