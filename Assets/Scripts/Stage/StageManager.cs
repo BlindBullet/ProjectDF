@@ -219,8 +219,6 @@ public class StageManager : MonoSingleton<StageManager>
 		yield return StartCoroutine(SetBg(stageNo));
 		TopBar.SetStageText(stageNo);
 
-		//yield return new WaitForSeconds(0.5f);
-
 		if (CheckBossStage(stageNo))
 		{
 			yield return StartCoroutine(BossSequence());
