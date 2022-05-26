@@ -82,8 +82,8 @@ skill_10008_2_add,100,Enemy,All,,Circle,2,0.25,FireballExplosionRed,skill_10008_
 skill_10008_3_add,100,Enemy,All,,Circle,2,0.25,FireballExplosionRed,skill_10008_3_add,
 skill_10008_4_add,100,Enemy,All,,Circle,2,0.25,FireballExplosionRed,skill_10008_4_add,
 skill_10008_5_add,100,Enemy,All,,Circle,2,0.25,FireballExplosionRed,skill_10008_5_add,
-skill_10009_1,100,Enemy,All,,,,,,skill_10009_1,
-skill_10009_2,100,Enemy,All,,,,,,skill_10009_2,
-skill_10009_3,100,Enemy,All,,,,,,skill_10009_3,
-skill_10009_4,100,Enemy,All,,,,,,skill_10009_4,
-skill_10009_5,100,Enemy,All,,,,,,skill_10009_5,
+skill_10009_1,100,Enemy,All,,,,,,skill_10009_1,skill_10009_1
+skill_10009_2,100,Enemy,All,,,,,,skill_10009_2,skill_10009_2
+skill_10009_3,100,Enemy,All,,,,,,skill_10009_3,skill_10009_3
+skill_10009_4,100,Enemy,All,,,,,,skill_10009_4,skill_10009_4
+skill_10009_5,100,Enemy,All,,,,,,skill_10009_5,skill_10009_5

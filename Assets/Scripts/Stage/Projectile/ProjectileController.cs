@@ -224,6 +224,14 @@ public class ProjectileController : MonoBehaviour
 			EnemyBase enemyBase = collision.GetComponent<EnemyBase>();
 			Vector2 pos = enemyBase.transform.position;
 
+			if (data.OnlyHitTarget && target != null)
+			{				
+				if(enemyBase != target)
+				{
+					return;
+				}
+			}
+
 			if (caster != null && minion == null)
 			{
 				HitresultManager.Ins.SendHitresult(hitresults, enemyBase, caster);

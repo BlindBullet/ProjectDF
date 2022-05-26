@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileChart
 {
     public string Id { get; set; }
+    public bool OnlyHitTarget { get; set; }
     public MoveType MoveType { get; set; }        
     public float PosX { get; set; }
     public float Angle { get; set; }
