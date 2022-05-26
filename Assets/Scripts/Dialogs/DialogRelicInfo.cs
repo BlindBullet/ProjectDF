@@ -46,19 +46,7 @@ public class DialogRelicInfo : DialogController
 		}
 		
 		DescLabel.text = LanguageManager.Ins.SetString("RelicEffect");
-
-		switch (se.EffectType)
-		{
-			case SEEffectType.StatChange:
-				Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), se.EParam3);
-				break;
-			case SEEffectType.AddCurrency:
-				Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), se.EParam3);
-				break;
-			case SEEffectType.StartStage:
-				Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), se.EParam2);
-				break;
-		}
+		Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), se.EParam3);		
 	}
 
 	void SetLvUpBtn(RelicData data, RelicChart chart)
