@@ -39,11 +39,11 @@
 10008,str_name_10008,str_desc_10008,f043,Red,3,10,1,0,attack_red,skill_10008,ce_10008,str_desc_ce_10008,,
 10008,str_name_10008,str_desc_10008,f043,Red,4,10,1,0,attack_red,skill_10008,ce_10008,str_desc_ce_10008,,
 10008,str_name_10008,str_desc_10008,f043,Red,5,10,1,0,attack_red,skill_10008,ce_10008,str_desc_ce_10008,,
-10009,str_name_10009,str_desc_10009,f022,Green,1,10,1,0,attack_green,skill_10009,TestSE1,str_desc_ce_10009,SoulStone,400
-10009,str_name_10009,str_desc_10009,f022,Green,2,10,1,0,attack_green,skill_10009,TestSE2,str_desc_ce_10009,,
-10009,str_name_10009,str_desc_10009,f022,Green,3,10,1,0,attack_green,skill_10009,TestSE3,str_desc_ce_10009,,
-10009,str_name_10009,str_desc_10009,f022,Green,4,10,1,0,attack_green,skill_10009,TestSE4,str_desc_ce_10009,,
-10009,str_name_10009,str_desc_10009,f022,Green,5,10,1,0,attack_green,skill_10009,TestSE5,str_desc_ce_10009,,
+10009,str_name_10009,str_desc_10009,f022,Green,1,10,1,0,attack_green,skill_10009,ce_10009,str_desc_ce_10009,SoulStone,400
+10009,str_name_10009,str_desc_10009,f022,Green,2,10,1,0,attack_green,skill_10009,ce_10009,str_desc_ce_10009,,
+10009,str_name_10009,str_desc_10009,f022,Green,3,10,1,0,attack_green,skill_10009,ce_10009,str_desc_ce_10009,,
+10009,str_name_10009,str_desc_10009,f022,Green,4,10,1,0,attack_green,skill_10009,ce_10009,str_desc_ce_10009,,
+10009,str_name_10009,str_desc_10009,f022,Green,5,10,1,0,attack_green,skill_10009,ce_10009,str_desc_ce_10009,,
 10010,str_name_10010,str_desc_10010,f246,Red,1,10,1,0,attack_red,skill_10010,TestSE6,str_desc_ce_10010,SoulStone,500
 10010,str_name_10010,str_desc_10010,f246,Red,2,10,1,0,attack_red,skill_10010,TestSE7,str_desc_ce_10010,,
 10010,str_name_10010,str_desc_10010,f246,Red,3,10,1,0,attack_red,skill_10010,TestSE8,str_desc_ce_10010,,
