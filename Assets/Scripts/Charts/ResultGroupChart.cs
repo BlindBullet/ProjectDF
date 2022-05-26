@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ResultGroupChart
 {
-    public string Id { get; set; }
-    public int Seq { get; set; }
+    public string Id { get; set; }    
     public float Prob { get; set; }
     public TargetType TargetType { get; set; }
     public TargetDetail TargetDetail { get; set; }
