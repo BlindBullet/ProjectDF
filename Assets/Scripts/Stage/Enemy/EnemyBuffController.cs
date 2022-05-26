@@ -62,7 +62,7 @@ public class EnemyBuffController : MonoBehaviour
 					switch (Buffs[i].Data.Param1)
 					{
 						case "Spd":
-							addSpd += float.Parse(Buffs[i].Data.Param2);
+							addSpd += float.Parse(Buffs[i].Data.Param3);
 							break;
 						case "Def":
 							if(Buffs[i].Data.Param2 == null)
@@ -100,7 +100,7 @@ public class EnemyBuffController : MonoBehaviour
 					switch (Buffs[i].Data.Param1)
 					{
 						case "Spd":
-							addSpd -= float.Parse(Buffs[i].Data.Param2);
+							addSpd -= float.Parse(Buffs[i].Data.Param3);
 							break;
 						case "Def":
 							if (Buffs[i].Data.Param2 == null)
@@ -179,7 +179,7 @@ public class EnemyBuff
 				switch (Data.Param1)
 				{
 					case "Spd":
-						DurationTime = float.Parse(Data.Param3);
+						DurationTime = float.Parse(Data.Param4);
 						break;
 					case "Def":
 						DurationTime = float.Parse(Data.Param4);
@@ -190,7 +190,7 @@ public class EnemyBuff
 				switch (Data.Param1)
 				{
 					case "Spd":
-						DurationTime = float.Parse(Data.Param3);
+						DurationTime = float.Parse(Data.Param4);
 						break;
 					case "Def":
 						DurationTime = float.Parse(Data.Param4);

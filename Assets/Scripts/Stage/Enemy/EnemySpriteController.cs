@@ -14,6 +14,7 @@ public class EnemySpriteController : MonoBehaviour
 	Material modelMat;
 	Material bgMat;
 	Vector2 originPos;
+	public SpriteMask Mask;
 
 	public void Setup(EnemyChart chart)
 	{		

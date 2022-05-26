@@ -89,6 +89,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 08e45d7330f638b4594aa6171d6e3abc, type: 3}
   - {fileID: 21300000, guid: 35ec4893312eeac41a0808d7dc23913d, type: 3}
   - {fileID: 21300000, guid: 6fb582c34c3f4d24c8312f198b945452, type: 3}
+  - {fileID: 21300000, guid: 4a8753d3c6a334e479a0701885b9ce0f, type: 3}
   - {fileID: 21300000, guid: f93df2e364d93144c8f351b46bd526d1, type: 3}
   - {fileID: 21300000, guid: 369c75e304d5fed4d86ff415e7568195, type: 3}
   - {fileID: 21300000, guid: e7ff5654f97b2a54fa5b92217baa98fe, type: 3}
@@ -120,7 +121,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f6676658cdc12e442b1fccf703a8f194, type: 3}
   - {fileID: 21300000, guid: 01f20a88de23bf142a936b937df8a1ac, type: 3}
   - {fileID: 21300000, guid: da7f6a8859828bb4a8c67c895a411305, type: 3}
-  - {fileID: 21300000, guid: b46ba7a8955cadd41b0edf3b7e9e6eec, type: 3}
   - {fileID: 21300000, guid: e7e3c4f80c2c628438a0ea7f7937defe, type: 3}
   - {fileID: 21300000, guid: d47ca829903de334997a24b07ad8786c, type: 3}
   - {fileID: 21300000, guid: ba8e8a39a204966419d0b43d316d39df, type: 3}
@@ -198,6 +198,7 @@ SpriteAtlas:
   - f281
   - f078
   - f158
+  - GoblinArcher
   - BloodFeral
   - f090
   - f164
@@ -229,7 +230,6 @@ SpriteAtlas:
   - GoblinRaider
   - f353
   - f084
-  - GoblinArcher
   - f148
   - f213
   - f156

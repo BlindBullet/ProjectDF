@@ -23,8 +23,8 @@ public class EnemyBase : MonoBehaviour
 	bool isBoss = false;
 	bool isDie = false;
 	public bool isStunned = false;
-	public EnemySkillController SkillCon;
-	public EnemyBuffController BuffCon;
+	[HideInInspector] public EnemySkillController SkillCon;
+	[HideInInspector] public EnemyBuffController BuffCon;
 
 	public TextMeshPro HpText;
 
@@ -233,10 +233,12 @@ public class EnemyBase : MonoBehaviour
 		StageManager.Ins.GetGold(getGold);
 		FloatingTextManager.Ins.ShowGold(this.transform.position, "+" + getGold.ToCurrencyString());
 		col.enabled = false;
+		SpriteCon.Mask.enabled = false;
 
 		yield return new WaitForSeconds(1f);
 
-		transform.position = new Vector3(0, 20f, 0);		
+		transform.position = new Vector3(0, 20f, 0);
+		SpriteCon.Mask.enabled = true;
 		ObjectManager.Ins.Push<EnemyBase>(this);
 	}
 
