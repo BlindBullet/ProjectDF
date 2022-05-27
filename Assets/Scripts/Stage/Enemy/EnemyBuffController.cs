@@ -155,7 +155,6 @@ public class EnemyBuffController : MonoBehaviour
 		}
 
 		me.Stat.Spd = me.Stat.Spd + (me.Stat.Spd * (addSpd / 100f));		
-		me.Stat.Def = addDef;
 		me.Stat.Immunes = immunes;
 		me.Stat.AttrDefs = attrDefs;
 	}

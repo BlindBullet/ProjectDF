@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -160,6 +161,9 @@ public class SEManager : MonoSingleton<SEManager>
 					break;
 				case SETargetType.Enemy:
 					ApplyEnemyTargetSE(chart);
+					break;
+				case SETargetType.Minion:
+					ApplyMinionTargetSE(chart);
 					break;
 			}
 		}		
@@ -448,26 +452,15 @@ public class SEManager : MonoSingleton<SEManager>
 		{			
 			case SEEffectType.Stage:
 				switch (chart.EParam2)
-				{
-					case "EnemyGold":
-						switch (chart.EParam1)
-						{
-							case "Inc":
-								StageManager.Ins.PlayerStat.AddEnemyGold += float.Parse(chart.EParam3);
-								break;
-							case "Dec":
-								StageManager.Ins.PlayerStat.AddEnemyGold -= float.Parse(chart.EParam3);
-								break;
-						}
-						break;
+				{					
 					case "SoulStoneRate":
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.GetSoulStoneRate += float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.GetSoulStoneRate += float.Parse(chart.EParam5);
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.GetSoulStoneRate -= float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.GetSoulStoneRate -= float.Parse(chart.EParam5);
 								break;
 						}
 						break;
@@ -480,10 +473,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.StartStage += int.Parse(chart.EParam2);
+								StageManager.Ins.PlayerStat.StartStage += int.Parse(chart.EParam5);
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.StartStage -= int.Parse(chart.EParam2);
+								StageManager.Ins.PlayerStat.StartStage -= int.Parse(chart.EParam5);
 								if (StageManager.Ins.PlayerStat.StartStage < 1)
 									StageManager.Ins.PlayerStat.StartStage = 1;
 								break;
@@ -493,10 +486,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.AddAscensionReward += float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.AddAscensionReward += float.Parse(chart.EParam5);
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.AddAscensionReward -= float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.AddAscensionReward -= float.Parse(chart.EParam5);
 								break;
 						}
 						break;
@@ -509,10 +502,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.OfflineRewardLimitMin += int.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.OfflineRewardLimitMin += int.Parse(chart.EParam5);
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.OfflineRewardLimitMin -= int.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.OfflineRewardLimitMin -= int.Parse(chart.EParam5);
 								break;
 						}
 						break;
@@ -520,10 +513,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.OfflineRewardAdd += float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.OfflineRewardAdd += float.Parse(chart.EParam5);
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.OfflineRewardAdd -= float.Parse(chart.EParam3);
+								StageManager.Ins.PlayerStat.OfflineRewardAdd -= float.Parse(chart.EParam5);
 								break;
 						}
 						break;
@@ -540,81 +533,613 @@ public class SEManager : MonoSingleton<SEManager>
 				switch (chart.TParam1)
 				{
 					case "All":
-						switch (chart.EParam2)
-						{
-							case "Hp":
-								switch (chart.EParam1)
+						switch (chart.TParam2[0])
+						{							
+							case "Attr":
+								switch (chart.TParam3)
 								{
-									case "Inc":
-										StageManager.Ins.PlayerStat.EnemyHpInc += float.Parse(chart.EParam3);
+									case "Red":
+										switch (chart.EParam2)
+										{
+											case "Hp":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+											case "Spd":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+											case "Def":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+											case "Gold":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Red] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Red] += float.Parse(chart.EParam5);
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Red] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Red] += float.Parse(chart.EParam5);
+														break;
+												}
+												break;
+										}
 										break;
-									case "Dec":
-										StageManager.Ins.PlayerStat.EnemyHpDec += float.Parse(chart.EParam3);
+									case "Blue":
+										switch (chart.EParam2)
+										{
+											case "Hp":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
+														break;
+												}
+												break;
+											case "Spd":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+														break;
+												}
+												break;
+											case "Def":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
+														break;
+												}
+												break;
+											case "Gold":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Blue] += float.Parse(chart.EParam5);
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Blue] += float.Parse(chart.EParam5);
+														break;
+												}
+												break;
+										}
+										break;
+									case "Green":
+										switch (chart.EParam2)
+										{
+											case "Hp":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
+														break;
+												}
+												break;
+											case "Spd":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
+														break;
+												}
+												break;
+											case "Def":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
+														break;
+												}
+												break;
+											case "Gold":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Green] += float.Parse(chart.EParam5);
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Green] += float.Parse(chart.EParam5);
+														break;
+												}
+												break;
+										}
 										break;
 								}
 								break;
-							case "Spd":
-								switch (chart.EParam1)
+							default:
+								switch (chart.EParam2)
 								{
-									case "Inc":
-										StageManager.Ins.PlayerStat.EnemySpdInc += float.Parse(chart.EParam3);
+									case "Hp":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+										}
 										break;
-									case "Dec":
-										StageManager.Ins.PlayerStat.EnemySpdDec += float.Parse(chart.EParam3);
+									case "Spd":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Def":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Gold":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+										}
 										break;
 								}
-								break;
-						}
+								break;								
+						}						
 						break;
-					case "Minion":
-						switch (chart.EParam2)
+					case "Normal":
+						switch (chart.TParam2[0])
 						{
-							case "Hp":
-								switch (chart.EParam1)
+							case "Attr":
+								switch (chart.TParam3)
 								{
-									case "Inc":
-										StageManager.Ins.PlayerStat.MinionHpInc += float.Parse(chart.EParam3);
+									case "Red":
+										switch (chart.EParam2)
+										{
+											case "Hp":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+											case "Spd":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+											case "Def":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+										}
 										break;
-									case "Dec":
-										StageManager.Ins.PlayerStat.MinionHpDec += float.Parse(chart.EParam3);
+									case "Blue":
+										switch (chart.EParam2)
+										{
+											case "Hp":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+											case "Spd":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+											case "Def":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+										}
+										break;
+									case "Green":
+										switch (chart.EParam2)
+										{
+											case "Hp":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+											case "Spd":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+											case "Def":
+												switch (chart.EParam1)
+												{
+													case "Inc":
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);														
+														break;
+													case "Dec":
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);														
+														break;
+												}
+												break;
+										}
 										break;
 								}
 								break;
-							case "Spd":
-								switch (chart.EParam1)
+							default:
+								switch (chart.EParam2)
 								{
-									case "Inc":
-										StageManager.Ins.PlayerStat.MinionSpdInc += float.Parse(chart.EParam3);
+									case "Hp":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);												
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);												
+												break;
+										}
 										break;
-									case "Dec":
-										StageManager.Ins.PlayerStat.MinionSpdDec += float.Parse(chart.EParam3);
+									case "Spd":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);												
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);												
+												break;
+										}
+										break;
+									case "Def":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);												
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);												
+												break;
+										}
 										break;
 								}
 								break;
 						}
 						break;
 					case "Boss":
+						switch (chart.TParam3)
+						{
+							case "Red":
+								switch (chart.EParam2)
+								{
+									case "Hp":
+										switch (chart.EParam1)
+										{
+											case "Inc":												
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":												
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Spd":
+										switch (chart.EParam1)
+										{
+											case "Inc":												
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":												
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Def":
+										switch (chart.EParam1)
+										{
+											case "Inc":												
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":												
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+								}
+								break;
+							case "Blue":
+								switch (chart.EParam2)
+								{
+									case "Hp":
+										switch (chart.EParam1)
+										{
+											case "Inc":												
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":												
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Spd":
+										switch (chart.EParam1)
+										{
+											case "Inc":												
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":												
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Def":
+										switch (chart.EParam1)
+										{
+											case "Inc":												
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":												
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+								}
+								break;
+							case "Green":
+								switch (chart.EParam2)
+								{
+									case "Hp":
+										switch (chart.EParam1)
+										{
+											case "Inc":												
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":												
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Spd":
+										switch (chart.EParam1)
+										{
+											case "Inc":												
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":												
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Def":
+										switch (chart.EParam1)
+										{
+											case "Inc":												
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":												
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+								}
+								break;
+						}
+						break;
+					default:
 						switch (chart.EParam2)
 						{
 							case "Hp":
 								switch (chart.EParam1)
 								{
-									case "Inc":
-										StageManager.Ins.PlayerStat.BossHpInc += float.Parse(chart.EParam3);
+									case "Inc":										
+										StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
 										break;
-									case "Dec":
-										StageManager.Ins.PlayerStat.BossHpDec += float.Parse(chart.EParam3);
+									case "Dec":										
+										StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
 										break;
 								}
 								break;
 							case "Spd":
 								switch (chart.EParam1)
 								{
-									case "Inc":
-										StageManager.Ins.PlayerStat.BossSpdInc += float.Parse(chart.EParam3);
+									case "Inc":										
+										StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
 										break;
-									case "Dec":
-										StageManager.Ins.PlayerStat.BossSpdDec += float.Parse(chart.EParam3);
+									case "Dec":										
+										StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
+										break;
+								}
+								break;
+							case "Def":
+								switch (chart.EParam1)
+								{
+									case "Inc":										
+										StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
+										break;
+									case "Dec":										
+										StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
 										break;
 								}
 								break;
@@ -622,6 +1147,7 @@ public class SEManager : MonoSingleton<SEManager>
 						break;
 				}
 				break;
+				
 		}
 	}
 
@@ -636,10 +1162,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.AtkInc += float.Parse(chart.EParam3);
+								target.Stat.AtkInc += float.Parse(chart.EParam5);
 								break;
 							case "Dec":
-								target.Stat.AtkDec += float.Parse(chart.EParam3);
+								target.Stat.AtkDec += float.Parse(chart.EParam5);
 								break;
 						}
 						break;
@@ -647,10 +1173,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.SpdInc += float.Parse(chart.EParam3);
+								target.Stat.SpdInc += float.Parse(chart.EParam5);
 								break;
 							case "Dec":
-								target.Stat.SpdDec += float.Parse(chart.EParam3);
+								target.Stat.SpdDec += float.Parse(chart.EParam5);
 								break;
 						}
 						break;					
@@ -658,10 +1184,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.CritChanceInc += float.Parse(chart.EParam3);
+								target.Stat.CritChanceInc += float.Parse(chart.EParam5);
 								break;
 							case "Dec":
-								target.Stat.CritChanceDec += float.Parse(chart.EParam3);
+								target.Stat.CritChanceDec += float.Parse(chart.EParam5);
 								break;
 						}
 						break;
@@ -669,10 +1195,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.CritDmgInc += float.Parse(chart.EParam3);
+								target.Stat.CritDmgInc += float.Parse(chart.EParam5);
 								break;
 							case "Dec":
-								target.Stat.CritDmgDec += float.Parse(chart.EParam3);
+								target.Stat.CritDmgDec += float.Parse(chart.EParam5);
 								break;
 						}
 						break;
@@ -680,10 +1206,178 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.PenCountInc += int.Parse(chart.EParam3);
+								target.Stat.PenCountInc += int.Parse(chart.EParam5);
 								break;
 							case "Dec":
-								target.Stat.PenCountDec += int.Parse(chart.EParam3);
+								target.Stat.PenCountDec += int.Parse(chart.EParam5);
+								break;
+						}
+						break;
+				}
+				break;
+		}
+	}
+
+	void ApplyMinionTargetSE(SEChart chart)
+	{
+		switch (chart.EffectType)
+		{
+			case SEEffectType.StatChange:
+				switch (chart.TParam1)
+				{
+					case "Attr":
+						switch (chart.TParam2[0])
+						{
+							case "Red":
+								switch (chart.EParam2)
+								{
+									case "Atk":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Red] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Red] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Spd":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Red] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Red] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+								}
+								break;
+							case "Blue":
+								switch (chart.EParam2)
+								{
+									case "Atk":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Blue] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Blue] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Spd":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+								}
+								break;
+							case "Green":
+								switch (chart.EParam2)
+								{
+									case "Atk":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Spd":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+								}
+								break;
+							default:
+								switch (chart.EParam2)
+								{
+									case "Atk":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+									case "Spd":
+										switch (chart.EParam1)
+										{
+											case "Inc":
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+											case "Dec":
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Green] += float.Parse(chart.EParam5);
+												break;
+										}
+										break;
+								}
+								break;
+						}
+						break;
+					default:
+						switch (chart.EParam2)
+						{
+							case "Atk":
+								switch (chart.EParam1)
+								{
+									case "Inc":
+										StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Red] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Blue] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Green] += float.Parse(chart.EParam5);
+										break;
+									case "Dec":
+										StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Red] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Blue] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Green] += float.Parse(chart.EParam5);
+										break;
+								}
+								break;
+							case "Spd":
+								switch (chart.EParam1)
+								{
+									case "Inc":
+										StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Red] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Green] += float.Parse(chart.EParam5);
+										break;
+									case "Dec":
+										StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Red] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Green] += float.Parse(chart.EParam5);
+										break;
+								}
 								break;
 						}
 						break;

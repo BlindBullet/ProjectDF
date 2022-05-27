@@ -35,7 +35,7 @@ public class RelicBar : MonoBehaviour
 	{	
 		SEChart seChart = CsvData.Ins.SEChart[chart.Effect][data.Lv - 1];
 		RelicIcon.SetIcon(data);
-		Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), seChart.EParam3);
+		Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), seChart.EParam5);
 		SetBtn();
 	}
 

@@ -6,45 +6,65 @@ using System;
 
 public class PlayerStat
 {
-	public ObscuredInt StartStage;
-	public ObscuredFloat AddEnemyGold;
+	public ObscuredInt StartStage;	
 	public ObscuredFloat AddAscensionReward;
 	public ObscuredFloat GetSoulStoneRate;
-	public ObscuredFloat EnemyHpInc;
-	public ObscuredFloat EnemyHpDec;
-	public ObscuredFloat EnemySpdInc;
-	public ObscuredFloat EnemySpdDec;
-	public ObscuredFloat MinionHpInc;
-	public ObscuredFloat MinionHpDec;
-	public ObscuredFloat MinionSpdInc;
-	public ObscuredFloat MinionSpdDec;
-	public ObscuredFloat BossHpInc;
-	public ObscuredFloat BossHpDec;
-	public ObscuredFloat BossSpdInc;
-	public ObscuredFloat BossSpdDec;
+	public Dictionary<Attr, ObscuredFloat> NormalEnemyGoldInc = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> NormalEnemyGoldDec = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> BossEnemyGoldInc = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> BossEnemyGoldDec = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> NormalEnemyHpInc = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> NormalEnemyHpDec = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> BossEnemyHpInc = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> BossEnemyHpDec = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> NormalEnemySpdInc = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> NormalEnemySpdDec = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> BossEnemySpdInc = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> BossEnemySpdDec = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> NormalEnemyDefInc = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> NormalEnemyDefDec = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> BossEnemyDefInc = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> BossEnemyDefDec = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> MinionAtkInc = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> MinionAtkDec = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> MinionSpdInc = new Dictionary<Attr, ObscuredFloat>();
+	public Dictionary<Attr, ObscuredFloat> MinionSpdDec = new Dictionary<Attr, ObscuredFloat>();
 	public ObscuredInt OfflineRewardLimitMin;
 	public ObscuredFloat OfflineRewardAdd;
 
 	public void Init()
 	{
-		StartStage = 1;
-		AddEnemyGold = 0;
+		StartStage = 1;		
 		AddAscensionReward = 0;
 		GetSoulStoneRate = 0;
-		EnemyHpInc = 0;
-		EnemyHpDec = 0;
-		EnemySpdInc = 0;
-		EnemySpdDec = 0;
-		MinionHpInc = 0;
-		MinionHpDec = 0;
-		MinionSpdInc = 0;
-		MinionSpdDec = 0;
-		BossHpInc = 0;
-		BossHpDec = 0;
-		BossSpdInc = 0;
-		BossSpdDec = 0;
+
+		foreach (Attr attr in Enum.GetValues(typeof(Attr)))
+		{
+			NormalEnemyGoldInc[attr] = 0f;
+			NormalEnemyGoldDec[attr] = 0f;
+			BossEnemyGoldInc[attr] = 0f;
+			BossEnemyGoldDec[attr] = 0f;
+			NormalEnemyHpInc[attr] = 0f;
+			NormalEnemyHpDec[attr] = 0f;
+			BossEnemyHpInc[attr] = 0f;
+			BossEnemyHpDec[attr] = 0f;
+			NormalEnemySpdInc[attr] = 0f;
+			NormalEnemySpdDec[attr] = 0f;
+			BossEnemySpdInc[attr] = 0f;
+			BossEnemySpdDec[attr] = 0f;
+			NormalEnemyDefInc[attr] = 0f;
+			NormalEnemyDefDec[attr] = 0f;
+			BossEnemyDefInc[attr] = 0f;
+			BossEnemyDefDec[attr] = 0f;
+			MinionAtkInc[attr] = 0f;
+			MinionAtkDec[attr] = 0f;
+			MinionSpdInc[attr] = 0f;
+			MinionSpdDec[attr] = 0f;
+		}
+				
 		OfflineRewardLimitMin = 120;
 		OfflineRewardAdd = 0f;
-	}
+	}	
+
 
 }

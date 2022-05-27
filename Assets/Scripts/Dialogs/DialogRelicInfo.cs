@@ -46,7 +46,7 @@ public class DialogRelicInfo : DialogController
 		}
 		
 		DescLabel.text = LanguageManager.Ins.SetString("RelicEffect");
-		Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), se.EParam3);		
+		Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), se.EParam5);		
 	}
 
 	void SetLvUpBtn(RelicData data, RelicChart chart)

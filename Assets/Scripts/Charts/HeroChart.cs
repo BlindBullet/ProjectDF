@@ -25,7 +25,7 @@ public class HeroChart
 
 public enum Attr
 {
-	None,
+	None,	
 	Red,
 	Green,
 	Blue,

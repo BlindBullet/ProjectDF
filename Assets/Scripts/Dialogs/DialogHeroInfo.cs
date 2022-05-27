@@ -111,7 +111,7 @@ public class DialogHeroInfo : DialogController
 		}
 
 		CEName.text = LanguageManager.Ins.SetString("CollectionEffect");
-		CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), se.EParam3);		
+		CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), se.EParam5);		
 	}
 
 	void SetButtons(HeroData data, HeroChart chart)
