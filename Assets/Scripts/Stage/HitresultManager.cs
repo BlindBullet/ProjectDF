@@ -117,18 +117,39 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 					{
 						yield return new WaitForSeconds(datas[i].DelayTime);
 
-						//범위에 따라 다시 타겟을 지정
-						for (int k = 0; k < enemyTargets.Count; k++)
-						{
-							List<EnemyBase> delayTargets = caster.Range.SearchTarget(datas[i], enemyTargets[i]);
+						if (datas[i].DelayBeginFx != null)
+							EffectManager.Ins.ShowFx(datas[i].DelayBeginFx);
 
-							if (delayTargets.Count > 0)
+						if (datas[i].AddDelayTarget)
+						{
+							//범위에 따라 다시 타겟을 지정
+							for (int k = 0; k < enemyTargets.Count; k++)
 							{
-								for(int j = 0; j < delayTargets.Count; j++)
+								List<EnemyBase> delayTargets = caster.Range.SearchTarget(datas[i], enemyTargets[i]);
+
+								if (delayTargets.Count > 0)
 								{
-									//히트리절트 전달
-									SendResultGroup(datas[i], caster, type, delayTargets[j]);
+									for (int j = 0; j < delayTargets.Count; j++)
+									{
+										//히트리절트 전달
+										SendResultGroup(datas[i], caster, type, delayTargets[j]);
+									}
 								}
+							}
+						}
+						else
+						{
+							//히트리절트 전달
+							if (enemyTargets.Count > 0)
+							{
+								for (int k = 0; k < enemyTargets.Count; k++)
+								{
+									SendResultGroup(datas[i], caster, type, enemyTargets[k]);
+								}
+							}
+							else
+							{
+								SendResultGroup(datas[i], caster, type);
 							}
 						}
 					}

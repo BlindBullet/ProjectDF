@@ -178,7 +178,7 @@ public class EnemyBase : MonoBehaviour
 		if (Stat.CurHp <= 0 && !isDie)
 		{
 			Die();
-		}	
+		}
 
 		return atk;
 	}

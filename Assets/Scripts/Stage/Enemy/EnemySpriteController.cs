@@ -58,7 +58,7 @@ public class EnemySpriteController : MonoBehaviour
 	}
 
 	public void Die()
-	{
+	{		
 		frameMat.DOFloat(1f, "_FadeAmount", 1.5f).SetEase(Ease.Linear);
 		bgMat.DOFloat(1f, "_FadeAmount", 1.5f).SetEase(Ease.Linear);
 		modelMat.DOFloat(1f, "_FadeAmount", 1.5f).SetEase(Ease.Linear);		

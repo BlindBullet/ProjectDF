@@ -9,6 +9,7 @@ public class ResultGroupChart
     public TargetType TargetType { get; set; }
     public TargetDetail TargetDetail { get; set; }
     public int TargetCount { get; set; }
+    public bool AddDelayTarget { get; set; }
     public RangeType RangeType { get; set; }
     public float[] RnageSize { get; set; }
     public float DelayTime { get; set; }
