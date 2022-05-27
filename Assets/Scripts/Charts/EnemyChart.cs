@@ -13,6 +13,7 @@ public class EnemyChart
     public float Weight { get; set; }
     public double Hp { get; set; }
     public float Spd { get; set; }
+    public float Def { get; set; }
     public double Gold { get; set; }
     public string[] Skill { get; set; }
 

@@ -50,8 +50,7 @@ public class EnemyBuffController : MonoBehaviour
 		me.Stat.InitStat();
 
 		float addSpd = 0f;
-		float addDef = 0f;
-		Dictionary<Attr, float> attrDefs = new Dictionary<Attr, float>();
+		float addDef = 0f;		
 		List<Attr> immunes = new List<Attr>();
 		
 		for(int i = 0; i < Buffs.Count; i++)
@@ -62,37 +61,10 @@ public class EnemyBuffController : MonoBehaviour
 					switch (Buffs[i].Data.Param1)
 					{
 						case "Spd":
-							addSpd += float.Parse(Buffs[i].Data.Param3);
+							addSpd += float.Parse(Buffs[i].Data.Param2);
 							break;
-						case "Def":
-							if(Buffs[i].Data.Param2 == null)
-							{
-								addDef += float.Parse(Buffs[i].Data.Param3);								
-							}	
-							else
-							{
-								switch (Buffs[i].Data.Param2)
-								{
-									case "Red":
-										if (attrDefs.ContainsKey(Attr.Red))
-											attrDefs[Attr.Red] += float.Parse(Buffs[i].Data.Param3);
-										else
-											attrDefs[Attr.Red] = float.Parse(Buffs[i].Data.Param3);
-										break;
-									case "Green":
-										if (attrDefs.ContainsKey(Attr.Green))
-											attrDefs[Attr.Green] += float.Parse(Buffs[i].Data.Param3);
-										else
-											attrDefs[Attr.Green] = float.Parse(Buffs[i].Data.Param3);
-										break;
-									case "Blue":
-										if (attrDefs.ContainsKey(Attr.Blue))
-											attrDefs[Attr.Blue] += float.Parse(Buffs[i].Data.Param3);
-										else
-											attrDefs[Attr.Blue] = float.Parse(Buffs[i].Data.Param3);
-										break;
-								}
-							}
+						case "Def":							
+							addDef += float.Parse(Buffs[i].Data.Param2);
 							break;
 					}
 					break;
@@ -100,37 +72,10 @@ public class EnemyBuffController : MonoBehaviour
 					switch (Buffs[i].Data.Param1)
 					{
 						case "Spd":
-							addSpd -= float.Parse(Buffs[i].Data.Param3);
+							addSpd -= float.Parse(Buffs[i].Data.Param2);
 							break;
 						case "Def":
-							if (Buffs[i].Data.Param2 == null)
-							{
-								addDef -= float.Parse(Buffs[i].Data.Param3);
-							}
-							else
-							{
-								switch (Buffs[i].Data.Param2)
-								{
-									case "Red":
-										if (attrDefs.ContainsKey(Attr.Red))
-											attrDefs[Attr.Red] -= float.Parse(Buffs[i].Data.Param3);
-										else
-											attrDefs[Attr.Red] = float.Parse(Buffs[i].Data.Param3);
-										break;
-									case "Green":
-										if (attrDefs.ContainsKey(Attr.Green))
-											attrDefs[Attr.Green] -= float.Parse(Buffs[i].Data.Param3);
-										else
-											attrDefs[Attr.Green] = float.Parse(Buffs[i].Data.Param3);
-										break;
-									case "Blue":
-										if (attrDefs.ContainsKey(Attr.Blue))
-											attrDefs[Attr.Blue] -= float.Parse(Buffs[i].Data.Param3);
-										else
-											attrDefs[Attr.Blue] = float.Parse(Buffs[i].Data.Param3);
-										break;
-								}
-							}
+							addDef -= float.Parse(Buffs[i].Data.Param2);
 							break;
 					}
 					break;
@@ -156,7 +101,7 @@ public class EnemyBuffController : MonoBehaviour
 
 		me.Stat.Spd = me.Stat.Spd + (me.Stat.Spd * (addSpd / 100f));		
 		me.Stat.Immunes = immunes;
-		me.Stat.AttrDefs = attrDefs;
+		me.Stat.Def = me.Stat.Def + addDef;
 	}
 
 	
@@ -178,10 +123,10 @@ public class EnemyBuff
 				switch (Data.Param1)
 				{
 					case "Spd":
-						DurationTime = float.Parse(Data.Param4);
+						DurationTime = float.Parse(Data.Param3);
 						break;
 					case "Def":
-						DurationTime = float.Parse(Data.Param4);
+						DurationTime = float.Parse(Data.Param3);
 						break;
 				}
 				break;
@@ -189,10 +134,10 @@ public class EnemyBuff
 				switch (Data.Param1)
 				{
 					case "Spd":
-						DurationTime = float.Parse(Data.Param4);
+						DurationTime = float.Parse(Data.Param3);
 						break;
 					case "Def":
-						DurationTime = float.Parse(Data.Param4);
+						DurationTime = float.Parse(Data.Param3);
 						break;
 				}
 				break;

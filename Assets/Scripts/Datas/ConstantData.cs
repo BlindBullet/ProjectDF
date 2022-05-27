@@ -35,7 +35,7 @@ public static class ConstantData
 
 	public static double GetEnemyHp(double basicHp, int stageNo, bool isBoss)
 	{		
-		return CalcValue(basicHp, EnemyHpGR, stageNo);		
+		return CalcValue(basicHp, EnemyHpGR, stageNo);
 	}
 
 	public static double GetEnemyGold(double basicGold, int stageNo, bool isBoss)

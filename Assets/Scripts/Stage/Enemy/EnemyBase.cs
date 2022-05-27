@@ -105,7 +105,7 @@ public class EnemyBase : MonoBehaviour
 
 	public double TakeDmg(double atk, Attr attr, bool isCrit, float stiffTime)
 	{
-		float def = 0f;
+		float def = Stat.Def;
 
 		switch (attr)
 		{			
@@ -119,9 +119,6 @@ public class EnemyBase : MonoBehaviour
 				if (Stat.Attr == Attr.Green)
 					atk = atk * 2f;
 				
-				if (Stat.AttrDefs.ContainsKey(Attr.Red))
-					def += Stat.AttrDefs[Attr.Red];
-
 				atk = atk - (atk * (def / 100f));
 				break;
 			case Attr.Green:
@@ -133,10 +130,7 @@ public class EnemyBase : MonoBehaviour
 					
 				if (Stat.Attr == Attr.Blue)
 					atk = atk * 2f;
-
-				if (Stat.AttrDefs.ContainsKey(Attr.Green))
-					def += Stat.AttrDefs[Attr.Green];
-
+				
 				atk = atk - (atk * (def / 100f));
 				break;
 			case Attr.Blue:
@@ -148,10 +142,7 @@ public class EnemyBase : MonoBehaviour
 
 				if (Stat.Attr == Attr.Red)
 					atk = atk * 2f;
-
-				if (Stat.AttrDefs.ContainsKey(Attr.Blue))
-					def += Stat.AttrDefs[Attr.Blue];
-
+				
 				atk = atk - (atk * (def / 100f));
 				break;
 		}
@@ -218,16 +209,7 @@ public class EnemyBase : MonoBehaviour
 
 		yield return new WaitForSeconds(0.5f);
 
-		double getGold = 0f;
-
-		if (isBoss)
-		{
-			getGold = Stat.Gold + (Stat.Gold * ((StageManager.Ins.PlayerStat.BossEnemyGoldInc[Stat.Attr] - StageManager.Ins.PlayerStat.BossEnemyGoldDec[Stat.Attr]) / 100f));
-		}
-		else
-		{
-			getGold = Stat.Gold + (Stat.Gold * ((StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Stat.Attr] - StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Stat.Attr]) / 100f));
-		}	
+		double getGold = Stat.Gold;
 
 		StageManager.Ins.GetGold(getGold);
 		FloatingTextManager.Ins.ShowGold(this.transform.position, "+" + getGold.ToCurrencyString());
