@@ -33,15 +33,10 @@ public class DialogRelic : DialogController
 
 		for(int i = 0; i < relicDatas.Count; i++)
 		{
-			GameObject icon = Instantiate(Resources.Load("Prefabs/Icons/RelicIcon") as GameObject, ListTrf);
-			icon.GetComponent<RelicIcon>().SetIcon(relicDatas[i], OpenRelicInfo);
-			Relics.Add(icon);
+			GameObject bar = Instantiate(Resources.Load("Prefabs/Bars/RelicBar") as GameObject, ListTrf);
+			bar.GetComponent<RelicBar>().SetBar(relicDatas[i]);
+			Relics.Add(bar);
 		}
-	}
-
-	void OpenRelicInfo(RelicData data)
-	{
-		DialogManager.Ins.OpenRelicInfo(data);
 	}
 
 	private void OnDisable()

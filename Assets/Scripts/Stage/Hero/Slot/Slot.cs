@@ -31,6 +31,8 @@ public class Slot : MonoBehaviour
 
 		this.data = data;
 
+		LvUpBtnText.text = LanguageManager.Ins.SetString("LevelUp");
+
 		LvUpBtn.onClick.RemoveAllListeners();
 		LvUpBtn.onClick.AddListener(() =>
 		{

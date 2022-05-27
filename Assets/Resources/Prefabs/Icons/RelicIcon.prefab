@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1012f58a33331d24882571b8b0c4af2a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8da8cee722ae0404b94ebebca6a49921, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -260,8 +260,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchoredPosition: {x: 0.39499664, y: 15.023701}
+  m_SizeDelta: {x: -5.7806, y: 26.7402}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2344997729663749818
 CanvasRenderer:
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lv.5
+  m_text: Lv. 10(Max)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c4a2d43c6d389574baa38436a857209f, type: 2}
   m_sharedMaterial: {fileID: 7551340975690478451, guid: c4a2d43c6d389574baa38436a857209f,
@@ -319,8 +319,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -426,7 +426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 380cbb2cc2e72a04fbb7013072d6c1e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e747c9b00608d84ba777afba556fbe0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -470,8 +470,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2847733362669714565
 CanvasRenderer:
@@ -929,7 +929,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6736911363153194173
 CanvasRenderer:
@@ -995,7 +995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ea7935a4443e840963049f36295c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Btn: {fileID: 5742690547356428752}
   IconImg: {fileID: 2628136128955805970}
   LvText: {fileID: 4652244199783917588}
   LockObj: {fileID: 3634918681438764969}

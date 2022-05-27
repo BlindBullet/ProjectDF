@@ -7,13 +7,12 @@ using UnityEngine.U2D;
 using System;
 
 public class RelicIcon : MonoBehaviour
-{
-	public Button Btn;
+{	
 	public Image IconImg;
 	public TextMeshProUGUI LvText;
 	public GameObject LockObj;
 
-	public void SetIcon(RelicData data, Action<RelicData> action = null)
+	public void SetIcon(RelicData data)
 	{
 		RelicChart chart = CsvData.Ins.RelicChart[data.Id];
 
@@ -21,7 +20,6 @@ public class RelicIcon : MonoBehaviour
 				
 		SetLock(data);
 		SetLevel(data, chart);
-		SetBtn(data, action);
 	}
 
 	void SetLevel(RelicData data, RelicChart chart)
@@ -44,12 +42,6 @@ public class RelicIcon : MonoBehaviour
 			LvText.gameObject.SetActive(true);
 			LockObj.SetActive(false);
 		}
-	}
-
-	void SetBtn(RelicData data, Action<RelicData> action)
-	{
-		Btn.onClick.RemoveAllListeners();
-		Btn.onClick.AddListener(() => { if (action != null) action(data); });
 	}
 
 }
