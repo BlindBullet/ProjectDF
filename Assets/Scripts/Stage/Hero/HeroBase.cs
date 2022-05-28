@@ -55,20 +55,6 @@ public class HeroBase : MonoBehaviour
 		Stat.ChangeLv(lv);		
 	}
 
-	public void Appear()
-	{
-		//죽음 이후 스테이지가 다시 시작될 때 살아나기
-
-		SkillCon.ReStart();
-	}
-
-	public void Die()
-	{
-		SkillCon.Stop();
-
-		//죽음 연출
-	}
-
 	IEnumerator LookTarget()
 	{
 		while (true)
@@ -91,6 +77,7 @@ public class HeroBase : MonoBehaviour
 
 	public void Destroy()
 	{
+		Tween.Stop();
 		SkillCon.Stop();
 		Heroes.Remove(this);
 		Destroy(this.gameObject);
