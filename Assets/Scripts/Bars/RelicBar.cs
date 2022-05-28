@@ -63,7 +63,7 @@ public class RelicBar : MonoBehaviour
 		{
 			LvUpBtnText.text = LanguageManager.Ins.SetString("LevelUp");
 			CostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/" + chart.LvUpCostType.ToString());
-			double cost = chart.LvUpCost * (1 + Mathf.Pow(chart.LvUpCostIncRate, data.Lv));
+			double cost = (chart.LvUpCost + (chart.LvUpCostIncValue * (data.Lv - 1))) * (chart.LvUpCostIncRate > 1f ? (1 + Mathf.Pow(chart.LvUpCostIncRate, data.Lv - 1)) : 1f);
 			Cost.text = cost.ToCurrencyString();
 
 			bool canPurchase = false;
@@ -103,7 +103,12 @@ public class RelicBar : MonoBehaviour
 			{
 				LvUpBtn.enabled = false;
 				lvUpBtnMat.SetFloat("_GreyscaleBlend", 1f);
-			}			
+			}
+
+			if (data.Lv >= chart.MaxLv)
+			{
+				LvUpBtn.gameObject.SetActive(false);
+			}	
 		}
 		else
 		{

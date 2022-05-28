@@ -61,7 +61,7 @@ public class DialogRelicInfo : DialogController
 		{
 			LvUpCostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/Magicite");
 			LvUpBtnText.text = LanguageManager.Ins.SetString("Upgrade");
-			double cost = chart.LvUpCost * (1 + Mathf.Pow(chart.LvUpCostIncRate, data.Lv));
+			double cost = (chart.LvUpCost + (chart.LvUpCostIncValue * (data.Lv - 1))) * (chart.LvUpCostIncRate > 1f ? (1 + Mathf.Pow(chart.LvUpCostIncRate, data.Lv - 1)) : 1f);
 
 			LvUpCostText.text = cost.ToCurrencyString();
 

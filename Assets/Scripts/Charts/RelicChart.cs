@@ -14,6 +14,7 @@ public class RelicChart
     public double Price { get; set; }
     public CostType LvUpCostType { get; set; }
     public double LvUpCost { get; set; }
+    public double LvUpCostIncValue { get; set; }
     public float LvUpCostIncRate { get; set; }
 
 }

@@ -63,13 +63,34 @@ public class RelicData
 				return false;
 		}
 
-		double cost = chart.LvUpCost * (1 + Mathf.Pow(chart.LvUpCostIncRate, Lv));
+		double cost = (chart.LvUpCost + (chart.LvUpCostIncValue * (Lv - 1))) * (chart.LvUpCostIncRate > 1f ? (1 + Mathf.Pow(chart.LvUpCostIncRate, Lv - 1)) : 1f);
 
-		if (StageManager.Ins.PlayerData.Magicite >= cost)
+		switch (chart.LvUpCostType)
 		{
-			StageManager.Ins.ChangeMagicite(-cost);
-			Lv++;
-			return true;
+			case CostType.Gold:
+				if (StageManager.Ins.PlayerData.Gold >= cost)
+				{
+					StageManager.Ins.ChangeGold(-cost);
+					Lv++;
+					return true;
+				}
+				break;
+			case CostType.Magicite:
+				if (StageManager.Ins.PlayerData.Magicite >= cost)
+				{
+					StageManager.Ins.ChangeMagicite(-cost);
+					Lv++;
+					return true;
+				}
+				break;
+			case CostType.SoulStone:
+				if (StageManager.Ins.PlayerData.SoulStone >= cost)
+				{
+					StageManager.Ins.ChangeSoulStone(-cost);
+					Lv++;
+					return true;
+				}
+				break;
 		}
 
 		return false;
