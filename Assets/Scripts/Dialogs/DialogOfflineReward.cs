@@ -49,7 +49,7 @@ public class DialogOfflineReward : DialogController
 		OfflineTimeText.text = string.Format(LanguageManager.Ins.SetString("time_popup_offline_reward"), hour, min);
 
 		double rewardValue = ConstantData.GetGoldFromOfflineTime(timeSpan.TotalMinutes, StageManager.Ins.PlayerData.Stage);
-		double addRewardValue = rewardValue * (StageManager.Ins.PlayerStat.OfflineRewardAdd / 100f);
+		double addRewardValue = rewardValue * (StageManager.Ins.PlayerStat.OfflineRewardAdd / 100f);		
 
 		if(addRewardValue > 0)		
 			RewardDesc.text = string.Format(LanguageManager.Ins.SetString("offline_reward"), rewardValue.ToCurrencyString(), addRewardValue.ToCurrencyString());		
@@ -57,7 +57,8 @@ public class DialogOfflineReward : DialogController
 			RewardDesc.text = string.Format(LanguageManager.Ins.SetString("offline_reward_no_add"), rewardValue.ToCurrencyString());		
 
 		GetBtn.onClick.RemoveAllListeners();
-		GetBtn.onClick.AddListener(() => {
+		GetBtn.onClick.AddListener(() => 
+		{
 			StageManager.Ins.ChangeGold(rewardValue + addRewardValue);
 			DialogManager.Ins.OpenReceiveReward(RewardType.Gold, rewardValue + addRewardValue);
 			CloseDialog();

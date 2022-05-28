@@ -4884,7 +4884,6 @@ GameObject:
   m_Component:
   - component: {fileID: 214909290533533464}
   - component: {fileID: 15175837564305238}
-  - component: {fileID: 243555345885996234}
   - component: {fileID: 13904096710949956}
   m_Layer: 0
   m_Name: Trails
@@ -9634,18 +9633,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &243555345885996234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212170358276610728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199e3c49ebcb3fe46997b10cf6a8eb52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!199 &13904096710949956
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -19540,6 +19527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModelTrf: {fileID: 4290502829115058413}
+  Trail: []
 --- !u!58 &1669026920057165116
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -14681,7 +14681,6 @@ GameObject:
   m_Component:
   - component: {fileID: 678374253959383515}
   - component: {fileID: 839300303426678185}
-  - component: {fileID: 647888635878018617}
   - component: {fileID: 838172983538920043}
   m_Layer: 0
   m_Name: SubSmoke
@@ -19423,18 +19422,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &647888635878018617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 675804430290061241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199e3c49ebcb3fe46997b10cf6a8eb52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!199 &838172983538920043
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -38883,6 +38870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModelTrf: {fileID: 681460550648223783}
+  Trail: []
 --- !u!58 &1285302836880690591
 CircleCollider2D:
   m_ObjectHideFlags: 0

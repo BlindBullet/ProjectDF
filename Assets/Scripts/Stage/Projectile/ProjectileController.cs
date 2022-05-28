@@ -8,7 +8,7 @@ public class ProjectileController : MonoBehaviour
 	ProjectileChart data;
 	List<HitresultChart> hitresults = new List<HitresultChart>();
 	public Transform ModelTrf;
-	public TrailRenderer Trail;
+	public TrailRenderer[] Trail;
 	HeroBase caster;
 	MinionBase minion;
 	int penCount = 0;
@@ -113,7 +113,15 @@ public class ProjectileController : MonoBehaviour
 	}
 
 	IEnumerator MoveSequence()
-	{	
+	{
+		if (Trail.Length > 0)
+		{
+			for(int i = 0; i < Trail.Length; i++)
+			{
+				Trail[i].Clear();
+			}
+		}
+
 		float time = 0;
 		Vector3 _pos;
 		dir = Quaternion.Euler(0, 0, data.Angle) * dir;
@@ -157,7 +165,7 @@ public class ProjectileController : MonoBehaviour
 					//마지막 방향 및 속도를 구해야함.
 
 					if (mTimerCurrent >= 1f)
-					{						
+					{
 						DestroySequence();
 					}
 					else
@@ -206,10 +214,16 @@ public class ProjectileController : MonoBehaviour
 
 	void DestroySequence()
 	{
-		if (Trail != null)
-			Trail.Clear();
-
 		this.transform.position = new Vector3(0, -100f, 0);
+
+		if (Trail.Length > 0)
+		{
+			for (int i = 0; i < Trail.Length; i++)
+			{
+				Trail[i].Clear();
+			}
+		}
+		
 		ObjectManager.Ins.Push<ProjectileController>(this);
 	}
 
