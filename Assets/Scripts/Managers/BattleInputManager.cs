@@ -87,7 +87,7 @@ public class BattleInputManager : MonoBehaviour
 					{
 						//무속성의 발사체를 발사
 						//유물에 따라 레벨업?
-						EffectManager.Ins.ShowFx("TestHitFx", pos);
+						EffectManager.Ins.ShowFx("TouchMuzzle", pos);
 
 						EnemyBase _target = null;
 

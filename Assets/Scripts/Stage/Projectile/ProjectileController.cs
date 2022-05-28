@@ -8,6 +8,7 @@ public class ProjectileController : MonoBehaviour
 	ProjectileChart data;
 	List<HitresultChart> hitresults = new List<HitresultChart>();
 	public Transform ModelTrf;
+	public TrailRenderer Trail;
 	HeroBase caster;
 	MinionBase minion;
 	int penCount = 0;
@@ -41,7 +42,7 @@ public class ProjectileController : MonoBehaviour
 		}
 
 		penCount = caster.Stat.PenCount;
-		mTimerCurrent = 0f;		
+		mTimerCurrent = 0f;
 
 		StartCoroutine(MoveSequence());
 	}
@@ -112,7 +113,7 @@ public class ProjectileController : MonoBehaviour
 	}
 
 	IEnumerator MoveSequence()
-	{
+	{	
 		float time = 0;
 		Vector3 _pos;
 		dir = Quaternion.Euler(0, 0, data.Angle) * dir;
@@ -205,6 +206,9 @@ public class ProjectileController : MonoBehaviour
 
 	void DestroySequence()
 	{
+		if (Trail != null)
+			Trail.Clear();
+
 		this.transform.position = new Vector3(0, -100f, 0);
 		ObjectManager.Ins.Push<ProjectileController>(this);
 	}
