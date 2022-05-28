@@ -59,36 +59,6 @@ public class MinionBase : MonoBehaviour
 		StartCoroutine(SummonSequence(durationTime));
 		Minions.Add(this);
 	}
-
-	//private void Start()
-	//{
-	//	MinionChart chart = CsvData.Ins.MinionChart["M2"];
-	//	data = chart;
-
-	//	Stat = new MinionStat();
-	//	Stat.Setup(10, chart.Spd, chart.Attr);
-
-	//	AttackCon.SetController(this, data);
-
-	//	this.transform.localScale = new Vector3(chart.Size, chart.Size, 1);
-
-	//	Ui.Setup(chart);		
-
-	//	min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-	//	max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-	//	Target = null;
-	//	IsDie = false;
-	//	cMove = null;
-
-	//	originPos = transform.position;
-	//	pos = transform.position;
-	//	dir = Vector2.up;
-
-	//	StartCoroutine(SummonSequence(5f));
-	//	Minions.Add(this);
-	//}
-
 	IEnumerator SummonSequence(float durationTime)
 	{
 		Ui.Summon();
@@ -313,23 +283,14 @@ public class MinionStat
 
 	public MinionStat(MinionChart chart, HeroBase caster)
 	{
+		Attr = chart.Attr;
 		Atk = caster.Stat.Atk * (chart.AtkP / 100f);
+		Atk = Atk + (Atk * ((StageManager.Ins.PlayerStat.MinionAtkInc[Attr] - StageManager.Ins.PlayerStat.MinionAtkDec[Attr]) / 100f));
 		Spd = chart.Spd;
+		Spd = Spd + (Spd * ((StageManager.Ins.PlayerStat.MinionSpdInc[Attr] - StageManager.Ins.PlayerStat.MinionSpdDec[Attr]) / 100f));
 		PenCount = chart.PenCount;
 		CritChance = 0f;
 		CritDmg = 100f;
-		Attr = chart.Attr;
 	}
-
-	public void Setup(double atk, float spd, Attr attr)
-	{
-		Atk = atk;
-		Spd = spd;
-		PenCount = 0;
-		CritChance = 0f;
-		CritDmg = 100f;
-		Attr = attr;
-	}
-
 	
 }

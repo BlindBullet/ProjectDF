@@ -16,8 +16,7 @@ public class ProjectileChart
     public float[] BPos2R { get; set; }
     public float Lifetime { get; set; }
     public string Model { get; set; }
-    public string BeginFx { get; set; }
-    public string DurationFx { get; set; }
+    public string BeginFx { get; set; }    
     public string HitDestroyFx { get; set; }
     public string DestroyFx { get; set; }    
     public string HitDestroyResult { get; set; }

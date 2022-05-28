@@ -246,7 +246,7 @@ public class PlayerData
 	{		
 		Stage = StageManager.Ins.PlayerStat.StartStage;
 
-		Gold = 0;
+		Gold = StageManager.Ins.PlayerStat.AscensionGold;
 
 		Slots.Clear();
 

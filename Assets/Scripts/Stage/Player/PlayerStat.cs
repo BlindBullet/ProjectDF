@@ -6,8 +6,9 @@ using System;
 
 public class PlayerStat
 {
-	public ObscuredInt StartStage;	
-	public ObscuredFloat AddAscensionReward;
+	public ObscuredInt StartStage;
+	public ObscuredFloat AscensionReward;
+	public ObscuredDouble AscensionGold;
 	public ObscuredFloat GetSoulStoneRate;
 	public Dictionary<Attr, ObscuredFloat> NormalEnemyGoldInc = new Dictionary<Attr, ObscuredFloat>();
 	public Dictionary<Attr, ObscuredFloat> NormalEnemyGoldDec = new Dictionary<Attr, ObscuredFloat>();
@@ -31,11 +32,15 @@ public class PlayerStat
 	public Dictionary<Attr, ObscuredFloat> MinionSpdDec = new Dictionary<Attr, ObscuredFloat>();
 	public ObscuredInt OfflineRewardLimitMin;
 	public ObscuredFloat OfflineRewardAdd;
+	public ObscuredFloat QuestTime;
+	public ObscuredFloat QuestReward;
+
 
 	public void Init()
 	{
-		StartStage = 1;		
-		AddAscensionReward = 0;
+		StartStage = 1;
+		AscensionReward = 0f;
+		AscensionGold = 0f;
 		GetSoulStoneRate = 0;
 
 		foreach (Attr attr in Enum.GetValues(typeof(Attr)))
@@ -64,6 +69,8 @@ public class PlayerStat
 				
 		OfflineRewardLimitMin = 120;
 		OfflineRewardAdd = 0f;
+		QuestTime = 0f;		
+		QuestReward = 0f;		
 	}	
 
 

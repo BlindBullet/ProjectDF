@@ -383,6 +383,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 		//보상 주기
 		double rewardAmount = ConstantData.GetAscensionMagicite(PlayerData.Stage);
+		rewardAmount = rewardAmount + (rewardAmount * (PlayerStat.AscensionReward / 100f));
 
 		if (isAdAscension)
 			rewardAmount = rewardAmount * 2f;	

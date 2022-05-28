@@ -50,5 +50,6 @@ public enum SEEffectType
 	Stage,
 	Ascension,
 	OfflineReward,
+	Quest,
 
 }

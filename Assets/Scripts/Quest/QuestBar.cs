@@ -71,6 +71,8 @@ public class QuestBar : MonoBehaviour
 			QuestProgressBar.SetActive(false);
 			QuestTimeText.gameObject.SetActive(true);
 
+			int Time = chart.Time;
+			Time = Time + (int)(Time * (StageManager.Ins.PlayerStat.QuestTime / 100f));
 			int hour = chart.Time / 60;
 			int min = chart.Time % 60;
 

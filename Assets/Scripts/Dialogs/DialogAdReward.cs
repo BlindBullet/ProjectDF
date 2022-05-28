@@ -62,14 +62,17 @@ public class DialogAdReward : DialogController
 		{
 			case RewardType.Gold:
 				rewardValue = ConstantData.GetGoldFromTime(chart.RewardValue, StageManager.Ins.PlayerData.Stage);
+				rewardValue = rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.CalcValue);
 				RewardDesc.text = LanguageManager.Ins.SetString("Gold") + " " + rewardValue.ToCurrencyString();
 				break;
-			case RewardType.SoulStone:				
+			case RewardType.SoulStone:
+				rewardValue = rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.CalcValue);
 				RewardDesc.text = LanguageManager.Ins.SetString("SoulStone") + " " + rewardValue;
 				break;
-			case RewardType.GameSpeed:				
+			case RewardType.GameSpeed:
+				rewardValue = rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.Time);
 				RewardDesc.text = LanguageManager.Ins.SetString("GameSpeed2x") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
 				break;

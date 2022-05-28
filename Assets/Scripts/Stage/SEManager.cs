@@ -482,14 +482,25 @@ public class SEManager : MonoSingleton<SEManager>
 								break;
 						}
 						break;
-					case "Amount":
+					case "Magicite":
 						switch (chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.AddAscensionReward += float.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.AscensionReward += float.Parse(chart.EParam5);
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.AddAscensionReward -= float.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.AscensionReward -= float.Parse(chart.EParam5);
+								break;
+						}
+						break;
+					case "Gold":
+						switch (chart.EParam1)
+						{
+							case "Inc":
+								StageManager.Ins.PlayerStat.AscensionGold += double.Parse(chart.EParam5);
+								break;
+							case "Dec":
+								StageManager.Ins.PlayerStat.AscensionGold -= double.Parse(chart.EParam5);
 								break;
 						}
 						break;
@@ -520,6 +531,33 @@ public class SEManager : MonoSingleton<SEManager>
 								break;
 						}
 						break;
+				}
+				break;
+			case SEEffectType.Quest:
+				switch (chart.EParam2)
+				{
+					case "Reward":
+						switch (chart.EParam1)
+						{
+							case "Inc":
+								StageManager.Ins.PlayerStat.QuestReward += float.Parse(chart.EParam5);
+								break;
+							case "Dec":
+								StageManager.Ins.PlayerStat.QuestReward -= float.Parse(chart.EParam5);
+								break;
+						}
+						break;
+					case "Time":
+						switch (chart.EParam1)
+						{
+							case "Inc":
+								StageManager.Ins.PlayerStat.QuestTime += float.Parse(chart.EParam5);
+								break;
+							case "Dec":
+								StageManager.Ins.PlayerStat.QuestTime -= float.Parse(chart.EParam5);
+								break;
+						}
+						break;						
 				}
 				break;
 		}

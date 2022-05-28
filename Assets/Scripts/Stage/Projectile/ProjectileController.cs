@@ -69,6 +69,9 @@ public class ProjectileController : MonoBehaviour
 			targetPos = target.transform.position;
 		}
 
+		if (data.BeginFx != null)
+			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
+
 		penCount = minion.Stat.PenCount;
 		mTimerCurrent = 0f;
 
@@ -98,6 +101,9 @@ public class ProjectileController : MonoBehaviour
 			this.target = target;
 			targetPos = target.transform.position;
 		}
+
+		if (data.BeginFx != null)
+			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
 
 		penCount = 0;
 		mTimerCurrent = 0f;
