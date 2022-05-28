@@ -36,17 +36,17 @@ public class DialogRelicInfo : DialogController
 
 	void SetDesc(RelicData data, RelicChart chart)
 	{
-		List<SEChart> seList = CsvData.Ins.SEChart[chart.Effect];
-		SEChart se = null;
+		//List<SEChart> seList = CsvData.Ins.SEChart[chart.Effect];
+		//SEChart se = null;
 
-		for(int i = 0; i < seList.Count; i++)
-		{
-			if (seList[i].Lv == data.Lv)
-				se = seList[i];
-		}
+		//for(int i = 0; i < seList.Count; i++)
+		//{
+		//	if (seList[i].Lv == data.Lv)
+		//		se = seList[i];
+		//}
 		
-		DescLabel.text = LanguageManager.Ins.SetString("RelicEffect");
-		Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), se.EParam5);		
+		//DescLabel.text = LanguageManager.Ins.SetString("RelicEffect");
+		//Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), se.EParam5);		
 	}
 
 	void SetLvUpBtn(RelicData data, RelicChart chart)

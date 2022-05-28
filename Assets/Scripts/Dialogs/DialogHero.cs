@@ -70,7 +70,7 @@ public class DialogHero : DialogController
 		{
 			if (HeroIcons[i].Data.Id == data.Id)
 			{
-				HeroIcons[i].ShowSelectedFrame();
+				HeroIcons[i].ShowSelectedFrame();				
 				HeroIcons[i].DiasbleBtns(true);
 			}
 			else

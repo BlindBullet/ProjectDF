@@ -157,7 +157,9 @@ public class HeroIcon : MonoBehaviour
 
 	public void EnableBtns()
 	{
-		IconGreyScale(false);
+		if(Data.IsOwn)
+			IconGreyScale(false);
+
 		Btn.enabled = true;
 	}
 

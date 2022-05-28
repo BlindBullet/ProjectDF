@@ -13,7 +13,7 @@ public class CsvData : SingletonObject<CsvData>
 	public Dictionary<string, List<HitresultChart>> HitresultChart = new Dictionary<string, List<HitresultChart>>();
 	public Dictionary<string, StageChart> StageChart = new Dictionary<string, StageChart>();
 	public Dictionary<string, EnemyChart> EnemyChart = new Dictionary<string, EnemyChart>();
-	public Dictionary<string, List<SEChart>> SEChart = new Dictionary<string, List<SEChart>>();
+	public Dictionary<string, SEChart> SEChart = new Dictionary<string, SEChart>();
 	public Dictionary<string, RelicChart> RelicChart = new Dictionary<string, RelicChart>();
 	public Dictionary<string, QuestChart> QuestChart = new Dictionary<string, QuestChart>();
 	public Dictionary<string, EnemySkillChart> EnemySkillChart = new Dictionary<string, EnemySkillChart>();
@@ -33,7 +33,7 @@ public class CsvData : SingletonObject<CsvData>
 		HitresultChart = CsvParser.Ins.ParseDupeKeyToDict(HitresultChart, "DataTables/HitresultChart");
 		StageChart = CsvParser.Ins.ParseToDict(StageChart, "DataTables/StageChart");
 		EnemyChart = CsvParser.Ins.ParseToDict(EnemyChart, "DataTables/EnemyChart");
-		SEChart = CsvParser.Ins.ParseDupeKeyToDict(SEChart, "DataTables/StatusEffectChart");
+		SEChart = CsvParser.Ins.ParseToDict(SEChart, "DataTables/StatusEffectChart");
 		RelicChart = CsvParser.Ins.ParseToDict(RelicChart, "DataTables/RelicChart");
 		QuestChart = CsvParser.Ins.ParseToDict(QuestChart, "DataTables/QuestChart");
 		EnemySkillChart = CsvParser.Ins.ParseToDict(EnemySkillChart, "DataTables/EnemySkillChart");

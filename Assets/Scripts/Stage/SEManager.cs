@@ -5,20 +5,15 @@ using UnityEngine;
 
 public class SEManager : MonoSingleton<SEManager>
 {
-	//게임 시작시 모든 캐릭터 콜렉션 효과 및 유물 효과를 적용.
-	//캐릭터 배치 변경시 모든 캐릭터 콜렉션 효과 및 유물 효과를 재적용.
-	//캐릭터 등급업시 모든 캐릭터 콜렉션 효과 및 유물 효과를 재적용.
-		
-	//플레이어 스탯 초기화
-	//배치 영웅 스탯 초기화
-	//효과 적용
+	public List<SEData> SeList = new List<SEData>();
 
 	public void Apply()
 	{
-		List<SEChart> seList = new List<SEChart>();
+		SeList.Clear();
 
 		//영웅 콜렉션 효과 불러오기
 		List<HeroData> heroes = StageManager.Ins.PlayerData.Heroes;
+		double value = 0f;
 
 		for (int i = 0; i < heroes.Count; i++)
 		{
@@ -31,16 +26,13 @@ public class SEManager : MonoSingleton<SEManager>
 			{
 				if(heroCharts[k].Grade == heroes[i].Grade)
 				{
-					List<SEChart> charts = CsvData.Ins.SEChart[heroCharts[k].CollectionEffect];
-					SEChart se = null;
+					SEChart chart = CsvData.Ins.SEChart[heroCharts[k].CollectionEffect];
+					SEData data = new SEData(chart, heroes[i].Grade);
+										
+					value = (double.Parse(chart.EParam5) + (chart.LvUpIncValue * (heroes[i].Grade - 1))) * (chart.LvUpIncRate > 0 ? Mathf.Pow(chart.LvUpIncRate, heroes[i].Grade - 1) : 1f);
+					data.SetValue(value);
 
-					for(int j = 0; j < charts.Count; j++)
-					{
-						if (charts[j].Lv == heroes[i].Grade)
-							se = charts[j];
-					}
-					
-					seList.Add(se);
+					SeList.Add(data);
 				}
 			}
 		}
@@ -55,20 +47,17 @@ public class SEManager : MonoSingleton<SEManager>
 
 			RelicChart chart = CsvData.Ins.RelicChart[relics[i].Id];
 
-			List<SEChart> charts = CsvData.Ins.SEChart[chart.Effect];
-			SEChart se = null;
+			SEChart seChart = CsvData.Ins.SEChart[chart.Effect];
+			SEData data = new SEData(seChart, relics[i].Lv);
 
-			for (int j = 0; j < charts.Count; j++)
-			{
-				if (charts[j].Lv == relics[i].Lv)
-					se = charts[j];
-			}
+			value = (double.Parse(seChart.EParam5) + (seChart.LvUpIncValue * (relics[i].Lv - 1))) * (seChart.LvUpIncRate > 0 ? Mathf.Pow(seChart.LvUpIncRate, relics[i].Lv - 1) : 1f);			
+			data.SetValue(value);
 
-			seList.Add(se);
+			SeList.Add(data);
 		}
 
 		InitAllStat();
-		ApplyAllSe(seList);
+		ApplyAllSe(SeList);
 	}
 
 	void InitAllStat()
@@ -85,11 +74,11 @@ public class SEManager : MonoSingleton<SEManager>
 		}
 	}
 
-	void ApplyAllSe(List<SEChart> charts)
+	void ApplyAllSe(List<SEData> seList)
 	{
-		for(int i = 0; i < charts.Count; i++)
-		{
-			ApplySE(charts[i]);
+		for(int i = 0; i < seList.Count; i++)
+		{	
+			ApplySE(seList[i]);			
 		}
 
 		for(int i = 0; i < HeroBase.Heroes.Count; i++)
@@ -98,19 +87,19 @@ public class SEManager : MonoSingleton<SEManager>
 		}
 	}
 
-	void ApplySE(SEChart chart)
+	void ApplySE(SEData data)
 	{
-		if (CheckSECon(chart))
+		if (CheckSECon(data.Chart))
 		{
-			switch (chart.TargetType)
+			switch (data.Chart.TargetType)
 			{
 				case SETargetType.Player:
-					ApplyPlayerTargetSE(chart);
+					ApplyPlayerTargetSE(data);
 					break;
 				case SETargetType.Hero:
 					List<HeroBase> targets = new List<HeroBase>();
 
-					switch (chart.TParam1)
+					switch (data.Chart.TParam1)
 					{
 						case "All":
 							targets = HeroBase.Heroes;
@@ -118,16 +107,16 @@ public class SEManager : MonoSingleton<SEManager>
 						case "Attr":
 							for(int i = 0; i < HeroBase.Heroes.Count; i++)
 							{
-								if (HeroBase.Heroes[i].Stat.Attr.ToString() == chart.TParam2[0])
+								if (HeroBase.Heroes[i].Stat.Attr.ToString() == data.Chart.TParam2[0])
 									targets.Add(HeroBase.Heroes[i]);
 							}
 							break;
 						case "Slot":
-							for(int i = 0; i < chart.TParam2.Length; i++)
+							for(int i = 0; i < data.Chart.TParam2.Length; i++)
 							{
 								for (int k = 0; k < HeroBase.Heroes.Count; k++)
 								{
-									if (HeroBase.Heroes[k].Data.SlotNo == int.Parse(chart.TParam2[i]))
+									if (HeroBase.Heroes[k].Data.SlotNo == int.Parse(data.Chart.TParam2[i]))
 										targets.Add(HeroBase.Heroes[k]);
 								}
 							}
@@ -135,18 +124,18 @@ public class SEManager : MonoSingleton<SEManager>
 						case "Grade":
 							for (int i = 0; i < HeroBase.Heroes.Count; i++)
 							{
-								switch (chart.TParam2[0])
+								switch (data.Chart.TParam2[0])
 								{
 									case "High":
-										if (HeroBase.Heroes[i].Data.Grade >= int.Parse(chart.TParam3))
+										if (HeroBase.Heroes[i].Data.Grade >= int.Parse(data.Chart.TParam3))
 											targets.Add(HeroBase.Heroes[i]);
 										break;
 									case "Low":
-										if (HeroBase.Heroes[i].Data.Grade <= int.Parse(chart.TParam3))
+										if (HeroBase.Heroes[i].Data.Grade <= int.Parse(data.Chart.TParam3))
 											targets.Add(HeroBase.Heroes[i]);
 										break;
 									default:
-										if (HeroBase.Heroes[i].Data.Grade == int.Parse(chart.TParam3))
+										if (HeroBase.Heroes[i].Data.Grade == int.Parse(data.Chart.TParam3))
 											targets.Add(HeroBase.Heroes[i]);
 										break;
 								}
@@ -156,14 +145,14 @@ public class SEManager : MonoSingleton<SEManager>
 
 					for(int i = 0; i < targets.Count; i++)
 					{
-						ApplyHeroTargetSE(targets[i], chart);
+						ApplyHeroTargetSE(targets[i], data);
 					}
 					break;
 				case SETargetType.Enemy:
-					ApplyEnemyTargetSE(chart);
+					ApplyEnemyTargetSE(data);
 					break;
 				case SETargetType.Minion:
-					ApplyMinionTargetSE(chart);
+					ApplyMinionTargetSE(data);
 					break;
 			}
 		}		
@@ -446,115 +435,115 @@ public class SEManager : MonoSingleton<SEManager>
 		return result;
 	}
 
-	void ApplyPlayerTargetSE(SEChart chart)
-	{
-		switch (chart.EffectType)
+	void ApplyPlayerTargetSE(SEData data)
+	{	
+		switch (data.Chart.EffectType)
 		{			
 			case SEEffectType.Stage:
-				switch (chart.EParam2)
+				switch (data.Chart.EParam2)
 				{					
-					case "SoulStoneRate":
-						switch (chart.EParam1)
+					case "SoulStoneRate":						
+						switch (data.Chart.EParam1)
 						{
-							case "Inc":
-								StageManager.Ins.PlayerStat.GetSoulStoneRate += float.Parse(chart.EParam5);
+							case "Inc":								
+								StageManager.Ins.PlayerStat.GetSoulStoneRate += (float)data.Value;
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.GetSoulStoneRate -= float.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.GetSoulStoneRate -= (float)data.Value;
 								break;
 						}
 						break;
 				}
 				break;
 			case SEEffectType.Ascension:
-				switch (chart.EParam2)
+				switch (data.Chart.EParam2)
 				{
 					case "StartStage":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.StartStage += int.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.StartStage += (int)data.Value;
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.StartStage -= int.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.StartStage -= (int)data.Value;
 								if (StageManager.Ins.PlayerStat.StartStage < 1)
 									StageManager.Ins.PlayerStat.StartStage = 1;
 								break;
 						}
 						break;
 					case "Magicite":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.AscensionReward += float.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.AscensionReward += (float)data.Value;
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.AscensionReward -= float.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.AscensionReward -= (float)data.Value;
 								break;
 						}
 						break;
 					case "Gold":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.AscensionGold += double.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.AscensionGold += data.Value;
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.AscensionGold -= double.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.AscensionGold -= data.Value;
 								break;
 						}
 						break;
 				}
 				break;
 			case SEEffectType.OfflineReward:
-				switch (chart.EParam2)
+				switch (data.Chart.EParam2)
 				{
 					case "LimitTime":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.OfflineRewardLimitMin += int.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.OfflineRewardLimitMin += (int)data.Value;
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.OfflineRewardLimitMin -= int.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.OfflineRewardLimitMin -= (int)data.Value;
 								break;
 						}
 						break;
 					case "Amount":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.OfflineRewardAdd += float.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.OfflineRewardAdd += (float)data.Value;
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.OfflineRewardAdd -= float.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.OfflineRewardAdd -= (float)data.Value;
 								break;
 						}
 						break;
 				}
 				break;
 			case SEEffectType.Quest:
-				switch (chart.EParam2)
+				switch (data.Chart.EParam2)
 				{
 					case "Reward":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.QuestReward += float.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.QuestReward += (float)data.Value;
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.QuestReward -= float.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.QuestReward -= (float)data.Value;
 								break;
 						}
 						break;
 					case "Time":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.QuestTime += float.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.QuestTime += (float)data.Value;
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.QuestTime -= float.Parse(chart.EParam5);
+								StageManager.Ins.PlayerStat.QuestTime -= (float)data.Value;
 								break;
 						}
 						break;						
@@ -563,185 +552,185 @@ public class SEManager : MonoSingleton<SEManager>
 		}
 	}
 
-	void ApplyEnemyTargetSE(SEChart chart)
+	void ApplyEnemyTargetSE(SEData data)
 	{
-		switch (chart.EffectType)
+		switch (data.Chart.EffectType)
 		{
 			case SEEffectType.StatChange:
-				switch (chart.TParam1)
+				switch (data.Chart.TParam1)
 				{
 					case "All":
-						switch (chart.TParam2[0])
+						switch (data.Chart.TParam2[0])
 						{							
 							case "Attr":
-								switch (chart.TParam3)
+								switch (data.Chart.TParam3)
 								{
 									case "Red":
-										switch (chart.EParam2)
+										switch (data.Chart.EParam2)
 										{
 											case "Hp":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);														
-														StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += (float)data.Value;														
+														StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);														
-														StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += (float)data.Value;														
+														StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += (float)data.Value;														
 														break;
 												}
 												break;
 											case "Spd":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);														
-														StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += (float)data.Value;														
+														StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);														
-														StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += (float)data.Value;														
+														StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += (float)data.Value;														
 														break;
 												}
 												break;
 											case "Def":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);														
-														StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += (float)data.Value;														
+														StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);														
-														StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += (float)data.Value;														
+														StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += (float)data.Value;														
 														break;
 												}
 												break;
 											case "Gold":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Red] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Red] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Red] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Red] += (float)data.Value;
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Red] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Red] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Red] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Red] += (float)data.Value;
 														break;
 												}
 												break;
 										}
 										break;
 									case "Blue":
-										switch (chart.EParam2)
+										switch (data.Chart.EParam2)
 										{
 											case "Hp":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += (float)data.Value;
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += (float)data.Value;
 														break;
 												}
 												break;
 											case "Spd":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += (float)data.Value;
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += (float)data.Value;
 														break;
 												}
 												break;
 											case "Def":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += (float)data.Value;
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += (float)data.Value;
 														break;
 												}
 												break;
 											case "Gold":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Blue] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Blue] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Blue] += (float)data.Value;
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Blue] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Blue] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Blue] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Blue] += (float)data.Value;
 														break;
 												}
 												break;
 										}
 										break;
 									case "Green":
-										switch (chart.EParam2)
+										switch (data.Chart.EParam2)
 										{
 											case "Hp":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += (float)data.Value;
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += (float)data.Value;
 														break;
 												}
 												break;
 											case "Spd":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += (float)data.Value;
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += (float)data.Value;
 														break;
 												}
 												break;
 											case "Def":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += (float)data.Value;
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += (float)data.Value;
 														break;
 												}
 												break;
 											case "Gold":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Green] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Green] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Green] += (float)data.Value;
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Green] += float.Parse(chart.EParam5);
-														StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Green] += float.Parse(chart.EParam5);
+														StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Green] += (float)data.Value;
+														StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Green] += (float)data.Value;
 														break;
 												}
 												break;
@@ -750,89 +739,89 @@ public class SEManager : MonoSingleton<SEManager>
 								}
 								break;
 							default:
-								switch (chart.EParam2)
+								switch (data.Chart.EParam2)
 								{
 									case "Hp":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Spd":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Def":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Gold":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Green] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Green] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyGoldInc[Attr.Green] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Green] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyGoldDec[Attr.Green] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.BossEnemyGoldDec[Attr.Green] += (float)data.Value;
 												break;
 										}
 										break;
@@ -841,120 +830,120 @@ public class SEManager : MonoSingleton<SEManager>
 						}						
 						break;
 					case "Normal":
-						switch (chart.TParam2[0])
+						switch (data.Chart.TParam2[0])
 						{
 							case "Attr":
-								switch (chart.TParam3)
+								switch (data.Chart.TParam3)
 								{
 									case "Red":
-										switch (chart.EParam2)
+										switch (data.Chart.EParam2)
 										{
 											case "Hp":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += (float)data.Value;														
 														break;
 												}
 												break;
 											case "Spd":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += (float)data.Value;														
 														break;
 												}
 												break;
 											case "Def":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += (float)data.Value;														
 														break;
 												}
 												break;
 										}
 										break;
 									case "Blue":
-										switch (chart.EParam2)
+										switch (data.Chart.EParam2)
 										{
 											case "Hp":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += (float)data.Value;														
 														break;
 												}
 												break;
 											case "Spd":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += (float)data.Value;														
 														break;
 												}
 												break;
 											case "Def":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += (float)data.Value;														
 														break;
 												}
 												break;
 										}
 										break;
 									case "Green":
-										switch (chart.EParam2)
+										switch (data.Chart.EParam2)
 										{
 											case "Hp":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += (float)data.Value;														
 														break;
 												}
 												break;
 											case "Spd":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += (float)data.Value;														
 														break;
 												}
 												break;
 											case "Def":
-												switch (chart.EParam1)
+												switch (data.Chart.EParam1)
 												{
 													case "Inc":
-														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += (float)data.Value;														
 														break;
 													case "Dec":
-														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);														
+														StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += (float)data.Value;														
 														break;
 												}
 												break;
@@ -963,50 +952,50 @@ public class SEManager : MonoSingleton<SEManager>
 								}
 								break;
 							default:
-								switch (chart.EParam2)
+								switch (data.Chart.EParam2)
 								{
 									case "Hp":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);												
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyHpInc[Attr.Green] += (float)data.Value;												
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);												
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyHpDec[Attr.Green] += (float)data.Value;												
 												break;
 										}
 										break;
 									case "Spd":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);												
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemySpdInc[Attr.Green] += (float)data.Value;												
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);												
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemySpdDec[Attr.Green] += (float)data.Value;												
 												break;
 										}
 										break;
 									case "Def":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);												
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyDefInc[Attr.Green] += (float)data.Value;												
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);												
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.NormalEnemyDefDec[Attr.Green] += (float)data.Value;												
 												break;
 										}
 										break;
@@ -1015,117 +1004,117 @@ public class SEManager : MonoSingleton<SEManager>
 						}
 						break;
 					case "Boss":
-						switch (chart.TParam3)
+						switch (data.Chart.TParam3)
 						{
 							case "Red":
-								switch (chart.EParam2)
+								switch (data.Chart.EParam2)
 								{
 									case "Hp":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":												
-												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += (float)data.Value;
 												break;
 											case "Dec":												
-												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Spd":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":												
-												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += (float)data.Value;
 												break;
 											case "Dec":												
-												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Def":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":												
-												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += (float)data.Value;
 												break;
 											case "Dec":												
-												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += (float)data.Value;
 												break;
 										}
 										break;
 								}
 								break;
 							case "Blue":
-								switch (chart.EParam2)
+								switch (data.Chart.EParam2)
 								{
 									case "Hp":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":												
-												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += (float)data.Value;
 												break;
 											case "Dec":												
-												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Spd":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":												
-												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += (float)data.Value;
 												break;
 											case "Dec":												
-												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Def":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":												
-												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += (float)data.Value;
 												break;
 											case "Dec":												
-												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += (float)data.Value;
 												break;
 										}
 										break;
 								}
 								break;
 							case "Green":
-								switch (chart.EParam2)
+								switch (data.Chart.EParam2)
 								{
 									case "Hp":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":												
-												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += (float)data.Value;
 												break;
 											case "Dec":												
-												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Spd":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":												
-												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += (float)data.Value;
 												break;
 											case "Dec":												
-												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Def":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":												
-												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += (float)data.Value;
 												break;
 											case "Dec":												
-												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += (float)data.Value;
 												break;
 										}
 										break;
@@ -1134,50 +1123,50 @@ public class SEManager : MonoSingleton<SEManager>
 						}
 						break;
 					default:
-						switch (chart.EParam2)
+						switch (data.Chart.EParam2)
 						{
 							case "Hp":
-								switch (chart.EParam1)
+								switch (data.Chart.EParam1)
 								{
 									case "Inc":										
-										StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Red] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Blue] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemyHpInc[Attr.Green] += (float)data.Value;
 										break;
 									case "Dec":										
-										StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Red] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Blue] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemyHpDec[Attr.Green] += (float)data.Value;
 										break;
 								}
 								break;
 							case "Spd":
-								switch (chart.EParam1)
+								switch (data.Chart.EParam1)
 								{
 									case "Inc":										
-										StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Red] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Blue] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemySpdInc[Attr.Green] += (float)data.Value;
 										break;
 									case "Dec":										
-										StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Red] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Blue] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemySpdDec[Attr.Green] += (float)data.Value;
 										break;
 								}
 								break;
 							case "Def":
-								switch (chart.EParam1)
+								switch (data.Chart.EParam1)
 								{
 									case "Inc":										
-										StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Red] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Blue] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemyDefInc[Attr.Green] += (float)data.Value;
 										break;
 									case "Dec":										
-										StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Red] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Blue] += (float)data.Value;
+										StageManager.Ins.PlayerStat.BossEnemyDefDec[Attr.Green] += (float)data.Value;
 										break;
 								}
 								break;
@@ -1189,76 +1178,76 @@ public class SEManager : MonoSingleton<SEManager>
 		}
 	}
 
-	void ApplyHeroTargetSE(HeroBase target, SEChart chart)
+	void ApplyHeroTargetSE(HeroBase target, SEData data)
 	{
-		switch (chart.EffectType)
+		switch (data.Chart.EffectType)
 		{
 			case SEEffectType.StatChange:
-				switch (chart.EParam2)
+				switch (data.Chart.EParam2)
 				{
 					case "Atk":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.AtkInc += float.Parse(chart.EParam5);
+								target.Stat.AtkInc += (float)data.Value;
 								break;
 							case "Dec":
-								target.Stat.AtkDec += float.Parse(chart.EParam5);
+								target.Stat.AtkDec += (float)data.Value;
 								break;
 						}
 						break;
 					case "Spd":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.SpdInc += float.Parse(chart.EParam5);
+								target.Stat.SpdInc += (float)data.Value;
 								break;
 							case "Dec":
-								target.Stat.SpdDec += float.Parse(chart.EParam5);
+								target.Stat.SpdDec += (float)data.Value;
 								break;
 						}
 						break;					
 					case "CritChance":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.CritChanceInc += float.Parse(chart.EParam5);
+								target.Stat.CritChanceInc += (float)data.Value;
 								break;
 							case "Dec":
-								target.Stat.CritChanceDec += float.Parse(chart.EParam5);
+								target.Stat.CritChanceDec += (float)data.Value;
 								break;
 						}
 						break;
 					case "CritDmg":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.CritDmgInc += float.Parse(chart.EParam5);
+								target.Stat.CritDmgInc += (float)data.Value;
 								break;
 							case "Dec":
-								target.Stat.CritDmgDec += float.Parse(chart.EParam5);
+								target.Stat.CritDmgDec += (float)data.Value;
 								break;
 						}
 						break;
 					case "PenCount":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.PenCountInc += int.Parse(chart.EParam5);
+								target.Stat.PenCountInc += (int)data.Value;
 								break;
 							case "Dec":
-								target.Stat.PenCountDec += int.Parse(chart.EParam5);
+								target.Stat.PenCountDec += (int)data.Value;
 								break;
 						}
 						break;
 					case "CoolTime":
-						switch (chart.EParam1)
+						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.CoolTimeInc += int.Parse(chart.EParam5);
+								target.Stat.CoolTimeInc += (int)data.Value;
 								break;
 							case "Dec":
-								target.Stat.CoolTimeDec += int.Parse(chart.EParam5);
+								target.Stat.CoolTimeDec += (int)data.Value;
 								break;
 						}
 						break;
@@ -1267,127 +1256,127 @@ public class SEManager : MonoSingleton<SEManager>
 		}
 	}
 
-	void ApplyMinionTargetSE(SEChart chart)
+	void ApplyMinionTargetSE(SEData data)
 	{
-		switch (chart.EffectType)
+		switch (data.Chart.EffectType)
 		{
 			case SEEffectType.StatChange:
-				switch (chart.TParam1)
+				switch (data.Chart.TParam1)
 				{
 					case "Attr":
-						switch (chart.TParam2[0])
+						switch (data.Chart.TParam2[0])
 						{
 							case "Red":
-								switch (chart.EParam2)
+								switch (data.Chart.EParam2)
 								{
 									case "Atk":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Red] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Red] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Spd":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Red] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Red] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Red] += (float)data.Value;
 												break;
 										}
 										break;
 								}
 								break;
 							case "Blue":
-								switch (chart.EParam2)
+								switch (data.Chart.EParam2)
 								{
 									case "Atk":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Blue] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Blue] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Spd":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Blue] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Blue] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Blue] += (float)data.Value;
 												break;
 										}
 										break;
 								}
 								break;
 							case "Green":
-								switch (chart.EParam2)
+								switch (data.Chart.EParam2)
 								{
 									case "Atk":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Green] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Green] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Spd":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Green] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Green] += (float)data.Value;
 												break;
 										}
 										break;
 								}
 								break;
 							default:
-								switch (chart.EParam2)
+								switch (data.Chart.EParam2)
 								{
 									case "Atk":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Green] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Green] += (float)data.Value;
 												break;
 										}
 										break;
 									case "Spd":
-										switch (chart.EParam1)
+										switch (data.Chart.EParam1)
 										{
 											case "Inc":
-												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Green] += (float)data.Value;
 												break;
 											case "Dec":
-												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Red] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Blue] += float.Parse(chart.EParam5);
-												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Green] += float.Parse(chart.EParam5);
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Red] += (float)data.Value;
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Blue] += (float)data.Value;
+												StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Green] += (float)data.Value;
 												break;
 										}
 										break;
@@ -1396,35 +1385,35 @@ public class SEManager : MonoSingleton<SEManager>
 						}
 						break;
 					default:
-						switch (chart.EParam2)
+						switch (data.Chart.EParam2)
 						{
 							case "Atk":
-								switch (chart.EParam1)
+								switch (data.Chart.EParam1)
 								{
 									case "Inc":
-										StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Red] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Blue] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Green] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Red] += (float)data.Value;
+										StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Blue] += (float)data.Value;
+										StageManager.Ins.PlayerStat.MinionAtkInc[Attr.Green] += (float)data.Value;
 										break;
 									case "Dec":
-										StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Red] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Blue] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Green] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Red] += (float)data.Value;
+										StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Blue] += (float)data.Value;
+										StageManager.Ins.PlayerStat.MinionAtkDec[Attr.Green] += (float)data.Value;
 										break;
 								}
 								break;
 							case "Spd":
-								switch (chart.EParam1)
+								switch (data.Chart.EParam1)
 								{
 									case "Inc":
-										StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Red] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Blue] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Green] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Red] += (float)data.Value;
+										StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Blue] += (float)data.Value;
+										StageManager.Ins.PlayerStat.MinionSpdInc[Attr.Green] += (float)data.Value;
 										break;
 									case "Dec":
-										StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Red] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Blue] += float.Parse(chart.EParam5);
-										StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Green] += float.Parse(chart.EParam5);
+										StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Red] += (float)data.Value;
+										StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Blue] += (float)data.Value;
+										StageManager.Ins.PlayerStat.MinionSpdDec[Attr.Green] += (float)data.Value;
 										break;
 								}
 								break;
@@ -1435,4 +1424,22 @@ public class SEManager : MonoSingleton<SEManager>
 		}
 	}
 
+}
+
+public class SEData
+{
+	public SEChart Chart;
+	public int Lv;
+	public double Value;	
+
+	public SEData(SEChart chart, int lv)
+	{
+		Chart = chart;
+		Lv = lv;
+	}
+
+	public void SetValue(double value)
+	{		
+		Value = value;		
+	}
 }

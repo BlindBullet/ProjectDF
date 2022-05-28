@@ -32,10 +32,26 @@ public class RelicBar : MonoBehaviour
 	}
 
 	public void SetInfo()
-	{	
-		SEChart seChart = CsvData.Ins.SEChart[chart.Effect][data.Lv - 1];
+	{		
+		SEData seData = null;
+
+		for(int i = 0; i < SEManager.Ins.SeList.Count; i++)
+		{
+			if(SEManager.Ins.SeList[i].Chart.Id == chart.Effect)
+			{
+				seData = SEManager.Ins.SeList[i];
+				break;
+			}
+		}
+
+		if (seData == null)
+		{
+			seData = new SEData(CsvData.Ins.SEChart[chart.Effect], data.Lv);
+			seData.SetValue(double.Parse(seData.Chart.EParam5));
+		}
+
 		RelicIcon.SetIcon(data);
-		Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), seChart.EParam5);
+		Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), Math.Round(seData.Value, 1).ToCurrencyString());
 		SetBtn();
 	}
 

@@ -101,17 +101,25 @@ public class DialogHeroInfo : DialogController
 
 	void SetCE(string id, HeroChart chart)
 	{
-		List<SEChart> ses = CsvData.Ins.SEChart[id];
+		SEData seData = null;
 
-		SEChart se = null;
-		for(int i = 0; i < ses.Count; i++)
+		for(int i = 0; i < SEManager.Ins.SeList.Count; i++)
 		{
-			if (ses[i].Lv == chart.Grade)
-				se = ses[i];
+			if(SEManager.Ins.SeList[i].Chart.Id == id)
+			{
+				seData = SEManager.Ins.SeList[i];
+			}
 		}
 
+		if (seData == null)
+		{
+			seData = new SEData(CsvData.Ins.SEChart[id], chart.Grade);
+			seData.SetValue(double.Parse(seData.Chart.EParam5));
+		}
+			
+		
 		CEName.text = LanguageManager.Ins.SetString("CollectionEffect");
-		CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), se.EParam5);		
+		CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), Math.Round(seData.Value, 1).ToCurrencyString());		
 	}
 
 	void SetButtons(HeroData data, HeroChart chart)
@@ -183,12 +191,13 @@ public class DialogHeroInfo : DialogController
 					{
 						if (StageManager.Ins.PlayerData.UpgradeHero(data))
 						{
+							SEManager.Ins.Apply();
 							StageManager.Ins.ChangeSoulStone(-cost);
 							HeroIcon.Setup(data);
 							DialogHero._DialogHero.SetHeroes();
 							DialogHero._DialogHero.SetDeploySlots();
 							StageManager.Ins.DeployHero(data, data.SlotNo);
-							SetHeroInfo(data);
+							SetHeroInfo(data);							
 						}
 					});
 				}
@@ -230,7 +239,8 @@ public class DialogHeroInfo : DialogController
 				PurchaseBtn.onClick.AddListener(() =>
 				{
 					if (StageManager.Ins.PlayerData.SummonHero(data, chart))
-					{						
+					{
+						SEManager.Ins.Apply();
 						HeroIcon.Setup(data);
 						SetButtons(data, chart);
 						DialogHero._DialogHero.SetHeroes();
