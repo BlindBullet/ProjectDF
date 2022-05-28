@@ -6,22 +6,38 @@ using System;
 
 public static class ConstantData
 {
+	//시작 영웅 ID
 	public static ObscuredString[] StartHeroes = { "10001", "10002", "10003", "10004", "10005", };
+	//레벨업 골드 시작 비용
 	public static ObscuredDouble StartLvUpGold = 10f;
-	public static ObscuredFloat LvUpGoldGR = 1.25f;
+	//레벨업 골드 비용 증가
+	public static ObscuredFloat LvUpGoldGR = 1.35f;
+	//영웅 강화 시작 비용
 	public static ObscuredDouble StartEnchantCost = 10f;
-	public static ObscuredFloat EnchantGR = 1.3f;
-	public static ObscuredFloat HeroAtkGR = 1.2f;
-	public static ObscuredFloat EnemyHpGR = 1.3f;	
-	public static ObscuredFloat EnemyGoldGR = 1.15f;
-	public static ObscuredInt PossibleAscensionStage = 1;
+	//영웅 강화 비용 증가
+	public static ObscuredFloat EnchantGR = 1.2f;
+	//영웅 레벨업시 공격력 증가
+	public static ObscuredFloat HeroAtkGR = 1.15f;
+	//적 체력 증가
+	public static ObscuredFloat EnemyHpGR = 1.25f;	
+	//적 처치 골드 증가
+	public static ObscuredFloat EnemyGoldGR = 1.05f;
+	//환생 가능 스테이지
+	public static ObscuredInt PossibleAscensionStage = 30;
+	//환생 시작 리워드
 	public static ObscuredDouble AscensionBasicReward = 50f;
+	//환생 리워드 증가
 	public static ObscuredFloat AscensionRewardFactor = 1.1f;
+	//퀘스트 클리어 카운트에 따른 퀘스트 레벨 증가
 	public static ObscuredInt[] QuestLvPerClearCount = { 5, 20, 40, 60, 80, 100, 150,  };
-	public static ObscuredDouble TimeGold = 10f;	
+	//시간을 메인으로 했을 때 획득 골드 (적 처치 골드 증가와 연계됨)
+	public static ObscuredDouble TimeGold = 2.5f;
+	//오프라인 혹은 퀘스트 완료시 적이 1분당 몇명을 잡는 것으로 칠것인가
 	public static ObscuredInt KillEnemiesCount1Min = 10;
+	//플레이어 탭 공격 HitFx
 	public static ObscuredString PlayerTouchAtkHitFx = "TestHitFx";
-	public static ObscuredDouble OfflineTimeGold = 5f;
+	//오프라인시 획득 골드 (적 처치 골드 및 분당 처치수와 연계됨)
+	public static ObscuredDouble OfflineTimeGold = 2.5f;
 
 	public static double GetLvUpCost(int lv)
 	{		
