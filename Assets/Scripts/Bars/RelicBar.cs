@@ -46,11 +46,29 @@ public class RelicBar : MonoBehaviour
 		if (data.isOwn)
 		{
 			LvUpBtnText.text = LanguageManager.Ins.SetString("LevelUp");
-			CostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/Magicite");
+			CostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/" + chart.LvUpCostType.ToString());
 			double cost = chart.LvUpCost * (1 + Mathf.Pow(chart.LvUpCostIncRate, data.Lv));
 			Cost.text = cost.ToCurrencyString();
 
-			if (StageManager.Ins.PlayerData.Magicite >= cost)
+			bool canPurchase = false;
+
+			switch (chart.PriceCostType)
+			{
+				case CostType.Gold:
+					if (StageManager.Ins.PlayerData.Gold >= cost)
+						canPurchase = true;
+					break;
+				case CostType.Magicite:
+					if (StageManager.Ins.PlayerData.Magicite >= cost)
+						canPurchase = true;
+					break;
+				case CostType.SoulStone:
+					if (StageManager.Ins.PlayerData.SoulStone >= cost)
+						canPurchase = true;
+					break;
+			}
+
+			if (canPurchase)
 			{
 				LvUpBtn.enabled = true;
 				lvUpBtnMat.SetFloat("_GreyscaleBlend", 0f);
@@ -59,7 +77,7 @@ public class RelicBar : MonoBehaviour
 				LvUpBtn.onClick.AddListener(() =>
 				{
 					if (data.LevelUp())
-					{	
+					{
 						SEManager.Ins.Apply();
 						SetInfo();
 					}
@@ -69,7 +87,7 @@ public class RelicBar : MonoBehaviour
 			{
 				LvUpBtn.enabled = false;
 				lvUpBtnMat.SetFloat("_GreyscaleBlend", 1f);
-			}
+			}			
 		}
 		else
 		{
