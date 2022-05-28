@@ -1251,6 +1251,17 @@ public class SEManager : MonoSingleton<SEManager>
 								break;
 						}
 						break;
+					case "CoolTime":
+						switch (chart.EParam1)
+						{
+							case "Inc":
+								target.Stat.CoolTimeInc += int.Parse(chart.EParam5);
+								break;
+							case "Dec":
+								target.Stat.CoolTimeDec += int.Parse(chart.EParam5);
+								break;
+						}
+						break;
 				}
 				break;
 		}

@@ -56,9 +56,12 @@ public class RelicData
 	public bool LevelUp()
 	{
 		RelicChart chart = CsvData.Ins.RelicChart[Id];
-
-		if (Lv >= chart.MaxLv)
-			return false;
+				
+		if (chart.MaxLv > 0)
+		{
+			if (Lv >= chart.MaxLv)
+				return false;
+		}
 
 		double cost = chart.LvUpCost * (1 + Mathf.Pow(chart.LvUpCostIncRate, Lv));
 

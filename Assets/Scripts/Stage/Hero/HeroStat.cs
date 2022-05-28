@@ -20,7 +20,9 @@ public class HeroStat
 	public float CritChanceDec;
 	public float CritDmgInc;
 	public float CritDmgDec;
-	public float CooltimeDec;
+	public float CoolTimeAdd;
+	public float CoolTimeInc;
+	public float CoolTimeDec;
 	public int PenCount;
 	public int PenCountInc;
 	public int PenCountDec;
@@ -56,7 +58,9 @@ public class HeroStat
 		CritChanceDec = 0;
 		CritDmgInc = 0;
 		CritDmgDec = 0;
-		CooltimeDec = 0;
+		CoolTimeAdd = 0;
+		CoolTimeInc = 0;
+		CoolTimeDec = 0;
 		PenCount = chart.PenCount;
 		PenCountInc = 0;
 		PenCountDec = 0;
@@ -84,6 +88,7 @@ public class HeroStat
 		CritChance = CritChanceInc - CritChanceDec;
 		CritDmg = CritDmgInc - CritDmgDec;
 		PenCount = chart.PenCount + PenCountInc - PenCountDec;
+		CoolTimeAdd = CoolTimeInc - CoolTimeDec;
 
 		for(int i = 0; i < StageManager.Ins.Slots.Count; i++)
 		{

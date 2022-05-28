@@ -24,10 +24,17 @@ public class RelicIcon : MonoBehaviour
 
 	void SetLevel(RelicData data, RelicChart chart)
 	{
-		if (data.Lv >= chart.MaxLv)
-			LvText.text = "Lv." + data.Lv + "(Max)";
-		else
+		if(chart.MaxLv <= 0)
+		{
 			LvText.text = "Lv." + data.Lv;
+		}
+		else
+		{
+			if (data.Lv >= chart.MaxLv)
+				LvText.text = "Lv." + data.Lv + "(Max)";
+			else
+				LvText.text = "Lv." + data.Lv;
+		}
 	}
 
 	public void SetLock(RelicData data)

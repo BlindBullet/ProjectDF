@@ -23,6 +23,8 @@ public class SEChart
 	public string EParam3 { get; set; }
 	public string EParam4 { get; set; }
 	public string EParam5 { get; set; }
+	public double LvUpIncValue { get; set; }
+	public float LvUpIncRate { get; set; }
 
 }
 
