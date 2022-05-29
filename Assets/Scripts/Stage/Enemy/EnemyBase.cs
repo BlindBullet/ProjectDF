@@ -164,6 +164,67 @@ public class EnemyBase : MonoBehaviour
 		return atk;
 	}
 
+	public double TakeDmg(float valueP, Attr attr)
+	{
+		float def = Stat.Def;
+		double value = Stat.MaxHp * (valueP / 100f);
+
+		switch (attr)
+		{
+			case Attr.Red:
+				if (Stat.Immunes.Contains(Attr.Red))
+				{
+					value = 0f;
+					break;
+				}
+
+				if (Stat.Attr == Attr.Green)
+					value = value * 2f;
+
+				value = value - (value * (def / 100f));
+				break;
+			case Attr.Green:
+				if (Stat.Immunes.Contains(Attr.Green))
+				{
+					value = 0f;
+					break;
+				}
+
+				if (Stat.Attr == Attr.Blue)
+					value = value * 2f;
+
+				value = value - (value * (def / 100f));
+				break;
+			case Attr.Blue:
+				if (Stat.Immunes.Contains(Attr.Blue))
+				{
+					value = 0f;
+					break;
+				}
+
+				if (Stat.Attr == Attr.Red)
+					value = value * 2f;
+
+				value = value - (value * (def / 100f));
+				break;
+		}
+
+		if (value < 0f)
+			value = 0f;
+
+		Stat.CurHp -= value;
+		SetHp();
+
+		SpriteCon.Hit(false, 0f);
+
+		if (Stat.CurHp <= 0 && !isDie)
+		{
+			Die();
+		}
+
+		return value;
+	}
+
 	public void TakeHeal(float value)
 	{
 		double resultValue = Stat.MaxHp * (value / 100f);

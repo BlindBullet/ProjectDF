@@ -8,6 +8,7 @@ public class EnemySkillChart
     public EnemySkillUseConType UseConType { get; set; }
     public float UseConValue { get; set; }
     public EnemySkillTargetType Target { get; set; }
+    public float TargetRange { get; set; }
     public int TargetCount { get; set; }
     public string BeginFx { get; set; }
     public float TotalFrame { get; set; }
@@ -46,5 +47,6 @@ public enum EnemySkillHitType
     Buff,
     Debuff,
     Heal,
+    Dmg,
 
 }

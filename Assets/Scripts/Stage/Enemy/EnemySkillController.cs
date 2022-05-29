@@ -98,17 +98,21 @@ public class EnemySkillController : MonoBehaviour
 			case EnemySkillHitType.Heal:
 				target.TakeHeal(float.Parse(skill.Data.Param1));
 				break;
-			case EnemySkillHitType.Immune:
+			case EnemySkillHitType.Immune:				
 				target.BuffCon.TakeBuff(new EnemyBuff(skill.Data.Id));
 				break;
-			case EnemySkillHitType.Buff:
+			case EnemySkillHitType.Buff:				
 				target.BuffCon.TakeBuff(new EnemyBuff(skill.Data.Id));
 				break;
-			case EnemySkillHitType.Summon:
-				for(int i = 0; i < int.Parse(skill.Data.Param2); i++)
+			case EnemySkillHitType.Summon:				
+				for (int i = 0; i < int.Parse(skill.Data.Param2); i++)
 				{
 					EnemySpawner.Ins.SpawnSummonEnemy(skill.Data.Param1, this.transform.position);
 				}
+				break;
+			case EnemySkillHitType.Dmg:
+				double value = target.TakeDmg(float.Parse(skill.Data.Param1), me.Stat.Attr);
+				FloatingTextManager.Ins.ShowDmg(target.transform.position, value.ToCurrencyString(), false);
 				break;
 		}
 	}
@@ -123,13 +127,38 @@ public class EnemySkillController : MonoBehaviour
 				result.Add(me);
 				break;
 			case EnemySkillTargetType.All:
-				result = EnemyBase.Enemies;
+				if(skill.Data.TargetRange > 0)
+				{
+					for(int i = 0; i < EnemyBase.Enemies.Count; i++)
+					{
+						if(Vector2.Distance(this.transform.position, EnemyBase.Enemies[i].transform.position) <= skill.Data.TargetRange)
+						{
+							result.Add(EnemyBase.Enemies[i]);
+						}
+					}
+				}
+				else
+					result = EnemyBase.Enemies;
 				break;
 			case EnemySkillTargetType.AllNotMe:
-				for(int i = 0; i < EnemyBase.Enemies.Count; i++)
+				if (skill.Data.TargetRange > 0)
 				{
-					if (EnemyBase.Enemies[i] != me)
-						result.Add(me);
+					for (int i = 0; i < EnemyBase.Enemies.Count; i++)
+					{
+						if (Vector2.Distance(this.transform.position, EnemyBase.Enemies[i].transform.position) <= skill.Data.TargetRange)
+						{
+							if(EnemyBase.Enemies[i] != me)
+								result.Add(EnemyBase.Enemies[i]);
+						}
+					}
+				}
+				else
+				{
+					for (int i = 0; i < EnemyBase.Enemies.Count; i++)
+					{
+						if (EnemyBase.Enemies[i] != me)
+							result.Add(me);
+					}
 				}
 				break;
 			case EnemySkillTargetType.Close:

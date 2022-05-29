@@ -5,7 +5,7 @@
 10004,enemy_name_10004,enemy_desc_10004,GoblinDefander,Blue,0.6,2,180,0.5,0,12,GoblinDefander
 10005,enemy_name_10005,enemy_desc_10005,GoblinMage,Blue,0.4,1,150,0.4,0,8,GoblinMage
 10006,enemy_name_10006,enemy_desc_10006,GoblinFlagBearer,Red,0.4,1,150,0.4,0,8,GoblinFlagBearer
-10007,enemy_name_10007,enemy_desc_10007,GoblinBomber,Red,0.4,1,120,0.5,0,8,
+10007,enemy_name_10007,enemy_desc_10007,GoblinBomber,Red,0.4,1,120,0.5,0,8,GoblinBomber
 10008,enemy_name_10008,enemy_desc_10008,GoblinRaider,Green,0.5,1,75,1,0,10,
 10009,enemy_name_10009,enemy_desc_10009,GoblinReaper,Red,0.35,1,44,1.2,0,7,
 10010,enemy_name_10010,enemy_desc_10010,GoblinZombie,Red,0.4,1,150,0.4,0,8,
