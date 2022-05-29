@@ -17,7 +17,7 @@ public class Slot : MonoBehaviour
 	public TextMeshProUGUI EnchantLvText;
 	public TextMeshProUGUI AtkText;
 	Material lvUpBtnMat;	
-	SlotData data;
+	SlotData data;	
 
 	public void Init(SlotData data)
 	{

@@ -5,69 +5,24 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class SkillController : MonoBehaviour
-{	
-	public Skill Attack;
+{		
 	public Skill Skill;
 
-	HeroBase me;    
-	Coroutine cAttack = null;
-	Coroutine cAttackSeq = null;
-	Coroutine cSkill = null;
+	HeroBase me;
+	Coroutine cSkill = null;	
 
 	public void Init(HeroBase heroBase, HeroData data)
 	{
 		me = heroBase;
-		HeroChart heroChart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];
-
-		Attack = new Skill(heroChart.BasicAttack, data.Grade);
+		HeroChart heroChart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];		
 		Skill = new Skill(heroChart.Skill, data.Grade);
-
-		cAttackSeq = StartCoroutine(UseAttack());
-		StartCoroutine(ProgressSkill());
-	}
-
-	public void ReStart()
-	{
-		cAttackSeq = StartCoroutine(UseAttack());
+		
 		StartCoroutine(ProgressSkill());
 	}
 
 	public void Stop()
-	{
+	{		
 		StopAllCoroutines();
-	}
-
-	public void ChangeAttack(string id)
-	{
-		StopCoroutine(cAttackSeq);
-
-		if(cAttack != null)
-		{
-			StopCoroutine(cAttack);
-			cAttack = null;
-		}
-
-		Attack = new Skill(id, me.Data.Grade);
-		cAttackSeq = StartCoroutine(UseAttack());
-	}
-
-	IEnumerator UseAttack()
-	{
-		while (true)
-		{
-			if (me.Range.Targets.Count > 0 && EnemyBase.Enemies.Count > 0)
-			{
-				if (cSkill == null)
-				{                    
-					if (cAttack == null)
-					{
-						cAttack = StartCoroutine(SkillSequence(Attack));                 
-					}
-				}                
-			}
-
-			yield return null;
-		}
 	}
 
 	IEnumerator ProgressSkill()
@@ -98,12 +53,6 @@ public class SkillController : MonoBehaviour
 			}
 		}		
 		
-		if (cAttack != null)
-		{
-			StopCoroutine(cAttack);
-			cAttack = null;
-		}
-
 		if (cSkill == null)
 		{
 			cSkill = StartCoroutine(SkillSequence(Skill));
@@ -115,6 +64,7 @@ public class SkillController : MonoBehaviour
 
 	IEnumerator SkillSequence(Skill skill)
 	{
+		me.AttackCon.StopAttack();
 		SkillChart data = skill.Data;
 
 		if (data.CastFx != null)
@@ -128,7 +78,7 @@ public class SkillController : MonoBehaviour
 		if (data.Anim == "Attack")
 		{
 			if (me.Range.Targets.Count > 0)
-				me.Tween.Attack(me.Stat.Spd > 1f ? me.Stat.Spd : 1f, me.Range.Targets[0]);
+				me.Tween.Skill(me.Stat.Spd > 1f ? me.Stat.Spd : 1f, me.Range.Targets[0]);
 		}
 		else
 		{
@@ -183,14 +133,10 @@ public class SkillController : MonoBehaviour
 		}	
 		
 		skill.InitCoolTime(skill.Data.CoolDealy);
-
-		cAttack = null;
-		cSkill = null;        
+				
+		cSkill = null;
+		me.AttackCon.Attack();
 	}
-
-	
-
-	
 
 }
 

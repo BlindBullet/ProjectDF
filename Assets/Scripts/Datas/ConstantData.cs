@@ -40,6 +40,8 @@ public static class ConstantData
 	public static ObscuredDouble OfflineTimeGold = 2.5f;
 	//퀘스트탭이 열릴 환생 카운트
 	public static ObscuredInt OpenQuestAscensionCount = 0;
+	//슬롯 파워업 가능 레벨
+	public static ObscuredInt[] SlotPowerUpPossibleLv = { 5, 10, 25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, };	
 
 	public static double GetLvUpCost(int lv)
 	{		

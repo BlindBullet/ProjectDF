@@ -15,13 +15,24 @@ public class HeroTween : MonoBehaviour
 		originPos = Icon.transform.position;        
 	}
 
-	public void Attack(float spd, EnemyBase target)
+	public void Skill(float spd, EnemyBase target)
 	{
 		Vector3 dir = (target.transform.position - Icon.position).normalized;
 		
 		Sequence seq = DOTween.Sequence();
 		seq.Append(Icon.DOMove(new Vector2(originPos.x + (dir.x / 5f), originPos.y + (dir.y / 5f)), 0.1f / spd).SetEase(Ease.OutQuad))
 			.Append(Icon.DOMove(originPos, 0.1f / spd));
+	}
+
+	public void AttackMove(float spd, EnemyBase target)
+	{
+		Vector3 dir = (target.transform.position - Icon.position).normalized;
+		Icon.DOMove(new Vector2(originPos.x + (dir.x / 5f), originPos.y + (dir.y / 5f)), 0.1f / spd).SetEase(Ease.OutQuad);
+	}
+
+	public void BackToOriginPos(float spd)
+	{
+		Icon.DOMove(originPos, 0.1f / spd);
 	}
 
 	public void Stop()

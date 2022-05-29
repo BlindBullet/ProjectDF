@@ -9,12 +9,11 @@ public class HeroChart
 	public string StrDesc { get; set; }
 	public string Model { get; set; }
 	public Attr Attr { get; set; }
-	public int Grade { get; set; }
-	public string Origin { get; set; }
+	public int Grade { get; set; }	
 	public double Atk { get; set; }
 	public float Spd { get; set; }	
 	public int PenCount { get; set; }
-	public string BasicAttack { get; set; }
+	public string BasicAtkProjectile { get; set; }
 	public string Skill { get; set; }
 	public CostType CostType { get; set; }
 	public double Cost { get; set; }
