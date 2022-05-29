@@ -22,8 +22,7 @@ public class SkillChart
 
 public enum SkillType
 {
-    None,
-    Attack,
+    None,    
     Active,    
     ActiveEnemyTarget,
 

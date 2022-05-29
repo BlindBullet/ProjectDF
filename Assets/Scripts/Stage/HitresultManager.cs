@@ -187,11 +187,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			{
 				case SkillType.None:
 					dir = Vector2.up;
-					break;
-				case SkillType.Attack:
-					if(target != null)
-						dir = target.transform.position - caster.ProjectileAnchor.position;
-					break;
+					break;				
 				case SkillType.Active:
 					dir = Vector2.up;
 					break;
@@ -201,8 +197,6 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 					break;
 			}
 
-			//float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-			//caster.ProjectileAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 			dir.Normalize();
 
 			//프로젝타일 발사
@@ -211,7 +205,6 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			for (int i = 0; i < projectiles.Count; i++)
 			{
 				ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
-				//projectile.transform.rotation = Quaternion.AngleAxis(angle - 90 + projectiles[i].Angle, Vector3.forward);
 				projectile.transform.position = caster.ProjectileAnchor.position.WithX(caster.ProjectileAnchor.position.x + projectiles[i].PosX);
 				projectile.Setup(projectiles[i], hitresults, caster, dir, target);
 			}
@@ -235,11 +228,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			{
 				case SkillType.None:
 					dir = Vector2.up;
-					break;
-				case SkillType.Attack:
-					if (target != null)
-						dir = target.transform.position - minion.ProjectileAnchor.position;
-					break;
+					break;				
 				case SkillType.Active:
 					dir = Vector2.up;
 					break;

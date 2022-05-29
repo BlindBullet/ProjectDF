@@ -83,6 +83,7 @@ public class HeroBase : MonoBehaviour
 	public void Destroy()
 	{
 		Tween.Stop();
+		AttackCon.Stop();
 		SkillCon.Stop();
 		Heroes.Remove(this);
 		Destroy(this.gameObject);
@@ -90,11 +91,13 @@ public class HeroBase : MonoBehaviour
 
 	public void Stop()
 	{
+		AttackCon.Stop();
 		SkillCon.Stop();
 	}
 
 	public void Lose()
 	{
+		AttackCon.Stop();
 		SkillCon.Stop();
 		StartCoroutine(Ui.Die());		
 	}
