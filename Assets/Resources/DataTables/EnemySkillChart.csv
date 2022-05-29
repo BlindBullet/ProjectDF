@@ -2,7 +2,6 @@
 GoblinChampion,Die,,Me,,,,30,15,,Summon,10001,5,,
 GoblinMage,CoolTime,10,Me,,,ZombifyCurse,30,15,,Summon,10001,2,,
 GoblinFlagBearer,CoolTime,10,Close,,3,ZombifyCurse,30,15,,Buff,Spd,10,5,
-GoblinDefander,CoolTime,10,Me,,,,30,15,,Buff,Def,30,5,
 GoblinChampionB,Die,,Me,,,,30,15,,Summon,10003,5,,
 GoblinMageB,CoolTime,10,Me,,,ZombifyCurse,30,15,,Summon,10010,2,,
 GoblinRaiderB,CoolTime,10,Me,,,ZombifyCurse,30,15,,Summon,10008,3,,

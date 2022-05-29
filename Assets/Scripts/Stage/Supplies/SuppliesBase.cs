@@ -23,9 +23,6 @@ public class SuppliesBase : MonoBehaviour
 
 	public void Setup(SuppliesChart chart)
 	{
-		IconImg.material = new Material(IconImg.material);
-		mat = IconImg.material;
-
 		data = chart;
 		IconImg.sprite = Resources.Load<Sprite>("Sprites/Cost/" + chart.Icon);
 		IconImg.transform.localScale = new Vector2(chart.IconSize, chart.IconSize);
@@ -33,8 +30,6 @@ public class SuppliesBase : MonoBehaviour
 
 		min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
 		max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-		mat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
 
 		SetPos();
 		Move();
