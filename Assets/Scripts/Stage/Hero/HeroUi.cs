@@ -19,6 +19,8 @@ public class HeroUi : MonoBehaviour
 	public _2dxFX_DestroyedFX ImgDestroyFx;
 	public _2dxFX_DestroyedFX BgDestroyFx;
 	public _2dxFX_DestroyedFX FrameDestroyFx;
+	public TextMeshProUGUI SkillReadyText;
+	bool skillReady = false;
 
 	public void SetUp(HeroData data, SlotData slotData)
 	{
@@ -40,12 +42,23 @@ public class HeroUi : MonoBehaviour
 	public void SetCoolTimeFrame(float value)
 	{
 		SkillCoolTimeFrame.fillAmount = value;
+
+		if(value >= 1f && !skillReady)
+		{
+			ShowSkillReadyText();
+		}
 	}
 		
 	void SetIconBtn()
 	{
 		IconBtn.onClick.RemoveAllListeners();
-		IconBtn.onClick.AddListener(() => me.SkillCon.UseSkill());
+		IconBtn.onClick.AddListener(() => 
+		{
+			if (me.SkillCon.UseSkill())
+			{
+				CloseSkillReadyText();
+			}
+		});
 	}
 
 	public void SetStars(int grade)
@@ -54,6 +67,20 @@ public class HeroUi : MonoBehaviour
 		{
 			Stars[i].SetActive(true);
 		}
+	}
+
+	public void ShowSkillReadyText()
+	{
+		skillReady = true;
+		SkillReadyText.gameObject.SetActive(true);
+		SkillReadyText.DOFade(0f, 1f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo).SetId("ReadyText" + me.Data.Id);
+	}
+
+	public void CloseSkillReadyText()
+	{
+		DOTween.Kill("ReadyText" + me.Data.Id);
+		SkillReadyText.gameObject.SetActive(false);
+		skillReady = false;
 	}
 
 	public IEnumerator Die()

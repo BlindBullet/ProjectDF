@@ -84,17 +84,17 @@ public class SkillController : MonoBehaviour
 		}
 	}
 
-	public void UseSkill()
+	public bool UseSkill()
 	{
 		if (Skill.CoolTime < Skill._CoolTime)
-			return;
+			return false;
 
 		if(Skill.Data.Type == SkillType.ActiveEnemyTarget)
 		{
 			if (me.Range.Targets.Count <= 0 || EnemyBase.Enemies.Count <= 0)
 			{
 				DialogManager.Ins.OpenCautionBar("cant_use_skill_desc_1");				
-				return;
+				return false;
 			}
 		}		
 		
@@ -106,8 +106,11 @@ public class SkillController : MonoBehaviour
 
 		if (cSkill == null)
 		{
-			cSkill = StartCoroutine(SkillSequence(Skill));			
-		}		
+			cSkill = StartCoroutine(SkillSequence(Skill));
+			return true;
+		}
+
+		return false;
 	}
 
 	IEnumerator SkillSequence(Skill skill)
