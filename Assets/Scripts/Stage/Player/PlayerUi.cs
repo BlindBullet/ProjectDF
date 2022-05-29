@@ -87,7 +87,7 @@ public class PlayerUi : MonoBehaviour
 		QuestBtnText.text = LanguageManager.Ins.SetString("Quest");
 		QuestBtn.onClick.RemoveAllListeners();
 
-		if (StageManager.Ins.PlayerData.AscensionCount >= 1)
+		if (StageManager.Ins.PlayerData.AscensionCount >= ConstantData.OpenQuestAscensionCount)
 		{
 			QuestLockObj.SetActive(false);			
 			QuestBtn.onClick.AddListener(() =>

@@ -19,9 +19,9 @@ public static class ConstantData
 	//영웅 레벨업시 공격력 증가
 	public static ObscuredFloat HeroAtkGR = 1.15f;
 	//적 체력 증가
-	public static ObscuredFloat EnemyHpGR = 1.15f;
+	public static ObscuredFloat EnemyHpGR = 1.2f;
 	//적 처치 골드 증가
-	public static ObscuredFloat EnemyGoldGR = 1.15f;
+	public static ObscuredFloat EnemyGoldGR = 1.1f;
 	//환생 가능 스테이지
 	public static ObscuredInt PossibleAscensionStage = 30;
 	//환생 시작 리워드
@@ -38,6 +38,8 @@ public static class ConstantData
 	public static ObscuredString PlayerTouchAtkHitFx = "TestHitFx";
 	//오프라인시 획득 골드 (적 처치 골드 및 분당 처치수와 연계됨)
 	public static ObscuredDouble OfflineTimeGold = 2.5f;
+	//퀘스트탭이 열릴 환생 카운트
+	public static ObscuredInt OpenQuestAscensionCount = 0;
 
 	public static double GetLvUpCost(int lv)
 	{		
