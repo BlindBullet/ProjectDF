@@ -29,7 +29,7 @@ public class EnemyStat
 
 		if (isBoss)
 		{
-			MaxHp = MaxHp * (MaxHp + ((playerStat.BossEnemyHpInc[Attr] - playerStat.BossEnemyHpDec[Attr]) / 100f));
+			MaxHp = MaxHp + (MaxHp * ((playerStat.BossEnemyHpInc[Attr] - playerStat.BossEnemyHpDec[Attr]) / 100f));			
 			Spd = Spd + (Spd * ((playerStat.BossEnemySpdInc[Attr] - playerStat.BossEnemySpdDec[Attr]) / 100f));
 			Def = Def + (Def * ((playerStat.BossEnemySpdInc[Attr] - playerStat.BossEnemySpdDec[Attr]) / 100f));
 			Gold = Gold + (Gold * ((playerStat.BossEnemyGoldInc[Attr] - playerStat.BossEnemyGoldDec[Attr]) / 100f));
