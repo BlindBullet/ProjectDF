@@ -15,9 +15,11 @@ public class EnemySpriteController : MonoBehaviour
 	Material bgMat;
 	Vector2 originPos;
 	public SpriteMask Mask;
+	EnemyBase me;
 
-	public void Setup(EnemyChart chart)
-	{		
+	public void Setup(EnemyBase me, EnemyChart chart)
+	{
+		this.me = me;
 		Model.transform.localPosition = Vector3.zero;
 		frameMat = Frame.transform.GetComponent<Renderer>().material;
 		modelMat = Model.transform.GetComponent<Renderer>().material;
@@ -32,8 +34,8 @@ public class EnemySpriteController : MonoBehaviour
 		Bg.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Attr.ToString());
 	}
 
-	public void Hit(bool isCrit, float stiffTime)
-	{		
+	public IEnumerator Hit(bool isCrit, float stiffTime)
+	{	
 		modelMat.SetColor("_HitEffectColor", Color.red);
 		modelMat.SetFloat("_HitEffectBlend", 0.6f);
 		modelMat.DOFloat(0f, "_HitEffectBlend", 0.5f).SetEase(Ease.InOutBounce);
@@ -47,6 +49,9 @@ public class EnemySpriteController : MonoBehaviour
 			Model.transform.DOShakePosition(0.5f, isCrit ? new Vector2(0.25f, 0.25f) : new Vector2(0.05f, 0.05f), isCrit ? 25 : 10, 0).SetEase(Ease.InOutBounce);
 		}
 
+		yield return new WaitForSeconds(0.5f);
+
+		me.cHit = null;
 		Model.transform.localPosition = Vector3.zero;
 	}
 

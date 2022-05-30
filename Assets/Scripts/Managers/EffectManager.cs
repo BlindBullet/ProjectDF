@@ -59,6 +59,7 @@ public class EffectManager : SingletonObject<EffectManager>
 	private IEnumerator EffectConditionSequence(Transform trf, float duration)
 	{
 		yield return new WaitForSeconds(duration);
+		trf.localScale = Vector3.one;
 		trf.PushToPool();
 	}
 
@@ -72,7 +73,7 @@ public class EffectManager : SingletonObject<EffectManager>
 
 		FxChart fxData = CsvData.Ins.FxChart[id];
 		GameObject fx = SpawnEffect(fxData.FxResource);
-
+		fx.transform.localScale = fx.transform.localScale * fxData.Size;
 		if (fxData.SpawnAnchor == "" || fxData.SpawnAnchor == "None" || fxData.SpawnAnchor == null)
 		{
 			fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
@@ -108,7 +109,7 @@ public class EffectManager : SingletonObject<EffectManager>
 
 		FxChart fxData = CsvData.Ins.FxChart[id];
 		GameObject fx = SpawnEffect(fxData.FxResource, durationTime);
-
+		fx.transform.localScale = fx.transform.localScale * fxData.Size;
 		if (fxData.SpawnAnchor == "" || fxData.SpawnAnchor == "None" || fxData.SpawnAnchor == null)
 		{
 			fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
@@ -144,7 +145,7 @@ public class EffectManager : SingletonObject<EffectManager>
 
 		FxChart fxData = CsvData.Ins.FxChart[id];
 		GameObject fx = SpawnEffect(fxData.FxResource);
-
+		fx.transform.localScale = fx.transform.localScale * fxData.Size;
 		if (fxData.SpawnAnchor == "" || fxData.SpawnAnchor == "None")
 		{
 			fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
@@ -180,6 +181,7 @@ public class EffectManager : SingletonObject<EffectManager>
 
 		FxChart fxData = CsvData.Ins.FxChart[id];
 		GameObject fx = SpawnEffect(fxData.FxResource);
+		fx.transform.localScale = fx.transform.localScale * fxData.Size;
 
 		if (fxData.SpawnAnchor == "" || fxData.SpawnAnchor == "None")
 		{
@@ -204,7 +206,7 @@ public class EffectManager : SingletonObject<EffectManager>
 
 		FxChart fxData = CsvData.Ins.FxChart[id];
 		GameObject fx = SpawnEffect(fxData.FxResource);
-
+		fx.transform.localScale = fx.transform.localScale * fxData.Size;
 		fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
 
 		if (fxData.SoundResource != "")
@@ -221,7 +223,7 @@ public class EffectManager : SingletonObject<EffectManager>
 
 		FxChart fxData = CsvData.Ins.FxChart[id];
 		GameObject fx = SpawnEffect(fxData.FxResource);
-
+		fx.transform.localScale = fx.transform.localScale * fxData.Size;
 		fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
 
 		if (fxData.SoundResource != "")

@@ -65,6 +65,9 @@ public class SlotData
 			case AtkUpgradeType.Boom:
 				AtkData.Boom++;
 				break;
+			case AtkUpgradeType.AtkUp:
+				AtkData.AtkUp++;
+				break;
 		}
 
 		UpgradeLv++;

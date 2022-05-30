@@ -42,7 +42,7 @@ public class AttackController : MonoBehaviour
 				
 				if(data.Multi > 0)
 				{
-					for (int i = 0; i < data.Multi; i++)
+					for (int i = 0; i < data.Multi + 1; i++)
 					{
 						CalcAttackData(chart.BasicAtkProjectile, dir, target);
 						yield return new WaitForSeconds(0.1f / me.Stat.Spd);
@@ -66,7 +66,56 @@ public class AttackController : MonoBehaviour
 
 	void CalcAttackData(string model, Vector2 dir, EnemyBase target = null)
 	{
-		CreateProjectile(model, 0, 0, dir, target);
+		switch (data.Front)
+		{
+			case 1:
+				CreateProjectile(model, 0, 0, dir, target);
+				break;
+			case 2:
+				CreateProjectile(model, -0.15f, 0, dir, target);
+				CreateProjectile(model, 0.15f, 0, dir, target);
+				break;
+			case 3:
+				CreateProjectile(model, -0.3f, 0, dir, target);
+				CreateProjectile(model, 0, 0, dir, target);
+				CreateProjectile(model, 0.3f, 0, dir, target);
+				break;
+			case 4:
+				CreateProjectile(model, -0.3f, 0, dir, target);
+				CreateProjectile(model, -0.15f, 0, dir, target);
+				CreateProjectile(model, 0.15f, 0, dir, target);
+				CreateProjectile(model, 0.3f, 0, dir, target);
+				break;
+			case 5:
+				CreateProjectile(model, -0.6f, 0, dir, target);
+				CreateProjectile(model, -0.3f, 0, dir, target);
+				CreateProjectile(model, 0, 0, dir, target);
+				CreateProjectile(model, 0.3f, 0, dir, target);
+				CreateProjectile(model, 0.6f, 0, dir, target);
+				break;
+		}
+
+		switch (data.Diagonal)
+		{
+			case 1:
+				CreateProjectile(model, 0, 10, dir, target);
+				CreateProjectile(model, 0, -10, dir, target);
+				break;
+			case 2:
+				CreateProjectile(model, 0, 10, dir, target);
+				CreateProjectile(model, 0, -10, dir, target);
+				CreateProjectile(model, 0, 20, dir, target);
+				CreateProjectile(model, 0, -20, dir, target);
+				break;
+			case 3:
+				CreateProjectile(model, 0, 10, dir, target);
+				CreateProjectile(model, 0, -10, dir, target);
+				CreateProjectile(model, 0, 20, dir, target);
+				CreateProjectile(model, 0, -20, dir, target);
+				CreateProjectile(model, 0, 30, dir, target);
+				CreateProjectile(model, 0, -30, dir, target);
+				break;
+		}		
 	}
 
 	void CreateProjectile(string model, float posX, float angle, Vector2 dir, EnemyBase target = null)

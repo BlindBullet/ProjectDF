@@ -127,8 +127,7 @@ public class BattleInputManager : MonoBehaviour
 						for (int i = 0; i < projectiles.Count; i++)
 						{
 							ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
-							projectile.transform.position = pos;
-							
+							projectile.transform.position = pos;							
 							projectile.Setup(projectiles[i], _atk, dir, _target);
 						}
 						

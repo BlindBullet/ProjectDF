@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModelTrf: {fileID: 8676394528363445813}
+  Trail: []
 --- !u!58 &2832059500645241473
 CircleCollider2D:
   m_ObjectHideFlags: 0

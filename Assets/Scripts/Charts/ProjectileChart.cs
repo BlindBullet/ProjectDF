@@ -6,7 +6,9 @@ public class ProjectileChart
 {
     public string Id { get; set; }
     public bool OnlyHitTarget { get; set; }
-    public MoveType MoveType { get; set; }        
+    public MoveType MoveType { get; set; }   
+    public int PenCount { get; set; }
+    public int Bounce { get; set; }
     public float PosX { get; set; }
     public float Angle { get; set; }
     public float Speed { get; set; }    

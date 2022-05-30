@@ -10,14 +10,18 @@ public class AttackData
 	public int Piercing;
 	public int Multi;
 	public int Boom;
+	public int Bounce;
+	public int AtkUp;
 
 	public AttackData()
 	{
 		Front = 1;
-		Diagonal = 0;
-		Piercing = 0;
+		Diagonal = 2;
+		Piercing = 1;
 		Multi = 0;
 		Boom = 0;
+		Bounce = 5;
+		AtkUp = 0;
 	}
 
 }
@@ -29,5 +33,7 @@ public enum AtkUpgradeType
 	Piercing,
 	Multi,
 	Boom,
+	Bounce,
+	AtkUp,
 
 }

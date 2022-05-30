@@ -10,14 +10,16 @@ public class ProjectileController : MonoBehaviour
 	List<HitresultChart> hitresults = new List<HitresultChart>();
 	public Transform ModelTrf;
 	public TrailRenderer[] Trail;
+	Rigidbody2D Rb;
 	HeroBase caster;
 	MinionBase minion;
 	int penCount = 0;
+	int bounce = 0;
 	Vector2 dir;
 	EnemyBase target;
 	Vector2 targetPos;
 	Vector2 pos;
-	double playerAtk = 0f;
+	double atk = 0f;
 	bool existTarget;
 	float angle;
 	MoveType moveType;
@@ -25,8 +27,10 @@ public class ProjectileController : MonoBehaviour
 
 	float mTimerCurrent = 0f;	
 
+	//영웅 스킬로 생성되는 프로젝타일
 	public void Setup(ProjectileChart chart, List<HitresultChart> hitresults, HeroBase caster, Vector2 dir, EnemyBase target = null)
 	{
+		Rb = GetComponent<Rigidbody2D>();
 		pos = new Vector2(this.transform.position.x, this.transform.position.y);
 		data = new ProjectileData();
 		data.Setup(chart);
@@ -49,17 +53,17 @@ public class ProjectileController : MonoBehaviour
 		if (data.BeginFx != null)
 			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
 
-		penCount = caster.Stat.PenCount;
+		penCount = data.PenCount;
+		bounce = data.Bounce;
 		mTimerCurrent = 0f;
 
 		StartCoroutine(MoveSequence());
 	}
 
+	//소환수 스킬로 생성되는 프로젝타일
 	public void Setup(ProjectileChart chart, List<HitresultChart> hitresults, MinionBase minion, Vector2 dir, EnemyBase target = null)
-	{
-		//프로젝타일을 만든 주체가 소환수인지 영웅인지를 구분
-		//소환수의 히트리절트를 전달하는 메서드 추가
-		
+	{		
+		Rb = GetComponent<Rigidbody2D>();
 		pos = new Vector2(this.transform.position.x, this.transform.position.y);
 		data = new ProjectileData();
 		data.Setup(chart);
@@ -82,17 +86,17 @@ public class ProjectileController : MonoBehaviour
 		if (data.BeginFx != null)
 			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
 
-		penCount = minion.Stat.PenCount;
+		penCount = data.PenCount;
+		bounce = data.Bounce;
 		mTimerCurrent = 0f;
 
 		StartCoroutine(MoveSequence());
 	}
 
+	//플레이어 터치로 생성되는 프로젝타일
 	public void Setup(ProjectileChart chart, double atk, Vector2 dir, EnemyBase target = null)
-	{
-		//프로젝타일을 만든 주체가 소환수인지 영웅인지를 구분
-		//소환수의 히트리절트를 전달하는 메서드 추가
-
+	{		
+		Rb = GetComponent<Rigidbody2D>();
 		pos = new Vector2(this.transform.position.x, this.transform.position.y);
 		data = new ProjectileData();
 		data.Setup(chart);
@@ -100,7 +104,7 @@ public class ProjectileController : MonoBehaviour
 		this.caster = null;
 		this.minion = null;
 		this.dir = dir;		
-		playerAtk = atk;		
+		this.atk = atk;		
 
 		if (target == null)
 		{
@@ -116,15 +120,17 @@ public class ProjectileController : MonoBehaviour
 		if (data.BeginFx != null)
 			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
 
-		penCount = 0;
+		penCount = data.PenCount;
+		bounce = data.Bounce;
 		mTimerCurrent = 0f;
-
+				
 		StartCoroutine(MoveSequence());
 	}
 
 	//영웅 일반 공격
 	public void Setup(HeroBase caster, AttackData attackData, float angle, Vector2 dir, EnemyBase target = null)
 	{
+		Rb = GetComponent<Rigidbody2D>();
 		pos = new Vector2(this.transform.position.x, this.transform.position.y);
 
 		data = new ProjectileData();
@@ -134,6 +140,9 @@ public class ProjectileController : MonoBehaviour
 		this.minion = null;
 		this.dir = dir;
 
+		atk = caster.Stat.Atk;
+		atk = atk + (atk * (attackData.AtkUp / 5f));
+
 		if (target == null)
 		{
 			existTarget = false;
@@ -148,7 +157,8 @@ public class ProjectileController : MonoBehaviour
 		if (data.BeginFx != null)
 			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
 
-		penCount = caster.Stat.PenCount + attackData.Piercing;
+		penCount = data.PenCount;
+		bounce = data.Bounce;
 		mTimerCurrent = 0f;
 
 		StartCoroutine(MoveSequence());
@@ -163,7 +173,7 @@ public class ProjectileController : MonoBehaviour
 				Trail[i].Clear();
 			}
 		}
-
+		
 		float time = 0;
 		Vector3 _pos;
 		dir = Quaternion.Euler(0, 0, data.Angle) * dir;
@@ -198,7 +208,7 @@ public class ProjectileController : MonoBehaviour
 			switch (data.MoveType)
 			{
 				case MoveType.Direct:
-					transform.Translate(dir * data.Speed * Time.deltaTime);
+					Rb.velocity = dir * data.Speed;					
 					break;
 				case MoveType.Curve:
 					mTimerCurrent += Time.deltaTime * (data.Speed / 20f);
@@ -246,7 +256,7 @@ public class ProjectileController : MonoBehaviour
 						HitresultManager.Ins.RunResultGroup(destroyResultGroups, transform.position, caster);
 					}
 				}
-
+				
 				DestroySequence();
 			}				
 
@@ -255,17 +265,8 @@ public class ProjectileController : MonoBehaviour
 	}
 
 	void DestroySequence()
-	{
-		this.transform.position = new Vector3(0, -100f, 0);
-
-		if (Trail.Length > 0)
-		{
-			for (int i = 0; i < Trail.Length; i++)
-			{
-				Trail[i].Clear();
-			}
-		}
-		
+	{		
+		this.transform.position = new Vector3(0, -100f, 0);		
 		ObjectManager.Ins.Push<ProjectileController>(this);
 	}
 
@@ -283,8 +284,26 @@ public class ProjectileController : MonoBehaviour
 		return f;
 	}
 
-	public void OnTriggerEnter2D(Collider2D collision)
+	private void OnCollisionEnter2D(Collision2D collision)
 	{
+		if (collision.transform.CompareTag("Wall"))
+		{			
+			if (bounce > 0)
+			{
+				bounce--;
+				atk = atk * 0.5f;
+				dir = Vector2.Reflect(dir, collision.contacts[0].normal);				
+				return;
+			}
+			else
+			{
+				DestroySequence();
+			}
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D collision)
+	{	
 		if (collision.CompareTag("Enemy"))
 		{	
 			EnemyBase enemyBase = collision.GetComponent<EnemyBase>();
@@ -307,16 +326,16 @@ public class ProjectileController : MonoBehaviour
 				HitresultManager.Ins.SendHitresult(hitresults, enemyBase, minion);
 			}
 			else if(caster == null && minion == null && hitresults == null)
-			{
+			{				
 				EffectManager.Ins.ShowFx(ConstantData.PlayerTouchAtkHitFx, enemyBase.transform);
-				double resultDmg = enemyBase.TakeDmg(playerAtk, Attr.None, false, 0f);
+				double resultDmg = enemyBase.TakeDmg(atk, Attr.None, false, 0f);
 				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), false);
 			}
 			else if(caster != null && minion == null && hitresults == null)
 			{
 				EffectManager.Ins.ShowFx("TestHitFx", enemyBase.transform);
 				bool isCrit = Random.Range(0, 100f) <= caster.Stat.CritChance ? true : false;
-				double resultDmg = enemyBase.TakeDmg(caster.Stat.Atk, caster.Stat.Attr, isCrit, 0f);
+				double resultDmg = enemyBase.TakeDmg(atk, caster.Stat.Attr, isCrit, 0f);
 				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), false);
 			}
 			
@@ -327,15 +346,20 @@ public class ProjectileController : MonoBehaviour
 					EffectManager.Ins.ShowFx(data.HitDestroyFx, pos);
 				}
 
-				if (data.HitDestroyResult != null && caster != null && minion == null)
+				if (data.HitDestroyResult != null && caster != null && minion == null && hitresults != null)
 				{
 					List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitDestroyResult];
 					HitresultManager.Ins.RunResultGroup(hitResultGroups, pos, caster);
 				}
-				else if(data.HitDestroyResult != null && caster == null && minion != null)
+				else if(data.HitDestroyResult != null && caster == null && minion != null && hitresults != null)
 				{						
 					List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitDestroyResult];
 					HitresultManager.Ins.RunResultGroup(hitResultGroups, pos, minion);
+				}
+				else if(data.HitDestroyResult != null && caster != null && minion == null && hitresults == null)
+				{
+					List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitDestroyResult];
+					HitresultManager.Ins.RunResultGroup(hitResultGroups, pos, caster);
 				}
 
 				penCount--;
@@ -354,6 +378,8 @@ public class ProjectileData
 	public MoveType MoveType;	
 	public float Angle;
 	public float Speed;
+	public int PenCount;
+	public int Bounce;
 	public float[] BPos1;
 	public float[] BPos1R;
 	public float[] BPos2;
@@ -368,7 +394,9 @@ public class ProjectileData
 	public void Setup(ProjectileChart chart)
 	{
 		OnlyHitTarget = chart.OnlyHitTarget;
-		MoveType = chart.MoveType;		
+		MoveType = chart.MoveType;
+		PenCount = chart.PenCount;
+		Bounce = chart.Bounce;
 		Angle = chart.Angle;
 		Speed = chart.Speed;
 		BPos1 = chart.BPos1;
@@ -387,40 +415,99 @@ public class ProjectileData
 	{		
 		OnlyHitTarget = false;
 		MoveType = MoveType.Direct;
+		PenCount = data.Piercing;
+		Bounce = data.Bounce;
 		Angle = angle;
 		Speed = 20f;
 		Lifetime = 5f;
 		DestroyFx = null;
 		DestroyResult = null;
+		BeginFx = null;
+		HitDestroyFx = null;
+		HitDestroyResult = null;
 
 		switch (caster.Stat.Attr)
 		{
-			case Attr.Red:
-				BeginFx = null;
-				HitDestroyFx = null;
+			case Attr.Red:				
+				switch (data.Boom)
+				{
+					case 1:
+						HitDestroyFx = "boom_red_1";
+						HitDestroyResult = "boom_red_1";
+						break;
+					case 2:
+						HitDestroyFx = "boom_red_2";
+						HitDestroyResult = "boom_red_2";
+						break;
+					case 3:
+						HitDestroyFx = "boom_red_3";
+						HitDestroyResult = "boom_red_3";
+						break;
+					case 4:
+						HitDestroyFx = "boom_red_4";
+						HitDestroyResult = "boom_red_4";
+						break;
+					case 5:
+						HitDestroyFx = "boom_red_5";
+						HitDestroyResult = "boom_red_5";
+						break;
+				}
 				break;
 			case Attr.Blue:
-				BeginFx = null;
-				HitDestroyFx = null;
+				BeginFx = null;				
+				switch (data.Boom)
+				{
+					case 1:
+						HitDestroyFx = "boom_blue_1";
+						HitDestroyResult = "boom_blue_1";
+						break;
+					case 2:
+						HitDestroyFx = "boom_blue_2";
+						HitDestroyResult = "boom_blue_2";
+						break;
+					case 3:
+						HitDestroyFx = "boom_blue_3";
+						HitDestroyResult = "boom_blue_3";
+						break;
+					case 4:
+						HitDestroyFx = "boom_blue_4";
+						HitDestroyResult = "boom_blue_4";
+						break;
+					case 5:
+						HitDestroyFx = "boom_blue_5";
+						HitDestroyResult = "boom_blue_5";
+						break;
+				}
 				break;
 			case Attr.Green:
-				BeginFx = null;
-				HitDestroyFx = null;
+				BeginFx = null;				
+				switch (data.Boom)
+				{
+					case 1:
+						HitDestroyFx = "boom_green_1";
+						HitDestroyResult = "boom_green_1";						
+						break;
+					case 2:
+						HitDestroyFx = "boom_green_2";
+						HitDestroyResult = "boom_green_2";
+						break;
+					case 3:
+						HitDestroyFx = "boom_green_3";
+						HitDestroyResult = "boom_green_3";
+						break;
+					case 4:
+						HitDestroyFx = "boom_green_4";
+						HitDestroyResult = "boom_green_4";
+						break;
+					case 5:
+						HitDestroyFx = "boom_green_5";
+						HitDestroyResult = "boom_green_5";
+						break;
+				}
 				break;
 		}
 
-		switch (data.Boom)
-		{
-			case 1:
-				HitDestroyResult = null;
-				break;
-			case 2:
-				HitDestroyResult = null;
-				break;
-			case 3:
-				HitDestroyResult = null;
-				break;
-		}
+		
 
 	}
 

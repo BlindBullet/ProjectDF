@@ -9,6 +9,7 @@ TagManager:
   - Minion
   - Field
   - Supplies
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -20,6 +21,8 @@ TagManager:
   - Minion
   - Field
   - Supplies
+  - Wall
+  - OnlyWall
   - 
   - 
   - 
@@ -30,9 +33,7 @@ TagManager:
   - 
   - 
   - 
-  - Layer 1
-  - Layer 2
-  - Layer 3
+  - 
   - 
   - 
   - 

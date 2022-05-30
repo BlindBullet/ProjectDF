@@ -6,6 +6,7 @@ public class FxChart
 {
     public string Id { get; set; }
     public string FxResource { get; set; }
+    public float Size { get; set; }
     public string SpawnAnchor { get; set; }
     public float SpawnPosX { get; set; }
     public float SpawnPosY { get; set; }

@@ -25,7 +25,7 @@ public class EnemyBase : MonoBehaviour
 	public bool isStunned = false;
 	[HideInInspector] public EnemySkillController SkillCon;
 	[HideInInspector] public EnemyBuffController BuffCon;
-
+	public Coroutine cHit;
 	public TextMeshPro HpText;
 
 	public void Setup(EnemyChart chart, int stageNo, bool isBoss = false)
@@ -45,7 +45,7 @@ public class EnemyBase : MonoBehaviour
 		col.enabled = true;
 
 		SpriteCon = GetComponent<EnemySpriteController>();
-		SpriteCon.Setup(chart);
+		SpriteCon.Setup(this, chart);
 
 		SkillCon = GetComponent<EnemySkillController>();
 		SkillCon.Setup(this, chart);
@@ -53,6 +53,7 @@ public class EnemyBase : MonoBehaviour
 		BuffCon = GetComponent<EnemyBuffController>();
 		BuffCon.Setup(this);
 
+		cHit = null;
 		Rb.mass = chart.Weight;
 		Move();
 		Enemies.Add(this);
@@ -154,7 +155,8 @@ public class EnemyBase : MonoBehaviour
 		Stat.CurHp -= atk;
 		SetHp();
 
-		SpriteCon.Hit(isCrit, stiffTime);
+		if(cHit == null)
+			cHit = StartCoroutine(SpriteCon.Hit(isCrit, stiffTime));
 
 		if (Stat.CurHp <= 0 && !isDie)
 		{
