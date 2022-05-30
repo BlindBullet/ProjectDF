@@ -37,7 +37,7 @@ public class DialogSlotPowerUp : DialogController
 			OnHelp();
 		});
 
-		powerUpNo = ConstantData.SlotPowerUpPossibleLv[data.PowerUpLv];
+		powerUpNo = ConstantData.SlotPowerUpPossibleLv[data.Power];
 
 		SetBars();
 		SetRefreshBtn();
@@ -49,13 +49,13 @@ public class DialogSlotPowerUp : DialogController
 	void SetBars()
 	{
 		bool canLoad = false;
-
+		
 		for(int i = 0; i < data.PowerUpList.Count; i++)
 		{
-			if (data.PowerUpLv == data.PowerUpList[i].Lv)
+			if (data.Power == data.PowerUpList[i].Lv)
 			{
 				LoadBars(data.PowerUpList[i].LotteriedPowerUpBars);
-				canLoad = true;
+				canLoad = true;				
 				break;
 			}	
 		}
@@ -89,7 +89,7 @@ public class DialogSlotPowerUp : DialogController
 		}
 
 		List<int> results = LotteryCalculator.LotteryListNoVerbose(probs, 3);
-		data.SetLotteriedUpgradeBars(data.Lv, results);
+		data.SetLotteriedUpgradeBars(data.Power, results);
 
 		for(int i = 0; i < Bars.Length; i++)
 		{
@@ -139,8 +139,8 @@ public class DialogSlotPowerUp : DialogController
 			}
 		}
 
-		data.SetLotteriedUpgradeBars(data.Lv, results);
-
+		data.SetLotteriedUpgradeBars(data.Power, results);
+		
 		for (int i = 0; i < Bars.Length; i++)
 		{
 			Bars[i].SetBar(data, charts[results[i]]);
