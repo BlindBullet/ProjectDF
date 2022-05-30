@@ -67,6 +67,7 @@ public class DeploySlot : MonoBehaviour
 
 	private void OnDisable()
 	{	
+		DOTween.Kill("DeployArrow" + data.Id);
 		Slots.Remove(this);
 	}
 

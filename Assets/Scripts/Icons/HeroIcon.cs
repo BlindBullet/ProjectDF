@@ -163,4 +163,9 @@ public class HeroIcon : MonoBehaviour
 		Btn.enabled = true;
 	}
 
+	private void OnDisable()
+	{
+		DOTween.Kill("SF" + Data.Id);
+	}
+
 }

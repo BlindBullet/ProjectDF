@@ -100,7 +100,7 @@ public class DialogHero : DialogController
 	}
 
 	private void OnDisable()
-	{		
+	{	
 		_DialogHero = null;
 	}
 }
