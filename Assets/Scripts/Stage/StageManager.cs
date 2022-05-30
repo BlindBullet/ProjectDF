@@ -179,15 +179,14 @@ public class StageManager : MonoSingleton<StageManager>
 				yield return new WaitForSeconds(2f);
 
 				LoseStagePanel.gameObject.SetActive(true);
-				StartCoroutine(LoseStagePanel.FadeIn());
+				LoseStagePanel.FadeIn();
 
 				yield return new WaitForSeconds(2f);
 
 				if (Bg != null)
 					Destroy(Bg);
 
-				Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);
-				StartCoroutine(LoseStagePanel.FadeOut());
+				Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);				
 			}
 			else
 			{
@@ -357,7 +356,7 @@ public class StageManager : MonoSingleton<StageManager>
 		yield return new WaitForSeconds(2f);
 
 		LoseStagePanel.gameObject.SetActive(true);
-		StartCoroutine(LoseStagePanel.FadeIn());
+		LoseStagePanel.FadeIn();
 
 		yield return new WaitForSeconds(2f);
 
@@ -366,9 +365,7 @@ public class StageManager : MonoSingleton<StageManager>
 			EnemyBase.Enemies[i].Destroy();
 		}
 
-		yield return new WaitForSeconds(1f);
-
-		StartCoroutine(LoseStagePanel.FadeOut());
+		yield return new WaitForSeconds(1f);		
 
 		if (!CheckBossStage(PlayerData.Stage - 1 < 1 ? 1 : PlayerData.Stage - 1))
 			ChangeStage(-1);
@@ -410,7 +407,9 @@ public class StageManager : MonoSingleton<StageManager>
 		//¿¬Ãâ
 		AscensionSequence.gameObject.SetActive(true);
 
-		yield return StartCoroutine(AscensionSequence.FadeIn());
+		AscensionSequence.FadeIn();
+
+		yield return new WaitForSeconds(2f);
 
 		for (int i = EnemyBase.Enemies.Count - 1; i >= 0; i--)
 		{
@@ -424,8 +423,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 		EnemySpawner.Ins.StopSpawn();
 		RestartStage();
-		PlayerUi.SetQuestBtn();
-		StartCoroutine(AscensionSequence.FadeOut());
+		PlayerUi.SetQuestBtn();		
 	}
 	
 	public void GetGold(double value)

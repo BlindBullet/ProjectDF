@@ -37,7 +37,7 @@ public class HeroTween : MonoBehaviour
 
 	public void Stop()
 	{
-		DOTween.KillAll();
+		
 	}
 
 	

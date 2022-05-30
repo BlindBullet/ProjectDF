@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.U2D;
 using System;
 using DG.Tweening;
+using AllIn1SpriteShader;
 
 public class HeroUi : MonoBehaviour
 {
@@ -15,20 +16,28 @@ public class HeroUi : MonoBehaviour
 	public Image IconBg;    
 	public Image SkillCoolTimeFrame;
 	public GameObject[] Stars;    
-	HeroBase me;
-	public _2dxFX_DestroyedFX ImgDestroyFx;
-	public _2dxFX_DestroyedFX BgDestroyFx;
-	public _2dxFX_DestroyedFX FrameDestroyFx;
+	HeroBase me;	
 	public TextMeshProUGUI SkillReadyText;
 	bool skillReady = false;
+	Material mat;
 
 	public void SetUp(HeroData data, SlotData slotData)
-	{
+	{	
+		IconBg.material = new Material(IconBg.materialForRendering);
+		mat = IconBg.materialForRendering;
+		mat.SetFloat("_FadeAmount", 0f);
+		IconBg.GetComponent<AllIn1Shader>().ApplyMaterialToHierarchy();
+
 		me = GetComponent<HeroBase>();        
 		HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];
 
+		for (int i = 0; i < Stars.Length; i++)
+		{
+			Stars[i].SetActive(false);
+		}
+
 		SetIcon(chart);
-		SetStars(chart.Grade);        
+		SetStars(chart.Grade);      
 		SetIconBtn();
 	}
 
@@ -86,27 +95,11 @@ public class HeroUi : MonoBehaviour
 	public IEnumerator Die()
 	{
 		IconBtn.enabled = false;
-		SkillCoolTimeFrame.fillAmount = 0;
+		//SkillCoolTimeFrame.fillAmount = 0;
+				
+		mat.DOFloat(1f, "_FadeAmount", 2f).SetEase(Ease.InOutQuad);
 
-		float _time = 2f;
-		float time = _time;
-
-		while(time > 0)
-		{
-			time -= Time.deltaTime;
-
-			float value = 1f - (time / _time);
-
-			ImgDestroyFx.Destroyed = value;
-			BgDestroyFx.Destroyed = value;
-			FrameDestroyFx.Destroyed = value;
-
-			yield return null;
-		}
-
-		ImgDestroyFx.Destroyed = 1f;
-		BgDestroyFx.Destroyed = 1f;
-		FrameDestroyFx.Destroyed = 1f;
+		yield return new WaitForSeconds(2f);				
 	}
 
 

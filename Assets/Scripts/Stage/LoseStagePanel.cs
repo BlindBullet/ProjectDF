@@ -1,53 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class LoseStagePanel : MonoBehaviour
 {
-	public _2dxFX_BurnFX Fx;
+	public Image Img;
+	Material mat;
 
-	public IEnumerator FadeIn()
+	private void Awake()
 	{
-		transform.SetAsLastSibling();
-		Fx.Destroyed = 1f;
-
-		float _time = 2f;
-		float time = _time;
-
-		while (time > 0)
-		{
-			time -= Time.deltaTime;
-
-			float value = time / _time;
-
-			Fx.Destroyed = value;
-
-			yield return null;
-		}
-
-		Fx.Destroyed = 0f;
+		Img.material = new Material(Img.materialForRendering);
+		mat = Img.materialForRendering;
+		this.gameObject.SetActive(false);
 	}
 
-	public IEnumerator FadeOut()
-	{
-		Fx.Destroyed = 0f;
-
-		float _time = 2f;
-		float time = _time;
-
-		while (time > 0)
-		{
-			time -= Time.deltaTime;
-
-			float value = 1f - (time / _time);
-
-			Fx.Destroyed = value;
-
-			yield return null;
-		}
-
-		Fx.Destroyed = 1f;
-		this.gameObject.SetActive(false);
+	public void FadeIn()
+	{		
+		Sequence seq = DOTween.Sequence();
+		seq.Append(mat.DOFloat(0f, "_FadeAmount", 2f).SetEase(Ease.InOutQuad))
+			.AppendInterval(0.5f)
+			.Append(mat.DOFloat(1f, "_FadeAmount", 2f).SetEase(Ease.Linear))			
+			.AppendCallback(() => { this.gameObject.SetActive(false); });
 	}
 
 }
