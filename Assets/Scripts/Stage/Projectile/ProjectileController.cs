@@ -361,11 +361,11 @@ public class ProjectileController : MonoBehaviour
 					List<ResultGroupChart> hitResultGroups = CsvData.Ins.ResultGroupChart[data.HitDestroyResult];
 					HitresultManager.Ins.RunResultGroup(hitResultGroups, pos, caster);
 				}
-
-				penCount--;
 								
 				DestroySequence();
-			}	
+			}
+
+			penCount--;
 		}
 	}
 

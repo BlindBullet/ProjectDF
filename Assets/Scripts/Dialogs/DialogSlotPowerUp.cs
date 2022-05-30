@@ -10,19 +10,32 @@ public class DialogSlotPowerUp : DialogController
 
 	public TextMeshProUGUI Title;
 	public TextMeshProUGUI Desc;
+	public Button HelpBtn;
+	public GameObject HelpBubble;
+	public TextMeshProUGUI HelpText;
 	public PowerUpBar[] Bars;
 	public Button RefreshBtn;
 	public TextMeshProUGUI RefreshBtnText;
 	SlotData data;
 	int powerUpNo = 5;
 	public List<AtkUpgradeType> LotteriedBars = new List<AtkUpgradeType>();
+	bool onHelp;
 
 	public void OpenDialog(SlotData data)
 	{
 		this.data = data;
 		Title.text = LanguageManager.Ins.SetString("title_popup_slot_power_up");
 		Desc.text = LanguageManager.Ins.SetString("desc_popup_slot_power_up");
+		HelpText.text = LanguageManager.Ins.SetString("help_slot_power_up");
 		RefreshBtnText.text = LanguageManager.Ins.SetString("Refresh");
+
+		onHelp = false;
+
+		HelpBtn.onClick.RemoveAllListeners();
+		HelpBtn.onClick.AddListener(() => 
+		{
+			OnHelp();
+		});
 
 		powerUpNo = ConstantData.SlotPowerUpPossibleLv[data.PowerUpLv];
 
@@ -145,6 +158,23 @@ public class DialogSlotPowerUp : DialogController
 			//±¤°í
 			RefreshPowerUpBars();
 		});
+	}
+
+	void OnHelp()
+	{
+		if (!onHelp)
+		{
+			HelpBubble.SetActive(true);
+			HelpText.gameObject.SetActive(true);
+			onHelp = true;
+		}
+		else
+		{
+			HelpBubble.SetActive(false);
+			HelpText.gameObject.SetActive(false);
+			onHelp = false;
+		}
+			
 	}
 
 }
