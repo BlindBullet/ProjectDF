@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.U2D;
 
 public class RelicBar : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class RelicBar : MonoBehaviour
 		if (data.isOwn)
 		{
 			LvUpBtnText.text = LanguageManager.Ins.SetString("LevelUp");
-			CostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/" + chart.LvUpCostType.ToString());
+			CostIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.LvUpCostType.ToString());
 			double cost = (chart.LvUpCost + (chart.LvUpCostIncValue * (data.Lv - 1))) * (chart.LvUpCostIncRate > 1f ? (1 + Mathf.Pow(chart.LvUpCostIncRate, data.Lv - 1)) : 1f);
 			Cost.text = cost.ToCurrencyString();
 
@@ -113,7 +114,7 @@ public class RelicBar : MonoBehaviour
 		else
 		{
 			LvUpBtnText.text = LanguageManager.Ins.SetString("Purchase");
-			CostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/" + chart.PriceCostType.ToString());
+			CostIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.PriceCostType.ToString());
 			double cost = chart.Price;
 			Cost.text = cost.ToCurrencyString();
 			

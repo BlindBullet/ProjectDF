@@ -68,31 +68,31 @@ public class AttackController : MonoBehaviour
 	{
 		switch (data.Front)
 		{
-			case 1:
+			case 0:
 				CreateProjectile(model, 0, 0, dir, target);
 				break;
-			case 2:
+			case 1:
 				CreateProjectile(model, -0.15f, 0, dir, target);
 				CreateProjectile(model, 0.15f, 0, dir, target);
+				break;
+			case 2:
+				CreateProjectile(model, -0.3f, 0, dir, target);
+				CreateProjectile(model, 0, 0, dir, target);
+				CreateProjectile(model, 0.3f, 0, dir, target);
 				break;
 			case 3:
 				CreateProjectile(model, -0.3f, 0, dir, target);
-				CreateProjectile(model, 0, 0, dir, target);
-				CreateProjectile(model, 0.3f, 0, dir, target);
-				break;
-			case 4:
-				CreateProjectile(model, -0.3f, 0, dir, target);
 				CreateProjectile(model, -0.15f, 0, dir, target);
 				CreateProjectile(model, 0.15f, 0, dir, target);
 				CreateProjectile(model, 0.3f, 0, dir, target);
 				break;
-			case 5:
+			case 4:
 				CreateProjectile(model, -0.6f, 0, dir, target);
 				CreateProjectile(model, -0.3f, 0, dir, target);
 				CreateProjectile(model, 0, 0, dir, target);
 				CreateProjectile(model, 0.3f, 0, dir, target);
 				CreateProjectile(model, 0.6f, 0, dir, target);
-				break;
+				break;			
 		}
 
 		switch (data.Diagonal)

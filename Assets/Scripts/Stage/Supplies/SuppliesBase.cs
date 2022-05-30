@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.U2D;
 
 public class SuppliesBase : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class SuppliesBase : MonoBehaviour
 	public void Setup(SuppliesChart chart)
 	{
 		data = chart;
-		IconImg.sprite = Resources.Load<Sprite>("Sprites/Cost/" + chart.Icon);
+		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.Icon);
 		IconImg.transform.localScale = new Vector2(chart.IconSize, chart.IconSize);
 		WingsMove();
 

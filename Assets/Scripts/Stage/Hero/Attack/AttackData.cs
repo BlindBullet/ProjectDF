@@ -15,12 +15,12 @@ public class AttackData
 
 	public AttackData()
 	{
-		Front = 1;
-		Diagonal = 2;
-		Piercing = 1;
+		Front = 0;
+		Diagonal = 0;
+		Piercing = 0;
 		Multi = 0;
 		Boom = 0;
-		Bounce = 5;
+		Bounce = 0;
 		AtkUp = 0;
 	}
 

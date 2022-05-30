@@ -35,8 +35,8 @@ public class HeroUi : MonoBehaviour
 	void SetIcon(HeroChart chart)
 	{
 		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Characters").GetSprite(chart.Model);
-		IconFrame.sprite = Resources.Load<Sprite>("Sprites/Heroes/Frames/" + chart.Attr.ToString());
-		IconBg.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Attr.ToString());
+		IconFrame.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("HeroFrame_" + chart.Attr.ToString());
+		IconBg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("HeroBg_" + chart.Attr.ToString());
 	}
 
 	public void SetCoolTimeFrame(float value)

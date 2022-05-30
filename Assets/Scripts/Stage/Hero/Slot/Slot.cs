@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class Slot : MonoBehaviour
 {
@@ -16,7 +17,10 @@ public class Slot : MonoBehaviour
 	public GameObject EnchantLabelObj;
 	public TextMeshProUGUI EnchantLvText;
 	public TextMeshProUGUI AtkText;
-	Material lvUpBtnMat;	
+	public Button PowerUpBtn;
+	public Image PowerUpBtnFrame;
+	Material lvUpBtnMat;
+	Material powerUpBtnMat;
 	SlotData data;	
 
 	public void Init(SlotData data)
@@ -24,8 +28,11 @@ public class Slot : MonoBehaviour
 		Image uiImage = LvUpBtn.GetComponent<Image>();
 		uiImage.material = new Material(uiImage.materialForRendering);
 		lvUpBtnMat = LvUpBtn.GetComponent<Image>().material;
-
 		LvUpBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
+
+		Image uiImage2 = PowerUpBtnFrame;
+		uiImage2.material = new Material(PowerUpBtnFrame.materialForRendering);
+		powerUpBtnMat = PowerUpBtnFrame.material;
 
 		StageManager.Ins.GoldChanged += SetLvUpBtnState;
 
@@ -40,11 +47,18 @@ public class Slot : MonoBehaviour
 			StageManager.Ins.PlayerData.Save();
 		});
 
+		PowerUpBtn.onClick.RemoveAllListeners();
+		PowerUpBtn.onClick.AddListener(() =>
+		{
+			DialogManager.Ins.OpenSlotPowerUp(data);
+		});
+
 		LvObj.SetActive(true);
 
 		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
 		SetLvUpBtnState(0);
 		SetLvText();
+		SetPowerUpBtn();
 	}
 
 	void LevelUp()
@@ -60,9 +74,36 @@ public class Slot : MonoBehaviour
 			}
 		}
 
+		foreach(KeyValuePair<int, List<SlotPowerUpChart>> elem in CsvData.Ins.SlotPowerUpChart)
+		{
+			if(elem.Key == data.Lv)
+			{
+				data.IncUpgradeStack();
+				SetPowerUpBtn();
+			}
+		}
+
 		SetLvUpBtnState(0);
 		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
 		SetLvText();
+	}
+
+	void SetPowerUpBtn()
+	{
+		if(data.PowerUpStack > 0)
+		{
+			PowerUpBtn.gameObject.SetActive(true);
+			powerUpBtnMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetId("SF" + No);
+		}
+	}
+
+	public void AfterPowerUp()
+	{
+		if (data.PowerUpStack <= 0)
+		{
+			DOTween.Kill("SF" + No);
+			PowerUpBtn.gameObject.SetActive(false);
+		}	
 	}
 
 	void SetLvText()

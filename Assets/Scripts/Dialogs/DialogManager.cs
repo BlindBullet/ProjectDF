@@ -103,4 +103,9 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogOfflineReward>().OpenDialog();
 	}
 
+	public void OpenSlotPowerUp(SlotData data)
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogSlotPowerUp") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogSlotPowerUp>().OpenDialog(data);
+	}
 }

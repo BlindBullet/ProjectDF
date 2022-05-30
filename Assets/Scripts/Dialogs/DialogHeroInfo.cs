@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.U2D;
 
 public class DialogHeroInfo : DialogController
 {
@@ -81,7 +82,7 @@ public class DialogHeroInfo : DialogController
 		SpdTitle.text = LanguageManager.Ins.SetString("Spd");
 		Spd.text = chart.Spd.ToString();
 		AttrTitle.text = LanguageManager.Ins.SetString("Attr");
-		AttrIcon.sprite = Resources.Load<Sprite>("Sprites/Icons/" + chart.Attr.ToString());
+		AttrIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.Attr.ToString());
 	}
 
 	void SetSkill(string id)
@@ -139,7 +140,7 @@ public class DialogHeroInfo : DialogController
 			PurchaseBtnText.text = LanguageManager.Ins.SetString("Enchant");
 			double enchantCost = ConstantData.GetHeroEnchantCost(data.EnchantLv);
 			PurchaseCost.text = enchantCost.ToCurrencyString();
-			PurchaseCostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/Magicite");
+			PurchaseCostIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Magicite");
 			PurchaseBtn.onClick.RemoveAllListeners();
 
 			if(StageManager.Ins.PlayerData.Magicite >= enchantCost)
@@ -211,7 +212,7 @@ public class DialogHeroInfo : DialogController
 		{
 			PurchaseBtn.gameObject.SetActive(true);
 			PurchaseBtnText.text = LanguageManager.Ins.SetString("Summon");
-			PurchaseCostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/" + chart.CostType.ToString());
+			PurchaseCostIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.CostType.ToString());
 			PurchaseCost.text = chart.Cost.ToCurrencyString();
 
 			bool haveCost = false;

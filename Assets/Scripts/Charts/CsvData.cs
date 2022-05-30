@@ -19,7 +19,7 @@ public class CsvData : SingletonObject<CsvData>
 	public Dictionary<string, EnemySkillChart> EnemySkillChart = new Dictionary<string, EnemySkillChart>();
 	public Dictionary<string, MinionChart> MinionChart = new Dictionary<string, MinionChart>();
 	public Dictionary<string, SuppliesChart> SuppliesChart = new Dictionary<string, SuppliesChart>();
-	public Dictionary<string, SlotPowerUpChart> SlotPowerUpChart = new Dictionary<string, SlotPowerUpChart>();
+	public Dictionary<int, List<SlotPowerUpChart>> SlotPowerUpChart = new Dictionary<int, List<SlotPowerUpChart>>();
 
 	protected override void OnCreate()
 	{
@@ -40,7 +40,7 @@ public class CsvData : SingletonObject<CsvData>
 		EnemySkillChart = CsvParser.Ins.ParseToDict(EnemySkillChart, "DataTables/EnemySkillChart");
 		MinionChart = CsvParser.Ins.ParseToDict(MinionChart, "DataTables/MinionChart");
 		SuppliesChart = CsvParser.Ins.ParseToDict(SuppliesChart, "DataTables/SuppliesChart");
-		SlotPowerUpChart = CsvParser.Ins.ParseToDict(SlotPowerUpChart, "DataTables/SlotPowerUpChart");
+		SlotPowerUpChart = CsvParser.Ins.ParseDupeKeyToDict(SlotPowerUpChart, "DataTables/SlotPowerUpChart");
 
 	}
 

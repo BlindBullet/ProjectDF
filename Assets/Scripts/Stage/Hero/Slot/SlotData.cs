@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,18 +7,18 @@ using UnityEngine;
 public class SlotData
 {
 	public int No;
-	public int Lv;
-	public int UpgradeLv;
-	public int UpgradeLimit;
-	public AttackData AtkData;
+	public int Lv;	
+	public int PowerUpLv;
+	public int PowerUpStack;
+	public AttackData AtkData = new AttackData();
+	public List<SlotPowerUpList> PowerUpList = new List<SlotPowerUpList>();
 
 	public void Init(int no)
 	{
 		No = no;
 		Lv = 1;
-		UpgradeLv = 0;
-		UpgradeLimit = 2;
-		AtkData = new AttackData();
+		PowerUpLv = 0;
+		PowerUpStack = 0;				
 	}
 
 	public bool LevelUp()
@@ -34,21 +35,25 @@ public class SlotData
 		return false;
 	}
 
-	public bool IncUpgradeLimit()
+	public void IncUpgradeStack()
 	{
-		if (StageManager.Ins.PlayerData.SoulStone >= 200)
-		{
-			UpgradeLimit++;
-			StageManager.Ins.ChangeSoulStone(-200);
-			return true;
-		}
-
-		return false;
+		PowerUpStack++;
 	}
 
-	public void Upgrade(AtkUpgradeType type)
+	public void SetLotteriedUpgradeBars(int lv, List<int> lotteriedNos)
 	{
-		switch (type)
+		PowerUpList.Add(new SlotPowerUpList(lv, lotteriedNos));		
+	}
+
+	public void PowerUp(int lv, AtkUpgradeType selectType)
+	{
+		for(int i = 0; i < PowerUpList.Count; i++)
+		{
+			if (PowerUpList[i].Lv == lv)
+				PowerUpList.Remove(PowerUpList[i]);
+		}
+
+		switch (selectType)
 		{
 			case AtkUpgradeType.Front:
 				AtkData.Front++;
@@ -70,9 +75,20 @@ public class SlotData
 				break;
 		}
 
-		UpgradeLv++;
+		PowerUpStack--;
+		PowerUpLv++;
 	}
 
+}
 
+public class SlotPowerUpList
+{
+	public int Lv;
+	public List<int> LotteriedPowerUpBars = new List<int>();
 
+	public SlotPowerUpList(int lv, List<int> lotteriedNos)
+	{
+		Lv = lv;
+		LotteriedPowerUpBars = lotteriedNos;
+	}
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.U2D;
 
 public class QuestBar : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class QuestBar : MonoBehaviour
 	{
 		for(int i = 0; i < chart.Lv; i++)
 		{
-			Stars[i].sprite = Resources.Load<Sprite>("Sprites/Icons/Star_On");
+			Stars[i].sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Star_On");
 		}
 	}
 

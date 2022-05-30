@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.U2D;
 
 public class DialogRelicInfo : DialogController
 {
@@ -59,7 +60,7 @@ public class DialogRelicInfo : DialogController
 
 		if (data.isOwn)
 		{
-			LvUpCostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/Magicite");
+			LvUpCostIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Magicite");
 			LvUpBtnText.text = LanguageManager.Ins.SetString("Upgrade");
 			double cost = (chart.LvUpCost + (chart.LvUpCostIncValue * (data.Lv - 1))) * (chart.LvUpCostIncRate > 1f ? (1 + Mathf.Pow(chart.LvUpCostIncRate, data.Lv - 1)) : 1f);
 
@@ -90,7 +91,7 @@ public class DialogRelicInfo : DialogController
 		}
 		else
 		{
-			LvUpCostIcon.sprite = Resources.Load<Sprite>("Sprites/Cost/" + chart.PriceCostType.ToString());
+			LvUpCostIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons/").GetSprite(chart.PriceCostType.ToString());
 			LvUpBtnText.text = LanguageManager.Ins.SetString("Purchase");
 			double cost = chart.Price;
 			LvUpCostText.text = cost.ToCurrencyString();

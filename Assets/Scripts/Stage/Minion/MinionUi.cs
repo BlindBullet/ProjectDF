@@ -20,9 +20,9 @@ public class MinionUi : MonoBehaviour
 		mat.DisableKeyword("FADE_ON");
 		mat.DisableKeyword("HOLOGRAM_ON");
 
-		Bg.sprite = Resources.Load<Sprite>("Sprites/Heroes/Bgs/" + chart.Attr.ToString());
+		Bg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("HeroBg_" + chart.Attr.ToString());
 		MinionImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Characters").GetSprite(chart.Model);
-		Frame.sprite = Resources.Load<Sprite>("Sprites/Minions/Frames/" + chart.Attr.ToString());
+		Frame.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("MinionFrame_" + chart.Attr.ToString());
 	}
 
 	public void Summon()

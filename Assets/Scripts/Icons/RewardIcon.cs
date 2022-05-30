@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.U2D;
 
 public class RewardIcon : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class RewardIcon : MonoBehaviour
 
 	public void SetIcon(QuestChart chart)
 	{
-		IconImg.sprite = Resources.Load<Sprite>("Sprites/Cost/" + chart.RewardType.ToString());
+		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.RewardType.ToString());
 
 		switch (chart.RewardType)
 		{
@@ -30,7 +31,7 @@ public class RewardIcon : MonoBehaviour
 
 	public void SetIcon(RewardType type, double value, RewardValueShowType valueShowType = RewardValueShowType.Time)
 	{
-		IconImg.sprite = Resources.Load<Sprite>("Sprites/Cost/" + type.ToString());
+		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(type.ToString());
 
 		switch (type)
 		{

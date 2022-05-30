@@ -147,4 +147,55 @@ public static class LotteryCalculator {
 		return result;
 	}
 
+	public static List<int> LotteryListNoVerbose(List<int> probs, int count)
+	{		
+		if(probs.Count <= count)
+		{
+			Debug.LogError("리스트의 수가 뽑으려는 개수보다 같거나 작습니다.");
+			return null;
+		}
+
+		List<int> results = new List<int>();
+		List<int> lotteriedNos = new List<int>();		
+		int lotteryNo = 0;
+
+		for (int i = 0; i < count; i++)
+		{
+			int _count = 0;			
+			bool verbose = true;
+
+			while (verbose)
+			{
+				lotteryNo = LotteryCalc(probs);
+				bool _verbose = false;
+
+				for (int k = 0; k < lotteriedNos.Count; k++)
+				{
+					if (lotteryNo == lotteriedNos[k])
+					{
+						_verbose = true;				
+					}
+					else
+					{
+						_count++;
+					}	
+				}
+
+				if (!_verbose)
+				{
+					if (_count >= lotteriedNos.Count)
+					{
+						verbose = false;
+					}
+				}
+			}
+
+			lotteriedNos.Add(lotteryNo);
+			results.Add(lotteryNo);
+		}
+
+		return results;
+	}
+
+
 }
