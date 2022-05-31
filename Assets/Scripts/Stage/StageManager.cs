@@ -27,6 +27,7 @@ public class StageManager : MonoSingleton<StageManager>
 	GameObject Bg = null;
 	Coroutine cStageSequence = null;
 	float appearSuppliesProb = 0;
+	Coroutine cLoseSeq = null;
 
 	private void Start()
 	{
@@ -245,12 +246,12 @@ public class StageManager : MonoSingleton<StageManager>
 
 			if(randNo < appearSuppliesProb)
 			{
-				appearSuppliesProb = 0f;
+				appearSuppliesProb = -50f;
 				return true;
 			}
 			else
 			{
-				appearSuppliesProb += 50f;
+				appearSuppliesProb += 15f;
 				return false;
 			}
 		}
@@ -331,12 +332,15 @@ public class StageManager : MonoSingleton<StageManager>
 
 	public void LoseStage()
 	{
-		StopCoroutine(cStageSequence);		
-		StartCoroutine(LoseStageSequence());
+		StopCoroutine(cStageSequence);	
+		if(cLoseSeq == null)
+			cLoseSeq = StartCoroutine(LoseStageSequence());
 	}
 
 	public IEnumerator LoseStageSequence()
 	{
+		BattleInputManager.Ins.isPause = true;
+
 		for(int i = 0; i < EnemyBase.Enemies.Count; i++)
 		{
 			EnemyBase.Enemies[i].Stop();
@@ -360,17 +364,17 @@ public class StageManager : MonoSingleton<StageManager>
 
 		yield return new WaitForSeconds(2f);
 
-		for(int i = EnemyBase.Enemies.Count - 1; i >= 0 ; i--)
+		for (int i = EnemyBase.Enemies.Count - 1; i >= 0; i--)
 		{
 			EnemyBase.Enemies[i].Destroy();
 		}
-
-		yield return new WaitForSeconds(1f);		
 
 		if (!CheckBossStage(PlayerData.Stage - 1 < 1 ? 1 : PlayerData.Stage - 1))
 			ChangeStage(-1);
 
 		RestartStage();
+		cLoseSeq = null;
+		BattleInputManager.Ins.isPause = false;
 	}	
 
 	public void StartAscension(bool isAdAscension = false)
