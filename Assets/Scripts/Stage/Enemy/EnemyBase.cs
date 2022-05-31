@@ -26,10 +26,10 @@ public class EnemyBase : MonoBehaviour
 	[HideInInspector] public EnemySkillController SkillCon;
 	[HideInInspector] public EnemyBuffController BuffCon;
 	public Coroutine cHit;
-	public TextMeshPro HpText;
+	public TextMeshPro HpText;	
 
 	public void Setup(EnemyChart chart, int stageNo, bool isBoss = false)
-	{
+	{		
 		isDie = false;
 
 		Stat = new EnemyStat();
@@ -89,7 +89,14 @@ public class EnemyBase : MonoBehaviour
 			if (transform.position.x > max.x)
 				xSpd = -Stat.Spd;
 
-			Rb.velocity = new Vector2(xSpd, -Stat.Spd);
+			if(transform.position.y <= StageManager.Ins.PlayerLine.transform.position.y + 1.5f)
+			{
+				Rb.velocity = new Vector2(xSpd, -0.15f);
+			}
+			else
+			{
+				Rb.velocity = new Vector2(xSpd, -Stat.Spd);
+			}
 
 			yield return null;
 		}

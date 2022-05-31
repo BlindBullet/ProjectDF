@@ -14,7 +14,8 @@ public class DialogController : MonoBehaviour
 	public Button CloseBtn;
 	public TextMeshProUGUI CloseBtnText;
 	[HideInInspector]
-	public bool EnabledBackkey;
+	public bool EnabledBackkey;	
+	float _time = 0f;
 
 	public enum DialogTween
 	{
@@ -22,8 +23,14 @@ public class DialogController : MonoBehaviour
 
 	}
 
-	public void Show(bool enabledBackkey)
-	{
+	public void Show(bool enabledBackkey, bool stopTime = false)
+	{		
+		if (stopTime)
+		{
+			_time = Time.timeScale;
+			Time.timeScale = 0f;
+		}
+
 		Open();
 		EnabledBackkey = enabledBackkey;
 		BackkeyManager.Ins.AddDialog(this);
@@ -41,7 +48,7 @@ public class DialogController : MonoBehaviour
 			CloseBtn.onClick.AddListener(() => 
 			{
 				SetCloseBtn();
-				CloseDialog();
+				CloseDialog(stopTime);
 			});
 		}
 
@@ -72,8 +79,11 @@ public class DialogController : MonoBehaviour
 
 	}
 
-	public virtual void CloseDialog()
+	public virtual void CloseDialog(bool stopTime = false)
 	{
+		if (stopTime)
+			Time.timeScale = _time;
+
 		Close();
 		BackkeyManager.Ins.RemoveDialog(this);
 		Destroy(this.gameObject);

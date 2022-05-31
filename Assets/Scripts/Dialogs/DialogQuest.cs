@@ -26,7 +26,7 @@ public class DialogQuest : DialogController
 
 		Quest = this;
 
-		Show(true);
+		Show(true, true);
 	}
 
 	public void SetQuests()

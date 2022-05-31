@@ -56,8 +56,8 @@ public class TimeManager : MonoSingleton<TimeManager>
 		SinceTime = 0f;
 
 		while (true)
-		{				
-			SinceTime += Time.deltaTime / Time.timeScale;			
+		{
+			SinceTime += Time.unscaledDeltaTime;
 			yield return null;
 		}
 	}

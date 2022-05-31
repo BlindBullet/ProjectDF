@@ -41,7 +41,7 @@ public class DialogSetting : DialogController
 			SetSFX();
 		});
 
-		Show(true);
+		Show(true, true);
 	}
 
 	void SetBGM()

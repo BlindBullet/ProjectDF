@@ -20,7 +20,7 @@ public class DialogHero : DialogController
 		SetHeroes();
 		SetDeploySlots();
 		_DialogHero = this;		
-		Show(true);
+		Show(true, true);
 	}
 
 	public void SetHeroes()

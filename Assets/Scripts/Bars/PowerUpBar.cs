@@ -72,7 +72,7 @@ public class PowerUpBar : MonoBehaviour
 						StageManager.Ins.Slots[i].AfterPowerUp();
 				}
 
-				DialogSlotPowerUp._Dialog.CloseDialog();
+				DialogSlotPowerUp._Dialog.CloseDialog(true);
 			});
 		}
 		else

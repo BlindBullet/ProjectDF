@@ -16,9 +16,9 @@ public class DialogAscension : DialogController
 	public TextMeshProUGUI AdAscensionBtnRewardText;
 	public Button AscensionBtn;
 	public TextMeshProUGUI AscensionBtnText;
-
+	
 	public void OpenDialog()
-	{
+	{	
 		Title.text = LanguageManager.Ins.SetString("Ascension");
 		Desc.text = LanguageManager.Ins.SetString("popup_ascension_desc");
 		RewardTitle.text = LanguageManager.Ins.SetString("popup_ascension_reward_title");		
@@ -32,7 +32,7 @@ public class DialogAscension : DialogController
 
 		SetReward(isPossibleAscension);
 		SetAscensionBtn(isPossibleAscension);
-		Show(true);
+		Show(true, true);
 	}
 
 	void SetReward(bool isPossibleAscension)
@@ -81,6 +81,5 @@ public class DialogAscension : DialogController
 			AscensionBtn.gameObject.SetActive(false);
 		}
 	}
-
 
 }

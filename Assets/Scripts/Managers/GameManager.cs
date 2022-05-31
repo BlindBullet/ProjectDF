@@ -58,7 +58,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 	private void OnDestroy()
 	{
-		StageManager.Ins.PlayerData.SetOfflineTime();		
+		StageManager.Ins.PlayerData.SetOfflineTime();
 	}
 
 }

@@ -333,6 +333,7 @@ public class StageManager : MonoSingleton<StageManager>
 	public void LoseStage()
 	{
 		StopCoroutine(cStageSequence);	
+
 		if(cLoseSeq == null)
 			cLoseSeq = StartCoroutine(LoseStageSequence());
 	}
