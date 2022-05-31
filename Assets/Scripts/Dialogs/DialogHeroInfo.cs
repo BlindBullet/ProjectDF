@@ -35,7 +35,7 @@ public class DialogHeroInfo : DialogController
 	Material upgradeBtnMat;
 
 	public void OpenDialog(HeroData data)
-	{
+	{		
 		//Image uiImage = PurchaseBtn.GetComponent<Image>();
 		//uiImage.material = new Material(uiImage.material);
 		//Image uiImage2 = UpgradeBtn.GetComponent<Image>();
@@ -108,19 +108,18 @@ public class DialogHeroInfo : DialogController
 		{
 			if(SEManager.Ins.SeList[i].Chart.Id == id)
 			{
-				seData = SEManager.Ins.SeList[i];
+				seData = SEManager.Ins.SeList[i];		
 			}
 		}
 
 		if (seData == null)
 		{
 			seData = new SEData(CsvData.Ins.SEChart[id], chart.Grade);
-			seData.SetValue(double.Parse(seData.Chart.EParam5));
+			seData.SetValue(double.Parse(seData.Chart.EParam5));			
 		}
-			
 		
 		CEName.text = LanguageManager.Ins.SetString("CollectionEffect");
-		CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), Math.Round(seData.Value, 1).ToCurrencyString());		
+		CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), Math.Round(seData.Value, 1));		
 	}
 
 	void SetButtons(HeroData data, HeroChart chart)

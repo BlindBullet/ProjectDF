@@ -29,7 +29,7 @@ public class SEManager : MonoSingleton<SEManager>
 					SEChart chart = CsvData.Ins.SEChart[heroCharts[k].CollectionEffect];
 					SEData data = new SEData(chart, heroes[i].Grade);
 										
-					value = (double.Parse(chart.EParam5) + (chart.LvUpIncValue * (heroes[i].Grade - 1))) * (chart.LvUpIncRate > 0 ? Mathf.Pow(chart.LvUpIncRate, heroes[i].Grade - 1) : 1f);
+					value = double.Parse(chart.EParam5);
 					data.SetValue(value);
 
 					SeList.Add(data);
@@ -50,7 +50,7 @@ public class SEManager : MonoSingleton<SEManager>
 			SEChart seChart = CsvData.Ins.SEChart[chart.Effect];
 			SEData data = new SEData(seChart, relics[i].Lv);
 
-			value = (double.Parse(seChart.EParam5) + (seChart.LvUpIncValue * (relics[i].Lv - 1))) * (seChart.LvUpIncRate > 0 ? Mathf.Pow(seChart.LvUpIncRate, relics[i].Lv - 1) : 1f);			
+			value = double.Parse(seChart.EParam5);			
 			data.SetValue(value);
 
 			SeList.Add(data);
@@ -1439,7 +1439,7 @@ public class SEData
 	}
 
 	public void SetValue(double value)
-	{		
-		Value = value;		
+	{	
+		Value = (value + (Chart.LvUpIncValue * (Lv - 1))) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, (Lv - 1)) : 1f);
 	}
 }
