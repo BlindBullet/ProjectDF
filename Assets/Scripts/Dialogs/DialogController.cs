@@ -24,7 +24,7 @@ public class DialogController : MonoBehaviour
 	}
 
 	public void Show(bool enabledBackkey, bool stopTime = false)
-	{
+	{		
 		BattleInputManager.Ins.isPause = true;
 
 		if (stopTime)
@@ -90,7 +90,9 @@ public class DialogController : MonoBehaviour
 		BackkeyManager.Ins.RemoveDialog(this);	
 		
 		if(BackkeyManager.Ins.OpenedDialogList.Count <= 0)
+		{			
 			BattleInputManager.Ins.isPause = false;
+		}	
 
 		Destroy(this.gameObject);
 	}

@@ -28,9 +28,9 @@ public class DialogOfflineReward : DialogController
 		RewardIcon.SetIcon(RewardType.Gold, -1, RewardValueShowType.CalcValue);
 		GetBtnText.text = LanguageManager.Ins.SetString("Get");
 		AdGetBtnText.text = LanguageManager.Ins.SetString("Get_2x");
-		SetOfflineTime();
-
+		
 		Show(false);
+		SetOfflineTime();
 	}
 
 	void SetOfflineTime()
