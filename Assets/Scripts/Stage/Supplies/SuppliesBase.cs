@@ -16,12 +16,6 @@ public class SuppliesBase : MonoBehaviour
 	Coroutine cMove = null;
 	Material mat;
 
-	private void Start()
-	{	
-		SuppliesChart chart = CsvData.Ins.SuppliesChart[Random.Range(1, CsvData.Ins.SuppliesChart.Count).ToString()];
-		Setup(chart);
-	}
-
 	public void Setup(SuppliesChart chart)
 	{
 		data = chart;
@@ -52,8 +46,8 @@ public class SuppliesBase : MonoBehaviour
 
 	void WingsMove()
 	{
-		RightWing.DORotate(new Vector3(0, 0, -20f), 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
-		LeftWing.DORotate(new Vector3(0, 0, 20f), 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+		RightWing.DORotate(new Vector3(0, 0, -20f), 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetId("SupWingRight");
+		LeftWing.DORotate(new Vector3(0, 0, 20f), 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetId("SupWingLeft");
 	}
 	
 	void Move()
@@ -77,11 +71,11 @@ public class SuppliesBase : MonoBehaviour
 		
 		if (transform.position.x > max.x)
 		{
-			transform.DOMove(new Vector2(max.x - 1f, transform.position.y + Random.Range(-1f, 1f)), 2f).SetEase(Ease.InOutQuad);			
+			transform.DOMove(new Vector2(max.x - 1f, transform.position.y + Random.Range(-1f, 1f)), 2f).SetEase(Ease.InOutQuad).SetId("SupMoveInRight");			
 		}
 		else if (transform.position.x < min.x)
 		{
-			transform.DOMove(new Vector2(min.x + 1f, transform.position.y + Random.Range(-1f, 1f)), 2f).SetEase(Ease.InOutQuad);			
+			transform.DOMove(new Vector2(min.x + 1f, transform.position.y + Random.Range(-1f, 1f)), 2f).SetEase(Ease.InOutQuad).SetId("SupMoveInLeft");			
 		}
 
 		yield return new WaitForSeconds(1.8f);
@@ -130,7 +124,7 @@ public class SuppliesBase : MonoBehaviour
 					destX = destX - 4f;
 				}
 
-				transform.DOMove(new Vector2(destX, destY), time).SetEase(Ease.Linear);
+				transform.DOMove(new Vector2(destX, destY), time).SetEase(Ease.Linear).SetId("");
 			}
 			else
 			{
@@ -141,12 +135,14 @@ public class SuppliesBase : MonoBehaviour
 			yield return new WaitForSeconds(time);
 		}
 
+		StopMove();			
 		transform.position = new Vector3(-100f, 0, 0);
 		ObjectManager.Ins.Push<SuppliesBase>(this);
 	}
 
 	public void GetReward()
-	{	
+	{
+		StopMove();
 		//±¤°í ÆË¾÷ ¿¬°á
 		DialogManager.Ins.OpenAdReward(data);
 		ObjectManager.Ins.Push<SuppliesBase>(this);		

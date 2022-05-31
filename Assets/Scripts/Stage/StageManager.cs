@@ -245,12 +245,12 @@ public class StageManager : MonoSingleton<StageManager>
 
 			if(randNo < appearSuppliesProb)
 			{
-				appearSuppliesProb = -50f;
+				appearSuppliesProb = 0f;
 				return true;
 			}
 			else
 			{
-				appearSuppliesProb += 15f;
+				appearSuppliesProb += 50f;
 				return false;
 			}
 		}
@@ -258,7 +258,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 	IEnumerator AppearSupplies()
 	{
-		yield return new WaitForSeconds(10f);
+		yield return new WaitForSeconds(5f);
 				
 		int randNo = Random.Range(0, CsvData.Ins.SuppliesChart.Count);
 		var supplies = ObjectManager.Ins.Pop<SuppliesBase>(Resources.Load("Prefabs/Supplies/Supplies") as GameObject);
