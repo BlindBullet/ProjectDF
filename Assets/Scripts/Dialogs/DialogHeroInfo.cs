@@ -68,6 +68,15 @@ public class DialogHeroInfo : DialogController
 
 	void SetHeroInfo(HeroData data)
 	{
+		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
+		chart = null;
+
+		for (int i = 0; i < chartList.Count; i++)
+		{
+			if (chartList[i].Grade == data.Grade)
+				chart = chartList[i];
+		}
+
 		SetHero(chart);
 		SetStat(chart);
 		SetSkill(chart.Skill);
@@ -77,8 +86,8 @@ public class DialogHeroInfo : DialogController
 
 	void SetStat(HeroChart chart)
 	{
-		AtkTitle.text = LanguageManager.Ins.SetString("Atk");
-		Atk.text = ExtensionMethods.ToCurrencyString(chart.Atk);
+		AtkTitle.text = LanguageManager.Ins.SetString("Atk");		
+		Atk.text = ConstantData.GetHeroAtkEnchant(chart.Atk, data.EnchantLv).ToCurrencyString();
 		SpdTitle.text = LanguageManager.Ins.SetString("Spd");
 		Spd.text = chart.Spd.ToString();
 		AttrTitle.text = LanguageManager.Ins.SetString("Attr");

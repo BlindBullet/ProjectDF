@@ -48,9 +48,14 @@ public static class ConstantData
 		return CalcValue(StartLvUpGold, LvUpGoldGR, lv);		
 	}
 
+	public static double GetHeroAtkEnchant(double basicAtk, int enchantLv)
+	{		
+		return CalcValue(basicAtk, HeroAtkGR, enchantLv + 1);
+	}
+
 	public static double GetHeroAtk(double basicAtk, int lv, int enchantLv)
 	{
-		return CalcValue(basicAtk, HeroAtkGR, lv + (enchantLv * 2));
+		return CalcValue(GetHeroAtkEnchant(basicAtk, enchantLv), HeroAtkGR, lv);
 	}
 
 	public static double GetEnemyHp(double basicHp, int stageNo, bool isBoss)
