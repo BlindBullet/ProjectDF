@@ -157,6 +157,7 @@ public class DialogSlotPowerUp : DialogController
 		{
 			//±¤°í
 			RefreshPowerUpBars();
+			RefreshBtn.gameObject.SetActive(false);
 		});
 	}
 

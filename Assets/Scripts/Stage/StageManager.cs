@@ -310,9 +310,14 @@ public class StageManager : MonoSingleton<StageManager>
 			yield return null;
 		}
 		
-		while (EnemyBase.Enemies.Count > 0)
+		while (true)
 		{
-			yield return null;
+			yield return new WaitForSeconds(2f);
+
+			if (EnemyBase.Enemies.Count <= 0)
+			{
+				break;
+			}
 		}
 
 		WinStage();

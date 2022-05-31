@@ -26,7 +26,32 @@ public class PowerUpBar : MonoBehaviour
 
 		this.data = data;
 		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.Type.ToString());
-		Name.text = LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString());
+
+		switch (chart.Type)
+		{
+			case AtkUpgradeType.AtkUp:
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.AtkUp + 1);
+				break;
+			case AtkUpgradeType.Boom:
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Boom + 1);
+				break;
+			case AtkUpgradeType.Bounce:
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Bounce + 1);
+				break;
+			case AtkUpgradeType.Diagonal:
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Diagonal + 1);
+				break;
+			case AtkUpgradeType.Front:
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Front + 1);
+				break;
+			case AtkUpgradeType.Multi:
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Multi + 1);
+				break;
+			case AtkUpgradeType.Piercing:
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Piercing + 1);
+				break;
+		}
+		
 		Desc.text = LanguageManager.Ins.SetString("desc_slot_power_up_" + chart.Type.ToString());
 		CostIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.CostType.ToString());
 

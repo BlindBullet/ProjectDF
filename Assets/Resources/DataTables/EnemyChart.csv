@@ -15,8 +15,8 @@
 20003,enemy_name_20003,enemy_desc_20003,GoblinRaider,Green,1,1,625,0.4,0,20,GoblinRaiderB
 20004,enemy_name_20004,enemy_desc_20004,GoblinReaper,Red,1,1,313,0.8,0,20,GoblinReaperB
 20005,enemy_name_20005,enemy_desc_20005,GoblinKing,Green,1.2,1,714,0.35,0,24,GoblinKingB
-10012,enemy_name_10012,enemy_desc_10012,OrcAxeWarrior,Red,0.5,1,100,0.5,0,10,
-10013,enemy_name_10013,enemy_desc_10013,OrcChiefGrunt,Green,0.6,1,83,0.6,0,12,
+10012,enemy_name_10012,enemy_desc_10012,OrcAxeWarrior,Red,0.4,1,67,0.6,0,8,
+10013,enemy_name_10013,enemy_desc_10013,OrcChiefGrunt,Green,0.6,1,100,0.5,0,12,OrcChiefGrunt
 10014,enemy_name_10014,enemy_desc_10014,OrcSwordWarrior,Red,0.6,1,91,0.55,0,12,
 10015,enemy_name_10015,enemy_desc_10015,OrcWarlock,Blue,0.55,1,100,0.5,0,11,
 20006,enemy_name_20006,enemy_desc_20006,OrcChiefGrunt,Green,1,1,625,0.4,0,20,
