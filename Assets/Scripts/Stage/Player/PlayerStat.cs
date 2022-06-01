@@ -34,7 +34,8 @@ public class PlayerStat
 	public ObscuredFloat OfflineRewardAdd;
 	public ObscuredFloat QuestTime;
 	public ObscuredFloat QuestReward;
-
+	public ObscuredFloat AutoUseSkillRate = 0f;
+	public ObscuredFloat Moat = 0f;
 
 	public void Init()
 	{
@@ -70,7 +71,9 @@ public class PlayerStat
 		OfflineRewardLimitMin = 120;
 		OfflineRewardAdd = 0f;
 		QuestTime = 0f;		
-		QuestReward = 0f;		
+		QuestReward = 0f;
+		AutoUseSkillRate = 0f;
+		Moat = 0f;
 	}	
 
 

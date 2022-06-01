@@ -20,6 +20,7 @@ public class DialogHeroInfo : DialogController
 	public TextMeshProUGUI SkillDesc;
 	public TextMeshProUGUI CEName;
 	public TextMeshProUGUI CEDesc;
+	public TextMeshProUGUI CEDesc2;
 	public TextMeshProUGUI PurchaseBtnText;
 	public TextMeshProUGUI PurchaseCost;
 	public Image PurchaseCostIcon;
@@ -121,14 +122,62 @@ public class DialogHeroInfo : DialogController
 			}
 		}
 
-		if (seData == null)
-		{
-			seData = new SEData(CsvData.Ins.SEChart[id], chart.Grade);
-			seData.SetValue(double.Parse(seData.Chart.EParam5));			
-		}
+		SEChart seChart = CsvData.Ins.SEChart[id];
 		
+		if (seData == null)		
+			seData = new SEData(seChart, chart.Grade);
+
+		double value1 = seData.SetValue();
+		double value2 = seData.NextSetValue();
+
+		string _desc = "";
+
+		if(data.Grade == 5)
+		{
+			switch (seChart.EParam2)
+			{
+				case "Gold":
+					if (seChart.EffectType == SEEffectType.StatChange)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max_hero"), value1.ToCurrencyString(), data.Grade);
+					else if (seChart.EffectType == SEEffectType.Ascension)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_max_hero"), value1.ToCurrencyString(), data.Grade);
+					break;
+				case "Time":
+					if (seChart.EffectType == SEEffectType.OfflineReward)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_t_max_hero"), value1, data.Grade);
+					else
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max_hero"), Math.Round(value1, 1), data.Grade);
+					break;
+				default:
+					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max_hero"), Math.Round(value1, 1), data.Grade);
+					break;
+			}
+		}
+		else
+		{
+			switch (seChart.EParam2)
+			{
+				case "Gold":
+					if (seChart.EffectType == SEEffectType.StatChange)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_hero"), value1.ToCurrencyString(), value2.ToCurrencyString(), data.Grade, data.Grade + 1);
+					else if (seChart.EffectType == SEEffectType.Ascension)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_hero"), value1.ToCurrencyString(), value2.ToCurrencyString(), data.Grade, data.Grade + 1);
+					break;
+				case "Time":
+					if (seChart.EffectType == SEEffectType.OfflineReward)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_t_hero"), value1, value2, data.Grade, data.Grade + 1);
+					else
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_hero"), Math.Round(value1, 1), Math.Round(value2, 1), data.Grade, data.Grade + 1);
+					break;
+				default:
+					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_hero"), Math.Round(value1, 1), Math.Round(value2, 1), data.Grade, data.Grade + 1);
+					break;
+			}
+		}
+
 		CEName.text = LanguageManager.Ins.SetString("CollectionEffect");
-		CEDesc.text = string.Format(LanguageManager.Ins.SetString(chart.CEDesc), Math.Round(seData.Value, 1));		
+		CEDesc.text = LanguageManager.Ins.SetString(chart.CEDesc);
+		CEDesc2.text = _desc;
 	}
 
 	void SetButtons(HeroData data, HeroChart chart)
@@ -205,7 +254,7 @@ public class DialogHeroInfo : DialogController
 							HeroIcon.Setup(data);
 							DialogHero._DialogHero.SetHeroes();
 							DialogHero._DialogHero.SetDeploySlots();
-							StageManager.Ins.DeployHero(data, data.SlotNo);
+							//StageManager.Ins.DeployHero(data, data.SlotNo);
 							SetHeroInfo(data);							
 						}
 					});

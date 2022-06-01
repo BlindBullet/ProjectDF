@@ -49,10 +49,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogRelic>().OpenDialog();
 	}
 
-	public void OpenRelicInfo(RelicData data)
+	public void OpenCastle()
 	{
-		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogRelicInfo") as GameObject, DialogTrf);
-		dialog.GetComponent<DialogRelicInfo>().OpenDialog(data);
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogCastle") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogCastle>().OpenDialog();
 	}
 
 	public void OpenAscension()

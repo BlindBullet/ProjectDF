@@ -17,6 +17,8 @@ public class PlayerUi : MonoBehaviour
 	public GameObject QuestLockObj;
 	public TextMeshProUGUI QuestBtnText;
 	public GameObject QuestNotify;
+	public Button CastleBtn;
+	public TextMeshProUGUI CastleBtnText;
 	public Button SettingBtn;
 	public TextMeshProUGUI SettingBtnText;
 
@@ -29,6 +31,10 @@ public class PlayerUi : MonoBehaviour
 		RelicBtnText.text = LanguageManager.Ins.SetString("Relic");
 		RelicBtn.onClick.RemoveAllListeners();
 		RelicBtn.onClick.AddListener(() => DialogManager.Ins.OpenRelic());
+
+		CastleBtnText.text = LanguageManager.Ins.SetString("Castle");
+		CastleBtn.onClick.RemoveAllListeners();
+		CastleBtn.onClick.AddListener(() => DialogManager.Ins.OpenCastle());
 
 		AscensionBtnText.text = LanguageManager.Ins.SetString("Ascension");
 		AscensionBtn.onClick.RemoveAllListeners();

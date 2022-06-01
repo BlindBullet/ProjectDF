@@ -19,6 +19,7 @@ public class PlayerData
 	public List<SlotData> Slots = new List<SlotData>();
 	public List<HeroData> Heroes = new List<HeroData>();
 	public List<RelicData> Relics = new List<RelicData>();
+	public List<RelicData> Castles = new List<RelicData>();
 	public List<QuestData> Quests = new List<QuestData>();
 	public List<PlayerBuffData> PlayerBuffs = new List<PlayerBuffData>();
 	public int ClearQuestCount;
@@ -43,7 +44,8 @@ public class PlayerData
 
 		ResisterHeroes();
 		ResisterRelics();
-		ResisterQuests();		
+		ResisterQuests();
+		ResisterCastle();
 
 		for (int i = 0; i < 5; i++)
 		{
@@ -201,15 +203,38 @@ public class PlayerData
 
 			for(int i = 0; i < Relics.Count; i++)
 			{
-				if (elem.Key == Relics[i].Id)
+				if (elem.Key == Relics[i].Id && elem.Value.Type == RelicType.Relic)
 					alreadyOwn = true;
 			}
 
-			if (!alreadyOwn)
+			if (!alreadyOwn && elem.Value.Type == RelicType.Relic)
 			{
 				RelicData data = new RelicData();
 				data.Init(elem.Key);
 				Relics.Add(data);
+			}
+		}
+	}
+
+	void ResisterCastle()
+	{
+		foreach (KeyValuePair<string, RelicChart> elem in CsvData.Ins.RelicChart)
+		{
+			bool alreadyOwn = false;
+
+			for (int i = 0; i < Castles.Count; i++)
+			{
+				if (elem.Key == Castles[i].Id && elem.Value.Type == RelicType.Castle)
+				{	
+					alreadyOwn = true;
+				}
+			}
+
+			if (!alreadyOwn && elem.Value.Type == RelicType.Castle)
+			{
+				RelicData data = new RelicData();
+				data.Init(elem.Key);
+				Castles.Add(data);
 			}
 		}
 	}
@@ -362,6 +387,7 @@ public class PlayerData
 
 			ResisterHeroes();
 			ResisterRelics();
+			ResisterCastle();
 		}
 
 		Save();

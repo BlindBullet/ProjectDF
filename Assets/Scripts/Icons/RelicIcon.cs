@@ -17,7 +17,7 @@ public class RelicIcon : MonoBehaviour
 		RelicChart chart = CsvData.Ins.RelicChart[data.Id];
 
 		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.Icon);
-				
+		
 		SetLock(data);
 		SetLevel(data, chart);
 	}

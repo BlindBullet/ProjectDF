@@ -11,11 +11,13 @@ public class RelicBar : MonoBehaviour
 	public RelicIcon RelicIcon;
 	public TextMeshProUGUI Name;
 	public TextMeshProUGUI Desc;
+	public TextMeshProUGUI Desc2;
 	public Button LvUpBtn;
+	public Image LvUpBtnImg;
 	public TextMeshProUGUI LvUpBtnText;
 	public Image CostIcon;
 	public TextMeshProUGUI Cost;
-	RelicData data;
+	RelicData data;	
 	RelicChart chart;
 	Material lvUpBtnMat;
 
@@ -26,7 +28,7 @@ public class RelicBar : MonoBehaviour
 		lvUpBtnMat = LvUpBtn.GetComponent<Image>().material;
 
 		this.data = data;
-		chart = CsvData.Ins.RelicChart[data.Id];		
+		chart = CsvData.Ins.RelicChart[data.Id];
 		Name.text = LanguageManager.Ins.SetString(chart.Name);
 		SetInfo();
 		SetBtn();
@@ -45,19 +47,80 @@ public class RelicBar : MonoBehaviour
 			}
 		}
 
-		if (seData == null)
-		{
-			seData = new SEData(CsvData.Ins.SEChart[chart.Effect], data.Lv);
-			seData.SetValue(double.Parse(seData.Chart.EParam5));
-		}
+		SEChart seChart = CsvData.Ins.SEChart[chart.Effect];
+
+		if (seData == null)		
+			seData = new SEData(seChart, data.Lv);		
+		
+		double value1 = seData.SetValue();
+		double value2 = seData.NextSetValue();
 
 		RelicIcon.SetIcon(data);
-		Desc.text = string.Format(LanguageManager.Ins.SetString(chart.Desc), Math.Round(seData.Value, 1).ToCurrencyString());
+
+		string _desc = "";
+
+		if (data.Lv == chart.MaxLv)
+		{
+			switch (seChart.EParam2)
+			{
+				case "Gold":
+					if (seChart.EffectType == SEEffectType.StatChange)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max"), value1.ToCurrencyString());
+					else if (seChart.EffectType == SEEffectType.Ascension)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_max"), value1.ToCurrencyString());
+					break;
+				case "Time":
+					if (seChart.EffectType == SEEffectType.OfflineReward)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_t_max"), value1);
+					else
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max"), Math.Round(value1, 1));
+					break;
+				default:
+					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max"), Math.Round(value1, 1));
+					break;
+			}
+		}
+		else
+		{
+			switch (seChart.EParam2)
+			{
+				case "Gold":
+					if (seChart.EffectType == SEEffectType.StatChange)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p"), value1.ToCurrencyString(), value2.ToCurrencyString());
+					else if (seChart.EffectType == SEEffectType.Ascension)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc"), value1.ToCurrencyString(), value2.ToCurrencyString());
+					break;
+				case "Time":
+					if (seChart.EffectType == SEEffectType.OfflineReward)
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_t"), value1, value2);
+					else
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p"), Math.Round(value1, 1), Math.Round(value2, 1));
+					break;
+				default:
+					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p"), Math.Round(value1, 1), Math.Round(value2, 1));
+					break;
+			}
+		}
+
+		Desc.text = LanguageManager.Ins.SetString(chart.Desc);
+		Desc2.text = _desc;
 		SetBtn();
 	}
 
 	void SetBtn()
 	{
+		RelicChart chart = CsvData.Ins.RelicChart[data.Id];
+
+		switch (chart.Type)
+		{
+			case RelicType.Relic:
+				LvUpBtnImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Btn_Purple");
+				break;
+			case RelicType.Castle:
+				LvUpBtnImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Btn_Brown");
+				break;
+		}
+
 		LvUpBtn.onClick.RemoveAllListeners();
 
 		if (data.isOwn)

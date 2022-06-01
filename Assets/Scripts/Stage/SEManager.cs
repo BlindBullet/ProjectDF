@@ -30,7 +30,7 @@ public class SEManager : MonoSingleton<SEManager>
 					SEData data = new SEData(chart, heroes[i].Grade);
 										
 					value = double.Parse(chart.EParam5);
-					data.SetValue(value);
+					data.SetValue();
 
 					SeList.Add(data);
 				}
@@ -51,7 +51,7 @@ public class SEManager : MonoSingleton<SEManager>
 			SEData data = new SEData(seChart, relics[i].Lv);
 
 			value = double.Parse(seChart.EParam5);			
-			data.SetValue(value);
+			data.SetValue();
 
 			SeList.Add(data);
 		}
@@ -1438,8 +1438,16 @@ public class SEData
 		Lv = lv;
 	}
 
-	public void SetValue(double value)
-	{	
-		Value = (value + (Chart.LvUpIncValue * (Lv - 1))) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, (Lv - 1)) : 1f);
+	public double SetValue()
+	{
+		if (Lv == 0)
+			return 0f;
+
+		return Value = (double.Parse(Chart.EParam5) + (Chart.LvUpIncValue * (Lv - 1))) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, (Lv - 1)) : 1f);
+	}
+
+	public double NextSetValue()
+	{
+		return Value = (double.Parse(Chart.EParam5) + (Chart.LvUpIncValue * Lv)) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, Lv) : 1f);
 	}
 }

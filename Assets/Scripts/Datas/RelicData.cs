@@ -13,7 +13,7 @@ public class RelicData
 	public void Init(string id)
 	{
 		Id = id;
-		Lv = 1;
+		Lv = 0;
 		isOwn = false;
 	}
 

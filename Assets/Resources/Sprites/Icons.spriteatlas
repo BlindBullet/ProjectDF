@@ -86,11 +86,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 674c51d4ff2b34963950fdc62adf100b, type: 3}
   - {fileID: 21300000, guid: 5f9213f420127fd40bd82b2f1bef5225, type: 3}
   - {fileID: 21300000, guid: a71dbf05399024243aa578477be16e13, type: 3}
-  - {fileID: 21300000, guid: f3a851859767547c6b5d9a9d9d995af7, type: 3}
   - {fileID: 21300000, guid: 37c4ebd5e5c4f874ba8e02d647a3cb22, type: 3}
   - {fileID: 21300000, guid: b394e186d8ebb744fb59530a15ab291f, type: 3}
   - {fileID: 21300000, guid: baa107d6a05494741bf14d59428c8ae5, type: 3}
   - {fileID: 21300000, guid: 19503fd6a71c9184a80c64c66c71b778, type: 3}
+  - {fileID: 21300000, guid: 4cda8e27ac23709488bbb73437108647, type: 3}
   - {fileID: 21300000, guid: fef3b5376faf0f441a40482e6bc3cd91, type: 3}
   - {fileID: 21300000, guid: ae9f8677ca3c24a7c80d7217a941f886, type: 3}
   - {fileID: 21300000, guid: 15d8a77779248df4faa4200f94f25ccb, type: 3}
@@ -139,9 +139,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e0e2cdee225b21341b370b1bdb8cf106, type: 3}
   - {fileID: 21300000, guid: a8d5e7fe9be824741b1381e9dddfdb31, type: 3}
   - {fileID: 21300000, guid: c6278a2fe5944f244addb9b8eee8ca40, type: 3}
+  - {fileID: 21300000, guid: d804398fbef4254448a47c4e907e320f, type: 3}
   - {fileID: 21300000, guid: 215d9dff07115427c805c2bc477a4e81, type: 3}
   m_PackedSpriteNamesToIndex:
-  - btn_rectangle_01_n_bluegray
+  - Btn_Gray
   - Loot_12
   - Frame_metal2_fr4
   - HeroFrame_Red
@@ -150,7 +151,7 @@ SpriteAtlas:
   - icon_itemicon_setting
   - Loot_17
   - SoulStone
-  - btn_rectangle_01_n_dark
+  - Btn_Dark
   - GameSpeed
   - Loot_04
   - Ad
@@ -166,30 +167,30 @@ SpriteAtlas:
   - Wings Halo - Stars
   - Star_On
   - MinionFrame_Red
-  - icon_itemicon_mission
   - Green
   - HeroBg_Red
   - slider_icontype_00_icon3
   - Frame_stoune_round4
+  - icon_itemicon_scroll1
   - Magicite
-  - btn_rectangle_01_n_yellow
+  - Btn_Yellow
   - Loot_05
   - icon_itemicon_sword
   - label_ribbon_02
   - Frame_metal2_fr3
-  - btn_rectangle_01_n_blue
+  - Btn_Blue
   - EnemyCircleBg_Green
   - Loot_07
   - Loot_13
   - Frame_metal2_fr2
   - icon_itemicon_hero
   - Frame_stoune_2
-  - btn_rectangle_01_n_green
-  - btn_rectangle_01_n_gray
+  - Btn_Green
+  - Btn_Gray2
   - HeroBg_Green
-  - btn_rectangle_01_n_purple
+  - Btn_Purple
   - HeroSelectedFrame
-  - btn_rectangle_01_n_mint
+  - Btn_Mint
   - EnemyCircleFrame_Red
   - MinionFrame_Green
   - Loot_20
@@ -197,8 +198,8 @@ SpriteAtlas:
   - HeroFrame_Green
   - Loot_16
   - Loot_01
-  - btn_rectangle_01_n_brown
-  - btn_rectangle_01_n_darkgray
+  - Btn_Brown
+  - Btn_DarkGray
   - Gold
   - Loot_09
   - EnemyCircleBg_Blue
@@ -207,10 +208,10 @@ SpriteAtlas:
   - icon_itemicon_rune
   - Loot_03
   - HeroFrame_Blue
-  - btn_rectangle_02
+  - Btn_Blue2
   - Loot_10
   - label_tag_00
-  - btn_rectangle_01_n_red
+  - Btn_Red
   - Loot_15
   - Blue
   - EnemyCircleFrame_Blue
@@ -219,7 +220,8 @@ SpriteAtlas:
   - Loot_19
   - Loot_14
   - Loot_11
-  - btn_rectangle_01_n_white
+  - icon_itemicon_castle
+  - Btn_White
   m_RenderDataMap: {}
   m_Tag: Icons
   m_IsVariant: 0
