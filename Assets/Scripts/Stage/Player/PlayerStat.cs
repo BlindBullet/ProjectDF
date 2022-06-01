@@ -35,7 +35,9 @@ public class PlayerStat
 	public ObscuredFloat QuestTime;
 	public ObscuredFloat QuestReward;
 	public ObscuredFloat AutoUseSkillRate = 0f;
-	public ObscuredFloat Moat = 0f;
+	public ObscuredFloat MoatLv = 0f;
+	public ObscuredFloat LvUpGoldDec = 0f;
+	public ObscuredFloat TouchSkillCoolDecProb = 0f;
 
 	public void Init()
 	{
@@ -73,7 +75,9 @@ public class PlayerStat
 		QuestTime = 0f;		
 		QuestReward = 0f;
 		AutoUseSkillRate = 0f;
-		Moat = 0f;
+		MoatLv = 0f;
+		LvUpGoldDec = 0f;
+		TouchSkillCoolDecProb = 0f;
 	}	
 
 

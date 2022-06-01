@@ -8,6 +8,7 @@
 10007,str_name_castle_10007,str_desc_castle_10007,Loot_07,Castle,10,Castle7,SoulStone,100,SoulStone,500,500,
 10008,str_name_castle_10008,str_desc_castle_10008,Loot_08,Castle,10,Castle8,SoulStone,50,SoulStone,150,150,
 10009,str_name_castle_10009,str_desc_castle_10009,Loot_09,Castle,10,Castle9,SoulStone,100,SoulStone,150,150,
+10010,str_name_castle_10010,str_desc_castle_10010,Loot_10,Castle,20,Castle10,SoulStone,200,SoulStone,100,100,
 20001,str_name_relic_20001,str_desc_relic_20001,Loot_10,Relic,10,Relic1,Magicite,50,Magicite,100,,2
 20002,str_name_relic_20002,str_desc_relic_20002,Loot_11,Relic,10,Relic2,Magicite,50,Magicite,100,,2
 20003,str_name_relic_20003,str_desc_relic_20003,Loot_12,Relic,9999,Relic3,Magicite,50,Magicite,100,,1.1

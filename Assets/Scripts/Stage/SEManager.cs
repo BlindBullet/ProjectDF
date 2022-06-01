@@ -453,6 +453,50 @@ public class SEManager : MonoSingleton<SEManager>
 								break;
 						}
 						break;
+					case "LvUpGold":
+						switch (data.Chart.EParam1)
+						{
+							case "Inc":
+								StageManager.Ins.PlayerStat.LvUpGoldDec += (float)data.Value;
+								break;
+							case "Dec":
+								StageManager.Ins.PlayerStat.LvUpGoldDec -= (float)data.Value;
+								break;
+						}
+						break;
+					case "TouchSkillCool":
+						switch (data.Chart.EParam1)
+						{
+							case "Inc":
+								StageManager.Ins.PlayerStat.TouchSkillCoolDecProb += (float)data.Value;
+								break;
+							case "Dec":
+								StageManager.Ins.PlayerStat.TouchSkillCoolDecProb -= (float)data.Value;
+								break;
+						}
+						break;
+					case "AutoSkill":
+						switch (data.Chart.EParam1)
+						{
+							case "Inc":
+								StageManager.Ins.PlayerStat.AutoUseSkillRate += (float)data.Value;
+								break;
+							case "Dec":
+								StageManager.Ins.PlayerStat.AutoUseSkillRate -= (float)data.Value;
+								break;
+						}
+						break;
+					case "Moat":
+						switch (data.Chart.EParam1)
+						{
+							case "Inc":
+								StageManager.Ins.PlayerStat.MoatLv += (float)data.Value;
+								break;
+							case "Dec":
+								StageManager.Ins.PlayerStat.MoatLv -= (float)data.Value;
+								break;
+						}
+						break;
 				}
 				break;
 			case SEEffectType.Ascension:

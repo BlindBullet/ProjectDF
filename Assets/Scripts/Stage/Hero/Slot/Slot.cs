@@ -55,7 +55,7 @@ public class Slot : MonoBehaviour
 
 		LvObj.SetActive(true);
 
-		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
+		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv) - ((ConstantData.GetLvUpCost(data.Lv) * StageManager.Ins.PlayerStat.LvUpGoldDec)));
 		SetLvUpBtnState(0);
 		SetLvText();
 		SetPowerUpBtn();
@@ -84,7 +84,7 @@ public class Slot : MonoBehaviour
 		}
 
 		SetLvUpBtnState(0);
-		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
+		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv) - ((ConstantData.GetLvUpCost(data.Lv) * StageManager.Ins.PlayerStat.LvUpGoldDec)));
 		SetLvText();
 	}
 
