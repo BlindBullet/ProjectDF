@@ -33,6 +33,9 @@ public class SkillController : MonoBehaviour
 			{
 				Skill.ProgressCoolTime();
 				me.Ui.SetCoolTimeFrame(Skill.CoolTime / Skill._CoolTime);
+
+				//여기 자동 스킬 사용 넣을 것
+
 			}
 
 			yield return null;

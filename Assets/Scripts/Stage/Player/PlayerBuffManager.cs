@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 {
 	public UnityAction<double> GameSpeedBuffAdded;
+	public UnityAction<double> AutoSkillBuffAdded;
+	public UnityAction<double> GainGoldBuffAdded;
 
 	public void AddBuff(PlayerBuffType type, double durationTime)
 	{
@@ -29,7 +31,13 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 		switch (data.Type)
 		{
 			case PlayerBuffType.GameSpeed:
-				Time.timeScale = 2f;
+				StageManager.Ins.PlayerStat.GameSpd = ConstantData.BuffGameSpeedRate;
+				break;
+			case PlayerBuffType.UseAutoSkill:
+				StageManager.Ins.PlayerStat.AutoUseSKill = true;
+				break;
+			case PlayerBuffType.GainGoldx2:
+				StageManager.Ins.PlayerStat.GainGold = ConstantData.BuffGainGoldRate;
 				break;
 		}
 
@@ -41,7 +49,13 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 		switch (data.Type)
 		{
 			case PlayerBuffType.GameSpeed:
-				Time.timeScale = 1f;
+				StageManager.Ins.PlayerStat.GameSpd = 1f;
+				break;
+			case PlayerBuffType.UseAutoSkill:
+				StageManager.Ins.PlayerStat.AutoUseSKill = false;
+				break;
+			case PlayerBuffType.GainGoldx2:
+				StageManager.Ins.PlayerStat.GainGold = 1f;
 				break;
 		}
 
@@ -59,6 +73,12 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 				case PlayerBuffType.GameSpeed:
 					GameSpeedBuffAdded((data.DurationTime * 60f) - span.TotalSeconds);
 					break;
+				case PlayerBuffType.UseAutoSkill:
+					AutoSkillBuffAdded((data.DurationTime * 60f) - span.TotalSeconds);
+					break;
+				case PlayerBuffType.GainGoldx2:
+					GainGoldBuffAdded((data.DurationTime * 60f) - span.TotalSeconds);
+					break;
 			}
 
 			if (span.TotalSeconds >= data.DurationTime * 60f)
@@ -67,6 +87,12 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 				{
 					case PlayerBuffType.GameSpeed:
 						GameSpeedBuffAdded((data.DurationTime * 60f) - span.TotalSeconds);
+						break;
+					case PlayerBuffType.UseAutoSkill:
+						AutoSkillBuffAdded((data.DurationTime * 60f) - span.TotalSeconds);
+						break;
+					case PlayerBuffType.GainGoldx2:
+						GainGoldBuffAdded((data.DurationTime * 60f) - span.TotalSeconds);
 						break;
 				}
 

@@ -13,12 +13,19 @@ public class TopBar : MonoBehaviour
 	public TextMeshProUGUI StageText;
 	public GameObject GameSpeedBuffObj;
 	public TextMeshProUGUI GameSpeedTimeText;
+	public GameObject GainGoldBuffObj;
+	public TextMeshProUGUI GainGoldTimeText;
+	public GameObject AutoUseSkillBuffObj;
+	public TextMeshProUGUI AutoUseSkillTimeText;
+
 	public void Setup()
 	{
 		StageManager.Ins.GoldChanged += SetGoldText;
 		StageManager.Ins.SoulStoneChanged += SetSoulStoneText;
 		StageManager.Ins.MagiciteChanged += SetMagiciteText;
 		PlayerBuffManager.Ins.GameSpeedBuffAdded += SetGameSpeed;
+		PlayerBuffManager.Ins.AutoSkillBuffAdded += SetAutoUseSkill;
+		PlayerBuffManager.Ins.GainGoldBuffAdded += SetGainGold;
 
 		SetGoldText(0);
 		SetSoulStoneText(0);
@@ -76,4 +83,63 @@ public class TopBar : MonoBehaviour
 		}
 	}
 
+	public void SetGainGold(double leftTime)
+	{
+		if (leftTime > 0f)
+		{
+			int hour = (int)(leftTime / 3600f);
+			int min = (int)((leftTime % 3600f) / 60f);
+
+			string hourStr = hour < 10 ? "0" + hour : hour.ToString();
+			string minStr = "";
+
+			if (hour <= 0)
+			{
+				minStr = (min + 1).ToString();
+				GainGoldTimeText.text = minStr + "M";
+			}
+			else
+			{
+				minStr = min < 10 ? "0" + (min + 1) : (min + 1).ToString();
+				GainGoldTimeText.text = hourStr + "H " + minStr + "M";
+			}
+
+
+			GainGoldBuffObj.SetActive(true);
+		}
+		else
+		{
+			GainGoldBuffObj.SetActive(false);
+		}
+	}
+
+	public void SetAutoUseSkill(double leftTime)
+	{
+		if (leftTime > 0f)
+		{
+			int hour = (int)(leftTime / 3600f);
+			int min = (int)((leftTime % 3600f) / 60f);
+
+			string hourStr = hour < 10 ? "0" + hour : hour.ToString();
+			string minStr = "";
+
+			if (hour <= 0)
+			{
+				minStr = (min + 1).ToString();
+				AutoUseSkillTimeText.text = minStr + "M";
+			}
+			else
+			{
+				minStr = min < 10 ? "0" + (min + 1) : (min + 1).ToString();
+				AutoUseSkillTimeText.text = hourStr + "H " + minStr + "M";
+			}
+
+
+			AutoUseSkillBuffObj.SetActive(true);
+		}
+		else
+		{
+			AutoUseSkillBuffObj.SetActive(false);
+		}
+	}
 }

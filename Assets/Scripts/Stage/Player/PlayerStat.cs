@@ -38,6 +38,9 @@ public class PlayerStat
 	public ObscuredFloat MoatLv = 0f;
 	public ObscuredFloat LvUpGoldDec = 0f;
 	public ObscuredFloat TouchSkillCoolDecProb = 0f;
+	public ObscuredFloat GainGold = 1f;
+	public ObscuredBool AutoUseSKill = false;
+	public ObscuredFloat GameSpd = 1f;
 
 	public void Init()
 	{
@@ -78,6 +81,9 @@ public class PlayerStat
 		MoatLv = 0f;
 		LvUpGoldDec = 0f;
 		TouchSkillCoolDecProb = 0f;
+		GameSpd = 1f;
+		AutoUseSKill = false;
+		GainGold = 1f;
 	}	
 
 

@@ -11,7 +11,7 @@ public class BuffData
 	public void SetData(HitresultChart chart)
 	{
 		Data = chart;
-		DurationTime = chart.DurationTime <= 0 ? 9999f : chart.DurationTime;
+		DurationTime = chart.DurationTime <= 0 ? 99999f : chart.DurationTime;
 	}
 
 

@@ -27,5 +27,8 @@ public enum PlayerBuffType
 {
 	None,
 	GameSpeed,
+	UseAutoSkill,
+	GainGoldx2,
+
 
 }

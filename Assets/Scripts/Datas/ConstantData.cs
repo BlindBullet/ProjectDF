@@ -41,7 +41,12 @@ public static class ConstantData
 	//퀘스트탭이 열릴 환생 카운트
 	public static ObscuredInt OpenQuestAscensionCount = 0;
 	//슬롯 파워업 가능 레벨
-	public static ObscuredInt[] SlotPowerUpPossibleLv = { 5, 10, 25, 50, 100, 200, 300, 400, 500, 600, };	
+	public static ObscuredInt[] SlotPowerUpPossibleLv = { 5, 10, 25, 50, 100, 200, 300, 400, 500, 600, };
+	//게임스피드 버프의 증가량
+	public static ObscuredFloat BuffGameSpeedRate = 1.5f;
+	//얻는 골드량 버프의 증가량
+	public static ObscuredFloat BuffGainGoldRate = 2f;
+	
 
 	public static double GetLvUpCost(int lv)
 	{
@@ -67,8 +72,10 @@ public static class ConstantData
 	}
 
 	public static double GetEnemyGold(double basicGold, int stageNo, bool isBoss)
-	{		
-		return CalcValue(basicGold, EnemyGoldGR, stageNo);
+	{
+		double value = CalcValue(basicGold, EnemyGoldGR, stageNo);
+		value = value + (value * BuffGainGoldRate);
+		return value;
 	}
 
 	public static double GetAscensionMagicite(int stageNo)
