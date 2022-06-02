@@ -1049,6 +1049,7 @@ GameObject:
   - component: {fileID: 3139323179426118068}
   - component: {fileID: 960050137655223965}
   - component: {fileID: 96570547139912107}
+  - component: {fileID: 8503775137194993141}
   m_Layer: 5
   m_Name: SelectedFrame
   m_TagString: Untagged
@@ -1125,10 +1126,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shaderTypes: 2
+  shaderTypes: 1
   normalStrength: 5
   normalSmoothing: 1
   computingNormal: 0
+--- !u!114 &8503775137194993141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917989079215324166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c0770c7b77d3f45ab8c8d42b794c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7982432689049485077
 GameObject:
   m_ObjectHideFlags: 0

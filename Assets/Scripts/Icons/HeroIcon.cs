@@ -123,7 +123,7 @@ public class HeroIcon : MonoBehaviour
 	{
 		SelectedFrame.SetActive(true);
 		selectedFrameMat.SetFloat("_ShineGlow", 1f);
-		selectedFrameMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetId("SF" + Data.Id);
+		selectedFrameMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetUpdate(true).SetId("SF" + Data.Id);
 	}
 
 	public void CloseSelectedFrame()

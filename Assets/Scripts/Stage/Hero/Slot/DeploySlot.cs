@@ -46,7 +46,7 @@ public class DeploySlot : MonoBehaviour
 	void OpenArrow()
 	{
 		Arrow.SetActive(true);
-		Arrow.transform.DOMoveY(Arrow.transform.position.y - 1f, 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetId("DeployArrow" + data.Id);
+		Arrow.transform.DOMoveY(Arrow.transform.position.y - 1f, 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetUpdate(true).SetId("DeployArrow" + data.Id);
 	}
 
 	void Deploy(HeroData data)
