@@ -123,6 +123,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f9e8af3b7362f0c439704ad72ce5ecd9, type: 3}
   - {fileID: 21300000, guid: 7a58986b0b0aed847986263b157d2d21, type: 3}
   - {fileID: 21300000, guid: 7e747c9b00608d84ba777afba556fbe0, type: 3}
+  - {fileID: 21300000, guid: 139e811c4c194f540b4eb673ee78e6da, type: 3}
   - {fileID: 21300000, guid: 9564502c8413869448c6ef10a590f09e, type: 3}
   - {fileID: 21300000, guid: 3a4ee14ca538b4c74b027f96d16c9c76, type: 3}
   - {fileID: 21300000, guid: 6f924a8c8baf6c6499a017c4fab3477f, type: 3}
@@ -204,6 +205,7 @@ SpriteAtlas:
   - Loot_09
   - EnemyCircleBg_Blue
   - Frame_stoune_3
+  - HeroFrame_None
   - Loot_18
   - icon_itemicon_rune
   - Loot_03

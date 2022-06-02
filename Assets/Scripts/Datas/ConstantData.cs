@@ -44,13 +44,16 @@ public static class ConstantData
 	public static ObscuredInt[] SlotPowerUpPossibleLv = { 5, 10, 25, 50, 100, 200, 300, 400, 500, 600, };	
 
 	public static double GetLvUpCost(int lv)
-	{		
-		return CalcValue(StartLvUpGold, LvUpGoldGR, lv);		
+	{
+		double value = CalcValue(StartLvUpGold, LvUpGoldGR, lv);
+		value = value - (value * (StageManager.Ins.PlayerStat.LvUpGoldDec));
+			
+		return value;		
 	}
 
 	public static double GetHeroAtkEnchant(double basicAtk, int enchantLv)
 	{		
-		return CalcValue(basicAtk, HeroAtkGR, enchantLv + 1);
+		return CalcValue(basicAtk, HeroAtkGR, enchantLv + 1); 
 	}
 
 	public static double GetHeroAtk(double basicAtk, int lv, int enchantLv)

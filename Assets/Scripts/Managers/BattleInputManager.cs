@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using Random = UnityEngine.Random;
 
 public class BattleInputManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class BattleInputManager : MonoBehaviour
 	private HeroBase _selectedCharacter = null;
 	private Vector3 _mousePos = Vector3.zero;
 	private bool _isDragging = false;
+	Touch tempTouch;
 	Vector2 min;
 	Vector2 max;
 
@@ -28,9 +30,9 @@ public class BattleInputManager : MonoBehaviour
 		}
 	}
 
-	public (GameObject, Vector2) FindClickPoint(LayerMask layer)
-	{
-		RaycastHit2D hit = Physics2D.Raycast(MainCamera.ScreenToWorldPoint(Input.mousePosition), transform.forward, 15f, layer);
+	public (GameObject, Vector2) FindClickPoint(LayerMask layer, Vector2 pos)
+	{		
+		RaycastHit2D hit = Physics2D.Raycast(MainCamera.ScreenToWorldPoint(pos), transform.forward, 15f, layer);
 
 		if (hit)
 		{
@@ -76,73 +78,33 @@ public class BattleInputManager : MonoBehaviour
 	private void Update()
 	{
 		if (!isPause)
-		{
-			if (Input.GetMouseButtonDown(0))
-			{				
-				var (target, pos) = FindClickPoint(LayerManager.Ins.FieldAndSupplies);
-				
-				if (target != null)
+		{			
+#if UNITY_ANDROID
+			if (Input.touchCount > 0)
+			{
+				for(int k = 0; k < Input.touchCount; k++)
 				{
-					if (target.tag == FieldTag)
+					var tempTouch = Input.GetTouch(k);
+
+					if(tempTouch.phase == TouchPhase.Began)
 					{
-						//무속성의 발사체를 발사
-						//유물에 따라 레벨업?
-						EffectManager.Ins.ShowFx("TouchMuzzle", pos);
-
-						EnemyBase _target = null;
-
-						if (EnemyBase.Enemies.Count > 0)
-						{
-							List<EnemyBase> enemies = EnemyBase.Enemies.OrderBy(a => Vector2.Distance(a.transform.position, pos)).ToList();
-
-							for (int i = 0; i < enemies.Count; i++)
-							{
-								if (enemies[i].transform.position.x < max.x && enemies[i].transform.position.x > min.x &&
-									enemies[i].transform.position.y < max.y && enemies[i].transform.position.y > min.y)
-								{
-									if (enemies[i].Stat.CurHp > 0f)
-									{
-										_target = enemies[i];										
-										break;
-									}
-								}
-							}
-						}
-
-						Vector2 dir = Vector2.up;
-
-						if (_target != null)
-							dir = ((Vector2)_target.transform.position - pos).normalized;
-
-						List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart["touch_attack_" + StageManager.Ins.PlayerData.TouchAttackLv];
-						double _atk = 0f;
-
-						for(int i = 0; i < HeroBase.Heroes.Count; i++)
-						{
-							_atk += HeroBase.Heroes[i].Stat.Atk;
-						}
-
-						_atk = _atk / 5f;
-
-						for (int i = 0; i < projectiles.Count; i++)
-						{
-							ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
-							projectile.transform.position = pos;							
-							projectile.Setup(projectiles[i], _atk, dir, _target);
-						}
-						
-					}
-					else if(target.tag == SuppliesTag)
-					{
-						var supplies = target.GetComponent<SuppliesBase>();
-						if (supplies == null)
-						{
-							return;
-						}
-
-						supplies.GetReward();
+						var (target, pos) = FindClickPoint(LayerManager.Ins.FieldAndSupplies, tempTouch.position);
+						TouchAttack(target, pos);
+						TouchSkillCoolTimeDec();
+						break;
 					}
 				}
+			}
+
+#endif
+
+#if UNITY_EDITOR
+			if (Input.GetMouseButtonDown(0))
+			{				
+				var (target, pos) = FindClickPoint(LayerManager.Ins.FieldAndSupplies, Input.mousePosition);
+						
+				TouchAttack(target, pos, true);
+				TouchSkillCoolTimeDec();
 			}
 
 			if (Input.GetMouseButton(0))
@@ -154,8 +116,88 @@ public class BattleInputManager : MonoBehaviour
 			{
 				
 			}
-
+#endif
 		}
 	}
+
+	void TouchAttack(GameObject target, Vector2 pos, bool isMouse = false)
+	{
+		if (target != null)
+		{
+			if (target.tag == FieldTag)
+			{
+				//무속성의 발사체를 발사
+				//유물에 따라 레벨업?
+				EffectManager.Ins.ShowFx("TouchMuzzle", pos);
+
+				EnemyBase _target = null;
+
+				if (EnemyBase.Enemies.Count > 0)
+				{
+					List<EnemyBase> enemies = EnemyBase.Enemies.OrderBy(a => Vector2.Distance(a.transform.position, pos)).ToList();
+
+					for (int i = 0; i < enemies.Count; i++)
+					{
+						if (enemies[i].transform.position.x < max.x && enemies[i].transform.position.x > min.x &&
+							enemies[i].transform.position.y < max.y && enemies[i].transform.position.y > min.y)
+						{
+							if (enemies[i].Stat.CurHp > 0f)
+							{
+								_target = enemies[i];
+								break;
+							}
+						}
+					}
+				}
+
+				Vector2 dir = Vector2.up;
+
+				if (_target != null)
+					dir = ((Vector2)_target.transform.position - pos).normalized;
+
+				List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart["touch_attack_" + StageManager.Ins.PlayerData.TouchAttackLv];
+				double _atk = 0f;
+
+				for (int i = 0; i < HeroBase.Heroes.Count; i++)
+				{
+					_atk += HeroBase.Heroes[i].Stat.Atk;
+				}
+
+				_atk = _atk / 5f;
+
+				for (int i = 0; i < projectiles.Count; i++)
+				{
+					ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
+					projectile.transform.position = pos;
+					projectile.Setup(projectiles[i], _atk, dir, _target);
+				}
+
+			}
+			else if (target.tag == SuppliesTag)
+			{
+				var supplies = target.GetComponent<SuppliesBase>();
+				if (supplies == null)
+				{
+					return;
+				}
+
+				supplies.GetReward();
+			}
+		}
+	}
+
+	void TouchSkillCoolTimeDec()
+	{
+		float randNo = Random.Range(0, 100); 
+		
+		if(randNo < StageManager.Ins.PlayerStat.TouchSkillCoolDecProb)
+		{
+			for(int i = 0; i < HeroBase.Heroes.Count; i++)
+			{
+				HeroBase.Heroes[i].SkillCon.Skill.CoolTimeDesc(1f);
+			}
+		}
+	}
+
 
 }

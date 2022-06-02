@@ -23,8 +23,7 @@ public class SlotData
 
 	public bool LevelUp()
 	{
-		double cost = ConstantData.GetLvUpCost(Lv);
-		cost = cost - (cost * (StageManager.Ins.PlayerStat.LvUpGoldDec / 100f));
+		double cost = ConstantData.GetLvUpCost(Lv);		
 
 		if (StageManager.Ins.PlayerData.Gold >= cost)
 		{

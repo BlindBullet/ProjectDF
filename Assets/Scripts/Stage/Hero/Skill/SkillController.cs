@@ -163,4 +163,12 @@ public class Skill
 		CoolTime = -delay;
 	}
 
+	public void CoolTimeDesc(float addTime)
+	{
+		if(CoolTime >= 0)
+			CoolTime += addTime;
+
+		if (CoolTime >= _CoolTime)
+			CoolTime = _CoolTime;
+	}
 }
