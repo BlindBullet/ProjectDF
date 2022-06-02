@@ -204,7 +204,7 @@ public class DialogQuestInfo : DialogController
 			yield return StartCoroutine(TimeManager.Ins.GetTime());
 
 			data.Dispatch(TimeManager.Ins.ReceivedTime, DispatchHeroes);
-			DialogQuest.Quest.SetQuests();
+			DialogQuest._Dialog.SetQuests();
 			CloseDialog();
 		}
 		else

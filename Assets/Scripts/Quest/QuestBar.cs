@@ -52,7 +52,7 @@ public class QuestBar : MonoBehaviour
 				AchieveBtn.onClick.AddListener(() => 
 				{
 					QuestManager.Ins.ClearQuest(data);
-					DialogQuest.Quest.SetQuests();
+					DialogQuest._Dialog.SetQuests();
 				});
 			}
 			else

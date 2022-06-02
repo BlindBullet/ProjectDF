@@ -26,6 +26,13 @@ public class QuestManager : MonoSingleton<QuestManager>
 		QuestChart _chart = CsvData.Ins.QuestChart[data.Id];
 		SendReward(_chart);
 
+		//퀘스트 클리어 카운트 증가
+		StageManager.Ins.PlayerData.ClearQuest();
+
+		//퀘스트 플레이어 레벨업 가능인지 확인 가능하다면 레벨업
+		QuestPlayerLvUp();
+		DialogQuest._Dialog.SetPlayerLv();
+
 		//퀘스트를 새로운 퀘스트로 체인지
 		QuestChart chart = LotteryQuests()[0];
 		data.ChangeQuest(chart);
@@ -63,7 +70,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
 		foreach (KeyValuePair<string, QuestChart> elem in CsvData.Ins.QuestChart)
 		{
-			if(elem.Value.Lv == lv || elem.Value.Lv == lv - 1)
+			if(elem.Value.Lv == lv || elem.Value.Lv == lv - 1 || elem.Value.Lv == lv + 1)
 			{
 				bool alreadyHave = false;
 
@@ -85,21 +92,21 @@ public class QuestManager : MonoSingleton<QuestManager>
 		return questList;
 	}
 
+	public void QuestPlayerLvUp()
+	{
+		for(int i = 0; i < ConstantData.QuestLvPerClearCount.Length; i++)
+		{
+			if(i + 1 == GetQuestLevel())
+			{
+				if (StageManager.Ins.PlayerData.ClearQuestCount >= ConstantData.QuestLvPerClearCount[i] && GetQuestLevel() < 11)
+					StageManager.Ins.PlayerData.QuestLvUp();
+			}
+		}
+	}
+
 	public int GetQuestLevel()
 	{
-		int clearCount = StageManager.Ins.PlayerData.ClearQuestCount;
-		int lv = 1;
-
-		for (int i = ConstantData.QuestLvPerClearCount.Length - 1; i >= 0; i--)
-		{
-			if (clearCount >= ConstantData.QuestLvPerClearCount[i])
-			{
-				lv = i + 2;
-				break;
-			}	
-		}
-
-		return lv;
+		return StageManager.Ins.PlayerData.QuestLv;
 	}
 
 

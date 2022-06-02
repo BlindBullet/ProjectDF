@@ -22,7 +22,9 @@ public class PlayerData
 	public List<RelicData> Castles = new List<RelicData>();
 	public List<QuestData> Quests = new List<QuestData>();
 	public List<PlayerBuffData> PlayerBuffs = new List<PlayerBuffData>();
+	public int QuestLv;
 	public int ClearQuestCount;
+	public int TotalClearQuestCount;
 	public bool OnBGM;
 	public bool OnSFX;
 	public DateTime OfflineStartTime;	
@@ -36,7 +38,9 @@ public class PlayerData
 		SoulStone = 5000000f;
 		Stage = 1;
 		AscensionCount = 0;
+		QuestLv = 1;
 		ClearQuestCount = 0;
+		TotalClearQuestCount = 0;
 		TouchAttackLv = 1;
 		OnBGM = true;
 		OnSFX = true;
@@ -267,6 +271,20 @@ public class PlayerData
 		Save();
 	}
 
+	public void ClearQuest()
+	{
+		ClearQuestCount++;
+		TotalClearQuestCount++;
+		Save();
+	}
+
+	public void QuestLvUp()
+	{	
+		QuestLv++;
+		ClearQuestCount = 0;
+		Save();
+	}
+
 	public void Ascension()
 	{		
 		Stage = StageManager.Ins.PlayerStat.StartStage;
@@ -375,6 +393,9 @@ public class PlayerData
 			SoulStone = data.SoulStone;
 			TouchAttackLv = data.TouchAttackLv;
 			AscensionCount = data.AscensionCount;
+			QuestLv = data.QuestLv;
+			ClearQuestCount = data.ClearQuestCount;
+			TotalClearQuestCount = data.TotalClearQuestCount;
 			Stage = data.Stage;
 			Heroes = data.Heroes;
 			Relics = data.Relics;

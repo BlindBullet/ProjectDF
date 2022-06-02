@@ -6,10 +6,13 @@ using TMPro;
 
 public class DialogQuest : DialogController
 {
-	public static DialogQuest Quest = null;
+	public static DialogQuest _Dialog = null;
 
 	public TextMeshProUGUI Title;
 	public TextMeshProUGUI Desc;
+	public TextMeshProUGUI QuestPlayerLv;
+	public Image QuestPlayerLvFill;
+	public TextMeshProUGUI QuestPlayerLvCount;
 	public QuestBar[] QuestBars;
 	public Button ResetBtn;
 
@@ -20,11 +23,12 @@ public class DialogQuest : DialogController
 		Desc.text = LanguageManager.Ins.SetString("popup_quest_desc");
 
 		SetQuests();
+		SetPlayerLv();
 
 		ResetBtn.onClick.RemoveAllListeners();
 		ResetBtn.onClick.AddListener(() => ResetQuest());
 
-		Quest = this;
+		_Dialog = this;
 
 		Show(true, true);
 	}
@@ -37,6 +41,14 @@ public class DialogQuest : DialogController
 		}
 	}
 
+	public void SetPlayerLv()
+	{
+		int lv = QuestManager.Ins.GetQuestLevel();
+		QuestPlayerLv.text = lv.ToString();
+		QuestPlayerLvFill.fillAmount = (float)StageManager.Ins.PlayerData.ClearQuestCount / (float)ConstantData.QuestLvPerClearCount[lv - 1];
+		QuestPlayerLvCount.text = StageManager.Ins.PlayerData.ClearQuestCount.ToString() + "/" + ConstantData.QuestLvPerClearCount[lv - 1];
+	}
+
 	void ResetQuest()
 	{
 		QuestManager.Ins.ResetQuest();
@@ -46,7 +58,7 @@ public class DialogQuest : DialogController
 	private void OnDisable()
 	{	
 		StageManager.Ins.PlayerUi.SetQuestNotify();
-		Quest = null;
+		_Dialog = null;
 	}
 
 }
