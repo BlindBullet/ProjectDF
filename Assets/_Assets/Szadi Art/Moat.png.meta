@@ -1,0 +1,1845 @@
+fileFormatVersion: 2
+guid: f441f7ac22a31094cbdde9233c37783f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -865787609464274632
+    second: Moat_0
+  - first:
+      213: 5476651856999072622
+    second: Moat_1
+  - first:
+      213: 3913649152266132106
+    second: Moat_2
+  - first:
+      213: -1904108651299640698
+    second: Moat_3
+  - first:
+      213: 3977297789306362738
+    second: Moat_4
+  - first:
+      213: 4815725246390986924
+    second: Moat_5
+  - first:
+      213: -6111728747950908088
+    second: Moat_6
+  - first:
+      213: -6261249121823266879
+    second: Moat_7
+  - first:
+      213: 5248688141223203232
+    second: Moat_8
+  - first:
+      213: -6851355473949940426
+    second: Moat_9
+  - first:
+      213: 420689532516263410
+    second: Moat_10
+  - first:
+      213: -9040872126567945139
+    second: Moat_11
+  - first:
+      213: -3862550607321207276
+    second: Moat_12
+  - first:
+      213: 5784663143785499717
+    second: Moat_13
+  - first:
+      213: 8008939890123534190
+    second: Moat_14
+  - first:
+      213: -5601273247887669091
+    second: Moat_15
+  - first:
+      213: 7114413451561091205
+    second: Moat_16
+  - first:
+      213: -6445383854952779511
+    second: Moat_17
+  - first:
+      213: 8090195457673018969
+    second: Moat_18
+  - first:
+      213: -3640505844768768179
+    second: Moat_19
+  - first:
+      213: 2603103510466894770
+    second: Moat_20
+  - first:
+      213: -470267073133820381
+    second: Moat_21
+  - first:
+      213: -3851476431053936872
+    second: Moat_22
+  - first:
+      213: 3042500097515168583
+    second: Moat_23
+  - first:
+      213: 7560387191522855017
+    second: Moat_24
+  - first:
+      213: 8793487407077894450
+    second: Moat_25
+  - first:
+      213: -7966755093049863338
+    second: Moat_26
+  - first:
+      213: -8990768863155664587
+    second: Moat_27
+  - first:
+      213: 4456064887162614108
+    second: Moat_28
+  - first:
+      213: 8263038719576045810
+    second: Moat_29
+  - first:
+      213: -413595262957686847
+    second: Moat_30
+  - first:
+      213: -7661930814911184438
+    second: Moat_31
+  - first:
+      213: 7855016876915847187
+    second: Moat_32
+  - first:
+      213: 3914171796562092637
+    second: Moat_33
+  - first:
+      213: 6594482491283463723
+    second: Moat_34
+  - first:
+      213: -4332701944483642130
+    second: Moat_35
+  - first:
+      213: 1106949354421616556
+    second: Moat_36
+  - first:
+      213: 4763046050189722072
+    second: Moat_37
+  - first:
+      213: 3199014713470404234
+    second: Moat_38
+  - first:
+      213: 3024047982706651700
+    second: Moat_39
+  - first:
+      213: 8241153657983702212
+    second: Moat_40
+  - first:
+      213: -3987439966645840250
+    second: Moat_41
+  - first:
+      213: 714541709844180451
+    second: Moat_42
+  - first:
+      213: 1169401292218279687
+    second: Moat_43
+  - first:
+      213: -4491189010344921964
+    second: Moat_44
+  - first:
+      213: -6772122841156657149
+    second: Moat_45
+  - first:
+      213: -1819639606698567896
+    second: Moat_46
+  - first:
+      213: -1597618954366115515
+    second: Moat_47
+  - first:
+      213: -5848259801623042421
+    second: Moat_48
+  - first:
+      213: -4953527868848919851
+    second: Moat_49
+  - first:
+      213: -3156855106331347056
+    second: Moat_50
+  - first:
+      213: 326044295701848084
+    second: Moat_51
+  - first:
+      213: 4582850692530620212
+    second: Moat_52
+  - first:
+      213: -5601450642725754509
+    second: Moat_53
+  - first:
+      213: -8081405567385198086
+    second: Moat_54
+  - first:
+      213: 8774470864219912785
+    second: Moat_55
+  - first:
+      213: -8427559608506898897
+    second: Moat_56
+  - first:
+      213: -6804619605402705608
+    second: Moat_57
+  - first:
+      213: -7093699413107893923
+    second: Moat_58
+  - first:
+      213: -4051062955899586728
+    second: Moat_59
+  - first:
+      213: 470312227618664940
+    second: Moat_60
+  - first:
+      213: 6690102326440886905
+    second: Moat_61
+  - first:
+      213: 7601791171537557050
+    second: Moat_62
+  - first:
+      213: -3363219420353376350
+    second: Moat_63
+  - first:
+      213: 3302516135905074090
+    second: Moat_64
+  - first:
+      213: 7424139875624692433
+    second: Moat_65
+  - first:
+      213: 5884801264931344932
+    second: Moat_66
+  - first:
+      213: -4017566907586903170
+    second: Moat_67
+  - first:
+      213: -8960427193612115276
+    second: Moat_68
+  - first:
+      213: -4581860451982079799
+    second: Moat_69
+  - first:
+      213: 7088368048557136651
+    second: Moat_70
+  - first:
+      213: -7162844281037436010
+    second: Moat_71
+  - first:
+      213: -6439350432637291953
+    second: Moat_72
+  - first:
+      213: -4198409016684348632
+    second: Moat_73
+  - first:
+      213: 6391087769614515439
+    second: Moat_74
+  - first:
+      213: 97789865491730644
+    second: Moat_75
+  - first:
+      213: -8865670933712564067
+    second: Moat_76
+  - first:
+      213: 3086647772000450956
+    second: Moat_77
+  - first:
+      213: 5694370503973727252
+    second: Moat_78
+  - first:
+      213: -7710106437615730844
+    second: Moat_79
+  - first:
+      213: 3172021518519368300
+    second: Moat_80
+  - first:
+      213: -6051461042345924244
+    second: Moat_81
+  - first:
+      213: -2448684335495726749
+    second: Moat_82
+  - first:
+      213: 3217984668023974786
+    second: Moat_83
+  - first:
+      213: 1664661742238395701
+    second: Moat_84
+  - first:
+      213: 5838216647876407577
+    second: Moat_85
+  - first:
+      213: 8095095265991490497
+    second: Moat_86
+  - first:
+      213: -9165513092798427394
+    second: Moat_87
+  - first:
+      213: -1498687708426263250
+    second: Moat_88
+  - first:
+      213: 8042875246921222920
+    second: Moat_89
+  - first:
+      213: -668797416741683666
+    second: Moat_90
+  - first:
+      213: -1120169582225881386
+    second: Moat_91
+  - first:
+      213: -4221581800238117667
+    second: Moat_92
+  - first:
+      213: -2180116017416732313
+    second: Moat_93
+  - first:
+      213: -433034826825395954
+    second: Moat_94
+  - first:
+      213: -6310876068609477157
+    second: Moat_95
+  - first:
+      213: 5578973792830563126
+    second: Moat_96
+  - first:
+      213: 2615220269398424132
+    second: Moat_97
+  - first:
+      213: -4066729337531433082
+    second: Moat_98
+  - first:
+      213: 6656296829423950821
+    second: Moat_99
+  - first:
+      213: -7035089108182556727
+    second: Moat_100
+  - first:
+      213: -5920574209460883211
+    second: Moat_101
+  - first:
+      213: -1323091182021063517
+    second: Moat_102
+  - first:
+      213: 1688435213537423846
+    second: Moat_103
+  - first:
+      213: -5151059554456457820
+    second: Moat_104
+  - first:
+      213: -2274559912690033324
+    second: Moat_105
+  - first:
+      213: -459910882164013809
+    second: Moat_106
+  - first:
+      213: 6822783084867355072
+    second: Moat_107
+  - first:
+      213: -8149909826884524457
+    second: Moat_108
+  - first:
+      213: -4028039232226332247
+    second: Moat_109
+  - first:
+      213: 872493614120129747
+    second: Moat_110
+  - first:
+      213: 3266072728858454548
+    second: Moat_111
+  - first:
+      213: 4280690451384730465
+    second: Moat_112
+  - first:
+      213: -5979117935969137037
+    second: Moat_113
+  - first:
+      213: 510982426132442905
+    second: Moat_114
+  - first:
+      213: 2723573981456721638
+    second: Moat_115
+  - first:
+      213: -227660570936730590
+    second: Moat_116
+  - first:
+      213: -6852163867774304792
+    second: Moat_117
+  - first:
+      213: -2670513493356705081
+    second: Moat_118
+  - first:
+      213: 7620656609568702850
+    second: Moat_119
+  - first:
+      213: 5989433860911413680
+    second: Moat_120
+  - first:
+      213: -2893840296064173798
+    second: Moat_121
+  - first:
+      213: -7987717780336829077
+    second: Moat_122
+  - first:
+      213: -6545294394532241539
+    second: Moat_123
+  - first:
+      213: 1428980493753017975
+    second: Moat_124
+  - first:
+      213: -7312630065311593448
+    second: Moat_125
+  - first:
+      213: 3066082769565561263
+    second: Moat_126
+  - first:
+      213: -5668490614768582078
+    second: Moat_127
+  - first:
+      213: 3239049599437322586
+    second: Moat_128
+  - first:
+      213: -6678082133739240281
+    second: Moat_129
+  - first:
+      213: -9163153497064845429
+    second: Moat_130
+  - first:
+      213: -5037187052551049493
+    second: Moat_131
+  - first:
+      213: 2198708528492294916
+    second: Moat_132
+  - first:
+      213: 4552622579282193661
+    second: Moat_133
+  - first:
+      213: -7757011279383266840
+    second: Moat_134
+  - first:
+      213: -7253303493785853104
+    second: Moat_135
+  - first:
+      213: -6729422781450926535
+    second: Moat_136
+  - first:
+      213: -7178634410615498410
+    second: Moat_137
+  - first:
+      213: 2568703233348808400
+    second: Moat_138
+  - first:
+      213: 300725086992473861
+    second: Moat_139
+  - first:
+      213: -7077218430318275185
+    second: Moat_140
+  - first:
+      213: -8390447892885353696
+    second: Moat_141
+  - first:
+      213: -8853643512020084413
+    second: Moat_142
+  - first:
+      213: 8596777146477345145
+    second: Moat_143
+  - first:
+      213: -412059799732961817
+    second: Moat_144
+  - first:
+      213: 3269132889112428899
+    second: Moat_145
+  - first:
+      213: -931405709776568119
+    second: Moat_146
+  - first:
+      213: -6676524153635992747
+    second: Moat_147
+  - first:
+      213: -1518443058666834154
+    second: Moat_148
+  - first:
+      213: -5682832808091185162
+    second: Moat_149
+  - first:
+      213: -1264719799295494776
+    second: Moat_150
+  - first:
+      213: 8544378301278157442
+    second: Moat_151
+  - first:
+      213: -408745942740514755
+    second: Moat_152
+  - first:
+      213: -7483845450527597631
+    second: Moat_153
+  - first:
+      213: -2160980120875325785
+    second: Moat_154
+  - first:
+      213: 2483623373618868774
+    second: Moat_155
+  - first:
+      213: 3075716195997198923
+    second: Moat_156
+  - first:
+      213: 5401033077005030900
+    second: Moat_157
+  - first:
+      213: 7054241833004698781
+    second: Moat_158
+  - first:
+      213: 6645377525578525723
+    second: Moat_159
+  - first:
+      213: -3053502571078506026
+    second: Moat_160
+  - first:
+      213: -7738673587358429031
+    second: Moat_161
+  - first:
+      213: 6602790504739560257
+    second: Moat_162
+  - first:
+      213: 372897311188377229
+    second: Moat_163
+  - first:
+      213: 5578078185250612594
+    second: Moat_164
+  - first:
+      213: 8376103321278226451
+    second: Moat_165
+  - first:
+      213: -7730914091664410991
+    second: Moat_166
+  - first:
+      213: 8703339409239562222
+    second: Moat_167
+  - first:
+      213: 3717463450313300558
+    second: Moat_168
+  - first:
+      213: -4530417383644945129
+    second: Moat_169
+  - first:
+      213: -5010814658743449773
+    second: Moat_170
+  - first:
+      213: 5120126148468530878
+    second: Moat_171
+  - first:
+      213: -1657734512980366189
+    second: Moat_172
+  - first:
+      213: 1910577172791164089
+    second: Moat_173
+  - first:
+      213: -4154620327910846697
+    second: Moat_174
+  - first:
+      213: -944131822861208927
+    second: Moat_175
+  - first:
+      213: 4400571946578286079
+    second: Moat_176
+  - first:
+      213: 7444924162556231310
+    second: Moat_177
+  - first:
+      213: -1050257266650248025
+    second: Moat_178
+  - first:
+      213: 2132052348568495952
+    second: Moat_179
+  - first:
+      213: -3493193848654990540
+    second: Moat_180
+  - first:
+      213: -6640656236091531258
+    second: Moat_181
+  - first:
+      213: -4088475548199585062
+    second: Moat_182
+  - first:
+      213: -4324889814596866148
+    second: Moat_183
+  - first:
+      213: 353433422900841478
+    second: Moat_184
+  - first:
+      213: 4157679097739393704
+    second: Moat_185
+  - first:
+      213: 7611052271863880665
+    second: Moat_186
+  - first:
+      213: -6020196809316665332
+    second: Moat_187
+  - first:
+      213: -9091946572393093311
+    second: Moat_188
+  - first:
+      213: 7348623694048732273
+    second: Moat_189
+  - first:
+      213: -5837932310724972514
+    second: Moat_190
+  - first:
+      213: 8087183783068441510
+    second: Moat_191
+  - first:
+      213: 5294734047473751983
+    second: Moat_192
+  - first:
+      213: 5173576535690129924
+    second: Moat_193
+  - first:
+      213: 1202646384848003704
+    second: Moat_194
+  - first:
+      213: 710438875371392526
+    second: Moat_195
+  - first:
+      213: -503024081998497286
+    second: Moat_196
+  - first:
+      213: 1943045451216464398
+    second: Moat_197
+  - first:
+      213: 5671839875622388436
+    second: Moat_198
+  - first:
+      213: -6674631541431719682
+    second: Moat_199
+  - first:
+      213: 5712499823714045647
+    second: Moat_200
+  - first:
+      213: 159252690363258116
+    second: Moat_201
+  - first:
+      213: -1239104995958920291
+    second: Moat_202
+  - first:
+      213: -8192729060817805659
+    second: Moat_203
+  - first:
+      213: -3405109055599816262
+    second: Moat_204
+  - first:
+      213: -401806015790387768
+    second: Moat_205
+  - first:
+      213: -653907022112458237
+    second: Moat_206
+  - first:
+      213: -6963680778731648402
+    second: Moat_207
+  - first:
+      213: 7974239276581703765
+    second: Moat_208
+  - first:
+      213: 3529245604783210425
+    second: Moat_209
+  - first:
+      213: 5596320194437949363
+    second: Moat_210
+  - first:
+      213: -8099730574146958732
+    second: Moat_211
+  - first:
+      213: -5401891313168091233
+    second: Moat_212
+  - first:
+      213: 7221715547454390789
+    second: Moat_213
+  - first:
+      213: -1190422638939622727
+    second: Moat_214
+  - first:
+      213: -5120779372896296036
+    second: Moat_215
+  - first:
+      213: -6531258039700047798
+    second: Moat_216
+  - first:
+      213: -2080723840231495475
+    second: Moat_217
+  - first:
+      213: 8572575887021598412
+    second: Moat_218
+  - first:
+      213: 3965743086815253271
+    second: Moat_219
+  - first:
+      213: -4053669918662981940
+    second: Moat_220
+  - first:
+      213: 3120196503799105589
+    second: Moat_221
+  - first:
+      213: -1357742776228451607
+    second: Moat_222
+  - first:
+      213: -3954762126419430790
+    second: Moat_223
+  - first:
+      213: 4636488465088986593
+    second: Moat_224
+  - first:
+      213: -2298813790619954903
+    second: Moat_225
+  - first:
+      213: 4178689944525541647
+    second: Moat_226
+  - first:
+      213: -1444838661859392351
+    second: Moat_227
+  - first:
+      213: 6745575945876649928
+    second: Moat_228
+  - first:
+      213: 6403746779620648318
+    second: Moat_229
+  - first:
+      213: 8031304351683856245
+    second: Moat_230
+  - first:
+      213: -1883036875058745791
+    second: Moat_231
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: 47
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Moat_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83182fe91ca1cf3f0800000000000000
+      internalID: -865787609464274632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e63c9eee8d9f00c40800000000000000
+      internalID: 5476651856999072622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8ad4582b23105630800000000000000
+      internalID: 3913649152266132106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a6981254f3395e0800000000000000
+      internalID: -1904108651299640698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27b5d894443323730800000000000000
+      internalID: 3977297789306362738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca8e307c894e4d240800000000000000
+      internalID: 4815725246390986924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84dd7d6c517ce2ba0800000000000000
+      internalID: -6111728747950908088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c76f73e8139b19a0800000000000000
+      internalID: -6261249121823266879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a11a624e0617d840800000000000000
+      internalID: 5248688141223203232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_9
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63529491f781be0a0800000000000000
+      internalID: -6851355473949940426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f56b52a6e696d500800000000000000
+      internalID: 420689532516263410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4cef2493be588280800000000000000
+      internalID: -9040872126567945139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41e66a3ffa6756ac0800000000000000
+      internalID: -3862550607321207276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c01a61b70474050800000000000000
+      internalID: 5784663143785499717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6fe44a9568752f60800000000000000
+      internalID: 8008939890123534190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_15
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d98c1c968a74442b0800000000000000
+      internalID: -5601273247887669091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5804f8527597bb260800000000000000
+      internalID: 7114413451561091205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 901708478856d86a0800000000000000
+      internalID: -6445383854952779511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95e3412b7e5264070800000000000000
+      internalID: 8090195457673018969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_19
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ff2dfe8335a7dc0800000000000000
+      internalID: -3640505844768768179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_20
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bb93f6d9d4102420800000000000000
+      internalID: 2603103510466894770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_21
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 326cb4ca6964979f0800000000000000
+      internalID: -470267073133820381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_22
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 817ad3a879ecc8ac0800000000000000
+      internalID: -3851476431053936872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 743ab7508b1293a20800000000000000
+      internalID: 3042500097515168583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_24
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96802231814ebe860800000000000000
+      internalID: 7560387191522855017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 239afb3f43eb80a70800000000000000
+      internalID: 8793487407077894450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_26
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6539a3ad376607190800000000000000
+      internalID: -7966755093049863338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_27
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 539c6f5aa5f5a3380800000000000000
+      internalID: -8990768863155664587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_28
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c513b67d76f17dd30800000000000000
+      internalID: 4456064887162614108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_29
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8f0ad9fe53ca270800000000000000
+      internalID: 8263038719576045810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf6f96bc4d924af0800000000000000
+      internalID: -413595262957686847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_31
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac1899bb48a5ba590800000000000000
+      internalID: -7661930814911184438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_32
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 310744d5b30a20d60800000000000000
+      internalID: 7855016876915847187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_33
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d52afe3c28ee15630800000000000000
+      internalID: 3914171796562092637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_34
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2edb7203ee448b50800000000000000
+      internalID: 6594482491283463723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_35
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee4886189862fd3c0800000000000000
+      internalID: -4332701944483642130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_36
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caff5aea29cac5f00800000000000000
+      internalID: 1106949354421616556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d1c26e952db91240800000000000000
+      internalID: 4763046050189722072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_38
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a86c6abceee256c20800000000000000
+      internalID: 3199014713470404234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_39
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43277f04e9397f920800000000000000
+      internalID: 3024047982706651700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_40
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c49783a6957e5270800000000000000
+      internalID: 8241153657983702212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_41
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68611e80a74c9a8c0800000000000000
+      internalID: -3987439966645840250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_42
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed667836ef8ae900800000000000000
+      internalID: 714541709844180451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_43
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 707ad8e874c8a3010800000000000000
+      internalID: 1169401292218279687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_44
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 494b043f3671ca1c0800000000000000
+      internalID: -4491189010344921964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_45
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3006c8df7269402a0800000000000000
+      internalID: -6772122841156657149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_46
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82710872b675fb6e0800000000000000
+      internalID: -1819639606698567896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_47
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 541a39a860e14d9e0800000000000000
+      internalID: -1597618954366115515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moat_48
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b86ef0222bec6dea0800000000000000
+      internalID: -5848259801623042421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

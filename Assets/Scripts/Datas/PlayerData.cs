@@ -380,6 +380,7 @@ public class PlayerData
 			Relics = data.Relics;
 			Slots = data.Slots;
 			Quests = data.Quests;
+			Castles = data.Castles;
 			PlayerBuffs = data.PlayerBuffs;
 			OnBGM = data.OnBGM;
 			OnSFX = data.OnSFX;

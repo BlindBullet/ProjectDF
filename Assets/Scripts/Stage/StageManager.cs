@@ -15,6 +15,7 @@ public class StageManager : MonoSingleton<StageManager>
 	[HideInInspector] public int Hp;
 	public LoseStagePanel LoseStagePanel;
 	public AscensionSequence AscensionSequence;
+	public GameObject Moat;
 
 	public List<Slot> Slots = new List<Slot>();
 
@@ -481,6 +482,11 @@ public class StageManager : MonoSingleton<StageManager>
 	public void AddPlayerBuff(PlayerBuffType type, double durationTime)
 	{
 		PlayerBuffManager.Ins.AddBuff(type, durationTime);		
+	}
+
+	public void MoatOn()
+	{		
+		Moat.SetActive(true);
 	}
 
 }

@@ -28,8 +28,7 @@ public class SEManager : MonoSingleton<SEManager>
 				{
 					SEChart chart = CsvData.Ins.SEChart[heroCharts[k].CollectionEffect];
 					SEData data = new SEData(chart, heroes[i].Grade);
-										
-					value = double.Parse(chart.EParam5);
+					
 					data.SetValue();
 
 					SeList.Add(data);
@@ -49,8 +48,25 @@ public class SEManager : MonoSingleton<SEManager>
 
 			SEChart seChart = CsvData.Ins.SEChart[chart.Effect];
 			SEData data = new SEData(seChart, relics[i].Lv);
+							
+			data.SetValue();
+			
+			SeList.Add(data);
+		}
 
-			value = double.Parse(seChart.EParam5);			
+		//캐슬 효과 불러오기
+		List<RelicData> castles = StageManager.Ins.PlayerData.Castles;
+
+		for (int i = 0; i < castles.Count; i++)
+		{
+			if (!castles[i].isOwn)
+				continue;
+
+			RelicChart chart = CsvData.Ins.RelicChart[castles[i].Id];
+
+			SEChart seChart = CsvData.Ins.SEChart[chart.Effect];
+			SEData data = new SEData(seChart, castles[i].Lv);
+
 			data.SetValue();
 
 			SeList.Add(data);
@@ -486,11 +502,16 @@ public class SEManager : MonoSingleton<SEManager>
 								break;
 						}
 						break;
-					case "Moat":
+					case "Moat":						
 						switch (data.Chart.EParam1)
 						{
 							case "Inc":
 								StageManager.Ins.PlayerStat.MoatSlowRate += (float)data.Value;
+
+								if(StageManager.Ins.PlayerStat.MoatSlowRate > 0f)
+								{
+									StageManager.Ins.MoatOn();
+								}
 								break;
 							case "Dec":
 								StageManager.Ins.PlayerStat.MoatSlowRate -= (float)data.Value;

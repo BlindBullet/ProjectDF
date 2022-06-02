@@ -160,6 +160,7 @@ public class RelicBar : MonoBehaviour
 					{
 						SEManager.Ins.Apply();
 						SetInfo();
+						StageManager.Ins.PlayerData.Save();
 					}
 				});
 			}
@@ -211,6 +212,7 @@ public class RelicBar : MonoBehaviour
 					{						
 						SEManager.Ins.Apply();
 						SetInfo();
+						StageManager.Ins.PlayerData.Save();
 					}
 				});
 			}

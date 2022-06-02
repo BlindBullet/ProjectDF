@@ -93,7 +93,7 @@ public class EnemyBase : MonoBehaviour
 
 			if(inMoat)
 			{
-				Rb.velocity = new Vector2(xSpd, -(Stat.Spd - (Stat.Spd * StageManager.Ins.PlayerStat.MoatSlowRate)));
+				Rb.velocity = new Vector2(xSpd, -(Stat.Spd - (Stat.Spd * (StageManager.Ins.PlayerStat.MoatSlowRate / 100f))));
 			}
 			else
 			{
@@ -368,6 +368,11 @@ public class EnemyBase : MonoBehaviour
 
 			if(StageManager.Ins.Hp <= 0)
 				StageManager.Ins.LoseStage();
+		}
+
+		if (collision.CompareTag("Moat"))
+		{
+			inMoat = true;
 		}
 	}
 

@@ -29,6 +29,7 @@ public class RelicData
 				{
 					StageManager.Ins.ChangeGold(-cost);
 					isOwn = true;
+					Lv++;
 					return true;
 				}
 				break;
@@ -37,6 +38,7 @@ public class RelicData
 				{
 					StageManager.Ins.ChangeMagicite(-cost);
 					isOwn = true;
+					Lv++;
 					return true;
 				}
 				break;
@@ -45,6 +47,7 @@ public class RelicData
 				{
 					StageManager.Ins.ChangeSoulStone(-cost);
 					isOwn = true;
+					Lv++;
 					return true;
 				}
 				break;
