@@ -17,7 +17,7 @@ public class QuestBar : MonoBehaviour
 	public TextMeshProUGUI QuestProgressText;
 	public Button AchieveBtn;
 	public Button DisPatchBtn;
-	QuestData data;
+	QuestData data;	
 
 	public void SetBar(QuestData data)
 	{
@@ -25,7 +25,7 @@ public class QuestBar : MonoBehaviour
 		QuestChart chart = CsvData.Ins.QuestChart[data.Id];
 		Name.text = LanguageManager.Ins.SetString(chart.Name);
 		RewardIcon.SetIcon(chart);
-		SetStars(chart);
+		SetStars(chart);		
 		SetDispatchInfo(data, chart);		
 	}
 
@@ -92,9 +92,10 @@ public class QuestBar : MonoBehaviour
 	{
 		double totalSec = totalMin * 60f;
 		progressSec = Math.Round(totalSec - progressSec);
-		
+		float time = 0f;
+
 		while (true)
-		{
+		{	
 			int hour = (int)(progressSec / 3600f);
 			int min = (int)((progressSec % 3600f) / 60f);
 			int sec = (int)((progressSec % 3600f) % 60f);
@@ -106,9 +107,13 @@ public class QuestBar : MonoBehaviour
 			QuestProgressText.text = hourStr + ":" + minStr + ":" + secStr;
 			QuestProgressBarFill.fillAmount = (float)((totalSec - progressSec) / totalSec);
 
-			yield return new WaitForSeconds(1f * Time.timeScale);
-						
-			progressSec -= 1f;			
+			time += Time.unscaledDeltaTime;
+
+			if (time >= 1f)
+			{
+				progressSec -= 1f;
+				time = 0f;
+			}
 
 			if (progressSec <= 0f)
 			{				
@@ -119,6 +124,10 @@ public class QuestBar : MonoBehaviour
 				SetBar(data);
 				yield break;
 			}
+
+			
+
+			yield return null;
 		}
 	}
 

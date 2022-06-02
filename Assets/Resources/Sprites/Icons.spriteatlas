@@ -164,7 +164,7 @@ SpriteAtlas:
   - EnemyCircleBg_Red
   - Loot_02
   - Loot_08
-  - AutoUseSkill
+  - UseAutoSkill
   - MinionFrame_Blue
   - EnemyCircleFrame_Green
   - Red

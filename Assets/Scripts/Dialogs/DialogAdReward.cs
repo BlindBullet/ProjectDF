@@ -74,7 +74,17 @@ public class DialogAdReward : DialogController
 			case RewardType.GameSpeed:
 				rewardValue = rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.Time);
-				RewardDesc.text = LanguageManager.Ins.SetString("GameSpeed2x") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
+				RewardDesc.text = LanguageManager.Ins.SetString("GameSpeedInc") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.UseAutoSkill:
+				rewardValue = rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
+				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.Time);
+				RewardDesc.text = LanguageManager.Ins.SetString("UseAutoSkill") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.GainGold:
+				rewardValue = rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
+				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.Time);
+				RewardDesc.text = LanguageManager.Ins.SetString("GainGold") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
 				break;
 		}
 
@@ -119,6 +129,12 @@ public class DialogAdReward : DialogController
 			case RewardType.GameSpeed:
 				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GameSpeed, chart.RewardValue);
 				break;
+			case RewardType.UseAutoSkill:
+				StageManager.Ins.AddPlayerBuff(PlayerBuffType.UseAutoSkill, chart.RewardValue);
+				break;
+			case RewardType.GainGold:
+				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GainGold, chart.RewardValue);
+				break;
 		}
 
 		DialogManager.Ins.OpenReceiveReward(chart.RewardType, rewardValue);
@@ -142,6 +158,14 @@ public class DialogAdReward : DialogController
 			case RewardType.GameSpeed:
 				rewardValue = isAd ? rewardValue * 2f : rewardValue;
 				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GameSpeed, rewardValue);
+				break;
+			case RewardType.UseAutoSkill:
+				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				StageManager.Ins.AddPlayerBuff(PlayerBuffType.UseAutoSkill, rewardValue);
+				break;
+			case RewardType.GainGold:
+				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GainGold, rewardValue);
 				break;
 		}
 

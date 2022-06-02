@@ -26,7 +26,7 @@ public class HeroUi : MonoBehaviour
 		IconBg.material = new Material(IconBg.materialForRendering);
 		mat = IconBg.materialForRendering;
 		mat.SetFloat("_FadeAmount", 0f);
-		//IconBg.GetComponent<AllIn1Shader>().ApplyMaterialToHierarchy();
+		IconBg.GetComponent<AllIn1Shader>().ApplyMaterialToHierarchy();
 
 		me = GetComponent<HeroBase>();        
 		HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];

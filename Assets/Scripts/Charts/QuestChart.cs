@@ -22,5 +22,8 @@ public enum RewardType
     Gold,
     SoulStone,
     GameSpeed,
+    GainGold,
+    UseAutoSkill,
+
 
 }

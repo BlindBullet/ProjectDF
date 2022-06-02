@@ -260,10 +260,20 @@ public class StageManager : MonoSingleton<StageManager>
 	IEnumerator AppearSupplies()
 	{
 		yield return new WaitForSeconds(5f);
-				
-		int randNo = Random.Range(0, CsvData.Ins.SuppliesChart.Count);
+
+		List<SuppliesChart> charts = new List<SuppliesChart>();
+		List<int> probs = new List<int>();
+		
+		foreach(KeyValuePair<string, SuppliesChart> elem in CsvData.Ins.SuppliesChart)
+		{
+			charts.Add(elem.Value);
+			probs.Add(elem.Value.Prob);
+		}
+
+		int randNo = LotteryCalculator.LotteryCalc(probs);
+		SuppliesChart result = charts[randNo];
 		var supplies = ObjectManager.Ins.Pop<SuppliesBase>(Resources.Load("Prefabs/Supplies/Supplies") as GameObject);
-		supplies.Setup(CsvData.Ins.SuppliesChart[(randNo + 1).ToString()]);
+		supplies.Setup(result);
 	}
 
 	bool CheckBossStage(int stageNo)

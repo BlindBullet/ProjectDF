@@ -479,10 +479,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.AutoUseSkillRate += (float)data.Value;
+								StageManager.Ins.PlayerStat.UseAutoSkillRate += (float)data.Value;
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.AutoUseSkillRate -= (float)data.Value;
+								StageManager.Ins.PlayerStat.UseAutoSkillRate -= (float)data.Value;
 								break;
 						}
 						break;

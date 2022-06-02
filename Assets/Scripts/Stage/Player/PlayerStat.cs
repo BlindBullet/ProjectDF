@@ -34,12 +34,12 @@ public class PlayerStat
 	public ObscuredFloat OfflineRewardAdd;
 	public ObscuredFloat QuestTime;
 	public ObscuredFloat QuestReward;
-	public ObscuredFloat AutoUseSkillRate = 0f;
+	public ObscuredFloat UseAutoSkillRate = 0f;
 	public ObscuredFloat MoatLv = 0f;
 	public ObscuredFloat LvUpGoldDec = 0f;
 	public ObscuredFloat TouchSkillCoolDecProb = 0f;
 	public ObscuredFloat GainGold = 1f;
-	public ObscuredBool AutoUseSKill = false;
+	public ObscuredBool UseAutoSkill = false;
 	public ObscuredFloat GameSpd = 1f;
 
 	public void Init()
@@ -77,12 +77,12 @@ public class PlayerStat
 		OfflineRewardAdd = 0f;
 		QuestTime = 0f;		
 		QuestReward = 0f;
-		AutoUseSkillRate = 0f;
+		UseAutoSkillRate = 0f;
 		MoatLv = 0f;
 		LvUpGoldDec = 0f;
-		TouchSkillCoolDecProb = 100f;
+		TouchSkillCoolDecProb = 0f;
 		GameSpd = 1f;
-		AutoUseSKill = true;
+		UseAutoSkill = false;
 		GainGold = 1f;
 	}	
 

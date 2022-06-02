@@ -34,9 +34,9 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 				StageManager.Ins.PlayerStat.GameSpd = ConstantData.BuffGameSpeedRate;
 				break;
 			case PlayerBuffType.UseAutoSkill:
-				StageManager.Ins.PlayerStat.AutoUseSKill = true;
+				StageManager.Ins.PlayerStat.UseAutoSkill = true;
 				break;
-			case PlayerBuffType.GainGoldx2:
+			case PlayerBuffType.GainGold:
 				StageManager.Ins.PlayerStat.GainGold = ConstantData.BuffGainGoldRate;
 				break;
 		}
@@ -52,9 +52,9 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 				StageManager.Ins.PlayerStat.GameSpd = 1f;
 				break;
 			case PlayerBuffType.UseAutoSkill:
-				StageManager.Ins.PlayerStat.AutoUseSKill = false;
+				StageManager.Ins.PlayerStat.UseAutoSkill = false;
 				break;
-			case PlayerBuffType.GainGoldx2:
+			case PlayerBuffType.GainGold:
 				StageManager.Ins.PlayerStat.GainGold = 1f;
 				break;
 		}
@@ -76,7 +76,7 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 				case PlayerBuffType.UseAutoSkill:
 					AutoSkillBuffAdded((data.DurationTime * 60f) - span.TotalSeconds);
 					break;
-				case PlayerBuffType.GainGoldx2:
+				case PlayerBuffType.GainGold:
 					GainGoldBuffAdded((data.DurationTime * 60f) - span.TotalSeconds);
 					break;
 			}
@@ -91,7 +91,7 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 					case PlayerBuffType.UseAutoSkill:
 						AutoSkillBuffAdded((data.DurationTime * 60f) - span.TotalSeconds);
 						break;
-					case PlayerBuffType.GainGoldx2:
+					case PlayerBuffType.GainGold:
 						GainGoldBuffAdded((data.DurationTime * 60f) - span.TotalSeconds);
 						break;
 				}

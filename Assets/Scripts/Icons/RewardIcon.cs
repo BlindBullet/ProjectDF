@@ -23,6 +23,12 @@ public class RewardIcon : MonoBehaviour
 			case RewardType.GameSpeed:
 				Amount.text = chart.RewardValue + LanguageManager.Ins.SetString("Minute");
 				break;
+			case RewardType.UseAutoSkill:
+				Amount.text = chart.RewardValue + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.GainGold:
+				Amount.text = chart.RewardValue + LanguageManager.Ins.SetString("Minute");
+				break;
 			case RewardType.SoulStone:								
 				Amount.text = chart.RewardValue.ToString();
 				break;
@@ -49,6 +55,18 @@ public class RewardIcon : MonoBehaviour
 				}
 				break;
 			case RewardType.GameSpeed:
+				if (value <= 0)
+					Amount.text = "";
+				else
+					Amount.text = value + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.GainGold:
+				if (value <= 0)
+					Amount.text = "";
+				else
+					Amount.text = value + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.UseAutoSkill:
 				if (value <= 0)
 					Amount.text = "";
 				else
