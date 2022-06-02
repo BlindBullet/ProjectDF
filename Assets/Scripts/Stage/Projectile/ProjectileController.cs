@@ -128,7 +128,7 @@ public class ProjectileController : MonoBehaviour
 	{
 		Rb = GetComponent<Rigidbody2D>();
 		pos = new Vector2(this.transform.position.x, this.transform.position.y);
-
+		
 		data = new ProjectileData();
 		data.Setup(caster, attackData, angle);
 		this.hitresults = null;
@@ -169,9 +169,7 @@ public class ProjectileController : MonoBehaviour
 				Trail[i].Clear();
 			}
 		}
-		
-		float time = 0;
-		Vector3 _pos;
+				
 		dir = Quaternion.Euler(0, 0, data.Angle) * dir;
 		Vector2 pos1R = Vector2.zero;
 		Vector2 pos2R = Vector2.zero;
@@ -336,25 +334,34 @@ public class ProjectileController : MonoBehaviour
 				}
 			}
 
+			//영웅 스킬
 			if (caster != null && minion == null && hitresults != null)
 			{
 				HitresultManager.Ins.SendHitresult(hitresults, enemyBase, caster);
 			}
-			else if(minion != null && caster == null && hitresults != null)
+			//소환수 공격
+			else if (minion != null && caster == null && hitresults != null)
 			{
 				HitresultManager.Ins.SendHitresult(hitresults, enemyBase, minion);
 			}
-			else if(caster == null && minion == null && hitresults == null)
+			//플레이어 터치 공격
+			else if (caster == null && minion == null && hitresults == null)
 			{				
 				EffectManager.Ins.ShowFx(ConstantData.PlayerTouchAtkHitFx, enemyBase.transform);
 				double resultDmg = enemyBase.TakeDmg(atk, Attr.None, false, 0f);
 				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), false);
 			}
+			//영웅 일반 공격
 			else if(caster != null && minion == null && hitresults == null)
 			{
 				EffectManager.Ins.ShowFx("TestHitFx", enemyBase.transform);
+
 				bool isCrit = Random.Range(0, 100f) <= caster.Stat.CritChance ? true : false;
 				double resultDmg = enemyBase.TakeDmg(atk, caster.Stat.Attr, isCrit, 0f);
+
+				bool isPush = Random.Range(0, 100) < data.PushProb ? true : false;
+				if(isPush) enemyBase.Push(data.PushPower, 1f);
+
 				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), false);
 			}
 			
@@ -400,6 +407,8 @@ public class ProjectileData
 	public float Speed;
 	public int PenCount;
 	public int Bounce;
+	public float PushProb;
+	public float PushPower;	
 	public float[] BPos1;
 	public float[] BPos1R;
 	public float[] BPos2;
@@ -417,6 +426,8 @@ public class ProjectileData
 		MoveType = chart.MoveType;
 		PenCount = chart.PenCount;
 		Bounce = chart.Bounce;
+		PushPower = 0f;
+		PushProb = 0f;
 		Angle = chart.Angle;
 		Speed = chart.Speed;
 		BPos1 = chart.BPos1;
@@ -437,6 +448,8 @@ public class ProjectileData
 		MoveType = MoveType.Direct;
 		PenCount = data.Piercing;
 		Bounce = data.Bounce;
+		PushPower = data.Push * 10f;
+		PushProb = data.Push > 0 ? 10f : 0f;
 		Angle = angle;
 		Speed = 20f;
 		Lifetime = 5f;

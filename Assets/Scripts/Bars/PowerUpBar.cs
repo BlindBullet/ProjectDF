@@ -50,6 +50,12 @@ public class PowerUpBar : MonoBehaviour
 			case AtkUpgradeType.Piercing:
 				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Piercing + 1);
 				break;
+			case AtkUpgradeType.Size:
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Size + 1);
+				break;
+			case AtkUpgradeType.Push:
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Push + 1);
+				break;
 		}
 		
 		Desc.text = LanguageManager.Ins.SetString("desc_slot_power_up_" + chart.Type.ToString());
@@ -98,6 +104,7 @@ public class PowerUpBar : MonoBehaviour
 				}
 
 				DialogSlotPowerUp._Dialog.CloseDialog(true);
+				StageManager.Ins.PlayerData.Save();
 			});
 		}
 		else

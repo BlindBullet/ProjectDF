@@ -85,6 +85,12 @@ public class SlotData
 			case AtkUpgradeType.AtkUp:
 				AtkData.AtkUp++;
 				break;
+			case AtkUpgradeType.Size:
+				AtkData.Size++;
+				break;
+			case AtkUpgradeType.Push:
+				AtkData.Push++;
+				break;
 		}
 
 		PowerUpStack--;

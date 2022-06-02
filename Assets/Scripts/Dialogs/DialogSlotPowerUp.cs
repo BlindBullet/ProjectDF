@@ -85,7 +85,41 @@ public class DialogSlotPowerUp : DialogController
 		
 		for(int i = 0; i < charts.Count; i++)
 		{
-			probs.Add(charts[i].Prob);
+			bool _add = false;
+
+			switch (charts[i].Type)
+			{
+				case AtkUpgradeType.Front:
+					if (data.AtkData.Front < 5)
+						_add = true;
+					break;
+				case AtkUpgradeType.Diagonal:
+					if (data.AtkData.Diagonal < 3)
+						_add = true;
+					break;
+				case AtkUpgradeType.Multi:
+					if (data.AtkData.Multi < 3)
+						_add = true;
+					break;
+				case AtkUpgradeType.Boom:
+					if (data.AtkData.Boom < 3)
+						_add = true;
+					break;
+				case AtkUpgradeType.Size:
+					if (data.AtkData.Size < 3)
+						_add = true;
+					break;
+				case AtkUpgradeType.Push:
+					if (data.AtkData.Push < 5)
+						_add = true;
+					break;
+				default:
+					_add = true;
+					break;
+			}
+			
+			if(_add)
+				probs.Add(charts[i].Prob);
 		}
 
 		List<int> results = LotteryCalculator.LotteryListNoVerbose(probs, 3);
@@ -108,7 +142,41 @@ public class DialogSlotPowerUp : DialogController
 
 		for (int i = 0; i < charts.Count; i++)
 		{
-			probs.Add(charts[i].Prob);
+			bool _add = false;
+
+			switch (charts[i].Type)
+			{
+				case AtkUpgradeType.Front:
+					if (data.AtkData.Front < 5)
+						_add = true;
+					break;
+				case AtkUpgradeType.Diagonal:
+					if (data.AtkData.Diagonal < 3)
+						_add = true;
+					break;
+				case AtkUpgradeType.Multi:
+					if (data.AtkData.Multi < 3)
+						_add = true;
+					break;
+				case AtkUpgradeType.Boom:
+					if (data.AtkData.Boom < 3)
+						_add = true;
+					break;
+				case AtkUpgradeType.Size:
+					if (data.AtkData.Size < 3)
+						_add = true;
+					break;
+				case AtkUpgradeType.Push:
+					if (data.AtkData.Push < 5)
+						_add = true;
+					break;
+				default:
+					_add = true;
+					break;
+			}
+
+			if (_add)
+				probs.Add(charts[i].Prob);
 		}
 
 		bool success = false;

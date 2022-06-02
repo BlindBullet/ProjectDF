@@ -12,6 +12,9 @@ public class AttackData
 	public int Boom;
 	public int Bounce;
 	public int AtkUp;
+	public int Size;
+	public int Push;
+	
 
 	public AttackData()
 	{
@@ -22,6 +25,9 @@ public class AttackData
 		Boom = 0;
 		Bounce = 0;
 		AtkUp = 0;
+		Size = 0;
+		Push = 0;
+		
 	}
 
 }
@@ -35,5 +41,7 @@ public enum AtkUpgradeType
 	Boom,
 	Bounce,
 	AtkUp,
+	Size,	
+	Push,
 
 }

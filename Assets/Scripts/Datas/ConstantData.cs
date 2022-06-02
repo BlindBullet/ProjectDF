@@ -52,6 +52,8 @@ public static class ConstantData
 	public static ObscuredFloat BounceDmgDecP = 35f;
 	//기본공격이 관통할 때마다 감소하는 데미지량(%)
 	public static ObscuredFloat PiercingDmgDecP = 20f;
+	//기본공격의 총알 크기가 커짐(%)
+	public static ObscuredFloat SizeIncP = 250f;
 	
 	public static double GetLvUpCost(int lv)
 	{

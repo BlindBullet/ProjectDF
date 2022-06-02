@@ -122,6 +122,8 @@ public class AttackController : MonoBehaviour
 	{		
 		ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + model) as GameObject);
 		projectile.transform.position = me.ProjectileAnchor.position.WithX(me.ProjectileAnchor.position.x + posX);
+		float sizeUp = Mathf.Pow(ConstantData.SizeIncP / 100f, data.Size);
+		projectile.transform.localScale = Vector3.one * sizeUp;
 		projectile.Setup(me, data, angle, dir, target);
 	}
 	
