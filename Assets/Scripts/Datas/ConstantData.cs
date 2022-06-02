@@ -46,8 +46,13 @@ public static class ConstantData
 	public static ObscuredFloat BuffGameSpeedRate = 1.5f;
 	//얻는 골드량 버프의 증가량
 	public static ObscuredFloat BuffGainGoldRate = 2f;
+	//기본 전방공격이 활성화됐을 때 감소하는 데미지량(%)
+	public static ObscuredFloat FrontDmgDecP = 25f;
+	//기본공격이 튕길 때마다 감소하는 데미지량(%)
+	public static ObscuredFloat BounceDmgDecP = 35f;
+	//기본공격이 관통할 때마다 감소하는 데미지량(%)
+	public static ObscuredFloat PiercingDmgDecP = 20f;
 	
-
 	public static double GetLvUpCost(int lv)
 	{
 		double value = CalcValue(StartLvUpGold, LvUpGoldGR, lv);

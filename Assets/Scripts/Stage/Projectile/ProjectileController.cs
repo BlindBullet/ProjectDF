@@ -142,7 +142,8 @@ public class ProjectileController : MonoBehaviour
 
 		atk = caster.Stat.Atk;
 		atk = atk + (atk * (attackData.AtkUp / 5f));
-
+		atk = atk - (atk * (attackData.Front > 0 ? ConstantData.FrontDmgDecP / 100f : 0f));
+		
 		if (target == null)
 		{
 			existTarget = false;
@@ -291,7 +292,7 @@ public class ProjectileController : MonoBehaviour
 			if (bounce > 0)
 			{
 				bounce--;
-				atk = atk * 0.5f;
+				atk = atk - (atk * (ConstantData.BounceDmgDecP / 100f));
 				dir = Vector2.Reflect(dir, collision.contacts[0].normal);				
 				return;
 			}
@@ -366,6 +367,7 @@ public class ProjectileController : MonoBehaviour
 			}
 
 			penCount--;
+			atk = atk - (atk * (ConstantData.PiercingDmgDecP / 100f));
 		}
 	}
 
