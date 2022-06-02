@@ -57,11 +57,11 @@ skill_10003_2,100,Enemy,All,,,,,,,skill_10003_2,
 skill_10003_3,100,Enemy,All,,,,,,,skill_10003_3,
 skill_10003_4,100,Enemy,All,,,,,,,skill_10003_4,
 skill_10003_5,100,Enemy,All,,,,,,,skill_10003_5,
-skill_10004_1,100,Enemy,Closest,3,,,,,,skill_10004_1,skill_10004_1
-skill_10004_2,100,Enemy,Closest,3,,,,,,skill_10004_2,skill_10004_2
-skill_10004_3,100,Enemy,Closest,3,,,,,,skill_10004_3,skill_10004_3
-skill_10004_4,100,Enemy,Closest,3,,,,,,skill_10004_4,skill_10004_4
-skill_10004_5,100,Enemy,Closest,3,,,,,,skill_10004_5,skill_10004_5
+skill_10004_1,100,Enemy,Closest,4,,,,,,skill_10004_1,skill_10004_1
+skill_10004_2,100,Enemy,Closest,4,,,,,,skill_10004_2,skill_10004_2
+skill_10004_3,100,Enemy,Closest,4,,,,,,skill_10004_3,skill_10004_3
+skill_10004_4,100,Enemy,Closest,4,,,,,,skill_10004_4,skill_10004_4
+skill_10004_5,100,Enemy,Closest,4,,,,,,skill_10004_5,skill_10004_5
 skill_10004_1_add,100,Enemy,All,,True,Circle,2,0,,skill_10004_1_add,
 skill_10004_2_add,100,Enemy,All,,True,Circle,2,0,,skill_10004_2_add,
 skill_10004_3_add,100,Enemy,All,,True,Circle,2,0,,skill_10004_3_add,

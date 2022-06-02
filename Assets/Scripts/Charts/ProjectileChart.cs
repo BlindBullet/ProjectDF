@@ -30,5 +30,6 @@ public enum MoveType
     None,
     Direct,
     Curve,
-
+	Beam,
+	HomingBeam,
 }

@@ -24,8 +24,7 @@ public class ProjectileController : MonoBehaviour
 	float angle;
 	MoveType moveType;
 	float lifeTime;
-
-	float mTimerCurrent = 0f;	
+	private Vector3 _lastBezierDir;
 
 	//영웅 스킬로 생성되는 프로젝타일
 	public void Setup(ProjectileChart chart, List<HitresultChart> hitresults, HeroBase caster, Vector2 dir, EnemyBase target = null)
@@ -54,8 +53,7 @@ public class ProjectileController : MonoBehaviour
 			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
 
 		penCount = data.PenCount;
-		bounce = data.Bounce;
-		mTimerCurrent = 0f;
+		bounce = data.Bounce;		
 
 		StartCoroutine(MoveSequence());
 	}
@@ -88,7 +86,6 @@ public class ProjectileController : MonoBehaviour
 
 		penCount = data.PenCount;
 		bounce = data.Bounce;
-		mTimerCurrent = 0f;
 
 		StartCoroutine(MoveSequence());
 	}
@@ -121,8 +118,7 @@ public class ProjectileController : MonoBehaviour
 			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
 
 		penCount = data.PenCount;
-		bounce = data.Bounce;
-		mTimerCurrent = 0f;
+		bounce = data.Bounce;		
 				
 		StartCoroutine(MoveSequence());
 	}
@@ -159,8 +155,7 @@ public class ProjectileController : MonoBehaviour
 			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
 
 		penCount = data.PenCount;
-		bounce = data.Bounce;
-		mTimerCurrent = 0f;
+		bounce = data.Bounce;		
 
 		StartCoroutine(MoveSequence());
 	}
@@ -202,67 +197,90 @@ public class ProjectileController : MonoBehaviour
 			}
 		}
 
-		while (true)
+		if (data.MoveType == MoveType.Direct)
 		{
+			Rb.velocity = dir * data.Speed;
 			ModelTrf.up = dir;
+			yield return new WaitForSeconds(data.Lifetime);
+			ShowDestroyEffect();
+			DestroySequence();
+		}
+		else if(data.MoveType == MoveType.Curve)
+		{
+			float startTime = Time.timeSinceLevelLoad;
+			// 거리 / 속도 = 시간
+			var beginDir = targetPos - transform.position.xy();
+			float bezierDuration = beginDir.magnitude / data.Speed;
+			Vector2 pos1 = new Vector2(pos.x + pos1R.x, pos.y + pos1R.y);
+			Vector2 pos2 = new Vector2(targetPos.x + pos2R.x, targetPos.y + pos2R.y);
+			Vector2 dirCache = beginDir;
 
-			switch (data.MoveType)
+			for (float curTime = startTime; curTime < startTime + bezierDuration; curTime = Time.timeSinceLevelLoad)
 			{
-				case MoveType.Direct:
-					Rb.velocity = dir * data.Speed;					
-					break;
-				case MoveType.Curve:
-					mTimerCurrent += Time.deltaTime * (data.Speed / 20f);
-					_pos = transform.position.WithZ(0f);
-					
-					//마지막 방향 및 속도를 구해야함.
-
-					if (mTimerCurrent >= 1f)
-					{
-						DestroySequence();
-					}
-					else
-					{
-						if (target.Stat.CurHp > 0f)
-						{
-							targetPos = target.transform.position;
-						}
-
-						Vector2 pos1 = new Vector2(pos.x + pos1R.x, pos.y + pos1R.y);
-						Vector2 pos2 = new Vector2(targetPos.x + pos2R.x, targetPos.y + pos2R.y);
-
-						transform.position = BezierValue(pos1, pos2, mTimerCurrent);
-
-						if (mTimerCurrent < 1f)
-						{
-					
-							dir = (transform.position.WithZ(0f) - _pos.WithZ(0f)).normalized;
-						}
-					}
-					break;
+				float alpha = (curTime - startTime) / bezierDuration;
+				var curPos = Rb.position;
+				var newPos = BezierValue(pos1, pos2, alpha);
+				dirCache = newPos - curPos;
+				Rb.position = newPos;
+				ModelTrf.up = dirCache;
+				if (curTime - startTime > data.Lifetime) break;
+				yield return null;
 			}
 
-			time += Time.deltaTime;
+			Rb.velocity = dirCache.normalized * data.Speed;
 
-			if(time >= data.Lifetime)
+			yield return new WaitForSeconds(data.Lifetime - bezierDuration);
+
+			ShowDestroyEffect();
+			DestroySequence();
+		}
+		else if(data.MoveType == MoveType.Beam)
+		{
+			//float startTime = Time.timeSinceLevelLoad;
+
+			//for (float curTime = startTime; curTime < startTime + data.Lifetime; curTime = Time.timeSinceLevelLoad)
+			//{
+			//	var totalCount = TrailRenderer.pivot.Count;
+			//	for (int i = 0; i < totalCount; i++)
+			//	{
+			//		trailRenderer[i] = BezierValue(pos1, pos2, i / totalCount);
+			//	}
+			//	//duration 따라 break;
+			//	yield return null;
+			//}
+			//ShowDestroyEffect();
+			//DestroySequence();
+		}
+		else if(data.MoveType == MoveType.HomingBeam)
+		{
+			//float startTime = Time.timeSinceLevelLoad;
+			//for (float curTime = startTime; curTime < startTime + data.Lifetime; curTime = Time.timeSinceLevelLoad)
+			//{
+			//	// trailRenderer.pivot[0] = 발사한사람
+			//	//trailRenderer.pivot[1] = 타겟
+			//	//duration 따라 break;
+			//	yield return null;
+			//}
+			//ShowDestroyEffect();
+			//DestroySequence();
+		}
+
+		
+	}
+
+	void ShowDestroyEffect()
+	{
+		if (caster != null)
+		{
+			if (data.DestroyFx != null)
+				EffectManager.Ins.ShowFx(data.DestroyFx, this.transform.position);
+
+			if (data.DestroyResult != null)
 			{
-				if(caster != null)
-				{
-					if (data.DestroyFx != null)
-						EffectManager.Ins.ShowFx(data.DestroyFx, this.transform.position);
-
-					if (data.DestroyResult != null)
-					{
-						List<ResultGroupChart> destroyResultGroups = CsvData.Ins.ResultGroupChart[data.DestroyResult];
-						HitresultManager.Ins.RunResultGroup(destroyResultGroups, transform.position, caster);
-					}
-				}
-				
-				DestroySequence();
-			}				
-
-			yield return null;
-		}		
+				List<ResultGroupChart> destroyResultGroups = CsvData.Ins.ResultGroupChart[data.DestroyResult];
+				HitresultManager.Ins.RunResultGroup(destroyResultGroups, transform.position, caster);
+			}
+		}
 	}
 
 	void DestroySequence()

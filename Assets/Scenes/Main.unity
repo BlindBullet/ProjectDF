@@ -8158,7 +8158,9 @@ MonoBehaviour:
     Relics: []
     Castles: []
     Quests: []
+    QuestLv: 0
     ClearQuestCount: 0
+    TotalClearQuestCount: 0
     OnBGM: 0
     OnSFX: 0
   PlayerUi: {fileID: 1854060961}
