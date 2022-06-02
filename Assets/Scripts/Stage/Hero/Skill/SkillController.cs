@@ -35,7 +35,13 @@ public class SkillController : MonoBehaviour
 				me.Ui.SetCoolTimeFrame(Skill.CoolTime / Skill._CoolTime);
 
 				//여기 자동 스킬 사용 넣을 것
-
+				if (StageManager.Ins.PlayerStat.AutoUseSKill)
+				{
+					if (UseSkill())
+					{
+						me.Ui.CloseSkillReadyText();
+					}
+				}
 			}
 
 			yield return null;

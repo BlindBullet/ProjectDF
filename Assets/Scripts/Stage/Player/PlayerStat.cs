@@ -80,9 +80,9 @@ public class PlayerStat
 		AutoUseSkillRate = 0f;
 		MoatLv = 0f;
 		LvUpGoldDec = 0f;
-		TouchSkillCoolDecProb = 0f;
+		TouchSkillCoolDecProb = 100f;
 		GameSpd = 1f;
-		AutoUseSKill = false;
+		AutoUseSKill = true;
 		GainGold = 1f;
 	}	
 

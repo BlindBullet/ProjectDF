@@ -198,15 +198,18 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			}
 
 			dir.Normalize();
-
-			//프로젝타일 발사
-			List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart[data.Projectile];
-
-			for (int i = 0; i < projectiles.Count; i++)
+			
+			if(data.Projectile != null)
 			{
-				ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
-				projectile.transform.position = caster.ProjectileAnchor.position.WithX(caster.ProjectileAnchor.position.x + projectiles[i].PosX);
-				projectile.Setup(projectiles[i], hitresults, caster, dir, target);
+				//프로젝타일 발사
+				List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart[data.Projectile];
+
+				for (int i = 0; i < projectiles.Count; i++)
+				{
+					ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
+					projectile.transform.position = caster.ProjectileAnchor.position.WithX(caster.ProjectileAnchor.position.x + projectiles[i].PosX);
+					projectile.Setup(projectiles[i], hitresults, caster, dir, target);
+				}
 			}
 		}		
 	}
@@ -242,15 +245,18 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			//caster.ProjectileAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 			dir.Normalize();
 
-			//프로젝타일 발사
-			List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart[data.Projectile];
-
-			for (int i = 0; i < projectiles.Count; i++)
+			if(data.Projectile != null)
 			{
-				ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
-				//projectile.transform.rotation = Quaternion.AngleAxis(angle - 90 + projectiles[i].Angle, Vector3.forward);
-				projectile.transform.position = minion.ProjectileAnchor.position.WithX(minion.ProjectileAnchor.position.x + projectiles[i].PosX);
-				projectile.Setup(projectiles[i], hitresults, minion, dir, target);
+				//프로젝타일 발사
+				List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart[data.Projectile];
+
+				for (int i = 0; i < projectiles.Count; i++)
+				{
+					ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
+					//projectile.transform.rotation = Quaternion.AngleAxis(angle - 90 + projectiles[i].Angle, Vector3.forward);
+					projectile.transform.position = minion.ProjectileAnchor.position.WithX(minion.ProjectileAnchor.position.x + projectiles[i].PosX);
+					projectile.Setup(projectiles[i], hitresults, minion, dir, target);
+				}
 			}
 		}
 	}
