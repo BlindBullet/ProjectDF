@@ -26,10 +26,12 @@ public class EnemyBase : MonoBehaviour
 	[HideInInspector] public EnemySkillController SkillCon;
 	[HideInInspector] public EnemyBuffController BuffCon;
 	public Coroutine cHit;
-	public TextMeshPro HpText;	
+	public TextMeshPro HpText;
+	bool inMoat = false;
 
 	public void Setup(EnemyChart chart, int stageNo, bool isBoss = false)
-	{		
+	{
+		inMoat = false;
 		isDie = false;
 
 		Stat = new EnemyStat();
@@ -89,9 +91,9 @@ public class EnemyBase : MonoBehaviour
 			if (transform.position.x > max.x)
 				xSpd = -Stat.Spd;
 
-			if(transform.position.y <= StageManager.Ins.PlayerLine.transform.position.y + 1.5f)
+			if(inMoat)
 			{
-				Rb.velocity = new Vector2(xSpd, -0.15f);
+				Rb.velocity = new Vector2(xSpd, -(Stat.Spd - (Stat.Spd * StageManager.Ins.PlayerStat.MoatSlowRate)));
 			}
 			else
 			{
@@ -359,8 +361,13 @@ public class EnemyBase : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Player"))
-		{			
-			StageManager.Ins.LoseStage();
+		{
+			collision.GetComponent<PlayerLine>().Destroy();
+			StageManager.Ins.Hp--;
+			Die();
+
+			if(StageManager.Ins.Hp <= 0)
+				StageManager.Ins.LoseStage();
 		}
 	}
 

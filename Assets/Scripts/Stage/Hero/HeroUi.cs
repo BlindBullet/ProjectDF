@@ -96,6 +96,7 @@ public class HeroUi : MonoBehaviour
 	{
 		IconBtn.enabled = false;
 		//SkillCoolTimeFrame.fillAmount = 0;
+		CloseSkillReadyText();
 				
 		mat.DOFloat(1f, "_FadeAmount", 2f).SetEase(Ease.InOutQuad);
 

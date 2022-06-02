@@ -252,8 +252,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 
 				for (int i = 0; i < projectiles.Count; i++)
 				{
-					ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
-					//projectile.transform.rotation = Quaternion.AngleAxis(angle - 90 + projectiles[i].Angle, Vector3.forward);
+					ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);					
 					projectile.transform.position = minion.ProjectileAnchor.position.WithX(minion.ProjectileAnchor.position.x + projectiles[i].PosX);
 					projectile.Setup(projectiles[i], hitresults, minion, dir, target);
 				}
@@ -294,7 +293,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 							MinionChart minionChart = CsvData.Ins.MinionChart[hitresults[i].SummonIds[k]];
 							MinionBase minion = ObjectManager.Ins.Pop<MinionBase>(Resources.Load("Prefabs/Characters/Minions/MinionObj") as GameObject);
 							minion.transform.localScale = new Vector2(minionChart.Size, minionChart.Size);
-							minion.transform.position = new Vector2(target.ProjectileAnchor.position.x + hitresults[i].SummonPosX[k], StageManager.Ins.PlayerLine.position.y + 1f + hitresults[i].SummonPosY[k]);
+							minion.transform.position = new Vector2(target.ProjectileAnchor.position.x + hitresults[i].SummonPosX[k], target.ProjectileAnchor.position.y + hitresults[i].SummonPosY[k]);
 							minion.Init(minionChart, target, hitresults[i].DurationTime);							
 						}						
 						break;

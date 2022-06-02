@@ -11,7 +11,8 @@ public class StageManager : MonoSingleton<StageManager>
 	public PlayerStat PlayerStat = new PlayerStat();
 	public PlayerUi PlayerUi;
 	public TopBar TopBar;
-	public Transform PlayerLine;
+	public List<PlayerLine> PlayerLines = new List<PlayerLine>();
+	[HideInInspector] public int Hp;
 	public LoseStagePanel LoseStagePanel;
 	public AscensionSequence AscensionSequence;
 
@@ -170,6 +171,12 @@ public class StageManager : MonoSingleton<StageManager>
 
 	IEnumerator SetBg(int stageNo)
 	{
+		for(int i = 0; i < PlayerLines.Count; i++)
+		{
+			PlayerLines[i].gameObject.SetActive(true);
+			PlayerLines[i].Refresh();
+		}
+
 		int _stageNo = GetStageNo(stageNo);		
 		StageChart chart = CsvData.Ins.StageChart[_stageNo.ToString()];
 		
@@ -216,6 +223,8 @@ public class StageManager : MonoSingleton<StageManager>
 
 	IEnumerator SetStage(int stageNo)
 	{
+		Hp = PlayerLines.Count;
+
 		yield return StartCoroutine(SetBg(stageNo));
 		TopBar.SetStageText(stageNo);
 

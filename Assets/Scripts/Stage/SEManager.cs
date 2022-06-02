@@ -490,10 +490,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.MoatLv += (float)data.Value;
+								StageManager.Ins.PlayerStat.MoatSlowRate += (float)data.Value;
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.MoatLv -= (float)data.Value;
+								StageManager.Ins.PlayerStat.MoatSlowRate -= (float)data.Value;
 								break;
 						}
 						break;
