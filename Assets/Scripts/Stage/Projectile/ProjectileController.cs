@@ -309,7 +309,9 @@ public class ProjectileController : MonoBehaviour
 			{
 				bounce--;
 				atk = atk - (atk * (ConstantData.BounceDmgDecP / 100f));
-				dir = Vector2.Reflect(dir, collision.contacts[0].normal);				
+				dir = Vector2.Reflect(dir, collision.contacts[0].normal);
+				Rb.velocity = dir * data.Speed;
+				ModelTrf.up = dir;
 				return;
 			}
 			else

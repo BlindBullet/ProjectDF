@@ -41,7 +41,13 @@ public class DialogController : MonoBehaviour
 		if (EnabledBackkey)
 		{
 			BackPanelBtn.onClick.RemoveAllListeners();
-			BackPanelBtn.onClick.AddListener(() => { BackkeyManager.Ins.UseBackkey(); });
+			BackPanelBtn.onClick.AddListener(() => 
+			{
+				if (stopTime)
+					Time.timeScale = _time;
+
+				BackkeyManager.Ins.UseBackkey(); 
+			});
 		}
 
 		if(CloseBtn != null)
