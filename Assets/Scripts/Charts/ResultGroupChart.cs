@@ -33,7 +33,8 @@ public enum TargetDetail
     None,
     All,
     Closest,
-    
+	Side,
+	SideAndMe,
 }
 
 public enum RangeType

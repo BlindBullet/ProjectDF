@@ -1,7 +1,4 @@
 ﻿Id,Model,Size,MoveType,MoveSpd,BPos1,BPos1R,BPos2,BPos2R,Range,AtkP,Spd,PenCount,Attr,Hitresult,Projectile
-M1,ForestFairy,0.25,Direct,1,,,,,2,100,1,0,Red,dmg_100,TestProjectile
-M2,ForestFairy,0.25,Curve,1,0|0,2|0,0|-2,2|0,2,100,5,0,Green,dmg_100,TestProjectile
-M3,ForestFairy,0.25,None,0,,,,,2,100,5,0,Blue,dmg_100,TestProjectile
 IceWolf_1,IceWolf,0.25,Curve,1,0|0,2|0,0|-2,2|0,1.5,50,2,0,Blue,dmg_100,attack_blue1
 IceWolf_2,IceWolf,0.25,Curve,1,0|0,2|0,0|-2,2|0,1.5,75,2,0,Blue,dmg_100,attack_blue1
 IceWolf_3,IceWolf,0.25,Curve,1,0|0,2|0,0|-2,2|0,1.5,100,2,0,Blue,dmg_100,attack_blue1
@@ -12,3 +9,18 @@ RedDragon_2,RedDragon,0.5,Curve,1,0|0,2|0,0|-2,2|0,3,250,0.8,0,Red,dmg_100,skill
 RedDragon_3,RedDragon,0.5,Curve,1,0|0,2|0,0|-2,2|0,3,350,0.8,0,Red,dmg_100,skill_10008_3
 RedDragon_4,RedDragon,0.5,Curve,1,0|0,2|0,0|-2,2|0,3,500,0.8,0,Red,dmg_100,skill_10008_4
 RedDragon_5,RedDragon,0.5,Curve,1,0|0,2|0,0|-2,2|0,3,800,0.8,0,Red,dmg_100,skill_10008_5
+WukongR_1,Wukong,0.25,Direct,2,,,,,2,30,2,0,Red,dmg_100,attack_red1
+WukongR_2,Wukong,0.25,Direct,2,,,,,2,30,2,0,Red,dmg_100,attack_red1
+WukongR_3,Wukong,0.25,Direct,2,,,,,2,30,2,0,Red,dmg_100,attack_red1
+WukongR_4,Wukong,0.25,Direct,2,,,,,2,30,2,0,Red,dmg_100,attack_red1
+WukongR_5,Wukong,0.25,Direct,2,,,,,2,30,2,0,Red,dmg_100,attack_red1
+WukongB_1,Wukong,0.25,Direct,2,,,,,2,30,2,0,Blue,dmg_100,attack_blue1
+WukongB_2,Wukong,0.25,Direct,2,,,,,2,30,2,0,Blue,dmg_100,attack_blue1
+WukongB_3,Wukong,0.25,Direct,2,,,,,2,30,2,0,Blue,dmg_100,attack_blue1
+WukongB_4,Wukong,0.25,Direct,2,,,,,2,30,2,0,Blue,dmg_100,attack_blue1
+WukongB_5,Wukong,0.25,Direct,2,,,,,2,30,2,0,Blue,dmg_100,attack_blue1
+WukongG_1,Wukong,0.25,Direct,2,,,,,2,30,2,0,Green,dmg_100,attack_green1
+WukongG_2,Wukong,0.25,Direct,2,,,,,2,30,2,0,Green,dmg_100,attack_green1
+WukongG_3,Wukong,0.25,Direct,2,,,,,2,30,2,0,Green,dmg_100,attack_green1
+WukongG_4,Wukong,0.25,Direct,2,,,,,2,30,2,0,Green,dmg_100,attack_green1
+WukongG_5,Wukong,0.25,Direct,2,,,,,2,30,2,0,Green,dmg_100,attack_green1

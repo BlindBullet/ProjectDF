@@ -1,13 +1,4 @@
 ﻿Id,OnlyHitTarget,MoveType,PenCount,Bounce,PosX,Angle,Speed,BPos1,BPos1R,BPos2,BPos2R,Lifetime,Model,BeginFx,HitDestroyFx,HitDestroyResult,DestroyFx,DestroyResult
-TestProjectile,,Direct,0,0,0,0,20,,,,,10,Red1,,,,,
-TestProjectile2,,Direct,0,0,0.3,0,6,,,,,10,Red1,,,,,Explosion
-TestProjectile3,,Direct,0,0,0,15,6,,,,,10,Red1,,,,,
-TestProjectile4,,Direct,0,0,0,10,6,,,,,10,Red1,,,,,
-TestProjectile5,,Direct,0,0,0,5,6,,,,,10,Red1,,,,,
-TestProjectile6,,Direct,0,0,0,-5,6,,,,,10,Red1,,,,,
-TestProjectile7,,Direct,0,0,0,-10,6,,,,,10,Red1,,,,,
-TestProjectile8,,Direct,0,0,0,-15,6,,,,,10,Red1,,,,,
-TestProjectile9,,Curve,0,0,0,0,20,0|0,5|5,0|0,5|0,10,TestProjectile2,,,,,Explosion
 skill_10004_1,,Curve,0,0,0,0,20,0|0,5|0,0|0,5|0,10,Projectile 19,,Hit 19,skill_10004_1_add,,
 skill_10004_2,,Curve,0,0,0,0,20,0|0,5|0,0|0,5|0,10,Projectile 19,,Hit 19,skill_10004_2_add,,
 skill_10004_3,,Curve,0,0,0,0,20,0|0,5|0,0|0,5|0,10,Projectile 19,,Hit 19,skill_10004_3_add,,
@@ -29,3 +20,6 @@ skill_10009_2,True,Direct,0,0,0,0,20,,,,,10,Projectile 15,,,,,
 skill_10009_3,True,Direct,0,0,0,0,20,,,,,10,Projectile 15,,,,,
 skill_10009_4,True,Direct,0,0,0,0,20,,,,,10,Projectile 15,,,,,
 skill_10009_5,True,Direct,0,0,0,0,20,,,,,10,Projectile 15,,,,,
+attack_red1,,Direct,0,0,0,0,20,,,,,10,Red1,,,,,
+attack_blue1,,Direct,0,0,0,0,20,,,,,10,Blue1,,,,,
+attack_green1,,Direct,0,0,0,0,20,,,,,10,Green1,,,,,

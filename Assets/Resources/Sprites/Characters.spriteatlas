@@ -87,6 +87,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9f42c4e115577fe41859c7bfed4edad0, type: 3}
   - {fileID: 21300000, guid: 087fdee175128394598c399dac9fdbcb, type: 3}
   - {fileID: 21300000, guid: 53405fe1fe50e99459d5e245eaebfb04, type: 3}
+  - {fileID: 21300000, guid: 95ea7cf1899f24945a228334b630d582, type: 3}
   - {fileID: 21300000, guid: ce2ba932adf2480489179ed1479fdf5d, type: 3}
   - {fileID: 21300000, guid: 036848422026e06458992d21746fc2f3, type: 3}
   - {fileID: 21300000, guid: 030d5f822ecbc3c4da18df25ad6222a5, type: 3}
@@ -256,6 +257,7 @@ SpriteAtlas:
   - f224
   - f145
   - f104
+  - Wukong
   - ShellClaw
   - GoblinZombie
   - DarknessAngel

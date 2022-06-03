@@ -415,6 +415,21 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			case TargetDetail.All:
 				targets = HeroBase.Heroes;
 				break;
+			case TargetDetail.SideAndMe:
+				for(int i = 0; i < HeroBase.Heroes.Count; i++)
+				{
+					if (HeroBase.Heroes[i] == caster || HeroBase.Heroes[i].Data.SlotNo == caster.Data.SlotNo - 1
+						|| HeroBase.Heroes[i].Data.SlotNo == caster.Data.SlotNo + 1)
+						targets.Add(HeroBase.Heroes[i]);
+				}
+				break;
+			case TargetDetail.Side:
+				for (int i = 0; i < HeroBase.Heroes.Count; i++)
+				{
+					if (HeroBase.Heroes[i].Data.SlotNo == caster.Data.SlotNo - 1 || HeroBase.Heroes[i].Data.SlotNo == caster.Data.SlotNo + 1)
+						targets.Add(HeroBase.Heroes[i]);
+				}
+				break;
 		}
 
 		return targets;
