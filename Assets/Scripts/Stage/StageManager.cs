@@ -32,7 +32,7 @@ public class StageManager : MonoSingleton<StageManager>
 	Coroutine cLoseSeq = null;
 
 	private void Start()
-	{
+	{	
 		appearSuppliesProb = 0f;
 
 		PlayerData = new PlayerData();
@@ -48,6 +48,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 	void Load()
 	{
+		SoundManager.Ins.DissolveBGMVolume(1f, 1f);
 		TopBar.Setup();
 
 		SetSlots();
@@ -195,7 +196,9 @@ public class StageManager : MonoSingleton<StageManager>
 				if (Bg != null)
 					Destroy(Bg);
 
-				Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);				
+				Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);
+				if (chart.Bgm != null)
+					SoundManager.Ins.ChangeBGM(chart.Bgm);
 			}
 			else
 			{
@@ -203,6 +206,9 @@ public class StageManager : MonoSingleton<StageManager>
 					Destroy(Bg);
 
 				Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);
+				
+				if(chart.Bgm != null)
+					SoundManager.Ins.ChangeBGM(chart.Bgm);
 			}
 		}	
 		else if(chart.Bg == null && Bg == null)
@@ -216,6 +222,8 @@ public class StageManager : MonoSingleton<StageManager>
 				else
 				{					
 					Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + _chart.Bg) as GameObject);
+					if (chart.Bgm != null)
+						SoundManager.Ins.ChangeBGM(chart.Bgm);
 					break;
 				}
 			}

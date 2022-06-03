@@ -20,14 +20,14 @@ public class MySceneManager : MonoSingleton<MySceneManager>
 	}
 
 	public void ChangeScene(string sceneName)
-	{
+	{	
 		FadeImg.DOFade(1, fadeDuration)
 			.OnStart(() =>
 			{
 				FadeImg.blocksRaycasts = true;
 			})
 			.OnComplete(() =>
-			{
+			{				
 				StartCoroutine(LoadScene(sceneName));
 			});
 	}

@@ -20,6 +20,10 @@ public class StartManager : MonoBehaviour
 	{
 		Bg.DOFade(1f, 1.5f).SetEase(Ease.InOutCirc);
 
+		yield return new WaitForSeconds(0.5f);
+
+		SoundManager.Ins.ChangeBGM("rpg_19_loop");
+
 		yield return new WaitForSeconds(1.5f);
 
 		//구글 로그인
@@ -32,9 +36,22 @@ public class StartManager : MonoBehaviour
 		TouchToStartText.DOFade(1f, 1.5f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
 
 		BackPanelBtn.onClick.RemoveAllListeners();
-		BackPanelBtn.onClick.AddListener(() => MySceneManager.Ins.ChangeScene("Main"));
+		BackPanelBtn.onClick.AddListener(() => 
+		{
+			StartCoroutine(ChangeScene());			
+		});
 	}
 
+	IEnumerator ChangeScene()
+	{
+		BackPanelBtn.enabled = false;
+		TouchToStartText.gameObject.SetActive(false);
 
+		SoundManager.Ins.DissolveBGMVolume(0f, 2f);
+
+		yield return new WaitForSeconds(1.5f);
+
+		MySceneManager.Ins.ChangeScene("Main");
+	}
 
 }

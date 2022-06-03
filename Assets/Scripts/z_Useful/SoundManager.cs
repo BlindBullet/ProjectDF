@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SoundManager : SingletonObject<SoundManager>
 {		
@@ -159,6 +160,10 @@ public class SoundManager : SingletonObject<SoundManager>
 		BGMsource.volume = volume;
 	}
 
+	public void DissolveBGMVolume(float endValue, float time)
+	{		
+		BGMsource.DOFade(endValue, time).SetEase(Ease.Linear);
+	}
 
 	public void changeSFXVolume(float volume)
 	{
