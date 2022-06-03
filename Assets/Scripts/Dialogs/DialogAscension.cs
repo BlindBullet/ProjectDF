@@ -32,7 +32,7 @@ public class DialogAscension : DialogController
 
 		SetReward(isPossibleAscension);
 		SetAscensionBtn(isPossibleAscension);
-		Show(true, true);
+		Show(false, true);
 	}
 
 	void SetReward(bool isPossibleAscension)

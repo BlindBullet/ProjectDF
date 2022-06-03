@@ -30,7 +30,7 @@ public class DialogQuest : DialogController
 
 		_Dialog = this;
 
-		Show(true, true);
+		Show(false, true);
 	}
 
 	public void SetQuests()

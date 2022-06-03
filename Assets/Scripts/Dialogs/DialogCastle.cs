@@ -14,7 +14,7 @@ public class DialogCastle : DialogController
 	{
 		TitleText.text = LanguageManager.Ins.SetString("Castle");
 		SetCastle();	
-		Show(true, true);
+		Show(false, true);
 	}
 
 	public void SetCastle()

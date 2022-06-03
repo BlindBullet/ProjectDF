@@ -59,7 +59,7 @@ public class DialogHeroInfo : DialogController
 		this.data = data;		
 		HeroIcon.Setup(data);
 		SetHeroInfo(data);
-		Show(true);
+		Show(false);
 	}
 
 	void SetHero(HeroChart chart)

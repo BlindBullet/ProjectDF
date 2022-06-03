@@ -10,9 +10,7 @@ public class DialogConfirmAndCancel : DialogController
 	public TextMeshProUGUI Title;
 	public TextMeshProUGUI Desc;
 	public Button ConfirmBtn;
-	public TextMeshProUGUI ConfirmBtnText;
-	public Button CancelBtn;
-	public TextMeshProUGUI CancelBtnText;	
+	public TextMeshProUGUI ConfirmBtnText;	
 
 	public void SetDialog(string title, string desc, Action action)
 	{
@@ -20,7 +18,7 @@ public class DialogConfirmAndCancel : DialogController
 		ConfirmBtn.onClick.RemoveAllListeners();
 		ConfirmBtn.onClick.AddListener(() => { action(); CloseDialog(); });
 
-		Show(true);
+		Show(false, true);
 	}
 
 	void SetBasic(string title, string desc)
@@ -28,10 +26,5 @@ public class DialogConfirmAndCancel : DialogController
 		Title.text = LanguageManager.Ins.SetString(title);
 		Desc.text = LanguageManager.Ins.SetString(desc);
 		ConfirmBtnText.text = LanguageManager.Ins.SetString("Confirm");
-		CancelBtnText.text = LanguageManager.Ins.SetString("Cancel");
-
-		CancelBtn.onClick.RemoveAllListeners();
-		CancelBtn.onClick.AddListener(() => CloseDialog());
-
 	}
 }

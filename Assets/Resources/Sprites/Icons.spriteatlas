@@ -139,6 +139,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c760c0fdafa397a479d8831e27241cdb, type: 3}
   - {fileID: 21300000, guid: 6f5cc40e4a1cd458c9901849a7f52a07, type: 3}
   - {fileID: 21300000, guid: 594bbe0e98181354ca70a31e86fd611e, type: 3}
+  - {fileID: 21300000, guid: da5db72ec48e840799f4a20440277192, type: 3}
   - {fileID: 21300000, guid: 3062f33e6ee20de41bc855f40a075cf7, type: 3}
   - {fileID: 21300000, guid: 4b0c9c3e9a1fd134fad4f13d92a8e22e, type: 3}
   - {fileID: 21300000, guid: d103ed3e04aa2ef449d7e3c30a83a3d6, type: 3}
@@ -227,6 +228,7 @@ SpriteAtlas:
   - slider_edgetype_01_frame_back
   - Btn_Red
   - Loot_15
+  - label_ribbon_01
   - Blue
   - EnemyCircleFrame_Blue
   - HeroBg_Blue

@@ -15,6 +15,11 @@ public class GameManager : MonoSingleton<GameManager>
 
 	private void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			BackkeyManager.Ins.UseBackkey();
+		}
+
 		if (Input.GetKeyDown(KeyCode.A))
 		{	
 			Debug.Log(TimeManager.Ins.ReceivedTime);

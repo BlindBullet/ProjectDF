@@ -21,7 +21,7 @@ public class DialogManager : SingletonObject<DialogManager> {
 
 	public void OpenConfirmAndCancel(string title, string desc, Action action)
 	{
-		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/Dialog ConfirmAndCancel") as GameObject, DialogTrf);
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogConfirmAndCancel") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogConfirmAndCancel>().SetDialog(title, desc, action);
 	}
 

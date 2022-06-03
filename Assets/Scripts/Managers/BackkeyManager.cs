@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackkeyManager : SingletonObject<BackkeyManager>
 {
 	public List<DialogController> OpenedDialogList = new List<DialogController>();
-
+	
 	public void ClearDialog()
 	{
 		OpenedDialogList.Clear();
@@ -16,7 +16,7 @@ public class BackkeyManager : SingletonObject<BackkeyManager>
 		if (OpenedDialogList.Count > 0)
 		{
 			if (OpenedDialogList[OpenedDialogList.Count - 1].EnabledBackkey)
-			{
+			{				
 				OpenedDialogList[OpenedDialogList.Count - 1].CloseDialog();
 			}
 			else
@@ -26,12 +26,16 @@ public class BackkeyManager : SingletonObject<BackkeyManager>
 		}
 		else
 		{
-			DialogManager.Ins.OpenConfirmAndCancel("QuitGame", "QuitGameDesc", () => { Application.Quit(); });
+			DialogManager.Ins.OpenConfirmAndCancel("QuitGame", "QuitGameDesc", () => 
+			{
+				StageManager.Ins.PlayerData.Save();
+				Application.Quit(); 
+			});
 		}
 	}
 
 	public void AddDialog(DialogController dialog)
-	{
+	{		
 		OpenedDialogList.Add(dialog);
 	}
 
