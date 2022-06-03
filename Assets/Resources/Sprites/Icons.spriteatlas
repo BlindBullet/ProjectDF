@@ -88,6 +88,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 674c51d4ff2b34963950fdc62adf100b, type: 3}
   - {fileID: 21300000, guid: 5f9213f420127fd40bd82b2f1bef5225, type: 3}
   - {fileID: 21300000, guid: a71dbf05399024243aa578477be16e13, type: 3}
+  - {fileID: 21300000, guid: 62464445766f9b14da1916e2af70c8cc, type: 3}
   - {fileID: 21300000, guid: f54fbdc50751eb54fa74b9e0b35d04f0, type: 3}
   - {fileID: 21300000, guid: 37c4ebd5e5c4f874ba8e02d647a3cb22, type: 3}
   - {fileID: 21300000, guid: b394e186d8ebb744fb59530a15ab291f, type: 3}
@@ -177,6 +178,7 @@ SpriteAtlas:
   - Wings Halo - Stars
   - Star_On
   - MinionFrame_Red
+  - AppIcon
   - GainGold
   - Green
   - HeroBg_Red

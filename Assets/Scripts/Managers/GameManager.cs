@@ -10,7 +10,8 @@ public class GameManager : MonoSingleton<GameManager>
 	private void Awake()
 	{
 		DialogManager.Ins.SetDialogTransform();
-		//SaveLoadManager.Ins.LoadAllDatas();
+		
+		DontDestroyOnLoad(this);
 	}
 
 	private void Update()
@@ -62,7 +63,7 @@ public class GameManager : MonoSingleton<GameManager>
 	}
 
 	private void OnDestroy()
-	{
+	{		
 		StageManager.Ins.PlayerData.SetOfflineTime();
 	}
 
