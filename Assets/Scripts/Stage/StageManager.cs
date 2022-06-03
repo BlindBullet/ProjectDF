@@ -197,7 +197,7 @@ public class StageManager : MonoSingleton<StageManager>
 					Destroy(Bg);
 
 				Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);
-				if (chart.Bgm != null)
+				if (chart.Bgm != null && SoundManager.Ins.currentBgm != chart.Bgm)
 					SoundManager.Ins.ChangeBGM(chart.Bgm);
 			}
 			else
@@ -206,8 +206,7 @@ public class StageManager : MonoSingleton<StageManager>
 					Destroy(Bg);
 
 				Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + chart.Bg) as GameObject);
-				
-				if(chart.Bgm != null)
+				if (chart.Bgm != null && SoundManager.Ins.currentBgm != chart.Bgm)
 					SoundManager.Ins.ChangeBGM(chart.Bgm);
 			}
 		}	
@@ -222,7 +221,7 @@ public class StageManager : MonoSingleton<StageManager>
 				else
 				{					
 					Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + _chart.Bg) as GameObject);
-					if (chart.Bgm != null)
+					if (chart.Bgm != null && SoundManager.Ins.currentBgm != chart.Bgm)
 						SoundManager.Ins.ChangeBGM(chart.Bgm);
 					break;
 				}

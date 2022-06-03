@@ -86,6 +86,7 @@ public class SoundManager : SingletonObject<SoundManager>
 	private AudioClip changeClip;//바뀌는 클립
 	private bool isChanging = false;
 	private float startTime;
+	public string currentBgm = "";
 
 	[SerializeField]
 	[Header("Changing speed"), Tooltip("브금 바꾸는 속도")]
@@ -93,6 +94,8 @@ public class SoundManager : SingletonObject<SoundManager>
 
 	public void ChangeBGM(string name, bool isSmooth = false, CallBack callback = null)//브금 변경 (브금이름 , 부드럽게 바꾸기)
 	{
+		currentBgm = name;
+
 		BGMendCallBack = callback;
 
 		changeClip = null;
