@@ -25,11 +25,11 @@ public class EnemyBuffController : MonoBehaviour
 	{
 		AddBuff(buff);
 
-		if (buff.Data.DurationFx != null)
+		if (buff.DurationFx != null)
 			EffectManager.Ins.ShowFx(buff.Data.DurationFx, me.transform.position);
 
 		yield return new WaitForSeconds(buff.DurationTime);
-
+				
 		RemoveBuff(buff);
 	}
 
@@ -55,53 +55,71 @@ public class EnemyBuffController : MonoBehaviour
 		
 		for(int i = 0; i < Buffs.Count; i++)
 		{
-			switch (Buffs[i].Data.HitType)
+			if(Buffs[i].Data != null && Buffs[i].Hitresult == null)
 			{
-				case EnemySkillHitType.Buff:
-					switch (Buffs[i].Data.Param1)
-					{
-						case "Spd":
-							addSpd += float.Parse(Buffs[i].Data.Param2);
-							break;
-						case "Def":							
-							addDef += float.Parse(Buffs[i].Data.Param2);
-							break;
-					}
-					break;
-				case EnemySkillHitType.Debuff:
-					switch (Buffs[i].Data.Param1)
-					{
-						case "Spd":
-							addSpd -= float.Parse(Buffs[i].Data.Param2);
-							break;
-						case "Def":
-							addDef -= float.Parse(Buffs[i].Data.Param2);
-							break;
-					}
-					break;
-				case EnemySkillHitType.Immune:
-					switch (Buffs[i].Data.Param1)
-					{
-						case "Red":
-							if(!immunes.Contains(Attr.Red))
-								immunes.Add(Attr.Red);
-							break;
-						case "Green":
-							if (!immunes.Contains(Attr.Green))
-								immunes.Add(Attr.Green);
-							break;
-						case "Blue":
-							if (!immunes.Contains(Attr.Blue))
-								immunes.Add(Attr.Blue);
-							break;
-					}
-					break;
+				switch (Buffs[i].Data.HitType)
+				{
+					case EnemySkillHitType.Buff:
+						switch (Buffs[i].Data.Param1)
+						{
+							case "Spd":
+								addSpd += float.Parse(Buffs[i].Data.Param2);
+								break;
+							case "Def":
+								addDef += float.Parse(Buffs[i].Data.Param2);
+								break;
+						}
+						break;
+					case EnemySkillHitType.Debuff:
+						switch (Buffs[i].Data.Param1)
+						{
+							case "Spd":
+								addSpd -= float.Parse(Buffs[i].Data.Param2);
+								break;
+							case "Def":
+								addDef -= float.Parse(Buffs[i].Data.Param2);
+								break;
+						}
+						break;
+					case EnemySkillHitType.Immune:
+						switch (Buffs[i].Data.Param1)
+						{
+							case "Red":
+								if (!immunes.Contains(Attr.Red))
+									immunes.Add(Attr.Red);
+								break;
+							case "Green":
+								if (!immunes.Contains(Attr.Green))
+									immunes.Add(Attr.Green);
+								break;
+							case "Blue":
+								if (!immunes.Contains(Attr.Blue))
+									immunes.Add(Attr.Blue);
+								break;
+						}
+						break;
+				}
+			}
+			if (Buffs[i].Data == null && Buffs[i].Hitresult != null)
+			{
+				switch (Buffs[i].Hitresult.Type)
+				{
+					case HitType.Debuff:
+						switch (Buffs[i].Hitresult.StatType)
+						{
+							case StatType.Spd:								
+								addSpd -= Buffs[i].Hitresult.ValuePercent;
+								break;
+						}
+						break;
+				}
 			}
 		}
 
-		me.Stat.Spd = me.Stat.Spd + (me.Stat.Spd * (addSpd / 100f));		
+		me.Stat.AddSpd = addSpd;
+		me.Stat.AddDef = addDef;
 		me.Stat.Immunes = immunes;
-		me.Stat.Def = me.Stat.Def + addDef;
+		me.Stat.CalcStat();
 	}
 
 	
@@ -109,13 +127,17 @@ public class EnemyBuffController : MonoBehaviour
 }
 
 public class EnemyBuff
-{
+{	
 	public EnemySkillChart Data;
+	public HitresultChart Hitresult;
 	public float DurationTime;
+	public string DurationFx;
 
-	public EnemyBuff(string id)
+	public void SetEnemyBuff(string id)
 	{
+		Hitresult = null;
 		Data = CsvData.Ins.EnemySkillChart[id];
+		DurationFx = Data.DurationFx;
 
 		switch (Data.HitType)
 		{
@@ -145,6 +167,14 @@ public class EnemyBuff
 				DurationTime = float.Parse(Data.Param2);
 				break;
 		}
+	}
+
+	public void SetHitresult(HitresultChart chart)
+	{
+		Data = null;
+		Hitresult = chart;
+		DurationTime = chart.DurationTime;
+		DurationFx = chart.DurationFx;
 	}
 
 }

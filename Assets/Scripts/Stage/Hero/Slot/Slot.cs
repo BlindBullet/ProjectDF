@@ -55,6 +55,8 @@ public class Slot : MonoBehaviour
 
 		LvObj.SetActive(true);
 
+		DOTween.Kill("SF" + No);
+
 		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
 		SetLvUpBtnState(0);
 		SetLvText();

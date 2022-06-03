@@ -390,7 +390,12 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 
 								break;
 						}
-						break;					
+						break;
+					case HitType.Debuff:
+						EnemyBuff enemyBuff = new EnemyBuff();
+						enemyBuff.SetHitresult(hitresults[i]);
+						target.BuffCon.TakeBuff(enemyBuff);
+						break;
 					case HitType.Push:                        
 						target.Push(hitresults[i].Value, hitresults[i].DurationTime);                        
 						break;

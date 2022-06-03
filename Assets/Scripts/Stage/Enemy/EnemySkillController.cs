@@ -90,6 +90,8 @@ public class EnemySkillController : MonoBehaviour
 
 	void SendHitresult(EnemyBase target, EnemySkill skill)
 	{
+		EnemyBuff buff = new EnemyBuff();
+
 		if (skill.Data.HitFx != null)
 			EffectManager.Ins.ShowFx(skill.Data.HitFx, target.transform);
 
@@ -99,10 +101,12 @@ public class EnemySkillController : MonoBehaviour
 				target.TakeHeal(float.Parse(skill.Data.Param1));
 				break;
 			case EnemySkillHitType.Immune:				
-				target.BuffCon.TakeBuff(new EnemyBuff(skill.Data.Id));
+				buff.SetEnemyBuff(skill.Data.Id);
+				target.BuffCon.TakeBuff(buff);
 				break;
-			case EnemySkillHitType.Buff:				
-				target.BuffCon.TakeBuff(new EnemyBuff(skill.Data.Id));
+			case EnemySkillHitType.Buff:
+				buff.SetEnemyBuff(skill.Data.Id);
+				target.BuffCon.TakeBuff(buff);
 				break;
 			case EnemySkillHitType.Summon:				
 				for (int i = 0; i < int.Parse(skill.Data.Param2); i++)
