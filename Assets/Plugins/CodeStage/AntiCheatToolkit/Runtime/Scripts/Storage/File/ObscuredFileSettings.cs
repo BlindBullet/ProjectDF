@@ -25,29 +25,13 @@ namespace CodeStage.AntiCheat.Storage
 	/// <summary>
 	/// Specific settings to use with ObscuredFile instance.
 	/// </summary>
-	public class ObscuredFileSettings
+	public class ObscuredFileSettings : IObscuredFileSettings
 	{
-		/// <summary>
-		/// Controls file location. Read more at #ObscuredFileLocation docs.
-		/// </summary>
-		public ObscuredFileLocation LocationKind { get; }
-		
-		/// <summary>
-		/// Controls file encryption settings. Read more at #EncryptionSettings docs.
-		/// </summary>
-        public EncryptionSettings EncryptionSettings { get; private set; }
-
-		/// <summary>
-		/// Controls DeviceLock feature settings. Read more at #DeviceLockSettings docs.
-		/// </summary>
-		public DeviceLockSettings DeviceLockSettings { get; private set; }
-
-		/// <summary>
-		/// Controls anti-tampering setting.
-		/// </summary>
-		/// When enabled, data integrity is validated and invokes NotGenuineDataDetected event on violation.
-		/// <br/>Disable to skip integrity validation entirely and improve performance.
+		public ObscuredFileLocation LocationKind { get; set; }
+        public EncryptionSettings EncryptionSettings { get; set; }
+		public DeviceLockSettings DeviceLockSettings { get; set; }
 		public bool ValidateDataIntegrity { get; set; }
+		public bool AutoSave { get; set; }
 
 		/// <summary>
 		/// Creates default settings instance.
@@ -57,6 +41,7 @@ namespace CodeStage.AntiCheat.Storage
 		/// - EncryptionSettings.ObscurationMode set to ObscurationMode.Plain
 		/// - DeviceLockSettings.Level set to DeviceLockLevel.None
 		/// - ValidateDataIntegrity set to true
+		/// - AutoSave set to true
 		public ObscuredFileSettings():this(ObscuredFileLocation.PersistentData)
 		{
 		}
@@ -68,6 +53,7 @@ namespace CodeStage.AntiCheat.Storage
 		/// - EncryptionSettings.ObscurationMode set to ObscurationMode.Plain
 		/// - DeviceLockSettings.Level set to DeviceLockLevel.None
 		/// - ValidateDataIntegrity set to true
+		/// - AutoSave set to true
 		public ObscuredFileSettings(ObscuredFileLocation locationKind) : this(
 			new EncryptionSettings(), new DeviceLockSettings(), locationKind) { }
 
@@ -78,6 +64,7 @@ namespace CodeStage.AntiCheat.Storage
 		/// - LocationKind set to ObscuredFileLocation.PersistentData
 		/// - EncryptionSettings.ObscurationMode set to ObscurationMode.Plain
 		/// - ValidateDataIntegrity set to true
+		/// - AutoSave set to true
 		public ObscuredFileSettings(DeviceLockSettings deviceLockSettings) : this(
 			new EncryptionSettings(), deviceLockSettings)
 		{
@@ -88,22 +75,14 @@ namespace CodeStage.AntiCheat.Storage
 		/// Creates user-specified settings instance.
 		/// </summary>
 		public ObscuredFileSettings(EncryptionSettings encryptionSettings, DeviceLockSettings deviceLockSettings,
-			ObscuredFileLocation locationKind = ObscuredFileLocation.PersistentData, bool validateDataIntegrity = true)
+			ObscuredFileLocation locationKind = ObscuredFileLocation.PersistentData, bool validateDataIntegrity = true, 
+			bool autoSave = true)
 		{
 			EncryptionSettings = encryptionSettings;
 			DeviceLockSettings = deviceLockSettings;
 			LocationKind = locationKind;
 			ValidateDataIntegrity = validateDataIntegrity;
+			AutoSave = autoSave;
 		}
-
-		/*public void UpdateSettings(EncryptionSettings settings)
-		{
-			EncryptionSettings = settings;
-		}
-		
-		public void UpdateSettings(DeviceLockSettings settings)
-		{
-			DeviceLockSettings = settings;
-		}*/
 	}
 }

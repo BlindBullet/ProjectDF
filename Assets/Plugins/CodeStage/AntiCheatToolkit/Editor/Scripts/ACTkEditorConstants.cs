@@ -8,7 +8,6 @@ namespace CodeStage.AntiCheat.EditorCode
 {
 	using System.IO;
 	using System.Linq;
-	using EditorCommon.Tools;
 	using UnityEngine;
 
 	internal static class ACTkEditorConstants

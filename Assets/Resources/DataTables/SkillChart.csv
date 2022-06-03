@@ -60,7 +60,7 @@ skill_10012,str_name_skill_10012,str_desc_skill_10012,Active,3,60,20,Attack,,,6,
 skill_10012,str_name_skill_10012,str_desc_skill_10012,Active,4,60,20,Attack,,,6,3,skill_10012_4
 skill_10012,str_name_skill_10012,str_desc_skill_10012,Active,5,60,20,Attack,,,6,3,skill_10012_5
 skill_10013,str_name_skill_10013,str_desc_skill_10013,Active,1,120,60,Attack,,,6,3,skill_10013_1
-skill_10013,str_name_skill_10013,str_desc_skill_10013,Active,2,1,60,Attack,,,6,3,skill_10013_2
+skill_10013,str_name_skill_10013,str_desc_skill_10013,Active,2,120,60,Attack,,,6,3,skill_10013_2
 skill_10013,str_name_skill_10013,str_desc_skill_10013,Active,3,120,60,Attack,,,6,3,skill_10013_3
 skill_10013,str_name_skill_10013,str_desc_skill_10013,Active,4,120,60,Attack,,,6,3,skill_10013_4
 skill_10013,str_name_skill_10013,str_desc_skill_10013,Active,5,120,60,Attack,,,6,3,skill_10013_5

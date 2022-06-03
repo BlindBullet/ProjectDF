@@ -22,7 +22,7 @@ namespace CodeStage.AntiCheat.EditorCode
 					SettingsGUI.OnGUI();
 				},
 
-				keywords = new HashSet<string>(new[] {"focus", "codestage", "Anti", "Cheat", "Toolkit", "Injection", "Hash", "Wall", "Hack", "ACTk" })
+				keywords = new HashSet<string>(new[] {"codestage", "Anti", "Cheat", "Toolkit", "Injection", "Hash", "Wall", "Hack", "ACTk", "Patch", "Protect", "Detect" })
 			};
 
 			return provider;

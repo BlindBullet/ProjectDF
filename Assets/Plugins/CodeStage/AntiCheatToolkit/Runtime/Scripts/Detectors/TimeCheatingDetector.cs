@@ -124,29 +124,31 @@ namespace CodeStage.AntiCheat.Detectors
 			/// </summary>
 			public DateTime OnlineDateTimeUtc => onlineDateTimeUtc;
 
-			internal void SetTime(double secondsUtc, DateTime dateTimeUtc)
+			internal OnlineTimeResult SetTime(double secondsUtc, DateTime dateTimeUtc)
 			{
 				success = true;
 				error = null;
 				errorResponseCode = -1;
 				onlineSecondsUtc = secondsUtc;
 				onlineDateTimeUtc = dateTimeUtc;
+
+				return this;
 			}
 
-			internal void SetError(string errorText, long responseCode = -1)
+			internal OnlineTimeResult SetError(string errorText, long responseCode = -1)
 			{
 				success = false;
 				error = errorText;
 				errorResponseCode = responseCode;
 				onlineSecondsUtc = -1;
+				
+				return this;
 			}
 
 			public override string ToString()
 			{
 				if (success)
-				{
 					return "onlineSecondsUtc: " + onlineSecondsUtc;
-				}
 
 				return "Error response code: " + errorResponseCode + "\nError: " + error;
 			}
@@ -497,9 +499,7 @@ namespace CodeStage.AntiCheat.Detectors
 #endif
 
 			if (gettingOnlineTime)
-			{
 				yield return CachedEndOfFrame;
-			}
 
 			gettingOnlineTime = true;
 
@@ -528,8 +528,23 @@ namespace CodeStage.AntiCheat.Detectors
 		/// <returns>OnlineTimeResult with UTC seconds or error.</returns>
 		public static Task<OnlineTimeResult> GetOnlineTimeTask(string url, RequestMethod method = RequestMethod.Head)
 		{
+			return GetOnlineTimeTask(url, System.Threading.CancellationToken.None, method);
+		}
+		
+		/// <summary>
+		/// Receives UTC seconds from url. Runs asynchronously.
+		/// </summary>
+		/// Automatically switches to the current domain when running in WebGL to avoid CORS limitation.
+		/// <param name="url">Absolute url to receive time from.
+		/// Make sure this server has proper Date values in the response headers
+		/// (almost all popular web sites are suitable).</param>
+		/// <param name="cancellationToken">CancellationToken to cancel the operation.</param>
+		/// <param name="method">Method to use for url request. Use Head method if possible and fall back to get if server does not reply or block head requests.</param>
+		/// <returns>OnlineTimeResult with UTC seconds or error.</returns>
+		public static Task<OnlineTimeResult> GetOnlineTimeTask(string url, System.Threading.CancellationToken cancellationToken, RequestMethod method = RequestMethod.Head)
+		{
 			var uri = UrlToUri(url);
-			return GetOnlineTimeTask(uri, method);
+			return GetOnlineTimeTask(uri, cancellationToken, method);
 		}
 
 		/// <summary>
@@ -541,38 +556,75 @@ namespace CodeStage.AntiCheat.Detectors
 		/// (almost all popular web sites are suitable).</param>
 		/// <param name="method">Method to use for url request. Use Head method if possible and fall back to get if server does not reply or block head requests.</param>
 		/// <returns>OnlineTimeResult with UTC seconds or error.</returns>
-		public static async Task<OnlineTimeResult> GetOnlineTimeTask(Uri uri, RequestMethod method = RequestMethod.Head)
+		public static Task<OnlineTimeResult> GetOnlineTimeTask(Uri uri, RequestMethod method = RequestMethod.Head)
+		{
+			return GetOnlineTimeTask(uri, System.Threading.CancellationToken.None, method);
+		}
+		
+		/// <summary>
+		/// Receives UTC seconds from url. Runs asynchronously.
+		/// </summary>
+		/// Automatically switches to the current domain when running in WebGL to avoid CORS limitation.
+		/// <param name="uri">Absolute url to receive time from.
+		/// Make sure this server has proper Date values in the response headers
+		/// (almost all popular web sites are suitable).</param>
+		/// <param name="cancellationToken">CancellationToken to cancel the operation.</param>
+		/// <param name="method">Method to use for url request. Use Head method if possible and fall back to get if server does not reply or block head requests.</param>
+		/// <returns>OnlineTimeResult with UTC seconds or error.</returns>
+		public static async Task<OnlineTimeResult> GetOnlineTimeTask(Uri uri, System.Threading.CancellationToken cancellationToken, RequestMethod method = RequestMethod.Head)
 		{
 #if ACTK_WEBGL_BUILD
 			EnsureCurrentDomainUsed(ref uri);
 #endif
 			while (gettingOnlineTime)
 			{
-				await Task.Delay(100);
+				try
+				{
+					cancellationToken.ThrowIfCancellationRequested();
+					await Task.Delay(100, cancellationToken);
+				}
+				catch (OperationCanceledException)
+				{
+					return new OnlineTimeResult().SetError("Operation cancelled while waiting for previous attempt.");
+				}
 			}
 
 			gettingOnlineTime = true;
 
 			var result = new OnlineTimeResult();
 
-			using (var wr = GetWebRequest(uri, method))
+			try
 			{
-				var asyncOperation = wr.SendWebRequest();
-
-				while (!asyncOperation.isDone)
+				using (var wr = GetWebRequest(uri, method))
 				{
-					await Task.Delay(100);
+					var asyncOperation = wr.SendWebRequest();
+
+					while (!asyncOperation.isDone)
+					{
+						cancellationToken.ThrowIfCancellationRequested();
+						await Task.Delay(100, cancellationToken);
+					}
+
+					FillRequestResult(wr, ref result);
 				}
-
-				FillRequestResult(wr, ref result);
 			}
-
-			gettingOnlineTime = false;
+			catch (OperationCanceledException)
+			{
+				result = new OnlineTimeResult().SetError("Operation cancelled.");
+			}
+			catch (Exception e)
+			{
+				Debug.LogError($"{LogPrefix} Couldn't retrieve online time");
+				result = new OnlineTimeResult().SetError(e.Message);
+			}
+			finally
+			{
+				gettingOnlineTime = false;
+			}
 
 			return result;
 		}
 #endif
-
 		#endregion
 
 #if ACTK_WEBGL_BUILD
@@ -601,15 +653,18 @@ namespace CodeStage.AntiCheat.Detectors
 
 		private static void FillCurrentDomainAndUriIfNecessary()
 		{
-			if (string.IsNullOrEmpty(currentDomain))
+			if (!string.IsNullOrEmpty(currentDomain))
+				return;
+
+			var ownUrl = Application.absoluteURL;
+			if (string.IsNullOrEmpty(ownUrl))
 			{
-				var ownUrl = Application.absoluteURL;
-				if (!string.IsNullOrEmpty(ownUrl))
-				{
-					currentUri = new Uri(ownUrl);
-					currentDomain = currentUri.GetLeftPart(UriPartial.Authority);
-				}
+				Debug.LogWarning($"{LogPrefix} Couldn't get valid string from Application.absoluteURL");
+				return;
 			}
+
+			currentUri = new Uri(ownUrl);
+			currentDomain = currentUri.GetLeftPart(UriPartial.Authority);
 		}
 #endif
 
@@ -620,23 +675,18 @@ namespace CodeStage.AntiCheat.Detectors
 				useHttpContinue = false,
 				timeout = Instance ? Instance.timeoutSeconds : DefaultTimeoutSeconds,
 				certificateHandler = null
-
 			};
-
+			
 #if ACTK_ACTUAL_ANDROID_DEVICE
 			if (method == RequestMethod.Head)
 			{
 				try
 				{
 					if (sdkLevel == 0)
-					{
 						sdkLevel = GetAndroidSDKLevel();
-					}
 
 					if (sdkLevel <= 17)
-					{
 						request.SetRequestHeader("Accept-Encoding", "");
-					}
 
 				}
 				catch (Exception e)
@@ -645,7 +695,6 @@ namespace CodeStage.AntiCheat.Detectors
 				}
 			}
 #endif
-
 			return request;
 		}
 
@@ -660,8 +709,7 @@ namespace CodeStage.AntiCheat.Detectors
 				var dateHeader = request.GetResponseHeader("Date");
 				if (!string.IsNullOrEmpty(dateHeader))
 				{
-					DateTime serverTime;
-					var success = TryGetDate(dateHeader, out serverTime);
+					var success = TryGetDate(dateHeader, out var serverTime);
 					if (success)
 					{
 						var onlineTimeUtc = serverTime.ToUniversalTime();
@@ -680,9 +728,7 @@ namespace CodeStage.AntiCheat.Detectors
 			}
 
 			if (!result.success)
-			{
 				Debug.Log(LogPrefix + "Online Time Retrieve error:\n" + result);
-			}
 		}
 
 		private static Uri UrlToUri(string url)
@@ -692,9 +738,7 @@ namespace CodeStage.AntiCheat.Detectors
 #endif
 			var success = Uri.TryCreate(url, UriKind.Absolute, out var result);
 			if (!success)
-			{
 				Debug.LogError(LogPrefix + "Could not create URI from URL: " + url);
-			}
 
 			return result;
 		}
@@ -854,10 +898,7 @@ namespace CodeStage.AntiCheat.Detectors
 			}
 
 			timeElapsed = 0;
-			//StartCoroutine(CheckForCheat());
 			yield return CheckForCheat();
-
-			//yield return null;
 
 			while (IsCheckingForCheat)
 			{
@@ -885,7 +926,7 @@ namespace CodeStage.AntiCheat.Detectors
 		{
 			if (!IsStarted || !IsRunning)
 			{
-				Debug.LogWarning(LogPrefix + "Detector should be started to use ForceCheckTask().");
+				Debug.LogWarning(LogPrefix + $"Detector should be started in order to use the {nameof(ForceCheckTask)}.");
 				LastError = ErrorKind.NotStarted;
 				LastResult = CheckResult.Error;
 				return LastResult;
@@ -978,7 +1019,8 @@ namespace CodeStage.AntiCheat.Detectors
 
 		private IEnumerator CheckForCheat()
 		{
-			if (!IsRunning || IsCheckingForCheat) yield break;
+			if (!IsRunning || IsCheckingForCheat) 
+				yield break;
 
 			IsCheckingForCheat = true;
 
@@ -992,7 +1034,6 @@ namespace CodeStage.AntiCheat.Detectors
 			}
 			else
 			{
-				//yield return StartCoroutine(GetOnlineTimeCoroutine(cachedUri, OnOnlineTimeReceived));
 				yield return GetOnlineTimeCoroutine(cachedUri, OnOnlineTimeReceived, requestMethod);
 			}
 
@@ -1016,7 +1057,7 @@ namespace CodeStage.AntiCheat.Detectors
 
 			LastError = ErrorKind.NoError;
 
-			var offlineSecondsUtc = GetLocalSecondsUtc();
+			var offlineSecondsUtc = DateTime.UtcNow.Ticks / (double)TimeSpan.TicksPerSecond; // local utc secs
 			var offlineOnlineDifference = (int)Math.Abs(lastOnlineSecondsUtc - offlineSecondsUtc);
 
 			LastResult = CheckResult.CheckPassed;
@@ -1033,9 +1074,7 @@ namespace CodeStage.AntiCheat.Detectors
 				var differenceOfDifferences = Math.Abs(offlineOnlineDifference - lastOfflineOnlineDifference);
 
 				if (realCheatThreshold < 10)
-				{
 					Debug.LogWarning(LogPrefix + "Please consider increasing realCheatThreshold to reduce false positives chance!");
-				}
 
 				if (differenceOfDifferences > realCheatThreshold * 60)
 				{
@@ -1075,9 +1114,7 @@ namespace CodeStage.AntiCheat.Detectors
 				case CheckResult.WrongTimeDetected:
 					break;
 				case CheckResult.CheatDetected:
-
 					OnCheatingDetected();
-
 					break;
 				case CheckResult.Error:
 					break;
@@ -1098,16 +1135,6 @@ namespace CodeStage.AntiCheat.Detectors
 				LastError = ErrorKind.OnlineTimeError;
 			}
 		}
-
-		private double GetLocalSecondsUtc()
-		{
-			return DateTime.UtcNow.Ticks / (double)TimeSpan.TicksPerSecond;
-		}
-
-		/* just an utility method for those who wish
-		   to get online time for own further processing
-		   without starting detector
-		*/
 
 #if ACTK_ACTUAL_ANDROID_DEVICE
 		private static int GetAndroidSDKLevel()
@@ -1135,8 +1162,7 @@ namespace CodeStage.AntiCheat.Detectors
 				return -1;
 			}
 
-			int result;
-			if (!int.TryParse(apiPart, out result))
+			if (!int.TryParse(apiPart, out var result))
 			{
 				return -1;
 			}
@@ -1170,7 +1196,7 @@ namespace CodeStage.AntiCheat.Detectors
 		}
 
 		[Obsolete("Please use Instance.Error event instead.", true)]
-		public static void SetErrorCallback(System.Action<ErrorKind> errorCallback)
+		public static void SetErrorCallback(Action<ErrorKind> errorCallback)
 		{
 
 		}

@@ -43,7 +43,7 @@ namespace CodeStage.AntiCheat.EditorCode
 		{
 			return GetSymbolsData().wallhackLinkXML;
 		}
-
+		
 		public static SymbolsData GetSymbolsData()
 		{
 			var groups = (BuildTargetGroup[])Enum.GetValues(typeof(BuildTargetGroup));

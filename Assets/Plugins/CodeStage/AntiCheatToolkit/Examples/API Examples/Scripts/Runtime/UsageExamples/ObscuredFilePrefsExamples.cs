@@ -55,8 +55,11 @@ namespace CodeStage.AntiCheat.Examples
 		
 		private bool isFileSaving;
 		private bool isFileLoading;
+		
+#if ACTK_ASYNC
 		private bool isSettingBytes;
 		private bool isGettingBytes;
+#endif
 
 		private void Start()
 		{

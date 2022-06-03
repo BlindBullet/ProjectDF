@@ -11,6 +11,29 @@ Changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.
 
 _Please, always remove previous plugin version before updating!_
 
+## [2021.1.1] - 2022-05-04
+
+### Added
+- Add TimeCheatingDetector.GetOnlineTimeTask() overloads with CancellationToken argument
+
+## [2021.1.0] - 2022-04-11
+
+### Added
+- Add ObscuredFilePrefs Auto Save on mobile platforms (enabled by default)
+  - Automatically saves unsaved changes on app loose focus / pause
+- Add API to disable ObscuredFilePrefs Auto Save (disables Auto Save on both mobile and non-mobile platforms)
+- Introduce IObscuredFileSettings to improve API usage experience
+
+### Changed
+- Add locks to the ObscuredFilePrefs sync operations to improve stability when accessing it from different threads
+- Move ObscuredFilePrefs Save-On-Quit code to the Auto Save feature entity so it's disableable now
+
+### Fixed
+- Prevent ObscuredFilePrefs Save-On-Quit while not initialized
+- Fix ObscuredFilePrefs behavior with disabled Reload Domain
+- Fix compilation error at Unity 2018 Android
+- Fix compilation warnings for WebGL platform
+
 ## [2021.0.10] - 2022-03-09
 
 ### Fixed

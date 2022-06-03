@@ -17,7 +17,7 @@ namespace CodeStage.AntiCheat.Common
 		/// <summary>
 		/// Current version in X.Y.Z format (using Semantic Versioning 2.0 scheme).
 		/// </summary>
-		public const string Version = "2021.0.10";
+		public const string Version = "2021.1.1";
 		
 #if UNITY_EDITOR
 		public const string LogPrefix = "<b>[ACTk]</b> ";

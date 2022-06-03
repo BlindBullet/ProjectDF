@@ -252,11 +252,13 @@ namespace CodeStage.AntiCheat.EditorCode.PostProcessors
 		{
 			var result = new List<BuildHashes>();
 
+#if UNITY_2019_1_OR_NEWER
 			if ((report.summary.options & BuildOptions.PatchPackage) != 0)
 			{
 				Debug.Log(ACTk.LogPrefix + "Patch hashing is skipped, only full build hashing is supported.");
 				return result;
 			}
+#endif
 
 #if UNITY_2022_1_OR_NEWER
 			var files = report.GetFiles();

@@ -12,6 +12,7 @@ namespace CodeStage.AntiCheat.Common
 {
 	using Storage;
 	using UnityEngine;
+	using Utils;
 
 	/// <summary>
 	/// User-friendly wrapper around few internally used Unity APIs which can't be accessed from background threads.
@@ -25,6 +26,8 @@ namespace CodeStage.AntiCheat.Common
 		
 		private static string deviceUniqueIdentifier;
 		private static string persistentDataPath;
+		
+		private static bool? isMobilePlatform;
 
 		/// <summary>
 		/// Call this from the main thread before using ObscuredFile / ObscuredFilePrefs from the background threads.
@@ -39,16 +42,21 @@ namespace CodeStage.AntiCheat.Common
 		/// more information about possible side effects.</param>
 		public static void InitForAsyncUsage(bool warmUpDeviceIdentifier)
 		{
+#if ACTK_ASYNC
 			if (System.Threading.SynchronizationContext.Current == null)
 			{
 				Debug.LogError($"Please call {nameof(InitForAsyncUsage)} from main thread!");
 				return;
 			}
+#endif
 
 			GetPersistentDataPath();
 
 			if (warmUpDeviceIdentifier)
 				GetDeviceUniqueIdentifier();
+			
+			_ = AppEventsDispatcher.Instance;
+			IsMobilePlatform();
 		}
 
 		internal static string GetDeviceUniqueIdentifier()
@@ -66,18 +74,18 @@ namespace CodeStage.AntiCheat.Common
 			}
 			
 			return deviceUniqueIdentifier;
-		}
-
-		private static string GetDeviceID()
-		{
-			var result = string.Empty;
+			
+			string GetDeviceID()
+			{
+				var result = string.Empty;
 #if UNITY_IPHONE
-			result = UnityEngine.iOS.Device.vendorIdentifier;
+				result = UnityEngine.iOS.Device.vendorIdentifier;
 #endif
-			if (string.IsNullOrEmpty(result))
-				result = SystemInfo.deviceUniqueIdentifier;
+				if (string.IsNullOrEmpty(result))
+					result = SystemInfo.deviceUniqueIdentifier;
 
-			return result;
+				return result;
+			}
 		}
 
 		internal static string GetPersistentDataPath()
@@ -96,5 +104,21 @@ namespace CodeStage.AntiCheat.Common
 			
 			return persistentDataPath;
 		}
+		
+#if !ACTK_DISABLE_FILEPREFS_AUTOSAVE
+		internal static bool IsMobilePlatform()
+		{
+			if (isMobilePlatform == null)
+			{
+#if UNITY_EDITOR
+				isMobilePlatform = UnityEditorInternal.InternalEditorUtility.IsMobilePlatform(UnityEditor.EditorUserBuildSettings.activeBuildTarget);
+#else
+				isMobilePlatform = Application.isMobilePlatform;
+#endif
+			}
+
+			return isMobilePlatform.Value;
+		}
+#endif
 	}
 }

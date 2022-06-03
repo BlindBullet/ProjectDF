@@ -44,17 +44,17 @@ namespace CodeStage.AntiCheat.Storage
 		/// <strong>\htmlonly<font color="7030A0">NOTE:</font>\endhtmlonly Will fire if same device ID has
 		/// changed (pretty rare case though). Read more at #DeviceLockLevel.</strong>
 		public static event Action DataFromAnotherDeviceDetected;
-		
-		private static bool isSaved;
+
 		private static ObscuredFile prefsFile;
 		private static Dictionary<string, ObscuredPrefsData> prefsCache;
+		private static readonly object BusyLock = new object();
 
 		/// <summary>
 		/// Allows checking current settings.
 		/// </summary>
 		/// Use #Init() to set the initial settings.
 		/// \sa #Init()
-		public static ObscuredFileSettings CurrentSettings => PrefsFile.CurrentSettings;
+		public static IObscuredFileSettings CurrentSettings => PrefsFile.CurrentSettings;
 		
 		/// <summary>
 		/// Allows checking if #Init() was called previously.
@@ -71,6 +71,16 @@ namespace CodeStage.AntiCheat.Storage
 		/// Returns true if prefs file physically exists on disk. File may not exist until Save() is called.
 		/// </summary>
 		public static bool IsExists => PrefsFile.FileExists;
+		
+		/// <summary>
+		/// Returns true if prefs file has unsaved changes.
+		/// </summary>
+		public static bool IsSaved { get; private set; }
+
+		/// <summary>
+		/// Returns true if prefs file is busy with long-running process such as loading or saving.
+		/// </summary>
+		public static bool IsBusy { get; private set; }
 
 		/// <summary>
 		/// Returns path to the prefs file.
@@ -108,6 +118,23 @@ namespace CodeStage.AntiCheat.Storage
 				return null;
 			}
 		}
+
+#if UNITY_2019_2_OR_NEWER
+		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+		private static void Reset()
+		{
+			IsInited = false;
+			IsSaved = false;
+			IsBusy = false;
+
+			prefsFile = null;
+			prefsCache?.Clear();
+			prefsCache = null;
+			NotGenuineDataDetected = null;
+			DataFromAnotherDeviceDetected = null;
+		}
+#endif
+		
 		
 		/// <summary>
 		/// Initializes %ObscuredFilePrefs with file name set to #DefaultFileName and default ObscuredFileSettings.
@@ -136,7 +163,7 @@ namespace CodeStage.AntiCheat.Storage
 		/// <param name="settings">Specific custom settings.</param>
 		/// <param name="loadPrefs">Pass <c>true</c> to automatically call LoadPrefs().
 		/// This may block calling thread, consider using asynchronously for large files.</param>
-		public static void Init(ObscuredFileSettings settings, bool loadPrefs)
+		public static void Init(IObscuredFileSettings settings, bool loadPrefs)
 		{
 			Init(DefaultFileName, settings, loadPrefs);
 		}
@@ -148,7 +175,7 @@ namespace CodeStage.AntiCheat.Storage
 		/// <param name="settings">Specific custom settings.</param>
 		/// <param name="loadPrefs">Pass <c>true</c> to automatically call LoadPrefs().
 		/// This may block calling thread, consider using asynchronously for large files.</param>
-		public static void Init(string fileNameOrPath, ObscuredFileSettings settings, bool loadPrefs)
+		public static void Init(string fileNameOrPath, IObscuredFileSettings settings, bool loadPrefs)
 		{
 			if (IsInited)
 			{
@@ -157,6 +184,9 @@ namespace CodeStage.AntiCheat.Storage
 			}
 			
 			prefsFile = InitPrefsFile(fileNameOrPath, settings);
+			
+			if (settings.AutoSave)
+				ObscuredFilePrefsAutoSaver.Init();
 			
 			IsInited = true;
 			
@@ -173,7 +203,7 @@ namespace CodeStage.AntiCheat.Storage
 		/// Please call Init() again if you wish to re-use it.
 		public static void UnInit()
 		{
-			isSaved = false;
+			IsSaved = false;
 			IsInited = false;
 			prefsCache?.Clear();
 			prefsCache = null;
@@ -193,10 +223,34 @@ namespace CodeStage.AntiCheat.Storage
 		/// other stall moments of your app. 
 		public static void LoadPrefs()
 		{
-			if (prefsCache == null)
-				prefsCache = LoadAndDeserializePrefs();
+			try
+			{
+				if (prefsCache != null) // already loaded
+					return;
+
+				lock (BusyLock)
+				{
+					if (IsBusy)
+					{
+						Debug.LogWarning($"{LogPrefix}Couldn't load prefs: I'm already busy.");
+						return;
+					}
+
+					IsBusy = true;
+
+					prefsCache = LoadAndDeserializePrefs();
+				}
+			}
+			catch (Exception e)
+			{
+				ACTk.PrintExceptionForSupport("Couldn't load prefs!", e);
+			}
+			finally
+			{
+				IsBusy = false;
+			}
 		}
-		
+
 		/// <summary>
 		/// Unloads cached prefs from memory. Optionally saves current prefs to the file before unloading.
 		/// </summary>
@@ -273,20 +327,43 @@ namespace CodeStage.AntiCheat.Storage
 		/// Check LastFileWriteResult for details if this method returns false. </returns>
 		public static bool Save()
 		{
-			if (isSaved)
+			if (IsSaved)
 				return true;
 
 			if (prefsCache == null || prefsCache.Count == 0)
 				return true;
 
-			var result = SerializeAndSavePrefs();
-			
-			if (!result.Success)
-				Debug.LogError($"{LogPrefix}Couldn't save prefs! See {nameof(LastFileWriteResult)} for details.");
+			try
+			{
+				lock (BusyLock)
+				{
+					if (IsBusy)
+					{
+						Debug.LogWarning($"{LogPrefix}Couldn't save prefs: I'm already busy.");
+						return false;
+					}
 
-			return result.Success;
+					IsBusy = true;
+					var result = SerializeAndSavePrefs();
+
+					if (!result.Success)
+						Debug.LogError($"{LogPrefix}Couldn't save prefs! See {nameof(LastFileWriteResult)} for details.");
+
+					return result.Success;
+				}
+			}
+			catch (Exception e)
+			{
+				Debug.LogException(e);
+			}
+			finally
+			{
+				IsBusy = false;
+			}
+
+			return false;
 		}
-		
+
 		/// <summary>
 		/// Sets the <c>value</c> of the preference identified by <c>key</c>.
 		/// </summary>
@@ -315,21 +392,7 @@ namespace CodeStage.AntiCheat.Storage
 			return ReadPref(key, defaultValue);
 		}
 
-		[RuntimeInitializeOnLoadMethod]
-		private static void RegisterQuitDetection()
-		{
-			Application.wantsToQuit += OnApplicationWantsToQuit;
-		}
-
-		private static bool OnApplicationWantsToQuit()
-		{
-			NotGenuineDataDetected = null;
-			DataFromAnotherDeviceDetected = null;
-			Save();
-			return true;
-		}
-		
-		private static ObscuredFile InitPrefsFile(string fileNameOrPath, ObscuredFileSettings settings)
+		private static ObscuredFile InitPrefsFile(string fileNameOrPath, IObscuredFileSettings settings)
 		{
 			var result = new ObscuredFile(fileNameOrPath, settings);
 			result.NotGenuineDataDetected += OnNotGenuineDataDetected;
@@ -367,7 +430,7 @@ namespace CodeStage.AntiCheat.Storage
 				return new Dictionary<string, ObscuredPrefsData>();
 			}
 
-			isSaved = true;
+			IsSaved = true;
 			
 			return result;
 		}
@@ -423,7 +486,7 @@ namespace CodeStage.AntiCheat.Storage
 				prefsCache.Add(key, data);
 			}
 			
-			isSaved = false;
+			IsSaved = false;
 		}
 
 		private static ObscuredFileReadResult ReadAllBytesInternal()
@@ -446,7 +509,7 @@ namespace CodeStage.AntiCheat.Storage
 			}
 			
 			var result = PrefsFile.WriteAllBytes(data);
-			isSaved = result.Success;
+			IsSaved = result.Success;
 			
 			return result;
 		}

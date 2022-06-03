@@ -53,7 +53,7 @@ namespace CodeStage.AntiCheat.Storage
 		/// <summary>
 		/// Allows reading current settings.
 		/// </summary>
-		public ObscuredFileSettings CurrentSettings { get; }
+		public IObscuredFileSettings CurrentSettings { get; }
 		
 		/// <summary>
 		/// Returns true if file at #FilePath physically exists on disk.
@@ -98,7 +98,7 @@ namespace CodeStage.AntiCheat.Storage
 		/// </summary>
 		/// <param name="fileNameOrPath">File path if using ObscuredFileLocation.Custom, otherwise represents file name to use with set #ObscuredFileLocation kind.</param>
 		/// <param name="settings">Custom settings to use with this instance.</param>
-		public ObscuredFile(string fileNameOrPath, ObscuredFileSettings settings)
+		public ObscuredFile(string fileNameOrPath, IObscuredFileSettings settings)
         {
 			CurrentSettings = settings;
 			FilePath = ConstructFilePath(fileNameOrPath);

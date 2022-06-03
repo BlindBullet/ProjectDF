@@ -23,8 +23,10 @@ namespace CodeStage.AntiCheat.Examples
 
 		private bool isLoadedGUI;
 		private bool isFileLoadingGUI;
+#if ACTK_ASYNC
 		private bool isSettingBytesGUI;
 		private bool isGettingBytesGUI;
+#endif
 		private bool isFileSavingGUI;
 
 		private bool unloadPrefs;
@@ -42,8 +44,11 @@ namespace CodeStage.AntiCheat.Examples
 				isLoadedGUI = IsLoaded;
 				isFileLoadingGUI = isFileLoading;
 				isFileSavingGUI = isFileSaving;
+
+#if ACTK_ASYNC
 				isSettingBytesGUI = isSettingBytes;
 				isGettingBytesGUI = isGettingBytes;
+#endif
 			}
 			
 			GUILayout.Label("ACTk has secure version of traditional binary file with few helpful " +
@@ -57,7 +62,10 @@ namespace CodeStage.AntiCheat.Examples
 				}
 
 				// lock UI while waiting for something
-				GUI.enabled = !isFileLoading && !isFileSaving && !isGettingBytes && !isSettingBytes;
+				GUI.enabled = !isFileLoading && !isFileSaving;
+#if ACTK_ASYNC
+				GUI.enabled &= !isGettingBytes && !isSettingBytes;
+#endif
 				
 				using (new GUILayout.VerticalScope())
 				{
@@ -82,7 +90,10 @@ namespace CodeStage.AntiCheat.Examples
 
 					DrawSavePanel();
 					
-					GUI.enabled = IsExists && !isFileLoading && !isFileSaving && !isGettingBytes && !isSettingBytes;
+					GUI.enabled = IsExists && !isFileLoading && !isFileSaving;
+#if ACTK_ASYNC
+					GUI.enabled &= !isGettingBytes && !isSettingBytes;
+#endif
 
 					if (GUILayout.Button("Delete all file prefs"))
 					{
