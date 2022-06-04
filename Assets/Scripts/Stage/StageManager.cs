@@ -177,12 +177,6 @@ public class StageManager : MonoSingleton<StageManager>
 
 	IEnumerator SetBg(int stageNo)
 	{
-		for(int i = 0; i < PlayerLines.Count; i++)
-		{
-			PlayerLines[i].gameObject.SetActive(true);
-			PlayerLines[i].Refresh();
-		}
-
 		int _stageNo = GetStageNo(stageNo);		
 		StageChart chart = CsvData.Ins.StageChart[_stageNo.ToString()];
 		
@@ -235,9 +229,8 @@ public class StageManager : MonoSingleton<StageManager>
 
 	IEnumerator SetStage(int stageNo)
 	{
-		Hp = PlayerLines.Count;
-
 		yield return StartCoroutine(SetBg(stageNo));
+
 		TopBar.SetStageText(stageNo);
 
 		if (CheckBossStage(stageNo))
@@ -246,6 +239,8 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 		else
 		{
+			yield return new WaitForSeconds(1f);
+
 			if (CheckAppearSupplies())
 			{
 				StartCoroutine(AppearSupplies());
@@ -253,6 +248,17 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 
 		cStageSequence = StartCoroutine(ProgressStage(stageNo));
+	}
+
+	void RefreshLine()
+	{
+		for (int i = 0; i < PlayerLines.Count; i++)
+		{
+			PlayerLines[i].gameObject.SetActive(true);
+			PlayerLines[i].Refresh();
+		}
+
+		Hp = PlayerLines.Count;
 	}
 
 	bool CheckAppearSupplies()
@@ -334,6 +340,7 @@ public class StageManager : MonoSingleton<StageManager>
 	{
 		LastEnemiesSpawned = false;
 
+		RefreshLine();
 		EnemySpawner.Ins.Spawn(stageNo);
 
 		while (!LastEnemiesSpawned)

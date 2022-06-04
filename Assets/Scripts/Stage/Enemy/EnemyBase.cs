@@ -268,8 +268,8 @@ public class EnemyBase : MonoBehaviour
 	}
 
 	IEnumerator DieSequence()
-	{	
-		StopMove();
+	{		
+		StopMove();		
 		Rb.mass = 100f;
 		Rb.velocity = Vector2.zero;
 
@@ -284,9 +284,9 @@ public class EnemyBase : MonoBehaviour
 		double getGold = Stat.Gold;
 
 		StageManager.Ins.GetGold(getGold);
-		FloatingTextManager.Ins.ShowGold(this.transform.position, "+" + getGold.ToCurrencyString());
-		col.enabled = false;
+		FloatingTextManager.Ins.ShowGold(this.transform.position, "+" + getGold.ToCurrencyString());		
 		SpriteCon.Mask.enabled = false;
+		col.enabled = false;
 
 		yield return new WaitForSeconds(1f);
 
@@ -362,12 +362,15 @@ public class EnemyBase : MonoBehaviour
 	{
 		if (collision.CompareTag("Player"))
 		{
-			collision.GetComponent<PlayerLine>().Destroy();
-			StageManager.Ins.Hp--;
-			Die();
+			if (!isDie)
+			{
+				collision.GetComponent<PlayerLine>().Destroy();
+				StageManager.Ins.Hp--;
+				Die();
 
-			if(StageManager.Ins.Hp <= 0)
-				StageManager.Ins.LoseStage();
+				if (StageManager.Ins.Hp <= 0)
+					StageManager.Ins.LoseStage();
+			}
 		}
 
 		if (collision.CompareTag("Moat"))

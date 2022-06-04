@@ -79,7 +79,7 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 		{
 			case 0:				
 				randX = Random.Range(min.x, max.x);
-				randY = Random.Range(max.y + 3f, max.y + 6f);				
+				randY = Random.Range(max.y + 3f, max.y + 3f);				
 				break;
 			case 1:
 				randX = Random.Range(min.x - 10f, min.x);

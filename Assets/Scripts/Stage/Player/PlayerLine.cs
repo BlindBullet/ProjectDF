@@ -17,7 +17,7 @@ public class PlayerLine : MonoBehaviour
 	public void Refresh()
 	{
 		this.GetComponent<BoxCollider2D>().enabled = true;
-		mat.SetFloat("_FadeAmount", 0f);
+		mat.DOFloat(0f, "_FadeAmount", 2f).SetEase(Ease.InOutQuad);
 	}
 
 	public void Destroy()
