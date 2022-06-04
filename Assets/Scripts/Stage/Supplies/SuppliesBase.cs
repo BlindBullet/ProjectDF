@@ -143,7 +143,6 @@ public class SuppliesBase : MonoBehaviour
 	public void GetReward()
 	{
 		StopMove();
-		//±¤°í ÆË¾÷ ¿¬°á
 		DialogManager.Ins.OpenAdReward(data);
 		ObjectManager.Ins.Push<SuppliesBase>(this);		
 	}

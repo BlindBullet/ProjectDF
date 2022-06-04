@@ -6,6 +6,8 @@ using TMPro;
 
 public class DialogAdReward : DialogController
 {
+	public static DialogAdReward _Dialog = null;
+
 	public TextMeshProUGUI Title;
 	public RewardIcon RewardIcon;
 	public TextMeshProUGUI RewardDesc;
@@ -16,6 +18,7 @@ public class DialogAdReward : DialogController
 	
 	public void OpenDialog(SuppliesChart chart)
 	{
+		_Dialog = this;
 		GetBtn.gameObject.SetActive(false);
 
 		SetBasic();
@@ -43,8 +46,7 @@ public class DialogAdReward : DialogController
 		AdBtn.onClick.RemoveAllListeners();
 		AdBtn.onClick.AddListener(() => 
 		{
-			SendReward(chart);			
-			CloseDialog();
+			AdmobManager.Ins.ShowSuppliesAdReward(chart);			
 		});
 
 		Show(false);
@@ -52,6 +54,7 @@ public class DialogAdReward : DialogController
 
 	public void OpenDialog(QuestChart chart)
 	{
+		_Dialog = this;
 		CloseBtn.gameObject.SetActive(false);
 
 		SetBasic();
@@ -96,8 +99,7 @@ public class DialogAdReward : DialogController
 		AdBtn.onClick.RemoveAllListeners();
 		AdBtn.onClick.AddListener(() =>
 		{
-			SendReward(chart, true);			
-			CloseDialog();
+			AdmobManager.Ins.ShowQuestRewardAd(chart);
 		});
 
 		Show(false);
@@ -113,7 +115,14 @@ public class DialogAdReward : DialogController
 		Title.text = LanguageManager.Ins.SetString("Reward");
 	}
 
-	void SendReward(SuppliesChart chart)
+	public IEnumerator GetReward(SuppliesChart chart)
+	{
+		yield return null;
+
+		SendReward(chart);
+	}
+
+	public void SendReward(SuppliesChart chart)
 	{
 		double rewardValue = chart.RewardValue;
 
@@ -138,9 +147,17 @@ public class DialogAdReward : DialogController
 		}
 
 		DialogManager.Ins.OpenReceiveReward(chart.RewardType, rewardValue);
+		CloseDialog();
 	}
 
-	void SendReward(QuestChart chart, bool isAd = false)
+	public IEnumerator GetReward(QuestChart chart, bool isAd = false)
+	{
+		yield return null;
+
+		SendReward(chart, isAd);
+	}
+
+	public void SendReward(QuestChart chart, bool isAd = false)
 	{
 		double rewardValue = chart.RewardValue;
 
@@ -170,6 +187,11 @@ public class DialogAdReward : DialogController
 		}
 
 		DialogManager.Ins.OpenReceiveReward(chart.RewardType, rewardValue);
+		CloseDialog();
 	}
 
+	private void OnDisable()
+	{
+		_Dialog = null;
+	}
 }

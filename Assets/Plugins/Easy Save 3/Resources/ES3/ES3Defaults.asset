@@ -41,6 +41,7 @@ MonoBehaviour:
     - PsdPlugin
     - ACTk.Editor
     - Febucci.TextAnimator.Editor
+    - GoogleMobileAds.Editor
     - ACTk.Examples.Genuine.Editor
     - Febucci.TextAnimator.Demo.Editor
     showAdvancedSettings: 0

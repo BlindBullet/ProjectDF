@@ -6,6 +6,8 @@ using TMPro;
 
 public class DialogAscension : DialogController
 {
+	public static DialogAscension _Dialog = null;
+
 	public TextMeshProUGUI Title;
 	public TextMeshProUGUI Desc;
 	public TextMeshProUGUI RewardTitle;
@@ -18,7 +20,8 @@ public class DialogAscension : DialogController
 	public TextMeshProUGUI AscensionBtnText;
 	
 	public void OpenDialog()
-	{	
+	{
+		_Dialog = this;
 		Title.text = LanguageManager.Ins.SetString("Ascension");
 		Desc.text = LanguageManager.Ins.SetString("popup_ascension_desc");
 		RewardTitle.text = LanguageManager.Ins.SetString("popup_ascension_reward_title");		
@@ -32,7 +35,7 @@ public class DialogAscension : DialogController
 
 		SetReward(isPossibleAscension);
 		SetAscensionBtn(isPossibleAscension);
-		Show(false, true);
+		Show(false, false);
 	}
 
 	void SetReward(bool isPossibleAscension)
@@ -71,8 +74,7 @@ public class DialogAscension : DialogController
 			AdAscensionBtn.onClick.RemoveAllListeners();
 			AdAscensionBtn.onClick.AddListener(() =>
 			{
-				StageManager.Ins.StartAscension(true);
-				CloseDialog();
+				AdmobManager.Ins.ShowAscensionRewardAd();
 			});
 		}
 		else
@@ -80,6 +82,18 @@ public class DialogAscension : DialogController
 			AdAscensionBtn.gameObject.SetActive(false);
 			AscensionBtn.gameObject.SetActive(false);
 		}
+	}
+
+	public IEnumerator GetAdReward()
+	{
+		yield return null;
+		StageManager.Ins.StartAscension(true);
+		CloseDialog();
+	}
+
+	private void OnDisable()
+	{
+		_Dialog = null;
 	}
 
 }

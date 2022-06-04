@@ -25,12 +25,15 @@ public class DialogQuest : DialogController
 		SetQuests();
 		SetPlayerLv();
 
+		Show(false, true);
+
 		ResetBtn.onClick.RemoveAllListeners();
-		ResetBtn.onClick.AddListener(() => ResetQuest());
+		ResetBtn.onClick.AddListener(() =>
+		{
+			AdmobManager.Ins.ShowQuestRefreshAd();
+		});
 
 		_Dialog = this;
-
-		Show(false, true);
 	}
 
 	public void SetQuests()
@@ -49,8 +52,9 @@ public class DialogQuest : DialogController
 		QuestPlayerLvCount.text = StageManager.Ins.PlayerData.ClearQuestCount.ToString() + "/" + ConstantData.QuestLvPerClearCount[lv - 1];
 	}
 
-	void ResetQuest()
+	public IEnumerator ResetQuest()
 	{
+		yield return null;
 		QuestManager.Ins.ResetQuest();
 		SetQuests();
 	}

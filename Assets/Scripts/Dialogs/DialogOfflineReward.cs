@@ -7,6 +7,8 @@ using System;
 
 public class DialogOfflineReward : DialogController
 {
+	public static DialogOfflineReward _Dialog = null;
+
 	public TextMeshProUGUI TitleText;
 	public TextMeshProUGUI OfflineTimeText;
 	public TextMeshProUGUI OfflineRewardDesc;
@@ -18,7 +20,8 @@ public class DialogOfflineReward : DialogController
 	public TextMeshProUGUI AdGetBtnText;	
 
 	public void OpenDialog()
-	{		
+	{
+		_Dialog = this;
 		TitleText.text = LanguageManager.Ins.SetString("title_popup_offline_reward");
 
 		string hour = (StageManager.Ins.PlayerStat.OfflineRewardLimitMin / 60).ToString();
@@ -68,10 +71,28 @@ public class DialogOfflineReward : DialogController
 		AdGetBtn.onClick.AddListener(() => 
 		{
 			rewardValue = rewardValue * 2f;
-			StageManager.Ins.ChangeGold(rewardValue + addRewardValue);
-			DialogManager.Ins.OpenReceiveReward(RewardType.Gold, rewardValue + addRewardValue);
-			CloseDialog();
+			addRewardValue = addRewardValue * 2f;
+
+			AdmobManager.Ins.ShowOfflineRewardAd(rewardValue, addRewardValue);
 		});
 	}
 
+	public IEnumerator ShowAdReward(double rewardValue, double addRewardValue)
+	{
+		yield return null;
+
+		GetAdReward(rewardValue, addRewardValue);
+	}
+
+	void GetAdReward(double vluae, double addValue)
+	{
+		StageManager.Ins.ChangeGold(vluae + addValue);
+		DialogManager.Ins.OpenReceiveReward(RewardType.Gold, vluae + addValue);
+		CloseDialog();
+	}
+
+	private void OnDisable()
+	{
+		_Dialog = null;
+	}
 }

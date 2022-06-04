@@ -134,7 +134,14 @@ public class DialogSlotPowerUp : DialogController
 		StageManager.Ins.PlayerData.Save();
 	}
 
-	void RefreshPowerUpBars()
+	public IEnumerator Refresh()
+	{
+		Debug.Log("a");
+		yield return null;
+		RefreshPowerUpBars();
+	}
+
+	public void RefreshPowerUpBars()
 	{
 		List<SlotPowerUpChart> charts = CsvData.Ins.SlotPowerUpChart[powerUpNo];
 
@@ -216,6 +223,7 @@ public class DialogSlotPowerUp : DialogController
 		}
 
 		StageManager.Ins.PlayerData.Save();
+		RefreshBtn.gameObject.SetActive(false);
 	}
 
 	void SetRefreshBtn()
@@ -223,9 +231,7 @@ public class DialogSlotPowerUp : DialogController
 		RefreshBtn.onClick.RemoveAllListeners();
 		RefreshBtn.onClick.AddListener(() =>
 		{
-			//±¤°í
-			RefreshPowerUpBars();
-			RefreshBtn.gameObject.SetActive(false);
+			AdmobManager.Ins.ShowPowerUpRefreshAd();
 		});
 	}
 
@@ -244,6 +250,11 @@ public class DialogSlotPowerUp : DialogController
 			onHelp = false;
 		}
 			
+	}
+
+	private void OnDisable()
+	{
+		_Dialog = null;
 	}
 
 }
