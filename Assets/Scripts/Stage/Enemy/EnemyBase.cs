@@ -284,7 +284,29 @@ public class EnemyBase : MonoBehaviour
 		double getGold = Stat.Gold;
 
 		StageManager.Ins.GetGold(getGold);
-		FloatingTextManager.Ins.ShowGold(this.transform.position, "+" + getGold.ToCurrencyString());		
+		FloatingTextManager.Ins.ShowGold(this.transform.position, "+" + getGold.ToCurrencyString());
+
+		float randNo = Random.Range(0f, 100f);
+		bool result = false;
+		double getSoulStone = 0f;
+		Debug.Log(randNo + "  " + result);
+		if (isBoss)
+		{
+			result = randNo <= ConstantData.BossEnemyDropSoulStoneRate ? true : false;
+			getSoulStone = Random.Range(1, (int)ConstantData.BossEnemyDropSoulStoneMaxCount + 1);			
+		}
+		else
+		{
+			result = randNo <= ConstantData.NormalEnemyDropSoulStoneRate ? true : false;
+			getSoulStone = Random.Range(1, (int)ConstantData.NormalEnemyDropSoulStoneMaxCount + 1);			
+		}
+
+		if (result)
+		{
+			StageManager.Ins.ChangeSoulStone(getSoulStone);
+			FloatingTextManager.Ins.ShowSoulStone(this.transform.position, "+" + getSoulStone.ToCurrencyString());
+		}
+
 		SpriteCon.Mask.enabled = false;
 		col.enabled = false;
 

@@ -7,13 +7,14 @@ public class LanguageManager : SingletonObject<LanguageManager> {
 
 	private void Awake()
 	{
-		currentLanguageType = (LanguageType)Enum.Parse(typeof(LanguageType), PlayerPrefs.GetString("CurrentLanguage", "Korean"));
+		currentLanguageType = (LanguageType)Enum.Parse(typeof(LanguageType), PlayerPrefs.GetString("CurrentLanguage", "Korean"));		
 		
-		//if(DataController.Ins.PlayerData.RunApplicationCount == 0)
+		if(currentLanguageType != LanguageType.Korean)
 		{
-			currentLanguageType = (LanguageType)Enum.Parse(typeof(LanguageType),Application.systemLanguage.ToString());
-			PlayerPrefs.SetString("CurrentLanguage", currentLanguageType.ToString());
+			currentLanguageType = LanguageType.English;	
 		}
+
+		PlayerPrefs.SetString("CurrentLanguage", currentLanguageType.ToString());
 	}
 		
 	public enum LanguageType
@@ -30,7 +31,7 @@ public class LanguageManager : SingletonObject<LanguageManager> {
 	public void ChangeLanguage(LanguageType type)
 	{
 		currentLanguageType = type;
-		//GameManager.Ins.RestartGame();
+		MySceneManager.Ins.ChangeScene("Main");		
 	}
 
 	public string SetString(string id)

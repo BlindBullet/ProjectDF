@@ -52,8 +52,7 @@ public class StageManager : MonoSingleton<StageManager>
 	{
 		SoundManager.Ins.DissolveBGMVolume(1f, 1f);
 		TopBar.Setup();
-		OfflineRewardPanel.SetActive(true);
-
+		
 		SetSlots();
 		SetHeroes(PlayerData.IsFirstPlay);
 
@@ -64,7 +63,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 		SEManager.Ins.Apply();
 		PlayerBuffManager.Ins.RunAllBuffs();
-		StartCoroutine(SetStage(PlayerData.Stage));
+		StartCoroutine(SetStage(PlayerData.Stage));		
 	}
 
 	void RestartStage()
@@ -85,12 +84,11 @@ public class StageManager : MonoSingleton<StageManager>
 		
 		if (!isFirstPlay)
 		{
+			OfflineRewardPanel.SetActive(true);
 			yield return new WaitForSeconds(3f);
 			DialogManager.Ins.OpenOfflineReward();
 			OfflineRewardPanel.SetActive(false);
 		}
-
-		TutorialManager.Ins.SetTutorial();
 	}
 
 	void SetHeroes(bool isFirstPlay)
@@ -236,6 +234,8 @@ public class StageManager : MonoSingleton<StageManager>
 	IEnumerator SetStage(int stageNo)
 	{
 		yield return StartCoroutine(SetBg(stageNo));
+		
+		TutorialManager.Ins.SetTutorial();
 
 		TopBar.SetStageText(stageNo);
 
@@ -252,7 +252,7 @@ public class StageManager : MonoSingleton<StageManager>
 				StartCoroutine(AppearSupplies());
 			}
 		}
-
+		
 		cStageSequence = StartCoroutine(ProgressStage(stageNo));
 	}
 

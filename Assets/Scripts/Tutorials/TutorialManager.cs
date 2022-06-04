@@ -5,34 +5,34 @@ using UnityEngine.UI;
 using TMPro;
 
 public class TutorialManager : MonoSingleton<TutorialManager>
-{
+{	
 	public int TotalStep;
-	public int CurStep;
+	[HideInInspector] public int CurStep;
 	public List<TutorialCondition> Tutorials = new List<TutorialCondition>();
 	public GameObject[] StepsObj;
 
 	public void InitTutorial()
 	{
-		StageManager.Ins.GoldChanged += GoldChanged;
-		StageManager.Ins.MagiciteChanged += GoldChanged;
-		StageManager.Ins.SoulStoneChanged += GoldChanged;
+		StageManager.Ins.GoldChanged += GoldChanged;		
+		StageManager.Ins.StageChanged += StageChanged;
 
 		for (int i = 0; i < TotalStep; i++)
 		{
-			Tutorials.Add(new TutorialCondition(TotalStep + 1));
+			Tutorials.Add(new TutorialCondition(i + 1));
 		}
 	}
 
 	public void SetTutorial()
-	{
+	{		
 		int curStep = StageManager.Ins.PlayerData.TutorialStep;
 
 		if (curStep >= TotalStep)
 			return;
 
 		if(CheckCondition(Tutorials[curStep]))
-		{
-			StepsObj[curStep].SetActive(true);			
+		{			
+			StepsObj[curStep].SetActive(true);
+			StepsObj[curStep].GetComponent<TutorialStep>().SetStep(curStep + 1);
 		}
 		else
 		{
@@ -43,10 +43,10 @@ public class TutorialManager : MonoSingleton<TutorialManager>
 	public void IncTutorialStep()
 	{
 		int curStep = StageManager.Ins.PlayerData.TutorialStep;
-		StepsObj[curStep].GetComponent<TutorialStep>().SetStep(curStep + 1);
+		StepsObj[curStep].GetComponent<TutorialStep>().PlayStep(curStep + 1);
 		StepsObj[curStep].SetActive(false);
 
-		StageManager.Ins.PlayerData.IncTutorialStep();
+		StageManager.Ins.PlayerData.IncTutorialStep();		
 		SetTutorial();
 	}
 
@@ -61,6 +61,11 @@ public class TutorialManager : MonoSingleton<TutorialManager>
 					return true;
 				else
 					return false;
+			case TutorialConType.Stage:
+				if (StageManager.Ins.PlayerData.Stage >= con.Value)
+					return true;
+				else
+					return false;				
 			default:
 				return true;
 		}
@@ -71,12 +76,7 @@ public class TutorialManager : MonoSingleton<TutorialManager>
 		SetTutorial();
 	}
 
-	void MagiciteChanged(double value)
-	{
-		SetTutorial();
-	}
-
-	void SoulStoneChanged(double value)
+	void StageChanged()
 	{
 		SetTutorial();
 	}
@@ -96,13 +96,22 @@ public class TutorialCondition
 		switch (no)
 		{
 			case 1:
+				Condition = TutorialConType.None;
 				break;
 			case 2:
+				Condition = TutorialConType.None;
+				break;
+			case 3:
 				Condition = TutorialConType.Gold;
 				Value = 10f;
 				break;
-			case 3:
+			case 4:
+				Condition = TutorialConType.None;
 				break;
+			case 5:
+				Condition = TutorialConType.Stage;
+				Value = ConstantData.PossibleAscensionStage;
+				break;			
 		}
 	}
 
@@ -113,5 +122,6 @@ public enum TutorialConType
 {
 	None,
 	Gold,
+	Stage,
 
 }

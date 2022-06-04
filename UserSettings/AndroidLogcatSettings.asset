@@ -1,114 +1,78 @@
 {
     "m_SelectedDeviceId": "R39M10EL61Y",
     "m_SelectedPackage": {
-        "deviceId": "R39M10EL61Y",
-        "name": "com.mkgames.projectdf",
-        "processId": 1808,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "ce031603b9e65a3903",
-            "name": "com.MKGames.ProjectDF",
-            "processId": 12737,
-            "exited": true
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.MKGames.ProjectDF",
-            "processId": 14866,
-            "exited": true
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.sec.android.app.launcher",
-            "processId": 8556,
-            "exited": false
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.MKGames.ProjectDF",
-            "processId": 15643,
-            "exited": true
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.MKGames.ProjectDF",
-            "processId": 17478,
-            "exited": true
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.MKGames.ProjectDF",
-            "processId": 18350,
-            "exited": true
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
             "name": "com.samsung.android.MtpApplication",
             "processId": 19882,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "ce031603b9e65a3903",
             "name": "com.MKGames.ProjectDF",
             "processId": 19783,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "ce031603b9e65a3903",
             "name": "com.MKGames.ProjectDF",
             "processId": 22261,
-            "exited": false
-        },
-        {
-            "deviceId": "R39M10EL61Y",
-            "name": "com.mkgames.projectdf",
-            "processId": 22997,
             "exited": true
         },
         {
-            "deviceId": "R39M10EL61Y",
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 23647,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
             "name": "com.sec.android.app.launcher",
-            "processId": 2915,
+            "processId": 5009,
             "exited": false
         },
         {
-            "deviceId": "R39M10EL61Y",
+            "deviceId": "ce031603b9e65a3903",
             "name": "com.mkgames.projectdf",
-            "processId": 25475,
-            "exited": true
+            "processId": 1870,
+            "exited": false
         },
         {
-            "deviceId": "R39M10EL61Y",
+            "deviceId": "ce031603b9e65a3903",
             "name": "com.mkgames.projectdf",
-            "processId": 28949,
-            "exited": true
-        },
-        {
-            "deviceId": "R39M10EL61Y",
-            "name": "com.mkgames.projectdf",
-            "processId": 29718,
-            "exited": true
+            "processId": 4400,
+            "exited": false
         },
         {
             "deviceId": "R39M10EL61Y",
             "name": "com.mkgames.projectdf",
             "processId": 30949,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R39M10EL61Y",
             "name": "com.mkgames.projectdf",
             "processId": 32008,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R39M10EL61Y",
             "name": "com.mkgames.projectdf",
             "processId": 1808,
-            "exited": false
+            "exited": true
+        },
+        {
+            "deviceId": "R39M10EL61Y",
+            "name": "com.mkgames.projectdf",
+            "processId": 3290,
+            "exited": true
         }
     ],
     "m_Tags": {

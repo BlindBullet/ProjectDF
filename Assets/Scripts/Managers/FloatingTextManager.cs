@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DamageNumbersPro;
+using System;
 
 public class FloatingTextManager : MonoSingleton<FloatingTextManager>
 {
@@ -10,6 +11,7 @@ public class FloatingTextManager : MonoSingleton<FloatingTextManager>
 	DamageNumber Heal;
 	DamageNumber Buff;
 	DamageNumber Gold;
+	DamageNumber SoulStone;
 
 	private void Start()
 	{
@@ -18,6 +20,7 @@ public class FloatingTextManager : MonoSingleton<FloatingTextManager>
 		Heal = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/HealPrefab");
 		Buff = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/BuffTextPrefab");
 		Gold = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/GoldPrefab");
+		SoulStone = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/SoulStonePrefab");
 	}
 
 	public void ShowDmg(Vector3 pos, string text, bool isCrit)
@@ -43,5 +46,8 @@ public class FloatingTextManager : MonoSingleton<FloatingTextManager>
 		Gold.Spawn(pos, text);
 	}
 
-
+	public void ShowSoulStone(Vector3 pos, string text)
+	{
+		SoulStone.Spawn(pos, text);
+	}
 }

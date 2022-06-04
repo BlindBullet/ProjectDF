@@ -23,7 +23,7 @@ public static class ConstantData
 	//적 처치 골드 증가
 	public static ObscuredFloat EnemyGoldGR = 1.1f;
 	//환생 가능 스테이지
-	public static ObscuredInt PossibleAscensionStage = 30;
+	public static ObscuredInt PossibleAscensionStage = 4;
 	//환생 시작 리워드
 	public static ObscuredDouble AscensionBasicReward = 50f;
 	//환생 리워드 증가
@@ -54,7 +54,15 @@ public static class ConstantData
 	public static ObscuredFloat PiercingDmgDecP = 20f;
 	//기본공격의 총알 크기가 커짐(%)
 	public static ObscuredFloat SizeIncP = 250f;
-	
+	//일반 몬스터를 처치했을 때 영혼석이 떨어질 확률
+	public static ObscuredFloat NormalEnemyDropSoulStoneRate = 0.01f;
+	//일반 몬스터를 처치했을 때 떨어질 최대 영혼석
+	public static ObscuredDouble NormalEnemyDropSoulStoneMaxCount = 1;
+	//보스 몬스터를 처치했을 때 영혼석이 떨어질 확률
+	public static ObscuredFloat BossEnemyDropSoulStoneRate = 1f;
+	//보스 몬스터를 처치했을 때 떨어질 최대 영혼석
+	public static ObscuredDouble BossEnemyDropSoulStoneMaxCount = 3;
+
 	public static double GetLvUpCost(int lv)
 	{
 		double value = CalcValue(StartLvUpGold, LvUpGoldGR, lv);
