@@ -218,9 +218,9 @@ public class StageManager : MonoSingleton<StageManager>
 					continue;
 				else
 				{					
-					Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + _chart.Bg) as GameObject);
-					if (chart.Bgm != null && SoundManager.Ins.currentBgm != chart.Bgm)
-						SoundManager.Ins.ChangeBGM(chart.Bgm);
+					Bg = Instantiate(Resources.Load("Prefabs/Bgs/" + _chart.Bg) as GameObject);					
+					if (_chart.Bgm != null && SoundManager.Ins.currentBgm != _chart.Bgm)
+						SoundManager.Ins.ChangeBGM(_chart.Bgm);
 					break;
 				}
 			}
