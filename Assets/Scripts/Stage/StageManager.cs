@@ -56,14 +56,15 @@ public class StageManager : MonoSingleton<StageManager>
 
 		SetSlots();
 		SetHeroes(PlayerData.IsFirstPlay);
-		
-		if(PlayerData.IsFirstPlay)
+
+		StartCoroutine(OpenOfflineReward(PlayerData.IsFirstPlay));
+
+		if (PlayerData.IsFirstPlay)
 			PlayerData.RunFirstPlay();
 
 		SEManager.Ins.Apply();
 		PlayerBuffManager.Ins.RunAllBuffs();
 		StartCoroutine(SetStage(PlayerData.Stage));
-		StartCoroutine(OpenOfflineReward(PlayerData.IsFirstPlay));
 	}
 
 	void RestartStage()
@@ -81,7 +82,7 @@ public class StageManager : MonoSingleton<StageManager>
 	IEnumerator OpenOfflineReward(bool isFirstPlay)
 	{
 		yield return StartCoroutine(TimeManager.Ins.GetTime());
-
+		
 		if (!isFirstPlay)
 		{
 			yield return new WaitForSeconds(3f);

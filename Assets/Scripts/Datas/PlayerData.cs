@@ -35,8 +35,8 @@ public class PlayerData
 		IsFirstPlay = true;
 		PlayAppCount = 1;
 		Gold = 0;
-		Magicite = 5000000f;
-		SoulStone = 5000000f;
+		Magicite = 0f;
+		SoulStone = 0f;
 		Stage = 1;
 		AscensionCount = 0;
 		QuestLv = 1;
@@ -389,7 +389,7 @@ public class PlayerData
 		PlayerData data = ES3.Load<PlayerData>("PlayerData", defaultValue: null);
 		
 		if(data == null)
-		{
+		{			
 			Init();           
 		}
 		else
