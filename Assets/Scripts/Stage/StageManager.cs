@@ -16,6 +16,7 @@ public class StageManager : MonoSingleton<StageManager>
 	public LoseStagePanel LoseStagePanel;
 	public AscensionSequence AscensionSequence;
 	public GameObject Moat;
+	public GameObject OfflineRewardPanel;
 
 	public List<Slot> Slots = new List<Slot>();
 
@@ -50,6 +51,7 @@ public class StageManager : MonoSingleton<StageManager>
 	{
 		SoundManager.Ins.DissolveBGMVolume(1f, 1f);
 		TopBar.Setup();
+		OfflineRewardPanel.SetActive(true);
 
 		SetSlots();
 		SetHeroes(PlayerData.IsFirstPlay);
@@ -81,8 +83,9 @@ public class StageManager : MonoSingleton<StageManager>
 
 		if (!isFirstPlay)
 		{
-			yield return new WaitForSeconds(5f);
+			yield return new WaitForSeconds(1f);
 			DialogManager.Ins.OpenOfflineReward();
+			OfflineRewardPanel.SetActive(false);
 		}
 			
 	}
