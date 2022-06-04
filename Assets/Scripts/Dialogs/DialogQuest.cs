@@ -57,6 +57,7 @@ public class DialogQuest : DialogController
 		yield return null;
 		QuestManager.Ins.ResetQuest();
 		SetQuests();
+		Time.timeScale = 0f;
 	}
 
 	private void OnDisable()
