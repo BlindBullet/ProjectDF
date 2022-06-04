@@ -32,6 +32,7 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 		{
 			case PlayerBuffType.GameSpeed:
 				StageManager.Ins.PlayerStat.GameSpd = ConstantData.BuffGameSpeedRate;
+				Time.timeScale = StageManager.Ins.PlayerStat.GameSpd;
 				break;
 			case PlayerBuffType.UseAutoSkill:
 				StageManager.Ins.PlayerStat.UseAutoSkill = true;
@@ -50,6 +51,7 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 		{
 			case PlayerBuffType.GameSpeed:
 				StageManager.Ins.PlayerStat.GameSpd = 1f;
+				Time.timeScale = StageManager.Ins.PlayerStat.GameSpd;
 				break;
 			case PlayerBuffType.UseAutoSkill:
 				StageManager.Ins.PlayerStat.UseAutoSkill = false;

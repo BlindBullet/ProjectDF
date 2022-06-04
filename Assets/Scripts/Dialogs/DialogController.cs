@@ -27,11 +27,8 @@ public class DialogController : MonoBehaviour
 	{		
 		BattleInputManager.Ins.isPause = true;
 
-		if (stopTime)
-		{
-			_time = Time.timeScale;
-			Time.timeScale = 0f;
-		}
+		if (stopTime)					
+			Time.timeScale = 0f;		
 
 		Open();
 		EnabledBackkey = enabledBackkey;
@@ -90,7 +87,10 @@ public class DialogController : MonoBehaviour
 	public virtual void CloseDialog(bool stopTime = false)
 	{
 		if (stopTime)
-			Time.timeScale = _time;
+		{
+			Time.timeScale = StageManager.Ins.PlayerStat.GameSpd;
+		}
+			
 
 		Close();
 		BackkeyManager.Ins.RemoveDialog(this);	

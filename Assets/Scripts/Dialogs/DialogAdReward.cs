@@ -188,6 +188,7 @@ public class DialogAdReward : DialogController
 
 		DialogManager.Ins.OpenReceiveReward(chart.RewardType, rewardValue);
 		CloseDialog();
+		SEManager.Ins.Apply();
 	}
 
 	private void OnDisable()

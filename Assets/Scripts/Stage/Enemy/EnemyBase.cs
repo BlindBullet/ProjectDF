@@ -364,12 +364,15 @@ public class EnemyBase : MonoBehaviour
 		{
 			if (!isDie)
 			{
-				collision.GetComponent<PlayerLine>().Destroy();
-				StageManager.Ins.Hp--;
-				Die();
+				if(collision.GetComponent<PlayerLine>().count == 1)
+				{
+					collision.GetComponent<PlayerLine>().Destroy();
+					StageManager.Ins.Hp--;
+					Die();
 
-				if (StageManager.Ins.Hp <= 0)
-					StageManager.Ins.LoseStage();
+					if (StageManager.Ins.Hp <= 0)
+						StageManager.Ins.LoseStage();
+				}
 			}
 		}
 

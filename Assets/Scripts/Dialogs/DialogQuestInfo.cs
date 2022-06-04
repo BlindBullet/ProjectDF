@@ -157,17 +157,17 @@ public class DialogQuestInfo : DialogController
 			AttrIcons[i].Check(false);
 			fillAttrCon[i] = false;
 		}
-
-		for(int i = 0; i < DispatchHeroes.Count; i++)
-		{
-			if(DispatchHeroes[i].Grade >= chart.NeedGrade)
-			{
+		
+		for (int i = 0; i < DispatchHeroes.Count; i++)
+		{	
+			if (DispatchHeroes[i].Grade >= chart.NeedGrade)
+			{				
 				fillGradeCount++;
 			}
 
-			HeroChart heroChart = CsvData.Ins.HeroChart[DispatchHeroes[i].Id][DispatchHeroes[i].Grade];
-
-			for(int k = 0; k < chart.NeedAttr.Length; k++)
+			HeroChart heroChart = CsvData.Ins.HeroChart[DispatchHeroes[i].Id][DispatchHeroes[i].Grade - 1];
+			
+			for (int k = 0; k < chart.NeedAttr.Length; k++)
 			{
 				if(chart.NeedAttr[k] == heroChart.Attr && !fillAttrCon[k])
 				{

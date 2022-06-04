@@ -406,10 +406,20 @@ public class StageManager : MonoSingleton<StageManager>
 
 		yield return new WaitForSeconds(2f);
 
+		for (int i = 0; i < EnemyBase.Enemies.Count; i++)
+		{
+			EnemyBase.Enemies[i].Stop();
+		}
+
 		LoseStagePanel.gameObject.SetActive(true);
 		LoseStagePanel.FadeIn();
 
 		yield return new WaitForSeconds(2f);
+
+		for (int i = 0; i < EnemyBase.Enemies.Count; i++)
+		{
+			EnemyBase.Enemies[i].Stop();
+		}
 
 		for (int i = EnemyBase.Enemies.Count - 1; i >= 0; i--)
 		{
