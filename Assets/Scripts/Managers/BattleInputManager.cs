@@ -93,6 +93,19 @@ public class BattleInputManager : MonoBehaviour
 						TouchSkillCoolTimeDec();
 						break;
 					}
+
+					if (tempTouch.phase == TouchPhase.Ended)
+					{
+						var (target, pos) = FindClickPoint(LayerManager.Ins.Tutorial, tempTouch.position);
+						if(target != null)
+						{
+							if (target.CompareTag("Tutorial"))
+							{								
+								TutorialManager.Ins.IncTutorialStep();
+							}
+						}
+						break;
+					}
 				}
 			}
 
@@ -114,7 +127,15 @@ public class BattleInputManager : MonoBehaviour
 
 			if (Input.GetMouseButtonUp(0))
 			{
+				var (target, pos) = FindClickPoint(LayerManager.Ins.Tutorial, Input.mousePosition);
 				
+				if (target != null)
+				{
+					if (target.CompareTag("Tutorial"))
+					{	
+						TutorialManager.Ins.IncTutorialStep();
+					}
+				}
 			}
 #endif
 		}

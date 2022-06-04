@@ -21,7 +21,7 @@ public class Slot : MonoBehaviour
 	public Image PowerUpBtnFrame;
 	Material lvUpBtnMat;
 	Material powerUpBtnMat;
-	SlotData data;	
+	public SlotData data;	
 
 	public void Init(SlotData data)
 	{
@@ -61,7 +61,7 @@ public class Slot : MonoBehaviour
 		SetPowerUpBtn();
 	}
 
-	void LevelUp()
+	public void LevelUp()
 	{
 		if (data.LevelUp())
 		{

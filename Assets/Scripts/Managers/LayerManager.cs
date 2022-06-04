@@ -10,6 +10,7 @@ public class LayerManager : ResourceSingleton<LayerManager>
 	public LayerMask Enemy;
 	public LayerMask Minion;
 	public LayerMask FieldAndSupplies;
+	public LayerMask Tutorial;
 
 	//public int TagToTeamLayerAndBlocker(string tag)
 	//{

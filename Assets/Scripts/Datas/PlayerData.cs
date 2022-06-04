@@ -27,7 +27,8 @@ public class PlayerData
 	public int TotalClearQuestCount;
 	public bool OnBGM;
 	public bool OnSFX;
-	public DateTime OfflineStartTime;	
+	public DateTime OfflineStartTime;
+	public int TutorialStep = 0;
 
 	public void Init()
 	{
@@ -44,7 +45,8 @@ public class PlayerData
 		TouchAttackLv = 1;
 		OnBGM = true;
 		OnSFX = true;
-		OfflineStartTime = TimeManager.Ins.GetCurrentTime();		
+		OfflineStartTime = TimeManager.Ins.GetCurrentTime();
+		TutorialStep = 0;
 
 		ResisterHeroes();
 		ResisterRelics();
@@ -371,6 +373,12 @@ public class PlayerData
 		Save();
 	}
 
+	public void IncTutorialStep()
+	{
+		TutorialStep++;
+		Save();
+	}
+
 	public void Save()
 	{	
 		ES3.Save<PlayerData>("PlayerData", this);
@@ -405,7 +413,8 @@ public class PlayerData
 			PlayerBuffs = data.PlayerBuffs;
 			OnBGM = data.OnBGM;
 			OnSFX = data.OnSFX;
-			OfflineStartTime = data.OfflineStartTime;			
+			OfflineStartTime = data.OfflineStartTime;
+			TutorialStep = data.TutorialStep;
 
 			ResisterHeroes();
 			ResisterRelics();

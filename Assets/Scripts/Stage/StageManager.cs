@@ -33,7 +33,8 @@ public class StageManager : MonoSingleton<StageManager>
 	Coroutine cLoseSeq = null;
 
 	private void Start()
-	{	
+	{
+		TutorialManager.Ins.InitTutorial();
 		appearSuppliesProb = 0f;
 
 		PlayerData = new PlayerData();
@@ -87,7 +88,8 @@ public class StageManager : MonoSingleton<StageManager>
 			DialogManager.Ins.OpenOfflineReward();
 			OfflineRewardPanel.SetActive(false);
 		}
-			
+
+		TutorialManager.Ins.SetTutorial();
 	}
 
 	void SetHeroes(bool isFirstPlay)
