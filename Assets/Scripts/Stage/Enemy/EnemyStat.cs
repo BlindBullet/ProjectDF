@@ -69,8 +69,7 @@ public class EnemyStat
 
 	public void CalcStat()
 	{
-		Spd = Spd + (Spd * (AddSpd / 100f));
-		Debug.Log(Spd);
+		Spd = Spd + (Spd * (AddSpd / 100f));		
 		Def = Def + (Def * (AddDef / 100f));
 
 	}
