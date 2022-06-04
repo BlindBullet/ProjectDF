@@ -83,7 +83,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 		if (!isFirstPlay)
 		{
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(3f);
 			DialogManager.Ins.OpenOfflineReward();
 			OfflineRewardPanel.SetActive(false);
 		}
@@ -351,6 +351,18 @@ public class StageManager : MonoSingleton<StageManager>
 			yield return null;
 		}
 		
+		while (true)
+		{
+			yield return new WaitForSeconds(2f);
+
+			if (EnemyBase.Enemies.Count <= 0)
+			{
+				break;
+			}
+		}
+
+		yield return new WaitForSeconds(2f);
+
 		while (true)
 		{
 			yield return new WaitForSeconds(2f);

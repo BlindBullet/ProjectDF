@@ -53,7 +53,7 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/EnemyObj") as GameObject);
 		enemy.transform.localScale = new Vector2(chart.Size, chart.Size);
 		enemy.transform.position = CalcSpawnPos();
-		enemy.Setup(chart, stageNo, isBoss);
+		enemy.Setup(chart, stageNo, isBoss);		
 	}
 
 	public void SpawnSummonEnemy(string id, Vector2 pos)
