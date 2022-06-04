@@ -107,25 +107,26 @@ public class QuestBar : MonoBehaviour
 			QuestProgressText.text = hourStr + ":" + minStr + ":" + secStr;
 			QuestProgressBarFill.fillAmount = (float)((totalSec - progressSec) / totalSec);
 
-			time += Time.unscaledDeltaTime;
-
-			if (time >= 1f)
-			{
-				progressSec -= 1f;
-				time = 0f;
-			}
+			progressSec -= Time.unscaledDeltaTime;
 
 			if (progressSec <= 0f)
 			{				
 				QuestProgressText.text = hourStr + ":" + minStr + ":" + secStr;
 				QuestProgressBarFill.fillAmount = (float)((totalSec - progressSec) / totalSec);
-
-				StageManager.Ins.PlayerData.CheckAllQuestComplete();
-				SetBar(data);
-				yield break;
+				break;				
 			}
 
-			
+			yield return null;
+		}
+
+		while (true)
+		{
+			data.CheckCompelete();
+			if (data.IsComplete)
+			{
+				SetBar(data);
+				break;
+			}
 
 			yield return null;
 		}

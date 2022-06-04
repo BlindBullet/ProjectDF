@@ -8294,6 +8294,7 @@ MonoBehaviour:
   LoseStagePanel: {fileID: 286473751}
   AscensionSequence: {fileID: 702533395}
   Moat: {fileID: 998893481}
+  OfflineRewardPanel: {fileID: 1414056883}
   Slots:
   - {fileID: 305572756}
   - {fileID: 1972442118}
