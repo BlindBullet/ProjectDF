@@ -10,7 +10,7 @@ ce_10008,DeployHero,Attr,Red,High,2,,Hero,All,,,StatChange,Inc,Spd,,,5,5,
 ce_10009,,,,,,,Hero,Attr,Green,,StatChange,Inc,Atk,,,10,,2
 ce_10010,DeployHero,Slot,3,Attr,Red,,Hero,All,,,StatChange,Inc,Atk,,,20,,2
 ce_10011,DeployHero,Slot,1,Attr,Greed,,Hero,All,,,StatChange,Inc,Atk,,,25,,2
-ce_10012,DeployHero,Slot,5,Grade,High,2,Hero,All,,,StatChange,Inc,CritChance,,,0.5,0.5,
+ce_10012,DeployHero,Slot,3|5,Attr,Blue,,Hero,All,,,StatChange,Inc,CritChance,,,0.5,0.5,
 ce_10013,DeployHero,Slot,2|4,Attr,Red,,Hero,All,,,StatChange,Inc,Atk,,,30,,2
 ce_10014,DeployHero,Slot,1|5,Attr,Blue,,Hero,All,,,StatChange,Inc,CritChance,,,2,2,
 ce_10015,DeployHero,GradeAvr,3,High,,,Hero,All,,,StatChange,Inc,Atk,,,30,,2

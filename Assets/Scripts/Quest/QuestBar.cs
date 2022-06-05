@@ -91,8 +91,7 @@ public class QuestBar : MonoBehaviour
 	IEnumerator TimeProgress(int totalMin, double progressSec)
 	{
 		double totalSec = totalMin * 60f;
-		progressSec = Math.Round(totalSec - progressSec);
-		float time = 0f;
+		progressSec = Math.Round(totalSec - progressSec);		
 
 		while (true)
 		{	
