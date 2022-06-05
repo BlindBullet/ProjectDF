@@ -120,7 +120,7 @@ public class ProjectileController : MonoBehaviour
 			targetPos = target.transform.position;
 		}
 
-		SoundManager.Ins.PlaySFX("poly_shoot_magic");
+		SoundManager.Ins.PlayNASFX("poly_shoot_magic");
 
 		if (data.BeginFx != null)
 			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
@@ -162,13 +162,13 @@ public class ProjectileController : MonoBehaviour
 		switch (caster.Stat.Attr)
 		{
 			case Attr.Red:
-				SoundManager.Ins.PlaySFX("poly_shoot_arrow");
+				SoundManager.Ins.PlayNASFX("poly_shoot_arrow");
 				break;
 			case Attr.Blue:
-				SoundManager.Ins.PlaySFX("poly_shoot_arrow");
+				SoundManager.Ins.PlayNASFX("poly_shoot_arrow");
 				break;
 			case Attr.Green:
-				SoundManager.Ins.PlaySFX("poly_shoot_arrow");
+				SoundManager.Ins.PlayNASFX("poly_shoot_arrow");
 				break;
 		}
 
@@ -378,7 +378,7 @@ public class ProjectileController : MonoBehaviour
 			//플레이어 터치 공격
 			else if (caster == null && minion == null && hitresults == null)
 			{				
-				EffectManager.Ins.ShowFx(ConstantData.PlayerTouchAtkHitFx, enemyBase.transform);
+				EffectManager.Ins.ShowFx("TouchHitFx", enemyBase.transform);
 				double resultDmg = enemyBase.TakeDmg(atk, Attr.None, false, 0f);
 				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), false);
 			}

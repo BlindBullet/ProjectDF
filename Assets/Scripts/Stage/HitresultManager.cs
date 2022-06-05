@@ -126,7 +126,6 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 							EffectManager.Ins.ShowFx(datas[i].DelayBeginFx);
 
 						List<EnemyBase> enemyTargets = SearchEnemyTargets(datas[i], caster);
-
 						if (datas[i].AddDelayTarget)
 						{
 							//범위에 따라 다시 타겟을 지정

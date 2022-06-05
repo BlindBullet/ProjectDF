@@ -95,8 +95,14 @@ public class EffectManager : SingletonObject<EffectManager>
 			}
 		}
 
-		if (fxData.SoundResource != "")
+		if (fxData.SoundResource != "" && fxData.SoundResource != "HitFx")
+		{
 			SoundManager.Ins.PlaySFX(fxData.SoundResource);
+		}
+		else if(fxData.SoundResource == "HitFx")
+		{
+			SoundManager.Ins.PlayNASFX("HitFx");
+		}	
 	}
 
 	public void ShowFx(string id, CharacterAnchor targetAnchor, float durationTime)
@@ -131,8 +137,14 @@ public class EffectManager : SingletonObject<EffectManager>
 			}
 		}
 
-		if (fxData.SoundResource != "")
+		if (fxData.SoundResource != "" && fxData.SoundResource != "HitFx")
+		{
 			SoundManager.Ins.PlaySFX(fxData.SoundResource);
+		}
+		else if (fxData.SoundResource == "HitFx")
+		{
+			SoundManager.Ins.PlayNASFX("HitFx");
+		}
 	}
 
 	public void ShowFx(string id, Transform fxTrf)
@@ -167,8 +179,14 @@ public class EffectManager : SingletonObject<EffectManager>
 			}
 		}
 
-		if (fxData.SoundResource != "")
+		if (fxData.SoundResource != "" && fxData.SoundResource != "HitFx")
+		{
 			SoundManager.Ins.PlaySFX(fxData.SoundResource);
+		}
+		else if (fxData.SoundResource == "HitFx")
+		{
+			SoundManager.Ins.PlayNASFX("HitFx");
+		}
 	}
 
 	public void ShowFx(string id, Vector3 pos)
@@ -192,8 +210,14 @@ public class EffectManager : SingletonObject<EffectManager>
 			fx.transform.position = new Vector3(pos.x + fxData.SpawnPosX, pos.y + fxData.SpawnPosY, pos.z);			
 		}
 
-		if (fxData.SoundResource != "")
+		if (fxData.SoundResource != "" && fxData.SoundResource != "HitFx")
+		{
 			SoundManager.Ins.PlaySFX(fxData.SoundResource);
+		}
+		else if (fxData.SoundResource == "HitFx")
+		{
+			SoundManager.Ins.PlayNASFX("HitFx");
+		}
 	}
 
 	public void ShowFx(string id)
@@ -209,8 +233,14 @@ public class EffectManager : SingletonObject<EffectManager>
 		fx.transform.localScale = fx.transform.localScale * fxData.Size;
 		fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
 
-		if (fxData.SoundResource != "")
+		if (fxData.SoundResource != "" && fxData.SoundResource != "HitFx")
+		{
 			SoundManager.Ins.PlaySFX(fxData.SoundResource);
+		}
+		else if (fxData.SoundResource == "HitFx")
+		{
+			SoundManager.Ins.PlayNASFX("HitFx");
+		}
 	}
 	
 	public GameObject ShowDurationFx(string id)
@@ -226,8 +256,14 @@ public class EffectManager : SingletonObject<EffectManager>
 		fx.transform.localScale = fx.transform.localScale * fxData.Size;
 		fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
 
-		if (fxData.SoundResource != "")
+		if (fxData.SoundResource != "" && fxData.SoundResource != "HitFx")
+		{
 			SoundManager.Ins.PlaySFX(fxData.SoundResource);
+		}
+		else if (fxData.SoundResource == "HitFx")
+		{
+			SoundManager.Ins.PlayNASFX("HitFx");
+		}
 
 		return fx;
 	}

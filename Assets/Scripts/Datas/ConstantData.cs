@@ -33,9 +33,7 @@ public static class ConstantData
 	//시간을 메인으로 했을 때 획득 골드 (적 처치 골드 증가와 연계됨)
 	public static ObscuredDouble TimeGold = 2.5f;
 	//오프라인 혹은 퀘스트 완료시 적이 1분당 몇명을 잡는 것으로 칠것인가
-	public static ObscuredInt KillEnemiesCount1Min = 10;
-	//플레이어 탭 공격 HitFx
-	public static ObscuredString PlayerTouchAtkHitFx = "TouchHitFx";
+	public static ObscuredInt KillEnemiesCount1Min = 10;	
 	//오프라인시 획득 골드 (적 처치 골드 및 분당 처치수와 연계됨)
 	public static ObscuredDouble OfflineTimeGold = 2.5f;
 	//퀘스트탭이 열릴 환생 카운트

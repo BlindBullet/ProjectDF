@@ -86,7 +86,7 @@ public class HeroStat
 		Atk = ConstantData.GetHeroAtk(chart.Atk, lv, enchantLv) * (1 + (AtkInc / 100f));
 		Spd = chart.Spd * (1 + (SpdInc / 100f));
 		CritChance = CritChanceInc - CritChanceDec;
-		CritDmg = CritDmgInc - CritDmgDec;
+		CritDmg = 100f - (CritDmgInc - CritDmgDec);
 		PenCount = chart.PenCount + PenCountInc - PenCountDec;
 		CoolTimeAdd = CoolTimeInc - CoolTimeDec;
 

@@ -5,13 +5,15 @@ using DG.Tweening;
 
 public class SoundManager : SingletonObject<SoundManager>
 {		
-	public int audioSourceCount = 3;
+	public int audioSourceCount = 5;
+	public int normalAttackaudioSourceCount = 1;
 
 	public string bgmPath = "Sounds/Bgm/";
 	public string sfxPath = "Sounds/Sfx/";
 	
 	private AudioSource BGMsource;
 	private AudioSource[] SFXsource;
+	private AudioSource[] NA_SFXsource;
 
 	public delegate void CallBack();
 	CallBack BGMendCallBack;
@@ -27,14 +29,22 @@ public class SoundManager : SingletonObject<SoundManager>
 
 		//sfx 소스 초기화
 		SFXsource = new AudioSource[audioSourceCount];
+		NA_SFXsource = new AudioSource[normalAttackaudioSourceCount];
 
-		volume = PlayerPrefs.GetFloat("volumeSFX", 1f);
+		volume = PlayerPrefs.GetFloat("volumeSFX", 1f);		
 
 		for (int i = 0; i < SFXsource.Length; i++)
 		{
 			SFXsource[i] = gameObject.AddComponent<AudioSource>();
 			SFXsource[i].playOnAwake = false;
 			SFXsource[i].volume = volume;
+		}
+
+		for (int i = 0; i < NA_SFXsource.Length; i++)
+		{
+			NA_SFXsource[i] = gameObject.AddComponent<AudioSource>();
+			NA_SFXsource[i].playOnAwake = false;
+			NA_SFXsource[i].volume = volume;
 		}
 	}
 
@@ -43,6 +53,15 @@ public class SoundManager : SingletonObject<SoundManager>
 	public void PlaySFX(string name, bool loop = false, float pitch = 1)//효과음 재생
 	{
 		AudioSource a = GetEmptySource();
+		a.loop = loop;
+		a.pitch = pitch;
+		a.clip = Resources.Load<AudioClip>(sfxPath + name);
+		a.Play();
+	}
+
+	public void PlayNASFX(string name, bool loop = false, float pitch = 1)//효과음 재생
+	{
+		AudioSource a = GetEmptyNASource();
 		a.loop = loop;
 		a.pitch = pitch;
 		a.clip = Resources.Load<AudioClip>(sfxPath + name);
@@ -79,6 +98,29 @@ public class SoundManager : SingletonObject<SoundManager>
 			}
 		}
 		return SFXsource[lageindex];
+	}
+
+	private AudioSource GetEmptyNASource()//비어있는 오디오 소스 반환
+	{
+		int lageindex = 0;
+		float lageProgress = 0;
+		for (int i = 0; i < NA_SFXsource.Length; i++)
+		{
+			if (!NA_SFXsource[i].isPlaying)
+			{
+				return NA_SFXsource[i];
+			}
+
+			//만약 비어있는 오디오 소스를 못찿으면 가장 진행도가 높은 오디오 소스 반환(루프중인건 스킵)
+
+			float progress = NA_SFXsource[i].time / NA_SFXsource[i].clip.length;
+			if (progress > lageProgress && !NA_SFXsource[i].loop)
+			{
+				lageindex = i;
+				lageProgress = progress;
+			}
+		}
+		return NA_SFXsource[lageindex];
 	}
 
 	/**********BGM***********/

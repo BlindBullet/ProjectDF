@@ -1,8 +1,8 @@
 ﻿Id,FxResource,Size,SpawnAnchor,SpawnPosX,SpawnPosY,Binding,SoundResource
-HitFxRed,HitFxRed,0.3,,,,,normal_hit
-HitFxGreen,HitFxGreen,0.3,,,,,normal_hit
-HitFxBlue,HitFxBlue,0.3,,,,,normal_hit
-TouchHitFx,TouchHitFx,0.3,,,,,normal_hit
+HitFxRed,HitFxRed,0.3,,,,,HitFx
+HitFxBlue,HitFxBlue,0.3,,,,,HitFx
+HitFxGreen,HitFxGreen,0.3,,,,,HitFx
+TouchHitFx,TouchHitFx,0.3,,,,,HitFx
 Ise Attack,Ise Attack,1,,,2.86,,Skill 8
 EntangleVine,EntangleVine,1,Center,,,,
 Hit 19,Hit 19,2,Center,,,,
@@ -39,3 +39,4 @@ HellFlame,HellFlame,1,Center,,,,
 SwordVolleyGreen,SwordVolleyGreen,4,,,,,
 ChannelGreen5s,ChannelGreen5s,2,Center,,,,
 SlashWideGreen,SlashWideGreen,5,,,4,,
+StormNovaBlue,StormNovaBlue,2,Center,,,,
