@@ -49,6 +49,9 @@ public class ProjectileController : MonoBehaviour
 			targetPos = target.transform.position;
 		}
 
+		if (data.BeginSfx != null)
+			SoundManager.Ins.PlaySFX(data.BeginSfx);
+
 		if (data.BeginFx != null)
 			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
 
@@ -80,6 +83,9 @@ public class ProjectileController : MonoBehaviour
 			this.target = target;
 			targetPos = target.transform.position;
 		}
+
+		if(data.BeginSfx != null)
+			SoundManager.Ins.PlaySFX(data.BeginSfx);
 
 		if (data.BeginFx != null)
 			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
@@ -113,6 +119,8 @@ public class ProjectileController : MonoBehaviour
 			this.target = target;
 			targetPos = target.transform.position;
 		}
+
+		SoundManager.Ins.PlaySFX("poly_shoot_magic");
 
 		if (data.BeginFx != null)
 			EffectManager.Ins.ShowFx(data.BeginFx, this.transform);
@@ -149,6 +157,19 @@ public class ProjectileController : MonoBehaviour
 			existTarget = true;
 			this.target = target;
 			targetPos = target.transform.position;
+		}
+
+		switch (caster.Stat.Attr)
+		{
+			case Attr.Red:
+				SoundManager.Ins.PlaySFX("poly_shoot_magic");
+				break;
+			case Attr.Blue:
+				SoundManager.Ins.PlaySFX("poly_shoot_ice");
+				break;
+			case Attr.Green:
+				SoundManager.Ins.PlaySFX("poly_shoot_holy");
+				break;
 		}
 
 		if (data.BeginFx != null)
@@ -217,7 +238,7 @@ public class ProjectileController : MonoBehaviour
 			float startTime = Time.timeSinceLevelLoad;
 			// 거리 / 속도 = 시간
 			var beginDir = targetPos - transform.position.xy();
-			float bezierDuration = beginDir.magnitude / data.Speed;
+			float bezierDuration = (beginDir.magnitude / data.Speed) * 2f;
 			Vector2 pos1 = new Vector2(pos.x + pos1R.x, pos.y + pos1R.y);
 			Vector2 pos2 = new Vector2(targetPos.x + pos2R.x, targetPos.y + pos2R.y);
 			Vector2 dirCache = beginDir;
@@ -366,7 +387,7 @@ public class ProjectileController : MonoBehaviour
 			{
 				switch (caster.Stat.Attr)
 				{
-					case Attr.Red:
+					case Attr.Red:						
 						EffectManager.Ins.ShowFx("HitFxRed", enemyBase.transform);
 						break;
 					case Attr.Blue:
@@ -434,7 +455,8 @@ public class ProjectileData
 	public float[] BPos1R;
 	public float[] BPos2;
 	public float[] BPos2R;
-	public float Lifetime;	
+	public float Lifetime;
+	public string BeginSfx;
 	public string BeginFx;
 	public string HitDestroyFx;
 	public string DestroyFx;
@@ -455,7 +477,8 @@ public class ProjectileData
 		BPos1R = chart.BPos1R;
 		BPos2 = chart.BPos2;
 		BPos2R = chart.BPos2R;
-		Lifetime = chart.Lifetime;		
+		Lifetime = chart.Lifetime;
+		BeginSfx = chart.BeginSfx;
 		BeginFx = chart.BeginFx;
 		HitDestroyFx = chart.HitDestroyFx;
 		DestroyFx = chart.DestroyFx;
@@ -476,6 +499,7 @@ public class ProjectileData
 		Lifetime = 5f;
 		DestroyFx = null;
 		DestroyResult = null;
+		BeginSfx = null;
 		BeginFx = null;
 		HitDestroyFx = null;
 		HitDestroyResult = null;

@@ -22,7 +22,7 @@ public class StartManager : MonoBehaviour
 
 		yield return new WaitForSeconds(0.5f);
 
-		SoundManager.Ins.ChangeBGM("rpg_19_loop");
+		SoundManager.Ins.ChangeBGM("promotion_005");
 
 		yield return new WaitForSeconds(1.5f);
 
