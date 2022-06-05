@@ -69,11 +69,11 @@ skill_10014,str_name_skill_10014,str_desc_skill_10014,ActiveEnemyTarget,2,90,3,A
 skill_10014,str_name_skill_10014,str_desc_skill_10014,ActiveEnemyTarget,3,90,3,Attack,,BubblesWater,90,20|35|50|65|80,skill_10014_3_a|skill_10014_3_b|skill_10014_3_c|skill_10014_3_d|skill_10014_3_e
 skill_10014,str_name_skill_10014,str_desc_skill_10014,ActiveEnemyTarget,4,90,3,Attack,,BubblesWater,90,20|35|50|65|80,skill_10014_4_a|skill_10014_4_b|skill_10014_4_c|skill_10014_4_d|skill_10014_4_e
 skill_10014,str_name_skill_10014,str_desc_skill_10014,ActiveEnemyTarget,5,90,3,Attack,,BubblesWater,90,20|35|50|65|80,skill_10014_5_a|skill_10014_5_b|skill_10014_5_c|skill_10014_5_d|skill_10014_5_e
-skill_10015,str_name_skill_10015,str_desc_skill_10015,Active,1,50,10,Attack,,,6,3,skill_10005_1
-skill_10015,str_name_skill_10015,str_desc_skill_10015,Active,2,45,15,Attack,,,6,3,skill_10005_2
-skill_10015,str_name_skill_10015,str_desc_skill_10015,Active,3,40,20,Attack,,,6,3,skill_10005_3
-skill_10015,str_name_skill_10015,str_desc_skill_10015,Active,4,35,25,Attack,,,6,3,skill_10005_4
-skill_10015,str_name_skill_10015,str_desc_skill_10015,Active,5,30,30,Attack,,,6,3,skill_10005_5
+skill_10015,str_name_skill_10015,str_desc_skill_10015,ActiveEnemyTarget,1,90,2,Attack,,,6,3,skill_10015_1
+skill_10015,str_name_skill_10015,str_desc_skill_10015,ActiveEnemyTarget,2,90,2,Attack,,,6,3,skill_10015_2
+skill_10015,str_name_skill_10015,str_desc_skill_10015,ActiveEnemyTarget,3,90,2,Attack,,,6,3,skill_10015_3
+skill_10015,str_name_skill_10015,str_desc_skill_10015,ActiveEnemyTarget,4,90,2,Attack,,,6,3,skill_10015_4
+skill_10015,str_name_skill_10015,str_desc_skill_10015,ActiveEnemyTarget,5,90,2,Attack,,,6,3,skill_10015_5
 skill_10016,str_name_skill_10016,str_desc_skill_10016,Active,1,30,60,Attack,,,6,3,skill_10006_1
 skill_10016,str_name_skill_10016,str_desc_skill_10016,Active,2,30,60,Attack,,,6,3,skill_10006_2
 skill_10016,str_name_skill_10016,str_desc_skill_10016,Active,3,30,60,Attack,,,6,3,skill_10006_3

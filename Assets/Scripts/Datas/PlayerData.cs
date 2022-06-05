@@ -36,7 +36,7 @@ public class PlayerData
 		PlayAppCount = 1;
 		Gold = 0;
 		Magicite = 0f;
-		SoulStone = 0f;
+		SoulStone = 5000000f;
 		Stage = 1;
 		AscensionCount = 0;
 		QuestLv = 1;

@@ -1,5 +1,7 @@
 ﻿Id,FxResource,Size,SpawnAnchor,SpawnPosX,SpawnPosY,Binding,SoundResource
-TestHitFx,TestHitFx,0.5,Center,,,,
+HitFxRed,HitFxRed,0.3,,,,,
+HitFxGreen,HitFxGreen,0.3,,,,,
+HitFxBlue,HitFxBlue,0.3,,,,,
 Ise Attack,Ise Attack,1,,,2.86,,Skill 8
 EntangleVine,EntangleVine,1,Center,,,,
 Hit 19,Hit 19,2,Center,,,,
@@ -32,3 +34,4 @@ OrbitalBeamPink,OrbitalBeamPink,3,,,3.7,,
 BuffBlue,BuffBlue,1,Center,,,,
 AuraChargeBlue,AuraChargeBlue,1,Land,,,,
 BubblesWater,BubblesWater,5,,,4,,
+HellFlame,HellFlame,1,Center,,,,

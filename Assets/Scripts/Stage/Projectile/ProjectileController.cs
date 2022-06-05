@@ -364,7 +364,18 @@ public class ProjectileController : MonoBehaviour
 			//영웅 일반 공격
 			else if(caster != null && minion == null && hitresults == null)
 			{
-				EffectManager.Ins.ShowFx("TestHitFx", enemyBase.transform);
+				switch (caster.Stat.Attr)
+				{
+					case Attr.Red:
+						EffectManager.Ins.ShowFx("HitFxRed", enemyBase.transform);
+						break;
+					case Attr.Blue:
+						EffectManager.Ins.ShowFx("HitFxBlue", enemyBase.transform);
+						break;
+					case Attr.Green:
+						EffectManager.Ins.ShowFx("HitFxGreen", enemyBase.transform);
+						break;
+				}
 
 				bool isCrit = Random.Range(0, 100f) <= caster.Stat.CritChance ? true : false;
 				double resultDmg = enemyBase.TakeDmg(atk, caster.Stat.Attr, isCrit, 0f);
