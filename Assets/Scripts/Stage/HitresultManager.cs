@@ -96,12 +96,17 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			switch (datas[i].TargetType)
 			{
 				case TargetType.Enemy:
-					List<EnemyBase> enemyTargets = SearchEnemyTargets(datas[i], caster);
-
 					if (datas[i].RangeType == RangeType.None)
-					{						
+					{
+						yield return new WaitForSeconds(datas[i].DelayTime);
+
+						if (datas[i].DelayBeginFx != null)
+							EffectManager.Ins.ShowFx(datas[i].DelayBeginFx);
+
+						List<EnemyBase> enemyTargets = SearchEnemyTargets(datas[i], caster);
+
 						//히트리절트 전달
-						if(enemyTargets.Count > 0)
+						if (enemyTargets.Count > 0)
 						{
 							for(int k = 0; k < enemyTargets.Count; k++)
 							{				
@@ -119,6 +124,8 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 
 						if (datas[i].DelayBeginFx != null)
 							EffectManager.Ins.ShowFx(datas[i].DelayBeginFx);
+
+						List<EnemyBase> enemyTargets = SearchEnemyTargets(datas[i], caster);
 
 						if (datas[i].AddDelayTarget)
 						{
