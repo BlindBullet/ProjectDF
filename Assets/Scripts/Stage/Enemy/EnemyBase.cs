@@ -289,7 +289,7 @@ public class EnemyBase : MonoBehaviour
 		float randNo = Random.Range(0f, 100f);
 		bool result = false;
 		double getSoulStone = 0f;
-		Debug.Log(randNo + "  " + result);
+		
 		if (isBoss)
 		{
 			result = randNo <= ConstantData.BossEnemyDropSoulStoneRate ? true : false;

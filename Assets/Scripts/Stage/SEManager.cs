@@ -473,10 +473,10 @@ public class SEManager : MonoSingleton<SEManager>
 						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								StageManager.Ins.PlayerStat.LvUpGoldDec += (float)data.Value;
+								StageManager.Ins.PlayerStat.LvUpGold += (float)data.Value;
 								break;
 							case "Dec":
-								StageManager.Ins.PlayerStat.LvUpGoldDec -= (float)data.Value;
+								StageManager.Ins.PlayerStat.LvUpGold -= (float)data.Value;
 								break;
 						}
 						break;

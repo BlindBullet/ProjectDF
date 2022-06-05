@@ -1,7 +1,7 @@
 ﻿Id,Name,Desc,Icon,Type,MaxLv,Effect,PriceCostType,Price,LvUpCostType,LvUpCost,LvUpCostIncValue,LvUpCostIncRate
 10001,str_name_castle_10001,str_desc_castle_10001,Loot_01,Castle,100,Castle1,SoulStone,100,SoulStone,100,100,
 10002,str_name_castle_10002,str_desc_castle_10002,Loot_02,Castle,20,Castle2,SoulStone,100,SoulStone,300,300,
-10003,str_name_castle_10003,str_desc_castle_10003,Loot_03,Castle,50,Castle3,SoulStone,50,SoulStone,50,50,
+10003,str_name_castle_10003,str_desc_castle_10003,Loot_03,Castle,10,Castle3,SoulStone,50,SoulStone,50,50,
 10004,str_name_castle_10004,str_desc_castle_10004,Loot_04,Castle,20,Castle4,SoulStone,100,SoulStone,100,100,
 10005,str_name_castle_10005,str_desc_castle_10005,Loot_05,Castle,40,Castle5,SoulStone,100,SoulStone,50,50,
 10006,str_name_castle_10006,str_desc_castle_10006,Loot_06,Castle,20,Castle6,SoulStone,100,SoulStone,150,150,

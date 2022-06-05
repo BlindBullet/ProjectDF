@@ -23,7 +23,7 @@ public static class ConstantData
 	//적 처치 골드 증가
 	public static ObscuredFloat EnemyGoldGR = 1.1f;
 	//환생 가능 스테이지
-	public static ObscuredInt PossibleAscensionStage = 4;
+	public static ObscuredInt PossibleAscensionStage = 20;
 	//환생 시작 리워드
 	public static ObscuredDouble AscensionBasicReward = 50f;
 	//환생 리워드 증가
@@ -66,7 +66,7 @@ public static class ConstantData
 	public static double GetLvUpCost(int lv)
 	{
 		double value = CalcValue(StartLvUpGold, LvUpGoldGR, lv);
-		value = value - (value * (StageManager.Ins.PlayerStat.LvUpGoldDec));
+		value = value + (value * (StageManager.Ins.PlayerStat.LvUpGold / 100f));
 			
 		return value;		
 	}
