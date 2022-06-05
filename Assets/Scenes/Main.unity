@@ -1417,7 +1417,7 @@ RectTransform:
   - {fileID: 736446571}
   - {fileID: 592388646}
   m_Father: {fileID: 562937652}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1659,7 +1659,7 @@ RectTransform:
   - {fileID: 1107765632}
   - {fileID: 1232975111}
   m_Father: {fileID: 562937652}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2827,8 +2827,8 @@ RectTransform:
   - {fileID: 497465113}
   - {fileID: 1618740736}
   - {fileID: 1026725317}
-  - {fileID: 385728698}
   - {fileID: 461589084}
+  - {fileID: 385728698}
   - {fileID: 1143361648}
   m_Father: {fileID: 1854060959}
   m_RootOrder: 2
@@ -10953,6 +10953,8 @@ MonoBehaviour:
   QuestNotify: {fileID: 1103859834}
   CastleBtn: {fileID: 461589085}
   CastleBtnText: {fileID: 1232975112}
+  DungeonBtn: {fileID: 385728699}
+  DungeonBtnText: {fileID: 736446572}
   SettingBtn: {fileID: 1143361649}
   SettingBtnText: {fileID: 1807318259}
 --- !u!21 &1856272730

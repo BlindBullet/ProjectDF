@@ -19,6 +19,8 @@ public class PlayerUi : MonoBehaviour
 	public GameObject QuestNotify;
 	public Button CastleBtn;
 	public TextMeshProUGUI CastleBtnText;
+	public Button DungeonBtn;
+	public TextMeshProUGUI DungeonBtnText;
 	public Button SettingBtn;
 	public TextMeshProUGUI SettingBtnText;
 
@@ -45,6 +47,10 @@ public class PlayerUi : MonoBehaviour
 
 		SetAscensionNotify();
 		SetQuestBtn();
+
+		DungeonBtnText.text = LanguageManager.Ins.SetString("Dungeon");
+		DungeonBtn.onClick.RemoveAllListeners();
+		DungeonBtn.onClick.AddListener(() => DialogManager.Ins.OpenCautionBar("notice_dungeon_update"));
 
 		SettingBtnText.text = LanguageManager.Ins.SetString("Setting");
 		SettingBtn.onClick.RemoveAllListeners();
