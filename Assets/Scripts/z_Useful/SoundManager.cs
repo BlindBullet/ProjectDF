@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class SoundManager : SingletonObject<SoundManager>
 {		
-	public int audioSourceCount = 10;
+	public int audioSourceCount = 3;
 
 	public string bgmPath = "Sounds/Bgm/";
 	public string sfxPath = "Sounds/Sfx/";
@@ -38,7 +38,7 @@ public class SoundManager : SingletonObject<SoundManager>
 		}
 	}
 
-	/**********SFX***********/
+	/**********SFX***********/	
 
 	public void PlaySFX(string name, bool loop = false, float pitch = 1)//효과음 재생
 	{

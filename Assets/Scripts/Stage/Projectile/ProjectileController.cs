@@ -162,13 +162,13 @@ public class ProjectileController : MonoBehaviour
 		switch (caster.Stat.Attr)
 		{
 			case Attr.Red:
-				SoundManager.Ins.PlaySFX("poly_shoot_magic");
+				SoundManager.Ins.PlaySFX("poly_shoot_arrow");
 				break;
 			case Attr.Blue:
-				SoundManager.Ins.PlaySFX("poly_shoot_ice");
+				SoundManager.Ins.PlaySFX("poly_shoot_arrow");
 				break;
 			case Attr.Green:
-				SoundManager.Ins.PlaySFX("poly_shoot_holy");
+				SoundManager.Ins.PlaySFX("poly_shoot_arrow");
 				break;
 		}
 
