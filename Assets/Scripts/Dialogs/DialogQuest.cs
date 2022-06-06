@@ -107,9 +107,14 @@ public class DialogQuest : DialogController
 			{
 				DateTime dateTime = StageManager.Ins.PlayerData.QuestResetStartTime;
 				TimeSpan timeSpan = DateTime.UtcNow - dateTime;
-				int time = (ConstantData.QuestResetPossibleSec - (int)timeSpan.TotalSeconds);
-				string timeStr = time < 10 ? "0" + time.ToString() : time.ToString();
-				ResetBtnTimeText.text = "00:" + timeStr;
+				int time = (ConstantData.QuestResetPossibleSec - (int)timeSpan.TotalSeconds);								
+				int min = (int)((time % 3600f) / 60f);
+				int sec = (int)((time % 3600f) % 60f);
+								
+				string minStr = min < 10 ? "0" + min : min.ToString();
+				string secStr = sec < 10 ? "0" + sec : sec.ToString();
+
+				ResetBtnTimeText.text = minStr + ":" + secStr;
 			}
 			else
 			{

@@ -61,7 +61,7 @@ public static class ConstantData
 	//보스 몬스터를 처치했을 때 떨어질 최대 영혼석
 	public static ObscuredDouble BossEnemyDropSoulStoneMaxCount = 3;
 	//퀘스트 리셋이 가능한 시간(초)
-	public static ObscuredInt QuestResetPossibleSec = 30;
+	public static ObscuredInt QuestResetPossibleSec = 180;
 	public static double GetLvUpCost(int lv)
 	{
 		double value = CalcValue(StartLvUpGold, LvUpGoldGR, lv);
