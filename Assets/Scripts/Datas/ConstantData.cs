@@ -62,6 +62,9 @@ public static class ConstantData
 	public static ObscuredDouble BossEnemyDropSoulStoneMaxCount = 3;
 	//퀘스트 리셋이 가능한 시간(초)
 	public static ObscuredInt QuestResetPossibleSec = 180;
+	//파워업 리셋 가격
+	public static ObscuredDouble PowerUpRefreshCost = 10;
+
 	public static double GetLvUpCost(int lv)
 	{
 		double value = CalcValue(StartLvUpGold, LvUpGoldGR, lv);

@@ -83,6 +83,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d8bae3f2009e2a043b9c806c8f0d1112, type: 3}
   - {fileID: 21300000, guid: 5f18c603aaf7f41439e6f4665e82e500, type: 3}
   - {fileID: 21300000, guid: 9462a70320ec14e40852a5836daa24f3, type: 3}
+  - {fileID: 21300000, guid: aadfbd2382ddf2d4e86f580e3d7f0535, type: 3}
   - {fileID: 21300000, guid: bef8abf3cc7a51144b0dbf8f0f7faa9d, type: 3}
   - {fileID: 21300000, guid: ba3cf2544083bb441bb86c50302690c2, type: 3}
   - {fileID: 21300000, guid: 0ec3bd74006845642a5ea33d78b7ccab, type: 3}
@@ -192,6 +193,7 @@ SpriteAtlas:
   - rect-tag-above
   - EnemyCircleBg_Red
   - SGI_13
+  - Front
   - Enchantment_39_mana_scroll
   - UseAutoSkill
   - MinionFrame_Blue

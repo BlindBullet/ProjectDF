@@ -12,8 +12,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	const string InterstitialAdTestId = "ca-app-pub-3940256099942544/1033173712";
 	RewardedAd suppliesAd;
 	RewardedAd questAd;
-	InterstitialAd questRefreshAd;
-	InterstitialAd powerUpRefreshAd;
+	InterstitialAd questRefreshAd;	
 	RewardedAd ascensionRewardAd;
 	RewardedAd offlineRewardAd;	
 	AdRequest request;	
@@ -30,9 +29,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		questRefreshAd = new InterstitialAd(isTestMode ? InterstitialAdTestId : questRefreshRewardId);
 		LoadAd(AdType.QuestRefresh);
 		questAd = new RewardedAd(isTestMode ? rewardTestID : questRewardId);
-		LoadAd(AdType.QuestReward);
-		powerUpRefreshAd = new InterstitialAd(isTestMode ? InterstitialAdTestId : powerUpRefreshRewardId);
-		LoadAd(AdType.PowerUpRefresh);
+		LoadAd(AdType.QuestReward);		
 		ascensionRewardAd = new RewardedAd(isTestMode ? rewardTestID : ascensionRewardId);
 		LoadAd(AdType.AscensionReward);
 		offlineRewardAd = new RewardedAd(isTestMode ? rewardTestID : ascensionRewardId);
@@ -42,10 +39,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	void LoadAd(AdType type)
 	{
 		switch (type)
-		{
-			case AdType.PowerUpRefresh:
-				powerUpRefreshAd.LoadAd(request);
-				break;
+		{			
 			case AdType.SuppliesReward:
 				suppliesAd.LoadAd(request);
 				break;
@@ -108,19 +102,6 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	}
 	#endregion
 
-	#region 파워업 리스트 갱신 광고
-	const string powerUpRefreshRewardId = "ca-app-pub-7304648099168356/2726634837";
-
-	public void ShowPowerUpRefreshAd()
-	{
-		if (powerUpRefreshAd.IsLoaded())
-			powerUpRefreshAd.Show();
-
-		StartCoroutine(DialogSlotPowerUp._Dialog.Refresh());
-		LoadAd(AdType.PowerUpRefresh);
-	}
-	#endregion
-
 	#region 어센션 보상 광고
 	const string ascensionRewardId = "ca-app-pub-7304648099168356/3207294219";
 
@@ -157,8 +138,7 @@ public enum AdType
 {
 	SuppliesReward,
 	QuestReward,
-	QuestRefresh,
-	PowerUpRefresh,
+	QuestRefresh,	
 	AscensionReward,
 	OfflineReward,
 

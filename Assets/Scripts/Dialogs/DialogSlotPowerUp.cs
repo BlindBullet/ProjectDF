@@ -16,19 +16,27 @@ public class DialogSlotPowerUp : DialogController
 	public PowerUpBar[] Bars;
 	public Button RefreshBtn;
 	public TextMeshProUGUI RefreshBtnText;
+	public TextMeshProUGUI RefreshCostText;
 	SlotData data;
 	int powerUpNo = 0;
 	public List<AtkUpgradeType> LotteriedBars = new List<AtkUpgradeType>();
 	bool onHelp;
+	Material refreshBtnMat;
 
 	public void OpenDialog(SlotData data)
 	{
 		this.data = data;
+
+		Image uiImage = RefreshBtn.GetComponent<Image>();
+		uiImage.material = new Material(uiImage.materialForRendering);
+		refreshBtnMat = RefreshBtn.GetComponent<Image>().material;
+		RefreshBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
+
 		Title.text = LanguageManager.Ins.SetString("title_popup_slot_power_up");
 		Desc.text = LanguageManager.Ins.SetString("desc_popup_slot_power_up");
 		HelpText.text = LanguageManager.Ins.SetString("help_slot_power_up");
 		RefreshBtnText.text = LanguageManager.Ins.SetString("Refresh");
-
+		RefreshCostText.text = ConstantData.PowerUpRefreshCost.ToString();
 		onHelp = false;
 
 		HelpBtn.onClick.RemoveAllListeners();
@@ -40,8 +48,7 @@ public class DialogSlotPowerUp : DialogController
 		powerUpNo = ConstantData.SlotPowerUpPossibleLv[data.Power];
 
 		SetBars();
-		SetRefreshBtn();
-		RefreshBtn.gameObject.SetActive(false);
+		SetRefreshBtn();		
 
 		_Dialog = this;
 		Show(false, true);
@@ -135,14 +142,9 @@ public class DialogSlotPowerUp : DialogController
 		StageManager.Ins.PlayerData.Save();
 	}
 
-	public IEnumerator Refresh()
-	{		
-		yield return null;
-		RefreshPowerUpBars();
-	}
-
 	public void RefreshPowerUpBars()
 	{
+		LotteriedBars.Clear();
 		List<SlotPowerUpChart> charts = CsvData.Ins.SlotPowerUpChart[powerUpNo];
 
 		List<int> probs = new List<int>();
@@ -222,17 +224,30 @@ public class DialogSlotPowerUp : DialogController
 			LotteriedBars.Add(charts[results[i]].Type);
 		}
 
-		StageManager.Ins.PlayerData.Save();
-		RefreshBtn.gameObject.SetActive(false);
+		StageManager.Ins.PlayerData.Save();		
 	}
 
 	void SetRefreshBtn()
 	{
-		RefreshBtn.onClick.RemoveAllListeners();
-		RefreshBtn.onClick.AddListener(() =>
+		
+
+		if (StageManager.Ins.PlayerData.SoulStone >= ConstantData.PowerUpRefreshCost)
 		{
-			AdmobManager.Ins.ShowPowerUpRefreshAd();
-		});
+			refreshBtnMat.SetFloat("_GreyccaleBlend", 0f);
+			RefreshBtn.enabled = true;
+
+			RefreshBtn.onClick.RemoveAllListeners();
+			RefreshBtn.onClick.AddListener(() =>
+			{
+				StageManager.Ins.ChangeSoulStone(-ConstantData.PowerUpRefreshCost);
+				RefreshPowerUpBars();
+			});
+		}
+		else
+		{
+			refreshBtnMat.SetFloat("_GreyccaleBlend", 1f);
+			RefreshBtn.enabled = false;
+		}
 	}
 
 	void OnHelp()
