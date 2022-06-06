@@ -244,11 +244,11 @@ public class StageManager : MonoSingleton<StageManager>
 			yield return StartCoroutine(BossSequence());
 		}
 		else
-		{
+		{			
 			yield return new WaitForSeconds(1f);
 
 			if (CheckAppearSupplies())
-			{
+			{				
 				StartCoroutine(AppearSupplies());
 			}
 		}
@@ -269,29 +269,30 @@ public class StageManager : MonoSingleton<StageManager>
 
 	bool CheckAppearSupplies()
 	{
-		if(PlayerData.Stage < 3)
+		if(PlayerData.Stage < ConstantData.SuppliesAppearPossibleStage)
 		{
+			
 			return false;
 		}
 		else
 		{
-			float randNo = Random.Range(0, 100);
-
-			if(randNo < appearSuppliesProb)
-			{
-				appearSuppliesProb = -50f;
+			float randNo = Random.Range(0, 100f);
+			
+			if(randNo <= appearSuppliesProb)
+			{				
+				appearSuppliesProb = 100f;
 				return true;
 			}
 			else
-			{
-				appearSuppliesProb += 15f;
+			{				
+				appearSuppliesProb += 100f;
 				return false;
 			}
 		}
 	}
 
 	IEnumerator AppearSupplies()
-	{
+	{		
 		yield return new WaitForSeconds(5f);
 
 		List<SuppliesChart> charts = new List<SuppliesChart>();

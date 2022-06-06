@@ -1,7 +1,6 @@
 ﻿Id,Icon,IconSize,Prob,ShowAd,RewardType,RewardValue
-1,Gold,2.3,10,,Gold,10
-2,Gold,2.3,10,True,Gold,30
-3,SoulStone,1.5,30,True,SoulStone,20
-4,GameSpeed,1,10,True,GameSpeed,20
-5,GainGold,1,10,True,GainGold,20
-6,UseAutoSkill,1,10,True,UseAutoSkill,20
+1,Gold,2.3,10,True,Gold,30
+2,SoulStone,1.5,30,True,SoulStone,20
+3,GameSpeed,2.3,10,True,GameSpeed,20
+4,GainGold,2.3,10,True,GainGold,20
+5,UseAutoSkill,2.3,10,True,UseAutoSkill,20

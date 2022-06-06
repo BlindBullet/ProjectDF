@@ -17,7 +17,9 @@ public class DialogOfflineReward : DialogController
 	public Button GetBtn;
 	public TextMeshProUGUI GetBtnText;
 	public Button AdGetBtn;
-	public TextMeshProUGUI AdGetBtnText;	
+	public TextMeshProUGUI AdGetBtnText;
+	public double resultValue;
+	public double resultAddValue;
 
 	public void OpenDialog()
 	{
@@ -75,15 +77,17 @@ public class DialogOfflineReward : DialogController
 			rewardValue = rewardValue * 2f;
 			addRewardValue = addRewardValue * 2f;
 
-			AdmobManager.Ins.ShowOfflineRewardAd(rewardValue, addRewardValue);
+			resultValue = rewardValue;
+			resultAddValue = addRewardValue;
+			AdmobManager.Ins.ShowOfflineRewardAd();
 		});
 	}
 
-	public IEnumerator ShowAdReward(double rewardValue, double addRewardValue)
+	public IEnumerator ShowAdReward()
 	{
 		yield return null;
-
-		GetAdReward(rewardValue, addRewardValue);
+				
+		GetAdReward(resultValue, resultAddValue);
 	}
 
 	void GetAdReward(double vluae, double addValue)

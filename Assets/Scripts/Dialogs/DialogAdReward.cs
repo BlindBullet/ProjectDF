@@ -15,12 +15,14 @@ public class DialogAdReward : DialogController
 	public TextMeshProUGUI GetBtnText;
 	public Button AdBtn;
 	public TextMeshProUGUI AdBtnText;
-	
+	public SuppliesChart suppliesChart;
+	public QuestChart questChart;
+
 	public void OpenDialog(SuppliesChart chart)
 	{
+		this.suppliesChart = chart;
 		_Dialog = this;
-		GetBtn.gameObject.SetActive(false);
-
+		
 		SetBasic();
 
 		double rewardValue = chart.RewardValue;
@@ -30,24 +32,41 @@ public class DialogAdReward : DialogController
 			case RewardType.Gold:
 				rewardValue = ConstantData.GetGoldFromTime(chart.RewardValue, StageManager.Ins.PlayerData.Stage);
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.CalcValue);
-				RewardDesc.text = LanguageManager.Ins.SetString("Bonus") + ": " + rewardValue.ToCurrencyString() + " " + LanguageManager.Ins.SetString("Gold");
+				RewardDesc.text = LanguageManager.Ins.SetString("Reward") + ": " + rewardValue.ToCurrencyString() + " " + LanguageManager.Ins.SetString("Gold");
 				break;
 			case RewardType.SoulStone:				
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.CalcValue);
-				RewardDesc.text = LanguageManager.Ins.SetString("Bonus") + ": " + rewardValue + " " + LanguageManager.Ins.SetString("SoulStone");
+				RewardDesc.text = LanguageManager.Ins.SetString("Reward") + ": " + rewardValue + " " + LanguageManager.Ins.SetString("SoulStone");
 				break;
 			case RewardType.GameSpeed:				
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.Time);
-				RewardDesc.text = LanguageManager.Ins.SetString("Bonus") + ": " + LanguageManager.Ins.SetString("GameSpeed2x") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
+				RewardDesc.text = LanguageManager.Ins.SetString("Reward") + ": " + LanguageManager.Ins.SetString("GameSpeed2x") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.UseAutoSkill:
+				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.Time);
+				RewardDesc.text = LanguageManager.Ins.SetString("Reward") + ": " + LanguageManager.Ins.SetString("UseAutoSkill") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.GainGold:
+				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.Time);
+				RewardDesc.text = LanguageManager.Ins.SetString("Reward") + ": " + LanguageManager.Ins.SetString("GainGold") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
 				break;
 		}
 
-		AdBtnText.text = LanguageManager.Ins.SetString("get_ad_reward");
+		GetBtnText.text = LanguageManager.Ins.SetString("Claim");
+		GetBtn.onClick.RemoveAllListeners();
+		GetBtn.onClick.AddListener(() => 
+		{ 
+			SoundManager.Ins.PlaySFX("se_button_2"); 
+			SendReward(chart); 
+			CloseDialog(); 
+		});
+
+		AdBtnText.text = LanguageManager.Ins.SetString("get_ad_reward_x2");
 		AdBtn.onClick.RemoveAllListeners();
 		AdBtn.onClick.AddListener(() => 
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
-			AdmobManager.Ins.ShowSuppliesAdReward(chart);			
+			AdmobManager.Ins.ShowSplliesAd();			
 		});
 
 		Show(false);
@@ -55,6 +74,7 @@ public class DialogAdReward : DialogController
 
 	public void OpenDialog(QuestChart chart)
 	{
+		this.questChart = chart;
 		_Dialog = this;
 		CloseBtn.gameObject.SetActive(false);
 
@@ -101,7 +121,7 @@ public class DialogAdReward : DialogController
 		AdBtn.onClick.AddListener(() =>
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
-			AdmobManager.Ins.ShowQuestRewardAd(chart);
+			AdmobManager.Ins.ShowQuestRewardAd();
 		});
 
 		Show(false);
@@ -117,14 +137,14 @@ public class DialogAdReward : DialogController
 		Title.text = LanguageManager.Ins.SetString("Reward");
 	}
 
-	public IEnumerator GetReward(SuppliesChart chart)
-	{
+	public IEnumerator GetSuppliesReward(bool isAd = false)
+	{		
 		yield return null;
 
-		SendReward(chart);
+		SendReward(suppliesChart, isAd);
 	}
 
-	public void SendReward(SuppliesChart chart)
+	public void SendReward(SuppliesChart chart, bool isAd = false)
 	{
 		double rewardValue = chart.RewardValue;
 
@@ -132,31 +152,36 @@ public class DialogAdReward : DialogController
 		{
 			case RewardType.Gold:
 				rewardValue = ConstantData.GetGoldFromTime(chart.RewardValue, StageManager.Ins.PlayerData.Stage);
+				rewardValue = isAd ? rewardValue * 2f : rewardValue;
 				StageManager.Ins.ChangeGold(rewardValue);
 				break;
 			case RewardType.SoulStone:
 				StageManager.Ins.ChangeMagicite(chart.RewardValue);
+				rewardValue = isAd ? rewardValue * 2f : rewardValue;
 				break;
 			case RewardType.GameSpeed:
-				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GameSpeed, chart.RewardValue);
+				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GameSpeed, rewardValue);
 				break;
 			case RewardType.UseAutoSkill:
-				StageManager.Ins.AddPlayerBuff(PlayerBuffType.UseAutoSkill, chart.RewardValue);
+				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				StageManager.Ins.AddPlayerBuff(PlayerBuffType.UseAutoSkill, rewardValue);
 				break;
 			case RewardType.GainGold:
-				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GainGold, chart.RewardValue);
+				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GainGold, rewardValue);
 				break;
 		}
-
+				
 		DialogManager.Ins.OpenReceiveReward(chart.RewardType, rewardValue);
 		CloseDialog();
 	}
 
-	public IEnumerator GetReward(QuestChart chart, bool isAd = false)
+	public IEnumerator GetQuestReward(bool isAd = false)
 	{
 		yield return null;
 
-		SendReward(chart, isAd);
+		SendReward(questChart, isAd);
 	}
 
 	public void SendReward(QuestChart chart, bool isAd = false)
