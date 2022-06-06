@@ -65,7 +65,14 @@ public class TutorialManager : MonoSingleton<TutorialManager>
 				if (StageManager.Ins.PlayerData.Stage >= con.Value)
 					return true;
 				else
-					return false;				
+					return false;
+			case TutorialConType.Level:
+				for(int i = 0; i < HeroBase.Heroes.Count; i++)
+				{
+					if (HeroBase.Heroes[i].Data.SlotNo == 3 && StageManager.Ins.Slots[2].data.Lv == (int)con.Value)
+						return true;
+				}
+				return false;
 			default:
 				return true;
 		}
@@ -103,10 +110,11 @@ public class TutorialCondition
 				break;
 			case 3:
 				Condition = TutorialConType.Gold;
-				Value = 10f;
+				Value = 10;
 				break;
 			case 4:
-				Condition = TutorialConType.None;
+				Condition = TutorialConType.Level;
+				Value = 5;
 				break;
 			case 5:
 				Condition = TutorialConType.Stage;
@@ -122,6 +130,7 @@ public enum TutorialConType
 {
 	None,
 	Gold,
+	Level,
 	Stage,
 
 }

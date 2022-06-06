@@ -280,12 +280,12 @@ public class StageManager : MonoSingleton<StageManager>
 			
 			if(randNo <= appearSuppliesProb)
 			{				
-				appearSuppliesProb = 100f;
+				appearSuppliesProb = -50f;
 				return true;
 			}
 			else
 			{				
-				appearSuppliesProb += 100f;
+				appearSuppliesProb += 15f;
 				return false;
 			}
 		}
