@@ -13,6 +13,7 @@ public class SkillChart
     public float CoolDealy { get; set; }
     public string Anim { get; set; }
     public string CastFx { get; set; }
+    public string CastSfx { get; set; }
     public string BeginFx { get; set; }    
     public float TotalFrame { get; set; }
     public float[] FireFrame { get; set; }    

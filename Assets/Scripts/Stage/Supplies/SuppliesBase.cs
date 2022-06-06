@@ -15,9 +15,11 @@ public class SuppliesBase : MonoBehaviour
 	Vector2 max;
 	Coroutine cMove = null;
 	Material mat;
+	bool isClick = false;
 
 	public void Setup(SuppliesChart chart)
 	{
+		isClick = false;
 		data = chart;
 		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.Icon);
 		IconImg.transform.localScale = new Vector2(chart.IconSize, chart.IconSize);
@@ -141,9 +143,15 @@ public class SuppliesBase : MonoBehaviour
 	}
 
 	public void GetReward()
-	{
+	{	
 		StopMove();
-		DialogManager.Ins.OpenAdReward(data);
+
+		if (!isClick)
+		{
+			DialogManager.Ins.OpenAdReward(data);
+			isClick = true;
+		}
+		
 		ObjectManager.Ins.Push<SuppliesBase>(this);		
 	}
 

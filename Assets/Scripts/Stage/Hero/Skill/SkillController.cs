@@ -93,6 +93,9 @@ public class SkillController : MonoBehaviour
 		if (data.CastFx != null)
 			EffectManager.Ins.ShowFx(skill.Data.CastFx, me.Anchor);
 
+		if (data.CastSfx != null)
+			SoundManager.Ins.PlaySFX(skill.Data.CastSfx);
+
 		if (data.BeginFx != null)
 		{	
 			EffectManager.Ins.ShowFx(skill.Data.BeginFx, me.Anchor);			

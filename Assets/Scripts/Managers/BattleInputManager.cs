@@ -197,6 +197,7 @@ public class BattleInputManager : MonoBehaviour
 			else if (target.tag == SuppliesTag)
 			{
 				var supplies = target.GetComponent<SuppliesBase>();
+
 				if (supplies == null)
 				{
 					return;
