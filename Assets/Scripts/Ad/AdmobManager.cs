@@ -89,6 +89,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	void FailedSuppliesAd(object sender, AdErrorEventArgs args)
 	{
 		Debug.Log("±¤°í ½ÇÆÐ");
+		UnityAdsManager.Ins.ShowAd(AdType.SuppliesReward);
 	}
 	#endregion
 
@@ -108,6 +109,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	void FailedQuestRewardAd(object sender, AdErrorEventArgs args)
 	{
 		Debug.Log("±¤°í ½ÇÆÐ");
+		UnityAdsManager.Ins.ShowAd(AdType.QuestReward);
 	}
 	#endregion
 
@@ -128,6 +130,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	void FailedAscensionRewardAd(object sender, AdErrorEventArgs args)
 	{
 		Debug.Log("±¤°í ½ÇÆÐ");
+		UnityAdsManager.Ins.ShowAd(AdType.AscensionReward);
 	}
 	#endregion
 
@@ -135,7 +138,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	const string offlineRewardId = "ca-app-pub-7304648099168356/6992009449";
 
 	public void ShowOfflineRewardAd()
-	{
+	{	
 		offlineRewardAd.Show();		
 	}
 
@@ -148,6 +151,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	void FailedOfflineRewardAd(object sender, AdErrorEventArgs args)
 	{
 		Debug.Log("±¤°í ½ÇÆÐ");
+		UnityAdsManager.Ins.ShowAd(AdType.OfflineReward);
 	}
 	#endregion
 
