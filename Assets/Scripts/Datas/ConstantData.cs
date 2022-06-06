@@ -23,7 +23,7 @@ public static class ConstantData
 	//적 처치 골드 증가
 	public static ObscuredFloat EnemyGoldGR = 1.1f;
 	//환생 가능 스테이지
-	public static ObscuredInt PossibleAscensionStage = 20;
+	public static ObscuredInt PossibleAscensionStage = 30;
 	//환생 시작 리워드
 	public static ObscuredDouble AscensionBasicReward = 50f;
 	//환생 리워드 증가

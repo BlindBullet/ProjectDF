@@ -75,6 +75,9 @@ public class RelicBar : MonoBehaviour
 					else
 						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max"), Math.Round(value1, 1));
 					break;
+				case "StartStage":
+					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_max"), Math.Round(value1, 1));
+					break;
 				default:
 					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max"), Math.Round(value1, 1));
 					break;
@@ -95,6 +98,9 @@ public class RelicBar : MonoBehaviour
 						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_t"), value1, value2);
 					else
 						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p"), Math.Round(value1, 1), Math.Round(value2, 1));
+					break;
+				case "StartStage":
+					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc"), Math.Round(value1, 1), Math.Round(value2, 1));
 					break;
 				default:
 					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p"), Math.Round(value1, 1), Math.Round(value2, 1));

@@ -84,11 +84,11 @@ skill_10017,str_name_skill_10017,str_desc_skill_10017,ActiveEnemyTarget,2,60,1,A
 skill_10017,str_name_skill_10017,str_desc_skill_10017,ActiveEnemyTarget,3,60,1,Attack,,,6,3,skill_10017_3
 skill_10017,str_name_skill_10017,str_desc_skill_10017,ActiveEnemyTarget,4,60,1,Attack,,,6,3,skill_10017_4
 skill_10017,str_name_skill_10017,str_desc_skill_10017,ActiveEnemyTarget,5,60,1,Attack,,,6,3,skill_10017_5
-skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,1,30,60,Attack,,,6,3,skill_10008_1
-skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,2,30,60,Attack,,,6,3,skill_10008_2
-skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,3,30,60,Attack,,,6,3,skill_10008_3
-skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,4,30,60,Attack,,,6,3,skill_10008_4
-skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,5,30,60,Attack,,,6,3,skill_10008_5
+skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,1,60,60,Attack,,,6,3,skill_10018_1
+skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,2,60,60,Attack,,,6,3,skill_10018_2
+skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,3,60,60,Attack,,,6,3,skill_10018_3
+skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,4,60,60,Attack,,,6,3,skill_10018_4
+skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,5,60,60,Attack,,,6,3,skill_10018_5
 skill_10019,str_name_skill_10019,str_desc_skill_10019,ActiveEnemyTarget,1,45,1,Attack,,,6,3,skill_10009_1
 skill_10019,str_name_skill_10019,str_desc_skill_10019,ActiveEnemyTarget,2,45,1,Attack,,,6,3,skill_10009_2
 skill_10019,str_name_skill_10019,str_desc_skill_10019,ActiveEnemyTarget,3,45,1,Attack,,,6,3,skill_10009_3

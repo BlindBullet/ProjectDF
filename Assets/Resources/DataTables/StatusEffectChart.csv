@@ -16,9 +16,9 @@ ce_10014,DeployHero,Slot,1|5,Attr,Blue,,Hero,All,,,StatChange,Inc,CritChance,,,2
 ce_10015,DeployHero,GradeAvr,3,High,,,Hero,All,,,StatChange,Inc,Atk,,,30,,2
 ce_10016,DeployHero,Attr,Green,High,3,,Hero,All,,,StatChange,Inc,CritDmg,,,50,,2
 ce_10017,DeployHero,Slot,3,Attr,Blue,,Hero,All,,,StatChange,Inc,CritChance,,,2,2,
-ce_10018,DeployHero,Attr,Red,High,2,,Hero,All,,,StatChange,Inc,Spd,,,5,5,
-ce_10019,,,,,,,Hero,Attr,Green,,StatChange,Inc,Atk,,,10,,2
-ce_10020,DeployHero,Slot,3,Attr,Red,,Hero,All,,,StatChange,Inc,Atk,,,20,,2
+ce_10018,,,,,,,Hero,Attr,Green,,StatChange,Inc,CritChance,,,2,2,
+ce_10019,,,,,,,Hero,Attr,Red,,StatChange,Inc,CritChance,,,2,2,
+ce_10020,,,,,,,Hero,Attr,Blue,,StatChange,Inc,Atk,,,30,,2
 Castle1,,,,,,,Player,,,,Ascension,Inc,Magicite,,,5,5,
 Castle2,,,,,,,Player,,,,Ascension,Inc,StartStage,,,11,10,
 Castle3,,,,,,,Player,,,,Ascension,Inc,Gold,,,200,,2
