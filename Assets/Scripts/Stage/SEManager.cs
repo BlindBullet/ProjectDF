@@ -12,8 +12,7 @@ public class SEManager : MonoSingleton<SEManager>
 		SeList.Clear();
 
 		//영웅 콜렉션 효과 불러오기
-		List<HeroData> heroes = StageManager.Ins.PlayerData.Heroes;
-		double value = 0f;
+		List<HeroData> heroes = StageManager.Ins.PlayerData.Heroes;		
 
 		for (int i = 0; i < heroes.Count; i++)
 		{

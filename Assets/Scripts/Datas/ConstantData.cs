@@ -67,7 +67,7 @@ public static class ConstantData
 	//파워업 리셋 가격
 	public static ObscuredDouble PowerUpRefreshCost = 10;
 	//보급품이 나오기 시작할 스테이지
-	public static ObscuredInt SuppliesAppearPossibleStage = 1;
+	public static ObscuredInt SuppliesAppearPossibleStage = 7;
 	
 	public static double GetLvUpCost(int lv)
 	{

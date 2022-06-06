@@ -270,8 +270,7 @@ public class StageManager : MonoSingleton<StageManager>
 	bool CheckAppearSupplies()
 	{
 		if(PlayerData.Stage < ConstantData.SuppliesAppearPossibleStage)
-		{
-			
+		{			
 			return false;
 		}
 		else
