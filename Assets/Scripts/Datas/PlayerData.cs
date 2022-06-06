@@ -29,6 +29,7 @@ public class PlayerData
 	public bool OnSFX;
 	public DateTime OfflineStartTime;
 	public int TutorialStep = 0;
+	public DateTime QuestResetStartTime;
 
 	public void Init()
 	{
@@ -47,6 +48,7 @@ public class PlayerData
 		OnSFX = true;
 		OfflineStartTime = TimeManager.Ins.GetCurrentTime();
 		TutorialStep = 0;
+		QuestResetStartTime = TimeManager.Ins.GetCurrentTime();
 
 		ResisterHeroes();
 		ResisterRelics();
@@ -373,6 +375,12 @@ public class PlayerData
 		Save();
 	}
 
+	public void SetQuestResetTime()
+	{
+		QuestResetStartTime = TimeManager.Ins.GetCurrentTime();
+		Save();
+	}
+
 	public void IncTutorialStep()
 	{
 		TutorialStep++;
@@ -415,6 +423,7 @@ public class PlayerData
 			OnSFX = data.OnSFX;
 			OfflineStartTime = data.OfflineStartTime;
 			TutorialStep = data.TutorialStep;
+			QuestResetStartTime = data.QuestResetStartTime;
 
 			ResisterHeroes();
 			ResisterRelics();

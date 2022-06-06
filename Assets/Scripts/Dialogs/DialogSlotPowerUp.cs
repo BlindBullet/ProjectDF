@@ -17,7 +17,7 @@ public class DialogSlotPowerUp : DialogController
 	public Button RefreshBtn;
 	public TextMeshProUGUI RefreshBtnText;
 	SlotData data;
-	int powerUpNo = 5;
+	int powerUpNo = 0;
 	public List<AtkUpgradeType> LotteriedBars = new List<AtkUpgradeType>();
 	bool onHelp;
 
@@ -41,6 +41,7 @@ public class DialogSlotPowerUp : DialogController
 
 		SetBars();
 		SetRefreshBtn();
+		RefreshBtn.gameObject.SetActive(false);
 
 		_Dialog = this;
 		Show(false, true);
@@ -135,8 +136,7 @@ public class DialogSlotPowerUp : DialogController
 	}
 
 	public IEnumerator Refresh()
-	{
-		Debug.Log("a");
+	{		
 		yield return null;
 		RefreshPowerUpBars();
 	}

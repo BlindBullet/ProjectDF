@@ -9,13 +9,14 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 {
 	public bool isTestMode;
 	const string rewardTestID = "ca-app-pub-3940256099942544/5224354917";
+	const string InterstitialAdTestId = "ca-app-pub-3940256099942544/1033173712";
 	RewardedAd suppliesAd;
 	RewardedAd questAd;
-	RewardedAd questRefreshAd;
-	RewardedAd powerUpRefreshAd;
+	InterstitialAd questRefreshAd;
+	InterstitialAd powerUpRefreshAd;
 	RewardedAd ascensionRewardAd;
-	RewardedAd offlineRewardAd;
-	AdRequest request;
+	RewardedAd offlineRewardAd;	
+	AdRequest request;	
 
 	void Start()
 	{
@@ -23,13 +24,14 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		MobileAds.Initialize(initStatus => { });
 
 		request = new AdRequest.Builder().Build();
+				
 		suppliesAd = new RewardedAd(isTestMode ? rewardTestID : suppliesRewardId);
 		LoadAd(AdType.SuppliesReward);
-		questRefreshAd = new RewardedAd(isTestMode ? rewardTestID : questRefreshRewardId);
+		questRefreshAd = new InterstitialAd(isTestMode ? InterstitialAdTestId : questRefreshRewardId);
 		LoadAd(AdType.QuestRefresh);
 		questAd = new RewardedAd(isTestMode ? rewardTestID : questRewardId);
 		LoadAd(AdType.QuestReward);
-		powerUpRefreshAd = new RewardedAd(isTestMode ? rewardTestID : powerUpRefreshRewardId);
+		powerUpRefreshAd = new InterstitialAd(isTestMode ? InterstitialAdTestId : powerUpRefreshRewardId);
 		LoadAd(AdType.PowerUpRefresh);
 		ascensionRewardAd = new RewardedAd(isTestMode ? rewardTestID : ascensionRewardId);
 		LoadAd(AdType.AscensionReward);
@@ -37,7 +39,6 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		LoadAd(AdType.OfflineReward);
 	}
 
-	#region 보급품 리워드 광고
 	void LoadAd(AdType type)
 	{
 		switch (type)
@@ -45,13 +46,13 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 			case AdType.PowerUpRefresh:
 				powerUpRefreshAd.LoadAd(request);
 				break;
-			case AdType.SuppliesReward:				
+			case AdType.SuppliesReward:
 				suppliesAd.LoadAd(request);
 				break;
 			case AdType.QuestRefresh:
 				questRefreshAd.LoadAd(request);
 				break;
-			case AdType.QuestReward:				
+			case AdType.QuestReward:
 				questAd.LoadAd(request);
 				break;
 			case AdType.AscensionReward:
@@ -63,6 +64,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		}
 	}
 
+	#region 보급품 리워드 광고
 	const string suppliesRewardId = "ca-app-pub-7304648099168356/5785904836";
 	RewardedAd rewardAd;
 
@@ -94,31 +96,27 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	#endregion
 
 	#region 퀘스트 갱신 광고	
-	const string questRefreshRewardId = "ca-app-pub-7304648099168356/6173488468";
+	const string questRefreshRewardId = "ca-app-pub-7304648099168356/3848144816";
 
 	public void ShowQuestRefreshAd()
-	{	
-		questRefreshAd.Show();
-		questRefreshAd.OnUserEarnedReward += (sender, e) =>
-		{	
-			StartCoroutine(DialogQuest._Dialog.ResetQuest());
-		};
+	{
+		if (questRefreshAd.IsLoaded())			
+			questRefreshAd.Show();
 
+		StartCoroutine(DialogQuest._Dialog.ResetQuest());
 		LoadAd(AdType.QuestRefresh);
 	}
 	#endregion
 
 	#region 파워업 리스트 갱신 광고
-	const string powerUpRefreshRewardId = "ca-app-pub-7304648099168356/7171138694";
+	const string powerUpRefreshRewardId = "ca-app-pub-7304648099168356/2726634837";
 
 	public void ShowPowerUpRefreshAd()
 	{
-		powerUpRefreshAd.Show();
-		powerUpRefreshAd.OnUserEarnedReward += (sender, e) =>
-		{
-			StartCoroutine(DialogSlotPowerUp._Dialog.Refresh());
-		};
+		if (powerUpRefreshAd.IsLoaded())
+			powerUpRefreshAd.Show();
 
+		StartCoroutine(DialogSlotPowerUp._Dialog.Refresh());
 		LoadAd(AdType.PowerUpRefresh);
 	}
 	#endregion
