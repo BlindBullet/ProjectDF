@@ -43,6 +43,7 @@ public class Slot : MonoBehaviour
 		LvUpBtn.onClick.RemoveAllListeners();
 		LvUpBtn.onClick.AddListener(() =>
 		{
+			SoundManager.Ins.PlaySFX("se_button_2");
 			LevelUp();
 			StageManager.Ins.PlayerData.Save();
 		});
@@ -50,6 +51,7 @@ public class Slot : MonoBehaviour
 		PowerUpBtn.onClick.RemoveAllListeners();
 		PowerUpBtn.onClick.AddListener(() =>
 		{
+			SoundManager.Ins.PlaySFX("se_button_2");
 			DialogManager.Ins.OpenSlotPowerUp(data);
 		});
 

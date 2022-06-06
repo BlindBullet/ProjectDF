@@ -63,6 +63,8 @@ public class HeroUi : MonoBehaviour
 		IconBtn.onClick.RemoveAllListeners();
 		IconBtn.onClick.AddListener(() => 
 		{
+			SoundManager.Ins.PlaySFX("se_button_2");
+
 			if (me.SkillCon.UseSkill())
 			{
 				CloseSkillReadyText();

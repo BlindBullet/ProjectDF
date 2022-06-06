@@ -62,6 +62,7 @@ public class DialogOfflineReward : DialogController
 		GetBtn.onClick.RemoveAllListeners();
 		GetBtn.onClick.AddListener(() => 
 		{
+			SoundManager.Ins.PlaySFX("se_button_2");
 			StageManager.Ins.ChangeGold(rewardValue + addRewardValue);
 			DialogManager.Ins.OpenReceiveReward(RewardType.Gold, rewardValue + addRewardValue);
 			CloseDialog();
@@ -70,6 +71,7 @@ public class DialogOfflineReward : DialogController
 		AdGetBtn.onClick.RemoveAllListeners();
 		AdGetBtn.onClick.AddListener(() => 
 		{
+			SoundManager.Ins.PlaySFX("se_button_2");
 			rewardValue = rewardValue * 2f;
 			addRewardValue = addRewardValue * 2f;
 

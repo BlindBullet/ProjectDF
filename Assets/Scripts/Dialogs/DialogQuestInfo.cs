@@ -33,7 +33,11 @@ public class DialogQuestInfo : DialogController
 		SetHeroes();
 
 		DispatchBtn.onClick.RemoveAllListeners();
-		DispatchBtn.onClick.AddListener(() => StartCoroutine(RunDispatch()));
+		DispatchBtn.onClick.AddListener(() => 
+		{
+			SoundManager.Ins.PlaySFX("se_button_2");
+			StartCoroutine(RunDispatch());
+		});
 
 		fillCondition = false;
 		QuestInfo = this;

@@ -38,7 +38,7 @@ public class HeroIcon : MonoBehaviour
 
 		
 		Btn.onClick.RemoveAllListeners();
-		Btn.onClick.AddListener(() => { if (action != null) action(data); });
+		Btn.onClick.AddListener(() => { if (action != null) SoundManager.Ins.PlaySFX("se_button_2"); action(data); });
 
 		SetIcon(chart, data);
 		SetStars(chart.Grade);
@@ -60,7 +60,7 @@ public class HeroIcon : MonoBehaviour
 
 
 		Btn.onClick.RemoveAllListeners();
-		Btn.onClick.AddListener(() => { if (action != null) action(this, data); });
+		Btn.onClick.AddListener(() => { if (action != null) SoundManager.Ins.PlaySFX("se_button_2"); action(this, data); });
 
 		SetIcon(chart, data);
 		SetStars(chart.Grade);

@@ -46,6 +46,7 @@ public class DialogAdReward : DialogController
 		AdBtn.onClick.RemoveAllListeners();
 		AdBtn.onClick.AddListener(() => 
 		{
+			SoundManager.Ins.PlaySFX("se_button_2");
 			AdmobManager.Ins.ShowSuppliesAdReward(chart);			
 		});
 
@@ -93,12 +94,13 @@ public class DialogAdReward : DialogController
 
 		GetBtnText.text = LanguageManager.Ins.SetString("Claim");
 		GetBtn.onClick.RemoveAllListeners();
-		GetBtn.onClick.AddListener(() => { SendReward(chart); CloseDialog(); });
+		GetBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); SendReward(chart); CloseDialog(); });
 
 		AdBtnText.text = LanguageManager.Ins.SetString("get_ad_reward_x2");
 		AdBtn.onClick.RemoveAllListeners();
 		AdBtn.onClick.AddListener(() =>
 		{
+			SoundManager.Ins.PlaySFX("se_button_2");
 			AdmobManager.Ins.ShowQuestRewardAd(chart);
 		});
 

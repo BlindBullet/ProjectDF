@@ -95,6 +95,7 @@ public class PowerUpBar : MonoBehaviour
 			PurchaseBtn.onClick.RemoveAllListeners();
 			PurchaseBtn.onClick.AddListener(() =>
 			{
+				SoundManager.Ins.PlaySFX("se_button_2");
 				data.PowerUp(data.Lv, chart.Type);
 
 				for(int i = 0; i < StageManager.Ins.Slots.Count; i++)

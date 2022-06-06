@@ -42,6 +42,7 @@ public class DialogSlotPowerUp : DialogController
 		HelpBtn.onClick.RemoveAllListeners();
 		HelpBtn.onClick.AddListener(() => 
 		{
+			SoundManager.Ins.PlaySFX("se_button_2");
 			OnHelp();
 		});
 
@@ -238,7 +239,8 @@ public class DialogSlotPowerUp : DialogController
 
 			RefreshBtn.onClick.RemoveAllListeners();
 			RefreshBtn.onClick.AddListener(() =>
-			{
+			{				
+				SoundManager.Ins.PlaySFX("se_button_2");
 				StageManager.Ins.ChangeSoulStone(-ConstantData.PowerUpRefreshCost);
 				RefreshPowerUpBars();
 			});

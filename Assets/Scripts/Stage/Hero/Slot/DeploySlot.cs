@@ -40,7 +40,7 @@ public class DeploySlot : MonoBehaviour
 		Btn.gameObject.SetActive(true);
 		OpenArrow();
 		Btn.onClick.RemoveAllListeners();
-		Btn.onClick.AddListener(() => { Deploy(data); });
+		Btn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); Deploy(data); });
 	}
 
 	void OpenArrow()

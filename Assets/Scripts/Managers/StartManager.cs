@@ -38,6 +38,7 @@ public class StartManager : MonoBehaviour
 		BackPanelBtn.onClick.RemoveAllListeners();
 		BackPanelBtn.onClick.AddListener(() => 
 		{
+			SoundManager.Ins.PlaySFX("se_button_2");
 			StartCoroutine(ChangeScene());			
 		});
 	}

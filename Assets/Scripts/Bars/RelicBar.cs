@@ -162,6 +162,8 @@ public class RelicBar : MonoBehaviour
 				LvUpBtn.onClick.RemoveAllListeners();
 				LvUpBtn.onClick.AddListener(() =>
 				{
+					SoundManager.Ins.PlaySFX("se_button_2");
+
 					if (data.LevelUp())
 					{
 						SEManager.Ins.Apply();
@@ -214,6 +216,8 @@ public class RelicBar : MonoBehaviour
 				LvUpBtn.onClick.RemoveAllListeners();
 				LvUpBtn.onClick.AddListener(() =>
 				{
+					SoundManager.Ins.PlaySFX("se_button_2");
+
 					if (data.Puechase())
 					{						
 						SEManager.Ins.Apply();

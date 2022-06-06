@@ -147,7 +147,8 @@ public class ProjectileController : MonoBehaviour
 		atk = caster.Stat.Atk;
 		atk = atk + (atk * (attackData.AtkUp / 5f));
 		atk = atk - (atk * (attackData.Front > 0 ? ConstantData.FrontDmgDecP / 100f : 0f));
-		
+		atk = atk - (atk * (attackData.Diagonal > 0 ? ConstantData.DiagonalDmgDecP / 100f : 0f));
+
 		if (target == null)
 		{
 			existTarget = false;

@@ -33,6 +33,7 @@ public class DialogQuest : DialogController
 		ResetBtn.onClick.RemoveAllListeners();
 		ResetBtn.onClick.AddListener(() =>
 		{
+			SoundManager.Ins.PlaySFX("se_button_2");
 			AdmobManager.Ins.ShowQuestRefreshAd();
 		});
 

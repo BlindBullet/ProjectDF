@@ -40,6 +40,8 @@ public class DialogController : MonoBehaviour
 			BackPanelBtn.onClick.RemoveAllListeners();
 			BackPanelBtn.onClick.AddListener(() => 
 			{
+				SoundManager.Ins.PlaySFX("se_button_2");
+
 				if (stopTime)
 					Time.timeScale = _time;
 
@@ -52,6 +54,7 @@ public class DialogController : MonoBehaviour
 			CloseBtn.onClick.RemoveAllListeners();
 			CloseBtn.onClick.AddListener(() => 
 			{
+				SoundManager.Ins.PlaySFX("se_button_2");
 				SetCloseBtn();
 				CloseDialog(stopTime);
 			});

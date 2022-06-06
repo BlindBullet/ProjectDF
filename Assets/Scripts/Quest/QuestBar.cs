@@ -51,6 +51,7 @@ public class QuestBar : MonoBehaviour
 				AchieveBtn.onClick.RemoveAllListeners();
 				AchieveBtn.onClick.AddListener(() => 
 				{
+					SoundManager.Ins.PlaySFX("se_button_2");
 					QuestManager.Ins.ClearQuest(data);
 					DialogQuest._Dialog.SetQuests();
 				});
@@ -83,6 +84,7 @@ public class QuestBar : MonoBehaviour
 			DisPatchBtn.onClick.RemoveAllListeners();
 			DisPatchBtn.onClick.AddListener(() => 
 			{
+				SoundManager.Ins.PlaySFX("se_button_2");
 				DialogManager.Ins.OpenQuestInfo(data);
 			});
 		}

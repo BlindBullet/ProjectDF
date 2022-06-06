@@ -19,7 +19,7 @@ public static class ConstantData
 	//영웅 레벨업시 공격력 증가
 	public static ObscuredFloat HeroAtkGR = 1.15f;
 	//적 체력 증가
-	public static ObscuredFloat EnemyHpGR = 1.2f;
+	public static ObscuredFloat EnemyHpGR = 1.3f;
 	//적 처치 골드 증가
 	public static ObscuredFloat EnemyGoldGR = 1.1f;
 	//환생 가능 스테이지
@@ -46,6 +46,8 @@ public static class ConstantData
 	public static ObscuredFloat BuffGainGoldRate = 2f;
 	//기본 전방공격이 활성화됐을 때 감소하는 데미지량(%)
 	public static ObscuredFloat FrontDmgDecP = 25f;
+	//기본 사선공격이 활성화됐을 때 감소하는 데미지량(%)
+	public static ObscuredFloat DiagonalDmgDecP = 25f;
 	//기본공격이 튕길 때마다 감소하는 데미지량(%)
 	public static ObscuredFloat BounceDmgDecP = 35f;
 	//기본공격이 관통할 때마다 감소하는 데미지량(%)

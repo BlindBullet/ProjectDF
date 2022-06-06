@@ -64,6 +64,7 @@ public class DialogAscension : DialogController
 			AscensionBtn.onClick.RemoveAllListeners();
 			AscensionBtn.onClick.AddListener(() =>
 			{
+				SoundManager.Ins.PlaySFX("se_button_2");
 				StageManager.Ins.StartAscension();
 				CloseDialog();
 			});
@@ -74,6 +75,7 @@ public class DialogAscension : DialogController
 			AdAscensionBtn.onClick.RemoveAllListeners();
 			AdAscensionBtn.onClick.AddListener(() =>
 			{
+				SoundManager.Ins.PlaySFX("se_button_2");
 				AdmobManager.Ins.ShowAscensionRewardAd();
 			});
 		}

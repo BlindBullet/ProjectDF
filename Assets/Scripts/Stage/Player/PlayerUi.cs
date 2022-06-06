@@ -28,19 +28,19 @@ public class PlayerUi : MonoBehaviour
 	{
 		HeroBtnText.text = LanguageManager.Ins.SetString("Hero");
 		HeroBtn.onClick.RemoveAllListeners();
-		HeroBtn.onClick.AddListener(() => DialogManager.Ins.OpenHero());
+		HeroBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenHero(); });
 
 		RelicBtnText.text = LanguageManager.Ins.SetString("Relic");
 		RelicBtn.onClick.RemoveAllListeners();
-		RelicBtn.onClick.AddListener(() => DialogManager.Ins.OpenRelic());
+		RelicBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenRelic(); });
 
 		CastleBtnText.text = LanguageManager.Ins.SetString("Castle");
 		CastleBtn.onClick.RemoveAllListeners();
-		CastleBtn.onClick.AddListener(() => DialogManager.Ins.OpenCastle());
+		CastleBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenCastle(); });
 
 		AscensionBtnText.text = LanguageManager.Ins.SetString("Ascension");
 		AscensionBtn.onClick.RemoveAllListeners();
-		AscensionBtn.onClick.AddListener(() => DialogManager.Ins.OpenAscension());
+		AscensionBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenAscension(); });
 
 		StageManager.Ins.StageChanged += SetAscensionNotify;
 		StageManager.Ins.StageChanged += SetQuestNotify;
@@ -50,11 +50,11 @@ public class PlayerUi : MonoBehaviour
 
 		DungeonBtnText.text = LanguageManager.Ins.SetString("Dungeon");
 		DungeonBtn.onClick.RemoveAllListeners();
-		DungeonBtn.onClick.AddListener(() => DialogManager.Ins.OpenCautionBar("notice_dungeon_update"));
+		DungeonBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenCautionBar("notice_dungeon_update"); });
 
 		SettingBtnText.text = LanguageManager.Ins.SetString("Setting");
 		SettingBtn.onClick.RemoveAllListeners();
-		SettingBtn.onClick.AddListener(() => DialogManager.Ins.OpenSetting());
+		SettingBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenSetting(); });
 	}
 
 	void SetAscensionNotify()
@@ -103,7 +103,8 @@ public class PlayerUi : MonoBehaviour
 		{
 			QuestLockObj.SetActive(false);			
 			QuestBtn.onClick.AddListener(() =>
-			{	
+			{
+				SoundManager.Ins.PlaySFX("se_button_2");
 				DialogManager.Ins.OpenQuest();				
 			});
 		}
@@ -112,6 +113,7 @@ public class PlayerUi : MonoBehaviour
 			QuestLockObj.SetActive(true);
 			QuestBtn.onClick.AddListener(() =>
 			{
+				SoundManager.Ins.PlaySFX("se_button_2");
 				DialogManager.Ins.OpenCautionBar("desc_locked_quest");
 			});
 		}			

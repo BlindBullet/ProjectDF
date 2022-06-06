@@ -190,7 +190,7 @@ public class DialogHeroInfo : DialogController
 				DeployBtnText.text = LanguageManager.Ins.SetString("Deploy");
 
 				DeployBtn.onClick.RemoveAllListeners();
-				DeployBtn.onClick.AddListener(() => { SetDeploy(); });
+				DeployBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); SetDeploy(); });
 			}
 			
 			PurchaseBtn.gameObject.SetActive(true);
@@ -205,6 +205,8 @@ public class DialogHeroInfo : DialogController
 				purchaseBtnMat.SetFloat("_GreyscaleBlend", 0f);				
 				PurchaseBtn.onClick.AddListener(() => 
 				{
+					SoundManager.Ins.PlaySFX("se_button_2");
+
 					if (StageManager.Ins.PlayerData.EnchantHero(data))
 					{
 						StageManager.Ins.ChangeMagicite(-enchantCost);
@@ -247,6 +249,8 @@ public class DialogHeroInfo : DialogController
 					UpgradeBtn.onClick.RemoveAllListeners();
 					UpgradeBtn.onClick.AddListener(() =>
 					{
+						SoundManager.Ins.PlaySFX("se_button_2");
+
 						if (StageManager.Ins.PlayerData.UpgradeHero(data))
 						{
 							SEManager.Ins.Apply();
@@ -296,6 +300,8 @@ public class DialogHeroInfo : DialogController
 				PurchaseBtn.onClick.RemoveAllListeners();
 				PurchaseBtn.onClick.AddListener(() =>
 				{
+					SoundManager.Ins.PlaySFX("se_button_2");
+
 					if (StageManager.Ins.PlayerData.SummonHero(data, chart))
 					{
 						SEManager.Ins.Apply();
