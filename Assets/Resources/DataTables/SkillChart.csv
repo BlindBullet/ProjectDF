@@ -91,11 +91,11 @@ skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,4,60,60,Attack,,se_
 skill_10018,str_name_skill_10018,str_desc_skill_10018,Active,5,60,60,Attack,,se_cast_skill,,6,3,skill_10018_5
 skill_10019,str_name_skill_10019,str_desc_skill_10019,Active,1,180,2,Attack,,se_cast_skill,,60,10|20|30|40|50,skill_10019_1_a|skill_10019_1_b|skill_10019_1_c|skill_10019_1_d|skill_10019_1_e
 skill_10019,str_name_skill_10019,str_desc_skill_10019,Active,2,180,2,Attack,,se_cast_skill,,60,10|20|30|40|50,skill_10019_2_a|skill_10019_2_b|skill_10019_2_c|skill_10019_2_d|skill_10019_2_e
-skill_10019,str_name_skill_10019,str_desc_skill_10019,Active,3,1,2,Attack,,se_cast_skill,,60,10|20|30|40|50,skill_10019_3_a|skill_10019_3_b|skill_10019_3_c|skill_10019_3_d|skill_10019_3_e
+skill_10019,str_name_skill_10019,str_desc_skill_10019,Active,3,180,2,Attack,,se_cast_skill,,60,10|20|30|40|50,skill_10019_3_a|skill_10019_3_b|skill_10019_3_c|skill_10019_3_d|skill_10019_3_e
 skill_10019,str_name_skill_10019,str_desc_skill_10019,Active,4,180,2,Attack,,se_cast_skill,,60,10|20|30|40|50,skill_10019_4_a|skill_10019_4_b|skill_10019_4_c|skill_10019_4_d|skill_10019_4_e
 skill_10019,str_name_skill_10019,str_desc_skill_10019,Active,5,180,2,Attack,,se_cast_skill,,60,10|20|30|40|50,skill_10019_5_a|skill_10019_5_b|skill_10019_5_c|skill_10019_5_d|skill_10019_5_e
-skill_10020,str_name_skill_10020,str_desc_skill_10020,ActiveEnemyTarget,1,60,3.5,Attack,,se_cast_skill,ChannelRed,6,3,skill_10010_1
-skill_10020,str_name_skill_10020,str_desc_skill_10020,ActiveEnemyTarget,2,60,3.5,Attack,,se_cast_skill,ChannelRed,6,3,skill_10010_2
-skill_10020,str_name_skill_10020,str_desc_skill_10020,ActiveEnemyTarget,3,60,3.5,Attack,,se_cast_skill,ChannelRed,6,3,skill_10010_3
-skill_10020,str_name_skill_10020,str_desc_skill_10020,ActiveEnemyTarget,4,60,3.5,Attack,,se_cast_skill,ChannelRed,6,3,skill_10010_4
-skill_10020,str_name_skill_10020,str_desc_skill_10020,ActiveEnemyTarget,5,60,3.5,Attack,,se_cast_skill,ChannelRed,6,3,skill_10010_5
+skill_10020,str_name_skill_10020,str_desc_skill_10020,ActiveEnemyTarget,1,180,1,Attack,,se_cast_skill,,6,3,skill_10020_1
+skill_10020,str_name_skill_10020,str_desc_skill_10020,ActiveEnemyTarget,2,180,1,Attack,,se_cast_skill,,6,3,skill_10020_2
+skill_10020,str_name_skill_10020,str_desc_skill_10020,ActiveEnemyTarget,3,180,1,Attack,,se_cast_skill,,6,3,skill_10020_3
+skill_10020,str_name_skill_10020,str_desc_skill_10020,ActiveEnemyTarget,4,180,1,Attack,,se_cast_skill,,6,3,skill_10020_4
+skill_10020,str_name_skill_10020,str_desc_skill_10020,ActiveEnemyTarget,5,180,1,Attack,,se_cast_skill,,6,3,skill_10020_5
