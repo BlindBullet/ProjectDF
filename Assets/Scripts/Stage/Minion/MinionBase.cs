@@ -173,7 +173,7 @@ public class MinionBase : MonoBehaviour
 				case MoveType.Direct:
 					if(Target != null)
 					{	
-						transform.Translate(dir * 5f * Time.deltaTime);
+						transform.Translate(dir * data.MoveSpd * Time.deltaTime);
 					}
 					else
 					{

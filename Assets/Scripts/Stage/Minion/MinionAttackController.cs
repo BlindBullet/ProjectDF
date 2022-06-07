@@ -61,18 +61,19 @@ public class MinionAttackController : MonoBehaviour
 				switch (data.MoveType)
 				{
 					case MoveType.None:
-
 						break;
 					default:
 						if (!me.CalcRange())
 						{
-							me.transform.DOMove(me.Target.transform.position - (dir * 2f), 1f).SetEase(Ease.Linear);
+							DOTween.Kill("MinionMove1");
+							me.transform.DOMove(me.Target.transform.position - (dir * 2f), 1f).SetEase(Ease.Linear).SetId("MinionMove1");
 						}
 						else
 						{
 							if (data.Range / 3f <= Vector2.Distance(me.transform.position, me.Target.transform.position))
 							{
-								me.transform.DOMove(me.transform.position - (dir * (data.Range / 6f)), 1f).SetEase(Ease.Linear);
+								DOTween.Kill("MinionMove2");
+								me.transform.DOMove(me.transform.position - (dir * (data.Range / 6f)), 1f).SetEase(Ease.Linear).SetId("MinionMove2");
 								yield return new WaitForSeconds(1f);
 							}
 						}
@@ -96,7 +97,7 @@ public class MinionAttackController : MonoBehaviour
 		{
 			StopCoroutine(cAttackMove);
 			cAttackMove = null;
-		}
+		}		
 	}
 
 

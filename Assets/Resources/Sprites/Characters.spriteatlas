@@ -62,6 +62,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 886b2800f4ef99b4f9938ae6daec32d8, type: 3}
+  - {fileID: 21300000, guid: 55613b008aac80e43af394a619b4658e, type: 3}
   - {fileID: 21300000, guid: c1cc9e00fb0310f4dbc48d1111193bbf, type: 3}
   - {fileID: 21300000, guid: 80debd10b57c0fa4e9e0b95ec8d930b4, type: 3}
   - {fileID: 21300000, guid: dac75d308be5b0641a6cd8086a194018, type: 3}
@@ -118,6 +119,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 809393b4669d1d04b8668c99c83f9fe0, type: 3}
   - {fileID: 21300000, guid: 35e266c4465524d45ad87894c34ca242, type: 3}
   - {fileID: 21300000, guid: ad9302f4f95019c4bb281345bd56e7b5, type: 3}
+  - {fileID: 21300000, guid: 84992025efa2bba4b927354583e773cd, type: 3}
   - {fileID: 21300000, guid: dcc87f25e6808034da13d15bd0476ff1, type: 3}
   - {fileID: 21300000, guid: 88891175ed55a4c4ea8471256bae0d98, type: 3}
   - {fileID: 21300000, guid: 0f40c8857e22db24780628e777c3b621, type: 3}
@@ -183,6 +185,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f0913bcafebc24a48a172e761b88b7ba, type: 3}
   - {fileID: 21300000, guid: 77d7c00b63db3f948bdbdd0300752d40, type: 3}
   - {fileID: 21300000, guid: a76ebf0b937b11444bc1bcc235a8fbf4, type: 3}
+  - {fileID: 21300000, guid: 4fdf041bc529a404eb74ed4ecc5c4335, type: 3}
   - {fileID: 21300000, guid: 131b5a1bf90b12845bbe488e59b9c692, type: 3}
   - {fileID: 21300000, guid: 635eca1b94ec318469e731421d751cc3, type: 3}
   - {fileID: 21300000, guid: d741652bfd9310542b19994e70061064, type: 3}
@@ -197,6 +200,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3ed364cb1f2e9ae468288a95d2d020f0, type: 3}
   - {fileID: 21300000, guid: 0b43aacb285ed254dbd30828ca200bad, type: 3}
   - {fileID: 21300000, guid: 7b5f4ecb5ec0f654a92a533888d4eeb0, type: 3}
+  - {fileID: 21300000, guid: ebc4bb0cff9751648aca49cb4d846f8a, type: 3}
   - {fileID: 21300000, guid: 5f93194ce15a7d241acd96eed03010cc, type: 3}
   - {fileID: 21300000, guid: 27018a5c0e8320b4eb1f12edee18d7e8, type: 3}
   - {fileID: 21300000, guid: 7e52416c7ebd395468985860c676baa8, type: 3}
@@ -213,6 +217,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6ad1b8dde411ceb4dbde6559f693e68d, type: 3}
   - {fileID: 21300000, guid: 580b174e9d9bbcf45aed2095c87e6dea, type: 3}
   - {fileID: 21300000, guid: b69bd84e9eaf2454197321f15007dead, type: 3}
+  - {fileID: 21300000, guid: 102c5e4eab8385e44849bf9df9eacd84, type: 3}
   - {fileID: 21300000, guid: 60e8015e5d14fd4488c3980629cda2fc, type: 3}
   - {fileID: 21300000, guid: 90c79f7ecdbefb64baf6ca4c4fe0b909, type: 3}
   - {fileID: 21300000, guid: 1ecdd99eec4602a4faa1c8eadd1e62f9, type: 3}
@@ -232,6 +237,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 298c9cffd834a5740bbadd0b261c68db, type: 3}
   m_PackedSpriteNamesToIndex:
   - KnightAxe
+  - Demon1
   - f038
   - f264
   - f051
@@ -288,6 +294,7 @@ SpriteAtlas:
   - Undeen
   - f125
   - f349
+  - Demon5
   - CritterRabbit
   - f076
   - Tiamat
@@ -353,6 +360,7 @@ SpriteAtlas:
   - GoblinReaper
   - f014
   - SkeletonDragon
+  - Demon3
   - f140
   - f020
   - GoblinElite
@@ -367,6 +375,7 @@ SpriteAtlas:
   - IceLion
   - GreathornGoat
   - f013
+  - Demon2
   - f370
   - f362
   - f152
@@ -383,6 +392,7 @@ SpriteAtlas:
   - f258
   - GoblinBomber
   - f097
+  - Demon4
   - OrcSwordWarrior
   - Tantalus
   - Capricorn
