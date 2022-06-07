@@ -11,7 +11,7 @@ public static class ConstantData
 	//레벨업 골드 시작 비용
 	public static ObscuredDouble StartLvUpGold = 10f;
 	//레벨업 골드 비용 증가
-	public static ObscuredFloat LvUpGoldGR = 1.2f;
+	public static ObscuredFloat LvUpGoldGR = 1.25f;
 	//영웅 강화 시작 비용
 	public static ObscuredDouble StartEnchantCost = 10f;
 	//영웅 강화 비용 증가
@@ -19,7 +19,7 @@ public static class ConstantData
 	//영웅 레벨업시 공격력 증가
 	public static ObscuredFloat HeroAtkGR = 1.15f;
 	//적 체력 증가
-	public static ObscuredFloat EnemyHpGR = 1.3f;
+	public static ObscuredFloat EnemyHpGR = 1.35f;
 	//적 처치 골드 증가
 	public static ObscuredFloat EnemyGoldGR = 1.1f;
 	//환생 가능 스테이지
