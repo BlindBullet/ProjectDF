@@ -11,6 +11,7 @@ public class HeroData
 	public int EnchantLv;
 	public bool IsOwn = false;
 	public int SlotNo;
+	public float CurCT;
 	
 	public void Init(List<HeroChart> chart)
 	{
@@ -21,6 +22,7 @@ public class HeroData
 		EnchantLv = 0;		
 		IsOwn = false;
 		SlotNo = -1;
+		CurCT = 0f;
 	}
 
 	public void Upgrade()
@@ -41,6 +43,11 @@ public class HeroData
 	public void ReleaseHero()
 	{
 		SlotNo = -1;
+	}
+
+	public void SaveCurCoolTime(float value)
+	{
+		CurCT = value;
 	}
 
 }

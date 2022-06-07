@@ -16,7 +16,8 @@ public class SkillController : MonoBehaviour
 		me = heroBase;
 		HeroChart heroChart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];		
 		Skill = new Skill(heroChart.Skill, data.Grade);
-		
+		Skill.CoolTime = data.CurCT;
+
 		StartCoroutine(ProgressSkill());
 	}
 
@@ -157,8 +158,7 @@ public class Skill
 	public Skill(string id, int grade)
 	{
 		Id = id;
-		Grade = grade;
-		CoolTime = 0;
+		Grade = grade;		
 		SetData();
 		_CoolTime = Data.CoolTime;
 	}

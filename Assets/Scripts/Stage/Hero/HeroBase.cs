@@ -82,6 +82,7 @@ public class HeroBase : MonoBehaviour
 
 	public void Destroy()
 	{
+		Data.SaveCurCoolTime(SkillCon.Skill.CoolTime);
 		Tween.Stop();
 		AttackCon.Stop();
 		SkillCon.Stop();
