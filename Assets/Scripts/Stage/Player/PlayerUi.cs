@@ -20,9 +20,12 @@ public class PlayerUi : MonoBehaviour
 	public Button CastleBtn;
 	public TextMeshProUGUI CastleBtnText;
 	public Button DungeonBtn;
-	public TextMeshProUGUI DungeonBtnText;
-	public Button SettingBtn;
-	public TextMeshProUGUI SettingBtnText;
+	public TextMeshProUGUI DungeonBtnText;	
+	public Button MenuBtn;
+	public TextMeshProUGUI MenuBtnText;
+	public PlayerMenu Menu;
+
+	bool isOpenMenu = false;
 
 	private void Start()
 	{
@@ -52,9 +55,20 @@ public class PlayerUi : MonoBehaviour
 		DungeonBtn.onClick.RemoveAllListeners();
 		DungeonBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenCautionBar("notice_dungeon_update"); });
 
-		SettingBtnText.text = LanguageManager.Ins.SetString("Setting");
-		SettingBtn.onClick.RemoveAllListeners();
-		SettingBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenSetting(); });
+		MenuBtnText.text = LanguageManager.Ins.SetString("Menu");
+		MenuBtn.onClick.RemoveAllListeners();
+		MenuBtn.onClick.AddListener(() => 
+		{ 
+			SoundManager.Ins.PlaySFX("se_button_2");
+			if (!isOpenMenu)
+			{
+				OpenMenu();
+			}
+			else
+			{
+				CloseMenu();
+			}
+		});
 	}
 
 	void SetAscensionNotify()
@@ -117,6 +131,18 @@ public class PlayerUi : MonoBehaviour
 				DialogManager.Ins.OpenCautionBar("desc_locked_quest");
 			});
 		}			
+	}
+
+	void OpenMenu()
+	{
+		isOpenMenu = true;
+		Menu.Open();
+	}
+
+	void CloseMenu()
+	{
+		isOpenMenu = false;		
+		Menu.Close();
 	}
 
 }
