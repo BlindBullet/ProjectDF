@@ -76,10 +76,14 @@ public class PlayerData
 
 		foreach(KeyValuePair<string, QuestChart> elem in CsvData.Ins.QuestChart)
 		{
-			QuestData data = new QuestData();
-			data.Init(elem.Value);
-			Quests.Add(data);
-			count++;
+			if(elem.Value.Lv == 1)
+			{
+				Debug.Log(elem.Value.Id);
+				QuestData data = new QuestData();
+				data.Init(elem.Value);
+				Quests.Add(data);
+				count++;
+			}
 
 			if (count >= 3)
 				break;

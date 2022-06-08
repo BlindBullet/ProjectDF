@@ -11,7 +11,9 @@ public class DialogSetting : DialogController
 	public Toggle BgmToggle;
 	public TextMeshProUGUI SfxText;
 	public Toggle SfxToggle;
+	
 	public Button AekashicsBtn;
+	public TextMeshProUGUI AekashicsDesc;
 	public TextMeshProUGUI AekashicsBtnText;
 
 	public void OpenDialog()
@@ -20,6 +22,7 @@ public class DialogSetting : DialogController
 		BgmText.text = LanguageManager.Ins.SetString("BGM");
 		SfxText.text = LanguageManager.Ins.SetString("SFX");
 		AekashicsBtnText.text = "Aekashics.moe";
+		AekashicsDesc.text = LanguageManager.Ins.SetString("desc_aekashics");
 
 		BgmToggle.isOn = StageManager.Ins.PlayerData.OnBGM;
 		SfxToggle.isOn = StageManager.Ins.PlayerData.OnSFX;
