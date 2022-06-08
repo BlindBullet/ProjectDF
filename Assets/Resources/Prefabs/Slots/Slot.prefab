@@ -983,7 +983,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e557639d1acd84734b384b6a04b18720, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 258515da85d3cad45b0c64649e9d5cc2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1643,6 +1643,21 @@ MonoBehaviour:
   AtkText: {fileID: 8538980245201986492}
   PowerUpBtn: {fileID: 1913639790727847091}
   PowerUpBtnFrame: {fileID: 2881092369588577549}
+  data:
+    No: 0
+    Lv: 0
+    Power: 0
+    PowerUpStack: 0
+    AtkData:
+      Front: 0
+      Diagonal: 0
+      Piercing: 0
+      Multi: 0
+      Boom: 0
+      Bounce: 0
+      AtkUp: 0
+      Size: 0
+      Push: 0
 --- !u!1 &9056847767095233150
 GameObject:
   m_ObjectHideFlags: 0
