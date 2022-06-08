@@ -11,15 +11,15 @@ public class DialogSetting : DialogController
 	public Toggle BgmToggle;
 	public TextMeshProUGUI SfxText;
 	public Toggle SfxToggle;
-	public Button LanguageBtn;
-	public TextMeshProUGUI LanguageBtnText;
+	public Button AekashicsBtn;
+	public TextMeshProUGUI AekashicsBtnText;
 
 	public void OpenDialog()
 	{
 		Title.text = LanguageManager.Ins.SetString("Setting");
 		BgmText.text = LanguageManager.Ins.SetString("BGM");
 		SfxText.text = LanguageManager.Ins.SetString("SFX");
-		LanguageBtnText.text = LanguageManager.Ins.SetString("SelectLanguage");
+		AekashicsBtnText.text = "Aekashics.moe";
 
 		BgmToggle.isOn = StageManager.Ins.PlayerData.OnBGM;
 		SfxToggle.isOn = StageManager.Ins.PlayerData.OnSFX;
@@ -40,6 +40,9 @@ public class DialogSetting : DialogController
 			StageManager.Ins.PlayerData.SetSFX(a);
 			SetSFX();
 		});
+
+		AekashicsBtn.onClick.RemoveAllListeners();
+		AekashicsBtn.onClick.AddListener(() => Application.OpenURL("http://www.akashics.moe/"));
 
 		Show(false, true);
 	}

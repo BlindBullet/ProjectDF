@@ -165,6 +165,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d103ed3e04aa2ef449d7e3c30a83a3d6, type: 3}
   - {fileID: 21300000, guid: 6aea6aae87d665144a8b2b5131374f3b, type: 3}
   - {fileID: 21300000, guid: e2032daee606aa840a15da4675f6309a, type: 3}
+  - {fileID: 21300000, guid: a95b82bee9573974fae4a6b1200f352d, type: 3}
   - {fileID: 21300000, guid: ae39e4eec822769438870f716201110d, type: 3}
   - {fileID: 21300000, guid: 6a6c750f01970f146912957850617033, type: 3}
   - {fileID: 21300000, guid: d804398fbef4254448a47c4e907e320f, type: 3}
@@ -275,6 +276,7 @@ SpriteAtlas:
   - HeroBg_Blue
   - SGI_146
   - Frame_metal_bg2
+  - Aekashics
   - Sword_v2_47
   - Enchantment_58_runecrystal
   - icon_itemicon_castle
