@@ -217,6 +217,11 @@ public class SoundManager : SingletonObject<SoundManager>
 		{
 			SFXsource[i].volume = volume;
 		}
+
+		for(int i = 0; i < NA_SFXsource.Length; i++)
+		{
+			NA_SFXsource[i].volume = volume;
+		}
 	}
 	
 }
