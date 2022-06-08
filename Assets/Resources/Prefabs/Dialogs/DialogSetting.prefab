@@ -1902,6 +1902,7 @@ MonoBehaviour:
   SfxText: {fileID: 408518380836670149}
   SfxToggle: {fileID: 408518381306679795}
   AekashicsBtn: {fileID: 751756979325880031}
+  AekashicsDesc: {fileID: 6696156377878714145}
   AekashicsBtnText: {fileID: 1199289519502862077}
 --- !u!1 &4748892139378556935
 GameObject:
