@@ -35,7 +35,6 @@ public class HeroStat
 	public void InitData(HeroData data, int lv)
 	{
 		this.data = data;
-		//HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];
 		List<HeroChart> charts = CsvData.Ins.HeroChart[data.Id];
 		chart = null;
 

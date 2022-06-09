@@ -29,7 +29,14 @@ public class HeroUi : MonoBehaviour
 		IconBg.GetComponent<AllIn1Shader>().ApplyMaterialToHierarchy();
 
 		me = GetComponent<HeroBase>();        
-		HeroChart chart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];
+		List<HeroChart> charts = CsvData.Ins.HeroChart[data.Id];
+		HeroChart chart = null;
+
+		for(int i = 0; i < charts.Count; i++)
+		{
+			if (charts[i].Grade == data.Grade)
+				chart = charts[i];
+		}
 
 		for (int i = 0; i < Stars.Length; i++)
 		{

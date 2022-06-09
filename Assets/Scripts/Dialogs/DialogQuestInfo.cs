@@ -169,7 +169,15 @@ public class DialogQuestInfo : DialogController
 				fillGradeCount++;
 			}
 
-			HeroChart heroChart = CsvData.Ins.HeroChart[DispatchHeroes[i].Id][DispatchHeroes[i].Grade - 1];
+			List<HeroChart> heroCharts = CsvData.Ins.HeroChart[DispatchHeroes[i].Id];
+			HeroChart heroChart = null;
+			for(int k = 0; k < heroCharts.Count; k++)
+			{
+				if(heroCharts[k].Grade == DispatchHeroes[i].Grade)
+				{
+					heroChart = heroCharts[k];
+				}
+			}	
 			
 			for (int k = 0; k < chart.NeedAttr.Length; k++)
 			{

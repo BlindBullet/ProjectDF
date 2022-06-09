@@ -25,7 +25,14 @@ public class AttackController : MonoBehaviour
 
 	IEnumerator AttackSequence()
 	{
-		HeroChart chart = CsvData.Ins.HeroChart[me.Data.Id][me.Data.Grade - 1];
+		List<HeroChart> charts = CsvData.Ins.HeroChart[me.Data.Id];
+		HeroChart chart = null;
+
+		for (int i = 0; i < charts.Count; i++)
+		{
+			if (charts[i].Grade == me.Data.Grade)
+				chart = charts[i];
+		}
 
 		while (true)
 		{

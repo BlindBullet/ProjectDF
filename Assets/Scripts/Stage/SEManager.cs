@@ -365,6 +365,7 @@ public class SEManager : MonoSingleton<SEManager>
 				break;
 			case SEConType.OwnHero:
 				List<HeroData> _heroes = StageManager.Ins.PlayerData.Heroes;
+
 				switch (chart.CParam1)
 				{
 					case "Attr":						
@@ -373,30 +374,44 @@ public class SEManager : MonoSingleton<SEManager>
 							case "Red":
 								for (int i = 0; i < _heroes.Count; i++)
 								{
-									if (CsvData.Ins.HeroChart[_heroes[i].Id][_heroes[i].Grade - 1].Attr == Attr.Red)
-										count++;
+									for(int k = 0; k < CsvData.Ins.HeroChart[_heroes[i].Id].Count; k++)
+									{
+										if(CsvData.Ins.HeroChart[_heroes[i].Id][k].Grade == _heroes[i].Grade)
+										{
+											if (CsvData.Ins.HeroChart[_heroes[i].Id][k].Attr == Attr.Red)
+												count++;
+										}
+									}									
 								}
 								break;
 							case "Green":
-								for (int i = 0; i < HeroBase.Heroes.Count; i++)
+								for (int i = 0; i < _heroes.Count; i++)
 								{
-									if (CsvData.Ins.HeroChart[_heroes[i].Id][_heroes[i].Grade - 1].Attr == Attr.Green)
-										count++;
+									for (int k = 0; k < CsvData.Ins.HeroChart[_heroes[i].Id].Count; k++)
+									{
+										if (CsvData.Ins.HeroChart[_heroes[i].Id][k].Grade == _heroes[i].Grade)
+										{
+											if (CsvData.Ins.HeroChart[_heroes[i].Id][k].Attr == Attr.Green)
+												count++;
+										}
+									}
 								}
 								break;
 							case "Blue":
-								for (int i = 0; i < HeroBase.Heroes.Count; i++)
+								for (int i = 0; i < _heroes.Count; i++)
 								{
-									if (CsvData.Ins.HeroChart[_heroes[i].Id][_heroes[i].Grade - 1].Attr == Attr.Blue)
-										count++;
+									for (int k = 0; k < CsvData.Ins.HeroChart[_heroes[i].Id].Count; k++)
+									{
+										if (CsvData.Ins.HeroChart[_heroes[i].Id][k].Grade == _heroes[i].Grade)
+										{
+											if (CsvData.Ins.HeroChart[_heroes[i].Id][k].Attr == Attr.Blue)
+												count++;
+										}
+									}
 								}
 								break;
 							default:
-								for (int i = 0; i < HeroBase.Heroes.Count; i++)
-								{
-									if (CsvData.Ins.HeroChart[_heroes[i].Id][_heroes[i].Grade - 1].Attr == Attr.None)
-										count++;
-								}
+								
 								break;
 						}
 

@@ -21,7 +21,7 @@ public static class ConstantData
 	//적 체력 증가
 	public static ObscuredFloat EnemyHpGR = 1.35f;
 	//적 처치 골드 증가
-	public static ObscuredFloat EnemyGoldGR = 1.1f;
+	public static ObscuredFloat EnemyGoldGR = 1.15f;
 	//환생 가능 스테이지
 	public static ObscuredInt PossibleAscensionStage = 30;
 	//환생 시작 리워드

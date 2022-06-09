@@ -14,7 +14,14 @@ public class SkillController : MonoBehaviour
 	public void Init(HeroBase heroBase, HeroData data)
 	{
 		me = heroBase;
-		HeroChart heroChart = CsvData.Ins.HeroChart[data.Id][data.Grade - 1];		
+		List<HeroChart> heroCharts = CsvData.Ins.HeroChart[data.Id];
+		HeroChart heroChart = null;
+		for(int i = 0; i < heroCharts.Count; i++)
+		{
+			if (heroCharts[i].Grade == data.Grade)
+				heroChart = heroCharts[i];
+		}
+
 		Skill = new Skill(heroChart.Skill, data.Grade);
 		Skill.CoolTime = data.CurCT;
 
