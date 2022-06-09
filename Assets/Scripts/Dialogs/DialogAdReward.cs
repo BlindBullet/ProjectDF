@@ -61,7 +61,7 @@ public class DialogAdReward : DialogController
 			CloseDialog(); 
 		});
 
-		AdBtnText.text = LanguageManager.Ins.SetString("get_ad_reward_x2");
+		AdBtnText.text = LanguageManager.Ins.SetString("get_ad_reward_x5");
 		AdBtn.onClick.RemoveAllListeners();
 		AdBtn.onClick.AddListener(() => 
 		{
@@ -152,23 +152,23 @@ public class DialogAdReward : DialogController
 		{
 			case RewardType.Gold:
 				rewardValue = ConstantData.GetGoldFromTime(chart.RewardValue, StageManager.Ins.PlayerData.Stage);
-				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				rewardValue = isAd ? rewardValue * 5f : rewardValue;
 				StageManager.Ins.ChangeGold(rewardValue);
 				break;
 			case RewardType.SoulStone:
-				StageManager.Ins.ChangeMagicite(chart.RewardValue);
-				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				StageManager.Ins.ChangeSoulStone(chart.RewardValue);
+				rewardValue = isAd ? rewardValue * 5f : rewardValue;
 				break;
 			case RewardType.GameSpeed:
-				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				rewardValue = isAd ? rewardValue * 5f : rewardValue;
 				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GameSpeed, rewardValue);
 				break;
 			case RewardType.UseAutoSkill:
-				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				rewardValue = isAd ? rewardValue * 5f : rewardValue;
 				StageManager.Ins.AddPlayerBuff(PlayerBuffType.UseAutoSkill, rewardValue);
 				break;
 			case RewardType.GainGold:
-				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				rewardValue = isAd ? rewardValue * 5f : rewardValue;
 				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GainGold, rewardValue);
 				break;
 		}

@@ -217,7 +217,7 @@ public class EnemyBase : MonoBehaviour
 					value = value * 2f;
 
 				value = value - (value * (def / 100f));
-				break;
+				break;			
 		}
 
 		if (value < 0f)
@@ -388,9 +388,16 @@ public class EnemyBase : MonoBehaviour
 			{
 				if(collision.GetComponent<PlayerLine>().count == 1)
 				{
-					collision.GetComponent<PlayerLine>().Destroy();
-					StageManager.Ins.Hp--;
-					Die();
+					if (isBoss)
+					{
+						TakeDmg(10f, Attr.None);
+					}
+					else
+					{
+						collision.GetComponent<PlayerLine>().Destroy();
+						StageManager.Ins.Hp--;
+						Die();
+					}
 
 					if (StageManager.Ins.Hp <= 0)
 						StageManager.Ins.LoseStage();

@@ -56,12 +56,13 @@ public class StageManager : MonoSingleton<StageManager>
 		SetSlots();
 		SetHeroes(PlayerData.IsFirstPlay);
 
+		SEManager.Ins.Apply();
+
 		StartCoroutine(OpenOfflineReward(PlayerData.IsFirstPlay));
 
 		if (PlayerData.IsFirstPlay)
 			PlayerData.RunFirstPlay();
 
-		SEManager.Ins.Apply();
 		PlayerBuffManager.Ins.RunAllBuffs();
 		StartCoroutine(SetStage(PlayerData.Stage));		
 	}
