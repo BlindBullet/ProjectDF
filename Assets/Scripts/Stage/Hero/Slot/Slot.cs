@@ -98,6 +98,7 @@ public class Slot : MonoBehaviour
 		{
 			PowerUpBtn.enabled = true;
 			PowerUpBtn.gameObject.SetActive(true);
+			powerUpBtnMat.SetFloat("_ShineRotate", 0f);
 			powerUpBtnMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetId("SF" + No);
 		}
 	}

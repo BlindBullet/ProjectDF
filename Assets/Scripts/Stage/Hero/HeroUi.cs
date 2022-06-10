@@ -117,7 +117,8 @@ public class HeroUi : MonoBehaviour
 	public void ShowSkillReadyText()
 	{
 		skillReady = true;
-		SkillReadyText.gameObject.SetActive(true);
+		SkillReadyText.DOFade(1f, 0f);
+		SkillReadyText.gameObject.SetActive(true);		
 		SkillReadyText.DOFade(0f, 1f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo).SetId("ReadyText" + me.Data.Id);
 	}
 

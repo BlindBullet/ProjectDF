@@ -28,6 +28,9 @@ public class TutorialStep : MonoBehaviour
 			case 5:
 				StepDesc.text = LanguageManager.Ins.SetString("desc_tutorial_step_5");
 				break;
+			case 6:
+				StepDesc.text = LanguageManager.Ins.SetString("desc_tutorial_step_6");
+				break;
 		}
 	}
 
@@ -37,14 +40,21 @@ public class TutorialStep : MonoBehaviour
 		{
 			case 1:
 				break;
-			case 2:				
-				break;
-			case 3:				
-				for (int i = 0; i < StageManager.Ins.Slots.Count; i++)
+			case 2:
+				for (int i = 0; i < HeroBase.Heroes.Count; i++)
 				{
-					if (StageManager.Ins.Slots[i].No == 3)
+					if (HeroBase.Heroes[i].Data.SlotNo == 3)
 					{
-						StageManager.Ins.Slots[i].LevelUp();
+						HeroBase.Heroes[i].SkillCon.Skill.CoolTime = HeroBase.Heroes[i].SkillCon.Skill._CoolTime;
+					}
+				}
+				break;
+			case 3:
+				for (int i = 0; i < HeroBase.Heroes.Count; i++)
+				{
+					if (HeroBase.Heroes[i].Data.SlotNo == 3)
+					{
+						HeroBase.Heroes[i].SkillCon.UseSkill();
 					}
 				}
 				break;
@@ -53,11 +63,20 @@ public class TutorialStep : MonoBehaviour
 				{
 					if (StageManager.Ins.Slots[i].No == 3)
 					{
+						StageManager.Ins.Slots[i].LevelUp();
+					}
+				}
+				break;
+			case 5:				
+				for (int i = 0; i < StageManager.Ins.Slots.Count; i++)
+				{
+					if (StageManager.Ins.Slots[i].No == 3)
+					{
 						DialogManager.Ins.OpenSlotPowerUp(StageManager.Ins.Slots[i].data);
 					}
 				}
 				break;
-			case 5:
+			case 6:
 				DialogManager.Ins.OpenAscension();
 				break;
 		}

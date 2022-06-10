@@ -109,14 +109,17 @@ public class TutorialCondition
 				Condition = TutorialConType.None;
 				break;
 			case 3:
+				Condition = TutorialConType.None;
+				break;
+			case 4:
 				Condition = TutorialConType.Gold;
 				Value = 10;
 				break;
-			case 4:
+			case 5:
 				Condition = TutorialConType.Level;
 				Value = 5;
 				break;
-			case 5:
+			case 6:
 				Condition = TutorialConType.Stage;
 				Value = ConstantData.PossibleAscensionStage;
 				break;			

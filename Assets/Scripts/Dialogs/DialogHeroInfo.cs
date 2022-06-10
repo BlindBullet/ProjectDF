@@ -213,14 +213,17 @@ public class DialogHeroInfo : DialogController
 						HeroIcon.Setup(data);
 						DialogHero._DialogHero.SetHeroes();
 						DialogHero._DialogHero.SetDeploySlots();
-						StageManager.Ins.Slots[data.SlotNo - 1].SetEnchantLabel(data);
 
-						for(int i = 0; i < HeroBase.Heroes.Count; i++)
+						if (data.SlotNo > 0)
 						{
-							if (HeroBase.Heroes[i].Data == data)
-								HeroBase.Heroes[i].Stat.ChangeEnchantLv(data.EnchantLv);
-						}
+							StageManager.Ins.Slots[data.SlotNo - 1].SetEnchantLabel(data);
 
+							for (int i = 0; i < HeroBase.Heroes.Count; i++)
+							{
+								if (HeroBase.Heroes[i].Data == data)
+									HeroBase.Heroes[i].Stat.ChangeEnchantLv(data.EnchantLv);
+							}
+						}
 						SetHeroInfo(data);
 					}
 				});

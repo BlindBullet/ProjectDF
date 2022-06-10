@@ -85,6 +85,8 @@ public class SkillController : MonoBehaviour
 
 	public bool UseSkill()
 	{
+		me.Ui.CloseSkillReadyText();
+
 		if (Skill.CoolTime < Skill._CoolTime)
 			return false;
 
