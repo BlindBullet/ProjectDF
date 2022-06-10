@@ -52,13 +52,31 @@ public class SkillController : MonoBehaviour
 	{
 		while (true)
 		{
+			int count = 0;
+
+			if (Skill.Data.Type == SkillType.ActiveEnemyTarget)
+			{
+				for (int i = 0; i < EnemyBase.Enemies.Count; i++)
+				{
+					if (Vector2.Distance(me.transform.position, EnemyBase.Enemies[i].transform.position) < 12f)
+						count++;
+				}
+			}
+			else
+			{
+				count = 10;
+			}
+
 			//여기 자동 스킬 사용 넣을 것
 			if (StageManager.Ins.PlayerStat.UseAutoSkill)
 			{
-				if (UseSkill())
+				if(count > 10)
 				{
-					me.Ui.CloseSkillReadyText();
-					//me.Ui.CloseSkillReadyFrame();
+					if (UseSkill())
+					{
+						me.Ui.CloseSkillReadyText();
+						//me.Ui.CloseSkillReadyFrame();
+					}
 				}
 
 				yield return new WaitForSeconds(1f);
@@ -69,10 +87,13 @@ public class SkillController : MonoBehaviour
 
 				if (randNo < StageManager.Ins.PlayerStat.UseAutoSkillRate)
 				{
-					if (UseSkill())
+					if (count > 10)
 					{
-						me.Ui.CloseSkillReadyText();
-						//me.Ui.CloseSkillReadyFrame();
+						if (UseSkill())
+						{
+							me.Ui.CloseSkillReadyText();
+							//me.Ui.CloseSkillReadyFrame();
+						}
 					}
 				}
 

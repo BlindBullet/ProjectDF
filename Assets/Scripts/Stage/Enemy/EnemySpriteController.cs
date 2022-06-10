@@ -66,7 +66,9 @@ public class EnemySpriteController : MonoBehaviour
 	{		
 		frameMat.DOFloat(1f, "_FadeAmount", 1.5f).SetEase(Ease.Linear);
 		bgMat.DOFloat(1f, "_FadeAmount", 1.5f).SetEase(Ease.Linear);
-		modelMat.DOFloat(1f, "_FadeAmount", 1.5f).SetEase(Ease.Linear);		
+		modelMat.DOFloat(1f, "_FadeAmount", 1.5f).SetEase(Ease.Linear);
+		DOTween.Kill(Model.transform);
+		DOTween.Kill(this.transform);
 	}
 
 }
