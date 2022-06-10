@@ -9,6 +9,8 @@ public class GameManager : MonoSingleton<GameManager>
 {	
 	private void Awake()
 	{
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
 		DialogManager.Ins.SetDialogTransform();
 		
 		DontDestroyOnLoad(this);

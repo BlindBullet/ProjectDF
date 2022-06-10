@@ -26,12 +26,8 @@ public class HeroUi : MonoBehaviour
 	{	
 		IconBg.material = new Material(IconBg.materialForRendering);
 		mat = IconBg.materialForRendering;
-		mat.SetFloat("_FadeAmount", 0f);
-		mat.DisableKeyword("HOLOGRAM_ON");
-		mat.DisableKeyword("SHINE_ON");
-		IconBg.GetComponent<AllIn1Shader>().ApplyMaterialToHierarchy();
-		SkillCoolTimeFrame.material = new Material(SkillCoolTimeFrame.materialForRendering);
-		frameMat = SkillCoolTimeFrame.materialForRendering;
+		mat.SetFloat("_FadeAmount", 0f);		
+		IconBg.GetComponent<AllIn1Shader>().ApplyMaterialToHierarchy();		
 
 		me = GetComponent<HeroBase>();        
 		List<HeroChart> charts = CsvData.Ins.HeroChart[data.Id];
@@ -66,8 +62,7 @@ public class HeroUi : MonoBehaviour
 
 		if(value >= 1f && !skillReady)
 		{
-			ShowSkillReadyText();
-			//ShowSkillReadyFrame();
+			ShowSkillReadyText();			
 		}
 	}
 		
@@ -80,8 +75,7 @@ public class HeroUi : MonoBehaviour
 
 			if (me.SkillCon.UseSkill())
 			{
-				CloseSkillReadyText();
-				//CloseSkillReadyFrame();
+				CloseSkillReadyText();				
 			}
 		});
 	}
@@ -92,26 +86,6 @@ public class HeroUi : MonoBehaviour
 		{
 			Stars[i].SetActive(true);
 		}
-	}
-
-	public void ShowSkillReadyFrame()
-	{
-		skillReady = true;
-
-		frameMat.EnableKeyword("HOLOGRAM_ON");
-		frameMat.EnableKeyword("SHINE_ON");
-
-		frameMat.SetFloat("_ShineGlow", 1f);
-		frameMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetUpdate(true).SetId("SF" + me.Data.Id);
-	}
-
-	public void CloseSkillReadyFrame()
-	{
-		DOTween.Kill("SF" + me.Data.Id);
-		frameMat.SetFloat("_ShineGlow", 0f);
-		frameMat.DisableKeyword("HOLOGRAM_ON");
-		frameMat.DisableKeyword("SHINE_ON");
-		skillReady = false;
 	}
 
 	public void ShowSkillReadyText()

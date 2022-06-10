@@ -61,8 +61,10 @@ public class QuestBar : MonoBehaviour
 				QuestProgressBar.SetActive(true);
 				QuestTimeText.gameObject.SetActive(false);
 				DateTime startTime = data.StartTime;				
-				TimeSpan timeSpan = TimeManager.Ins.ReceivedTime - startTime;				
-				StartCoroutine(TimeProgress(chart.Time, timeSpan.TotalSeconds + TimeManager.Ins.SinceTime));
+				TimeSpan timeSpan = TimeManager.Ins.ReceivedTime - startTime;
+				int _time = chart.Time;
+				_time = _time + (int)(_time * (StageManager.Ins.PlayerStat.QuestTime / 100f));
+				StartCoroutine(TimeProgress(_time, timeSpan.TotalSeconds + TimeManager.Ins.SinceTime));
 
 				AchieveBtn.gameObject.SetActive(false);
 				DisPatchBtn.gameObject.SetActive(false);
@@ -73,10 +75,10 @@ public class QuestBar : MonoBehaviour
 			QuestProgressBar.SetActive(false);
 			QuestTimeText.gameObject.SetActive(true);
 
-			int Time = chart.Time;
-			Time = Time + (int)(Time * (StageManager.Ins.PlayerStat.QuestTime / 100f));
-			int hour = chart.Time / 60;
-			int min = chart.Time % 60;
+			int Time = chart.Time;			
+			Time = Time + (int)(Time * (StageManager.Ins.PlayerStat.QuestTime / 100f));			
+			int hour = Time / 60;
+			int min = Time % 60;
 
 			QuestTimeText.text = LanguageManager.Ins.SetString("QuestTime") + ": " + hour + LanguageManager.Ins.SetString("Hour") + " " + min + LanguageManager.Ins.SetString("Minute");
 			AchieveBtn.gameObject.SetActive(false);

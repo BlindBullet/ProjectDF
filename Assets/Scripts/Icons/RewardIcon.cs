@@ -15,22 +15,24 @@ public class RewardIcon : MonoBehaviour
 	{
 		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.RewardType.ToString());
 
+		float value = chart.RewardValue + (chart.RewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
+
 		switch (chart.RewardType)
 		{
 			case RewardType.Gold:
-				Amount.text = chart.RewardValue + LanguageManager.Ins.SetString("Minute");
+				Amount.text = Mathf.RoundToInt(value) + LanguageManager.Ins.SetString("Minute");
 				break;
 			case RewardType.GameSpeed:
-				Amount.text = chart.RewardValue + LanguageManager.Ins.SetString("Minute");
+				Amount.text = Mathf.RoundToInt(value) + LanguageManager.Ins.SetString("Minute");
 				break;
 			case RewardType.UseAutoSkill:
-				Amount.text = chart.RewardValue + LanguageManager.Ins.SetString("Minute");
+				Amount.text = Mathf.RoundToInt(value) + LanguageManager.Ins.SetString("Minute");
 				break;
 			case RewardType.GainGold:
-				Amount.text = chart.RewardValue + LanguageManager.Ins.SetString("Minute");
+				Amount.text = Mathf.RoundToInt(value) + LanguageManager.Ins.SetString("Minute");
 				break;
 			case RewardType.SoulStone:								
-				Amount.text = chart.RewardValue.ToString();
+				Amount.text = Mathf.RoundToInt(value).ToString();
 				break;
 		}
 	}
