@@ -7,7 +7,7 @@ public class MinionFSM : MonoBehaviour
 {
 	StateMachine<MinionFSM> _stateMachine = null;
 	MinionBase me;
-
+	
 	public void SetFSM(MinionBase minionBase)
 	{
 		me = minionBase;
@@ -64,7 +64,7 @@ public class MinionFSM : MonoBehaviour
 			}
 
 			if (Owner.me.Target != null && Owner.me.CalcRange())
-			{
+			{				
 				Invoke<AttackState>();
 			}
 
@@ -83,7 +83,7 @@ public class MinionFSM : MonoBehaviour
 	private class AttackState : State<MinionFSM>
 	{
 		protected override void Begin()
-		{
+		{			
 			Owner.me.AttackCon.Attack();
 		}
 
@@ -101,7 +101,7 @@ public class MinionFSM : MonoBehaviour
 		}
 
 		protected override void End()
-		{
+		{			
 			Owner.me.AttackCon.StopAttack();
 		}
 	}

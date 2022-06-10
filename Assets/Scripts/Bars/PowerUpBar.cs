@@ -98,7 +98,23 @@ public class PowerUpBar : MonoBehaviour
 				SoundManager.Ins.PlaySFX("se_button_2");
 				data.PowerUp(data.Lv, chart.Type);
 
-				for(int i = 0; i < StageManager.Ins.Slots.Count; i++)
+				switch (chart.CostType)
+				{
+					case CostType.Gold:
+						if (StageManager.Ins.PlayerData.Gold >= cost)
+							StageManager.Ins.ChangeGold(-cost);
+						break;
+					case CostType.Magicite:
+						if (StageManager.Ins.PlayerData.Magicite >= cost)
+							StageManager.Ins.ChangeMagicite(-cost);
+						break;
+					case CostType.SoulStone:
+						if (StageManager.Ins.PlayerData.SoulStone >= cost)
+							StageManager.Ins.ChangeSoulStone(-cost);
+						break;
+				}
+
+				for (int i = 0; i < StageManager.Ins.Slots.Count; i++)
 				{
 					if (data.No == StageManager.Ins.Slots[i].No)
 						StageManager.Ins.Slots[i].AfterPowerUp();

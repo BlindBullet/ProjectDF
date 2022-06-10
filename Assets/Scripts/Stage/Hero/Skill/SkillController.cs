@@ -23,7 +23,7 @@ public class SkillController : MonoBehaviour
 		}
 
 		Skill = new Skill(heroChart.Skill, data.Grade);
-		Skill.CoolTime = data.CurCT;
+		Skill.CoolTime = data.CurCT;		
 
 		StartCoroutine(ProgressSkill());
 	}
@@ -41,7 +41,7 @@ public class SkillController : MonoBehaviour
 			{
 				Skill.ProgressCoolTime();
 				me.Ui.SetCoolTimeFrame(Skill.CoolTime / Skill._CoolTime);
-
+				
 				//여기 자동 스킬 사용 넣을 것
 				if (StageManager.Ins.PlayerStat.UseAutoSkill)
 				{
@@ -50,11 +50,11 @@ public class SkillController : MonoBehaviour
 						me.Ui.CloseSkillReadyText();
 					}
 				}
-				else if(StageManager.Ins.PlayerStat.UseAutoSkillRate > 0f)
+				else if (StageManager.Ins.PlayerStat.UseAutoSkillRate > 0f)
 				{
 					float randNo = Random.Range(0, 100f);
 
-					if(randNo < StageManager.Ins.PlayerStat.UseAutoSkillRate)
+					if (randNo < StageManager.Ins.PlayerStat.UseAutoSkillRate)
 					{
 						if (UseSkill())
 						{
@@ -79,7 +79,8 @@ public class SkillController : MonoBehaviour
 		{
 			if (me.Range.Targets.Count <= 0 || EnemyBase.Enemies.Count <= 0)
 			{
-				DialogManager.Ins.OpenCautionBar("cant_use_skill_desc_1");				
+				if(!StageManager.Ins.PlayerStat.UseAutoSkill)
+					DialogManager.Ins.OpenCautionBar("cant_use_skill_desc_1");				
 				return false;
 			}
 		}		

@@ -37,15 +37,20 @@ public class MinionAttackController : MonoBehaviour
 		{
 			yield return new WaitForSeconds(1f / data.Spd);
 
-			List<HitresultChart> hitresults = CsvData.Ins.HitresultChart[data.Hitresult];
-			List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart[data.Projectile];
+			UseAttack();
+		}
+	}
 
-			for (int i = 0; i < projectiles.Count; i++)
-			{
-				ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);				
-				projectile.transform.position = me.ProjectileAnchor.position.WithX(me.ProjectileAnchor.position.x + projectiles[i].PosX);
-				projectile.Setup(projectiles[i], hitresults, me, dir, me.Target);
-			}
+	public void UseAttack()
+	{
+		List<HitresultChart> hitresults = CsvData.Ins.HitresultChart[data.Hitresult];
+		List<ProjectileChart> projectiles = CsvData.Ins.ProjectileChart[data.Projectile];
+
+		for (int i = 0; i < projectiles.Count; i++)
+		{
+			ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
+			projectile.transform.position = me.ProjectileAnchor.position.WithX(me.ProjectileAnchor.position.x + projectiles[i].PosX);
+			projectile.Setup(projectiles[i], hitresults, me, dir, me.Target);
 		}
 	}
 

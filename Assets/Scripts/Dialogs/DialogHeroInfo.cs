@@ -227,7 +227,7 @@ public class DialogHeroInfo : DialogController
 			}
 			else
 			{
-				purchaseBtnMat.SetFloat("_GreyscaleBlend", 1f);				
+				purchaseBtnMat.SetFloat("_GreyscaleBlend", 1f);
 			}
 
 			if(data.Grade >= 5)
@@ -295,7 +295,7 @@ public class DialogHeroInfo : DialogController
 			}
 
 			if (haveCost)
-			{
+			{				
 				purchaseBtnMat.SetFloat("_GreyscaleBlend", 0f);				
 				PurchaseBtn.onClick.RemoveAllListeners();
 				PurchaseBtn.onClick.AddListener(() =>

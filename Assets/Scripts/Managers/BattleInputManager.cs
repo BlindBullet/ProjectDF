@@ -184,7 +184,7 @@ public class BattleInputManager : MonoBehaviour
 					_atk += HeroBase.Heroes[i].Stat.Atk;
 				}
 
-				_atk = _atk / 5f;
+				_atk = _atk * 0.2f;
 
 				for (int i = 0; i < projectiles.Count; i++)
 				{

@@ -69,6 +69,8 @@ public class DialogAdReward : DialogController
 			AdmobManager.Ins.ShowSplliesAd();			
 		});
 
+		CloseBtn.gameObject.SetActive(false);
+
 		Show(false);
 	}
 
@@ -174,6 +176,7 @@ public class DialogAdReward : DialogController
 		}
 				
 		DialogManager.Ins.OpenReceiveReward(chart.RewardType, rewardValue);
+		SEManager.Ins.Apply();
 		CloseDialog();
 	}
 
@@ -214,8 +217,8 @@ public class DialogAdReward : DialogController
 		}
 
 		DialogManager.Ins.OpenReceiveReward(chart.RewardType, rewardValue);
-		CloseDialog();
 		SEManager.Ins.Apply();
+		CloseDialog();
 	}
 
 	private void OnDisable()

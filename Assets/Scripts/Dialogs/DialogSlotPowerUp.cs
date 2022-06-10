@@ -161,11 +161,11 @@ public class DialogSlotPowerUp : DialogController
 						_add = true;
 					break;
 				case AtkUpgradeType.Diagonal:
-					if (data.AtkData.Diagonal < 3)
+					if (data.AtkData.Diagonal < 4)
 						_add = true;
 					break;
 				case AtkUpgradeType.Multi:
-					if (data.AtkData.Multi < 3)
+					if (data.AtkData.Multi < 4)
 						_add = true;
 					break;
 				case AtkUpgradeType.Boom:

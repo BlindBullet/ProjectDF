@@ -35,9 +35,11 @@ public class MinionBase : MonoBehaviour
 	Vector2 dir;
 	Vector2 targetPos;
 	float mTimerCurrent = 0f;
-	
+	HeroBase caster = null;
+
 	public void Init(MinionChart chart, HeroBase caster, float durationTime)
 	{
+		this.caster = caster;
 		this.transform.localScale = new Vector3(chart.Size, chart.Size, 1);
 
 		data = chart;
@@ -123,6 +125,7 @@ public class MinionBase : MonoBehaviour
 		{
 			StopCoroutine(cMove);
 			cMove = null;
+			IdleMove();
 		}	
 	}
 
@@ -163,7 +166,7 @@ public class MinionBase : MonoBehaviour
 			ModelTrf.up = dir;
 
 			if(Target.Stat.CurHp <= 0f)
-			{
+			{				
 				Target = null;
 				yield break;
 			}
@@ -224,7 +227,7 @@ public class MinionBase : MonoBehaviour
 		Minions.Remove(this);
 
 		yield return new WaitForSeconds(2f);
-
+		
 		ObjectManager.Ins.Push<MinionBase>(this);
 	}
 
@@ -268,6 +271,10 @@ public class MinionBase : MonoBehaviour
 			.AppendCallback(()=> IdleMove());		
 	}
 
+	public void Die()
+	{		
+		IsDie = true;
+	}
 
 
 }

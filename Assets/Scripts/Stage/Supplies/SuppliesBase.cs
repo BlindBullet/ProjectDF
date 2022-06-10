@@ -28,6 +28,8 @@ public class SuppliesBase : MonoBehaviour
 		min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
 		max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
+		SoundManager.Ins.PlaySFX("AppearAngel");
+
 		SetPos();
 		Move();
 	}

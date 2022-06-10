@@ -72,7 +72,7 @@ public class SEManager : MonoSingleton<SEManager>
 		}
 
 		InitAllStat();
-		ApplyAllSe(SeList);
+		ApplyAllSe(SeList);		
 	}
 
 	void InitAllStat()
@@ -100,6 +100,8 @@ public class SEManager : MonoSingleton<SEManager>
 		{			
 			HeroBase.Heroes[i].BuffCon.CalcStat();
 		}
+
+		PlayerBuffManager.Ins.RunAllBuffs();
 	}
 
 	void ApplySE(SEData data)
@@ -577,7 +579,7 @@ public class SEManager : MonoSingleton<SEManager>
 			case SEEffectType.OfflineReward:
 				switch (data.Chart.EParam2)
 				{
-					case "LimitTime":
+					case "Time":
 						switch (data.Chart.EParam1)
 						{
 							case "Inc":

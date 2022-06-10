@@ -9,10 +9,11 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 	public UnityAction<double> GameSpeedBuffAdded;
 	public UnityAction<double> AutoSkillBuffAdded;
 	public UnityAction<double> GainGoldBuffAdded;
+	Coroutine cBuff = null;
 
 	public void AddBuff(PlayerBuffType type, double durationTime)
 	{
-		StageManager.Ins.PlayerData.AddBuff(type, durationTime, TimeManager.Ins.GetCurrentTime());
+		StageManager.Ins.PlayerData.AddBuff(type, durationTime, TimeManager.Ins.GetCurrentTime());		
 		RunAllBuffs();
 	}
 
@@ -23,7 +24,7 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 		for(int i = 0; i < buffs.Count; i++)
 		{			
 			StartBuff(buffs[i]);
-		}
+		}		
 	}
 
 	void StartBuff(PlayerBuffData data)
@@ -40,9 +41,14 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 			case PlayerBuffType.GainGold:
 				StageManager.Ins.PlayerStat.GainGold = ConstantData.BuffGainGoldRate;
 				break;
+		}		
+
+		if(cBuff != null)
+		{
+			StopCoroutine(cBuff);
 		}
 
-		StartCoroutine(BuffSequence(data));
+		cBuff = StartCoroutine(BuffSequence(data));
 	}
 
 	void EndBuff(PlayerBuffData data)
@@ -60,8 +66,8 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 				StageManager.Ins.PlayerStat.GainGold = 1f;
 				break;
 		}
-
-		StageManager.Ins.PlayerData.RemoveBuff(data);
+		
+		StageManager.Ins.PlayerData.RemoveBuff(data);		
 	}
 
 	IEnumerator BuffSequence(PlayerBuffData data)
@@ -84,7 +90,7 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 			}
 
 			if (span.TotalSeconds >= data.DurationTime * 60f)
-			{
+			{				
 				switch (data.Type)
 				{
 					case PlayerBuffType.GameSpeed:
@@ -103,7 +109,7 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 			}
 
 			yield return new WaitForSeconds(1f);
-		}
+		}		
 	}
 
 

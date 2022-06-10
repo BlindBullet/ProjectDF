@@ -296,9 +296,7 @@ public class PlayerData
 	public void Ascension()
 	{		
 		Stage = StageManager.Ins.PlayerStat.StartStage;
-
-		Gold = StageManager.Ins.PlayerStat.AscensionGold;
-
+		Gold = StageManager.Ins.PlayerStat.AscensionGold;		
 		Slots.Clear();
 
 		for (int i = 0; i < 5; i++)
@@ -418,6 +416,12 @@ public class PlayerData
 			TotalClearQuestCount = data.TotalClearQuestCount;
 			Stage = data.Stage;
 			Heroes = data.Heroes;
+
+			for(int i = 0; i < Heroes.Count; i++)
+			{
+				Heroes[i].CurCT = 0f;
+			}
+
 			Relics = data.Relics;
 			Slots = data.Slots;
 			Quests = data.Quests;

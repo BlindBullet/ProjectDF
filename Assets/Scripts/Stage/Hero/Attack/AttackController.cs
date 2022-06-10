@@ -79,26 +79,26 @@ public class AttackController : MonoBehaviour
 				CreateProjectile(model, 0, 0, dir, target);
 				break;
 			case 1:
-				CreateProjectile(model, -0.15f, 0, dir, target);
-				CreateProjectile(model, 0.15f, 0, dir, target);
+				CreateProjectile(model, -0.5f, 0, dir, target);
+				CreateProjectile(model, 0.5f, 0, dir, target);
 				break;
 			case 2:
-				CreateProjectile(model, -0.3f, 0, dir, target);
+				CreateProjectile(model, -0.5f, 0, dir, target);
 				CreateProjectile(model, 0, 0, dir, target);
-				CreateProjectile(model, 0.3f, 0, dir, target);
+				CreateProjectile(model, 0.5f, 0, dir, target);
 				break;
 			case 3:
-				CreateProjectile(model, -0.3f, 0, dir, target);
-				CreateProjectile(model, -0.15f, 0, dir, target);
-				CreateProjectile(model, 0.15f, 0, dir, target);
-				CreateProjectile(model, 0.3f, 0, dir, target);
+				CreateProjectile(model, -0.75f, 0, dir, target);
+				CreateProjectile(model, -0.25f, 0, dir, target);
+				CreateProjectile(model, 0.25f, 0, dir, target);
+				CreateProjectile(model, 0.75f, 0, dir, target);
 				break;
 			case 4:
-				CreateProjectile(model, -0.6f, 0, dir, target);
-				CreateProjectile(model, -0.3f, 0, dir, target);
+				CreateProjectile(model, -1f, 0, dir, target);
+				CreateProjectile(model, -0.5f, 0, dir, target);
 				CreateProjectile(model, 0, 0, dir, target);
-				CreateProjectile(model, 0.3f, 0, dir, target);
-				CreateProjectile(model, 0.6f, 0, dir, target);
+				CreateProjectile(model, 0.5f, 0, dir, target);
+				CreateProjectile(model, 1f, 0, dir, target);
 				break;			
 		}
 
@@ -121,6 +121,16 @@ public class AttackController : MonoBehaviour
 				CreateProjectile(model, 0, -20, dir, target);
 				CreateProjectile(model, 0, 30, dir, target);
 				CreateProjectile(model, 0, -30, dir, target);
+				break;
+			case 4:				
+				CreateProjectile(model, 0, 10, dir, target);
+				CreateProjectile(model, 0, -10, dir, target);
+				CreateProjectile(model, 0, 20, dir, target);
+				CreateProjectile(model, 0, -20, dir, target);
+				CreateProjectile(model, 0, 30, dir, target);
+				CreateProjectile(model, 0, -30, dir, target);
+				CreateProjectile(model, 0, 40, dir, target);
+				CreateProjectile(model, 0, -40, dir, target);
 				break;
 		}		
 	}

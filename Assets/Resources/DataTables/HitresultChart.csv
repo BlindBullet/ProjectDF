@@ -1,4 +1,5 @@
 ﻿Id,Prob,Type,HitFx,DurationFx,FactorOwner,FactorType,StatType,Value,ValuePercent,DurationTime,StiffTime,SummonIds,SummonPosX,SummonPosY
+dmg_0,100,Dmg,,,Caster,Atk,,,0,,0,,,
 boom_red_1,100,Dmg,HitFxRed,,Caster,Atk,,,50,,,,,
 boom_red_2,100,Dmg,HitFxRed,,Caster,Atk,,,50,,,,,
 boom_red_3,100,Dmg,HitFxRed,,Caster,Atk,,,50,,,,,

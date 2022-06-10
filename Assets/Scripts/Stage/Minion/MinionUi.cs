@@ -17,19 +17,13 @@ public class MinionUi : MonoBehaviour
 		mat = Frame.material;
 		Frame.transform.GetComponent<AllIn1Shader>().ApplyMaterialToHierarchy();
 
-		mat.DisableKeyword("FADE_ON");
-		mat.DisableKeyword("HOLOGRAM_ON");
-
 		Bg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("HeroBg_" + chart.Attr.ToString());
 		MinionImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Characters").GetSprite(chart.Model);
 		Frame.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("MinionFrame_" + chart.Attr.ToString());
 	}
 
 	public void Summon()
-	{
-		mat.EnableKeyword("FADE_ON");
-		mat.EnableKeyword("HOLOGRAM_ON");
-
+	{		
 		mat.SetFloat("_FadeAmount", 1f);
 		mat.SetFloat("_HologramBlend", 1f);		
 

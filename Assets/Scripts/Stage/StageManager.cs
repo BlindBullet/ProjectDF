@@ -354,7 +354,7 @@ public class StageManager : MonoSingleton<StageManager>
 		{   
 			yield return null;
 		}
-		
+
 		while (true)
 		{
 			yield return new WaitForSeconds(2f);
@@ -408,10 +408,10 @@ public class StageManager : MonoSingleton<StageManager>
 		{
 			EnemyBase.Enemies[i].Stop();
 		}
-		
-		for (int i = 0; i < MinionBase.Minions.Count; i++)
+
+		for(int i = 0; i < MinionBase.Minions.Count; i++)
 		{
-			MinionBase.Minions[i].IsDie = true;
+			MinionBase.Minions[i].Die();
 		}
 
 		for (int i = 0; i < HeroBase.Heroes.Count; i++)
@@ -455,17 +455,18 @@ public class StageManager : MonoSingleton<StageManager>
 		if(cStageSequence != null)
 			StopCoroutine(cStageSequence);
 
+		for (int i = 0; i < MinionBase.Minions.Count; i++)
+		{
+			MinionBase.Minions[i].Die();
+		}
+
 		//보상 주기
 		double rewardAmount = ConstantData.GetAscensionMagicite(PlayerData.Stage);
 		rewardAmount = rewardAmount + (rewardAmount * (PlayerStat.AscensionReward / 100f));
 
 		if (isAdAscension)
-			rewardAmount = rewardAmount * 2f;	
+			rewardAmount = rewardAmount * 2f;
 		
-		PlayerData.ChangeMagicite(rewardAmount);
-		PlayerData.Ascension();
-		StageChanged();
-
 		for (int i = 0; i < EnemyBase.Enemies.Count; i++)
 		{
 			EnemyBase.Enemies[i].Stop();
@@ -475,6 +476,9 @@ public class StageManager : MonoSingleton<StageManager>
 		{
 			HeroBase.Heroes[i].Stop();
 		}
+
+		PlayerData.ChangeMagicite(rewardAmount);		
+		StageChanged();
 
 		StartCoroutine(Ascension());
 	}
@@ -487,6 +491,8 @@ public class StageManager : MonoSingleton<StageManager>
 		AscensionSequence.FadeIn();
 
 		yield return new WaitForSeconds(2f);
+
+		PlayerData.Ascension();
 
 		for (int i = EnemyBase.Enemies.Count - 1; i >= 0; i--)
 		{
