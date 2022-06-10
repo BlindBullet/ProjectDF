@@ -36,8 +36,8 @@ public class PlayerData
 		IsFirstPlay = true;
 		PlayAppCount = 1;
 		Gold = 0;
-		Magicite = 0f;
-		SoulStone = 5000f;
+		Magicite = 500000000f;
+		SoulStone = 500000000f;
 		Stage = 1;
 		AscensionCount = 0;
 		QuestLv = 1;

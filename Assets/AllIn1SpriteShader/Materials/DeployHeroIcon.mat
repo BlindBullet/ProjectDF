@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: DeployHeroIcon
   m_Shader: {fileID: 4800000, guid: a53f4bb29f3644b43b5075c6dcfecb32, type: 3}
-  m_ShaderKeywords: FADE_ON
+  m_ShaderKeywords: FADE_ON HOLOGRAM_ON SHINE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -137,9 +137,9 @@ Material:
     - _HologramBlend: 1
     - _HologramMaxAlpha: 0.75
     - _HologramMinAlpha: 0.1
-    - _HologramStripesAmount: 0.1
-    - _HologramStripesSpeed: 4.5
-    - _HologramUnmodAmount: 0
+    - _HologramStripesAmount: 0.238
+    - _HologramStripesSpeed: -5.6
+    - _HologramUnmodAmount: 0.097
     - _HsvBright: 1
     - _HsvSaturation: 1
     - _HsvShift: 180
@@ -187,9 +187,9 @@ Material:
     - _ShakeUvX: 1.5
     - _ShakeUvY: 1
     - _ShineGlow: 1
-    - _ShineLocation: 0.5
+    - _ShineLocation: 0.455
     - _ShineRotate: 0
-    - _ShineWidth: 0.1
+    - _ShineWidth: 0.382
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
@@ -229,10 +229,10 @@ Material:
     - _GradTopRightCol: {r: 1, g: 1, b: 0, a: 1}
     - _GreyscaleTintColor: {r: 1, g: 1, b: 1, a: 1}
     - _HitEffectColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HologramStripeColor: {r: 0, g: 1, b: 1, a: 1}
+    - _HologramStripeColor: {r: 1, g: 0.96575993, b: 0, a: 1}
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShineColor: {r: 1, g: 0.78564465, b: 0, a: 1}
   m_BuildTextureStacks: []

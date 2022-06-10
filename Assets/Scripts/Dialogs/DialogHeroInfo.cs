@@ -258,7 +258,10 @@ public class DialogHeroInfo : DialogController
 							HeroIcon.Setup(data);
 							DialogHero._DialogHero.SetHeroes();
 							DialogHero._DialogHero.SetDeploySlots();
-							StageManager.Ins.DeployHero(data, data.SlotNo);
+
+							if(data.SlotNo > 0)
+								StageManager.Ins.DeployHero(data, data.SlotNo);
+
 							SetHeroInfo(data);
 						}
 					});
