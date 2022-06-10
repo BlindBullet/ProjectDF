@@ -64,13 +64,13 @@ public class SkillController : MonoBehaviour
 			}
 			else
 			{
-				count = 10;
+				count = 11;
 			}
 
 			//여기 자동 스킬 사용 넣을 것
 			if (StageManager.Ins.PlayerStat.UseAutoSkill)
 			{
-				if(count > 10)
+				if(count > 5)
 				{
 					if (UseSkill())
 					{
@@ -87,7 +87,7 @@ public class SkillController : MonoBehaviour
 
 				if (randNo < StageManager.Ins.PlayerStat.UseAutoSkillRate)
 				{
-					if (count > 10)
+					if (count > 5)
 					{
 						if (UseSkill())
 						{

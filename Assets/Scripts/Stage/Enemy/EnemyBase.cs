@@ -339,7 +339,9 @@ public class EnemyBase : MonoBehaviour
 		Rb.AddForce(new Vector2(0, value * 1000f));
 
 		yield return new WaitForSeconds(time);
-			
+
+		Rb.velocity = Vector2.zero;		
+
 		cPush = null;
 
 		if(cStun == null)
