@@ -35,7 +35,6 @@ public class HeroIcon : MonoBehaviour
 			if (chartList[i].Grade == data.Grade)
 				chart = chartList[i];
 		}
-
 		
 		Btn.onClick.RemoveAllListeners();
 		Btn.onClick.AddListener(() => { if (action != null) SoundManager.Ins.PlaySFX("se_button_2"); action(data); });
@@ -113,7 +112,12 @@ public class HeroIcon : MonoBehaviour
 	
 	void SetStars(int grade)
 	{
-		for(int i = 0; i < grade; i++)
+		for (int i = 0; i < Stars.Length; i++)
+		{
+			Stars[i].SetActive(false);
+		}
+
+		for (int i = 0; i < grade; i++)
 		{
 			Stars[i].SetActive(true);
 		}

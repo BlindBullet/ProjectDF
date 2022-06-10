@@ -37,7 +37,8 @@ public class HeroTween : MonoBehaviour
 
 	public void Stop()
 	{
-		
+		DOTween.Kill(Icon.transform);
+		DOTween.Kill(HeroImg.transform);
 	}
 
 	

@@ -37,7 +37,7 @@ public class DialogSlotPowerUp : DialogController
 		HelpText.text = LanguageManager.Ins.SetString("help_slot_power_up");
 		RefreshBtnText.text = LanguageManager.Ins.SetString("Refresh");
 		RefreshCostText.text = ConstantData.PowerUpRefreshCost.ToString();
-		onHelp = false;
+		onHelp = true;
 
 		HelpBtn.onClick.RemoveAllListeners();
 		HelpBtn.onClick.AddListener(() => 
