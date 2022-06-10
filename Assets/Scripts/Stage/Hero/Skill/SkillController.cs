@@ -26,6 +26,7 @@ public class SkillController : MonoBehaviour
 		Skill.CoolTime = data.CurCT;		
 
 		StartCoroutine(ProgressSkill());
+		StartCoroutine(UseAutoSkill());
 	}
 
 	public void Stop()
@@ -41,29 +42,39 @@ public class SkillController : MonoBehaviour
 			{
 				Skill.ProgressCoolTime();
 				me.Ui.SetCoolTimeFrame(Skill.CoolTime / Skill._CoolTime);
-				
-				//여기 자동 스킬 사용 넣을 것
-				if (StageManager.Ins.PlayerStat.UseAutoSkill)
+			}
+
+			yield return null;
+		}
+	}
+
+	IEnumerator UseAutoSkill()
+	{
+		while (true)
+		{
+			//여기 자동 스킬 사용 넣을 것
+			if (StageManager.Ins.PlayerStat.UseAutoSkill)
+			{
+				if (UseSkill())
+				{
+					me.Ui.CloseSkillReadyText();
+				}
+
+				yield return new WaitForSeconds(1f);
+			}
+			else if (StageManager.Ins.PlayerStat.UseAutoSkillRate > 0f)
+			{
+				float randNo = Random.Range(0, 100f);
+
+				if (randNo < StageManager.Ins.PlayerStat.UseAutoSkillRate)
 				{
 					if (UseSkill())
 					{
 						me.Ui.CloseSkillReadyText();
 					}
 				}
-				else if (StageManager.Ins.PlayerStat.UseAutoSkillRate > 0f)
-				{
-					float randNo = Random.Range(0, 100f);
 
-					if (randNo < StageManager.Ins.PlayerStat.UseAutoSkillRate)
-					{
-						if (UseSkill())
-						{
-							me.Ui.CloseSkillReadyText();
-						}
-					}
-
-					yield return new WaitForSeconds(1f);
-				}
+				yield return new WaitForSeconds(1f);
 			}
 
 			yield return null;
@@ -149,7 +160,7 @@ public class SkillController : MonoBehaviour
 		
 		skill.InitCoolTime(skill.Data.CoolDealy);
 				
-		cSkill = null;
+		cSkill = null;		
 		me.AttackCon.Attack();
 	}
 
