@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour
 {
@@ -21,7 +22,8 @@ public class Slot : MonoBehaviour
 	public Image PowerUpBtnFrame;
 	Material lvUpBtnMat;
 	Material powerUpBtnMat;
-	public SlotData data;	
+	public SlotData data;
+	bool isClick = false;
 
 	public void Init(SlotData data)
 	{
@@ -46,7 +48,7 @@ public class Slot : MonoBehaviour
 			SoundManager.Ins.PlaySFX("se_button_2");
 			LevelUp();
 			StageManager.Ins.PlayerData.Save();
-		});
+		});		
 
 		PowerUpBtn.onClick.RemoveAllListeners();
 		PowerUpBtn.onClick.AddListener(() =>
@@ -60,7 +62,7 @@ public class Slot : MonoBehaviour
 		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
 		SetLvUpBtnState(0);
 		SetLvText();
-		SetPowerUpBtn();
+		SetPowerUpBtn();		
 	}
 
 	public void LevelUp()
@@ -173,6 +175,5 @@ public class Slot : MonoBehaviour
 	{		
 		StageManager.Ins.GoldChanged -= SetLvUpBtnState;
 	}
-
-
+	
 }

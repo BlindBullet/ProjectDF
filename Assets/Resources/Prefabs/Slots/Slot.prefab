@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 4353170578056414847}
   - component: {fileID: 3905213252024919780}
   - component: {fileID: 7170302473556620781}
+  - component: {fileID: 7733262023700253626}
   m_Layer: 5
   m_Name: LvUp Btn
   m_TagString: Untagged
@@ -415,6 +416,19 @@ MonoBehaviour:
   normalStrength: 5
   normalSmoothing: 1
   computingNormal: 0
+--- !u!114 &7733262023700253626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803485919305737079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce6301f901ccb74ca528453f70fc77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slot: {fileID: 8459852337861820113}
 --- !u!1 &3339509907625799533
 GameObject:
   m_ObjectHideFlags: 0

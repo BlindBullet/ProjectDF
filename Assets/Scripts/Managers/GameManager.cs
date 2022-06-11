@@ -27,7 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
 		{
 			for(int i = 0; i < elem.Value.PoolCount; i++)
 			{				
-				EffectManager.Ins.ShowFx(elem.Key, new Vector2(0, 30f), 0.1f);
+				EffectManager.Ins.ObjectPoolingToStart(elem.Key, new Vector2(0, 30f), 0.1f);
 			}
 
 			yield return new WaitForSeconds(0.1f);

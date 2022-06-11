@@ -8,6 +8,8 @@ using UnityEngine.U2D;
 
 public class DialogHeroInfo : DialogController
 {
+	public static DialogHeroInfo _Dialog = null;
+
 	public TextMeshProUGUI HeroName;
 	public HeroIcon HeroIcon;    
 	public TextMeshProUGUI AtkTitle;
@@ -25,6 +27,9 @@ public class DialogHeroInfo : DialogController
 	public TextMeshProUGUI PurchaseCost;
 	public Image PurchaseCostIcon;
 	public Button PurchaseBtn;
+	public Button EnchantBtn;
+	public TextMeshProUGUI EnchantBtnText;
+	public TextMeshProUGUI EnchantCost;
 	public TextMeshProUGUI UpgradeBtnText;
 	public TextMeshProUGUI UpgradeCost;
 	public Button UpgradeBtn;
@@ -34,17 +39,23 @@ public class DialogHeroInfo : DialogController
 	HeroChart chart;
 	Material purchaseBtnMat;
 	Material upgradeBtnMat;
+	Material enchantBtnMat;
 
 	public void OpenDialog(HeroData data)
-	{		
-		//Image uiImage = PurchaseBtn.GetComponent<Image>();
-		//uiImage.material = new Material(uiImage.material);
-		//Image uiImage2 = UpgradeBtn.GetComponent<Image>();
-		//uiImage2.material = new Material(uiImage.material);
-
-		purchaseBtnMat = PurchaseBtn.GetComponent<Image>().material;
+	{
+		Image uiImage = PurchaseBtn.GetComponent<Image>();
+		uiImage.material = new Material(uiImage.materialForRendering);
+		purchaseBtnMat = PurchaseBtn.GetComponent<Image>().materialForRendering;
 		PurchaseBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
-		upgradeBtnMat = PurchaseBtn.GetComponent<Image>().material;
+
+		uiImage = EnchantBtn.GetComponent<Image>();
+		uiImage.material = new Material(uiImage.materialForRendering);
+		enchantBtnMat = PurchaseBtn.GetComponent<Image>().materialForRendering;
+		EnchantBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
+
+		uiImage = UpgradeBtn.GetComponent<Image>();
+		uiImage.material = new Material(uiImage.materialForRendering);
+		upgradeBtnMat = PurchaseBtn.GetComponent<Image>().materialForRendering;
 		UpgradeBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
 
 		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];
@@ -60,6 +71,7 @@ public class DialogHeroInfo : DialogController
 		HeroIcon.Setup(data);
 		SetHeroInfo(data);
 		Show(false);
+		_Dialog = this;
 	}
 
 	void SetHero(HeroChart chart)
@@ -192,45 +204,25 @@ public class DialogHeroInfo : DialogController
 				DeployBtn.onClick.RemoveAllListeners();
 				DeployBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); SetDeploy(); });
 			}
-			
-			PurchaseBtn.gameObject.SetActive(true);
-			PurchaseBtnText.text = LanguageManager.Ins.SetString("Enchant");
+
+			PurchaseBtn.gameObject.SetActive(false);
+			EnchantBtn.gameObject.SetActive(true);
+			EnchantBtnText.text = LanguageManager.Ins.SetString("Enchant");
 			double enchantCost = ConstantData.GetHeroEnchantCost(data.EnchantLv);
-			PurchaseCost.text = enchantCost.ToCurrencyString();
-			PurchaseCostIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Magicite");
-			PurchaseBtn.onClick.RemoveAllListeners();
+			EnchantCost.text = enchantCost.ToCurrencyString();			
+			EnchantBtn.onClick.RemoveAllListeners();
 
 			if(StageManager.Ins.PlayerData.Magicite >= enchantCost)
 			{
-				purchaseBtnMat.SetFloat("_GreyscaleBlend", 0f);				
-				PurchaseBtn.onClick.AddListener(() => 
+				enchantBtnMat.SetFloat("_GreyscaleBlend", 0f);
+				EnchantBtn.onClick.AddListener(() => 
 				{
-					SoundManager.Ins.PlaySFX("se_button_2");
-
-					if (StageManager.Ins.PlayerData.EnchantHero(data))
-					{
-						StageManager.Ins.ChangeMagicite(-enchantCost);
-						HeroIcon.Setup(data);
-						DialogHero._DialogHero.SetHeroes();
-						DialogHero._DialogHero.SetDeploySlots();
-
-						if (data.SlotNo > 0)
-						{
-							StageManager.Ins.Slots[data.SlotNo - 1].SetEnchantLabel(data);
-
-							for (int i = 0; i < HeroBase.Heroes.Count; i++)
-							{
-								if (HeroBase.Heroes[i].Data == data)
-									HeroBase.Heroes[i].Stat.ChangeEnchantLv(data.EnchantLv);
-							}
-						}
-						SetHeroInfo(data);
-					}
+					Enchant();
 				});
 			}
 			else
 			{
-				purchaseBtnMat.SetFloat("_GreyscaleBlend", 1f);
+				enchantBtnMat.SetFloat("_GreyscaleBlend", 1f);
 			}
 
 			if(data.Grade >= 5)
@@ -277,6 +269,8 @@ public class DialogHeroInfo : DialogController
 		}
 		else
 		{
+			EnchantBtn.gameObject.SetActive(false);
+			UpgradeBtn.gameObject.SetActive(false);
 			PurchaseBtn.gameObject.SetActive(true);
 			PurchaseBtnText.text = LanguageManager.Ins.SetString("Summon");
 			PurchaseCostIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.CostType.ToString());
@@ -324,11 +318,45 @@ public class DialogHeroInfo : DialogController
 		}
 	}
 
+	public void Enchant()
+	{		
+		double enchantCost = ConstantData.GetHeroEnchantCost(data.EnchantLv);
+
+		if (StageManager.Ins.PlayerData.Magicite >= enchantCost)
+		{
+			SoundManager.Ins.PlaySFX("se_button_2");
+
+			if (StageManager.Ins.PlayerData.EnchantHero(data))
+			{
+				StageManager.Ins.ChangeMagicite(-enchantCost);
+				HeroIcon.Setup(data);
+				DialogHero._DialogHero.SetHeroes();
+				DialogHero._DialogHero.SetDeploySlots();
+
+				if (data.SlotNo > 0)
+				{
+					StageManager.Ins.Slots[data.SlotNo - 1].SetEnchantLabel(data);
+
+					for (int i = 0; i < HeroBase.Heroes.Count; i++)
+					{
+						if (HeroBase.Heroes[i].Data == data)
+							HeroBase.Heroes[i].Stat.ChangeEnchantLv(data.EnchantLv);
+					}
+				}
+				SetHeroInfo(data);
+			}
+		}
+	}
+
 	void SetDeploy()
 	{
 		DialogHero._DialogHero.SetDeployState(data);
 		CloseDialog();
 	}
 
+	private void OnDisable()
+	{
+		_Dialog = null;
+	}
 
 }

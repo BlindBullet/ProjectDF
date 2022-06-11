@@ -5,9 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.U2D;
+using AllIn1SpriteShader;
 
 public class RelicBar : MonoBehaviour
 {
+	public List<RelicBar> Bars = new List<RelicBar>();
+
 	public RelicIcon RelicIcon;
 	public TextMeshProUGUI Name;
 	public TextMeshProUGUI Desc;
@@ -26,12 +29,15 @@ public class RelicBar : MonoBehaviour
 		Image uiImage = LvUpBtn.GetComponent<Image>();
 		uiImage.material = new Material(uiImage.materialForRendering);
 		lvUpBtnMat = LvUpBtn.GetComponent<Image>().material;
+		LvUpBtn.GetComponent<AllIn1Shader>().ApplyMaterialToHierarchy();
 
 		this.data = data;
 		chart = CsvData.Ins.RelicChart[data.Id];
 		Name.text = LanguageManager.Ins.SetString(chart.Name);
 		SetInfo();
 		SetBtn();
+
+		Bars.Add(this);
 	}
 
 	public void SetInfo()
@@ -168,6 +174,7 @@ public class RelicBar : MonoBehaviour
 					{
 						SEManager.Ins.Apply();
 						SetInfo();
+						SetBtns();
 						StageManager.Ins.PlayerData.Save();
 					}
 				});
@@ -222,6 +229,7 @@ public class RelicBar : MonoBehaviour
 					{						
 						SEManager.Ins.Apply();
 						SetInfo();
+						SetBtns();
 						StageManager.Ins.PlayerData.Save();
 					}
 				});
@@ -234,4 +242,16 @@ public class RelicBar : MonoBehaviour
 		}
 	}
 
+	void SetBtns()
+	{
+		for(int i = 0; i < Bars.Count; i++)
+		{
+			Bars[i].SetInfo();
+		}
+	}
+
+	private void OnDisable()
+	{
+		Bars.Remove(this);
+	}
 }

@@ -220,7 +220,7 @@ public class EffectManager : SingletonObject<EffectManager>
 		}
 	}
 
-	public void ShowFx(string id, Vector3 pos, float durationTime)
+	public void ObjectPoolingToStart(string id, Vector3 pos, float durationTime)
 	{
 		if (!CsvData.Ins.FxChart.ContainsKey(id))
 		{
@@ -239,16 +239,7 @@ public class EffectManager : SingletonObject<EffectManager>
 		else
 		{
 			fx.transform.position = new Vector3(pos.x + fxData.SpawnPosX, pos.y + fxData.SpawnPosY, pos.z);
-		}
-
-		if (fxData.SoundResource != "" && fxData.SoundResource != "HitFx")
-		{
-			SoundManager.Ins.PlaySFX(fxData.SoundResource);
-		}
-		else if (fxData.SoundResource == "HitFx")
-		{
-			SoundManager.Ins.PlayNASFX("HitFx");
-		}
+		}	
 	}
 
 	public void ShowFx(string id)
