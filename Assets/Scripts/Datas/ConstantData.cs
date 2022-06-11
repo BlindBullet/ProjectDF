@@ -9,7 +9,7 @@ public static class ConstantData
 	//시작 영웅 ID
 	public static ObscuredString[] StartHeroes = { "10001", "10002", "10003", "10004", "10005", };
 	//레벨업 골드 시작 비용
-	public static ObscuredDouble StartLvUpGold = 10f;
+	public static ObscuredDouble StartLvUpGold = 15f;
 	//레벨업 골드 비용 증가
 	public static ObscuredFloat LvUpGoldGR = 1.09f;
 	//영웅 강화 시작 비용
@@ -19,7 +19,7 @@ public static class ConstantData
 	//영웅 레벨업시 공격력 증가
 	public static ObscuredFloat HeroAtkGR = 1.08f;
 	//적 체력 증가
-	public static ObscuredFloat EnemyHpGR = 1.17f;
+	public static ObscuredFloat EnemyHpGR = 1.18f;
 	//적 처치 골드 증가
 	public static ObscuredFloat EnemyGoldGR = 1.04f;
 	//환생 가능 스테이지
