@@ -16,6 +16,24 @@ public class GameManager : MonoSingleton<GameManager>
 		DontDestroyOnLoad(this);
 	}
 
+	private void Start()
+	{
+		StartCoroutine(ObjectPooling());
+	}
+
+	IEnumerator ObjectPooling()
+	{
+		foreach(KeyValuePair<string, FxChart> elem in CsvData.Ins.FxChart)
+		{
+			for(int i = 0; i < elem.Value.PoolCount; i++)
+			{				
+				EffectManager.Ins.ShowFx(elem.Key, new Vector2(0, 30f), 0.1f);
+			}
+
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
+
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))

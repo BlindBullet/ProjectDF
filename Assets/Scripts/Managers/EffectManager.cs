@@ -220,6 +220,37 @@ public class EffectManager : SingletonObject<EffectManager>
 		}
 	}
 
+	public void ShowFx(string id, Vector3 pos, float durationTime)
+	{
+		if (!CsvData.Ins.FxChart.ContainsKey(id))
+		{
+			Debug.Log("FxData 테이블에는 해당 " + id + "가 없습니다.");
+			return;
+		}
+
+		FxChart fxData = CsvData.Ins.FxChart[id];
+		GameObject fx = SpawnEffect(fxData.FxResource, durationTime);
+		fx.transform.localScale = fx.transform.localScale * fxData.Size;
+
+		if (fxData.SpawnAnchor == "" || fxData.SpawnAnchor == "None")
+		{
+			fx.transform.position = new Vector3(fxData.SpawnPosX, fxData.SpawnPosY, 0);
+		}
+		else
+		{
+			fx.transform.position = new Vector3(pos.x + fxData.SpawnPosX, pos.y + fxData.SpawnPosY, pos.z);
+		}
+
+		if (fxData.SoundResource != "" && fxData.SoundResource != "HitFx")
+		{
+			SoundManager.Ins.PlaySFX(fxData.SoundResource);
+		}
+		else if (fxData.SoundResource == "HitFx")
+		{
+			SoundManager.Ins.PlayNASFX("HitFx");
+		}
+	}
+
 	public void ShowFx(string id)
 	{
 		if (!CsvData.Ins.FxChart.ContainsKey(id))

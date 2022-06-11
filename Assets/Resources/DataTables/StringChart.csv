@@ -189,7 +189,7 @@ desc_slot_power_up_Bounce,기본 공격의 발사체가 벽에 튕기는 횟수�
 desc_slot_power_up_AtkUp,기본 공격의 공격력이 증가합니다.,,
 desc_slot_power_up_Size,총알의 크기가 커집니다.,,
 desc_slot_power_up_Push,10%의 확률로 적을 밀어냅니다. 레벨이 증가할수록 밀어내는 힘이 강해집니다.,,
-help_slot_power_up,슬롯 강화는 5` 10` 25` 50` 75` 100` 200` 300` 400` 500` 600` 700` 800` 900` 1000 레벨마다 가능하며` 강화에 드는 재화는 매번 달라집니다.,,
+help_slot_power_up,슬롯 강화는 5` 25` 50` 100` 200` 300` 400` 500` 600` 700` 800` 900` 1000 레벨마다 가능하며` 강화에 드는 비용은 매번 달라집니다.,,
 title_popup_slot_power_up,슬롯 강화,,
 desc_popup_slot_power_up,특정 레벨마다 슬롯을 파워업할 수 있습니다.\n세가지 특성 중 하나를 선택하세요.,,
 Refresh,갱신,,

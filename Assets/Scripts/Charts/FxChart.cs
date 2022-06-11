@@ -12,5 +12,6 @@ public class FxChart
     public float SpawnPosY { get; set; }
     public bool Binding { get; set; }
     public string SoundResource { get; set; }
+    public int PoolCount { get; set; }
 
 }

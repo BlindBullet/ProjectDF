@@ -19,9 +19,9 @@ public static class ConstantData
 	//영웅 레벨업시 공격력 증가
 	public static ObscuredFloat HeroAtkGR = 1.15f;
 	//적 체력 증가
-	public static ObscuredFloat EnemyHpGR = 1.25f;
+	public static ObscuredFloat EnemyHpGR = 1.325f;
 	//적 처치 골드 증가
-	public static ObscuredFloat EnemyGoldGR = 1.125f;
+	public static ObscuredFloat EnemyGoldGR = 1.15f;
 	//환생 가능 스테이지
 	public static ObscuredInt PossibleAscensionStage = 30;
 	//환생 시작 리워드
@@ -39,7 +39,7 @@ public static class ConstantData
 	//퀘스트탭이 열릴 환생 카운트
 	public static ObscuredInt OpenQuestAscensionCount = 0;
 	//슬롯 파워업 가능 레벨
-	public static ObscuredInt[] SlotPowerUpPossibleLv = { 5, 10, 25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
+	public static ObscuredInt[] SlotPowerUpPossibleLv = { 5, 25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
 	//게임스피드 버프의 증가량
 	public static ObscuredFloat BuffGameSpeedRate = 1.5f;
 	//얻는 골드량 버프의 증가량

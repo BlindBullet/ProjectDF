@@ -96,7 +96,7 @@ public class EnemyBase : MonoBehaviour
 				Rb.velocity = new Vector2(xSpd, -(Stat.Spd - (Stat.Spd * (StageManager.Ins.PlayerStat.MoatSlowRate / 100f))));
 			}
 			else
-			{
+			{				
 				Rb.velocity = new Vector2(xSpd, -Stat.Spd);
 			}
 
@@ -336,19 +336,21 @@ public class EnemyBase : MonoBehaviour
 	{
 		isStunned = true;
 		Rb.mass = 100f;
-		Rb.AddForce(new Vector2(0, value * 1000f));
+		Rb.AddForce(new Vector2(0, value * 1500f));
 
 		yield return new WaitForSeconds(time);
-
-		Rb.velocity = Vector2.zero;		
+				
+		Rb.velocity = Vector2.zero;
+		Rb.angularVelocity = 0f;
 
 		cPush = null;
 
 		if(cStun == null)
-		{
-			Move();
+		{		
 			isStunned = false;
-		}	
+		}
+
+		Move();
 	}
 
 	public void Stun(float time)
@@ -377,9 +379,10 @@ public class EnemyBase : MonoBehaviour
 
 		if (cPush == null)
 		{
-			isStunned = false;
-			Move();
+			isStunned = false;			
 		}
+
+		Move();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
