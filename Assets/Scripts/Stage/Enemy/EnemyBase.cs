@@ -28,9 +28,11 @@ public class EnemyBase : MonoBehaviour
 	public Coroutine cHit;
 	public TextMeshPro HpText;
 	bool inMoat = false;
+	EnemyChart chart;
 
 	public void Setup(EnemyChart chart, int stageNo, bool isBoss = false)
 	{
+		this.chart = chart;
 		inMoat = false;
 		isDie = false;
 
@@ -282,11 +284,12 @@ public class EnemyBase : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 
 		double getGold = Stat.Gold;
+		DropManager.Ins.DropGold(this.transform.position, isBoss ? (int)(chart.Gold / 2) : (int)(chart.Gold / 5));
+		StartCoroutine(StageManager.Ins.GetGold(getGold));
 
-		StageManager.Ins.GetGold(getGold);
-		FloatingTextManager.Ins.ShowGold(this.transform.position, "+" + getGold.ToCurrencyString());
+		//FloatingTextManager.Ins.ShowGold(this.transform.position, "+" + getGold.ToCurrencyString());
 
-		float randNo = Random.Range(0f, 100f);
+		double randNo = Random.Range(0f, 100f);
 		bool result = false;
 		double getSoulStone = 0f;
 		
@@ -297,14 +300,14 @@ public class EnemyBase : MonoBehaviour
 		}
 		else
 		{
-			result = randNo <= ConstantData.NormalEnemyDropSoulStoneRate ? true : false;
-			getSoulStone = Random.Range(1, (int)ConstantData.NormalEnemyDropSoulStoneMaxCount + 1);			
+			result = randNo <= ConstantData.NormalEnemyDropSoulStoneRate ? true : false;			
+			getSoulStone = Random.Range(1, (int)ConstantData.NormalEnemyDropSoulStoneMaxCount + 1);
 		}
 
 		if (result)
-		{
-			StageManager.Ins.ChangeSoulStone(getSoulStone);
-			FloatingTextManager.Ins.ShowSoulStone(this.transform.position, "+" + getSoulStone.ToCurrencyString());
+		{	
+			DropManager.Ins.DropSoulStone(this.transform.position, (int)getSoulStone);
+			StageManager.Ins.ChangeSoulStone(getSoulStone);			
 		}
 
 		SpriteCon.Mask.enabled = false;

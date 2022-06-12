@@ -509,8 +509,9 @@ public class StageManager : MonoSingleton<StageManager>
 		PlayerUi.SetQuestBtn();		
 	}
 	
-	public void GetGold(double value)
+	public IEnumerator GetGold(double value)
 	{
+		yield return new WaitForSeconds(1f);
 		ChangeGold(value);
 	}
 

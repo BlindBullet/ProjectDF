@@ -7,6 +7,9 @@ using System;
 
 public class TopBar : MonoBehaviour
 {
+	public Transform GoldTrf;
+	public Transform MagiciteTrf;
+	public Transform SoulStoneTrf;
 	public TextMeshProUGUI GoldText;
 	public TextMeshProUGUI MagiciteText;
 	public TextMeshProUGUI SoulStoneText;

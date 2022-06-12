@@ -55,7 +55,7 @@ public static class ConstantData
 	//기본공격의 총알 크기가 커짐(%)
 	public static ObscuredFloat SizeIncP = 250f;
 	//일반 몬스터를 처치했을 때 영혼석이 떨어질 확률
-	public static ObscuredFloat NormalEnemyDropSoulStoneRate = 0.01f;
+	public static ObscuredFloat NormalEnemyDropSoulStoneRate = 0.1f;
 	//일반 몬스터를 처치했을 때 떨어질 최대 영혼석
 	public static ObscuredDouble NormalEnemyDropSoulStoneMaxCount = 1;
 	//보스 몬스터를 처치했을 때 영혼석이 떨어질 확률

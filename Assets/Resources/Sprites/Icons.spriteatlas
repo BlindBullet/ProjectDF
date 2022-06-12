@@ -173,6 +173,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6a6c750f01970f146912957850617033, type: 3}
   - {fileID: 21300000, guid: d804398fbef4254448a47c4e907e320f, type: 3}
   - {fileID: 21300000, guid: ccb1e1cf4295fbb4db6bc478290b443c, type: 3}
+  - {fileID: 21300000, guid: faf641dfd8807d84a9be84f48fd76fa0, type: 3}
   - {fileID: 21300000, guid: 215d9dff07115427c805c2bc477a4e81, type: 3}
   m_PackedSpriteNamesToIndex:
   - Boom
@@ -287,6 +288,7 @@ SpriteAtlas:
   - Enchantment_58_runecrystal
   - icon_itemicon_castle
   - Enchantment_44_book
+  - DropGold
   - Btn_White
   m_RenderDataMap: {}
   m_Tag: Icons
