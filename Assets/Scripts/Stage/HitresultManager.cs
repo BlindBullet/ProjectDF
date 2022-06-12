@@ -299,7 +299,10 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 							MinionChart minionChart = CsvData.Ins.MinionChart[hitresults[i].SummonIds[k]];
 							MinionBase minion = ObjectManager.Ins.Pop<MinionBase>(Resources.Load("Prefabs/Characters/Minions/MinionObj") as GameObject);
 							minion.transform.localScale = new Vector2(minionChart.Size, minionChart.Size);
-							minion.transform.position = new Vector2(target.ProjectileAnchor.position.x + hitresults[i].SummonPosX[k], target.ProjectileAnchor.position.y + hitresults[i].SummonPosY[k]);
+							if(hitresults[i].SummonPosType == SummonPosType.Fix)							
+								minion.transform.position = new Vector2(hitresults[i].SummonPosX[k], hitresults[i].SummonPosY[k]);							
+							else
+								minion.transform.position = new Vector2(target.ProjectileAnchor.position.x + hitresults[i].SummonPosX[k], target.ProjectileAnchor.position.y + hitresults[i].SummonPosY[k]);
 							minion.Init(minionChart, target, hitresults[i].DurationTime);							
 						}						
 						break;

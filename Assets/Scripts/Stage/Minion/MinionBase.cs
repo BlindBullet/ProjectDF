@@ -105,12 +105,13 @@ public class MinionBase : MonoBehaviour
 
 	public void IdleMove()
 	{
-		transform.DOMove(transform.position.WithY(transform.position.y + 0.05f), 0.5f).SetLoops(-1, LoopType.Yoyo).SetId("IdleMove");
+		ModelTrf.DOLocalMoveY(0.05f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetId("IdleMove");
 	}
 
 	public void StopIdleMove()
 	{
 		DOTween.Kill("IdleMove");
+		ModelTrf.DOLocalMoveY(0f, 0.5f);
 	}
 
 	public void Move()
@@ -171,41 +172,68 @@ public class MinionBase : MonoBehaviour
 				yield break;
 			}
 
-			switch (data.MoveType)
+			if(!OutOfRange())
 			{
-				case MoveType.Direct:
-					if(Target != null)
-					{	
-						transform.Translate(dir * data.MoveSpd * Time.deltaTime);
-					}
-					else
-					{
+				switch (data.MoveType)
+				{
+					case MoveType.Direct:
+						if (Target != null)
+						{
+							transform.Translate(dir * data.MoveSpd * Time.deltaTime);
+						}
+						else
+						{
 
-					}
-					break;
-				case MoveType.Curve:
-					mTimerCurrent += Time.deltaTime * (5f / 20f);
-					_pos = transform.position.WithZ(0f);
+						}
+						break;
+					case MoveType.Curve:
+						mTimerCurrent += Time.deltaTime * (5f / 20f);
+						_pos = transform.position.WithZ(0f);
 
-					if (Target.Stat.CurHp > 0f)
-					{
-						targetPos = Target.transform.position;
-					}
+						if (Target.Stat.CurHp > 0f)
+						{
+							targetPos = Target.transform.position;
+						}
 
-					Vector2 pos1 = new Vector2(pos.x + pos1R.x, pos.y + pos1R.y);
-					Vector2 pos2 = new Vector2(targetPos.x + pos2R.x, targetPos.y + pos2R.y);
+						Vector2 pos1 = new Vector2(pos.x + pos1R.x, pos.y + pos1R.y);
+						Vector2 pos2 = new Vector2(targetPos.x + pos2R.x, targetPos.y + pos2R.y);
 
-					transform.position = BezierValue(pos1, pos2, mTimerCurrent);
+						transform.position = BezierValue(pos1, pos2, mTimerCurrent);
 
-					if (mTimerCurrent < 1f)
-					{
-						dir = (transform.position.WithZ(0f) - _pos.WithZ(0f)).normalized;
-					}					
-					break;
+						if (mTimerCurrent < 1f)
+						{
+							dir = (transform.position.WithZ(0f) - _pos.WithZ(0f)).normalized;
+						}
+						break;
+				}
+			}
+			else
+			{
+				Vector2 dir = new Vector2(0, 0);
+
+				if (transform.position.x > max.x)
+					dir.x = -1f;
+				if (transform.position.y > max.y)
+					dir.y = -1f;
+				if (transform.position.x < min.x)
+					dir.x = 1f;
+				if (transform.position.y < min.y)
+					dir.y = 1f;
+								
+				transform.Translate(dir * data.MoveSpd * Time.deltaTime);
 			}
 
 			yield return null;
 		}		
+	}
+
+	public bool OutOfRange()
+	{
+		if (transform.position.x < max.x - 2f || transform.position.x > min.x + 2f ||
+				transform.position.y < max.y - 2f || transform.position.y > min.y + 2f)
+			return false;
+		else
+			return true;
 	}
 
 

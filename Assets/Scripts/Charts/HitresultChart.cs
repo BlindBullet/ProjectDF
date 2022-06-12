@@ -17,6 +17,7 @@ public class HitresultChart
     public float DurationTime { get; set; }
     public float StiffTime { get; set; }
     public string[] SummonIds { get; set; }
+    public SummonPosType SummonPosType { get; set; }
     public float[] SummonPosX { get; set; }
     public float[] SummonPosY { get; set; }
 }
@@ -52,4 +53,10 @@ public enum StatType
     CritDmg,
     PenCount,
 
+}
+
+public enum SummonPosType
+{
+    None,
+    Fix,
 }
