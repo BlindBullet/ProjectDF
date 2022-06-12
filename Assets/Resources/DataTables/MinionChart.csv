@@ -4,11 +4,11 @@ IceWolf_2,IceWolf,0.25,Direct,4,0|0,2|0,0|-2,2|0,1.5,70,2,0,Blue,ice_wolf,attack
 IceWolf_3,IceWolf,0.25,Direct,4,0|0,2|0,0|-2,2|0,1.5,70,2,0,Blue,ice_wolf,attack_blue1
 IceWolf_4,IceWolf,0.25,Direct,4,0|0,2|0,0|-2,2|0,1.5,70,2,0,Blue,ice_wolf,attack_blue1
 IceWolf_5,IceWolf,0.25,Direct,4,0|0,2|0,0|-2,2|0,1.5,70,2,0,Blue,ice_wolf,attack_blue1
-RedDragon_1,RedDragon,0.5,Direct,3,0|0,2|0,0|-2,2|0,3,250,0.8,0,Red,red_dragon,skill_10008_1
-RedDragon_2,RedDragon,0.5,Direct,3,0|0,2|0,0|-2,2|0,3,250,0.8,0,Red,red_dragon,skill_10008_2
-RedDragon_3,RedDragon,0.5,Direct,3,0|0,2|0,0|-2,2|0,3,250,0.8,0,Red,red_dragon,skill_10008_3
-RedDragon_4,RedDragon,0.5,Direct,3,0|0,2|0,0|-2,2|0,3,250,0.8,0,Red,red_dragon,skill_10008_4
-RedDragon_5,RedDragon,0.5,Direct,3,0|0,2|0,0|-2,2|0,3,250,0.8,0,Red,red_dragon,skill_10008_5
+RedDragon_1,RedDragon,0.5,Direct,3,0|0,2|0,0|-2,2|0,3,250,1,0,Red,red_dragon,skill_10008_1
+RedDragon_2,RedDragon,0.5,Direct,3,0|0,2|0,0|-2,2|0,3,250,1,0,Red,red_dragon,skill_10008_2
+RedDragon_3,RedDragon,0.5,Direct,3,0|0,2|0,0|-2,2|0,3,250,1,0,Red,red_dragon,skill_10008_3
+RedDragon_4,RedDragon,0.5,Direct,3,0|0,2|0,0|-2,2|0,3,250,1,0,Red,red_dragon,skill_10008_4
+RedDragon_5,RedDragon,0.5,Direct,3,0|0,2|0,0|-2,2|0,3,250,1,0,Red,red_dragon,skill_10008_5
 WukongR_1,Wukong,0.25,Direct,5,,,,,2,50,2,0,Red,wukongR,attack_red1
 WukongR_2,Wukong,0.25,Direct,5,,,,,2,50,2,0,Red,wukongR,attack_red1
 WukongR_3,Wukong,0.25,Direct,5,,,,,2,50,2,0,Red,wukongR,attack_red1

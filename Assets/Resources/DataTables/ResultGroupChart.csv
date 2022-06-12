@@ -144,11 +144,11 @@ skill_10016_2,100,Enemy,All,,,,,5,SlashWideGreen,skill_10016_2,
 skill_10016_3,100,Enemy,All,,,,,5,SlashWideGreen,skill_10016_3,
 skill_10016_4,100,Enemy,All,,,,,5,SlashWideGreen,skill_10016_4,
 skill_10016_5,100,Enemy,All,,,,,5,SlashWideGreen,skill_10016_5,
-skill_10017_1,100,Enemy,Closest,1,,,,,,skill_10017_1,skill_10017_1
-skill_10017_2,100,Enemy,Closest,1,,,,,,skill_10017_2,skill_10017_2
-skill_10017_3,100,Enemy,Closest,1,,,,,,skill_10017_3,skill_10017_3
-skill_10017_4,100,Enemy,Closest,1,,,,,,skill_10017_4,skill_10017_4
-skill_10017_5,100,Enemy,Closest,1,,,,,,skill_10017_5,skill_10017_5
+skill_10017_1,100,Enemy,Closest,5,,,,,,skill_10017_1,skill_10017_1
+skill_10017_2,100,Enemy,Closest,5,,,,,,skill_10017_2,skill_10017_2
+skill_10017_3,100,Enemy,Closest,5,,,,,,skill_10017_3,skill_10017_3
+skill_10017_4,100,Enemy,Closest,5,,,,,,skill_10017_4,skill_10017_4
+skill_10017_5,100,Enemy,Closest,5,,,,,,skill_10017_5,skill_10017_5
 skill_10017_1_add,100,Enemy,All,,,Circle,3,0,StormNovaBlue,skill_10017_1_add,
 skill_10017_2_add,100,Enemy,All,,,Circle,3,0,StormNovaBlue,skill_10017_2_add,
 skill_10017_3_add,100,Enemy,All,,,Circle,3,0,StormNovaBlue,skill_10017_3_add,

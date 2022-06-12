@@ -5,10 +5,10 @@ HitFxGreen,HitFxGreen,0.3,,,,,HitFx1,30
 TouchHitFx,TouchHitFx,0.3,,,,,HitFx1,5
 Ise Attack,Ise Attack,1,,,2.86,,Skill 8,1
 EntangleVine,EntangleVine,1,Center,,,,,10
-Hit 19,Hit 19,2,Center,,,,,10
+Hit 19,Hit 19,2,Center,,,,HitFx2,10
 ElementalAuraNature,ElementalAuraNature,1,Center,,,,,1
 NatureExplosionGreen,NatureExplosionGreen,5,Center,,,,poly_explosion_storm,1
-FireballExplosionRed,FireballExplosionRed,1,Center,,,,,20
+FireballExplosionRed,FireballExplosionRed,1,Center,,,,HitFx2,20
 AuraChargeRed,AuraChargeRed,1,Center,,,,,5
 MesmerizeCurse,MesmerizeCurse,1,Center,,,,,5
 ShadowEnchant,ShadowEnchant,1,Center,,,,,5
