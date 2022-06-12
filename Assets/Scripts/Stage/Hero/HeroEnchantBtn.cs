@@ -17,7 +17,7 @@ public class HeroEnchantBtn : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
 	IEnumerator EnchantBtnDownSeq()
 	{
-		yield return new WaitForSecondsRealtime(2f);
+		yield return new WaitForSecondsRealtime(1f);
 
 		float time = 0f;
 

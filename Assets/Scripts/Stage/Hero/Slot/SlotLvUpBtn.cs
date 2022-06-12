@@ -19,7 +19,7 @@ public class SlotLvUpBtn : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 	IEnumerator BtnDownSeq()
 	{
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1f);
 
 		float time = 0f;
 
