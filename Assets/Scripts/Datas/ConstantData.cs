@@ -68,7 +68,15 @@ public static class ConstantData
 	public static ObscuredDouble PowerUpRefreshCost = 10;
 	//보급품이 나오기 시작할 스테이지
 	public static ObscuredInt SuppliesAppearPossibleStage = 7;
-	
+	//영웅 등급업 시작 가격
+	public static ObscuredFloat HeroUpgradeStartCost = 100f;
+	//영웅 등급업 계수
+	public static ObscuredFloat HeroUpgradeFactor = 2f;
+	//시작 스테이지 증가에 따른 얻을 시작 골드양
+	public static ObscuredFloat IncStageStartGold = 1000f;
+	//시작 스테이지 증가에 따른 얻을 골드양 계수
+	public static ObscuredFloat IncStageStartGoldFactor = 1.1f;
+
 	public static double GetLvUpCost(int lv)
 	{
 		double value = CalcValue(StartLvUpGold, LvUpGoldGR, lv);
@@ -106,7 +114,7 @@ public static class ConstantData
 
 	public static double GetHeroUpgradeCost(int currentGrade)
 	{
-		return currentGrade * 100f;
+		return CalcValue(HeroUpgradeStartCost, HeroUpgradeFactor, currentGrade);
 	}
 
 	public static double GetHeroEnchantCost(int currentEnchantLv)
@@ -122,6 +130,11 @@ public static class ConstantData
 	public static double GetGoldFromOfflineTime(double min, int stageNo)
 	{
 		return CalcValue(OfflineTimeGold, EnemyGoldGR, stageNo) * KillEnemiesCount1Min * min;
+	}
+
+	public static double GetAscensionGold()
+	{
+		return CalcValue(IncStageStartGold, IncStageStartGoldFactor, StageManager.Ins.PlayerStat.StartStage);
 	}
 
 	static double CalcValue(double beginValue, float growthRate, int lv)
