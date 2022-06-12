@@ -35,9 +35,11 @@ public class MinionAttackController : MonoBehaviour
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds(1f / data.Spd);
+			yield return new WaitForSeconds(6f / 30f / data.Spd);
 
 			UseAttack();
+
+			yield return new WaitForSeconds(24f / 30f / data.Spd);			
 		}
 	}
 

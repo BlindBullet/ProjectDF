@@ -1,8 +1,8 @@
 ﻿Id,FxResource,Size,SpawnAnchor,SpawnPosX,SpawnPosY,Binding,SoundResource,PoolCount
-HitFxRed,HitFxRed,0.3,,,,,HitFx,30
-HitFxBlue,HitFxBlue,0.3,,,,,HitFx,30
-HitFxGreen,HitFxGreen,0.3,,,,,HitFx,30
-TouchHitFx,TouchHitFx,0.3,,,,,HitFx,5
+HitFxRed,HitFxRed,0.3,,,,,HitFx1,30
+HitFxBlue,HitFxBlue,0.3,,,,,HitFx1,30
+HitFxGreen,HitFxGreen,0.3,,,,,HitFx1,30
+TouchHitFx,TouchHitFx,0.3,,,,,HitFx1,5
 Ise Attack,Ise Attack,1,,,2.86,,Skill 8,1
 EntangleVine,EntangleVine,1,Center,,,,,10
 Hit 19,Hit 19,2,Center,,,,,10
@@ -16,20 +16,20 @@ ZombifyCurse,ZombifyCurse,1,Center,,,,,5
 ChannelRed,ChannelRed,1,,,3.77,,,1
 EnergyNovaRed,EnergyNovaRed,2.5,,,3.77,,,1
 TouchMuzzle,TouchMuzzle,1,,,,,,4
-boom_red_1,FireballExplosionRed,1.5,,,,,,20
-boom_red_2,FireballExplosionRed,2,,,,,,20
-boom_red_3,FireballExplosionRed,2.5,,,,,,20
-boom_red_4,FireballExplosionRed,3,,,,,,20
-boom_red_5,FireballExplosionRed,3.5,,,,,,20
-boom_blue_1,FireballExplosionRed,1.5,,,,,,20
-boom_blue_2,FireballExplosionRed,2,,,,,,20
-boom_blue_3,FireballExplosionRed,2.5,,,,,,20
-boom_blue_4,FireballExplosionRed,3,,,,,,20
-boom_blue_5,FireballExplosionRed,3.5,,,,,,20
-boom_green_1,FireballExplosionRed,1.5,,,,,,20
-boom_green_2,FireballExplosionRed,2,,,,,,20
-boom_green_3,FireballExplosionRed,2.5,,,,,,20
-boom_green_4,FireballExplosionRed,3,,,,,,20
+boom_red_1,FireballExplosionRed,1.5,,,,,HitFx2,20
+boom_red_2,FireballExplosionRed,2,,,,,HitFx2,20
+boom_red_3,FireballExplosionRed,2.5,,,,,HitFx2,20
+boom_red_4,FireballExplosionRed,3,,,,,HitFx2,20
+boom_red_5,FireballExplosionRed,3.5,,,,,HitFx2,20
+boom_blue_1,FireballExplosionRed,1.5,,,,,HitFx2,20
+boom_blue_2,FireballExplosionRed,2,,,,,HitFx2,20
+boom_blue_3,FireballExplosionRed,2.5,,,,,HitFx2,20
+boom_blue_4,FireballExplosionRed,3,,,,,HitFx2,20
+boom_blue_5,FireballExplosionRed,3.5,,,,,HitFx2,20
+boom_green_1,FireballExplosionRed,1.5,,,,,HitFx2,20
+boom_green_2,FireballExplosionRed,2,,,,,HitFx2,20
+boom_green_3,FireballExplosionRed,2.5,,,,,HitFx2,20
+boom_green_4,FireballExplosionRed,3,,,,,HitFx2,20
 boom_green_5,FireballExplosionRed,3.5,,,,,,20
 OrbitalBeamPink,OrbitalBeamPink,3,,,3.7,,,1
 BuffBlue,BuffBlue,1,Center,,,,,5

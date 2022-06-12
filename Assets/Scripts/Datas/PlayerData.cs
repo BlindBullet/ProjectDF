@@ -35,7 +35,7 @@ public class PlayerData
 	{
 		IsFirstPlay = true;
 		PlayAppCount = 1;
-		Gold = 0;
+		Gold = 5000000000000f;
 		Magicite = 500000000f;
 		SoulStone = 500000000f;
 		Stage = 1;
