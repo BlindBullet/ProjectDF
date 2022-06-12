@@ -59,9 +59,9 @@ public static class ConstantData
 	//일반 몬스터를 처치했을 때 떨어질 최대 영혼석
 	public static ObscuredDouble NormalEnemyDropSoulStoneMaxCount = 1;
 	//보스 몬스터를 처치했을 때 영혼석이 떨어질 확률
-	public static ObscuredFloat BossEnemyDropSoulStoneRate = 10f;
+	public static ObscuredFloat BossEnemyDropSoulStoneRate = 5f;
 	//보스 몬스터를 처치했을 때 떨어질 최대 영혼석
-	public static ObscuredDouble BossEnemyDropSoulStoneMaxCount = 3;
+	public static ObscuredDouble BossEnemyDropSoulStoneMaxCount = 4;
 	//퀘스트 리셋이 가능한 시간(초)
 	public static ObscuredInt QuestResetPossibleSec = 180;
 	//파워업 리셋 가격
