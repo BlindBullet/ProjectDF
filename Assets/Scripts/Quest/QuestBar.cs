@@ -16,7 +16,9 @@ public class QuestBar : MonoBehaviour
 	public Image QuestProgressBarFill;
 	public TextMeshProUGUI QuestProgressText;
 	public Button AchieveBtn;
+	public TextMeshProUGUI AchieveBtnText;
 	public Button DisPatchBtn;
+	public TextMeshProUGUI DispatchBtnText;
 	QuestData data;	
 
 	public void SetBar(QuestData data)
@@ -26,7 +28,9 @@ public class QuestBar : MonoBehaviour
 		Name.text = LanguageManager.Ins.SetString(chart.Name);
 		RewardIcon.SetIcon(chart);
 		SetStars(chart);		
-		SetDispatchInfo(data, chart);		
+		SetDispatchInfo(data, chart);
+		AchieveBtnText.text = LanguageManager.Ins.SetString("Achieve");
+		DispatchBtnText.text = LanguageManager.Ins.SetString("Dispatch");
 	}
 
 	void SetStars(QuestChart chart)

@@ -12,6 +12,7 @@ public class PowerUpBar : MonoBehaviour
 	public TextMeshProUGUI Name;
 	public TextMeshProUGUI Desc;
 	public Button PurchaseBtn;
+	public TextMeshProUGUI PurchaseBtnText;
 	public Image CostIcon;
 	public TextMeshProUGUI CostText;
 	Material mat;
@@ -23,6 +24,7 @@ public class PowerUpBar : MonoBehaviour
 		uiImage.material = new Material(uiImage.materialForRendering);
 		mat = PurchaseBtn.GetComponent<Image>().material;
 		PurchaseBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
+		PurchaseBtnText.text = LanguageManager.Ins.SetString("Upgrade");
 
 		this.data = data;
 		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.Type.ToString());

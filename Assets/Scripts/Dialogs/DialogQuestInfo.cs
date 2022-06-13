@@ -14,6 +14,7 @@ public class DialogQuestInfo : DialogController
 	public QuestInfoGradeIcon GradeIcon;	
 	public QuestInfoAttrIcon[] AttrIcons;
 	public Button DispatchBtn;
+	public TextMeshProUGUI DispatchBtnText;
 	public Transform HeroListTrf;
 	public List<HeroData> DispatchHeroes = new List<HeroData>();
 	public List<HeroIcon> HeroIcons = new List<HeroIcon>();
@@ -27,6 +28,7 @@ public class DialogQuestInfo : DialogController
 		this.chart = CsvData.Ins.QuestChart[data.Id];
 		Title.text = LanguageManager.Ins.SetString(chart.Name);
 		RewardIcon.SetIcon(chart);
+		DispatchBtnText.text = LanguageManager.Ins.SetString("Dispatch");
 
 		SetEmptyIcons();
 		SetConditions();

@@ -650,7 +650,10 @@ MonoBehaviour:
   - {fileID: 7947012562832217564}
   - {fileID: 3225999020005171414}
   DispatchBtn: {fileID: 6754371132370426016}
+  DispatchBtnText: {fileID: 6754371132971362145}
   HeroListTrf: {fileID: 6754371133052381700}
+  DispatchHeroes: []
+  HeroIcons: []
 --- !u!1 &2934116346186135510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,6 +1832,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Btn: {fileID: 6754371131786520277}
+  Data:
+    Id: 
+    Grade: 0
+    EnchantLv: 0
+    IsOwn: 0
+    SlotNo: 0
+    CurCT: 0
+  isOpen: 0
 --- !u!1 &6754371131798935001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,6 +2096,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Btn: {fileID: 6754371131986595531}
+  Data:
+    Id: 
+    Grade: 0
+    EnchantLv: 0
+    IsOwn: 0
+    SlotNo: 0
+    CurCT: 0
+  isOpen: 0
 --- !u!1 &6754371132050205122
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,6 +2771,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Btn: {fileID: 6754371132614400174}
+  Data:
+    Id: 
+    Grade: 0
+    EnchantLv: 0
+    IsOwn: 0
+    SlotNo: 0
+    CurCT: 0
+  isOpen: 0
 --- !u!1 &6754371132636430866
 GameObject:
   m_ObjectHideFlags: 0
@@ -4304,6 +4331,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Btn: {fileID: 6754371133542319742}
+  Data:
+    Id: 
+    Grade: 0
+    EnchantLv: 0
+    IsOwn: 0
+    SlotNo: 0
+    CurCT: 0
+  isOpen: 0
 --- !u!1 &6879888256151604719
 GameObject:
   m_ObjectHideFlags: 0
