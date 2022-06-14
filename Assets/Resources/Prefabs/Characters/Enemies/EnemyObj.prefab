@@ -224,8 +224,11 @@ MonoBehaviour:
     MaxHp: 0
     CurHp: 0
     Spd: 0
+    AddSpd: 0
     Def: 0
+    AddDef: 0
     Gold: 0
+    AddGold: 0
     Immunes: 
     Attr: 0
   Model: {fileID: 7397524122027817337}
@@ -631,7 +634,7 @@ SpriteRenderer:
   m_SortingLayerID: 296287947
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: d241d2f17cbca5d49a9be73746ac033c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9eaee7a97688be7409cac2254952982c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
