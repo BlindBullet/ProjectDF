@@ -22,7 +22,7 @@ public class PowerUpBar : MonoBehaviour
 	{	
 		Image uiImage = PurchaseBtn.GetComponent<Image>();
 		uiImage.material = new Material(uiImage.materialForRendering);
-		mat = PurchaseBtn.GetComponent<Image>().material;
+		mat = PurchaseBtn.GetComponent<Image>().materialForRendering;
 		PurchaseBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
 		PurchaseBtnText.text = LanguageManager.Ins.SetString("Upgrade");
 

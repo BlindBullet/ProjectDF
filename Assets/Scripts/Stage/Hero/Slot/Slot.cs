@@ -84,6 +84,7 @@ public class Slot : MonoBehaviour
 			{
 				data.IncUpgradeStack();
 				SetPowerUpBtn();
+				break;
 			}
 		}
 

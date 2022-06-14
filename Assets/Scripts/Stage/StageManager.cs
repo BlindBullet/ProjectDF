@@ -477,9 +477,8 @@ public class StageManager : MonoSingleton<StageManager>
 			HeroBase.Heroes[i].Stop();
 		}
 
-		PlayerData.ChangeMagicite(rewardAmount);		
+		PlayerData.ChangeMagicite(rewardAmount);
 		StageChanged();
-
 		StartCoroutine(Ascension());
 	}
 
@@ -506,6 +505,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 		EnemySpawner.Ins.StopSpawn();
 		RestartStage();
+		StageChanged();
 		PlayerUi.SetQuestBtn();		
 	}
 	
