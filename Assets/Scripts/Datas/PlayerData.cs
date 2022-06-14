@@ -14,6 +14,7 @@ public class PlayerData
 	public double Magicite;
 	public double SoulStone;
 	public int Stage;
+	public int TopStage;
 	public int AscensionCount;
 	public int TouchAttackLv;
 	public List<SlotData> Slots = new List<SlotData>();
@@ -39,6 +40,7 @@ public class PlayerData
 		Magicite = 0f;
 		SoulStone = 0f;
 		Stage = 1;
+		TopStage = 1;
 		AscensionCount = 0;
 		QuestLv = 1;
 		ClearQuestCount = 0;
@@ -275,6 +277,12 @@ public class PlayerData
 		if (Stage < 1)
 			Stage = 1;
 
+		if (TopStage < Stage)
+		{
+			TopStage = Stage;
+			GPGSBinder.Inst.ReportLeaderboard(GPGSIds.leaderboard_top_stage, TopStage);
+		}	
+
 		Save();
 	}
 
@@ -414,6 +422,7 @@ public class PlayerData
 			ClearQuestCount = data.ClearQuestCount;
 			TotalClearQuestCount = data.TotalClearQuestCount;
 			Stage = data.Stage;
+			TopStage = data.Stage;
 			Heroes = data.Heroes;
 
 			for(int i = 0; i < Heroes.Count; i++)

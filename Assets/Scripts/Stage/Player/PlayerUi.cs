@@ -23,7 +23,7 @@ public class PlayerUi : MonoBehaviour
 	public TextMeshProUGUI DungeonBtnText;	
 	public Button MenuBtn;
 	public TextMeshProUGUI MenuBtnText;
-	public PlayerMenu Menu;
+	public PlayerMenu Menu;	
 
 	bool isOpenMenu = false;
 

@@ -12,6 +12,7 @@ public class MySceneManager : MonoSingleton<MySceneManager>
 	float fadeDuration = 1f;
 	public GameObject Loading;
 	public TextMeshProUGUI LoadingText;
+	public TextMeshProUGUI LoadingDescText;
 
 	private void Start()
 	{
@@ -20,7 +21,9 @@ public class MySceneManager : MonoSingleton<MySceneManager>
 	}
 
 	public void ChangeScene(string sceneName)
-	{	
+	{
+		LoadingDescText.text = LanguageManager.Ins.SetString("desc_loading");
+
 		FadeImg.DOFade(1, fadeDuration)
 			.OnStart(() =>
 			{
