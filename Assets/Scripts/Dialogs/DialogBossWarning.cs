@@ -16,6 +16,7 @@ public class DialogBossWarning : DialogController
 		_CanvasGroup.alpha = 0f;
 
 		StartCoroutine(Sequence());
+		StartCoroutine(WarningSfxSeq());
 	}
 
 	IEnumerator Sequence()
@@ -29,6 +30,15 @@ public class DialogBossWarning : DialogController
 		yield return new WaitForSeconds(2f);
 
 		CloseDialog();
+	}
+
+	IEnumerator WarningSfxSeq()
+	{
+		for(int i = 0; i < 4; i++)
+		{
+			yield return new WaitForSeconds(1f);
+			SoundManager.Ins.PlaySFX("BossWarning");
+		}
 	}
 
 }
