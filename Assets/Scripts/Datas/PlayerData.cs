@@ -314,6 +314,7 @@ public class PlayerData
 		}
 
 		AscensionCount++;
+		GPGSBinder.Inst.ReportLeaderboard(GPGSIds.leaderboard_ascension, AscensionCount);
 		Save();
 	}	
 
