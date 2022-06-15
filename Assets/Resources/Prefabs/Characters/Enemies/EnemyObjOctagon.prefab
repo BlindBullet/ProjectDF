@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 5296013684508591741}
   - component: {fileID: 7369457786312021482}
   m_Layer: 6
-  m_Name: EnemyObj
+  m_Name: EnemyObjOctagon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -634,7 +634,7 @@ SpriteRenderer:
   m_SortingLayerID: 296287947
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 9eaee7a97688be7409cac2254952982c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fb9154827b84334a9b9181765eff166, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

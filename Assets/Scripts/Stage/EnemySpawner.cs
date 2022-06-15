@@ -48,9 +48,9 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 	}
 
 	public void SpawnEnemy(string id, int stageNo, bool isBoss = false)
-	{
+	{		
 		EnemyChart chart = CsvData.Ins.EnemyChart[id];
-		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/EnemyObj") as GameObject);
+		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/EnemyObj" + chart.Shape.ToString()) as GameObject);
 		enemy.transform.localScale = new Vector2(chart.Size, chart.Size);
 		enemy.transform.position = CalcSpawnPos();
 		enemy.Setup(chart, stageNo, isBoss);		
@@ -59,7 +59,7 @@ public class EnemySpawner : SingletonObject<EnemySpawner>
 	public void SpawnSummonEnemy(string id, Vector2 pos)
 	{
 		EnemyChart chart = CsvData.Ins.EnemyChart[id];
-		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/EnemyObj") as GameObject);
+		EnemyBase enemy = ObjectManager.Ins.Pop<EnemyBase>(Resources.Load("Prefabs/Characters/Enemies/EnemyObj" + chart.Shape.ToString()) as GameObject);
 		enemy.transform.localScale = new Vector2(chart.Size, chart.Size);
 		enemy.transform.position = new Vector2(pos.x + Random.Range(-1f,1f), pos.y + Random.Range(-1f, 1f));
 		enemy.Setup(chart, StageManager.Ins.PlayerData.Stage);

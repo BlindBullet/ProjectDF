@@ -8,6 +8,7 @@ public class EnemyChart
     public string StrName { get; set; }
     public string StrDesc { get; set; }
     public string Model { get; set; }
+    public Shape Shape { get; set; }
     public Attr Attr { get; set; }
     public float Size { get; set; }
     public float Weight { get; set; }
@@ -17,5 +18,15 @@ public class EnemyChart
     public double Gold { get; set; }
     public string[] Skill { get; set; }
 
+
+}
+
+public enum Shape
+{
+    None,
+    Circle,
+    Polygon1,
+    Polygon2,
+    Octagon,
 
 }

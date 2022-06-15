@@ -30,8 +30,8 @@ public class EnemySpriteController : MonoBehaviour
 		modelMat.SetFloat("_FadeAmount", 0f);
 
 		Model.sprite = Resources.Load<SpriteAtlas>("Sprites/Characters").GetSprite(chart.Model);
-		Frame.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("EnemyCircleFrame_" + chart.Attr.ToString());
-		Bg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("EnemyCircleBg_" + chart.Attr.ToString());
+		Frame.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("EnemyFrame_" + chart.Shape.ToString() + "_" + chart.Attr.ToString());
+		Bg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("EnemyBg_" + chart.Shape.ToString() + "_" + chart.Attr.ToString());
 	}
 
 	public IEnumerator Hit(bool isCrit, float stiffTime)

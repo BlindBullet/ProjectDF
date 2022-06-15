@@ -197,7 +197,7 @@ SpriteAtlas:
   - AdRemove
   - slider_edgetype_01_frame_front
   - rect-tag-above
-  - EnemyCircleBg_Red
+  - EnemyBg_Circle_Red
   - SGI_13
   - Front
   - Enchantment_39_mana_scroll
@@ -225,15 +225,15 @@ SpriteAtlas:
   - icon_itemicon_scroll1
   - Magicite
   - Btn_Yellow
-  - EnemyCircleFrame_Blue
+  - EnemyFrame_Circle_Blue
   - icon_itemicon_sword
   - label_ribbon_02
   - Frame_metal2_fr3
   - SGI_28
-  - EnemyCircleFrame_Green
+  - EnemyFrame_Circle_Green
   - Enchantment_43_book
   - Btn_Blue
-  - EnemyCircleBg_Green
+  - EnemyBg_Circle_Green
   - QuestLvIcon
   - Frame_metal2_fr2
   - icon_itemicon_hero
@@ -260,7 +260,7 @@ SpriteAtlas:
   - Gold
   - Size
   - Enchantment_57_runecrystal
-  - EnemyCircleBg_Blue
+  - EnemyBg_Circle_Blue
   - Frame_stoune_3
   - Jewelry_30_green_ring
   - Enchantment_60_runecrystal
@@ -287,7 +287,7 @@ SpriteAtlas:
   - Sword_v2_47
   - Enchantment_58_runecrystal
   - icon_itemicon_castle
-  - EnemyCircleFrame_Red
+  - EnemyFrame_Circle_Red
   - AppIcon2
   - Enchantment_44_book
   - DropGold

@@ -16,7 +16,7 @@ public class EnemyBase : MonoBehaviour
 	public GameObject Model;
 	[HideInInspector] public Rigidbody2D Rb;
 	[HideInInspector] public EnemySpriteController SpriteCon;
-	CircleCollider2D col;
+	Collider2D col;
 	Coroutine cMove = null;		
 	Coroutine cPush = null;
 	Coroutine cStun = null;
@@ -45,7 +45,7 @@ public class EnemyBase : MonoBehaviour
 
 		Rb = GetComponent<Rigidbody2D>();
 
-		col = GetComponent<CircleCollider2D>();
+		col = GetComponent<Collider2D>();
 		col.enabled = true;
 
 		SpriteCon = GetComponent<EnemySpriteController>();
