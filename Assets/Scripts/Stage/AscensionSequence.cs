@@ -7,6 +7,7 @@ using DG.Tweening;
 public class AscensionSequence : MonoBehaviour
 {
 	public Image Img;
+	public GameObject effect;
 	Material mat;
 
 	private void Awake()
@@ -17,9 +18,12 @@ public class AscensionSequence : MonoBehaviour
 	}
 
 	public void FadeIn()
-	{
+	{		
+		effect.SetActive(true);
+
 		Sequence seq = DOTween.Sequence();
-		seq.Append(Img.DOFade(1f, 2f).SetEase(Ease.InOutQuad))
+		seq.AppendInterval(3f)
+			.Append(Img.DOFade(1f, 2f).SetEase(Ease.InOutQuad))
 			.AppendInterval(1f)
 			.Append(Img.DOFade(0f, 2f).SetEase(Ease.InOutQuad))
 			.AppendCallback(() => { this.gameObject.SetActive(false); });		

@@ -489,7 +489,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 		AscensionSequence.FadeIn();
 
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(5f);
 
 		PlayerData.Ascension();
 
