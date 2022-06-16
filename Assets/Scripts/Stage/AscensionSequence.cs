@@ -21,11 +21,14 @@ public class AscensionSequence : MonoBehaviour
 	{		
 		effect.SetActive(true);
 
+		SoundManager.Ins.PlaySFX("se_rebirth");
+
 		Sequence seq = DOTween.Sequence();
 		seq.AppendInterval(3f)
 			.Append(Img.DOFade(1f, 2f).SetEase(Ease.InOutQuad))
 			.AppendInterval(1f)
 			.Append(Img.DOFade(0f, 2f).SetEase(Ease.InOutQuad))
+			.AppendInterval(10f)
 			.AppendCallback(() => { this.gameObject.SetActive(false); });		
 	}
 
