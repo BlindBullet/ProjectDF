@@ -25,8 +25,10 @@ public enum Shape
 {
     None,
     Circle,
-    Polygon1,
-    Polygon2,
+    Pentagon,
+    PentagonO,
+    Polygon,
+    PolygonO,
     Octagon,
 
 }
