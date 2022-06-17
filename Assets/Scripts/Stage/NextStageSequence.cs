@@ -12,7 +12,7 @@ public class NextStageSequence : MonoBehaviour
 
 	public void NextStageSeq()
 	{
-		StageText.text = "STAGE" + StageManager.Ins.PlayerData.Stage.ToString();
+		StageText.text = LanguageManager.Ins.SetString("Stage") + " " + StageManager.Ins.PlayerData.Stage.ToString();
 
 		Sequence seq = DOTween.Sequence();
 		seq.Append(ObjRect.DOAnchorPosX(0f, 0.5f).SetEase(Ease.InOutQuad))

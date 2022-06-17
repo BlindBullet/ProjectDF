@@ -15,6 +15,10 @@ public class LanguageManager : SingletonObject<LanguageManager> {
 			{
 				currentLanguageType = LanguageType.Korean;
 			}
+			else if(currentLanguageType == LanguageType.Japanese)
+			{
+				currentLanguageType = LanguageType.Japanese;
+			}
 			else
 			{
 				currentLanguageType = LanguageType.English;

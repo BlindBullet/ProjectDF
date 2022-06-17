@@ -1,302 +1,303 @@
 ﻿Id,Korean,English,Japanese
-Close,닫기,Close,源暎こぶり明朝 ダウンロード
-Pause,일시정지,Pause,源暎こぶり明朝 ダウンロード
-Heroes,영웅 리스트,Heroes List,源暎こぶり明朝 ダウンロード
-Ascension,환생,Ascension,源暎こぶり明朝 ダウンロード
-popup_ascension_desc,환생을 하면 마석을 받고 처음으로 돌아갑니다.\n환생 시 레벨이 초기화되며`\n도달한 스테이지가 높을수록 받는 마석이 증가합니다.,If you Ascension` you will receive a Magicite and return to the beginning. When ascension` the level is reset` and the higher the stage reached` the more Magicite you receive.,源暎こぶり明朝 ダウンロード
-popup_ascension_reward_title,환생 보상,Reward Ascension,源暎こぶり明朝 ダウンロード
-popup_ascension_cant_ascension_desc,환생은 {0} 스테이지 이상부터 가능합니다.,Prestige is possible from stage {0} or higher.,源暎こぶり明朝 ダウンロード
-popup_ascension_start_stage_desc,환생 후 시작 스테이지 : {0},Start Stage: {0},源暎こぶり明朝 ダウンロード
-btn_ad_ascension,강화 환생,Ascension,源暎こぶり明朝 ダウンロード
-btn_ad_ascension_reward,보상 x2,Reward x2,源暎こぶり明朝 ダウンロード
-Stage,스테이지,Stage,源暎こぶり明朝 ダウンロード
-title_dialog_hero,영웅,Hero,源暎こぶり明朝 ダウンロード
-Atk,공격력,Atk,源暎こぶり明朝 ダウンロード
-Spd,속도,Spd,源暎こぶり明朝 ダウンロード
-Range,범위,Range,源暎こぶり明朝 ダウンロード
-CollectionEffect,보유 효과,Collection Effect,源暎こぶり明朝 ダウンロード
-Upgrade,등급업,Upgrade,源暎こぶり明朝 ダウンロード
-Summon,소환,Summon,源暎こぶり明朝 ダウンロード
-Deploy,배치,Deploy,源暎こぶり明朝 ダウンロード
-Relic,유물,Relic,源暎こぶり明朝 ダウンロード
-RelicEffect,유물 효과,Relic Effect,源暎こぶり明朝 ダウンロード
-Hour,시간,H,源暎こぶり明朝 ダウンロード
-Minute,분,M,源暎こぶり明朝 ダウンロード
-Seconds,초,S,源暎こぶり明朝 ダウンロード
-Hero,영웅,Hero,源暎こぶり明朝 ダウンロード
-Quest,퀘스트,Quest,源暎こぶり明朝 ダウンロード
-Dungeon,던전,Dungeon,源暎こぶり明朝 ダウンロード
-Setting,셋팅,Setting,源暎こぶり明朝 ダウンロード
-notice_dungeon_update,던전은 현재 굳게 닫혀있습니다. (업데이트 예정),The dungeon is firmly closed for now (to be updated),源暎こぶり明朝 ダウンロード
-cant_use_skill_desc_1,적이 하나 이상 있을 때 사용 가능한 스킬입니다.,This skill can be used when there is at least one enemy.,源暎こぶり明朝 ダウンロード
-GameSpeedInc,게임 스피드 증가,Increase Game Speed,源暎こぶり明朝 ダウンロード
-GainGold,적 처치 골드 증가,Increase Earn Gold,源暎こぶり明朝 ダウンロード
-UseAutoSkill,스킬 자동 사용,Use Auto Skill,源暎こぶり明朝 ダウンロード
-get_ad_reward_x2,보상 x2,Reward x2,源暎こぶり明朝 ダウンロード
-get_ad_reward_x5,보상 x5,Reward x5,源暎こぶり明朝 ダウンロード
-Skill,스킬,Skill,源暎こぶり明朝 ダウンロード
-Attr,속성,Attr,源暎こぶり明朝 ダウンロード
-QuitGame,게임 종료,Quit Game,源暎こぶり明朝 ダウンロード
-QuitGameDesc,게임을 끝내시겠습니까?,Are you sure you want to leave the game?,源暎こぶり明朝 ダウンロード
-title_popup_offline_reward,오프라인 보상,Offline Reward,源暎こぶり明朝 ダウンロード
-desc_popup_offline_reward,진행 보상은 현재 최대 {0}시간 {1}분 누적됩니다.\n유물이나 기타 효과로 보상과 누적 시간을 늘릴 수 있습니다.,Rewards currently accumulate up to {0} hours and {1} minutes.\nRelics and other effects can increase rewards and accumulation time.,源暎こぶり明朝 ダウンロード
-time_popup_offline_reward,오프라인 진행 시간: {0}시간 {1}분,Time: {0}H {1}M,源暎こぶり明朝 ダウンロード
-offline_reward,보상: {0} (+{1}),Reward: {0} (+{1}),源暎こぶり明朝 ダウンロード
-offline_reward_no_add,보상: {0},Reward: {0},源暎こぶり明朝 ダウンロード
-Get,받기,Claim,源暎こぶり明朝 ダウンロード
-Get_2x,보상 x2,Reward x2,源暎こぶり明朝 ダウンロード
-Reward,보상,Reward,源暎こぶり明朝 ダウンロード
-popup_receive_reward_close,터치하여 보상을 받으세요.,Touch to get reward,源暎こぶり明朝 ダウンロード
-Enchant,강화,Enchant,源暎こぶり明朝 ダウンロード
-LevelUp,레벨업,Level Up,源暎こぶり明朝 ダウンロード
-Purchase,구매,Purchase,源暎こぶり明朝 ダウンロード
-Castle,성,Castle,源暎こぶり明朝 ダウンロード
-str_name_10001,진,Jin,源暎こぶり明朝 ダウンロード
-str_name_10002,아이린,Irene,源暎こぶり明朝 ダウンロード
-str_name_10003,수아,Sua,源暎こぶり明朝 ダウンロード
-str_name_10004,미라,Mira,源暎こぶり明朝 ダウンロード
-str_name_10005,뮬,Muul,源暎こぶり明朝 ダウンロード
-str_name_10006,미코,Miko,源暎こぶり明朝 ダウンロード
-str_name_10007,블랑슈,Blanche,源暎こぶり明朝 ダウンロード
-str_name_10008,윌리,Willy,源暎こぶり明朝 ダウンロード
-str_name_10009,루시아,Lucia,源暎こぶり明朝 ダウンロード
-str_name_10010,로즈,Rose,源暎こぶり明朝 ダウンロード
-str_name_10011,마룬,Maroon,源暎こぶり明朝 ダウンロード
-str_name_10012,소연,Soyeon,源暎こぶり明朝 ダウンロード
-str_name_10013,오공,Wukong,源暎こぶり明朝 ダウンロード
-str_name_10014,세리스,Ceris,源暎こぶり明朝 ダウンロード
-str_name_10015,넬,Nell,源暎こぶり明朝 ダウンロード
-str_name_10016,드웨인,Dwain,源暎こぶり明朝 ダウンロード
-str_name_10017,아슈카,Ashuka,源暎こぶり明朝 ダウンロード
-str_name_10018,티나,Tina,源暎こぶり明朝 ダウンロード
-str_name_10019,아스타로트,Astaroth,源暎こぶり明朝 ダウンロード
-str_name_10020,로건,Logan,源暎こぶり明朝 ダウンロード
-str_desc_ce_10001,모든 불 속성 영웅의 공격력이 증가합니다.,Increases the attack power of all fire attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10002,모든 영웅의 치명타 확률이 증가합니다.,Increases the critical chance of all heroes.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10003,모든 나무 속성 영웅들의 치명타 데미지가 증가합니다.,Increases the critical damage of all tree attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10004,모든 영웅들의 공격력이 증가합니다.,Increases the attack power of all heroes.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10005,5번 슬롯의 영웅 속성이 나무라면` 골드 획득량이 증가합니다.,If the hero attribute of slot 5 is tree` the amount of earn gold increases.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10006,물 속성 영웅이 2명 이상 배치돼있다면` 모든 영웅들의 공격력이 증가합니다.,If deploies 2 or more water attribute heroes` the attack power of all heroes increases.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10007,나무 속성 영웅이 2명 이상 배치돼있다면` 1`3`5번 슬롯 영웅들의 치명타 확률이 증가합니다.,If deploies 2 or more tree attribute heroes` increase critical chance of slots 1` 3` 5's heroes.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10008,불 속성 영웅이 2명 이상 배치돼있다면` 모든 영웅들의 공격속도가 증가합니다.,If deploies 2 or more fire attribute heroes` the attack speed of all heroes increases.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10009,모든 나무 속성 영웅들의 공격력이 증가합니다.,Increases the attack power of all Tree attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10010,3번 슬롯의 영웅 속성이 불이라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slot 3 is fire` Increases the attack power of all heroes.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10011,1번 슬롯의 영웅 속성이 나무라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slot 1 is tree` Increases the attack power of all heroes.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10012,3` 5번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero attribute of slots 3 and 5 is water` the critical strike chance of all heroes increases.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10013,2` 4번 슬롯의 영웅 속성이 불이라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slots 2 and 4 is fire` the attack power of all heroes increases.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10014,1` 5번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero attribute of slots 1 and 5 is water` the critical chance of all heroes increases.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10015,배치된 영웅들의 평균 등급이 3 이상이라면` 모든 영웅들의 공격력이 증가합니다.,If the average rank of the deployed heroes is 3 or higher` the attack power of all heroes increases.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10016,나무 속성 영웅이 3명 이상 배치돼있다면` 모든 영웅들의 치명타 데미지가 증가합니다.,If deploies 3 or more tree attribute heroes` the critical damage of all heroes increases.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10017,3번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero attribute of slot 3 is water` all heroes' critical chance increases.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10018,모든 나무 속성 영웅들의 치명타 확률이 증가합니다.,Increases the critical chance of all tree attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10019,모든 불 속성 영웅들의 치명타 확률이 증가합니다.,Increases the critical chance of all fire attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_ce_10020,모든 물 속성 영웅들의 공격력이 증가합니다.,Increases the attack power of all water attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10001,쿨타임 {0}초.\n30초간 모든 영웅의 공격력이 증가합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the attack power of all heroes for 30 seconds. Each upgrade increases the duration.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10002,쿨타임 {0}초.\n필드 안의 모든 적들에게 피해를 줍니다.,Cooldown {0}Sec.\nDeals damage to all enemies on the field.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10003,쿨타임 {0}초.\n필드 안의 모든 적들에게 피해를 주고 스턴시킵니다.,Cooldown {0}Sec.\nDeals damage and stuns all enemies on the field.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10004,쿨타임 {0}초.\n가장 가까운 적 4명에게 폭발하는 구체를 발사합니다.,Cooldown {0}Sec.\nFires an exploding orb at the 4 nearest enemies.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10005,쿨타임 {0}초.\n30초간 모든 영웅의 공격속도가 증가합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the attack speed of all heroes for 30 seconds. Each upgrade increases the duration.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10006,쿨타임 {0}초.\n60초간 유지되는 아이스울프 3마리를 소환합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nSummons 3 Icewolves that last for 60 seconds. Each upgrade increases the duration.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10007,쿨타임 {0}초.\n가장 가까운 적을 중심으로 큰 반경으로 폭발하는 자연 마법을 씁니다.,Cooldown {0}Sec.\nCasts natural magic that explodes in a large radius around the nearest enemy.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10008,쿨타임 {0}초.\n60초 간 유지되는 레드드래곤을 소환합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nSummons a red dragon that lasts for 60 seconds. Each upgrade increases the duration.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10009,쿨타임 {0}초.\n모든 적들에게 피해를 주고 밀어내는 회전하는 바람 구체를 발사합니다.,Cooldown {0}Sec.\nFires a spinning wind sphere. All enemies on the field take damage and are knocked back.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10010,쿨타임 {0}초.\n불의 힘을 모아 폭발시킵니다. 모든 적들에게 피해를 주고 스턴시킵니다.,Cooldown {0}Sec.\nGathers the power of fire to explode. Deals damage and stuns all enemies.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10011,쿨타임 {0}초.\n강력한 빔을 쏘아 필드안의 모든 적에게 피해를 줍니다.,Cooldown {0}Sec.\nShoots a powerful beam` dealing damage to all enemies on the field.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10012,쿨타임 {0}초.\n자신을 포함한 양 옆의 영웅들의 공격력과 공격속도가 30초간 증가합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the attack power and attack speed of the heroes on both sides including yourself for 30 seconds. Each upgrade increases the duration.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10013,쿨타임 {0}초.\n60초간 유지되는 자신의 분신 5명을 소환합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nSummons 5 clones of yourself that last for 60 seconds. Each upgrade increases the duration.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10014,쿨타임 {0}초.\n적들에게 피해를 주며 느리게하는 물방울을 소환합니다.,Cooldown {0}Sec.\nSummons water droplets that damage and slow enemies.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10015,쿨타임 {0}초.\n필드 안의 모든 적들에게 피해를 주고 스턴시키는 지옥의 불꽃을 선사합니다.,Cooldown {0}Sec.\nGives infernal flames that damage and stun all enemies on the field.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10016,쿨타임 {0}초.\n기를 모아 강력한 베기를 시전합니다. 적 모두에게 피해를 주고 밀어냅니다.,Cooldown {0}Sec.\nGather your energy to cast a powerful slash. Deals damage and knocks back all enemies.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10017,쿨타임 {0}초.\n물의 구체 4개가 날아가 폭발을 일으킵니다. 큰범위 안의 적에게 피해를 주고 스턴시킵니다.,Cooldown {0}Sec.\n4 water spheres fly away and explode. Deals damage and stuns enemies within a large area.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10018,쿨타임 {0}초.\n60초간 모든 영웅들의 공격력과 공격속도가 증가합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the attack power and attack speed of all heroes for 60 seconds. Each upgrade increases the duration.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10019,쿨타임 {0}초.\n60초간 염옥의 악마 5명을 소환합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nSummons 5 demons of flames for 60 seconds. Each upgrade increases the duration.,源暎こぶり明朝 ダウンロード
-str_desc_skill_10020,쿨타임 {0}초.\n강력한 전기 구체를 발사해 화면 안의 모든 적들에게 피해를 주고 스턴시킵니다.,Cooldown {0}Sec.\nShoots a powerful electric sphere to damage and stun all enemies on the field.,源暎こぶり明朝 ダウンロード
-str_name_relic_20001,고대용의 주화,Ancient Dragon's Coin,源暎こぶり明朝 ダウンロード
-str_name_relic_20002,경험의 책,Book of Exp,源暎こぶり明朝 ダウンロード
-str_name_relic_20003,살라맨더의 단검,Salamander's Knife,源暎こぶり明朝 ダウンロード
-str_name_relic_20004,포세이돈의 창,Posaidon's Spear,源暎こぶり明朝 ダウンロード
-str_name_relic_20005,요정의 검,Elven Sword,源暎こぶり明朝 ダウンロード
-str_name_relic_20006,영원의 화염석,Eternal Flame Stone,源暎こぶり明朝 ダウンロード
-str_name_relic_20007,폭풍우 갑옷,Storm Armor,源暎こぶり明朝 ダウンロード
-str_name_relic_20008,요정왕의 투구,ElvenKing's Helmet,源暎こぶり明朝 ダウンロード
-str_name_relic_20009,불멸의 사슬,Immortal Chain,源暎こぶり明朝 ダウンロード
-str_name_relic_20010,물방울석 목걸이,Waterdrop Necklace,源暎こぶり明朝 ダウンロード
-str_name_relic_20011,세계수의 고리,WorldTree's Ring,源暎こぶり明朝 ダウンロード
-str_name_relic_20012,불꽃의 룬크리스탈,Runecrystal of Flame,源暎こぶり明朝 ダウンロード
-str_name_relic_20013,파도의 룬크리스탈,Runecrystal of Tide,源暎こぶり明朝 ダウンロード
-str_name_relic_20014,자연의 룬크리스탈,Runecrystal of Nature,源暎こぶり明朝 ダウンロード
-str_name_relic_20015,불의 마법책,Book of Fire,源暎こぶり明朝 ダウンロード
-str_name_relic_20016,물의 마법책,Book of Water,源暎こぶり明朝 ダウンロード
-str_name_relic_20017,나무의 마법책,Book of Tree,源暎こぶり明朝 ダウンロード
-str_name_relic_20018,지옥불꽃 스크롤,Scroll of Hellfire,源暎こぶり明朝 ダウンロード
-str_name_relic_20019,하늘호수 스크롤,Scroll of Skylake,源暎こぶり明朝 ダウンロード
-str_name_relic_20020,영원숲 스크롤,Scroll of Eternal Forest,源暎こぶり明朝 ダウンロード
-str_desc_relic_20001,적 처치시 얻는 골드가 증가합니다.,Increases the amount of gold you get from killing enemies.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20002,영웅 레벨업 비용이 감소합니다.,Hero level-up cost is reduced.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20003,불 속성 영웅의 공격력이 증가합니다.,Increases the attack power of fire attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20004,물 속성 영웅의 공격력이 증가합니다.,Increases the attack power of water attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20005,나무 속성 영웅의 공격력이 증가합니다.,Increases the attack power of tree attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20006,불 속성 영웅의 공격속도가 증가합니다.,Increases the attack speed of fire attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20007,물 속성 영웅의 공격속도가 증가합니다.,Increases the attack speed of water attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20008,나무 속성 영웅의 공격속도가 증가합니다.,Increases the attack speed of tree attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20009,불 속성 영웅의 치명타 확률이 증가합니다.,Increases the critical chance of fire attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20010,물 속성 영웅의 치명타 확률이 증가합니다.,Increases the critical chance of water attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20011,나무 속성 영웅의 치명타 확률이 증가합니다.,Increases the critical chance of tree attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20012,불 속성 영웅의 치명타 데미지가 증가합니다.,Increases the critical damage of fire attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20013,물 속성 영웅의 치명타 데미지가 증가합니다.,Increases the critical damage of water attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20014,나무 속성 영웅의 치명타 데미지가 증가합니다.,Increases the critical damage of tree attribute heroes.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20015,불 속성 일반 적의 체력이 감소합니다.,Reduces the HP of fire attribute normal enemies.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20016,물 속성 일반 적의 체력이 감소합니다.,Reduces the HP of water attribute normal enemies.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20017,나무 속성 일반 적의 체력이 감소합니다.,Reduces the HP of tree attribute normal enemies.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20018,불 속성 보스의 체력이 감소합니다.,Reduces the HP of fire attribute boss enemies.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20019,물 속성 보스의 체력이 감소합니다.,Reduces the HP of water attribute boss enemies.,源暎こぶり明朝 ダウンロード
-str_desc_relic_20020,나무 속성 보스의 체력이 감소합니다.,Reduces the HP of tree attribute boss enemies.,源暎こぶり明朝 ダウンロード
-str_name_castle_10001,마력증폭기,Mana Amplifier,源暎こぶり明朝 ダウンロード
-str_name_castle_10002,군대 양성,Military Training,源暎こぶり明朝 ダウンロード
-str_name_castle_10003,광산,Mine,源暎こぶり明朝 ダウンロード
-str_name_castle_10004,회관,Hall,源暎こぶり明朝 ダウンロード
-str_name_castle_10005,저장고,Storage,源暎こぶり明朝 ダウンロード
-str_name_castle_10006,모험가 길드,Adventurer's Guild,源暎こぶり明朝 ダウンロード
-str_name_castle_10007,다리 건설,Bridge Construction,源暎こぶり明朝 ダウンロード
-str_name_castle_10008,마법사 길드,Magician's Guild,源暎こぶり明朝 ダウンロード
-str_name_castle_10009,해자,Moat,源暎こぶり明朝 ダウンロード
-str_name_castle_10010,연금술 공방,Alchemy Workshop,源暎こぶり明朝 ダウンロード
-str_desc_castle_10001,환생시 얻는 마석이 증가합니다.,When ascension` increase gain magicite.,源暎こぶり明朝 ダウンロード
-str_desc_castle_10002,환생 후 시작 스테이지가 증가합니다. 스테이지가 증가한만큼의 골드 보상도 들어옵니다.,Increase start stage and gold after ascension.,源暎こぶり明朝 ダウンロード
-str_desc_castle_10003,환생 후 골드를 얻습니다.,Get gold after ascension.,源暎こぶり明朝 ダウンロード
-str_desc_castle_10004,오프라인 보상이 증가합니다.,Offline rewards increase.,源暎こぶり明朝 ダウンロード
-str_desc_castle_10005,오프라인 제한 시간이 증가합니다.,Offline time limit increases.,源暎こぶり明朝 ダウンロード
-str_desc_castle_10006,퀘스트 보상이 증가합니다.,Quest rewards increase.,源暎こぶり明朝 ダウンロード
-str_desc_castle_10007,퀘스트 시간이 감소합니다.,Quest time decrease.,源暎こぶり明朝 ダウンロード
-str_desc_castle_10008,스킬이 1초마다 자동으로 사용될 확률이 증가합니다.,Increases the chance that the skill will be used automatically every 1 sec.,源暎こぶり明朝 ダウンロード
-str_desc_castle_10009,해자가 생깁니다. 해자 안에서는 적들의 이동속도가 느려집니다.,Build a moat. Enemies' movement speed is slowed inside the moat.,源暎こぶり明朝 ダウンロード
-str_desc_castle_10010,터치 공격을 할 때마다 영웅들의 스킬 쿨타임이 1초씩 감소됩니다.,Each touch attack reduces the skill cooldown of heroes by 1 second.,源暎こぶり明朝 ダウンロード
-name_slot_power_up_Front,전방 공격 Lv.{0},Front Attack Lv.{0},源暎こぶり明朝 ダウンロード
-name_slot_power_up_Diagonal,사선 공격 Lv.{0},Slash Attack Lv.{0},源暎こぶり明朝 ダウンロード
-name_slot_power_up_Piercing,관통샷 Lv.{0},Penetrate Lv.{0},源暎こぶり明朝 ダウンロード
-name_slot_power_up_Multi,멀티샷 Lv.{0},Multishot Lv.{0},源暎こぶり明朝 ダウンロード
-name_slot_power_up_Boom,폭발 Lv.{0},Explosion Lv.{0},源暎こぶり明朝 ダウンロード
-name_slot_power_up_Bounce,반동 Lv.{0},Bounce Lv.{0},源暎こぶり明朝 ダウンロード
-name_slot_power_up_AtkUp,공격력 증가 Lv.{0},Increase Power Lv.{0},源暎こぶり明朝 ダウンロード
-name_slot_power_up_Size,크기 증가 Lv.{0},Increase Size Lv.{0},源暎こぶり明朝 ダウンロード
-name_slot_power_up_Push,밀어내기 Lv.{0},Push Lv.{0},源暎こぶり明朝 ダウンロード
-desc_slot_power_up_Front,전방으로 나가는 기본 공격의 발사체가 추가됩니다.,Added projectiles for basic attacks that go forward.,源暎こぶり明朝 ダウンロード
-desc_slot_power_up_Diagonal,사선으로 나가는 발사체가 기본 공격에 추가됩니다.,A projectile that goes out in a slash is added to your basic attack.,源暎こぶり明朝 ダウンロード
-desc_slot_power_up_Piercing,기본 공격의 관통력이 증가합니다.,Increases the penetration of basic attacks.,源暎こぶり明朝 ダウンロード
-desc_slot_power_up_Multi,기본 공격을 추가로 한 번 더 합니다.,One more basic attack.,源暎こぶり明朝 ダウンロード
-desc_slot_power_up_Boom,기본 공격이 적에게 맞았을 때 폭발합니다.,Basic attacks explode when hit by enemies.,源暎こぶり明朝 ダウンロード
-desc_slot_power_up_Bounce,기본 공격의 발사체가 벽에 튕기는 횟수가 증가합니다.,Increases the number of times projectiles from basic attacks bounce off walls.,源暎こぶり明朝 ダウンロード
-desc_slot_power_up_AtkUp,기본 공격의 공격력이 증가합니다.,Basic attack damage is increased.,源暎こぶり明朝 ダウンロード
-desc_slot_power_up_Size,총알의 크기가 커집니다.,The size of the projectile increases.,源暎こぶり明朝 ダウンロード
-desc_slot_power_up_Push,10%의 확률로 적을 밀어냅니다. 레벨이 증가할수록 밀어내는 힘이 강해집니다.,10% chance to knock back enemies. As the level increases` the pushing force becomes stronger.,源暎こぶり明朝 ダウンロード
-help_slot_power_up,슬롯 강화는 5` 25` 50` 100` 200` 300` 400` 500` 600` 700` 800` 900` 1000 레벨마다 가능하며` 강화에 드는 비용은 매번 달라집니다.,Slot enhancements are available at 5` 25` 50` 100` 200` 300` 400` 500` 600` 700` 800` 900` and 1000 levels` and the cost of enhancement varies each time.,源暎こぶり明朝 ダウンロード
-title_popup_slot_power_up,슬롯 강화,Slot Power Up,源暎こぶり明朝 ダウンロード
-desc_popup_slot_power_up,특정 레벨마다 슬롯을 파워업할 수 있습니다.\n세가지 특성 중 하나를 선택하세요.,You can power up slots for each specific level.\nChoose one of the three attributes.,源暎こぶり明朝 ダウンロード
-Refresh,갱신,Refresh,源暎こぶり明朝 ダウンロード
-se_inc_desc_p,{0}% -> {1}%,{0}% -> {1}%,源暎こぶり明朝 ダウンロード
-se_inc_desc,{0} -> {1},{0} -> {1},源暎こぶり明朝 ダウンロード
-se_inc_desc_t,{0}분 -> {1}분,{0}M -> {1}M,源暎こぶり明朝 ダウンロード
-se_inc_desc_p_hero,<color=#FFFF00>{2}성 <color=#00FFFF>{0}% <color=#FFFFFF>-> <color=#FFFF00>{3}성 <color=#00FFFF>{1}%</color>,<color=#FFFF00>{2}Star <color=#00FFFF>{0}% <color=#FFFFFF>-> <color=#FFFF00>{3}Start <color=#00FFFF>{1}%</color>,源暎こぶり明朝 ダウンロード
-se_inc_desc_hero,<color=#FFFF00>{2}성 <color=#00FFFF>{0} -> <color=#FFFF00>{3}성 <color=#00FFFF>{1}</color>,<color=#FFFF00>{2}Start <color=#00FFFF>{0} -> <color=#FFFF00>{3}Start <color=#00FFFF>{1}</color>,源暎こぶり明朝 ダウンロード
-se_inc_desc_t_hero,<color=#FFFF00>{2}성 <color=#00FFFF>{0}분 -> <color=#FFFF00>3}성 <color=#00FFFF>{1}분</color>,<color=#FFFF00>{2}Start <color=#00FFFF>{0}M -> <color=#FFFF00>3}Start <color=#00FFFF>{1}M</color>,源暎こぶり明朝 ダウンロード
-se_inc_desc_p_max_hero,<color=#FFFF00>{1}성 <color=#00FFFF>{0}%</color>,<color=#FFFF00>{1}Start <color=#00FFFF>{0}%</color>,源暎こぶり明朝 ダウンロード
-se_inc_desc_max_hero,<color=#FFFF00>{1}성 <color=#00FFFF>{0}</color>,<color=#FFFF00>{1}Start <color=#00FFFF>{0}</color>,源暎こぶり明朝 ダウンロード
-se_inc_desc_t_max_hero,<color=#FFFF00>{1}성 <color=#00FFFF>{0}분</color>,<color=#FFFF00>{1}Start <color=#00FFFF>{0}M</color>,源暎こぶり明朝 ダウンロード
-se_inc_desc_p_max,{0}%,{0}%,源暎こぶり明朝 ダウンロード
-se_inc_desc_max,{0},{0},源暎こぶり明朝 ダウンロード
-se_inc_desc_t_max,{0}분,{0}M,源暎こぶり明朝 ダウンロード
-desc_tutorial_step_1,방어막이 적에게 닿으면 부숴지며` 방어막 5겹이 모두 부숴지면 패배하고 이전 스테이지로 이동합니다.,When the shield touches the enemy` it is broken` and when all 5 layers of the shield are destroyed` it is defeated and moves to the previous stage.,源暎こぶり明朝 ダウンロード
-desc_tutorial_step_2,필드를 터치하여 적을 공격하세요.,Touch the field to attack the enemy.,源暎こぶり明朝 ダウンロード
-desc_tutorial_step_3,영웅들은 자동으로 적을 공격합니다. 속성에 따라 2배의 데미지를 줍니다. 영웅이 스킬을 쓸 준비가 다되면 스킬을 사용할 수 있습니다. 영웅을 눌러 스킬을 사용해보세요.,Heroes automatically attack enemies. Deals double damage depending on the attribute. When the hero is ready to use the skill` he can use the skill. Tap the hero to use the skill.,源暎こぶり明朝 ダウンロード
-desc_tutorial_step_4,버튼을 눌러 영웅을 레벨업하세요. 5레벨까지 올리면 파워업할 수 있습니다.,Level up your hero by pressing the button. You can power it up by raising it to level 5.,源暎こぶり明朝 ダウンロード
-desc_tutorial_step_5,파워업 버튼을 눌러 영웅을 업그레이드하세요. 도움말을 보시면 언제 파워업이 가능한지 알 수 있습니다.,Upgrade your hero by pressing the power-up button. The help will tell you when power-ups are available.,源暎こぶり明朝 ダウンロード
-desc_tutorial_step_6,이제 환생할 수 있습니다. 환생 버튼을 눌러 정보를 확인하세요.,Now you can Ascension. Click the Ascension button to check the information.,源暎こぶり明朝 ダウンロード
-cant_play_ad,하루 광고 시청수를 초과했습니다.,You have exceeded the number of ad views per day.,源暎こぶり明朝 ダウンロード
-desc_aekashics,THANKS FOR ENEMIES DESIGN\n버튼 클릭시 홈페이지로 연결됩니다.,THANKS FOR ENEMIES DESIGN\nWhen you click the button` you will be connected to the homepage.,源暎こぶり明朝 ダウンロード
-str_name_quest_10001,이세계 탐색,Explore the other world,源暎こぶり明朝 ダウンロード
-str_name_quest_20001,마을 주민 돕기,Help villagers,源暎こぶり明朝 ダウンロード
-str_name_quest_30001,고블린과의 조우,Encounter with Goblin,源暎こぶり明朝 ダウンロード
-str_name_quest_40001,이세계 적응,Adaptation to a other world,源暎こぶり明朝 ダウンロード
-str_name_quest_50001,유령 저택 청소,Haunted house cleaning,源暎こぶり明朝 ダウンロード
-str_name_quest_60001,모험가 길드의 부탁,Adventurer's Guild's Request,源暎こぶり明朝 ダウンロード
-str_name_quest_70001,고블린 부락 탐사,Goblin Village Exploration,源暎こぶり明朝 ダウンロード
-str_name_quest_10002,고블린왕의 존재를 길드에 알리다,Announce the existence of the Goblin King to the guild,源暎こぶり明朝 ダウンロード
-str_name_quest_20002,고블린과의 전투 준비,Prepare for battle to goblins,源暎こぶり明朝 ダウンロード
-str_name_quest_30002,고블린의 침략을 막아내다,Defeat Goblin's Invasion,源暎こぶり明朝 ダウンロード
-str_name_quest_40002,미들랜드왕과 만남,Encounter with the King of Midland,源暎こぶり明朝 ダウンロード
-str_name_quest_50002,타락한 왕자,Fallen prince,源暎こぶり明朝 ダウンロード
-str_name_quest_60002,끝없는 사막,Endless desert,源暎こぶり明朝 ダウンロード
-str_name_quest_70002,오크와 조우,Orc and Encounter,源暎こぶり明朝 ダウンロード
-str_name_quest_10003,왕자의 행방 찾기,Finding the whereabouts of the prince,源暎こぶり明朝 ダウンロード
-str_name_quest_20003,오크 도시 탐사,Orc's City Exploration,源暎こぶり明朝 ダウンロード
-str_name_quest_30003,오아시스 찾기,Find Oasis,源暎こぶり明朝 ダウンロード
-str_name_quest_40003,잃어버린 신전에 대한 단서,A clue to the lost temple,源暎こぶり明朝 ダウンロード
-str_name_quest_50003,오아시스 전투,Oasis Battle,源暎こぶり明朝 ダウンロード
-str_name_quest_60003,사막의 신전 찾기,Find a Temple in the Desert,源暎こぶり明朝 ダウンロード
-str_name_quest_70003,신전 탐사,Temple exploration,源暎こぶり明朝 ダウンロード
-str_name_quest_10004,왕자의 행방에 대한 단서,A clue to the whereabouts of the prince,源暎こぶり明朝 ダウンロード
-str_name_quest_20004,왕자를 잡아라,Catch the prince,源暎こぶり明朝 ダウンロード
-str_name_quest_30004,오크 군대의 침략,Invasion of the orc army,源暎こぶり明朝 ダウンロード
-str_name_quest_40004,폐허가 된 도시,Ruined city,源暎こぶり明朝 ダウンロード
-str_name_quest_50004,왕자의 죽음,Death of the prince,源暎こぶり明朝 ダウンロード
-str_name_quest_60004,원래 세계로 돌아가긴 위한 단서,The first clue to returning to the original world,源暎こぶり明朝 ダウンロード
-str_name_quest_70004,남쪽의 습지,Wetlands in the south,源暎こぶり明朝 ダウンロード
-str_name_quest_10005,왕자가 남긴 것,Things the prince left behind,源暎こぶり明朝 ダウンロード
-str_name_quest_20005,또다른 신전 찾기,Find another temple,源暎こぶり明朝 ダウンロード
-str_name_quest_30005,습지의 용,Dragon of the Wetlands,源暎こぶり明朝 ダウンロード
-str_name_quest_40005,원래 세계로 돌아가긴 위한 두 번째 단서,The second clue to returning to the original world,源暎こぶり明朝 ダウンロード
-str_name_quest_50005,신전에 도달하다,Reach the temple,源暎こぶり明朝 ダウンロード
-str_name_quest_60005,악어왕과의 전투,Battle to Crocodile King,源暎こぶり明朝 ダウンロード
-str_name_quest_70005,악어왕의 전언,Crocodile King's Message,源暎こぶり明朝 ダウンロード
-str_name_quest_10006,북쪽으로,Go to North,源暎こぶり明朝 ダウンロード
-str_name_quest_20006,북부의 왕,Northern King,源暎こぶり明朝 ダウンロード
-str_name_quest_30006,반신의 존재,Demigod existence,源暎こぶり明朝 ダウンロード
-str_name_quest_40006,타이탄 사냥,Hunt Titan,源暎こぶり明朝 ダウンロード
-str_name_quest_50006,북쪽의 신전,Northern Temple,源暎こぶり明朝 ダウンロード
-str_name_quest_60006,북부 신전 탐사,Northern Temple Exploration,源暎こぶり明朝 ダウンロード
-str_name_quest_70006,반신 시바와의 전투,Battle to the demigod Shiva,源暎こぶり明朝 ダウンロード
-str_name_quest_10007,고대의 숲,Ancient Forest,源暎こぶり明朝 ダウンロード
-str_name_quest_20007,카프리콘 사냥,Hunt Carpricorn,源暎こぶり明朝 ダウンロード
-str_name_quest_30007,고대 숲의 용과 대화,Talk to the dragon in the ancient forest,源暎こぶり明朝 ダウンロード
-str_name_quest_40007,원래 세계로 돌아가긴 위한 세 번째 단서,The third clue to returning to the original world,源暎こぶり明朝 ダウンロード
-str_name_quest_50007,고대 숲의 여왕,The Queen of ancient forest,源暎こぶり明朝 ダウンロード
-str_name_quest_60007,여왕의 변심,The Queen's Heart Changes,源暎こぶり明朝 ダウンロード
-str_name_quest_70007,여왕과의 전투,Battle to The Queen,源暎こぶり明朝 ダウンロード
-str_name_quest_10008,마지막 신전의 폐허,Ruins of the last temple,源暎こぶり明朝 ダウンロード
-str_name_quest_20008,타락 천사의 영접,Fallen Angel's Reception,源暎こぶり明朝 ダウンロード
-str_name_quest_30008,고대의 마물 처치,Defeat ancient monsters,源暎こぶり明朝 ダウンロード
-str_name_quest_40008,고대 용의 죽음,Ancient dragon's death,源暎こぶり明朝 ダウンロード
-str_name_quest_50008,고대 용과의 전투,Battle to ancient dragon,源暎こぶり明朝 ダウンロード
-str_name_quest_60008,고대 용 영면에 들다,Ancient dragons go to sleep,源暎こぶり明朝 ダウンロード
-str_name_quest_70008,성검에 대한 단서,Clue to the holy sword,源暎こぶり明朝 ダウンロード
-str_name_quest_10009,성검 찾기,Find holy sword,源暎こぶり明朝 ダウンロード
-str_name_quest_20009,악마의 속삭임,Devil's whisper,源暎こぶり明朝 ダウンロード
-str_name_quest_30009,악마와의 전투,Battle to the devil,源暎こぶり明朝 ダウンロード
-str_name_quest_40009,성검을 얻다,Get the holy sword,源暎こぶり明朝 ダウンロード
-str_name_quest_50009,죽음의 신과의 전투,Battle to the god of death,源暎こぶり明朝 ダウンロード
-str_name_quest_60009,여신 이노바와의 대화,Talk to Innova the goddess,源暎こぶり明朝 ダウンロード
-str_name_quest_70009,이노바와의 전투,Battle to Innova the goddess,源暎こぶり明朝 ダウンロード
-str_name_quest_10010,모든 것은 거짓,Everyting is false,源暎こぶり明朝 ダウンロード
-str_name_quest_20010,신 노버스,Novus the god,源暎こぶり明朝 ダウンロード
-str_name_quest_30010,신살,God Slayer,源暎こぶり明朝 ダウンロード
-str_name_quest_40010,또다른 흑막,Another darkness,源暎こぶり明朝 ダウンロード
-str_name_quest_50010,흑막의 처치,Slay of darkness,源暎こぶり明朝 ダウンロード
-str_name_quest_60010,세계의 반복,Repetition of the world,源暎こぶり明朝 ダウンロード
-str_name_quest_70010,또다른 세계와의 만남,Encounter with another world,源暎こぶり明朝 ダウンロード
-popup_quest_title,퀘스트,Quest,源暎こぶり明朝 ダウンロード
-popup_quest_desc,퀘스트를 클리어할수록 더 높은 퀘스트 등급이 등장합니다.,More quests are cleared` the higher the quest grade will appear.,源暎こぶり明朝 ダウンロード
-QuestTime,시간,Time,源暎こぶり明朝 ダウンロード
-Menu,메뉴,Menu,源暎こぶり明朝 ダウンロード
-Shop,상점,Shop,源暎こぶり明朝 ダウンロード
-BGM,배경음,BGM,源暎こぶり明朝 ダウンロード
-SFX,효과음,SFX,源暎こぶり明朝 ダウンロード
-Gold,골드,Gold,源暎こぶり明朝 ダウンロード
-Claim,획득,Claim,源暎こぶり明朝 ダウンロード
-SoulStone,영혼석,SoulStone,源暎こぶり明朝 ダウンロード
-Magicite,마석,Magicite,源暎こぶり明朝 ダウンロード
-GameSpeed2x,게임속도 2배,Game Speed x2,源暎こぶり明朝 ダウンロード
-desc_locked_quest,퀘스트는 환생 이후 열립니다.,The quest opens after Ascension.,源暎こぶり明朝 ダウンロード
-Achieve,획득,Claim,
-Dispatch,파견,Dispatch,
-Rank,랭크,Rank,
-desc_loading,본게임은 따로 클라우드 저장을 하지 않습니다. 게임을 삭제하면 모든 데이터가 지워집니다.,This game is not separately cloud saved. Deleting the game will erase all data.,
+Close,닫기,Close,閉じる
+Pause,일시정지,Pause,一時停止
+Heroes,영웅 리스트,Heroes List,ヒーローリスト
+Ascension,환생,Ascension,転生
+popup_ascension_desc,환생을 하면 마석을 받고 처음으로 돌아갑니다.\n환생 시 레벨이 초기화되며`\n도달한 스테이지가 높을수록 받는 마석이 증가합니다.,If you Ascension` you will receive a Magicite and return to the beginning. When ascension` the level is reset` and the higher the stage reached` the more Magicite you receive.,転生すると魔石を獲得するが、最初の状態になる。\n
+レベルは初期化されて、\nステータスは上がった数値に比べて魔石の獲得ができる。
+popup_ascension_reward_title,환생 보상,Reward Ascension,転生リワード
+popup_ascension_cant_ascension_desc,환생은 {0} 스테이지 이상부터 가능합니다.,Prestige is possible from stage {0} or higher.,転生は第{0}ステージ以上からできる。
+popup_ascension_start_stage_desc,환생 후 시작 스테이지 : {0},Start Stage: {0},転生後のスタート : 第{0}ステージ
+btn_ad_ascension,강화 환생,Ascension,強化転生
+btn_ad_ascension_reward,보상 x2,Reward x2,報酬２倍
+Stage,스테이지,Stage,ステージ
+title_dialog_hero,영웅,Hero,ヒーロー
+Atk,공격력,Atk,ダメージ
+Spd,속도,Spd,スピード
+Range,범위,Range,射程
+CollectionEffect,보유 효과,Collection Effect,保有効果
+Upgrade,등급업,Upgrade,クラスアップ
+Summon,소환,Summon,召喚
+Deploy,배치,Deploy,配置
+Relic,유물,Relic,遺物
+RelicEffect,유물 효과,Relic Effect,遺物効果
+Hour,시간,H,時間
+Minute,분,M,分
+Seconds,초,S,秒
+Hero,영웅,Hero,ヒーロー
+Quest,퀘스트,Quest,クエスト
+Dungeon,던전,Dungeon,ダンジョン
+Setting,셋팅,Setting,設定　OR　セット
+notice_dungeon_update,던전은 현재 굳게 닫혀있습니다. (업데이트 예정),The dungeon is firmly closed for now (to be updated),ダンジョン閉鎖中
+cant_use_skill_desc_1,적이 하나 이상 있을 때 사용 가능한 스킬입니다.,This skill can be used when there is at least one enemy.,ターゲットがないと発動しないスキル
+GameSpeedInc,게임 스피드 증가,Increase Game Speed,ゲームスピードアップ
+GainGold,적 처치 골드 증가,Increase Earn Gold,獲得報酬金増
+UseAutoSkill,스킬 자동 사용,Use Auto Skill,オートスキル
+get_ad_reward_x2,보상 x2,Reward x2,報酬２倍
+get_ad_reward_x5,보상 x5,Reward x5,報酬５倍
+Skill,스킬,Skill,スキル
+Attr,속성,Attr,属性
+QuitGame,게임 종료,Quit Game,ゲーム終了
+QuitGameDesc,게임을 끝내시겠습니까?,Are you sure you want to leave the game?,ゲームを終了しますか。
+title_popup_offline_reward,오프라인 보상,Offline Reward,オフラインの報酬？オフライン中の報酬
+desc_popup_offline_reward,진행 보상은 현재 최대 {0}시간 {1}분 누적됩니다.\n유물이나 기타 효과로 보상과 누적 시간을 늘릴 수 있습니다.,Rewards currently accumulate up to {0} hours and {1} minutes.\nRelics and other effects can increase rewards and accumulation time.,今は最大 {0} 時間 {1} 分間の経過時間で報酬がある。\n遺物やその他の効果で報酬と経過時間が増やせる。
+time_popup_offline_reward,오프라인 진행 시간: {0}시간 {1}분,Time: {0}H {1}M,オフライン時間経過 : {0}時間 {1}分
+offline_reward,보상: {0} (+{1}),Reward: {0} (+{1}),報酬: {0} (+{1})
+offline_reward_no_add,보상: {0},Reward: {0},報酬: {0}
+Get,받기,Claim,獲得
+Get_2x,보상 x2,Reward x2,報酬２倍
+Reward,보상,Reward,報酬
+popup_receive_reward_close,터치하여 보상을 받으세요.,Touch to get reward,タッチで報酬獲得
+Enchant,강화,Enchant,強化
+LevelUp,레벨업,Level Up,レベルアップ
+Purchase,구매,Purchase,購入
+Castle,성,Castle,お城
+str_name_10001,진,Jin,ジーン
+str_name_10002,아이린,Irene,アイリン
+str_name_10003,수아,Sua,スア
+str_name_10004,미라,Mira,ミラ
+str_name_10005,뮬,Muul,ミュール
+str_name_10006,미코,Miko,ミコ
+str_name_10007,블랑슈,Blanche,ブランシュ
+str_name_10008,윌리,Willy,ウィリー
+str_name_10009,루시아,Lucia,ルシア
+str_name_10010,로즈,Rose,ローズ
+str_name_10011,마룬,Maroon,マルーン
+str_name_10012,소연,Soyeon,ソヨン
+str_name_10013,오공,Wukong,ゴクウ
+str_name_10014,세리스,Ceris,セリス
+str_name_10015,넬,Nell,ネル
+str_name_10016,드웨인,Dwain,ドウェイン
+str_name_10017,아슈카,Ashuka,アスカ
+str_name_10018,티나,Tina,ティナ
+str_name_10019,아스타로트,Astaroth,アスタロス
+str_name_10020,로건,Logan,ローガン
+str_desc_ce_10001,모든 불 속성 영웅의 공격력이 증가합니다.,Increases the attack power of all fire attribute heroes.,全火属性のヒーローのダメージが増える。
+str_desc_ce_10002,모든 영웅의 치명타 확률이 증가합니다.,Increases the critical chance of all heroes.,全ヒーローのクリティカルの確率が上がる。
+str_desc_ce_10003,모든 나무 속성 영웅들의 치명타 데미지가 증가합니다.,Increases the critical damage of all tree attribute heroes.,全木属性のヒーローのクリティカルダメージが増える。
+str_desc_ce_10004,모든 영웅들의 공격력이 증가합니다.,Increases the attack power of all heroes.,全ヒーローのダメージが増える。
+str_desc_ce_10005,5번 슬롯의 영웅 속성이 나무라면` 골드 획득량이 증가합니다.,If the hero attribute of slot 5 is tree` the amount of earn gold increases.,５番スロットのヒーローが木属性なら、報酬獲得量が増える。
+str_desc_ce_10006,물 속성 영웅이 2명 이상 배치돼있다면` 모든 영웅들의 공격력이 증가합니다.,If deploies 2 or more water attribute heroes` the attack power of all heroes increases.,水属性のヒーローが二人以上配置しているなら、全ヒーローのダメージが増える。
+str_desc_ce_10007,나무 속성 영웅이 2명 이상 배치돼있다면` 1`3`5번 슬롯 영웅들의 치명타 확률이 증가합니다.,If deploies 2 or more tree attribute heroes` increase critical chance of slots 1` 3` 5's heroes.,木属性のヒーローが二人以上配置しているなら、1、3、5番スロットのヒーローのクリティカルの確率が上がる。
+str_desc_ce_10008,불 속성 영웅이 2명 이상 배치돼있다면` 모든 영웅들의 공격속도가 증가합니다.,If deploies 2 or more fire attribute heroes` the attack speed of all heroes increases.,火属性のヒーローが二人以上配置しているなら、全ヒーローの攻撃スピードが上がる。
+str_desc_ce_10009,모든 나무 속성 영웅들의 공격력이 증가합니다.,Increases the attack power of all Tree attribute heroes.,全木属性のヒーローのダメージが増える。
+str_desc_ce_10010,3번 슬롯의 영웅 속성이 불이라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slot 3 is fire` Increases the attack power of all heroes.,3番スロットのヒーローが火属性なら、全ヒーローのダメージが増える。
+str_desc_ce_10011,1번 슬롯의 영웅 속성이 나무라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slot 1 is tree` Increases the attack power of all heroes.,1番スロットのヒーローが木属性なら、全ヒーローのダメージが増える。
+str_desc_ce_10012,3` 5번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero attribute of slots 3 and 5 is water` the critical strike chance of all heroes increases.,3、5番スロットのヒーローが水属性なら、全ヒーローのクリティカルの確率が上がる。
+str_desc_ce_10013,2` 4번 슬롯의 영웅 속성이 불이라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slots 2 and 4 is fire` the attack power of all heroes increases.,2、4番スロットのヒーローが火属性なら、全ヒーローのダメージが増える。
+str_desc_ce_10014,1` 5번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero attribute of slots 1 and 5 is water` the critical chance of all heroes increases.,1、5番スロットのヒーローが水属性なら、全ヒーローのクリティカルの確率が上がる。
+str_desc_ce_10015,배치된 영웅들의 평균 등급이 3 이상이라면` 모든 영웅들의 공격력이 증가합니다.,If the average rank of the deployed heroes is 3 or higher` the attack power of all heroes increases.,配置した全ヒーローが平均３クラス以上なら、全ヒーローのダメージが増える。
+str_desc_ce_10016,나무 속성 영웅이 3명 이상 배치돼있다면` 모든 영웅들의 치명타 데미지가 증가합니다.,If deploies 3 or more tree attribute heroes` the critical damage of all heroes increases.,配置したヒーロー３人以上が木属性なら、全ヒーローのクリティカルダメージが増える。
+str_desc_ce_10017,3번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero attribute of slot 3 is water` all heroes' critical chance increases.,3番スロットのヒーローが水属性なら、全ヒーローのクリティカルの確率が上がる。
+str_desc_ce_10018,모든 나무 속성 영웅들의 치명타 확률이 증가합니다.,Increases the critical chance of all tree attribute heroes.,木属性の全ヒーローのクリティカルの確率が上がる。
+str_desc_ce_10019,모든 불 속성 영웅들의 치명타 확률이 증가합니다.,Increases the critical chance of all fire attribute heroes.,火属性の全ヒーローのクリティカルの確率が上がる。
+str_desc_ce_10020,모든 물 속성 영웅들의 공격력이 증가합니다.,Increases the attack power of all water attribute heroes.,火属性の全ヒーローのダメージが増える。
+str_desc_skill_10001,쿨타임 {0}초.\n30초간 모든 영웅의 공격력이 증가합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the attack power of all heroes for 30 seconds. Each upgrade increases the duration.,待機{0}秒 \n30秒間全ヒーローのダメージが増える。クラスアップにつれて持続時間が増える。
+str_desc_skill_10002,쿨타임 {0}초.\n필드 안의 모든 적들에게 피해를 줍니다.,Cooldown {0}Sec.\nDeals damage to all enemies on the field.,待機{0}秒 \n全ターゲットにダメージを与える。
+str_desc_skill_10003,쿨타임 {0}초.\n필드 안의 모든 적들에게 피해를 주고 스턴시킵니다.,Cooldown {0}Sec.\nDeals damage and stuns all enemies on the field.,待機{0}秒 \n全ターゲットにダメージを与えて気絶させる。
+str_desc_skill_10004,쿨타임 {0}초.\n가장 가까운 적 4명에게 폭발하는 구체를 발사합니다.,Cooldown {0}Sec.\nFires an exploding orb at the 4 nearest enemies.,待機{0}秒 \n最寄りの４つのターゲットに爆発する球体を放つ。
+str_desc_skill_10005,쿨타임 {0}초.\n30초간 모든 영웅의 공격속도가 증가합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the attack speed of all heroes for 30 seconds. Each upgrade increases the duration.,待機{0}秒 \n30秒間全ヒーローの攻撃スピードが上がる。クラスアップにつれて持続時間が増える。
+str_desc_skill_10006,쿨타임 {0}초.\n60초간 유지되는 아이스울프 3마리를 소환합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nSummons 3 Icewolves that last for 60 seconds. Each upgrade increases the duration.,待機{0}秒 \n60秒間3匹のアイスウルフを召喚する。クラスアップにつれて持続時間が増える。
+str_desc_skill_10007,쿨타임 {0}초.\n가장 가까운 적을 중심으로 큰 반경으로 폭발하는 자연 마법을 씁니다.,Cooldown {0}Sec.\nCasts natural magic that explodes in a large radius around the nearest enemy.,待機{0}秒 \n最寄りのターゲットを中心に爆発する魔法を放つ。
+str_desc_skill_10008,쿨타임 {0}초.\n60초 간 유지되는 레드드래곤을 소환합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nSummons a red dragon that lasts for 60 seconds. Each upgrade increases the duration.,待機{0}秒 \n60秒間1匹のレッドドラゴンを召喚する。クラスアップにつれて持続時間が増える。
+str_desc_skill_10009,쿨타임 {0}초.\n모든 적들에게 피해를 주고 밀어내는 회전하는 바람 구체를 발사합니다.,Cooldown {0}Sec.\nFires a spinning wind sphere. All enemies on the field take damage and are knocked back.,待機{0}秒 \n全ターゲットにダメージを与えて後ろに引くサイクロンを放つ。
+str_desc_skill_10010,쿨타임 {0}초.\n불의 힘을 모아 폭발시킵니다. 모든 적들에게 피해를 주고 스턴시킵니다.,Cooldown {0}Sec.\nGathers the power of fire to explode. Deals damage and stuns all enemies.,待機{0}秒 \n火を投げて爆発させる。
+str_desc_skill_10011,쿨타임 {0}초.\n강력한 빔을 쏘아 필드안의 모든 적에게 피해를 줍니다.,Cooldown {0}Sec.\nShoots a powerful beam` dealing damage to all enemies on the field.,待機{0}秒 \n強力なビームを撃て全ターゲットにダメージを与える。
+str_desc_skill_10012,쿨타임 {0}초.\n자신을 포함한 양 옆의 영웅들의 공격력과 공격속도가 30초간 증가합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the attack power and attack speed of the heroes on both sides including yourself for 30 seconds. Each upgrade increases the duration.,待機{0}秒 \n30秒間自身と両側のヒーローのダメージが増えて、スピードが上がる。クラスアップにつれて持続時間が増える。
+str_desc_skill_10013,쿨타임 {0}초.\n60초간 유지되는 자신의 분신 5명을 소환합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nSummons 5 clones of yourself that last for 60 seconds. Each upgrade increases the duration.,待機{0}秒 \n60秒間5つの自身の分身を召喚する。クラスアップにつれて持続時間が増える。
+str_desc_skill_10014,쿨타임 {0}초.\n적들에게 피해를 주며 느리게하는 물방울을 소환합니다.,Cooldown {0}Sec.\nSummons water droplets that damage and slow enemies.,待機{0}秒 \n水球を投げてダメージを与えて、動きを鈍くする。
+str_desc_skill_10015,쿨타임 {0}초.\n필드 안의 모든 적들에게 피해를 주고 스턴시키는 지옥의 불꽃을 선사합니다.,Cooldown {0}Sec.\nGives infernal flames that damage and stun all enemies on the field.,待機{0}秒 \n全ターゲットにダメージを与えて気絶させる煉獄の炎を放つ。
+str_desc_skill_10016,쿨타임 {0}초.\n기를 모아 강력한 베기를 시전합니다. 적 모두에게 피해를 주고 밀어냅니다.,Cooldown {0}Sec.\nGather your energy to cast a powerful slash. Deals damage and knocks back all enemies.,待機{0}秒 \n全ターゲットにダメージを与えて後ろに押す鋭い斬撃を放つ。
+str_desc_skill_10017,쿨타임 {0}초.\n물의 구체 4개가 날아가 폭발을 일으킵니다. 큰범위 안의 적에게 피해를 주고 스턴시킵니다.,Cooldown {0}Sec.\n4 water spheres fly away and explode. Deals damage and stuns enemies within a large area.,待機{0}秒 \n広い範囲のターゲットにダメージを与えて気絶させる４つの水球を放つ。
+str_desc_skill_10018,쿨타임 {0}초.\n60초간 모든 영웅들의 공격력과 공격속도가 증가합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the attack power and attack speed of all heroes for 60 seconds. Each upgrade increases the duration.,待機{0}秒 \n60秒間全ヒーローのダメージが増えて、スピードがあがる。クラスアップにつれて持続時間が増える。
+str_desc_skill_10019,쿨타임 {0}초.\n60초간 염옥의 악마 5명을 소환합니다. 등급업을 할수록 지속시간이 증가합니다.,Cooldown {0}Sec.\nSummons 5 demons of flames for 60 seconds. Each upgrade increases the duration.,待機{0}秒 \n60秒間5人の煉獄の悪魔を召喚する。クラスアップにつれて持続時間が増える。
+str_desc_skill_10020,쿨타임 {0}초.\n강력한 전기 구체를 발사해 화면 안의 모든 적들에게 피해를 주고 스턴시킵니다.,Cooldown {0}Sec.\nShoots a powerful electric sphere to damage and stun all enemies on the field.,待機{0}秒 \n全ターゲットにダメージを与えて気絶させる強力な電気球体を放つ。
+str_name_relic_20001,고대용의 주화,Ancient Dragon's Coin,古代龍のコイン
+str_name_relic_20002,경험의 책,Book of Exp,経験値の本
+str_name_relic_20003,살라맨더의 단검,Salamander's Knife,サラマンダーの短剣
+str_name_relic_20004,포세이돈의 창,Poseidon's Spear,ポセイドンの槍
+str_name_relic_20005,요정의 검,Elven Sword,エルフソード
+str_name_relic_20006,영원의 화염석,Eternal Flame Stone,エターナル炎の石
+str_name_relic_20007,폭풍우 갑옷,Storm Armor,ストームアーマー
+str_name_relic_20008,요정왕의 투구,ElvenKing's Helmet,エルフ王のヘルメット
+str_name_relic_20009,불멸의 사슬,Immortal Chain,不滅の鎖
+str_name_relic_20010,물방울석 목걸이,Waterdrop Necklace,水玉のネックレス
+str_name_relic_20011,세계수의 고리,WorldTree's Ring,世界樹の輪
+str_name_relic_20012,불꽃의 룬크리스탈,Runecrystal of Flame,炎のルーンクリスタル
+str_name_relic_20013,파도의 룬크리스탈,Runecrystal of Tide,波のルーンクリスタル
+str_name_relic_20014,자연의 룬크리스탈,Runecrystal of Nature,自然のルーンクリスタル
+str_name_relic_20015,불의 마법책,Book of Fire,炎の書
+str_name_relic_20016,물의 마법책,Book of Water,水の書
+str_name_relic_20017,나무의 마법책,Book of Tree,木の書
+str_name_relic_20018,지옥불꽃 스크롤,Scroll of Hellfire,煉獄のスクロール
+str_name_relic_20019,하늘호수 스크롤,Scroll of Skylake,空湖のスクロール
+str_name_relic_20020,영원숲 스크롤,Scroll of Eternal Forest,エターナル森のスクロール
+str_desc_relic_20001,적 처치시 얻는 골드가 증가합니다.,Increases the amount of gold you get from killing enemies.,報酬金が増える。
+str_desc_relic_20002,영웅 레벨업 비용이 감소합니다.,Hero level-up cost is reduced.,ヒーローのレベルアップ費用が減る。
+str_desc_relic_20003,불 속성 영웅의 공격력이 증가합니다.,Increases the attack power of fire attribute heroes.,火属性のヒーローのダメージが増える。
+str_desc_relic_20004,물 속성 영웅의 공격력이 증가합니다.,Increases the attack power of water attribute heroes.,水属性のヒーローのダメージが増える。
+str_desc_relic_20005,나무 속성 영웅의 공격력이 증가합니다.,Increases the attack power of tree attribute heroes.,木属性のヒーローのダメージが増える。
+str_desc_relic_20006,불 속성 영웅의 공격속도가 증가합니다.,Increases the attack speed of fire attribute heroes.,火属性のヒーローのスピードが上がる。
+str_desc_relic_20007,물 속성 영웅의 공격속도가 증가합니다.,Increases the attack speed of water attribute heroes.,水属性のヒーローのスピードが上がる。
+str_desc_relic_20008,나무 속성 영웅의 공격속도가 증가합니다.,Increases the attack speed of tree attribute heroes.,木属性のヒーローのスピードが上がる。
+str_desc_relic_20009,불 속성 영웅의 치명타 확률이 증가합니다.,Increases the critical chance of fire attribute heroes.,火属性のヒーローのクリティカルの確率が上がる。
+str_desc_relic_20010,물 속성 영웅의 치명타 확률이 증가합니다.,Increases the critical chance of water attribute heroes.,水属性のヒーローのクリティカルの確率が上がる。
+str_desc_relic_20011,나무 속성 영웅의 치명타 확률이 증가합니다.,Increases the critical chance of tree attribute heroes.,木属性のヒーローのクリティカルの確率が上がる。
+str_desc_relic_20012,불 속성 영웅의 치명타 데미지가 증가합니다.,Increases the critical damage of fire attribute heroes.,火属性のヒーローのクリティカルのダメージが増える。
+str_desc_relic_20013,물 속성 영웅의 치명타 데미지가 증가합니다.,Increases the critical damage of water attribute heroes.,水属性のヒーローのクリティカルのダメージが増える。
+str_desc_relic_20014,나무 속성 영웅의 치명타 데미지가 증가합니다.,Increases the critical damage of tree attribute heroes.,木属性のヒーローのクリティカルのダメージが増える。
+str_desc_relic_20015,불 속성 일반 적의 체력이 감소합니다.,Reduces the HP of fire attribute normal enemies.,火属性のターゲットのHPが減る。
+str_desc_relic_20016,물 속성 일반 적의 체력이 감소합니다.,Reduces the HP of water attribute normal enemies.,水属性のターゲットのHPが減る。
+str_desc_relic_20017,나무 속성 일반 적의 체력이 감소합니다.,Reduces the HP of tree attribute normal enemies.,木属性のターゲットのHPが減る。
+str_desc_relic_20018,불 속성 보스의 체력이 감소합니다.,Reduces the HP of fire attribute boss enemies.,火属性のボースのHPが減る。
+str_desc_relic_20019,물 속성 보스의 체력이 감소합니다.,Reduces the HP of water attribute boss enemies.,水属性のボースのHPが減る。
+str_desc_relic_20020,나무 속성 보스의 체력이 감소합니다.,Reduces the HP of tree attribute boss enemies.,木属性のボースのHPが減る。
+str_name_castle_10001,마력증폭기,Mana Amplifier,魔力増幅器
+str_name_castle_10002,군대 양성,Military Training,軍隊の養成
+str_name_castle_10003,광산,Mine,鉱山
+str_name_castle_10004,회관,Hall,会館
+str_name_castle_10005,저장고,Storage,倉庫
+str_name_castle_10006,모험가 길드,Adventurer's Guild,冒険者ギルド
+str_name_castle_10007,다리 건설,Bridge Construction,橋の建設
+str_name_castle_10008,마법사 길드,Magician's Guild,魔法使いギルド
+str_name_castle_10009,해자,Moat,堀
+str_name_castle_10010,연금술 공방,Alchemy Workshop,錬金術の工房
+str_desc_castle_10001,환생시 얻는 마석이 증가합니다.,When ascension` increase gain magicite.,転生の時に獲得する魔石量が増える。
+str_desc_castle_10002,환생 후 시작 스테이지가 증가합니다. 스테이지가 증가한만큼의 골드 보상도 들어옵니다.,Increase start stage and gold after ascension.,転生の後のスタートステージが上がる。ステージが上がった分の報酬が入る。
+str_desc_castle_10003,환생 후 골드를 얻습니다.,Get gold after ascension.,転生の後にゴールドを獲得する。
+str_desc_castle_10004,오프라인 보상이 증가합니다.,Offline rewards increase.,オフラインの報酬が増える。
+str_desc_castle_10005,오프라인 제한 시간이 증가합니다.,Offline time limit increases.,オフラインの制限時間が増える。
+str_desc_castle_10006,퀘스트 보상이 증가합니다.,Quest rewards increase.,クエストの報酬が増える。
+str_desc_castle_10007,퀘스트 시간이 감소합니다.,Quest time decrease.,クエストの時間が減る。
+str_desc_castle_10008,스킬이 1초마다 자동으로 사용될 확률이 증가합니다.,Increases the chance that the skill will be used automatically every 1 sec.,スキルが1秒毎に自動的に使われる確率が上がる。
+str_desc_castle_10009,해자가 생깁니다. 해자 안에서는 적들의 이동속도가 느려집니다.,Build a moat. Enemies' movement speed is slowed inside the moat.,堀ができる。堀の中ではターゲットのスピードが遅くなる。
+str_desc_castle_10010,터치 공격을 할 때마다 영웅들의 스킬 쿨타임이 1초씩 감소됩니다.,Each touch attack reduces the skill cooldown of heroes by 1 second.,タッチ攻撃の度にヒーローのスキル待機時間が1秒ずつ減る。
+name_slot_power_up_Front,전방 공격 Lv.{0},Front Attack Lv.{0},前方攻撃 Lv.{0}
+name_slot_power_up_Diagonal,사선 공격 Lv.{0},Slash Attack Lv.{0},斜線攻撃 Lv.{0}
+name_slot_power_up_Piercing,관통샷 Lv.{0},Penetrate Lv.{0},貫通ショット Lv.{0}
+name_slot_power_up_Multi,멀티샷 Lv.{0},Multishot Lv.{0},マルチショット Lv.{0}
+name_slot_power_up_Boom,폭발 Lv.{0},Explosion Lv.{0},爆発 Lv.{0}
+name_slot_power_up_Bounce,반동 Lv.{0},Bounce Lv.{0},反動 Lv.{0}
+name_slot_power_up_AtkUp,공격력 증가 Lv.{0},Increase Power Lv.{0},ダメージ増加 Lv.{0}
+name_slot_power_up_Size,크기 증가 Lv.{0},Increase Size Lv.{0},大きさ増加 Lv.{0}
+name_slot_power_up_Push,밀어내기 Lv.{0},Push Lv.{0},押し Lv.{0}
+desc_slot_power_up_Front,전방으로 나가는 기본 공격의 발사체가 추가됩니다.,Added projectiles for basic attacks that go forward.,前方への基本攻撃の発射体が追加。
+desc_slot_power_up_Diagonal,사선으로 나가는 발사체가 기본 공격에 추가됩니다.,A projectile that goes out in a slash is added to your basic attack.,斜線への発射体が基本攻撃に追加。
+desc_slot_power_up_Piercing,기본 공격의 관통력이 증가합니다.,Increases the penetration of basic attacks.,基本攻撃の貫通力が増える。
+desc_slot_power_up_Multi,기본 공격을 추가로 한 번 더 합니다.,One more basic attack.,基本攻撃をもう一回する。
+desc_slot_power_up_Boom,기본 공격이 적에게 맞았을 때 폭발합니다.,Basic attacks explode when hit by enemies.,基本攻撃が当たると爆発する。
+desc_slot_power_up_Bounce,기본 공격의 발사체가 벽에 튕기는 횟수가 증가합니다.,Increases the number of times projectiles from basic attacks bounce off walls.,基本攻撃の発射体が壁に跳ね返る回数が増える。
+desc_slot_power_up_AtkUp,기본 공격의 공격력이 증가합니다.,Basic attack damage is increased.,基本攻撃のダメージが増える。
+desc_slot_power_up_Size,총알의 크기가 커집니다.,The size of the projectile increases.,銃弾の大きさが大きくなる。
+desc_slot_power_up_Push,10%의 확률로 적을 밀어냅니다. 레벨이 증가할수록 밀어내는 힘이 강해집니다.,10% chance to knock back enemies. As the level increases` the pushing force becomes stronger.,10％の確率で敵を押す。レベルアップにつれて押す力が増える。
+help_slot_power_up,슬롯 강화는 5` 25` 50` 100` 200` 300` 400` 500` 600` 700` 800` 900` 1000 레벨마다 가능하며` 강화에 드는 비용은 매번 달라집니다.,Slot enhancements are available at 5` 25` 50` 100` 200` 300` 400` 500` 600` 700` 800` 900` and 1000 levels` and the cost of enhancement varies each time.,スロット強化は5、25、50、100、200、300、300、400、500、600、700、800、900、1000レベル毎にできる。
+title_popup_slot_power_up,슬롯 강화,Slot Power Up,スロット効果
+desc_popup_slot_power_up,특정 레벨마다 슬롯을 파워업할 수 있습니다.\n세가지 특성 중 하나를 선택하세요.,You can power up slots for each specific level.\nChoose one of the three attributes.,特定レベル毎にスロットの強化ができる。3つの特性の中で一つを選べる。
+Refresh,갱신,Refresh,更新
+se_inc_desc_p,{0}% -> {1}%,{0}% -> {1}%,{0}% -> {1}%
+se_inc_desc,{0} -> {1},{0} -> {1},{0} -> {1}
+se_inc_desc_t,{0}분 -> {1}분,{0}M -> {1}M,{0}분 -> {1}分
+se_inc_desc_p_hero,<color=#FFFF00>{2}성 <color=#00FFFF>{0}% <color=#FFFFFF>-> <color=#FFFF00>{3}성 <color=#00FFFF>{1}%</color>,<color=#FFFF00>{2}Star <color=#00FFFF>{0}% <color=#FFFFFF>-> <color=#FFFF00>{3}Start <color=#00FFFF>{1}%</color>,<color=#FFFF00>{2}星 <color=#00FFFF>{0}% <color=#FFFFFF>-> <color=#FFFF00>{3}星 <color=#00FFFF>{1}%</color>
+se_inc_desc_hero,<color=#FFFF00>{2}성 <color=#00FFFF>{0} -> <color=#FFFF00>{3}성 <color=#00FFFF>{1}</color>,<color=#FFFF00>{2}Start <color=#00FFFF>{0} -> <color=#FFFF00>{3}Start <color=#00FFFF>{1}</color>,<color=#FFFF00>{2}星 <color=#00FFFF>{0} -> <color=#FFFF00>{3}星 <color=#00FFFF>{1}</color>
+se_inc_desc_t_hero,<color=#FFFF00>{2}성 <color=#00FFFF>{0}분 -> <color=#FFFF00>3}성 <color=#00FFFF>{1}분</color>,<color=#FFFF00>{2}Start <color=#00FFFF>{0}M -> <color=#FFFF00>3}Start <color=#00FFFF>{1}M</color>,<color=#FFFF00>{2}星 <color=#00FFFF>{0}분 -> <color=#FFFF00>3}星 <color=#00FFFF>{1}분</color>
+se_inc_desc_p_max_hero,<color=#FFFF00>{1}성 <color=#00FFFF>{0}%</color>,<color=#FFFF00>{1}Start <color=#00FFFF>{0}%</color>,<color=#FFFF00>{1}星 <color=#00FFFF>{0}%</color>
+se_inc_desc_max_hero,<color=#FFFF00>{1}성 <color=#00FFFF>{0}</color>,<color=#FFFF00>{1}Start <color=#00FFFF>{0}</color>,<color=#FFFF00>{1}星 <color=#00FFFF>{0}</color>
+se_inc_desc_t_max_hero,<color=#FFFF00>{1}성 <color=#00FFFF>{0}분</color>,<color=#FFFF00>{1}Start <color=#00FFFF>{0}M</color>,<color=#FFFF00>{1}星 <color=#00FFFF>{0}分</color>
+se_inc_desc_p_max,{0}%,{0}%,{0}%
+se_inc_desc_max,{0},{0},{0}
+se_inc_desc_t_max,{0}분,{0}M,{0}分
+desc_tutorial_step_1,방어막이 적에게 닿으면 부숴지며` 방어막 5겹이 모두 부숴지면 패배하고 이전 스테이지로 이동합니다.,When the shield touches the enemy` it is broken` and when all 5 layers of the shield are destroyed` it is defeated and moves to the previous stage.,シールドはターゲットが触れるとなくなって、5重のシールドが全部なくなったら敗北になって前のステージに移動する。
+desc_tutorial_step_2,필드를 터치하여 적을 공격하세요.,Touch the field to attack the enemy.,フィールドをタッチしてターゲットを攻撃する。
+desc_tutorial_step_3,영웅들은 자동으로 적을 공격합니다. 속성에 따라 2배의 데미지를 줍니다. 영웅이 스킬을 쓸 준비가 다되면 스킬을 사용할 수 있습니다. 영웅을 눌러 스킬을 사용해보세요.,Heroes automatically attack enemies. Deals double damage depending on the attribute. When the hero is ready to use the skill` he can use the skill. Tap the hero to use the skill.,ヒーローは自動的にターゲットを攻撃する。属性によって2倍のダメージを与える。ヒーローのスキル待機時間が終わるとスキルが使える。ヒーローをタッチしてスキルを使ってみよう。
+desc_tutorial_step_4,버튼을 눌러 영웅을 레벨업하세요. 5레벨까지 올리면 파워업할 수 있습니다.,Level up your hero by pressing the button. You can power it up by raising it to level 5.,ボタンをタッチしてヒーローをレベルアップする。5レベルまでアップすると強化できる。
+desc_tutorial_step_5,파워업 버튼을 눌러 영웅을 업그레이드하세요. 도움말을 보시면 언제 파워업이 가능한지 알 수 있습니다.,Upgrade your hero by pressing the power-up button. The help will tell you when power-ups are available.,強化ボタンをタッチしてヒーローをアップグレードしよう。
+desc_tutorial_step_6,이제 환생할 수 있습니다. 환생 버튼을 눌러 정보를 확인하세요.,Now you can Ascension. Click the Ascension button to check the information.,もう転生できる。転生ボタンをタッチして情報を確認する。
+cant_play_ad,하루 광고 시청수를 초과했습니다.,You have exceeded the number of ad views per day.,一日の広告視聴数を超過した。
+desc_aekashics,THANKS FOR ENEMIES DESIGN\n버튼 클릭시 홈페이지로 연결됩니다.,THANKS FOR ENEMIES DESIGN\nWhen you click the button` you will be connected to the homepage.,THANKS FOR ENEMIES DESIGN\nボタンをクッリクするとホームページに移動する。
+str_name_quest_10001,이세계 탐색,Explore the other world,異世界探索
+str_name_quest_20001,마을 주민 돕기,Help villagers,村人助け
+str_name_quest_30001,고블린과의 조우,Encounter with Goblin,ゴブリンとの遭遇
+str_name_quest_40001,이세계 적응,Adaptation to a other world,異世界適応
+str_name_quest_50001,유령 저택 청소,Haunted house cleaning,幽霊屋敷の掃除
+str_name_quest_60001,모험가 길드의 부탁,Adventurer's Guild's Request,冒険者ギルドのお願い
+str_name_quest_70001,고블린 부락 탐사,Goblin Village Exploration,ゴブリン部落の探査
+str_name_quest_10002,고블린왕의 존재를 길드에 알리다,Announce the existence of the Goblin King to the guild,ゴブリンキングの存在をギルドに知らせる。
+str_name_quest_20002,고블린과의 전투 준비,Prepare for battle to goblins,ゴブリンとの戦い準備
+str_name_quest_30002,고블린의 침략을 막아내다,Defeat Goblin's Invasion,ゴブリンの侵攻を止める。
+str_name_quest_40002,미들랜드왕과 만남,Encounter with the King of Midland,ミッドランド王との出会い
+str_name_quest_50002,타락한 왕자,Fallen prince,堕落王子
+str_name_quest_60002,끝없는 사막,Endless desert,終わりなき砂漠
+str_name_quest_70002,오크와 조우,Encounter with Orc ,オークとの遭遇
+str_name_quest_10003,왕자의 행방 찾기,Finding the whereabouts of the prince,王子の行方探し
+str_name_quest_20003,오크 도시 탐사,Orc's City Exploration,オークの街の探査
+str_name_quest_30003,오아시스 찾기,Find Oasis,オアシス探し
+str_name_quest_40003,잃어버린 신전에 대한 단서,A clue to the lost temple,失われた神殿の手掛かり
+str_name_quest_50003,오아시스 전투,Oasis Battle,オアシスの戦い
+str_name_quest_60003,사막의 신전 찾기,Find a Temple in the Desert,砂漠の神殿探し
+str_name_quest_70003,신전 탐사,Temple exploration,神殿探査
+str_name_quest_10004,왕자의 행방에 대한 단서,A clue to the whereabouts of the prince,王子の行方の手掛かり
+str_name_quest_20004,왕자를 잡아라,Catch the prince,王子の捕獲
+str_name_quest_30004,오크 군대의 침략,Invasion of the orc army,オーク軍の侵攻
+str_name_quest_40004,폐허가 된 도시,Ruined city,廃墟になった街
+str_name_quest_50004,왕자의 죽음,Death of the prince,王子の死
+str_name_quest_60004,원래 세계로 돌아가긴 위한 단서,The first clue to returning to the original world,元の世界に帰るための手掛かり
+str_name_quest_70004,남쪽의 습지,Wetlands in the south,南の湿原
+str_name_quest_10005,왕자가 남긴 것,Things the prince left behind,王子の遺物
+str_name_quest_20005,또다른 신전 찾기,Find another temple,別の神殿探し
+str_name_quest_30005,습지의 용,Dragon of the Wetlands,湿原のドラゴン
+str_name_quest_40005,원래 세계로 돌아가긴 위한 두 번째 단서,The second clue to returning to the original world,元の世界に帰るための2番目の手掛かり
+str_name_quest_50005,신전에 도달하다,Reach the temple,神殿に着く
+str_name_quest_60005,악어왕과의 전투,Battle to Crocodile King,ワニキングとの戦い
+str_name_quest_70005,악어왕의 전언,Crocodile King's Message,ワニキングの伝言
+str_name_quest_10006,북쪽으로,Go to North,北の地へ
+str_name_quest_20006,북부의 왕,Northern King,北の王
+str_name_quest_30006,반신의 존재,Demigod existence,半神の存在
+str_name_quest_40006,타이탄 사냥,Hunt Titan,タイタン狩り
+str_name_quest_50006,북쪽의 신전,Northern Temple,北の神殿
+str_name_quest_60006,북부 신전 탐사,Northern Temple Exploration,北の神殿の探査
+str_name_quest_70006,반신 시바와의 전투,Battle to the demigod Shiva,半神のシヴァとの戦い
+str_name_quest_10007,고대의 숲,Ancient Forest,古代の森
+str_name_quest_20007,카프리콘 사냥,Hunt Carpricorn,カプリコン狩り
+str_name_quest_30007,고대 숲의 용과 대화,Talk to the dragon in the ancient forest,古代の森のドラゴンとの会話
+str_name_quest_40007,원래 세계로 돌아가긴 위한 세 번째 단서,The third clue to returning to the original world,元の世界に帰るための3番目の手掛かり
+str_name_quest_50007,고대 숲의 여왕,The Queen of ancient forest,古代の森の女王
+str_name_quest_60007,여왕의 변심,The Queen's Heart Changes,女王の変心
+str_name_quest_70007,여왕과의 전투,Battle to The Queen,女王との戦い
+str_name_quest_10008,마지막 신전의 폐허,Ruins of the last temple,最後の神殿の廃墟
+str_name_quest_20008,타락 천사의 영접,Fallen Angel's Reception,堕天使の出迎え
+str_name_quest_30008,고대의 마물 처치,Defeat ancient monsters,古代の魔物狩り
+str_name_quest_40008,고대 용의 죽음,Ancient dragon's death,古代ドラゴンの死
+str_name_quest_50008,고대 용과의 전투,Battle to ancient dragon,古代ドラゴンとの戦い
+str_name_quest_60008,고대 용 영면에 들다,Ancient dragons go to sleep,古代ドラゴンの永眠
+str_name_quest_70008,성검에 대한 단서,Clue to the holy sword,聖剣の手掛かり
+str_name_quest_10009,성검 찾기,Find holy sword,聖剣探索
+str_name_quest_20009,악마의 속삭임,Devil's whisper,悪魔の囁き
+str_name_quest_30009,악마와의 전투,Battle to the devil,悪魔との戦い
+str_name_quest_40009,성검을 얻다,Get the holy sword,聖剣獲得
+str_name_quest_50009,죽음의 신과의 전투,Battle to the god of death,死神との戦い
+str_name_quest_60009,여신 이노바와의 대화,Talk to Innova the goddess,女神イノバとの会話
+str_name_quest_70009,이노바와의 전투,Battle to Innova the goddess,イノバとの戦い
+str_name_quest_10010,모든 것은 거짓,Everyting is false,全てはウソ
+str_name_quest_20010,신 노버스,Novus the god,神、ノバス
+str_name_quest_30010,신살,God Slayer,神殺し
+str_name_quest_40010,또다른 흑막,Another darkness,またの黒幕
+str_name_quest_50010,흑막의 처치,Slay of darkness,黒幕処断
+str_name_quest_60010,세계의 반복,Repetition of the world,世界の繰り返し
+str_name_quest_70010,또다른 세계와의 만남,Encounter with another world,また別の異世界との出会い
+popup_quest_title,퀘스트,Quest,クエスト
+popup_quest_desc,퀘스트를 클리어할수록 더 높은 퀘스트 등급이 등장합니다.,More quests are cleared` the higher the quest grade will appear.,クエストをクリアーするともっとハイクラスのクエストができる。
+QuestTime,시간,Time,時間
+Menu,메뉴,Menu,メニュー　OR　項目
+Shop,상점,Shop,ショップ　OR　商店
+BGM,배경음,BGM,背景音
+SFX,효과음,SFX,効果音
+Gold,골드,Gold,ゴールド
+Claim,획득,Claim,獲得
+SoulStone,영혼석,SoulStone,魂石
+Magicite,마석,Magicite,魔石
+GameSpeed2x,게임속도 2배,Game Speed x2,ゲーム速度2倍
+desc_locked_quest,퀘스트는 환생 이후 열립니다.,The quest opens after Ascension.,クエストは転生後に開放できる。
+Achieve,획득,Claim,獲得
+Dispatch,파견,Dispatch,派遣
+Rank,랭크,Rank,ランプ
+desc_loading,본게임은 따로 클라우드 저장을 하지 않습니다. 게임을 삭제하면 모든 데이터가 지워집니다.,This game is not separately cloud saved. Deleting the game will erase all data.,本ゲームを削除する場合、保存データも全て削除されますので、予めご注意ください。
