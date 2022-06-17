@@ -182,10 +182,10 @@ GameObject:
   - component: {fileID: 7397524120955551652}
   - component: {fileID: 7397524120955551651}
   - component: {fileID: 7397524120955551650}
-  - component: {fileID: 7397524120955551649}
   - component: {fileID: 2236004293113125651}
   - component: {fileID: 5296013684508591741}
   - component: {fileID: 7369457786312021482}
+  - component: {fileID: 1612768753801810271}
   m_Layer: 6
   m_Name: EnemyObjOctagon
   m_TagString: Enemy
@@ -259,22 +259,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &7397524120955551649
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7397524120955551648}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.25
 --- !u!114 &2236004293113125651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +300,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Immunes: 
+--- !u!60 &1612768753801810271
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7397524120955551648}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.72951245, y: 1.2411718}
+      - {x: -0.68012774, y: 1.2438197}
+      - {x: -1.2758555, y: 0.6238227}
+      - {x: -1.2724491, y: -0.6695969}
+      - {x: -0.74870604, y: -1.224729}
+      - {x: 0.75230205, y: -1.2438109}
+      - {x: 1.2452768, y: -0.6429653}
+      - {x: 1.2590388, y: 0.5913343}
 --- !u!1 &7397524122027817337
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +477,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 92d2b7b7641f92f47b7eea0246d85c93, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d12995c7489e74345a18819541b93149, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
@@ -552,7 +569,7 @@ SpriteRenderer:
   m_SortingLayerID: 296287947
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 92d2b7b7641f92f47b7eea0246d85c93, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d12995c7489e74345a18819541b93149, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -634,7 +651,7 @@ SpriteRenderer:
   m_SortingLayerID: 296287947
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 3fb9154827b84334a9b9181765eff166, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d792bcd8890b114f9e9b246d9679313, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
