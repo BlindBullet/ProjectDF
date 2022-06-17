@@ -14,6 +14,7 @@ public class StageManager : MonoSingleton<StageManager>
 	public List<PlayerLine> PlayerLines = new List<PlayerLine>();
 	[HideInInspector] public int Hp;
 	public LoseStagePanel LoseStagePanel;
+	public NextStageSequence NextStageSeq;
 	public AscensionSequence AscensionSequence;
 	public GameObject Moat;
 	public GameObject OfflineRewardPanel;
@@ -235,10 +236,13 @@ public class StageManager : MonoSingleton<StageManager>
 	IEnumerator SetStage(int stageNo)
 	{
 		yield return StartCoroutine(SetBg(stageNo));
-		
-		TutorialManager.Ins.SetTutorial();
 
 		TopBar.SetStageText(stageNo);
+		NextStageSeq.NextStageSeq();
+
+		yield return new WaitForSeconds(3f);
+
+		TutorialManager.Ins.SetTutorial();
 
 		if (CheckBossStage(stageNo))
 		{
