@@ -369,8 +369,6 @@ public class StageManager : MonoSingleton<StageManager>
 			}
 		}
 
-		yield return new WaitForSeconds(2f);
-
 		while (true)
 		{
 			yield return new WaitForSeconds(2f);
