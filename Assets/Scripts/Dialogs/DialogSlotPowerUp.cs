@@ -29,7 +29,7 @@ public class DialogSlotPowerUp : DialogController
 
 		Image uiImage = RefreshBtn.GetComponent<Image>();
 		uiImage.material = new Material(uiImage.materialForRendering);
-		refreshBtnMat = RefreshBtn.GetComponent<Image>().material;
+		refreshBtnMat = RefreshBtn.GetComponent<Image>().materialForRendering;
 		RefreshBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
 
 		Title.text = LanguageManager.Ins.SetString("title_popup_slot_power_up");
