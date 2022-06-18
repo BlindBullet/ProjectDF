@@ -304,6 +304,7 @@ public class PlayerData
 	{		
 		Stage = StageManager.Ins.PlayerStat.StartStage;
 		Gold = ConstantData.GetAscensionGold();
+		
 		Slots.Clear();
 
 		for (int i = 0; i < 5; i++)

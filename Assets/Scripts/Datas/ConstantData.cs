@@ -134,7 +134,7 @@ public static class ConstantData
 
 	public static double GetAscensionGold()
 	{
-		return CalcValue(IncStageStartGold, IncStageStartGoldFactor, StageManager.Ins.PlayerStat.StartStage);
+		return CalcValue(IncStageStartGold, IncStageStartGoldFactor, StageManager.Ins.PlayerStat.StartStage - 1);
 	}
 
 	static double CalcValue(double beginValue, float growthRate, int lv)

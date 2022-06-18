@@ -30,8 +30,10 @@ public class StageManager : MonoSingleton<StageManager>
 	public bool LastEnemiesSpawned;
 	GameObject Bg = null;
 	Coroutine cStageSequence = null;
+	Coroutine cSetStageSeq = null;
 	float appearSuppliesProb = 0;
 	Coroutine cLoseSeq = null;
+	bool isAscensioning = false;
 
 	private void Start()
 	{
@@ -65,7 +67,7 @@ public class StageManager : MonoSingleton<StageManager>
 			PlayerData.RunFirstPlay();
 
 		PlayerBuffManager.Ins.RunAllBuffs();
-		StartCoroutine(SetStage(PlayerData.Stage));		
+		cSetStageSeq = StartCoroutine(SetStage(PlayerData.Stage));		
 	}
 
 	void RestartStage()
@@ -77,7 +79,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 		SEManager.Ins.Apply();
 		PlayerBuffManager.Ins.RunAllBuffs();
-		StartCoroutine(SetStage(PlayerData.Stage));
+		cSetStageSeq = StartCoroutine(SetStage(PlayerData.Stage));
 	}
 
 	IEnumerator OpenOfflineReward(bool isFirstPlay)
@@ -385,7 +387,7 @@ public class StageManager : MonoSingleton<StageManager>
 	void WinStage()
 	{
 		ChangeStage(1);
-		StartCoroutine(SetStage(PlayerData.Stage));   
+		cSetStageSeq = StartCoroutine(SetStage(PlayerData.Stage));   
 	}
 
 	void ChangeStage(int count)
@@ -454,7 +456,12 @@ public class StageManager : MonoSingleton<StageManager>
 
 	public void StartAscension(bool isAdAscension = false)
 	{
-		if(cStageSequence != null)
+		isAscensioning = true;
+
+		if (cSetStageSeq != null)
+			StopCoroutine(cSetStageSeq);
+
+		if (cStageSequence != null)
 			StopCoroutine(cStageSequence);
 
 		NextStageSeq.Back();
@@ -498,25 +505,34 @@ public class StageManager : MonoSingleton<StageManager>
 			EnemyBase.Enemies[i].Destroy();
 		}
 
-		for(int i = HeroBase.Heroes.Count - 1; i >= 0; i--)
+		EnemySpawner.Ins.StopSpawn();
+		
+		yield return new WaitForSeconds(3f);
+
+		for (int i = HeroBase.Heroes.Count - 1; i >= 0; i--)
 		{
 			HeroBase.Heroes[i].Destroy();
 		}
 
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(2f);
 
 		PlayerData.Ascension();
-
-		EnemySpawner.Ins.StopSpawn();
 		RestartStage();
 		StageChanged();
-		PlayerUi.SetQuestBtn();		
+		PlayerUi.SetQuestBtn();
+
+		isAscensioning = false;
 	}
 	
 	public IEnumerator GetGold(double value)
 	{
+		if (isAscensioning)
+			yield break;
+
 		yield return new WaitForSeconds(1f);
-		ChangeGold(value);
+
+		if (!isAscensioning)
+			ChangeGold(value);
 	}
 
 	public void ChangeGold(double value)
