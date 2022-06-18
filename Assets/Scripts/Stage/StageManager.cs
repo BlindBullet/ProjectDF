@@ -457,6 +457,8 @@ public class StageManager : MonoSingleton<StageManager>
 		if(cStageSequence != null)
 			StopCoroutine(cStageSequence);
 
+		NextStageSeq.Back();
+
 		for (int i = 0; i < MinionBase.Minions.Count; i++)
 		{
 			MinionBase.Minions[i].Die();
@@ -491,10 +493,6 @@ public class StageManager : MonoSingleton<StageManager>
 
 		AscensionSequence.FadeIn();
 
-		yield return new WaitForSeconds(5f);
-
-		PlayerData.Ascension();
-
 		for (int i = EnemyBase.Enemies.Count - 1; i >= 0; i--)
 		{
 			EnemyBase.Enemies[i].Destroy();
@@ -504,6 +502,10 @@ public class StageManager : MonoSingleton<StageManager>
 		{
 			HeroBase.Heroes[i].Destroy();
 		}
+
+		yield return new WaitForSeconds(5f);
+
+		PlayerData.Ascension();
 
 		EnemySpawner.Ins.StopSpawn();
 		RestartStage();

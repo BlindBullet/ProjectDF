@@ -35,7 +35,7 @@ public class DialogAscension : DialogController
 
 		SetReward(isPossibleAscension);
 		SetAscensionBtn(isPossibleAscension);
-		Show(false, false);
+		Show(false, true);
 	}
 
 	void SetReward(bool isPossibleAscension)
@@ -66,7 +66,7 @@ public class DialogAscension : DialogController
 			{
 				SoundManager.Ins.PlaySFX("se_button_2");
 				StageManager.Ins.StartAscension();
-				CloseDialog();
+				CloseDialog(true);
 			});
 
 			AdAscensionBtnText.text = LanguageManager.Ins.SetString("btn_ad_ascension");
@@ -90,7 +90,7 @@ public class DialogAscension : DialogController
 	{
 		yield return null;
 		StageManager.Ins.StartAscension(true);
-		CloseDialog();
+		CloseDialog(true);
 	}
 
 	private void OnDisable()

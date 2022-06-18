@@ -93,8 +93,7 @@ public class DialogController : MonoBehaviour
 		{
 			Time.timeScale = StageManager.Ins.PlayerStat.GameSpd;
 		}
-			
-
+		
 		Close();
 		BackkeyManager.Ins.RemoveDialog(this);	
 		

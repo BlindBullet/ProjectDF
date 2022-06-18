@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System;
 
 public class NextStageSequence : MonoBehaviour
 {
@@ -22,4 +23,9 @@ public class NextStageSequence : MonoBehaviour
 			.AppendCallback(()=> ObjRect.anchoredPosition = new Vector2(-900f, ObjRect.anchoredPosition.y));
 	}
 
+	public void Back()
+	{
+		DOTween.Kill(this.transform);
+		ObjRect.anchoredPosition = new Vector2(-900f, ObjRect.anchoredPosition.y);
+	}
 }
