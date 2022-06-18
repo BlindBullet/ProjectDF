@@ -514,6 +514,11 @@ public class StageManager : MonoSingleton<StageManager>
 			HeroBase.Heroes[i].Destroy();
 		}
 
+		for (int i = 0; i < Slots.Count; i++)
+		{
+			Slots[i].ClosePowerUpBtn();
+		}
+
 		yield return new WaitForSeconds(2f);
 
 		PlayerData.Ascension();

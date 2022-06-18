@@ -115,6 +115,12 @@ public class Slot : MonoBehaviour
 		}	
 	}
 
+	public void ClosePowerUpBtn()
+	{
+		DOTween.Kill("SF" + No);
+		PowerUpBtn.gameObject.SetActive(false);
+	}
+
 	void SetLvText()
 	{
 		LvText.text = data.Lv.ToString();
