@@ -15,7 +15,7 @@ public static class ConstantData
 	//영웅 강화 시작 비용
 	public static ObscuredDouble StartEnchantCost = 10f;
 	//영웅 강화 비용 증가
-	public static ObscuredFloat EnchantGR = 1.25f;
+	public static ObscuredFloat EnchantGR = 1.18f;
 	//영웅 레벨업시 공격력 증가
 	public static ObscuredFloat HeroAtkGR = 1.08f;
 	//적 체력 증가
@@ -27,7 +27,7 @@ public static class ConstantData
 	//환생 시작 리워드
 	public static ObscuredDouble AscensionBasicReward = 200f;
 	//환생 리워드 증가
-	public static ObscuredFloat AscensionRewardFactor = 1.085f;
+	public static ObscuredFloat AscensionRewardFactor = 1.1f;
 	//퀘스트 클리어 카운트에 따른 퀘스트 레벨 증가
 	public static ObscuredInt[] QuestLvPerClearCount = { 5, 20, 40, 60, 80, 100, 150,  };
 	//시간을 메인으로 했을 때 획득 골드 (퀘스트 혹은 보급품 등의 보상) (적 처치 골드 증가와 연계됨)
