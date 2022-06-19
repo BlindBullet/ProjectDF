@@ -33,6 +33,7 @@ public class TopBar : MonoBehaviour
 		SetGoldText(0);
 		SetSoulStoneText(0);
 		SetMagiciteText(0);
+		
 		//GoldText.text = ExtensionMethods.ToCurrencyString(StageManager.Ins.PlayerData.Gold);
 	}
 

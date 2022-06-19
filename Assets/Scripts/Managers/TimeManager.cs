@@ -11,7 +11,13 @@ public class TimeManager : MonoSingleton<TimeManager>
 	public DateTime ReceivedTime;
 	public float SinceTime = 0;
 	Coroutine cTimer = null;
-	
+
+	private void Start()
+	{
+		DontDestroyOnLoad(this);
+		StartCoroutine(GetTime());
+	}
+
 	public IEnumerator GetTime()
 	{
 		yield return StartCoroutine(WebChk());
@@ -45,8 +51,7 @@ public class TimeManager : MonoSingleton<TimeManager>
 			else
 			{
 				string date = request.GetResponseHeader("date"); //이곳에서 반송된 데이터에 시간 데이터가 존재				
-				ReceivedTime = DateTime.Parse(date).ToUniversalTime();
-				Debug.Log(urls[randNo] + " UTC " + ReceivedTime);				
+				ReceivedTime = DateTime.Parse(date).ToUniversalTime();				
 			}
 		}
 	}

@@ -398,6 +398,9 @@ public class StageManager : MonoSingleton<StageManager>
 
 	public void LoseStage()
 	{
+		PlayerUi.AscensionBtn.enabled = false;
+		BattleInputManager.Ins.isPause = true;
+
 		StopCoroutine(cStageSequence);	
 
 		if(cLoseSeq == null)
@@ -406,8 +409,6 @@ public class StageManager : MonoSingleton<StageManager>
 
 	public IEnumerator LoseStageSequence()
 	{
-		BattleInputManager.Ins.isPause = true;
-
 		for(int i = 0; i < EnemyBase.Enemies.Count; i++)
 		{
 			EnemyBase.Enemies[i].Stop();
@@ -452,6 +453,7 @@ public class StageManager : MonoSingleton<StageManager>
 		RestartStage();
 		cLoseSeq = null;
 		BattleInputManager.Ins.isPause = false;
+		PlayerUi.AscensionBtn.enabled = true;
 	}	
 
 	public void StartAscension(bool isAdAscension = false)

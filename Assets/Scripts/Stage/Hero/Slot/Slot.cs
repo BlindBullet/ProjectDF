@@ -82,7 +82,7 @@ public class Slot : MonoBehaviour
 		{
 			if(elem.Key == data.Lv)
 			{
-				data.IncUpgradeStack();
+				data.IncUpgradeStack(data.Lv);
 				SetPowerUpBtn();
 				break;
 			}
@@ -97,7 +97,7 @@ public class Slot : MonoBehaviour
 	{
 		DOTween.Kill("SF" + No);
 
-		if (data.PowerUpStack > 0)
+		if (data.PowerUpStackDatas.Count > 0)
 		{
 			PowerUpBtn.enabled = true;
 			PowerUpBtn.gameObject.SetActive(true);
@@ -108,7 +108,7 @@ public class Slot : MonoBehaviour
 
 	public void AfterPowerUp()
 	{
-		if (data.PowerUpStack <= 0)
+		if (data.PowerUpStackDatas.Count <= 0)
 		{
 			DOTween.Kill("SF" + No);
 			PowerUpBtn.gameObject.SetActive(false);

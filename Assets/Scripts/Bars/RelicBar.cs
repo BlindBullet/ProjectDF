@@ -9,8 +9,6 @@ using AllIn1SpriteShader;
 
 public class RelicBar : MonoBehaviour
 {
-	public List<RelicBar> Bars = new List<RelicBar>();
-
 	public RelicIcon RelicIcon;
 	public TextMeshProUGUI Name;
 	public TextMeshProUGUI Desc;
@@ -28,7 +26,7 @@ public class RelicBar : MonoBehaviour
 	{
 		Image uiImage = LvUpBtn.GetComponent<Image>();
 		uiImage.material = new Material(uiImage.materialForRendering);
-		lvUpBtnMat = LvUpBtn.GetComponent<Image>().material;
+		lvUpBtnMat = LvUpBtn.GetComponent<Image>().materialForRendering;
 		LvUpBtn.GetComponent<AllIn1Shader>().ApplyMaterialToHierarchy();
 
 		this.data = data;
@@ -36,8 +34,6 @@ public class RelicBar : MonoBehaviour
 		Name.text = LanguageManager.Ins.SetString(chart.Name);
 		SetInfo();
 		SetBtn();
-
-		Bars.Add(this);
 	}
 
 	public void SetInfo()
@@ -173,8 +169,13 @@ public class RelicBar : MonoBehaviour
 					if (data.LevelUp())
 					{
 						SEManager.Ins.Apply();
-						SetInfo();
-						SetBtns();
+						
+						if (DialogRelic._Dialog != null)
+							DialogRelic._Dialog.SetBars();
+
+						if (DialogCastle._Dialog != null)
+							DialogCastle._Dialog.SetBars();
+
 						StageManager.Ins.PlayerData.Save();
 					}
 				});
@@ -228,8 +229,13 @@ public class RelicBar : MonoBehaviour
 					if (data.Puechase())
 					{						
 						SEManager.Ins.Apply();
-						SetInfo();
-						SetBtns();
+						
+						if (DialogRelic._Dialog != null)
+							DialogRelic._Dialog.SetBars();
+
+						if (DialogCastle._Dialog != null)
+							DialogCastle._Dialog.SetBars();
+
 						StageManager.Ins.PlayerData.Save();
 					}
 				});
@@ -242,16 +248,4 @@ public class RelicBar : MonoBehaviour
 		}
 	}
 
-	void SetBtns()
-	{
-		for(int i = 0; i < Bars.Count; i++)
-		{
-			Bars[i].SetInfo();
-		}
-	}
-
-	private void OnDisable()
-	{
-		Bars.Remove(this);
-	}
 }

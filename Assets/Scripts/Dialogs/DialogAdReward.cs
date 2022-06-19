@@ -159,7 +159,7 @@ public class DialogAdReward : DialogController
 				break;
 			case RewardType.SoulStone:
 				rewardValue = isAd ? rewardValue * 5f : rewardValue;
-				StageManager.Ins.ChangeSoulStone(chart.RewardValue);
+				StageManager.Ins.ChangeSoulStone(rewardValue);
 				break;
 			case RewardType.GameSpeed:
 				rewardValue = isAd ? rewardValue * 5f : rewardValue;

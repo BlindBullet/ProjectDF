@@ -6,6 +6,8 @@ using TMPro;
 
 public class DialogRelic : DialogController
 {
+	public static DialogRelic _Dialog = null;
+
 	public TextMeshProUGUI TitleText;
 	public Transform ListTrf;
 	List<GameObject> Relics = new List<GameObject>();
@@ -13,7 +15,8 @@ public class DialogRelic : DialogController
 	public void OpenDialog()
 	{
 		TitleText.text = LanguageManager.Ins.SetString("Relic");
-		SetRelics();	
+		SetRelics();
+		_Dialog = this;
 		Show(false, true);
 	}
 
@@ -34,6 +37,19 @@ public class DialogRelic : DialogController
 			bar.GetComponent<RelicBar>().SetBar(relicDatas[i]);
 			Relics.Add(bar);
 		}
+	}
+
+	public void SetBars()
+	{
+		for(int i = 0; i < Relics.Count; i++)
+		{
+			Relics[i].GetComponent<RelicBar>().SetInfo();
+		}
+	}
+
+	private void OnDisable()
+	{
+		_Dialog = null;
 	}
 
 }

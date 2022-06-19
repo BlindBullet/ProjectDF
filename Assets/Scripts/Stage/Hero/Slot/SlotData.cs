@@ -11,6 +11,7 @@ public class SlotData
 	public int Power;
 	public int PowerUpStack;
 	public AttackData AtkData = new AttackData();
+	public List<PowerUpStackData> PowerUpStackDatas = new List<PowerUpStackData>();
 	public List<SlotPowerUpList> PowerUpList = new List<SlotPowerUpList>();
 
 	public void Init(int no)
@@ -18,7 +19,9 @@ public class SlotData
 		No = no;
 		Lv = 1;
 		Power = 0;
-		PowerUpStack = 0;				
+		PowerUpStack = 0;
+		PowerUpStackDatas.Clear();
+		PowerUpList.Clear();
 	}
 
 	public bool LevelUp()
@@ -35,9 +38,16 @@ public class SlotData
 		return false;
 	}
 
-	public void IncUpgradeStack()
+	public void IncUpgradeStack(int lv)
 	{
-		PowerUpStack++;
+		for(int i = 0; i < PowerUpStackDatas.Count; i++)
+		{
+			if (PowerUpStackDatas[i].Lv == lv)
+				return;
+		}
+
+		PowerUpStackData data = new PowerUpStackData(lv);
+		PowerUpStackDatas.Add(data);
 	}
 
 	public void SetLotteriedUpgradeBars(int lv, List<int> lotteriedNos)
@@ -93,7 +103,7 @@ public class SlotData
 				break;
 		}
 
-		PowerUpStack--;
+		PowerUpStackDatas.RemoveAt(0);
 		Power++;
 	}
 
@@ -114,5 +124,15 @@ public class SlotPowerUpList
 	{
 		Lv = lv;
 		LotteriedPowerUpBars = lotteriedNos;
+	}
+}
+
+public class PowerUpStackData
+{
+	public int Lv;	
+
+	public PowerUpStackData(int lv)
+	{
+		Lv = lv;
 	}
 }

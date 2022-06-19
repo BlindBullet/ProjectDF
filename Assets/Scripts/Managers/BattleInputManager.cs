@@ -145,6 +145,18 @@ public class BattleInputManager : MonoBehaviour
 	{
 		if (target != null)
 		{
+			if (target.tag == SuppliesTag)
+			{
+				var supplies = target.GetComponent<SuppliesBase>();
+
+				if (supplies == null)
+				{
+					return;
+				}
+
+				supplies.GetReward();
+			}
+
 			if (target.tag == FieldTag)
 			{
 				//무속성의 발사체를 발사
@@ -193,18 +205,7 @@ public class BattleInputManager : MonoBehaviour
 					projectile.Setup(projectiles[i], _atk, dir, _target);
 				}
 
-			}
-			else if (target.tag == SuppliesTag)
-			{
-				var supplies = target.GetComponent<SuppliesBase>();
-
-				if (supplies == null)
-				{
-					return;
-				}
-
-				supplies.GetReward();
-			}
+			}			
 		}
 	}
 

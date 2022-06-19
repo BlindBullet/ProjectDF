@@ -75,7 +75,7 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 		while (true)
 		{
 			TimeSpan span = TimeManager.Ins.GetCurrentTime() - data.StartTime;
-			
+			Debug.Log(TimeManager.Ins.GetCurrentTime() + "   " + data.StartTime);
 			switch (data.Type)
 			{
 				case PlayerBuffType.GameSpeed:
