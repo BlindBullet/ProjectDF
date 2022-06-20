@@ -82,7 +82,7 @@ str_desc_ce_10007,나무 속성 영웅이 2명 이상 배치돼있다면` 1`3`5�
 str_desc_ce_10008,불 속성 영웅이 2명 이상 배치돼있다면` 모든 영웅들의 공격속도가 증가합니다.,If deploies 2 or more fire attribute heroes` the attack speed of all heroes increases.,配置ヒーロー二人以上が火属性なら、全ヒーローのスピードアップ
 str_desc_ce_10009,모든 나무 속성 영웅들의 공격력이 증가합니다.,Increases the attack power of all Tree attribute heroes.,木属性の全ヒーローのダメージアップ
 str_desc_ce_10010,3번 슬롯의 영웅 속성이 불이라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slot 3 is fire` Increases the attack power of all heroes.,3番スロットのヒーローが火属性なら、全ヒーローのダメージアップ
-str_desc_ce_10011,1번 슬롯의 영웅 속성이 나무라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slot 1 is tree` Increases the attack power of all heroes.,1番スロットのヒーローが水属性なら、全ヒーローのダメージアップ
+str_desc_ce_10011,1번 슬롯의 영웅 속성이 나무라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slot 1 is tree` Increases the attack power of all heroes.,1番スロットのヒーローが木属性なら、全ヒーローのダメージアップ
 str_desc_ce_10012,3` 5번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero attribute of slots 3 and 5 is water` the critical strike chance of all heroes increases.,3、5番スロットのヒーローが水属性なら、全ヒーローのクリティカル率アップ
 str_desc_ce_10013,2` 4번 슬롯의 영웅 속성이 불이라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slots 2 and 4 is fire` the attack power of all heroes increases.,2、4番スロットのヒーローが火属性なら、全ヒーローのダメージアップ
 str_desc_ce_10014,1` 5번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero attribute of slots 1 and 5 is water` the critical chance of all heroes increases.,1、5番スロットのヒーローが水属性なら、全ヒーローのクリティカル率アップ
@@ -302,3 +302,7 @@ Dispatch,파견,Dispatch,派遣
 Rank,랭크,Rank,ランク
 desc_loading,본게임은 따로 클라우드 저장을 하지 않습니다. 게임을 삭제하면 모든 데이터가 지워집니다.,This game is not separately cloud saved. Deleting the game will erase all data.,本ゲームを削除する場合、保存データも全て削除されますので、予めご注意ください。
 Confirm,확인,Confirm,確認
+notify_title_quest,퀘스트 완료!,Mission Complete,
+notify_desc_quest,영웅들이 퀘스트를 마치고 돌아왔습니다. 두둑한 보상과 함께 말이죠!,The heroes have returned from the mission. With heavy rewards!,
+notify_title_offline,오프라인 보상 제한시간 도달,Offline reward time limit reached,
+notify_desc_offline,오프라인 보상이 최대치에 달했습니다. 영웅들이 기다리고 있어요.,Offline rewards have reached their maximum. Heroes are waiting.,
