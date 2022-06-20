@@ -8,28 +8,22 @@ using Assets.SimpleAndroidNotifications;
 public class NotifyManager : MonoSingleton<NotifyManager>
 {
 	private void OnApplicationPause(bool isPause)
-	{
+	{		
 #if UNITY_ANDROID
-
-		// 등록된 알림 모두 제거
-		NotificationManager.CancelAll();
-
 		if (isPause)
 		{
-			RunQuestNotify();
-			RunOfflineNotify();
+			CallNotify();
 		}
 
 #endif
 	}
 
-	private void OnApplicationQuit()
+	public void CallNotify()
 	{
 #if UNITY_ANDROID
 
 		// 등록된 알림 모두 제거
-		NotificationManager.CancelAll();
-
+		NotificationManager.CancelAll();		
 		RunQuestNotify();
 		RunOfflineNotify();
 #endif

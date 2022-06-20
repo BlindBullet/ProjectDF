@@ -28,8 +28,12 @@ public class BackkeyManager : SingletonObject<BackkeyManager>
 		{
 			DialogManager.Ins.OpenConfirmAndCancel("QuitGame", "QuitGameDesc", () => 
 			{
+				NotifyManager.Ins.CallNotify();
 				StageManager.Ins.PlayerData.Save();
-				Application.Quit(); 
+
+				//if (!Application.isEditor)
+				//	System.Diagnostics.Process.GetCurrentProcess().Kill();
+				Application.Quit();
 			});
 		}
 	}

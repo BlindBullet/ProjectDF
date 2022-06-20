@@ -302,7 +302,7 @@ Dispatch,파견,Dispatch,派遣
 Rank,랭크,Rank,ランク
 desc_loading,본게임은 따로 클라우드 저장을 하지 않습니다. 게임을 삭제하면 모든 데이터가 지워집니다.,This game is not separately cloud saved. Deleting the game will erase all data.,本ゲームを削除する場合、保存データも全て削除されますので、予めご注意ください。
 Confirm,확인,Confirm,確認
-notify_title_quest,퀘스트 완료!,Mission Complete,
-notify_desc_quest,영웅들이 퀘스트를 마치고 돌아왔습니다. 두둑한 보상과 함께 말이죠!,The heroes have returned from the mission. With heavy rewards!,
-notify_title_offline,오프라인 보상 제한시간 도달,Offline reward time limit reached,
-notify_desc_offline,오프라인 보상이 최대치에 달했습니다. 영웅들이 기다리고 있어요.,Offline rewards have reached their maximum. Heroes are waiting.,
+notify_title_quest,퀘스트 완료!,Mission Complete,クエストクリア！
+notify_desc_quest,영웅들이 퀘스트를 마치고 돌아왔습니다. 두둑한 보상과 함께 말이죠!,The heroes have returned from the mission. With heavy rewards!,ヒーローたちがクエストをクリアして帰還！たくさんの補償をゲットしよう！
+notify_title_offline,오프라인 보상 제한시간 도달,Offline reward time limit reached,オフライン報酬リミッター到達！
+notify_desc_offline,오프라인 보상이 최대치에 달했습니다. 영웅들이 기다리고 있어요.,Offline rewards have reached their maximum. Heroes are waiting.,オフライン報酬リミッター到達！ヒーローたちが戦闘準備完了！

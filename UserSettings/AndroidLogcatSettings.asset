@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "ce031603b9e65a3903",
         "name": "com.mkgames.projectdf",
-        "processId": 28656,
+        "processId": 29443,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -54,6 +54,18 @@
             "deviceId": "ce031603b9e65a3903",
             "name": "com.mkgames.projectdf",
             "processId": 28656,
+            "exited": false
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 25557,
+            "exited": false
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 29443,
             "exited": false
         },
         {
