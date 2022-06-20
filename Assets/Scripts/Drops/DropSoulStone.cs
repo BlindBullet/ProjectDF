@@ -8,7 +8,7 @@ public class DropSoulStone : DropIcon
 	public override void Move()
 	{
 		Sequence seq = DOTween.Sequence();
-		seq.Append(transform.DOMove(StageManager.Ins.TopBar.SoulStoneTrf.position.WithX(StageManager.Ins.TopBar.SoulStoneTrf.position.x + 0.2f), 1f).SetEase(Ease.InOutCubic))
+		seq.Append(transform.DOMove(DropManager.Ins.SoulStoneTrf.position, 1f).SetEase(Ease.InOutCubic))
 			.AppendCallback(()=> { ObjectManager.Ins.Push<DropSoulStone>(this); });
 	}
 

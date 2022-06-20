@@ -8,7 +8,7 @@ public class DropGold : DropIcon
 	public override void Move()
 	{
 		Sequence seq = DOTween.Sequence();
-		seq.Append(transform.DOMove(StageManager.Ins.TopBar.GoldTrf.position.WithX(StageManager.Ins.TopBar.GoldTrf.position.x + 0.2f), 1f).SetEase(Ease.InOutCubic))
+		seq.Append(transform.DOMove(DropManager.Ins.GoldTrf.position, 1f).SetEase(Ease.InOutCubic))
 			.AppendCallback(() => { ObjectManager.Ins.Push<DropGold>(this); });
 	}
 

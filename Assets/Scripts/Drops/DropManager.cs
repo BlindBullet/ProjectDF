@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DropManager : MonoSingleton<DropManager>
-{	
+{
+	public Transform GoldTrf;
+	public Transform SoulStoneTrf;
 	public void DropGold(Vector2 pos, int count)
 	{
 		for (int i = 0; i < count; i++)

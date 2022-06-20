@@ -726,6 +726,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &203950244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203950245}
+  m_Layer: 0
+  m_Name: SoulStoneTrf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &203950245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203950244}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.28, y: 9.36, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1379162861}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!21 &237042337
 Material:
   serializedVersion: 6
@@ -5255,8 +5285,8 @@ RectTransform:
   - {fileID: 635294480}
   - {fileID: 1056787509}
   - {fileID: 1955292243}
-  m_Father: {fileID: 1308446641}
-  m_RootOrder: 1
+  m_Father: {fileID: 2905629321379005025}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -8807,7 +8837,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1854060959}
-  - {fileID: 846809649}
   - {fileID: 1837977169}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -9222,7 +9251,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1813312722}
+  - {fileID: 203950245}
   m_Father: {fileID: 1640936913}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9238,6 +9269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353a025e85f87ca4fb561152f895a245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GoldTrf: {fileID: 1813312722}
+  SoulStoneTrf: {fileID: 203950245}
 --- !u!224 &1404521142 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8211406608238121100, guid: 7316762ed714e034498ed62821810e56,
@@ -11830,6 +11863,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807318257}
   m_CullTransparentMesh: 1
+--- !u!1 &1813312721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1813312722}
+  m_Layer: 0
+  m_Name: GoldTrf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1813312722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813312721}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.02, y: 9.399, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1379162861}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1824997567
 GameObject:
   m_ObjectHideFlags: 0
@@ -12044,7 +12107,7 @@ RectTransform:
   - {fileID: 1840755777}
   - {fileID: 1631679914}
   m_Father: {fileID: 1308446641}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15825,7 +15888,7 @@ RectTransform:
   - {fileID: 1409180756}
   - {fileID: 1414056884}
   m_Father: {fileID: 2905629321379005025}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -20973,6 +21036,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 846809649}
   - {fileID: 1093535662792605227}
   m_Father: {fileID: 1942565070462294385}
   m_RootOrder: 0
