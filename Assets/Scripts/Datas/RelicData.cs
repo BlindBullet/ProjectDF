@@ -9,12 +9,14 @@ public class RelicData
 	public string Id;
 	public int Lv;
 	public bool isOwn;
+	public bool isMax;
 
 	public void Init(string id)
 	{
 		Id = id;
 		Lv = 0;
 		isOwn = false;
+		isMax = false;
 	}
 
 	public bool Puechase()
@@ -75,6 +77,10 @@ public class RelicData
 				{
 					StageManager.Ins.ChangeGold(-cost);
 					Lv++;
+
+					if (Lv >= chart.MaxLv)
+						isMax = true;
+
 					return true;
 				}
 				break;
@@ -83,6 +89,10 @@ public class RelicData
 				{
 					StageManager.Ins.ChangeMagicite(-cost);
 					Lv++;
+
+					if (Lv >= chart.MaxLv)
+						isMax = true;
+
 					return true;
 				}
 				break;
@@ -91,10 +101,16 @@ public class RelicData
 				{
 					StageManager.Ins.ChangeSoulStone(-cost);
 					Lv++;
+
+					if (Lv >= chart.MaxLv)
+						isMax = true;
+
 					return true;
 				}
 				break;
 		}
+
+		
 
 		return false;
 	}

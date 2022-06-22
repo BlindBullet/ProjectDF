@@ -156,7 +156,7 @@ public class RelicBar : MonoBehaviour
 					break;
 			}
 
-			if (canPurchase)
+			if (canPurchase && !data.isMax)
 			{
 				LvUpBtn.enabled = true;
 				lvUpBtnMat.SetFloat("_GreyscaleBlend", 0f);
@@ -182,8 +182,11 @@ public class RelicBar : MonoBehaviour
 			}
 			else
 			{
-				LvUpBtn.enabled = false;
-				lvUpBtnMat.SetFloat("_GreyscaleBlend", 1f);
+				if (!data.isMax)
+				{
+					LvUpBtn.enabled = false;
+					lvUpBtnMat.SetFloat("_GreyscaleBlend", 1f);
+				}
 			}
 
 			if (data.Lv >= chart.MaxLv)
@@ -216,7 +219,7 @@ public class RelicBar : MonoBehaviour
 					break;
 			}
 
-			if (canPurchase)
+			if (canPurchase && !data.isMax)
 			{
 				LvUpBtn.enabled = true;
 				lvUpBtnMat.SetFloat("_GreyscaleBlend", 0f);
@@ -242,8 +245,11 @@ public class RelicBar : MonoBehaviour
 			}
 			else
 			{
-				LvUpBtn.enabled = false;
-				lvUpBtnMat.SetFloat("_GreyscaleBlend", 1f);
+				if (!data.isMax)
+				{
+					LvUpBtn.enabled = false;
+					lvUpBtnMat.SetFloat("_GreyscaleBlend", 1f);
+				}	
 			}
 		}
 	}
