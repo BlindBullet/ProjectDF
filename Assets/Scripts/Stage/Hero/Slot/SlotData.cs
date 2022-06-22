@@ -50,18 +50,18 @@ public class SlotData
 		PowerUpStackDatas.Add(data);
 	}
 
-	public void SetLotteriedUpgradeBars(int lv, List<int> lotteriedNos)
+	public void SetLotteriedUpgradeBars(int lv, List<AtkUpgradeType> upgrades)
 	{		
 		for(int i = 0; i < PowerUpList.Count; i++)
 		{
 			if (PowerUpList[i].Lv == lv)
 			{
-				PowerUpList[i].ChangeValue(lv, lotteriedNos);
+				PowerUpList[i].ChangeValue(lv, upgrades);
 				return;
 			}	
 		}
 
-		PowerUpList.Add(new SlotPowerUpList(lv, lotteriedNos));		
+		PowerUpList.Add(new SlotPowerUpList(lv, upgrades));		
 	}
 
 	public void PowerUp(int lv, AtkUpgradeType selectType)
@@ -112,18 +112,18 @@ public class SlotData
 public class SlotPowerUpList
 {
 	public int Lv;
-	public List<int> LotteriedPowerUpBars = new List<int>();
+	public List<AtkUpgradeType> LotteriedPowerUpBars = new List<AtkUpgradeType>();
 
-	public SlotPowerUpList(int lv, List<int> lotteriedNos)
+	public SlotPowerUpList(int lv, List<AtkUpgradeType> upgrades)
 	{
 		Lv = lv;
-		LotteriedPowerUpBars = lotteriedNos;
+		LotteriedPowerUpBars = upgrades;
 	}
 
-	public void ChangeValue(int lv, List<int> lotteriedNos)
+	public void ChangeValue(int lv, List<AtkUpgradeType> upgrades)
 	{
 		Lv = lv;
-		LotteriedPowerUpBars = lotteriedNos;
+		LotteriedPowerUpBars = upgrades;
 	}
 }
 

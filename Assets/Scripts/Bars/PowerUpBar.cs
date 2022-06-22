@@ -18,7 +18,7 @@ public class PowerUpBar : MonoBehaviour
 	Material mat;
 	SlotData data;
 
-	public void SetBar(SlotData data, SlotPowerUpChart chart)
+	public void SetBar(SlotData data, AtkUpgradeType type, CostType costType, double cost)
 	{	
 		Image uiImage = PurchaseBtn.GetComponent<Image>();
 		uiImage.material = new Material(uiImage.materialForRendering);
@@ -27,53 +27,52 @@ public class PowerUpBar : MonoBehaviour
 		PurchaseBtnText.text = LanguageManager.Ins.SetString("Upgrade");
 
 		this.data = data;
-		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.Type.ToString());
+		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(type.ToString());
 
-		switch (chart.Type)
+		switch (type)
 		{
 			case AtkUpgradeType.AtkUp:
-				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.AtkUp + 1);
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + type.ToString()), data.AtkData.AtkUp + 1);
 				break;
 			case AtkUpgradeType.Boom:
-				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Boom + 1);
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + type.ToString()), data.AtkData.Boom + 1);
 				break;
 			case AtkUpgradeType.Bounce:
-				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Bounce + 1);
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + type.ToString()), data.AtkData.Bounce + 1);
 				break;
 			case AtkUpgradeType.Diagonal:
-				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Diagonal + 1);
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + type.ToString()), data.AtkData.Diagonal + 1);
 				break;
 			case AtkUpgradeType.Front:
-				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Front + 1);
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + type.ToString()), data.AtkData.Front + 1);
 				break;
 			case AtkUpgradeType.Multi:
-				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Multi + 1);
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + type.ToString()), data.AtkData.Multi + 1);
 				break;
 			case AtkUpgradeType.Piercing:
-				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Piercing + 1);
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + type.ToString()), data.AtkData.Piercing + 1);
 				break;
 			case AtkUpgradeType.Size:
-				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Size + 1);
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + type.ToString()), data.AtkData.Size + 1);
 				break;
 			case AtkUpgradeType.Push:
-				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + chart.Type.ToString()), data.AtkData.Push + 1);
+				Name.text = string.Format(LanguageManager.Ins.SetString("name_slot_power_up_" + type.ToString()), data.AtkData.Push + 1);
 				break;
 		}
 		
-		Desc.text = LanguageManager.Ins.SetString("desc_slot_power_up_" + chart.Type.ToString());
-		CostIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.CostType.ToString());
+		Desc.text = LanguageManager.Ins.SetString("desc_slot_power_up_" + type.ToString());
+		CostIcon.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(costType.ToString());
 
-		SetPurchaseBtn(chart);
+		SetPurchaseBtn(type, costType, cost);
 	}
 
-	void SetPurchaseBtn(SlotPowerUpChart chart)
-	{
-		double cost = chart.Cost;
+	void SetPurchaseBtn(AtkUpgradeType type, CostType costType, double cost)
+	{		
 		CostText.text = cost.ToCurrencyString();
 
 		bool canPurchase = false;
 
-		switch (chart.CostType)
+		switch (costType)
 		{
 			case CostType.Gold:
 				if (StageManager.Ins.PlayerData.Gold >= cost)
@@ -98,9 +97,9 @@ public class PowerUpBar : MonoBehaviour
 			PurchaseBtn.onClick.AddListener(() =>
 			{
 				SoundManager.Ins.PlaySFX("se_button_2");
-				data.PowerUp(data.Lv, chart.Type);
+				data.PowerUp(data.Lv, type);
 
-				switch (chart.CostType)
+				switch (costType)
 				{
 					case CostType.Gold:
 						if (StageManager.Ins.PlayerData.Gold >= cost)

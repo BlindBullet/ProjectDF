@@ -66,7 +66,7 @@ public class DialogAdReward : DialogController
 		AdBtn.onClick.AddListener(() => 
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
-			AdmobManager.Ins.ShowSplliesAd();			
+			AdmobManager.Ins.ShowSplliesAd();
 		});
 
 		CloseBtn.gameObject.SetActive(false);

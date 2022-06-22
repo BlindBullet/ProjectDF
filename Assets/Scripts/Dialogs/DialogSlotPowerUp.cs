@@ -73,165 +73,96 @@ public class DialogSlotPowerUp : DialogController
 			LotteryPowerUpBars();
 	}
 
-	void LoadBars(List<int> lotteriedNos)
+	void LoadBars(List<AtkUpgradeType> lotteriedUpgrades)
 	{
 		List<SlotPowerUpChart> charts = CsvData.Ins.SlotPowerUpChart[powerUpNo];
 
-		for (int i = 0; i < lotteriedNos.Count; i++)
+		for (int i = 0; i < lotteriedUpgrades.Count; i++)
 		{
-			Bars[i].SetBar(data, charts[lotteriedNos[i]]);
-			LotteriedBars.Add(charts[lotteriedNos[i]].Type);
+			Bars[i].SetBar(data, lotteriedUpgrades[i], charts[0].CostType, charts[0].Cost);
+			LotteriedBars.Add(lotteriedUpgrades[i]);
 		}
 	}
 
-	void LotteryPowerUpBars()
+	void LotteryPowerUpBars(bool isFirst = true)
 	{
 		LotteriedBars.Clear();
-
-		List<SlotPowerUpChart> charts = CsvData.Ins.SlotPowerUpChart[powerUpNo];
-
-		List<int> probs = new List<int>();
+				
+		List<SlotPowerUpChart> charts = CsvData.Ins.SlotPowerUpChart[powerUpNo];				
+		List<AtkUpgradeType> upgrades = new List<AtkUpgradeType>();
 		
 		for(int i = 0; i < charts.Count; i++)
 		{
-			bool _add = false;
-
 			switch (charts[i].Type)
 			{
 				case AtkUpgradeType.Front:
-					if (data.AtkData.Front < 5)
-						_add = true;
+					if (data.AtkData.Front < 4)
+						upgrades.Add(AtkUpgradeType.Front);
 					break;
 				case AtkUpgradeType.Diagonal:
-					if (data.AtkData.Diagonal < 3)
-						_add = true;
+					if (data.AtkData.Diagonal < 2)
+						upgrades.Add(AtkUpgradeType.Diagonal);
 					break;
 				case AtkUpgradeType.Multi:
-					if (data.AtkData.Multi < 3)
-						_add = true;
+					if (data.AtkData.Multi < 2)
+						upgrades.Add(AtkUpgradeType.Multi);
 					break;
 				case AtkUpgradeType.Boom:
 					if (data.AtkData.Boom < 3)
-						_add = true;
+						upgrades.Add(AtkUpgradeType.Boom);
 					break;
 				case AtkUpgradeType.Size:
 					if (data.AtkData.Size < 3)
-						_add = true;
+						upgrades.Add(AtkUpgradeType.Size);
 					break;
 				case AtkUpgradeType.Push:
 					if (data.AtkData.Push < 5)
-						_add = true;
-					break;
+						upgrades.Add(AtkUpgradeType.Push);
+					break;					
 				default:
-					_add = true;
+					upgrades.Add(charts[i].Type);
 					break;
-			}
-			
-			if(_add)
-				probs.Add(charts[i].Prob);
+			}			
 		}
 
-		List<int> results = LotteryCalculator.LotteryListNoVerbose(probs, 3);
-		data.SetLotteriedUpgradeBars(data.Power, results);
+		List<AtkUpgradeType> results = new List<AtkUpgradeType>();
 
-		for(int i = 0; i < Bars.Length; i++)
+		if (!isFirst)		
 		{
-			Bars[i].SetBar(data, charts[results[i]]);
-			LotteriedBars.Add(charts[results[i]].Type);
+			for (int i = 0; i < upgrades.Count; i++)
+			{
+				for (int k = 0; k < data.PowerUpList.Count; k++)
+				{
+					if (data.PowerUpList[k].Lv == data.Power)
+					{
+						if (!data.PowerUpList[k].LotteriedPowerUpBars.Contains(upgrades[i]))
+						{
+							results.Add(upgrades[i]);
+						}
+					}
+				}
+			}			
 		}
+		else
+		{
+			results = upgrades;
+		}
+
+		results = Shuffle.ShuffleList(results);
+		
+		for (int i = 0; i < Bars.Length; i++)
+		{
+			Bars[i].SetBar(data, results[i], charts[0].CostType, charts[0].Cost);
+			LotteriedBars.Add(results[i]);
+		}
+
+		data.SetLotteriedUpgradeBars(data.Power, LotteriedBars);
 
 		StageManager.Ins.PlayerData.Save();
 	}
 
-	public void RefreshPowerUpBars()
-	{
-		LotteriedBars.Clear();
-		List<SlotPowerUpChart> charts = CsvData.Ins.SlotPowerUpChart[powerUpNo];
-
-		List<int> probs = new List<int>();
-
-		for (int i = 0; i < charts.Count; i++)
-		{
-			bool _add = false;
-
-			switch (charts[i].Type)
-			{
-				case AtkUpgradeType.Front:
-					if (data.AtkData.Front < 5)
-						_add = true;
-					break;
-				case AtkUpgradeType.Diagonal:
-					if (data.AtkData.Diagonal < 4)
-						_add = true;
-					break;
-				case AtkUpgradeType.Multi:
-					if (data.AtkData.Multi < 4)
-						_add = true;
-					break;
-				case AtkUpgradeType.Boom:
-					if (data.AtkData.Boom < 3)
-						_add = true;
-					break;
-				case AtkUpgradeType.Size:
-					if (data.AtkData.Size < 3)
-						_add = true;
-					break;
-				case AtkUpgradeType.Push:
-					if (data.AtkData.Push < 5)
-						_add = true;
-					break;
-				default:
-					_add = true;
-					break;
-			}
-
-			if (_add)
-				probs.Add(charts[i].Prob);
-		}
-
-		bool success = false;
-		List<int> results = new List<int>();
-
-		while (!success)
-		{
-			results.Clear();
-			results = LotteryCalculator.LotteryListNoVerbose(probs, 3);
-
-			int verboseCount = 0;
-
-			for (int i = 0; i < results.Count; i++)
-			{
-				for (int k = 0; k < LotteriedBars.Count; k++)
-				{
-					if (LotteriedBars[k] == charts[results[i]].Type)
-					{
-						verboseCount++;
-						break;
-					}
-				}
-			}
-
-			if(verboseCount < 3)
-			{
-				success = true;
-			}
-		}
-
-		data.SetLotteriedUpgradeBars(data.Power, results);
-		
-		for (int i = 0; i < Bars.Length; i++)
-		{
-			Bars[i].SetBar(data, charts[results[i]]);
-			LotteriedBars.Add(charts[results[i]].Type);
-		}
-
-		StageManager.Ins.PlayerData.Save();		
-	}
-
 	void SetRefreshBtn()
 	{
-		
-
 		if (StageManager.Ins.PlayerData.SoulStone >= ConstantData.PowerUpRefreshCost)
 		{
 			refreshBtnMat.SetFloat("_GreyccaleBlend", 0f);
@@ -242,7 +173,7 @@ public class DialogSlotPowerUp : DialogController
 			{				
 				SoundManager.Ins.PlaySFX("se_button_2");
 				StageManager.Ins.ChangeSoulStone(-ConstantData.PowerUpRefreshCost);
-				RefreshPowerUpBars();
+				LotteryPowerUpBars(false);
 			});
 		}
 		else

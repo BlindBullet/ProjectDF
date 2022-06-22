@@ -121,17 +121,7 @@ public class AttackController : MonoBehaviour
 				CreateProjectile(model, 0, -20, dir, target);
 				CreateProjectile(model, 0, 30, dir, target);
 				CreateProjectile(model, 0, -30, dir, target);
-				break;
-			case 4:				
-				CreateProjectile(model, 0, 10, dir, target);
-				CreateProjectile(model, 0, -10, dir, target);
-				CreateProjectile(model, 0, 20, dir, target);
-				CreateProjectile(model, 0, -20, dir, target);
-				CreateProjectile(model, 0, 30, dir, target);
-				CreateProjectile(model, 0, -30, dir, target);
-				CreateProjectile(model, 0, 40, dir, target);
-				CreateProjectile(model, 0, -40, dir, target);
-				break;
+				break;			
 		}		
 	}
 
