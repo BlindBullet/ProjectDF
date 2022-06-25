@@ -17,7 +17,7 @@ MonoBehaviour:
     path: SaveFile.es3
     encryptionType: 0
     compressionType: 0
-    encryptionPassword: password
+    encryptionPassword: qpfmxhfxm22!!@@11
     directory: 0
     format: 0
     prettyPrint: 1
@@ -29,8 +29,8 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
-    - Assembly-CSharp-firstpass
     - Assembly-CSharp
+    - Assembly-CSharp-firstpass
     - ACTk.Examples.Runtime
     - ACTk.Runtime
     - DamageNumbersPro

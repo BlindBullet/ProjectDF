@@ -76,7 +76,13 @@ public class DialogAscension : DialogController
 			AdAscensionBtn.onClick.AddListener(() =>
 			{
 				SoundManager.Ins.PlaySFX("se_button_2");
-				AdmobManager.Ins.ShowAscensionRewardAd();
+				if(AdmobManager.Ins.isReal)
+					AdmobManager.Ins.ShowAscensionRewardAd();
+				else
+				{
+					StageManager.Ins.StartAscension();
+					CloseDialog(true);
+				}	
 			});
 		}
 		else

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using GoogleMobileAds.Api;
 using System;
+using GooglePlayGames.Android;
+using Ugi.PlayInstallReferrerPlugin;
 
 public class AdmobManager : MonoSingleton<AdmobManager>
 {
@@ -15,10 +17,23 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	InterstitialAd questRefreshAd;	
 	RewardedAd ascensionRewardAd;
 	RewardedAd offlineRewardAd;	
-	AdRequest request;	
+	AdRequest request;
+	public bool isReal = false;
 
 	void Start()
 	{
+		PlayInstallReferrer.GetInstallReferrerInfo((a)=> 
+		{			
+			if(a.InstallReferrer != null)
+			{				
+				isReal = true;		
+			}
+			else
+			{			
+				isReal = false;				
+			}
+		});
+		
 		// ¸ð¹ÙÀÏ ±¤°í SDK¸¦ ÃÊ±âÈ­ÇÔ.
 		MobileAds.Initialize(initStatus => { });
 
@@ -89,7 +104,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	void FailedSuppliesAd(object sender, AdErrorEventArgs args)
 	{
 		Debug.Log("¾Öµå¸÷ ±¤°í ½ÇÆÐ");
-		UnityAdsManager.Ins.ShowAd(AdType.SuppliesReward);
+		//UnityAdsManager.Ins.ShowAd(AdType.SuppliesReward);
 	}
 	#endregion
 
@@ -100,6 +115,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	{	
 		questRewardAd.Show();		
 	}
+
 	public void SuccessQuestRewardAd(object sender, Reward args)
 	{	
 		StartCoroutine(DialogAdReward._Dialog.GetQuestReward(true));
@@ -109,7 +125,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	void FailedQuestRewardAd(object sender, AdErrorEventArgs args)
 	{
 		Debug.Log("¾Öµå¸÷ ±¤°í ½ÇÆÐ");
-		UnityAdsManager.Ins.ShowAd(AdType.QuestReward);
+		//UnityAdsManager.Ins.ShowAd(AdType.QuestReward);
 	}
 	#endregion
 
@@ -130,7 +146,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	void FailedAscensionRewardAd(object sender, AdErrorEventArgs args)
 	{
 		Debug.Log("¾Öµå¸÷ ±¤°í ½ÇÆÐ");
-		UnityAdsManager.Ins.ShowAd(AdType.AscensionReward);
+		//UnityAdsManager.Ins.ShowAd(AdType.AscensionReward);
 	}
 	#endregion
 
@@ -151,7 +167,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	void FailedOfflineRewardAd(object sender, AdErrorEventArgs args)
 	{
 		Debug.Log("¾Öµå¸÷ ±¤°í ½ÇÆÐ");
-		UnityAdsManager.Ins.ShowAd(AdType.OfflineReward);
+		//UnityAdsManager.Ins.ShowAd(AdType.OfflineReward);
 	}
 	#endregion
 

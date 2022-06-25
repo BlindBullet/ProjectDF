@@ -74,12 +74,23 @@ public class DialogOfflineReward : DialogController
 		AdGetBtn.onClick.AddListener(() => 
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
-			rewardValue = rewardValue * 2f;
-			addRewardValue = addRewardValue * 2f;
+			
+			if (AdmobManager.Ins.isReal)
+			{
+				rewardValue = rewardValue * 2f;
+				addRewardValue = addRewardValue * 2f;
 
-			resultValue = rewardValue;
-			resultAddValue = addRewardValue;
-			AdmobManager.Ins.ShowOfflineRewardAd();
+				resultValue = rewardValue;
+				resultAddValue = addRewardValue;
+
+				AdmobManager.Ins.ShowOfflineRewardAd();
+			}	
+			else
+			{
+				StageManager.Ins.ChangeGold(rewardValue + addRewardValue);
+				DialogManager.Ins.OpenReceiveReward(RewardType.Gold, rewardValue + addRewardValue);
+				CloseDialog();
+			}
 		});
 	}
 

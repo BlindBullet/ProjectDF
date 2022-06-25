@@ -66,7 +66,11 @@ public class DialogAdReward : DialogController
 		AdBtn.onClick.AddListener(() => 
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
-			AdmobManager.Ins.ShowSplliesAd();
+
+			if (AdmobManager.Ins.isReal)
+				AdmobManager.Ins.ShowSplliesAd();
+			else
+				CloseDialog();
 		});
 
 		CloseBtn.gameObject.SetActive(false);
@@ -123,7 +127,11 @@ public class DialogAdReward : DialogController
 		AdBtn.onClick.AddListener(() =>
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
-			AdmobManager.Ins.ShowQuestRewardAd();
+
+			if (AdmobManager.Ins.isReal)
+				AdmobManager.Ins.ShowQuestRewardAd();
+			else
+				CloseDialog();
 		});
 
 		Show(false);
