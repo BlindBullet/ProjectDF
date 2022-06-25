@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "ce031603b9e65a3903",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "ce031603b9e65a3903",
+        "name": "com.mkgames.projectdf",
+        "processId": 29496,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -31,6 +31,12 @@
             "name": "com.mkgames.projectdf",
             "processId": 5201,
             "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 29496,
+            "exited": false
         },
         {
             "deviceId": "R39M10EL61Y",

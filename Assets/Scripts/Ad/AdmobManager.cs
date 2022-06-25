@@ -30,7 +30,8 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 			}
 			else
 			{			
-				isReal = false;				
+				isReal = false;
+				Debug.Log("aaaaaaa");
 			}
 		});
 		
