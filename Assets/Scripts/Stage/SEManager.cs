@@ -72,7 +72,12 @@ public class SEManager : MonoSingleton<SEManager>
 		}
 
 		InitAllStat();
-		ApplyAllSe(SeList);		
+		ApplyAllSe(SeList);
+
+		for(int i = 0; i < StageManager.Ins.Slots.Count; i++)
+		{
+			StageManager.Ins.SetSlots();
+		}
 	}
 
 	void InitAllStat()

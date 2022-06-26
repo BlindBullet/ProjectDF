@@ -55,8 +55,8 @@ public class StageManager : MonoSingleton<StageManager>
 	{
 		SoundManager.Ins.DissolveBGMVolume(1f, 1f);
 		TopBar.Setup();
-		
-		SetSlots();
+
+		//SetSlots();
 		SetHeroes(PlayerData.IsFirstPlay);
 
 		SEManager.Ins.Apply();
@@ -74,7 +74,7 @@ public class StageManager : MonoSingleton<StageManager>
 	{
 		TopBar.Setup();
 
-		SetSlots();
+		//SetSlots();
 		SetHeroes(PlayerData.IsFirstPlay);		
 
 		SEManager.Ins.Apply();
@@ -174,7 +174,7 @@ public class StageManager : MonoSingleton<StageManager>
 		PlayerData.Save();
 	}
 
-	void SetSlots()
+	public void SetSlots()
 	{		
 		for(int i = 0; i < Slots.Count; i++)
 		{
