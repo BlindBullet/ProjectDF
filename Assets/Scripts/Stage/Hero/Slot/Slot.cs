@@ -61,7 +61,7 @@ public class Slot : MonoBehaviour
 				
 		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
 		SetLvUpBtnState(0);
-		SetLvText();
+		SetLvText();		
 		SetPowerUpBtn();		
 	}
 
@@ -96,14 +96,14 @@ public class Slot : MonoBehaviour
 	void SetPowerUpBtn()
 	{
 		DOTween.Kill("SF" + No);
-
+		
 		if (data.PowerUpStackDatas.Count > 0)
 		{
 			PowerUpBtn.enabled = true;
 			PowerUpBtn.gameObject.SetActive(true);
 			powerUpBtnMat.SetFloat("_ShineRotate", 0f);
 			powerUpBtnMat.DOFloat(6.28f, "_ShineRotate", 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetId("SF" + No);
-		}
+		}		
 	}
 
 	public void AfterPowerUp()

@@ -43,7 +43,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			StartCoroutine(TimeManager.Ins.GetTime());			
+			StageManager.Ins.ChangeGold(10000000000000000000000000f);
 		}
 	}
 

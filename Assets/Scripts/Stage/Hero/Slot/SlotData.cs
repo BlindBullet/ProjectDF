@@ -8,18 +8,16 @@ public class SlotData
 {
 	public int No;
 	public int Lv;	
-	public int Power;
-	public int PowerUpStack;
+	public int Power;	
 	public AttackData AtkData = new AttackData();
-	public List<PowerUpStackData> PowerUpStackDatas = new List<PowerUpStackData>();
+	public List<int> PowerUpStackDatas = new List<int>();	
 	public List<SlotPowerUpList> PowerUpList = new List<SlotPowerUpList>();
 
 	public void Init(int no)
 	{
 		No = no;
 		Lv = 1;
-		Power = 0;
-		PowerUpStack = 0;
+		Power = 0;		
 		PowerUpStackDatas.Clear();
 		PowerUpList.Clear();
 	}
@@ -42,12 +40,11 @@ public class SlotData
 	{
 		for(int i = 0; i < PowerUpStackDatas.Count; i++)
 		{
-			if (PowerUpStackDatas[i].Lv == lv)
+			if (PowerUpStackDatas[i] == lv)
 				return;
 		}
-
-		PowerUpStackData data = new PowerUpStackData(lv);
-		PowerUpStackDatas.Add(data);
+				
+		PowerUpStackDatas.Add(lv);		
 	}
 
 	public void SetLotteriedUpgradeBars(int lv, List<AtkUpgradeType> upgrades)
@@ -103,12 +100,15 @@ public class SlotData
 				break;
 		}
 
-		PowerUpStackDatas.RemoveAt(0);
-		Power++;
+		if(PowerUpStackDatas.Count > 0)
+			PowerUpStackDatas.RemoveAt(0);
+
+		Power++;		
 	}
 
 }
 
+[System.Serializable]
 public class SlotPowerUpList
 {
 	public int Lv;
@@ -124,15 +124,5 @@ public class SlotPowerUpList
 	{
 		Lv = lv;
 		LotteriedPowerUpBars = upgrades;
-	}
-}
-
-public class PowerUpStackData
-{
-	public int Lv;	
-
-	public PowerUpStackData(int lv)
-	{
-		Lv = lv;
 	}
 }
