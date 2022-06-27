@@ -41,12 +41,6 @@ public class GameManager : MonoSingleton<GameManager>
 			BackkeyManager.Ins.UseBackkey();
 		}
 
-		if (Input.GetKeyDown(KeyCode.A))
-		{	
-			Debug.Log(TimeManager.Ins.ReceivedTime);
-			Debug.Log(TimeManager.Ins.SinceTime);
-		}
-
 		if (Input.GetKeyDown(KeyCode.S))
 		{
 			StartCoroutine(TimeManager.Ins.GetTime());			
