@@ -507,7 +507,7 @@ MonoBehaviour:
     pushOffset: 1
   updateDelay: 0.0125
   enablePooling: 1
-  poolSize: 50
+  poolSize: 5
   position: {x: 0, y: 0, z: 0}
 --- !u!210 &9221815730825885308
 SortingGroup:
