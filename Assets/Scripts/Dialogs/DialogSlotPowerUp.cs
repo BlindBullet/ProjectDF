@@ -59,11 +59,11 @@ public class DialogSlotPowerUp : DialogController
 	{
 		bool canLoad = false;
 		
-		for(int i = 0; i < data.PowerUpList.Count; i++)
+		for(int i = 0; i < data.PowerUpListLvs.Count; i++)
 		{
-			if (data.Power == data.PowerUpList[i].Lv)
+			if (data.Power == data.PowerUpListLvs[i])
 			{
-				LoadBars(data.PowerUpList[i].LotteriedPowerUpBars);
+				LoadBars(data.PowerUpLists);
 				canLoad = true;				
 				break;
 			}	
@@ -131,11 +131,11 @@ public class DialogSlotPowerUp : DialogController
 		{
 			for (int i = 0; i < upgrades.Count; i++)
 			{
-				for (int k = 0; k < data.PowerUpList.Count; k++)
+				for (int k = 0; k < data.PowerUpListLvs.Count; k++)
 				{
-					if (data.PowerUpList[k].Lv == data.Power)
+					if (data.PowerUpListLvs[k] == data.Power)
 					{
-						if (!data.PowerUpList[k].LotteriedPowerUpBars.Contains(upgrades[i]))
+						if (data.PowerUpLists == null)
 						{
 							results.Add(upgrades[i]);
 						}

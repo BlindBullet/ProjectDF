@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("No", "Lv", "Power", "AtkData", "PowerUpStackDatas")]
+	[ES3PropertiesAttribute("No", "Lv", "Power", "AtkData", "PowerUpStackDatas", "PowerUpListLvs", "PowerUpLists")]
 	public class ES3UserType_SlotData : ES3ObjectType
 	{
 		public static ES3Type Instance = null;
@@ -21,6 +21,8 @@ namespace ES3Types
 			writer.WriteProperty("Power", instance.Power, ES3Type_int.Instance);
 			writer.WriteProperty("AtkData", instance.AtkData, ES3Internal.ES3TypeMgr.GetOrCreateES3Type(typeof(AttackData)));
 			writer.WriteProperty("PowerUpStackDatas", instance.PowerUpStackDatas, ES3Internal.ES3TypeMgr.GetOrCreateES3Type(typeof(System.Collections.Generic.List<System.Int32>)));
+			writer.WriteProperty("PowerUpListLvs", instance.PowerUpListLvs, ES3Internal.ES3TypeMgr.GetOrCreateES3Type(typeof(System.Collections.Generic.List<System.Int32>)));
+			writer.WriteProperty("PowerUpLists", instance.PowerUpLists, ES3Internal.ES3TypeMgr.GetOrCreateES3Type(typeof(System.Collections.Generic.List<AtkUpgradeType>)));
 		}
 
 		protected override void ReadObject<T>(ES3Reader reader, object obj)
@@ -45,6 +47,12 @@ namespace ES3Types
 						break;
 					case "PowerUpStackDatas":
 						instance.PowerUpStackDatas = reader.Read<System.Collections.Generic.List<System.Int32>>();
+						break;
+					case "PowerUpListLvs":
+						instance.PowerUpListLvs = reader.Read<System.Collections.Generic.List<System.Int32>>();
+						break;
+					case "PowerUpLists":
+						instance.PowerUpLists = reader.Read<System.Collections.Generic.List<AtkUpgradeType>>();
 						break;
 					default:
 						reader.Skip();

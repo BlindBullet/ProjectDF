@@ -10,8 +10,9 @@ public class SlotData
 	public int Lv;	
 	public int Power;	
 	public AttackData AtkData = new AttackData();
-	public List<int> PowerUpStackDatas = new List<int>();	
-	public List<SlotPowerUpList> PowerUpList = new List<SlotPowerUpList>();
+	public List<int> PowerUpStackDatas = new List<int>();
+	public List<int> PowerUpListLvs = new List<int>();
+	public List<AtkUpgradeType> PowerUpLists = new List<AtkUpgradeType>();	
 
 	public void Init(int no)
 	{
@@ -19,7 +20,8 @@ public class SlotData
 		Lv = 1;
 		Power = 0;		
 		PowerUpStackDatas.Clear();
-		PowerUpList.Clear();
+		PowerUpListLvs.Clear();
+		PowerUpLists.Clear();		
 	}
 
 	public bool LevelUp()
@@ -49,24 +51,26 @@ public class SlotData
 
 	public void SetLotteriedUpgradeBars(int lv, List<AtkUpgradeType> upgrades)
 	{		
-		for(int i = 0; i < PowerUpList.Count; i++)
+		for(int i = 0; i < PowerUpListLvs.Count; i++)
 		{
-			if (PowerUpList[i].Lv == lv)
+			if (PowerUpListLvs[i] == lv)
 			{
-				PowerUpList[i].ChangeValue(lv, upgrades);
+				PowerUpLists = upgrades;
+				PowerUpListLvs[i] = lv;
 				return;
 			}	
 		}
 
-		PowerUpList.Add(new SlotPowerUpList(lv, upgrades));		
+		PowerUpListLvs.Add(lv);
+		PowerUpLists = upgrades;
 	}
 
 	public void PowerUp(int lv, AtkUpgradeType selectType)
 	{
-		for(int i = 0; i < PowerUpList.Count; i++)
+		for(int i = 0; i < PowerUpListLvs.Count; i++)
 		{
-			if (PowerUpList[i].Lv == lv)
-				PowerUpList.Remove(PowerUpList[i]);
+			if (PowerUpListLvs[i] == lv)
+				PowerUpListLvs.Remove(PowerUpListLvs[i]);
 		}
 
 		switch (selectType)
@@ -106,23 +110,4 @@ public class SlotData
 		Power++;		
 	}
 
-}
-
-[System.Serializable]
-public class SlotPowerUpList
-{
-	public int Lv;
-	public List<AtkUpgradeType> LotteriedPowerUpBars = new List<AtkUpgradeType>();
-
-	public SlotPowerUpList(int lv, List<AtkUpgradeType> upgrades)
-	{
-		Lv = lv;
-		LotteriedPowerUpBars = upgrades;
-	}
-
-	public void ChangeValue(int lv, List<AtkUpgradeType> upgrades)
-	{
-		Lv = lv;
-		LotteriedPowerUpBars = upgrades;
-	}
 }
