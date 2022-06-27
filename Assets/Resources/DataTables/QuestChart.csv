@@ -29,7 +29,7 @@
 30008,8,str_name_quest_30008,130,5,2,Red|Red|Green,Gold,80
 30009,9,str_name_quest_30009,140,5,3,Blue|Red|Red,Gold,90
 30010,10,str_name_quest_30010,150,6,3,Red|Green|Red,Gold,100
-40001,1,str_name_quest_40001,60,2,,Blue|Green|Red,SoulStone,50
+40001,1,str_name_quest_40001,60,,,Blue|Green|Red,SoulStone,50
 40002,2,str_name_quest_40002,75,2,2,Blue|Blue|Red,SoulStone,80
 40003,3,str_name_quest_40003,90,3,2,Green|Green|Red,SoulStone,110
 40004,4,str_name_quest_40004,105,3,3,Red|Red|Blue,SoulStone,150
