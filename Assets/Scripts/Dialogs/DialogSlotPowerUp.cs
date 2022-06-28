@@ -126,28 +126,29 @@ public class DialogSlotPowerUp : DialogController
 		}
 
 		List<AtkUpgradeType> results = new List<AtkUpgradeType>();
-
+				
 		if (!isFirst)		
 		{
-			for (int i = 0; i < upgrades.Count; i++)
-			{
-				for (int k = 0; k < data.PowerUpListLvs.Count; k++)
-				{
-					if (data.PowerUpListLvs[k] == data.Power)
-					{
-						if (data.PowerUpLists == null)
-						{
-							results.Add(upgrades[i]);
-						}
-					}
-				}
-			}			
+			results = upgrades;
+			//for (int i = 0; i < upgrades.Count; i++)
+			//{
+			//	for (int k = 0; k < data.PowerUpListLvs.Count; k++)
+			//	{
+			//		if (data.PowerUpListLvs[k] == data.Power)
+			//		{
+			//			if (data.PowerUpLists == null)
+			//			{
+			//				results.Add(upgrades[i]);
+			//			}
+			//		}
+			//	}
+			//}			
 		}
 		else
-		{
-			results = upgrades;
+		{			
+			results = upgrades;		
 		}
-
+				
 		results = Shuffle.ShuffleList(results);
 		
 		for (int i = 0; i < Bars.Length; i++)
