@@ -128,21 +128,23 @@ public class DialogSlotPowerUp : DialogController
 		List<AtkUpgradeType> results = new List<AtkUpgradeType>();
 				
 		if (!isFirst)		
-		{
-			results = upgrades;
-			//for (int i = 0; i < upgrades.Count; i++)
-			//{
-			//	for (int k = 0; k < data.PowerUpListLvs.Count; k++)
-			//	{
-			//		if (data.PowerUpListLvs[k] == data.Power)
-			//		{
-			//			if (data.PowerUpLists == null)
-			//			{
-			//				results.Add(upgrades[i]);
-			//			}
-			//		}
-			//	}
-			//}			
+		{	
+			for (int i = 0; i < upgrades.Count; i++)
+			{
+				bool alreadyHave = false;
+
+				for (int k = 0; k < data.PowerUpLists.Count; k++)
+				{
+					if (upgrades[i] == data.PowerUpLists[k])
+					{
+						alreadyHave = true;
+						break;
+					}
+				}
+
+				if (!alreadyHave)
+					results.Add(upgrades[i]);
+			}
 		}
 		else
 		{			
