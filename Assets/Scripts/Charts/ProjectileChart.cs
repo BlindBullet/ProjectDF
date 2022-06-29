@@ -24,6 +24,7 @@ public class ProjectileChart
 	public string DestroyFx { get; set; }    
 	public string HitDestroyResult { get; set; }
 	public string DestroyResult { get; set; }
+	public int PoolingCount { get; set; }
 }
 
 public enum MoveType
