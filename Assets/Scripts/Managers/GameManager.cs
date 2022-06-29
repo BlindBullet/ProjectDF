@@ -23,6 +23,16 @@ public class GameManager : MonoSingleton<GameManager>
 
 	IEnumerator ObjectPooling()
 	{
+		foreach (KeyValuePair<string, FxChart> elem in CsvData.Ins.FxChart)
+		{
+			for (int i = 0; i < elem.Value.PoolCount; i++)
+			{
+				EffectManager.Ins.ObjectPoolingToStart(elem.Key, new Vector2(0, 30f), 0.1f);
+			}
+
+			yield return new WaitForSeconds(0.1f);
+		}
+
 		List<ProjectileController> projectiles = new List<ProjectileController>();
 
 		foreach (KeyValuePair<string, List<ProjectileChart>> elem in CsvData.Ins.ProjectileChart)
@@ -43,16 +53,6 @@ public class GameManager : MonoSingleton<GameManager>
 				ObjectManager.Ins.Push<ProjectileController>(projectiles[i]);
 			}
 		}
-
-		foreach (KeyValuePair<string, FxChart> elem in CsvData.Ins.FxChart)
-		{
-			for(int i = 0; i < elem.Value.PoolCount; i++)
-			{				
-				EffectManager.Ins.ObjectPoolingToStart(elem.Key, new Vector2(0, 30f), 0.5f);
-			}
-
-			yield return new WaitForSeconds(0.5f);
-		}		
 	}
 
 	private void Update()
@@ -64,7 +64,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			StageManager.Ins.ChangeGold(10000000000000000000000000f);
+			
 		}
 	}
 
