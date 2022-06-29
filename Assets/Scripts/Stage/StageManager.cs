@@ -53,7 +53,14 @@ public class StageManager : MonoSingleton<StageManager>
 
 	void Load()
 	{
-		SoundManager.Ins.DissolveBGMVolume(1f, 1f);
+		if (PlayerData.OnBGM)
+			SoundManager.Ins.DissolveBGMVolume(1f, 1f);
+		else
+			SoundManager.Ins.changeBGMVolume(0f);
+		
+		if(!PlayerData.OnSFX)
+			SoundManager.Ins.changeSFXVolume(0f);
+
 		TopBar.Setup();
 
 		//SetSlots();
@@ -98,7 +105,8 @@ public class StageManager : MonoSingleton<StageManager>
 	void SetHeroes(bool isFirstPlay)
 	{
 		if (isFirstPlay)
-		{			
+		{
+			PlayerData.OnDmgText = true;
 			SetStartHeroes();			
 		}
 		else

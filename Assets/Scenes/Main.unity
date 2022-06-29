@@ -2318,7 +2318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6, y: -666}
+  m_AnchoredPosition: {x: -6, y: -665.99994}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &491163317
@@ -6857,6 +6857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054915696}
   - component: {fileID: 1054915697}
+  - component: {fileID: 1054915698}
   m_Layer: 10
   m_Name: Bottom
   m_TagString: Wall
@@ -6872,7 +6873,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054915695}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -11.42, z: 0}
+  m_LocalPosition: {x: -0, y: -11.88, z: 0}
   m_LocalScale: {x: 1.5754743, y: 18.776564, z: 1}
   m_Children: []
   m_Father: {fileID: 83059439}
@@ -6891,7 +6892,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.3695094}
+  m_Offset: {x: 0, y: 0.38047814}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6902,8 +6903,29 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7, y: 0.03901884}
+  m_Size: {x: 7, y: 0.06095639}
   m_EdgeRadius: 0
+--- !u!50 &1054915698
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054915695}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1056787508
 GameObject:
   m_ObjectHideFlags: 0
@@ -8145,6 +8167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1239242553}
   - component: {fileID: 1239242554}
+  - component: {fileID: 1239242555}
   m_Layer: 10
   m_Name: Top
   m_TagString: Wall
@@ -8193,6 +8216,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7, y: 0.047730446}
   m_EdgeRadius: 0
+--- !u!50 &1239242555
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239242552}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1243104588
 GameObject:
   m_ObjectHideFlags: 0

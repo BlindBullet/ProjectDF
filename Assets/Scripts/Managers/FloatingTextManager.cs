@@ -24,7 +24,10 @@ public class FloatingTextManager : MonoSingleton<FloatingTextManager>
 	}
 
 	public void ShowDmg(Vector3 pos, string text, bool isCrit)
-	{        
+	{
+		if (!StageManager.Ins.PlayerData.OnDmgText)
+			return;
+
 		if (isCrit)
 			CritDmg.Spawn(pos, text);
 		else
@@ -33,6 +36,9 @@ public class FloatingTextManager : MonoSingleton<FloatingTextManager>
 
 	public void ShowHeal(Vector3 pos, string text)
 	{
+		if (!StageManager.Ins.PlayerData.OnDmgText)
+			return;
+
 		Heal.Spawn(pos, text);
 	}
 

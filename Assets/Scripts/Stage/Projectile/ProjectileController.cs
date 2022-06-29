@@ -21,10 +21,10 @@ public class ProjectileController : MonoBehaviour
 	Vector2 pos;
 	double atk = 0f;
 	bool existTarget;
-	float angle;
-	MoveType moveType;
-	float lifeTime;
-	private Vector3 _lastBezierDir;
+	//float angle;
+	//MoveType moveType;
+	//float lifeTime;
+	//private Vector3 _lastBezierDir;
 
 	//영웅 스킬로 생성되는 프로젝타일
 	public void Setup(ProjectileChart chart, List<HitresultChart> hitresults, HeroBase caster, Vector2 dir, EnemyBase target = null)
@@ -313,7 +313,7 @@ public class ProjectileController : MonoBehaviour
 	}
 
 	void DestroySequence()
-	{		
+	{
 		this.transform.position = new Vector3(0, -100f, 0);		
 		ObjectManager.Ins.Push<ProjectileController>(this);
 	}
@@ -345,14 +345,14 @@ public class ProjectileController : MonoBehaviour
 				return;
 			}
 			else
-			{
+			{				
 				DestroySequence();
 			}
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D collision)
-	{	
+	{
 		if (collision.CompareTag("Enemy"))
 		{	
 			EnemyBase enemyBase = collision.GetComponent<EnemyBase>();

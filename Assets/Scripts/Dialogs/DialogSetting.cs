@@ -11,6 +11,8 @@ public class DialogSetting : DialogController
 	public Toggle BgmToggle;
 	public TextMeshProUGUI SfxText;
 	public Toggle SfxToggle;
+	public Toggle DmgTextToggle;
+	public TextMeshProUGUI DmgText;
 	
 	public Button AekashicsBtn;
 	public TextMeshProUGUI AekashicsDesc;
@@ -21,15 +23,17 @@ public class DialogSetting : DialogController
 		Title.text = LanguageManager.Ins.SetString("Setting");
 		BgmText.text = LanguageManager.Ins.SetString("BGM");
 		SfxText.text = LanguageManager.Ins.SetString("SFX");
+		DmgText.text = LanguageManager.Ins.SetString("DmgText");
 		AekashicsBtnText.text = "Aekashics.moe";
 		AekashicsDesc.text = LanguageManager.Ins.SetString("desc_aekashics");
 
 		BgmToggle.isOn = StageManager.Ins.PlayerData.OnBGM;
 		SfxToggle.isOn = StageManager.Ins.PlayerData.OnSFX;
+		DmgTextToggle.isOn = StageManager.Ins.PlayerData.OnDmgText;
 
 		SetBGM();
 		SetSFX();
-
+		
 		BgmToggle.onValueChanged.RemoveAllListeners();
 		BgmToggle.onValueChanged.AddListener((bool a) => 
 		{
@@ -42,6 +46,12 @@ public class DialogSetting : DialogController
 		{
 			StageManager.Ins.PlayerData.SetSFX(a);
 			SetSFX();
+		});
+
+		DmgTextToggle.onValueChanged.RemoveAllListeners();
+		DmgTextToggle.onValueChanged.AddListener((bool a) =>
+		{
+			StageManager.Ins.PlayerData.SetDmgText(a);			
 		});
 
 		AekashicsBtn.onClick.RemoveAllListeners();
@@ -65,8 +75,6 @@ public class DialogSetting : DialogController
 		else
 			SoundManager.Ins.changeSFXVolume(0f);
 	}
-
-
 
 
 }

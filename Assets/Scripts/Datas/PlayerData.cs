@@ -28,6 +28,7 @@ public class PlayerData
 	public int TotalClearQuestCount;
 	public bool OnBGM;
 	public bool OnSFX;
+	public bool OnDmgText;
 	public DateTime OfflineStartTime;
 	public int TutorialStep = 0;
 	public DateTime QuestResetStartTime;
@@ -48,6 +49,7 @@ public class PlayerData
 		TouchAttackLv = 1;
 		OnBGM = true;
 		OnSFX = true;
+		OnDmgText = true;
 		OfflineStartTime = TimeManager.Ins.GetCurrentTime();
 		TutorialStep = 0;
 		QuestResetStartTime = TimeManager.Ins.GetCurrentTime();
@@ -380,6 +382,12 @@ public class PlayerData
 		Save();
 	}
 
+	public void SetDmgText(bool isOn)
+	{
+		OnDmgText = isOn;
+		Save();
+	}
+
 	public void SetOfflineTime()
 	{
 		OfflineStartTime = TimeManager.Ins.GetCurrentTime();
@@ -439,6 +447,7 @@ public class PlayerData
 			PlayerBuffs = data.PlayerBuffs;
 			OnBGM = data.OnBGM;
 			OnSFX = data.OnSFX;
+			OnDmgText = data.OnDmgText;
 			OfflineStartTime = data.OfflineStartTime;
 			TutorialStep = data.TutorialStep;
 			QuestResetStartTime = data.QuestResetStartTime;
