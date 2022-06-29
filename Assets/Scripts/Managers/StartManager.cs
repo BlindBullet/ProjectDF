@@ -12,7 +12,7 @@ public class StartManager : MonoBehaviour
 	public Button BackPanelBtn;
 
 	private void Start()
-	{	
+	{		
 		StartCoroutine(StartSequence());
 	}
 
