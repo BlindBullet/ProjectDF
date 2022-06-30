@@ -3,57 +3,51 @@
     "m_SelectedPackage": {
         "deviceId": "ce031603b9e65a3903",
         "name": "com.mkgames.projectdf",
-        "processId": 12222,
+        "processId": 19498,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "ce031603b9e65a3903",
-            "name": "com.mkgames.projectdf",
-            "processId": 11616,
-            "exited": true
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.mkgames.projectdf",
-            "processId": 28552,
-            "exited": true
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.mkgames.projectdf",
-            "processId": 30917,
-            "exited": true
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.mkgames.projectdf",
-            "processId": 5201,
-            "exited": true
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.mkgames.projectdf",
-            "processId": 29496,
+            "name": "com.sec.android.app.launcher",
+            "processId": 30639,
             "exited": false
         },
         {
             "deviceId": "ce031603b9e65a3903",
             "name": "com.mkgames.projectdf",
-            "processId": 27716,
+            "processId": 10250,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 10995,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 12593,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 15641,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 17747,
             "exited": false
         },
         {
             "deviceId": "ce031603b9e65a3903",
             "name": "com.mkgames.projectdf",
-            "processId": 6780,
-            "exited": false
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.mkgames.projectdf",
-            "processId": 12222,
+            "processId": 19498,
             "exited": false
         },
         {

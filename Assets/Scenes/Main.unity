@@ -1744,6 +1744,8 @@ GameObject:
   m_Component:
   - component: {fileID: 407149064}
   - component: {fileID: 407149063}
+  - component: {fileID: 407149066}
+  - component: {fileID: 407149065}
   m_Layer: 0
   m_Name: AdmobManager
   m_TagString: Untagged
@@ -1764,7 +1766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTestMode: 0
-  isReal: 0
+  isOfflineAdLoaded: 0
 --- !u!4 &407149064
 Transform:
   m_ObjectHideFlags: 0
@@ -1773,12 +1775,42 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407149062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.699176, y: 497.22928, z: 91.74807}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1243104590}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &407149065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407149062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fbf20f228b31b40b6f3bd5d628454e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AscensionRewarded: AscensionRewarded
+  QuestRewarded: QuestRewarded
+  SuppliesRewarded: SuppliesRewarded
+  OfflineRewarded: OfflineRewarded
+--- !u!114 &407149066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407149062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca82a89e0f00a424c9fbffced5d24edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameId: 4786815
+  TestMode: 0
 --- !u!1 &461589083
 GameObject:
   m_ObjectHideFlags: 0
@@ -10694,6 +10726,7 @@ MonoBehaviour:
     TotalClearQuestCount: 0
     OnBGM: 0
     OnSFX: 0
+    OnDmgText: 0
     TutorialStep: 0
   PlayerUi: {fileID: 1854060961}
   TopBar: {fileID: 846809651}

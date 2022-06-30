@@ -97,10 +97,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogSetting>().OpenDialog();
 	}
 
-	public void OpenOfflineReward()
+	public void OpenOfflineReward(bool isAdLodead = true)
 	{
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogOfflineReward") as GameObject, DialogTrf);
-		dialog.GetComponent<DialogOfflineReward>().OpenDialog();
+		dialog.GetComponent<DialogOfflineReward>().OpenDialog(isAdLodead);
 	}
 
 	public void OpenSlotPowerUp(SlotData data)

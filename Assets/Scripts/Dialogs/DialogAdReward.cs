@@ -67,10 +67,23 @@ public class DialogAdReward : DialogController
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
 
-			if (AdmobManager.Ins.isReal)
-				AdmobManager.Ins.ShowSplliesAd();
+			if (AdmobManager.Ins.isSuppliesRewardAdLoaded)
+			{
+				AdmobManager.Ins.ShowSuppliesAd();
+			}
 			else
-				CloseDialog();
+			{
+				AdmobManager.Ins.LoadAd(AdType.SuppliesReward);
+
+				if (AdmobManager.Ins.isSuppliesRewardAdLoaded)
+				{
+					AdmobManager.Ins.ShowSuppliesAd();
+				}
+				else
+				{
+					UnityAdsManager.Ins.ShowAd(AdType.SuppliesReward);
+				}
+			}
 		});
 
 		CloseBtn.gameObject.SetActive(false);
@@ -127,11 +140,23 @@ public class DialogAdReward : DialogController
 		AdBtn.onClick.AddListener(() =>
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
-
-			if (AdmobManager.Ins.isReal)
+			if (AdmobManager.Ins.isQuestRewardAdLoaded)
+			{
 				AdmobManager.Ins.ShowQuestRewardAd();
+			}
 			else
-				CloseDialog();
+			{
+				AdmobManager.Ins.LoadAd(AdType.QuestReward);
+
+				if (AdmobManager.Ins.isQuestRewardAdLoaded)
+				{
+					AdmobManager.Ins.ShowQuestRewardAd();
+				}
+				else
+				{
+					UnityAdsManager.Ins.ShowAd(AdType.QuestReward);
+				}
+			}
 		});
 
 		Show(false);

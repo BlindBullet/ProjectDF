@@ -20,9 +20,11 @@ public class DialogOfflineReward : DialogController
 	public TextMeshProUGUI AdGetBtnText;
 	public double resultValue;
 	public double resultAddValue;
+	bool isAdLoaded = true;
 
-	public void OpenDialog()
+	public void OpenDialog(bool isAdLoaded)
 	{
+		this.isAdLoaded = isAdLoaded;
 		_Dialog = this;
 		TitleText.text = LanguageManager.Ins.SetString("title_popup_offline_reward");
 
@@ -74,30 +76,26 @@ public class DialogOfflineReward : DialogController
 		AdGetBtn.onClick.AddListener(() => 
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
-			
-			if (AdmobManager.Ins.isReal)
-			{
-				rewardValue = rewardValue * 2f;
-				addRewardValue = addRewardValue * 2f;
 
-				resultValue = rewardValue;
-				resultAddValue = addRewardValue;
+			resultValue = rewardValue;
+			resultAddValue = rewardValue;
 
+			if (isAdLoaded)
 				AdmobManager.Ins.ShowOfflineRewardAd();
-			}	
 			else
 			{
-				StageManager.Ins.ChangeGold(rewardValue + addRewardValue);
-				DialogManager.Ins.OpenReceiveReward(RewardType.Gold, rewardValue + addRewardValue);
-				CloseDialog();
-			}
+				UnityAdsManager.Ins.ShowAd(AdType.OfflineReward);
+			}	
 		});
 	}
 
 	public IEnumerator ShowAdReward()
 	{
 		yield return null;
-				
+
+		resultValue = resultValue * 2f;
+		resultAddValue = resultAddValue * 2f;
+
 		GetAdReward(resultValue, resultAddValue);
 	}
 

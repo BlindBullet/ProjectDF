@@ -92,14 +92,16 @@ public class StageManager : MonoSingleton<StageManager>
 	IEnumerator OpenOfflineReward(bool isFirstPlay)
 	{
 		yield return StartCoroutine(TimeManager.Ins.GetTime());
-		
-		if (!isFirstPlay)
-		{
-			OfflineRewardPanel.SetActive(true);
-			yield return new WaitForSeconds(3f);
-			DialogManager.Ins.OpenOfflineReward();
-			OfflineRewardPanel.SetActive(false);
-		}
+
+		if(!isFirstPlay)
+			AdmobManager.Ins.LoadAd(AdType.OfflineReward);
+
+		yield return new WaitForSeconds(5f);
+
+		if (!AdmobManager.Ins.isOfflineAdLoaded)
+			AdmobManager.Ins.LoadAd(AdType.OfflineReward);
+
+		DialogManager.Ins.OpenOfflineReward(AdmobManager.Ins.isOfflineAdLoaded);
 	}
 
 	void SetHeroes(bool isFirstPlay)

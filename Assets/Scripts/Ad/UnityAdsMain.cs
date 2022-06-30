@@ -8,9 +8,9 @@ public class UnityAdsMain : MonoBehaviour, IUnityAdsInitializationListener
 	public string GameId = "4786815";
 	public bool TestMode;
 
-	private void Awake()
-	{
-		Advertisement.Initialize(GameId, TestMode, this);
+	void Start()
+	{	
+		Advertisement.Initialize(GameId, TestMode, this);		
 	}
 
 	public void OnInitializationComplete()

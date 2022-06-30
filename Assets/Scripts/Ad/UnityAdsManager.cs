@@ -6,21 +6,45 @@ using UnityEngine.UI;
 
 public class UnityAdsManager : MonoSingleton<UnityAdsManager>, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-	public string adUnitId = "Rewarded_Android";
+	public string AscensionRewarded = "AscensionRewarded";
+	public string QuestRewarded = "QuestRewarded";	
+	public string SuppliesRewarded = "SuppliesRewarded";
+	public string OfflineRewarded = "OfflineRewarded";
 	AdType adType;
 
 	// Start is called before the first frame update
 	void Start()
-	{   
-		this.LoadAd();        
+	{
+		this.LoadAd();
 	}
 
 	public void LoadAd()
-	{
-		// IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
-		Debug.Log("Loading Ad: " + adUnitId);
-		Advertisement.Load(adUnitId, this);
+	{		
+		Advertisement.Load(QuestRewarded, this);
+		Advertisement.Load(SuppliesRewarded, this);
+		Advertisement.Load(AscensionRewarded, this);
+		Advertisement.Load(OfflineRewarded, this);
 	}
+
+	public void LoadAd(AdType type)
+	{
+		switch (type)
+		{			
+			case AdType.QuestReward:
+				Advertisement.Load(QuestRewarded, this);
+				break;
+			case AdType.SuppliesReward:
+				Advertisement.Load(SuppliesRewarded, this);
+				break;
+			case AdType.AscensionReward:
+				Advertisement.Load(AscensionRewarded, this);
+				break;
+			case AdType.OfflineReward:
+				Advertisement.Load(OfflineRewarded, this);
+				break;
+		}
+	}
+
 	public void OnUnityAdsAdLoaded(string placementId)
 	{
 		Debug.LogFormat("OnUnityAdsAdLoaded: {0}", placementId);
@@ -28,6 +52,7 @@ public class UnityAdsManager : MonoSingleton<UnityAdsManager>, IUnityAdsLoadList
 
 	public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
 	{
+		DialogManager.Ins.OpenCautionBar("cant_play_ad");
 		Debug.LogFormat("OnUnityAdsFailedToLoad: {0}, {1}, {2}", placementId, error, message);
 	}
 
@@ -38,7 +63,23 @@ public class UnityAdsManager : MonoSingleton<UnityAdsManager>, IUnityAdsLoadList
 		this.adType = adType;
 
 		// Then show the ad:
-		Advertisement.Show(adUnitId, this);
+		switch (adType)
+		{
+			case AdType.AscensionReward:
+				Advertisement.Show(AscensionRewarded, this);
+				break;
+			case AdType.OfflineReward:
+				Advertisement.Show(OfflineRewarded, this);
+				break;
+			case AdType.QuestRefresh:
+				break;
+			case AdType.QuestReward:
+				Advertisement.Show(QuestRewarded, this);
+				break;
+			case AdType.SuppliesReward:
+				Advertisement.Show(SuppliesRewarded, this);
+				break;
+		}		
 	}
 
 	public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
@@ -58,27 +99,20 @@ public class UnityAdsManager : MonoSingleton<UnityAdsManager>, IUnityAdsLoadList
 
 	public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
 	{
-		if (adUnitId.Equals(placementId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
+		switch (placementId)
 		{
-			switch (adType)
-			{
-				case AdType.AscensionReward:
-					StartCoroutine(DialogAscension._Dialog.GetAdReward());
-					break;
-				case AdType.OfflineReward:
-					StartCoroutine(DialogOfflineReward._Dialog.ShowAdReward());
-					break;
-				case AdType.QuestReward:
-					StartCoroutine(DialogAdReward._Dialog.GetQuestReward(true));
-					break;
-				case AdType.SuppliesReward:
-					DialogAdReward dialog = DialogAdReward._Dialog;
-					StartCoroutine(dialog.GetSuppliesReward(true));
-					break;
-			}
-
-			// Load another ad:
-			Advertisement.Load(adUnitId, this);
+			case "OfflineRewarded":
+				StartCoroutine(DialogOfflineReward._Dialog.ShowAdReward());
+				break;
+			case "SuppliesRewarded":
+				DialogAdReward dialog = DialogAdReward._Dialog;
+				StartCoroutine(dialog.GetSuppliesReward(true));
+				LoadAd(AdType.SuppliesReward);
+				break;
+			case "QuestRewarded":
+				StartCoroutine(DialogAdReward._Dialog.GetQuestReward(true));
+				LoadAd(AdType.QuestReward);
+				break;
 		}
 	}
 }

@@ -18,54 +18,49 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	RewardedAd ascensionRewardAd;
 	RewardedAd offlineRewardAd;	
 	AdRequest request;
-	public bool isReal = false;
+	[HideInInspector] public bool isOfflineAdLoaded = false;
+	[HideInInspector] public bool isSuppliesRewardAdLoaded = false;
+	[HideInInspector] public bool isQuestRewardAdLoaded = false;
 
-	void Start()
+	private void Start()
 	{
-		PlayInstallReferrer.GetInstallReferrerInfo((a)=> 
-		{			
-			if(a.InstallReferrer != null)
-			{				
-				isReal = true;		
-			}
-			else
-			{			
-				isReal = false;
-				Debug.Log("aaaaaaa");
-			}
-		});
-		
 		// 모바일 광고 SDK를 초기화함.
 		MobileAds.Initialize(initStatus => { });
 
-		request = new AdRequest.Builder().Build();
-				
+		offlineRewardAd = new RewardedAd(isTestMode ? rewardTestID : offlineRewardId);
+		LoadAd(AdType.OfflineReward);
 		suppliesAd = new RewardedAd(isTestMode ? rewardTestID : suppliesRewardId);
 		LoadAd(AdType.SuppliesReward);
 		questRefreshAd = new InterstitialAd(isTestMode ? InterstitialAdTestId : questRefreshRewardId);
 		LoadAd(AdType.QuestRefresh);
 		questRewardAd = new RewardedAd(isTestMode ? rewardTestID : questRewardId);
-		LoadAd(AdType.QuestReward);		
+		LoadAd(AdType.QuestReward);
 		ascensionRewardAd = new RewardedAd(isTestMode ? rewardTestID : ascensionRewardId);
 		LoadAd(AdType.AscensionReward);
-		offlineRewardAd = new RewardedAd(isTestMode ? rewardTestID : offlineRewardId);
-		LoadAd(AdType.OfflineReward);
-				
-		this.suppliesAd.OnUserEarnedReward += SuccessSuppliesAd;		
+
+		this.suppliesAd.OnAdLoaded += OnLoadedSuppliesRewardAd;
+		this.suppliesAd.OnAdFailedToLoad += OnFailLoadedSuppliesRewardAd;
+		this.suppliesAd.OnUserEarnedReward += SuccessSuppliesAd;
 		this.suppliesAd.OnAdFailedToShow += FailedSuppliesAd;
 
+		this.questRewardAd.OnAdLoaded += OnLoadedQuestRewardAd;
+		this.questRewardAd.OnAdFailedToLoad += OnFailLoadedQuestRewardAd;
 		this.questRewardAd.OnUserEarnedReward += SuccessQuestRewardAd;
 		this.questRewardAd.OnAdFailedToShow += FailedQuestRewardAd;
 
 		this.ascensionRewardAd.OnUserEarnedReward += SuccessAscensionRewardAd;
 		this.ascensionRewardAd.OnAdFailedToShow += FailedAscensionRewardAd;
 
+		this.offlineRewardAd.OnAdLoaded += OnLoadedOfflineRewardAd;
+		this.offlineRewardAd.OnAdFailedToLoad += OnFailLoadedOfflineRewardAd;
 		this.offlineRewardAd.OnUserEarnedReward += SuccessOfflineRewardAd;
 		this.offlineRewardAd.OnAdFailedToShow += FailedOfflineRewardAd;
 	}
 
-	void LoadAd(AdType type)
+	public void LoadAd(AdType type)
 	{
+		request = new AdRequest.Builder().Build();
+
 		switch (type)
 		{			
 			case AdType.SuppliesReward:
@@ -90,7 +85,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	const string suppliesRewardId = "ca-app-pub-7304648099168356/5785904836";
 	RewardedAd rewardAd;
 
-	public void ShowSplliesAd()
+	public void ShowSuppliesAd()
 	{
 		suppliesAd.Show();
 	}
@@ -104,8 +99,19 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 
 	void FailedSuppliesAd(object sender, AdErrorEventArgs args)
 	{
-		Debug.Log("애드몹 광고 실패");
-		//UnityAdsManager.Ins.ShowAd(AdType.SuppliesReward);
+		Debug.Log("애드몹 광고 실패");		
+	}
+
+	public void OnLoadedSuppliesRewardAd(object sender, EventArgs args)
+	{
+		Debug.Log("로드 완료");
+		isSuppliesRewardAdLoaded = true;
+	}
+
+	public void OnFailLoadedSuppliesRewardAd(object sender, AdFailedToLoadEventArgs args)
+	{
+		Debug.Log("로드 실패");
+		isSuppliesRewardAdLoaded = false;
 	}
 	#endregion
 
@@ -125,8 +131,19 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 
 	void FailedQuestRewardAd(object sender, AdErrorEventArgs args)
 	{
-		Debug.Log("애드몹 광고 실패");
-		//UnityAdsManager.Ins.ShowAd(AdType.QuestReward);
+		Debug.Log("애드몹 광고 실패");		
+	}
+
+	public void OnLoadedQuestRewardAd(object sender, EventArgs args)
+	{
+		Debug.Log("로드 완료");
+		isQuestRewardAdLoaded = true;
+	}
+
+	public void OnFailLoadedQuestRewardAd(object sender, AdFailedToLoadEventArgs args)
+	{
+		Debug.Log("로드 실패");
+		isQuestRewardAdLoaded = false;
 	}
 	#endregion
 
@@ -155,20 +172,30 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	const string offlineRewardId = "ca-app-pub-7304648099168356/6992009449";
 
 	public void ShowOfflineRewardAd()
-	{	
-		offlineRewardAd.Show();		
+	{
+		offlineRewardAd.Show();
+	}
+
+	public void OnLoadedOfflineRewardAd(object sender, EventArgs args) 
+	{
+		Debug.Log("로드 완료");
+		isOfflineAdLoaded = true;		
+	}
+
+	public void OnFailLoadedOfflineRewardAd(object sender, AdFailedToLoadEventArgs args)
+	{
+		Debug.Log("로드 실패");
+		isOfflineAdLoaded = false;
 	}
 
 	void SuccessOfflineRewardAd(object sender, Reward args)
 	{
-		StartCoroutine(DialogOfflineReward._Dialog.ShowAdReward());
-		LoadAd(AdType.OfflineReward);
+		StartCoroutine(DialogOfflineReward._Dialog.ShowAdReward());		
 	}
 
 	void FailedOfflineRewardAd(object sender, AdErrorEventArgs args)
 	{
-		Debug.Log("애드몹 광고 실패");
-		//UnityAdsManager.Ins.ShowAd(AdType.OfflineReward);
+		Debug.Log("애드몹 광고 실패");		
 	}
 	#endregion
 
