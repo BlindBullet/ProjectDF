@@ -1528,6 +1528,21 @@ public class SEData
 
 		if (Chart.TargetType == SETargetType.Enemy && Chart.EffectType == SEEffectType.StatChange && Chart.EParam2 == "Gold")
 		{
+			return ConstantData.CalcValue(double.Parse(Chart.EParam5), Chart.LvUpIncRate, Lv - 1);
+		}
+
+		if (Chart.TargetType == SETargetType.Hero && Chart.EffectType == SEEffectType.StatChange && Chart.EParam2 == "Atk")
+		{
+			return ConstantData.CalcValue(double.Parse(Chart.EParam5), Chart.LvUpIncRate, Lv - 1);
+		}
+
+		return Value = (double.Parse(Chart.EParam5) + (Chart.LvUpIncValue * (Lv - 1))) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, (Lv - 1)) : 1f);
+	}
+
+	public double NextSetValue()
+	{
+		if (Chart.TargetType == SETargetType.Enemy && Chart.EffectType == SEEffectType.StatChange && Chart.EParam2 == "Gold")
+		{
 			return ConstantData.CalcValue(double.Parse(Chart.EParam5), Chart.LvUpIncRate, Lv);
 		}
 
@@ -1536,11 +1551,6 @@ public class SEData
 			return ConstantData.CalcValue(double.Parse(Chart.EParam5), Chart.LvUpIncRate, Lv);
 		}
 
-		return Value = (double.Parse(Chart.EParam5) + (Chart.LvUpIncValue * (Lv - 1))) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, (Lv - 1)) : 1f);
-	}
-
-	public double NextSetValue()
-	{
 		return Value = (double.Parse(Chart.EParam5) + (Chart.LvUpIncValue * Lv)) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, Lv) : 1f);
 	}
 }
