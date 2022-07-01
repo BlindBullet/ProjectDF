@@ -16,7 +16,7 @@ public class DialogAdReward : DialogController
 	public Button AdBtn;
 	public TextMeshProUGUI AdBtnText;
 	public SuppliesChart suppliesChart;
-	public QuestChart questChart;
+	public QuestChart questChart;	
 
 	public void OpenDialog(SuppliesChart chart)
 	{
@@ -140,22 +140,33 @@ public class DialogAdReward : DialogController
 		AdBtn.onClick.AddListener(() =>
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
-			if (AdmobManager.Ins.isQuestRewardAdLoaded)
-			{
-				AdmobManager.Ins.ShowQuestRewardAd();
+
+			if (AdmobManager.Ins.isQuestRewardAdInterstitial)
+			{			
+				AdmobManager.Ins.ShowQuestRewardAd2();
+				AdmobManager.Ins.isQuestRewardAdInterstitial = false;
 			}
 			else
-			{
-				AdmobManager.Ins.LoadAd(AdType.QuestReward);
-
+			{				
 				if (AdmobManager.Ins.isQuestRewardAdLoaded)
 				{
 					AdmobManager.Ins.ShowQuestRewardAd();
 				}
 				else
 				{
-					UnityAdsManager.Ins.ShowAd(AdType.QuestReward);
+					AdmobManager.Ins.LoadAd(AdType.QuestReward);
+
+					if (AdmobManager.Ins.isQuestRewardAdLoaded)
+					{
+						AdmobManager.Ins.ShowQuestRewardAd();
+					}
+					else
+					{
+						UnityAdsManager.Ins.ShowAd(AdType.QuestReward);
+					}
 				}
+
+				AdmobManager.Ins.isQuestRewardAdInterstitial = true;
 			}
 		});
 

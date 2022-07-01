@@ -14,6 +14,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	const string InterstitialAdTestId = "ca-app-pub-3940256099942544/1033173712";
 	RewardedAd suppliesAd;
 	RewardedAd questRewardAd;
+	InterstitialAd questRewardAd2;
 	InterstitialAd questRefreshAd;	
 	RewardedAd ascensionRewardAd;
 	RewardedAd offlineRewardAd;	
@@ -21,6 +22,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	[HideInInspector] public bool isOfflineAdLoaded = false;
 	[HideInInspector] public bool isSuppliesRewardAdLoaded = false;
 	[HideInInspector] public bool isQuestRewardAdLoaded = false;
+	[HideInInspector] public bool isQuestRewardAdInterstitial = false;
 
 	private void Start()
 	{
@@ -33,6 +35,8 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		LoadAd(AdType.SuppliesReward);
 		questRefreshAd = new InterstitialAd(isTestMode ? InterstitialAdTestId : questRefreshRewardId);
 		LoadAd(AdType.QuestRefresh);
+		questRewardAd2 = new InterstitialAd(isTestMode ? InterstitialAdTestId : questRefreshReward2Id);
+		LoadAd(AdType.QuestReward2);
 		questRewardAd = new RewardedAd(isTestMode ? rewardTestID : questRewardId);
 		LoadAd(AdType.QuestReward);
 		ascensionRewardAd = new RewardedAd(isTestMode ? rewardTestID : ascensionRewardId);
@@ -71,6 +75,9 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 				break;
 			case AdType.QuestReward:
 				questRewardAd.LoadAd(request);
+				break;
+			case AdType.QuestReward2:
+				questRewardAd2.LoadAd(request);
 				break;
 			case AdType.AscensionReward:
 				ascensionRewardAd.LoadAd(request);
@@ -211,12 +218,42 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		LoadAd(AdType.QuestRefresh);
 	}
 	#endregion
+
+	#region Äù½ºÆ® ¸®¿öµå Àü¸é ±¤°í	
+	const string questRefreshReward2Id = "ca-app-pub-7304648099168356/4319200910";
+
+	public void ShowQuestRewardAd2()
+	{
+		if (questRewardAd2.IsLoaded())
+		{
+			questRewardAd2.Show();
+			StartCoroutine(DialogAdReward._Dialog.GetQuestReward(true));
+			LoadAd(AdType.QuestReward2);
+		}
+		else
+		{
+			LoadAd(AdType.QuestReward2);
+
+			if (questRewardAd2.IsLoaded())
+			{
+				questRewardAd2.Show();
+				StartCoroutine(DialogAdReward._Dialog.GetQuestReward(true));
+				LoadAd(AdType.QuestReward2);
+			}
+			else
+			{
+				DialogManager.Ins.OpenCautionBar("cant_play_ad");
+			}
+		}
+	}
+	#endregion
 }
 
 public enum AdType
 {
 	SuppliesReward,
 	QuestReward,
+	QuestReward2,
 	QuestRefresh,	
 	AscensionReward,
 	OfflineReward,
