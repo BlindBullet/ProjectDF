@@ -137,7 +137,7 @@ public static class ConstantData
 		return CalcValue(IncStageStartGold, IncStageStartGoldFactor, StageManager.Ins.PlayerStat.StartStage - 1);
 	}
 
-	static double CalcValue(double beginValue, float growthRate, int lv)
+	public static double CalcValue(double beginValue, float growthRate, int lv)
 	{
 		return Math.Round(beginValue * (Mathf.Pow(growthRate, lv) - 1) / (growthRate - 1));
 	}
