@@ -1526,6 +1526,16 @@ public class SEData
 		if (Lv == 0)
 			return 0f;
 
+		if (Chart.TargetType == SETargetType.Enemy && Chart.EffectType == SEEffectType.StatChange && Chart.EParam2 == "Gold")
+		{
+			return ConstantData.CalcValue(double.Parse(Chart.EParam5), Chart.LvUpIncRate, Lv);
+		}
+
+		if (Chart.TargetType == SETargetType.Hero && Chart.EffectType == SEEffectType.StatChange && Chart.EParam2 == "Atk")
+		{
+			return ConstantData.CalcValue(double.Parse(Chart.EParam5), Chart.LvUpIncRate, Lv);
+		}
+
 		return Value = (double.Parse(Chart.EParam5) + (Chart.LvUpIncValue * (Lv - 1))) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, (Lv - 1)) : 1f);
 	}
 
