@@ -101,6 +101,9 @@ public class UnityAdsManager : MonoSingleton<UnityAdsManager>, IUnityAdsLoadList
 	{
 		switch (placementId)
 		{
+			case "AscensionRewarded":
+				StartCoroutine(DialogAscension._Dialog.GetAdReward());
+				break;
 			case "OfflineRewarded":
 				StartCoroutine(DialogOfflineReward._Dialog.ShowAdReward());
 				break;

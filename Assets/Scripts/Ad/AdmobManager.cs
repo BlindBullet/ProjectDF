@@ -23,6 +23,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	[HideInInspector] public bool isSuppliesRewardAdLoaded = false;
 	[HideInInspector] public bool isQuestRewardAdLoaded = false;
 	[HideInInspector] public bool isQuestRewardAdInterstitial = false;
+	[HideInInspector] public bool isAscensionRewardAdLoaded = false;
 
 	private void Start()
 	{
@@ -52,6 +53,8 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		this.questRewardAd.OnUserEarnedReward += SuccessQuestRewardAd;
 		this.questRewardAd.OnAdFailedToShow += FailedQuestRewardAd;
 
+		this.ascensionRewardAd.OnAdLoaded += OnLoadedAscensionRewardAd;
+		this.ascensionRewardAd.OnAdFailedToLoad += OnFailLoadedAscensionRewardAd;
 		this.ascensionRewardAd.OnUserEarnedReward += SuccessAscensionRewardAd;
 		this.ascensionRewardAd.OnAdFailedToShow += FailedAscensionRewardAd;
 
@@ -172,6 +175,18 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	{
 		Debug.Log("애드몹 광고 실패");
 		//UnityAdsManager.Ins.ShowAd(AdType.AscensionReward);
+	}
+
+	public void OnLoadedAscensionRewardAd(object sender, EventArgs args)
+	{
+		Debug.Log("로드 완료");
+		isAscensionRewardAdLoaded = true;
+	}
+
+	public void OnFailLoadedAscensionRewardAd(object sender, AdFailedToLoadEventArgs args)
+	{
+		Debug.Log("로드 실패");
+		isAscensionRewardAdLoaded = false;
 	}
 	#endregion
 

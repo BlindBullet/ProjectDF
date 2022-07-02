@@ -76,7 +76,24 @@ public class DialogAscension : DialogController
 			AdAscensionBtn.onClick.AddListener(() =>
 			{
 				SoundManager.Ins.PlaySFX("se_button_2");
-				AdmobManager.Ins.ShowAscensionRewardAd();
+				if (AdmobManager.Ins.isAscensionRewardAdLoaded)
+				{
+					AdmobManager.Ins.ShowAscensionRewardAd();
+				}
+				else
+				{
+					AdmobManager.Ins.LoadAd(AdType.AscensionReward);
+
+					if (AdmobManager.Ins.isAscensionRewardAdLoaded)
+					{
+						AdmobManager.Ins.ShowAscensionRewardAd();
+					}
+					else
+					{
+						UnityAdsManager.Ins.ShowAd(AdType.AscensionReward);
+					}
+				}
+				
 			});
 		}
 		else
