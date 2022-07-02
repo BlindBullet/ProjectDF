@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class DialogAdReward : DialogController
 {
@@ -105,27 +106,27 @@ public class DialogAdReward : DialogController
 		{
 			case RewardType.Gold:
 				rewardValue = ConstantData.GetGoldFromTime(chart.RewardValue, StageManager.Ins.PlayerData.Stage);
-				rewardValue = rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
+				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.CalcValue);
 				RewardDesc.text = LanguageManager.Ins.SetString("Gold") + " " + rewardValue.ToCurrencyString();
 				break;
 			case RewardType.SoulStone:
-				rewardValue = rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
+				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.CalcValue);
 				RewardDesc.text = LanguageManager.Ins.SetString("SoulStone") + " " + rewardValue;
 				break;
 			case RewardType.GameSpeed:
-				rewardValue = rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
+				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.Time);
 				RewardDesc.text = LanguageManager.Ins.SetString("GameSpeedInc") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
 				break;
 			case RewardType.UseAutoSkill:
-				rewardValue = rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
+				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.Time);
 				RewardDesc.text = LanguageManager.Ins.SetString("UseAutoSkill") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
 				break;
 			case RewardType.GainGold:
-				rewardValue = rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f));
+				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				RewardIcon.SetIcon(chart.RewardType, -1, RewardValueShowType.Time);
 				RewardDesc.text = LanguageManager.Ins.SetString("GainGold") + " " + rewardValue + LanguageManager.Ins.SetString("Minute");
 				break;
