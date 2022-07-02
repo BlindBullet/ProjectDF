@@ -29,11 +29,11 @@ Castle7,,,,,,,Player,,,,Quest,Dec,Time,,,5,5,
 Castle8,,,,,,,Player,,,,Stage,Inc,AutoSkill,,,0.5,0.5,
 Castle9,,,,,,,Player,,,,Stage,Inc,Moat,,,5,5,
 Castle10,,,,,,,Player,,,,Stage,Inc,TouchSkillCool,,,2.5,0.5,
-Relic1,,,,,,,Enemy,All,,,StatChange,Inc,Gold,,,2.5,2.5,1.1
+Relic1,,,,,,,Enemy,All,,,StatChange,Inc,Gold,,,2.5,2.5,1.15
 Relic2,,,,,,,Player,,,,Stage,Dec,LvUpGold,,,2,2,
-Relic3,,,,,,,Hero,Attr,Red,,StatChange,Inc,Atk,,,5,5,1.01
-Relic4,,,,,,,Hero,Attr,Blue,,StatChange,Inc,Atk,,,5,5,1.01
-Relic5,,,,,,,Hero,Attr,Green,,StatChange,Inc,Atk,,,5,5,1.01
+Relic3,,,,,,,Hero,Attr,Red,,StatChange,Inc,Atk,,,5,5,1.015
+Relic4,,,,,,,Hero,Attr,Blue,,StatChange,Inc,Atk,,,5,5,1.015
+Relic5,,,,,,,Hero,Attr,Green,,StatChange,Inc,Atk,,,5,5,1.015
 Relic6,,,,,,,Hero,Attr,Red,,StatChange,Inc,Spd,,,0.1,0.1,
 Relic7,,,,,,,Hero,Attr,Blue,,StatChange,Inc,Spd,,,0.1,0.1,
 Relic8,,,,,,,Hero,Attr,Green,,StatChange,Inc,Spd,,,0.1,0.1,
