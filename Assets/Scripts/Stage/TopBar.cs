@@ -64,7 +64,7 @@ public class TopBar : MonoBehaviour
 			int hour = (int)(leftTime / 3600f);
 			int min = (int)((leftTime % 3600f) / 60f);			
 						
-			string hourStr = hour < 10 ? "0" + hour : hour.ToString();
+			string hourStr = hour.ToString();
 			string minStr = "";  
 
 			if(hour <= 0)
@@ -74,7 +74,7 @@ public class TopBar : MonoBehaviour
 			}
 			else
 			{
-				minStr = min < 10 ? "0" + (min + 1) : (min + 1).ToString();
+				minStr = min < 9 ? "0" + (min + 1) : (min + 1).ToString();
 				GameSpeedTimeText.text = hourStr + "H " + minStr + "M";
 			}
 			
@@ -94,7 +94,7 @@ public class TopBar : MonoBehaviour
 			int hour = (int)(leftTime / 3600f);
 			int min = (int)((leftTime % 3600f) / 60f);
 
-			string hourStr = hour < 10 ? "0" + hour : hour.ToString();
+			string hourStr = hour.ToString();
 			string minStr = "";
 
 			if (hour <= 0)
@@ -104,7 +104,7 @@ public class TopBar : MonoBehaviour
 			}
 			else
 			{
-				minStr = min < 10 ? "0" + (min + 1) : (min + 1).ToString();
+				minStr = min < 9 ? "0" + (min + 1) : (min + 1).ToString();
 				GainGoldTimeText.text = hourStr + "H " + minStr + "M";
 			}
 
@@ -124,7 +124,7 @@ public class TopBar : MonoBehaviour
 			int hour = (int)(leftTime / 3600f);
 			int min = (int)((leftTime % 3600f) / 60f);
 
-			string hourStr = hour < 10 ? "0" + hour : hour.ToString();
+			string hourStr = hour.ToString();
 			string minStr = "";
 
 			if (hour <= 0)
@@ -134,7 +134,7 @@ public class TopBar : MonoBehaviour
 			}
 			else
 			{
-				minStr = min < 10 ? "0" + (min + 1) : (min + 1).ToString();
+				minStr = min < 9 ? "0" + (min + 1) : (min + 1).ToString();
 				AutoUseSkillTimeText.text = hourStr + "H " + minStr + "M";
 			}
 
