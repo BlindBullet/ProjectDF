@@ -65,7 +65,7 @@ public static class ConstantData
 	//퀘스트 리셋이 가능한 시간(초)
 	public static ObscuredInt QuestResetPossibleSec = 180;
 	//파워업 리셋 가격
-	public static ObscuredDouble PowerUpRefreshCost = 2;
+	public static ObscuredDouble PowerUpRefreshCost = 5;
 	//보급품이 나오기 시작할 스테이지
 	public static ObscuredInt SuppliesAppearPossibleStage = 7;
 	//영웅 등급업 시작 가격
