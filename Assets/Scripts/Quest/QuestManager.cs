@@ -70,7 +70,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
 		foreach (KeyValuePair<string, QuestChart> elem in CsvData.Ins.QuestChart)
 		{
-			if(elem.Value.Lv >= lv)
+			if(elem.Value.Lv <= lv)
 			{
 				bool alreadyHave = false;
 
