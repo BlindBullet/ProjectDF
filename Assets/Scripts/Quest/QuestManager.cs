@@ -26,8 +26,8 @@ public class QuestManager : MonoSingleton<QuestManager>
 		QuestChart _chart = CsvData.Ins.QuestChart[data.Id];
 		SendReward(_chart);
 
-		//퀘스트 클리어 카운트 증가
-		StageManager.Ins.PlayerData.ClearQuest();
+		//퀘스트 클리어 카운트 증가		
+		StageManager.Ins.PlayerData.ClearQuest(_chart.Lv);
 
 		//퀘스트 플레이어 레벨업 가능인지 확인 가능하다면 레벨업
 		QuestPlayerLvUp();
@@ -70,7 +70,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
 		foreach (KeyValuePair<string, QuestChart> elem in CsvData.Ins.QuestChart)
 		{
-			if(elem.Value.Lv == lv || elem.Value.Lv == lv - 1 || elem.Value.Lv == lv + 1)
+			if(elem.Value.Lv >= lv)
 			{
 				bool alreadyHave = false;
 

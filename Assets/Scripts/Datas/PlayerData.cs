@@ -288,10 +288,14 @@ public class PlayerData
 		Save();
 	}
 
-	public void ClearQuest()
+	public void ClearQuest(int lv)
 	{
-		ClearQuestCount++;
-		TotalClearQuestCount++;
+		if(QuestLv <= lv)
+		{
+			ClearQuestCount++;
+			TotalClearQuestCount++;
+		}
+
 		Save();
 	}
 

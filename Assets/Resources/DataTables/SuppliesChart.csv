@@ -1,5 +1,5 @@
 ﻿Id,Icon,IconSize,Prob,ShowAd,RewardType,RewardValue
-2,SoulStone,1.5,60,True,SoulStone,10
-3,GameSpeed,2.3,15,True,GameSpeed,6
+2,SoulStone,1.5,45,True,SoulStone,10
+3,GameSpeed,2.3,25,True,GameSpeed,6
 4,GainGold,2.3,10,True,GainGold,6
-5,UseAutoSkill,2.3,15,True,UseAutoSkill,6
+5,UseAutoSkill,2.3,20,True,UseAutoSkill,6
