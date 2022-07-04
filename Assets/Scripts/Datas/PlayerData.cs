@@ -32,8 +32,8 @@ public class PlayerData
 	public DateTime OfflineStartTime;
 	public int TutorialStep = 0;
 	public DateTime QuestResetStartTime;
-	public int CheckLv;
-	public int CheckCount;
+	public int CheckLv = 1;
+	public int CheckCount = 0;
 	public DateTime CheckStartTime;
 
 	public void Init()
@@ -58,7 +58,7 @@ public class PlayerData
 		QuestResetStartTime = TimeManager.Ins.GetCurrentTime();
 		CheckLv = 1;
 		CheckCount = 0;
-		CheckStartTime = DateTime.UtcNow;
+		CheckStartTime = TimeManager.Ins.GetCurrentTime();
 
 		ResisterHeroes();
 		ResisterRelics();
@@ -416,8 +416,27 @@ public class PlayerData
 		Save();
 	}
 
+	public void IncCheckCount()
+	{
+		CheckCount++;
+		CheckStartTime = TimeManager.Ins.GetCurrentTime();
+
+		if (CheckCount >= 15)
+		{			
+			CheckLvUp();
+		}	
+
+		Save();
+	}
+
+	void CheckLvUp()
+	{
+		CheckLv++;
+		CheckCount = 0;
+	}
+
 	public void Save()
-	{	
+	{
 		ES3.Save<PlayerData>("PlayerData", this);
 	}
 
@@ -461,7 +480,12 @@ public class PlayerData
 			OfflineStartTime = data.OfflineStartTime;
 			TutorialStep = data.TutorialStep;
 			QuestResetStartTime = data.QuestResetStartTime;
-			CheckLv = data.CheckLv;
+
+			if (data.CheckLv == 0)
+				CheckLv = 1;
+			else
+				CheckLv = data.CheckLv;
+						
 			CheckCount = data.CheckCount;
 			CheckStartTime = data.CheckStartTime;
 

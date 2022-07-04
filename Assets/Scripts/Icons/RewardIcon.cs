@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.U2D;
+using System;
 
 public class RewardIcon : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class RewardIcon : MonoBehaviour
 	public Image IconImg;
 	public TextMeshProUGUI Amount;
 	public GameObject CheckObj;
+	public Image SelectedFrame;
+	public Button Btn;
 
 	public void SetIcon(QuestChart chart)
 	{
@@ -82,6 +85,52 @@ public class RewardIcon : MonoBehaviour
 					Amount.text = value.ToString();
 				break;
 		}
+	}
+
+	public void SetIcon(AttendanceChart chart, int lv)
+	{
+		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.RewardType.ToString());
+
+		double value = chart.Amount + (chart.Amount * 0.1f * lv);
+
+		switch (chart.RewardType)
+		{
+			case RewardType.Gold:
+				Amount.text = Math.Round(value) + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.GameSpeed:
+				Amount.text = Math.Round(value) + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.UseAutoSkill:
+				Amount.text = Math.Round(value) + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.GainGold:
+				Amount.text = Math.Round(value) + LanguageManager.Ins.SetString("Minute");
+				break;
+			case RewardType.SoulStone:
+				Amount.text = Math.Round(value).ToCurrencyString();
+				break;
+		}
+	}
+
+	public void CheckOn()
+	{
+		CheckObj.SetActive(true);
+	}
+
+	public void CheckOff()
+	{
+		CheckObj.SetActive(false);
+	}
+
+	public void SelectedFrameOn()
+	{
+		SelectedFrame.gameObject.SetActive(true);
+	}
+
+	public void SelectedFrameOff()
+	{
+		SelectedFrame.gameObject.SetActive(false);
 	}
 
 

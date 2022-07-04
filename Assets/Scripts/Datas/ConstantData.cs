@@ -76,6 +76,8 @@ public static class ConstantData
 	public static ObscuredFloat IncStageStartGold = 1000f;
 	//시작 스테이지 증가에 따른 얻을 골드양 계수
 	public static ObscuredFloat IncStageStartGoldFactor = 1.1f;
+	//출석체크를 하고 다음 출석 체크를 할 수 있는 시간(초)
+	public static ObscuredInt CheckClaimPossibleSec = 24 * 60 * 60;
 
 	public static double GetLvUpCost(int lv)
 	{

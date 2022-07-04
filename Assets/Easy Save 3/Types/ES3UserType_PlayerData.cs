@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("IsFirstPlay", "PlayAppCount", "Gold", "Magicite", "SoulStone", "Stage", "TopStage", "AscensionCount", "TouchAttackLv", "Slots", "Heroes", "Relics", "Castles", "Quests", "PlayerBuffs", "QuestLv", "ClearQuestCount", "TotalClearQuestCount", "OnBGM", "OnSFX", "OfflineStartTime", "TutorialStep", "QuestResetStartTime")]
+	[ES3PropertiesAttribute("IsFirstPlay", "PlayAppCount", "Gold", "Magicite", "SoulStone", "Stage", "TopStage", "AscensionCount", "TouchAttackLv", "Slots", "Heroes", "Relics", "Castles", "Quests", "PlayerBuffs", "QuestLv", "ClearQuestCount", "TotalClearQuestCount", "OnBGM", "OnSFX", "OnDmgText", "OfflineStartTime", "TutorialStep", "QuestResetStartTime", "CheckLv", "CheckCount", "CheckStartTime")]
 	public class ES3UserType_PlayerData : ES3ObjectType
 	{
 		public static ES3Type Instance = null;
@@ -36,9 +36,13 @@ namespace ES3Types
 			writer.WriteProperty("TotalClearQuestCount", instance.TotalClearQuestCount, ES3Type_int.Instance);
 			writer.WriteProperty("OnBGM", instance.OnBGM, ES3Type_bool.Instance);
 			writer.WriteProperty("OnSFX", instance.OnSFX, ES3Type_bool.Instance);
+			writer.WriteProperty("OnDmgText", instance.OnDmgText, ES3Type_bool.Instance);
 			writer.WriteProperty("OfflineStartTime", instance.OfflineStartTime, ES3Type_DateTime.Instance);
 			writer.WriteProperty("TutorialStep", instance.TutorialStep, ES3Type_int.Instance);
 			writer.WriteProperty("QuestResetStartTime", instance.QuestResetStartTime, ES3Type_DateTime.Instance);
+			writer.WriteProperty("CheckLv", instance.CheckLv, ES3Type_int.Instance);
+			writer.WriteProperty("CheckCount", instance.CheckCount, ES3Type_int.Instance);
+			writer.WriteProperty("CheckStartTime", instance.CheckStartTime, ES3Type_DateTime.Instance);
 		}
 
 		protected override void ReadObject<T>(ES3Reader reader, object obj)
@@ -109,6 +113,9 @@ namespace ES3Types
 					case "OnSFX":
 						instance.OnSFX = reader.Read<System.Boolean>(ES3Type_bool.Instance);
 						break;
+					case "OnDmgText":
+						instance.OnDmgText = reader.Read<System.Boolean>(ES3Type_bool.Instance);
+						break;
 					case "OfflineStartTime":
 						instance.OfflineStartTime = reader.Read<System.DateTime>(ES3Type_DateTime.Instance);
 						break;
@@ -117,6 +124,15 @@ namespace ES3Types
 						break;
 					case "QuestResetStartTime":
 						instance.QuestResetStartTime = reader.Read<System.DateTime>(ES3Type_DateTime.Instance);
+						break;
+					case "CheckLv":
+						instance.CheckLv = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
+					case "CheckCount":
+						instance.CheckCount = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
+					case "CheckStartTime":
+						instance.CheckStartTime = reader.Read<System.DateTime>(ES3Type_DateTime.Instance);
 						break;
 					default:
 						reader.Skip();

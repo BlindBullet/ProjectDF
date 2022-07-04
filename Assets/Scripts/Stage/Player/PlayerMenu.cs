@@ -32,7 +32,7 @@ public class PlayerMenu : MonoBehaviour
 		ShopBtnText.text = LanguageManager.Ins.SetString("Shop");
 
 		AttendanceBtn.onClick.RemoveAllListeners();
-		AttendanceBtn.onClick.AddListener(() => { DialogManager.Ins.OpenSetting(); });
+		AttendanceBtn.onClick.AddListener(() => { DialogManager.Ins.OpenAttendance(); });
 		AttendanceBtnText.text = LanguageManager.Ins.SetString("Attendance");
 	}
 

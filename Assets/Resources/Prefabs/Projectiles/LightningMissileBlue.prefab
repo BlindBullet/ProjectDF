@@ -14651,7 +14651,6 @@ GameObject:
   - component: {fileID: 3459871218216117585}
   - component: {fileID: 3651462705045418621}
   - component: {fileID: 3663446702898327623}
-  - component: {fileID: 3568250812672434185}
   m_Layer: 0
   m_Name: LightningMissileBlue
   m_TagString: Untagged
@@ -19515,23 +19514,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &3568250812672434185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3465316821659247991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa5c1e37409a9344a344c0468db383d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSound: {fileID: 1297775994297274, guid: 5688e2c326ca8d341beb40d43f1eb92d,
-    type: 3}
-  destroyWhenDone: 1
-  soundPrefabIsChild: 0
-  pitchRandomMultiplier: 1.1
 --- !u!1 &3465503393697013505
 GameObject:
   m_ObjectHideFlags: 0

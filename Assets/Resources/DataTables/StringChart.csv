@@ -308,3 +308,5 @@ notify_title_offline,오프라인 보상 제한시간 도달,Offline reward time
 notify_desc_offline,오프라인 보상이 최대치에 달했습니다. 영웅들이 기다리고 있어요.,Offline rewards have reached their maximum. Heroes are waiting.,オフライン報酬リミッター到達！ヒーローたちが戦闘準備完了！
 DmgText,데미지 텍스트,Damage Text,ダメージテキスト
 Attendance,출석,Check,出席
+title_popup_attendance,출석 체크,Check Attendance,出席
+desc_popup_attendance,매일 접속시 보상을 받을 수 있습니다.\n15번 보상을 받을 때마다 보상 레벨이 증가하며` 레벨업시 보상이 10% 증가합니다.(최대 300%),You can receive a reward by logging in every day.\nEvery 15th reward` the reward level increases` and the reward increases by 10% when leveling up. (Maximum 300%),
