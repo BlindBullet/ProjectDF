@@ -240,22 +240,27 @@ public class DialogAdReward : DialogController
 		{
 			case RewardType.Gold:
 				rewardValue = ConstantData.GetGoldFromTime(chart.RewardValue, StageManager.Ins.PlayerData.Stage);
+				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				rewardValue = isAd ? rewardValue * 2f : rewardValue;
 				StageManager.Ins.ChangeGold(rewardValue);
 				break;
 			case RewardType.SoulStone:
-				StageManager.Ins.ChangeMagicite(chart.RewardValue);
+				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				StageManager.Ins.ChangeMagicite(chart.RewardValue);
 				break;
 			case RewardType.GameSpeed:
+				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				rewardValue = isAd ? rewardValue * 2f : rewardValue;
 				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GameSpeed, rewardValue);
 				break;
 			case RewardType.UseAutoSkill:
+				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				rewardValue = isAd ? rewardValue * 2f : rewardValue;
 				StageManager.Ins.AddPlayerBuff(PlayerBuffType.UseAutoSkill, rewardValue);
 				break;
 			case RewardType.GainGold:
+				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				rewardValue = isAd ? rewardValue * 2f : rewardValue;
 				StageManager.Ins.AddPlayerBuff(PlayerBuffType.GainGold, rewardValue);
 				break;
