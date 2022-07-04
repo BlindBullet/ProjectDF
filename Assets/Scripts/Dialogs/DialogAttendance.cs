@@ -61,7 +61,7 @@ public class DialogAttendance : DialogController
 		DateTime dateTime = StageManager.Ins.PlayerData.CheckStartTime;
 		TimeSpan span = TimeManager.Ins.GetCurrentTime() - dateTime;
 
-		if (span.TotalSeconds >= ConstantData.QuestResetPossibleSec)
+		if (span.TotalSeconds >= ConstantData.CheckClaimPossibleSec)
 		{
 			return true;
 		}
@@ -116,8 +116,9 @@ public class DialogAttendance : DialogController
 	void Claim()
 	{
 		//보상 주기
-		AttendanceChart chart = CsvData.Ins.AttendanceChart[StageManager.Ins.PlayerData.CheckCount.ToString()];
-		double value = chart.Amount;
+		AttendanceChart chart = CsvData.Ins.AttendanceChart[(StageManager.Ins.PlayerData.CheckCount + 1).ToString()];
+		float incP = (StageManager.Ins.PlayerData.CheckLv - 1) * 0.1f > 3f ? 3f : (StageManager.Ins.PlayerData.CheckLv - 1) * 0.1f;
+		double value = Math.Round(chart.Amount + (chart.Amount * incP));
 
 		switch (chart.RewardType)
 		{
@@ -135,22 +136,27 @@ public class DialogAttendance : DialogController
 				break;
 		}
 
+		bool isInit = false;
+
 		//체크 카운트(Exp) 증가
-		StageManager.Ins.PlayerData.IncCheckCount();
+		if (StageManager.Ins.PlayerData.IncCheckCount())
+		{
+			isInit = true;
+		}
 
 		SetProgressBar();
-		SetRewards();
+		SetRewards(isInit);
 		SetClaimBtn();
 	}
 
 	void SetProgressBar()
 	{
 		LvText.text = StageManager.Ins.PlayerData.CheckLv.ToString();
-		ExpText.text = StageManager.Ins.PlayerData.CheckCount.ToString();
+		ExpText.text = StageManager.Ins.PlayerData.CheckCount.ToString() + "/15";
 		ExpFill.fillAmount = (float)StageManager.Ins.PlayerData.CheckCount / 15f;
 	}
 
-	void SetRewards()
+	void SetRewards(bool isInit = false)
 	{
 		for(int i = 0; i < RewardIcons.Length; i++)
 		{
@@ -166,6 +172,20 @@ public class DialogAttendance : DialogController
 			{
 				RewardIcons[i].SelectedFrameOn();
 			}
+		}
+
+		if (isInit)
+		{
+			InitReward();
+		}
+	}
+
+	void InitReward()
+	{
+		for(int i = 0; i < RewardIcons.Length; i++)
+		{
+			RewardIcons[i].CheckOff();
+			RewardIcons[i].SelectedFrameOff();
 		}
 	}
 

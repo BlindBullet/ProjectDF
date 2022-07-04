@@ -92,6 +92,8 @@ public class StageManager : MonoSingleton<StageManager>
 	{
 		yield return StartCoroutine(TimeManager.Ins.GetTime());
 
+		OpenAttendance();
+
 		if(!isFirstPlay)
 			AdmobManager.Ins.LoadAd(AdType.OfflineReward);
 
@@ -101,6 +103,21 @@ public class StageManager : MonoSingleton<StageManager>
 			AdmobManager.Ins.LoadAd(AdType.OfflineReward);
 
 		DialogManager.Ins.OpenOfflineReward(AdmobManager.Ins.isOfflineAdLoaded);
+	}
+
+	void OpenAttendance()
+	{
+		if(PlayerData.CheckLv == 1 && PlayerData.CheckCount == 0)
+			DialogManager.Ins.OpenAttendance();
+		else
+		{
+			TimeSpan span = TimeManager.Ins.GetCurrentTime() - PlayerData.CheckStartTime;
+
+			if (span.TotalSeconds <= 0f)
+			{
+				DialogManager.Ins.OpenAttendance();
+			}
+		}
 	}
 
 	void SetHeroes(bool isFirstPlay)

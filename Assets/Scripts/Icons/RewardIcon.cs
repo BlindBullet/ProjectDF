@@ -90,8 +90,8 @@ public class RewardIcon : MonoBehaviour
 	public void SetIcon(AttendanceChart chart, int lv)
 	{
 		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.RewardType.ToString());
-
-		double value = chart.Amount + (chart.Amount * 0.1f * lv);
+		float incP = 0.1f * (lv - 1) > 3f ? 3f : 0.1f * (lv - 1);
+		double value = chart.Amount + (chart.Amount * incP);
 
 		switch (chart.RewardType)
 		{

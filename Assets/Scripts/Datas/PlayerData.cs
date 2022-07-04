@@ -416,17 +416,21 @@ public class PlayerData
 		Save();
 	}
 
-	public void IncCheckCount()
+	public bool IncCheckCount()
 	{
+		bool result = false;
+
 		CheckCount++;
 		CheckStartTime = TimeManager.Ins.GetCurrentTime();
 
 		if (CheckCount >= 15)
 		{			
 			CheckLvUp();
+			result = true;
 		}	
 
 		Save();
+		return result;
 	}
 
 	void CheckLvUp()
