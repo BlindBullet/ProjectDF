@@ -38,7 +38,8 @@ public class PlayerMenu : MonoBehaviour
 
 	public void Open()
 	{
-		MenuTrf.DOSizeDelta(new Vector2(MenuTrf.sizeDelta.x, 870f), 0.5f).SetEase(Ease.InOutQuad);
+		//870f
+		MenuTrf.DOSizeDelta(new Vector2(MenuTrf.sizeDelta.x, 510f), 0.5f).SetEase(Ease.InOutQuad);
 	}
 
 	public void Close()
