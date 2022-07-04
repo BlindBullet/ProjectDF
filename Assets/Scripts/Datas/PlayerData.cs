@@ -32,6 +32,9 @@ public class PlayerData
 	public DateTime OfflineStartTime;
 	public int TutorialStep = 0;
 	public DateTime QuestResetStartTime;
+	public int CheckLv;
+	public int CheckCount;
+	public DateTime CheckStartTime;
 
 	public void Init()
 	{
@@ -53,6 +56,9 @@ public class PlayerData
 		OfflineStartTime = TimeManager.Ins.GetCurrentTime();
 		TutorialStep = 0;
 		QuestResetStartTime = TimeManager.Ins.GetCurrentTime();
+		CheckLv = 1;
+		CheckCount = 0;
+		CheckStartTime = DateTime.UtcNow;
 
 		ResisterHeroes();
 		ResisterRelics();
@@ -455,6 +461,9 @@ public class PlayerData
 			OfflineStartTime = data.OfflineStartTime;
 			TutorialStep = data.TutorialStep;
 			QuestResetStartTime = data.QuestResetStartTime;
+			CheckLv = data.CheckLv;
+			CheckCount = data.CheckCount;
+			CheckStartTime = data.CheckStartTime;
 
 			ResisterHeroes();
 			ResisterRelics();

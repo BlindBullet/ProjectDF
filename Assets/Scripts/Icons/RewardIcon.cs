@@ -10,6 +10,7 @@ public class RewardIcon : MonoBehaviour
 	public Image FrameImg;
 	public Image IconImg;
 	public TextMeshProUGUI Amount;
+	public GameObject CheckObj;
 
 	public void SetIcon(QuestChart chart)
 	{

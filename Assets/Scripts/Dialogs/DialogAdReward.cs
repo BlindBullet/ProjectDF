@@ -244,8 +244,8 @@ public class DialogAdReward : DialogController
 				StageManager.Ins.ChangeGold(rewardValue);
 				break;
 			case RewardType.SoulStone:
-				StageManager.Ins.ChangeMagicite(chart.RewardValue);
 				rewardValue = isAd ? rewardValue * 2f : rewardValue;
+				StageManager.Ins.ChangeMagicite(chart.RewardValue);
 				break;
 			case RewardType.GameSpeed:
 				rewardValue = isAd ? rewardValue * 2f : rewardValue;

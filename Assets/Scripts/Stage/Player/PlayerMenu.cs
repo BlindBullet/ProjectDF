@@ -12,6 +12,10 @@ public class PlayerMenu : MonoBehaviour
 	public TextMeshProUGUI SettingBtnText;
 	public Button RankBtn;
 	public TextMeshProUGUI RankBtnText;
+	public Button ShopBtn;
+	public TextMeshProUGUI ShopBtnText;
+	public Button AttendanceBtn;
+	public TextMeshProUGUI AttendanceBtnText;
 
 	private void Start()
 	{		
@@ -22,11 +26,19 @@ public class PlayerMenu : MonoBehaviour
 		RankBtn.onClick.RemoveAllListeners();
 		RankBtn.onClick.AddListener(() => { GPGSBinder.Inst.ShowAllLeaderboardUI(); });
 		RankBtnText.text = LanguageManager.Ins.SetString("Rank");
+
+		ShopBtn.onClick.RemoveAllListeners();
+		ShopBtn.onClick.AddListener(() => { DialogManager.Ins.OpenSetting(); });
+		ShopBtnText.text = LanguageManager.Ins.SetString("Shop");
+
+		AttendanceBtn.onClick.RemoveAllListeners();
+		AttendanceBtn.onClick.AddListener(() => { DialogManager.Ins.OpenSetting(); });
+		AttendanceBtnText.text = LanguageManager.Ins.SetString("Attendance");
 	}
 
 	public void Open()
 	{
-		MenuTrf.DOSizeDelta(new Vector2(MenuTrf.sizeDelta.x, 510f), 0.5f).SetEase(Ease.InOutQuad);
+		MenuTrf.DOSizeDelta(new Vector2(MenuTrf.sizeDelta.x, 870f), 0.5f).SetEase(Ease.InOutQuad);
 	}
 
 	public void Close()
