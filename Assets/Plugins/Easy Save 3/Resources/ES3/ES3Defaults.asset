@@ -36,6 +36,7 @@ MonoBehaviour:
     - DamageNumbersPro
     - Febucci.TextAnimator.Runtime
     - AllIn1SpriteShaderAssembly
+    - Purchasing.Common
     - Febucci.TextAnimator.Demo.Runtime
     - ACTk.Examples.Genuine.Runtime
     - PsdPlugin

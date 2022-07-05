@@ -772,7 +772,7 @@ PlayerSettings:
     Collab: 0
     Game Performance: 0
     Legacy Analytics: 1
-    Purchasing: 0
+    Purchasing: 1
     UDP: 0
     UNet: 1
     Unity Ads: 1
