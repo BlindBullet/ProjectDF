@@ -247,7 +247,7 @@ public class DialogAdReward : DialogController
 			case RewardType.SoulStone:
 				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				rewardValue = isAd ? rewardValue * 2f : rewardValue;
-				StageManager.Ins.ChangeSoulStone(chart.RewardValue);
+				StageManager.Ins.ChangeSoulStone(rewardValue);
 				break;
 			case RewardType.GameSpeed:
 				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);

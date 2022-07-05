@@ -247,8 +247,7 @@ public class DialogHeroInfo : DialogController
 						SoundManager.Ins.PlaySFX("se_button_2");
 
 						if (StageManager.Ins.PlayerData.UpgradeHero(data))
-						{
-							SEManager.Ins.Apply();
+						{	
 							StageManager.Ins.ChangeSoulStone(-cost);
 							HeroIcon.Setup(data);
 							DialogHero._DialogHero.SetHeroes();
@@ -258,6 +257,7 @@ public class DialogHeroInfo : DialogController
 								StageManager.Ins.DeployHero(data, data.SlotNo);
 
 							SetHeroInfo(data);
+							SEManager.Ins.Apply();
 						}
 					});
 				}
@@ -303,11 +303,11 @@ public class DialogHeroInfo : DialogController
 					SoundManager.Ins.PlaySFX("se_button_2");
 
 					if (StageManager.Ins.PlayerData.SummonHero(data, chart))
-					{
-						SEManager.Ins.Apply();
+					{						
 						HeroIcon.Setup(data);
 						SetButtons(data, chart);
 						DialogHero._DialogHero.SetHeroes();
+						SEManager.Ins.Apply();
 					}
 				});
 			}
