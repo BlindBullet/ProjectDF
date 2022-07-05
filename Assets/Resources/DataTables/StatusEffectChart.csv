@@ -1,5 +1,5 @@
 ﻿Id,ConType,CParam1,CParam2,CParam3,CParam4,CParam5,TargetType,TParam1,TParam2,TParam3,EffectType,EParam1,EParam2,EParam3,EParam4,EParam5,LvUpIncValue,LvUpIncRate
-ce_10001,,,,,,,Hero,Attr,Red,,StatChange,Inc,Atk,,,50,,2
+ce_10001,,,,,,,Hero,Attr,Red,,StatChange,Inc,Atk,,,75,,2
 ce_10002,,,,,,,Hero,All,,,StatChange,Inc,CritChance,,,2,2,
 ce_10003,,,,,,,Hero,Attr,Green,,StatChange,Inc,CritDmg,,,20,,2
 ce_10004,,,,,,,Hero,All,,,StatChange,Inc,Atk,,,50,,2

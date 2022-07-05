@@ -63,9 +63,8 @@ public class StageManager : MonoSingleton<StageManager>
 
 		TopBar.Setup();
 
-		//SetSlots();
-		SetHeroes(PlayerData.IsFirstPlay);
-		PlayerBuffManager.Ins.RunAllBuffs();
+		SetSlots();
+		SetHeroes(PlayerData.IsFirstPlay);		
 		SEManager.Ins.Apply();
 
 		StartCoroutine(OpenOfflineReward(PlayerData.IsFirstPlay));
@@ -80,11 +79,9 @@ public class StageManager : MonoSingleton<StageManager>
 	{
 		TopBar.Setup();
 
-		//SetSlots();
-		SetHeroes(PlayerData.IsFirstPlay);
-		PlayerBuffManager.Ins.RunAllBuffs();
+		SetSlots();
+		SetHeroes(PlayerData.IsFirstPlay);		
 		SEManager.Ins.Apply();
-		
 		cSetStageSeq = StartCoroutine(SetStage(PlayerData.Stage));
 	}
 

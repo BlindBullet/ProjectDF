@@ -73,8 +73,6 @@ public class SEManager : MonoSingleton<SEManager>
 
 		InitAllStat();
 		ApplyAllSe(SeList);
-
-		StageManager.Ins.SetSlots();
 	}
 
 	void InitAllStat()
@@ -89,7 +87,7 @@ public class SEManager : MonoSingleton<SEManager>
 		{
 			for(int k = 0; k < slots.Count; k++)
 			{
-				if (HeroBase.Heroes[i].Data.SlotNo == slots[i].No)
+				if (HeroBase.Heroes[i].Data.SlotNo == slots[k].No)
 					HeroBase.Heroes[i].Stat.InitData(HeroBase.Heroes[i].Data, slots[k].Lv);
 			}
 		}
@@ -97,13 +95,13 @@ public class SEManager : MonoSingleton<SEManager>
 
 	void ApplyAllSe(List<SEData> seList)
 	{
-		for(int i = 0; i < seList.Count; i++)
+		for (int i = 0; i < seList.Count; i++)
 		{	
 			ApplySE(seList[i]);			
 		}
 
 		for(int i = 0; i < HeroBase.Heroes.Count; i++)
-		{			
+		{
 			HeroBase.Heroes[i].BuffCon.CalcStat();
 		}
 
@@ -167,7 +165,7 @@ public class SEManager : MonoSingleton<SEManager>
 					}
 
 					for(int i = 0; i < targets.Count; i++)
-					{
+					{						
 						ApplyHeroTargetSE(targets[i], data);
 					}
 					break;
