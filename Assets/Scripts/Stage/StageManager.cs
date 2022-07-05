@@ -89,7 +89,7 @@ public class StageManager : MonoSingleton<StageManager>
 	{
 		yield return StartCoroutine(TimeManager.Ins.GetTime());
 
-		OpenAttendance();
+		//OpenAttendance();
 
 		if(!isFirstPlay)
 			AdmobManager.Ins.LoadAd(AdType.OfflineReward);
