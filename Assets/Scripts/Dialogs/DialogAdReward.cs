@@ -234,7 +234,7 @@ public class DialogAdReward : DialogController
 
 	public void SendReward(QuestChart chart, bool isAd = false)
 	{
-		double rewardValue = chart.RewardValue;
+		double rewardValue = chart.RewardValue;		
 
 		switch (chart.RewardType)
 		{
@@ -247,7 +247,7 @@ public class DialogAdReward : DialogController
 			case RewardType.SoulStone:
 				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
 				rewardValue = isAd ? rewardValue * 2f : rewardValue;
-				StageManager.Ins.ChangeMagicite(chart.RewardValue);
+				StageManager.Ins.ChangeSoulStone(chart.RewardValue);
 				break;
 			case RewardType.GameSpeed:
 				rewardValue = Math.Round(rewardValue + (rewardValue * (StageManager.Ins.PlayerStat.QuestReward / 100f)), 0);
