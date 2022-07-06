@@ -18,7 +18,7 @@ public class DialogConfirmAndCancel : DialogController
 		ConfirmBtn.onClick.RemoveAllListeners();
 		ConfirmBtn.onClick.AddListener(() => { action(); SoundManager.Ins.PlaySFX("se_button_2"); CloseDialog(); });
 
-		Show(false, true);
+		Show(true, true);
 	}
 
 	void SetBasic(string title, string desc)

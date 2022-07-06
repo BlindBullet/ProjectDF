@@ -7,6 +7,7 @@ using System;
 using GooglePlayGames.Android;
 using Ugi.PlayInstallReferrerPlugin;
 
+
 public class AdmobManager : MonoSingleton<AdmobManager>
 {
 	public bool isTestMode;
@@ -24,9 +25,20 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	[HideInInspector] public bool isQuestRewardAdLoaded = false;
 	[HideInInspector] public bool isQuestRewardAdInterstitial = false;
 	[HideInInspector] public bool isAscensionRewardAdLoaded = false;
+	[HideInInspector] public bool isReal = false;
 
 	private void Start()
 	{
+		Debug.Log("어플리케이션 인스톨러 네임 :" + Application.installerName);
+		// 플레이스토어 어플리케이션 인스톨러 네임: com.android.vending
+		// 원스토어 
+		isReal = false;
+
+		string installerName = Application.installerName;
+
+		if (installerName == "com.android.vending")
+			isReal = true;
+
 		// 모바일 광고 SDK를 초기화함.
 		MobileAds.Initialize(initStatus => { });
 

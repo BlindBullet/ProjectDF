@@ -35,7 +35,7 @@ public class DialogAscension : DialogController
 
 		SetReward(isPossibleAscension);
 		SetAscensionBtn(isPossibleAscension);
-		Show(false, true);
+		Show(true, true);
 	}
 
 	void SetReward(bool isPossibleAscension)

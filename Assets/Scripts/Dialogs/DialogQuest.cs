@@ -39,7 +39,7 @@ public class DialogQuest : DialogController
 
 		SetResetBtn();		
 
-		Show(false, true);
+		Show(true, true);
 		_Dialog = this;
 	}
 
