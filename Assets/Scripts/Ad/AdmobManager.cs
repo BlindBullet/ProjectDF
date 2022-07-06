@@ -30,14 +30,17 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	private void Start()
 	{
 		Debug.Log("어플리케이션 인스톨러 네임 :" + Application.installerName);
-		// 플레이스토어 어플리케이션 인스톨러 네임: com.android.vending
-		// 원스토어 
+		// 플레이스토어 com.android.vending
+		// 원스토어 com.skt.skaf.A000Z00040
+
 		isReal = false;
 
 		string installerName = Application.installerName;
 
-		if (installerName == "com.android.vending")
+		if (installerName == "com.android.vending" || installerName == "com.skt.skaf.A000Z00040")
 			isReal = true;
+		else
+			isReal = false;
 
 		// 모바일 광고 SDK를 초기화함.
 		MobileAds.Initialize(initStatus => { });

@@ -3,23 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "ce031603b9e65a3903",
         "name": "com.mkgames.projectdf",
-        "processId": 15168,
+        "processId": 21993,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.mkgames.projectdf",
-            "processId": 28571,
-            "exited": true
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.mkgames.projectdf",
-            "processId": 31946,
-            "exited": true
-        },
         {
             "deviceId": "ce031603b9e65a3903",
             "name": "com.mkgames.projectdf",
@@ -42,6 +30,18 @@
             "deviceId": "ce031603b9e65a3903",
             "name": "com.mkgames.projectdf",
             "processId": 15168,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 21168,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 21993,
             "exited": false
         },
         {

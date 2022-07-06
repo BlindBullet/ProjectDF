@@ -68,6 +68,11 @@ public class DialogAdReward : DialogController
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
 
+			if (!AdmobManager.Ins.isReal)
+			{
+				return;
+			}
+
 			if (AdmobManager.Ins.isSuppliesRewardAdLoaded)
 			{
 				AdmobManager.Ins.ShowSuppliesAd();
