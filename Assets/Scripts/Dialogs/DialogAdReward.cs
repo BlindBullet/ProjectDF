@@ -176,7 +176,7 @@ public class DialogAdReward : DialogController
 			}
 		});
 
-		Show(true);
+		Show(false);
 	}
 
 	public override void SetCloseBtn()
