@@ -2041,6 +2041,7 @@ MonoBehaviour:
   isQuestRewardAdLoaded: 0
   isQuestRewardAdInterstitial: 0
   isAscensionRewardAdLoaded: 0
+  isReal: 0
 --- !u!4 &407149064
 Transform:
   m_ObjectHideFlags: 0
@@ -7273,7 +7274,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.38047814}
+  m_Offset: {x: 0, y: 0.3709038}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7284,7 +7285,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7, y: 0.06095639}
+  m_Size: {x: 7, y: 0.04180768}
   m_EdgeRadius: 0
 --- !u!50 &1054915698
 Rigidbody2D:

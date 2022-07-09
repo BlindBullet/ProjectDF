@@ -295,16 +295,16 @@ public class SEManager : MonoSingleton<SEManager>
 						}
 
 						gradeSum = gradeSum / 5f;
-
-						switch (chart.CParam2[0])
+						
+						switch (chart.CParam3)
 						{
 							case "High":
-								if (gradeSum >= int.Parse(chart.CParam3, System.Globalization.CultureInfo.InvariantCulture))
+								if (gradeSum >= int.Parse(chart.CParam2[0], System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
 							case "Low":
-								if (gradeSum <= int.Parse(chart.CParam3, System.Globalization.CultureInfo.InvariantCulture))
+								if (gradeSum <= int.Parse(chart.CParam2[0], System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
@@ -1270,14 +1270,20 @@ public class SEManager : MonoSingleton<SEManager>
 			case SEEffectType.StatChange:
 				switch (data.Chart.EParam2)
 				{
-					case "Atk":
+					case "Atk":						
 						switch (data.Chart.EParam1)
 						{
 							case "Inc":
-								target.Stat.AtkInc += (float)data.Value;
+								if (data.Chart.Id.Contains("ce"))
+									target.Stat.AtkIncRate += (float)data.Value;
+								else
+									target.Stat.AtkInc += (float)data.Value;
 								break;
 							case "Dec":
-								target.Stat.AtkDec += (float)data.Value;
+								if (data.Chart.Id.Contains("ce"))
+									target.Stat.AtkDecRate += (float)data.Value;
+								else
+									target.Stat.AtkDec += (float)data.Value;
 								break;
 						}
 						break;

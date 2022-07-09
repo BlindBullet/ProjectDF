@@ -43,7 +43,7 @@ public class DialogQuestInfo : DialogController
 
 		fillCondition = false;
 		QuestInfo = this;
-		Show(false);
+		Show(true);
 	}
 
 	void SetEmptyIcons()

@@ -77,6 +77,11 @@ public class DialogOfflineReward : DialogController
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
 
+			if (!AdmobManager.Ins.isReal)
+			{
+				return;
+			}
+
 			resultValue = rewardValue;
 			resultAddValue = rewardValue;
 

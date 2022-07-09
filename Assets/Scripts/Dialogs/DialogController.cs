@@ -45,7 +45,7 @@ public class DialogController : MonoBehaviour
 				if (stopTime)
 					Time.timeScale = _time;
 
-				BackkeyManager.Ins.UseBackkey(); 
+				BackkeyManager.Ins.UseBackkey(stopTime);
 			});
 		}
 

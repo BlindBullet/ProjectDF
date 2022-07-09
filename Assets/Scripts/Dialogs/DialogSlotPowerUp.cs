@@ -52,7 +52,7 @@ public class DialogSlotPowerUp : DialogController
 		SetRefreshBtn();		
 
 		_Dialog = this;
-		Show(false, true);
+		Show(true, true);
 	}
 
 	void SetBars()

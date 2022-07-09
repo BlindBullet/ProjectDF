@@ -35,7 +35,7 @@ public class DialogAscension : DialogController
 
 		SetReward(isPossibleAscension);
 		SetAscensionBtn(isPossibleAscension);
-		Show(false, true);
+		Show(true, true);
 	}
 
 	void SetReward(bool isPossibleAscension)
@@ -76,6 +76,12 @@ public class DialogAscension : DialogController
 			AdAscensionBtn.onClick.AddListener(() =>
 			{
 				SoundManager.Ins.PlaySFX("se_button_2");
+
+				if (!AdmobManager.Ins.isReal)
+				{
+					return;
+				}
+
 				if (AdmobManager.Ins.isAscensionRewardAdLoaded)
 				{
 					AdmobManager.Ins.ShowAscensionRewardAd();

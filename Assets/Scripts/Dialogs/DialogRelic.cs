@@ -17,7 +17,7 @@ public class DialogRelic : DialogController
 		TitleText.text = LanguageManager.Ins.SetString("Relic");
 		SetRelics();
 		_Dialog = this;
-		Show(false, true);
+		Show(true, true);
 	}
 
 	public void SetRelics()

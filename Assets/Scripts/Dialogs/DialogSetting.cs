@@ -57,7 +57,7 @@ public class DialogSetting : DialogController
 		AekashicsBtn.onClick.RemoveAllListeners();
 		AekashicsBtn.onClick.AddListener(() => Application.OpenURL("http://www.akashics.moe/"));
 
-		Show(false, true);
+		Show(true, true);
 	}
 
 	void SetBGM()

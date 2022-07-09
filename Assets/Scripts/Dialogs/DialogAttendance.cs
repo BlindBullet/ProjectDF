@@ -34,7 +34,7 @@ public class DialogAttendance : DialogController
 		ClaimBtnText.text = LanguageManager.Ins.SetString("Claim");
 		SetClaimBtn();
 
-		Show(false);
+		Show(true);
 	}
 
 	void SetClaimBtn()

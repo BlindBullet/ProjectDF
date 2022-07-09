@@ -11,7 +11,7 @@ public class DialogBossWarning : DialogController
 
 	public void OpenDialog()
 	{	
-		Show(false);
+		Show(true);
 
 		_CanvasGroup.alpha = 0f;
 

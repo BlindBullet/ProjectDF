@@ -34,12 +34,18 @@ public class DialogQuest : DialogController
 		ResetBtn.onClick.AddListener(() =>
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
+
+			if (!AdmobManager.Ins.isReal)
+			{
+				return;
+			}
+
 			AdmobManager.Ins.ShowQuestRefreshAd();
 		});
 
 		SetResetBtn();		
 
-		Show(false, true);
+		Show(true, true);
 		_Dialog = this;
 	}
 

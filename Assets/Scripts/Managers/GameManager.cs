@@ -59,7 +59,7 @@ public class GameManager : MonoSingleton<GameManager>
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			BackkeyManager.Ins.UseBackkey();
+			BackkeyManager.Ins.UseBackkey(true);
 		}
 
 		if (Input.GetKeyDown(KeyCode.S))

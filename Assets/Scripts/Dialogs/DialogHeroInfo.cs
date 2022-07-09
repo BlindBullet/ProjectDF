@@ -70,7 +70,7 @@ public class DialogHeroInfo : DialogController
 		this.data = data;		
 		HeroIcon.Setup(data);
 		SetHeroInfo(data);
-		Show(false);
+		Show(true);
 		_Dialog = this;
 	}
 

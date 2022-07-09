@@ -12,7 +12,7 @@ public class DialogCautionBar : DialogController
 	public void SetDialog(string cautionText)
 	{
 		CautionText.text = LanguageManager.Ins.SetString(cautionText);
-		Show(false);
+		Show(true);
 		StartCoroutine(DelayClose());
 	}
 

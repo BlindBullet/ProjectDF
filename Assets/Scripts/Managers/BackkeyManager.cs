@@ -11,7 +11,7 @@ public class BackkeyManager : SingletonObject<BackkeyManager>
 		OpenedDialogList.Clear();
 	}
 
-	public void UseBackkey()
+	public void UseBackkey(bool stopTime)
 	{
 		if (OpenedDialogList.Count > 0)
 		{
@@ -36,6 +36,9 @@ public class BackkeyManager : SingletonObject<BackkeyManager>
 				Application.Quit();
 			});
 		}
+
+		if (stopTime)
+			Time.timeScale = StageManager.Ins.PlayerStat.GameSpd;
 	}
 
 	public void AddDialog(DialogController dialog)
