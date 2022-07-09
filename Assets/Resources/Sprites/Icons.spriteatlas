@@ -22,18 +22,6 @@ SpriteAtlas:
       sRGB: 1
     platformSettings:
     - serializedVersion: 3
-      m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 4096
-      m_ResizeAlgorithm: 0
-      m_TextureFormat: -1
-      m_TextureCompression: 1
-      m_CompressionQuality: 50
-      m_CrunchedCompression: 0
-      m_AllowsAlphaSplitting: 0
-      m_Overridden: 0
-      m_AndroidETC2FallbackOverride: 0
-      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
-    - serializedVersion: 3
       m_BuildTarget: Android
       m_MaxTextureSize: 4096
       m_ResizeAlgorithm: 0
@@ -43,6 +31,18 @@ SpriteAtlas:
       m_CrunchedCompression: 0
       m_AllowsAlphaSplitting: 0
       m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
@@ -65,11 +65,13 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 68b35d2059b8c46e0a98e53628e9b3af, type: 3}
   - {fileID: 21300000, guid: ab0a723007fbe7848b6e5bdf532cd1eb, type: 3}
   - {fileID: 21300000, guid: 8117f4307e1203149b5b546788620202, type: 3}
+  - {fileID: 21300000, guid: 73d8983007ddd4830baf7ecba1debd74, type: 3}
   - {fileID: 21300000, guid: 75fe804035445de43ada0c95bf254194, type: 3}
   - {fileID: 21300000, guid: 40f12c50269c61f49bb2ee060889a0c1, type: 3}
   - {fileID: 21300000, guid: 3e6aa660a3907ea4ba3118cc844c4a52, type: 3}
   - {fileID: 21300000, guid: 8a95ead06c7992e42942754cad5272b7, type: 3}
   - {fileID: 7803171745462721284, guid: 743fc551622034093a11efcbcb9d49fc, type: 3}
+  - {fileID: 21300000, guid: e46ace51a53d94d12b2e0692131eda27, type: 3}
   - {fileID: 21300000, guid: 19ed8061dbac3433c895296474c0007f, type: 3}
   - {fileID: 21300000, guid: 5778ce61d59f047a8a10508bdd29daa4, type: 3}
   - {fileID: 21300000, guid: fb9cdb91e1b87854ebc38ea404eb0513, type: 3}
@@ -131,6 +133,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c5f379770ddf3470cab5328d5615bb23, type: 3}
   - {fileID: 21300000, guid: 353b17a78d4ee144d8951d20cbfe54ea, type: 3}
   - {fileID: 21300000, guid: ef307ea7fdeb0434b878049ab3a41a09, type: 3}
+  - {fileID: 6114881062073981623, guid: 1f6ecbb7b97344026b5277644ad2ca95, type: 3}
   - {fileID: 21300000, guid: d12995c7489e74345a18819541b93149, type: 3}
   - {fileID: 21300000, guid: 1cebfdc798114ba41b52ef0e430525ed, type: 3}
   - {fileID: 21300000, guid: 8da8cee722ae0404b94ebebca6a49921, type: 3}
@@ -157,6 +160,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 71e7032a7ea88574f8f7cd7853cbcfc0, type: 3}
   - {fileID: 21300000, guid: f5c69c2a0cb6ceb4a8504c9ddc5d25c7, type: 3}
   - {fileID: 21300000, guid: c74c2a3aa43a5e341ab42d859a484aee, type: 3}
+  - {fileID: 21300000, guid: 50f3fc3a81c62455b9346631abc915a8, type: 3}
   - {fileID: 21300000, guid: 9631a04aba21e7347a0a7abddf999617, type: 3}
   - {fileID: 21300000, guid: 9f83806ad0d9c9f45b18334fab6b63e8, type: 3}
   - {fileID: 21300000, guid: e402f46a49fabcc4b8c85dd0304d6258, type: 3}
@@ -168,6 +172,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9092c2da865e04740a65be2168a548c2, type: 3}
   - {fileID: 21300000, guid: 258515da85d3cad45b0c64649e9d5cc2, type: 3}
   - {fileID: 21300000, guid: 7c1340fa6fe1bd247a2021406b33da8b, type: 3}
+  - {fileID: 21300000, guid: 534a22fae9e4e48be871e02b64743349, type: 3}
   - {fileID: 21300000, guid: b714503bf63300240a0b9fde6e2c0dd3, type: 3}
   - {fileID: 21300000, guid: 1e2c9d4b6cb9e5b479a6a8af7fa900a7, type: 3}
   - {fileID: 21300000, guid: 7a58986b0b0aed847986263b157d2d21, type: 3}
@@ -183,12 +188,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3a4ee14ca538b4c74b027f96d16c9c76, type: 3}
   - {fileID: 21300000, guid: 28b0475c225247d44b329099ded10a83, type: 3}
   - {fileID: 21300000, guid: fe519c7c8900d1a41a7f83610bd18d53, type: 3}
+  - {fileID: 21300000, guid: a69d4ccc1137d47de9a0dc5539048dbf, type: 3}
   - {fileID: 21300000, guid: ca51e3dcb41444a068afc7f32c9d0214, type: 3}
   - {fileID: 21300000, guid: 382fd9ec2f0f29b46aaae56b64c61c7b, type: 3}
   - {fileID: 21300000, guid: f65cf20de479227468290069df10812b, type: 3}
   - {fileID: 21300000, guid: 7e78c6ad56bdf4f96b5236a2dbd11025, type: 3}
   - {fileID: 21300000, guid: 9d792bcd8890b114f9e9b246d9679313, type: 3}
   - {fileID: 21300000, guid: c760c0fdafa397a479d8831e27241cdb, type: 3}
+  - {fileID: 7441667161129010492, guid: 32e5940eeaf2948afb3c6e8b5304c351, type: 3}
   - {fileID: 21300000, guid: 6f5cc40e4a1cd458c9901849a7f52a07, type: 3}
   - {fileID: 21300000, guid: 6086d31e8b912c644b4d17f6b2f3b25e, type: 3}
   - {fileID: 21300000, guid: da5db72ec48e840799f4a20440277192, type: 3}
@@ -211,11 +218,13 @@ SpriteAtlas:
   - Btn_Gray
   - Bg_PentagonO_Red
   - Piercing
+  - Popup_00_Glow_white
   - Jewelry_60_immortal_neck
   - SGI_81
   - Spear_v2_12
   - Frame_metal2_fr4
   - top_status_bg_0
+  - frame_linetextframe_03_Demo1
   - icon_itemicon_dungeon
   - icon_itemicon_setting
   - SoulStone
@@ -277,6 +286,7 @@ SpriteAtlas:
   - icon_itemicon_sword
   - Frame_Polygon_Blue
   - label_ribbon_02
+  - common_popup_0
   - Bg_Octagon_Green
   - Bg_Octagon_Red
   - Frame_metal2_fr3
@@ -303,6 +313,7 @@ SpriteAtlas:
   - slider_edgetype_01_fill
   - Star_Off
   - 16_Cloth_Chest
+  - action_text_warning
   - Frame_Octagon_Blue
   - Bg_PolygonO_Red
   - SGI_144
@@ -314,6 +325,7 @@ SpriteAtlas:
   - addons_06_t
   - Gold
   - Size
+  - background_gradient_01
   - Enchantment_57_runecrystal
   - Frame_Octagon_Red
   - Bg_Circle_Blue
@@ -329,12 +341,14 @@ SpriteAtlas:
   - icon_itemicon_rune
   - SGI_101
   - 16_Mail_head
+  - frame_linetextframe_03_Demo2
   - Btn_Blue2
   - Enchantment_42_book
   - Enchantment_36_green_scroll
   - label_tag_00
   - Frame_Octagon_Green
   - slider_edgetype_01_frame_back
+  - play_top_shadow_0
   - Btn_Red
   - SGI_54
   - label_ribbon_01
