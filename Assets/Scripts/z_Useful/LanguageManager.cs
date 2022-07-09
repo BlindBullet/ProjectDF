@@ -6,26 +6,21 @@ using System;
 public class LanguageManager : SingletonObject<LanguageManager> {
 
 	private void Awake()
-	{		
-		currentLanguageType = (LanguageType)Enum.Parse(typeof(LanguageType), Application.systemLanguage.ToString());
-				
-		if(currentLanguageType != LanguageType.English) 
+	{
+		if (Application.systemLanguage == SystemLanguage.Korean)
 		{
-			if(currentLanguageType == LanguageType.Korean)
-			{
-				currentLanguageType = LanguageType.Korean;
-			}
-			else if(currentLanguageType == LanguageType.Japanese)
-			{
-				currentLanguageType = LanguageType.Japanese;
-			}
-			else
-			{
-				currentLanguageType = LanguageType.English;
-			}
-		}	
+			currentLanguageType = LanguageType.Korean;
+		}
+		else if (Application.systemLanguage == SystemLanguage.Japanese)
+		{
+			currentLanguageType = LanguageType.Japanese;
+		}
+		else
+		{
+			currentLanguageType = LanguageType.English;
+		}
 
-		PlayerPrefs.SetString("CurrentLanguage", currentLanguageType.ToString());		
+		PlayerPrefs.SetString("CurrentLanguage", currentLanguageType.ToString());
 	}
 		
 	public enum LanguageType
