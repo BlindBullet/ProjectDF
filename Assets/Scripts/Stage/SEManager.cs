@@ -295,16 +295,16 @@ public class SEManager : MonoSingleton<SEManager>
 						}
 
 						gradeSum = gradeSum / 5f;
-
-						switch (chart.CParam2[0])
+						
+						switch (chart.CParam3)
 						{
 							case "High":
-								if (gradeSum >= int.Parse(chart.CParam3, System.Globalization.CultureInfo.InvariantCulture))
+								if (gradeSum >= int.Parse(chart.CParam2[0], System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;
 							case "Low":
-								if (gradeSum <= int.Parse(chart.CParam3, System.Globalization.CultureInfo.InvariantCulture))
+								if (gradeSum <= int.Parse(chart.CParam2[0], System.Globalization.CultureInfo.InvariantCulture))
 									return true;
 								else
 									return false;

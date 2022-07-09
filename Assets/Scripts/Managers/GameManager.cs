@@ -64,7 +64,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			
+			StageManager.Ins.ChangeSoulStone(10000000f);
 		}
 	}
 
