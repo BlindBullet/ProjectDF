@@ -99,6 +99,8 @@ public class StageManager : MonoSingleton<StageManager>
 		if (!AdmobManager.Ins.isOfflineAdLoaded)
 			AdmobManager.Ins.LoadAd(AdType.OfflineReward);
 
+		PlayerStat.CheckRemoveAd();
+
 		DialogManager.Ins.OpenOfflineReward(AdmobManager.Ins.isOfflineAdLoaded);
 	}
 

@@ -82,24 +82,30 @@ public class DialogAscension : DialogController
 					return;
 				}
 
-				if (AdmobManager.Ins.isAscensionRewardAdLoaded)
+				if (StageManager.Ins.PlayerStat.RemoveAd)
 				{
-					AdmobManager.Ins.ShowAscensionRewardAd();
+					StartCoroutine(GetAdReward());
 				}
 				else
 				{
-					AdmobManager.Ins.LoadAd(AdType.AscensionReward);
-
 					if (AdmobManager.Ins.isAscensionRewardAdLoaded)
 					{
 						AdmobManager.Ins.ShowAscensionRewardAd();
 					}
 					else
 					{
-						UnityAdsManager.Ins.ShowAd(AdType.AscensionReward);
+						AdmobManager.Ins.LoadAd(AdType.AscensionReward);
+
+						if (AdmobManager.Ins.isAscensionRewardAdLoaded)
+						{
+							AdmobManager.Ins.ShowAscensionRewardAd();
+						}
+						else
+						{
+							UnityAdsManager.Ins.ShowAd(AdType.AscensionReward);
+						}
 					}
 				}
-				
 			});
 		}
 		else

@@ -40,7 +40,14 @@ public class DialogQuest : DialogController
 				return;
 			}
 
-			AdmobManager.Ins.ShowQuestRefreshAd();
+			if (StageManager.Ins.PlayerStat.RemoveAd)
+			{
+				StartCoroutine(ResetQuest());
+			}
+			else
+			{
+				AdmobManager.Ins.ShowQuestRefreshAd();
+			}
 		});
 
 		SetResetBtn();		

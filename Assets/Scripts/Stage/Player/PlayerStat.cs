@@ -41,6 +41,7 @@ public class PlayerStat
 	public ObscuredFloat GainGold = 1f;
 	public ObscuredBool UseAutoSkill = false;
 	public ObscuredFloat GameSpd = 1f;
+	public ObscuredBool RemoveAd = false;
 
 	public void Init()
 	{
@@ -84,7 +85,15 @@ public class PlayerStat
 		GameSpd = 1f;
 		UseAutoSkill = false;
 		GainGold = 1f;
-	}	
+		RemoveAd = true;		
+	}
 
+	public void CheckRemoveAd()
+	{
+		if (IAPManager.Ins.HadPurchased("remove_ad"))
+			RemoveAd = true;
+		else
+			RemoveAd = false;
+	}
 
 }

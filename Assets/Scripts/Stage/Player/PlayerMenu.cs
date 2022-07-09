@@ -12,8 +12,8 @@ public class PlayerMenu : MonoBehaviour
 	public TextMeshProUGUI SettingBtnText;
 	public Button RankBtn;
 	public TextMeshProUGUI RankBtnText;
-	public Button ShopBtn;
-	public TextMeshProUGUI ShopBtnText;
+	public Button RemoveAdBtn;
+	public TextMeshProUGUI RemoveAdText;
 	public Button AttendanceBtn;
 	public TextMeshProUGUI AttendanceBtnText;
 
@@ -27,9 +27,9 @@ public class PlayerMenu : MonoBehaviour
 		RankBtn.onClick.AddListener(() => { GPGSBinder.Inst.ShowAllLeaderboardUI(); });
 		RankBtnText.text = LanguageManager.Ins.SetString("Rank");
 
-		ShopBtn.onClick.RemoveAllListeners();
-		ShopBtn.onClick.AddListener(() => { DialogManager.Ins.OpenSetting(); });
-		ShopBtnText.text = LanguageManager.Ins.SetString("Shop");
+		RemoveAdBtn.onClick.RemoveAllListeners();
+		RemoveAdBtn.onClick.AddListener(() => { IAPManager.Ins.Purchase("remove_ad"); });
+		RemoveAdText.text = LanguageManager.Ins.SetString("Remove_Ad");
 
 		AttendanceBtn.onClick.RemoveAllListeners();
 		AttendanceBtn.onClick.AddListener(() => { DialogManager.Ins.OpenAttendance(); });
@@ -40,7 +40,7 @@ public class PlayerMenu : MonoBehaviour
 	{
 		//870f
 		//690f
-		MenuTrf.DOSizeDelta(new Vector2(MenuTrf.sizeDelta.x, 690f), 0.5f).SetEase(Ease.InOutQuad);
+		MenuTrf.DOSizeDelta(new Vector2(MenuTrf.sizeDelta.x, 870f), 0.5f).SetEase(Ease.InOutQuad);
 	}
 
 	public void Close()

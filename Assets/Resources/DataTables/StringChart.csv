@@ -310,3 +310,4 @@ DmgText,데미지 텍스트,Damage Text,ダメージテキスト
 Attendance,출석,Check,出席
 title_popup_attendance,출석 체크,Check Attendance,出席
 desc_popup_attendance,매일 접속시 보상을 받을 수 있습니다.\n15번 보상을 받을 때마다 보상 레벨이 증가하며` 레벨업시 보상이 10% 증가합니다.(최대 300%),You can receive a reward by logging in every day.\nEvery 15th reward` the reward level increases` and the reward increases by 10% when leveling up. (Maximum 300%),1日1回ログインボナスが獲得できます。\n15日連続ログインでログインボナスとレベルアップの報酬が10％ずつ、最大300％まで増加します。
+Remove_Ad,광고 제거,Remove Ad,広告を削除

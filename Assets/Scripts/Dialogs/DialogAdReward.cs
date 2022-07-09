@@ -73,21 +73,28 @@ public class DialogAdReward : DialogController
 				return;
 			}
 
-			if (AdmobManager.Ins.isSuppliesRewardAdLoaded)
+			if (StageManager.Ins.PlayerStat.RemoveAd)
 			{
-				AdmobManager.Ins.ShowSuppliesAd();
+				StartCoroutine(GetSuppliesReward(true));
 			}
 			else
 			{
-				AdmobManager.Ins.LoadAd(AdType.SuppliesReward);
-
 				if (AdmobManager.Ins.isSuppliesRewardAdLoaded)
 				{
 					AdmobManager.Ins.ShowSuppliesAd();
 				}
 				else
 				{
-					UnityAdsManager.Ins.ShowAd(AdType.SuppliesReward);
+					AdmobManager.Ins.LoadAd(AdType.SuppliesReward);
+
+					if (AdmobManager.Ins.isSuppliesRewardAdLoaded)
+					{
+						AdmobManager.Ins.ShowSuppliesAd();
+					}
+					else
+					{
+						UnityAdsManager.Ins.ShowAd(AdType.SuppliesReward);
+					}
 				}
 			}
 		});
@@ -147,32 +154,44 @@ public class DialogAdReward : DialogController
 		{
 			SoundManager.Ins.PlaySFX("se_button_2");
 
-			if (AdmobManager.Ins.isQuestRewardAdInterstitial)
-			{			
-				AdmobManager.Ins.ShowQuestRewardAd2();
-				AdmobManager.Ins.isQuestRewardAdInterstitial = false;
+			if (!AdmobManager.Ins.isReal)
+			{
+				return;
+			}
+
+			if (StageManager.Ins.PlayerStat.RemoveAd)
+			{
+				StartCoroutine(GetQuestReward(true));
 			}
 			else
-			{				
-				if (AdmobManager.Ins.isQuestRewardAdLoaded)
+			{
+				if (AdmobManager.Ins.isQuestRewardAdInterstitial)
 				{
-					AdmobManager.Ins.ShowQuestRewardAd();
+					AdmobManager.Ins.ShowQuestRewardAd2();
+					AdmobManager.Ins.isQuestRewardAdInterstitial = false;
 				}
 				else
 				{
-					AdmobManager.Ins.LoadAd(AdType.QuestReward);
-
 					if (AdmobManager.Ins.isQuestRewardAdLoaded)
 					{
 						AdmobManager.Ins.ShowQuestRewardAd();
 					}
 					else
 					{
-						UnityAdsManager.Ins.ShowAd(AdType.QuestReward);
-					}
-				}
+						AdmobManager.Ins.LoadAd(AdType.QuestReward);
 
-				AdmobManager.Ins.isQuestRewardAdInterstitial = true;
+						if (AdmobManager.Ins.isQuestRewardAdLoaded)
+						{
+							AdmobManager.Ins.ShowQuestRewardAd();
+						}
+						else
+						{
+							UnityAdsManager.Ins.ShowAd(AdType.QuestReward);
+						}
+					}
+
+					AdmobManager.Ins.isQuestRewardAdInterstitial = true;
+				}
 			}
 		});
 

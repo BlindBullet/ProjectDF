@@ -1098,7 +1098,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC14B\uD305"
+  m_text: "\uAD11\uACE0 \uC81C\uAC70"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c4a2d43c6d389574baa38436a857209f, type: 2}
   m_sharedMaterial: {fileID: 7551340975690478451, guid: c4a2d43c6d389574baa38436a857209f,
@@ -10350,7 +10350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5ba360d43b6004d658b94577fa3ce6a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b37e4d2cd4ffde46a632e5d965045fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11264,12 +11264,12 @@ GameObject:
   - component: {fileID: 1650722465}
   - component: {fileID: 1650722464}
   m_Layer: 5
-  m_Name: ShopBtn
+  m_Name: RemoveAdBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1650722463
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11286,9 +11286,9 @@ RectTransform:
   m_Father: {fileID: 1722050784}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -250}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1650722464
@@ -12058,8 +12058,8 @@ MonoBehaviour:
   SettingBtnText: {fileID: 967303477}
   RankBtn: {fileID: 811578761}
   RankBtnText: {fileID: 2039799833}
-  ShopBtn: {fileID: 1650722464}
-  ShopBtnText: {fileID: 303187604}
+  RemoveAdBtn: {fileID: 1650722464}
+  RemoveAdText: {fileID: 303187604}
   AttendanceBtn: {fileID: 1995112785}
   AttendanceBtnText: {fileID: 263460308}
 --- !u!114 &1722050788

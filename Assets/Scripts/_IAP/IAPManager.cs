@@ -5,14 +5,15 @@ using UnityEngine.Purchasing;
 
 public class IAPManager : MonoSingleton<IAPManager>, IStoreListener
 {
-	public const string ProductAdRemove = "AdRemove";
-	private const string AdRemoveId = "";
+	public const string ProductAdRemove = "remove_ad";
+	private const string AdRemoveId = "com.mkgames.projectdf.remove_ad";
 
 	public IStoreController Controller;
 	public IExtensionProvider Extension;
 
 	public bool IsInit => Controller != null && Extension != null;
-	void Awake()
+	
+	void Start()
 	{
 		DontDestroyOnLoad(gameObject);
 		InitUnityIAP();
@@ -51,7 +52,8 @@ public class IAPManager : MonoSingleton<IAPManager>, IStoreListener
 		if(purchaseEvent.purchasedProduct.definition.id == AdRemoveId)
 		{
 			//광고 제거 실행
-
+			StageManager.Ins.PlayerStat.RemoveAd = true;
+			StageManager.Ins.ChangeSoulStone(3000f);
 		}
 
 		return PurchaseProcessingResult.Complete;

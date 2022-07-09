@@ -25,7 +25,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	[HideInInspector] public bool isQuestRewardAdLoaded = false;
 	[HideInInspector] public bool isQuestRewardAdInterstitial = false;
 	[HideInInspector] public bool isAscensionRewardAdLoaded = false;
-	[HideInInspector] public bool isReal = false;
+	[HideInInspector] public bool isReal = true;
 
 	private void Start()
 	{
@@ -33,14 +33,14 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		// 플레이스토어 com.android.vending
 		// 원스토어 com.skt.skaf.A000Z00040
 
-		isReal = false;
+		isReal = true;
 
 		string installerName = Application.installerName;
 
 		if (installerName == "com.android.vending" || installerName == "com.skt.skaf.A000Z00040")
 			isReal = true;
 		else
-			isReal = false;
+			isReal = true;
 
 		// 모바일 광고 SDK를 초기화함.
 		MobileAds.Initialize(initStatus => { });

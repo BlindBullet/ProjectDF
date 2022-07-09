@@ -74,7 +74,7 @@ public class DialogOfflineReward : DialogController
 
 		AdGetBtn.onClick.RemoveAllListeners();
 		AdGetBtn.onClick.AddListener(() => 
-		{
+		{			
 			SoundManager.Ins.PlaySFX("se_button_2");
 
 			if (!AdmobManager.Ins.isReal)
@@ -85,12 +85,21 @@ public class DialogOfflineReward : DialogController
 			resultValue = rewardValue;
 			resultAddValue = rewardValue;
 
-			if (isAdLoaded)
-				AdmobManager.Ins.ShowOfflineRewardAd();
-			else
+			if (StageManager.Ins.PlayerStat.RemoveAd)
 			{
-				UnityAdsManager.Ins.ShowAd(AdType.OfflineReward);
-			}	
+				StartCoroutine(ShowAdReward());
+			}
+			else
+			{			
+				if (isAdLoaded)
+				{
+					AdmobManager.Ins.ShowOfflineRewardAd();
+				}
+				else
+				{
+					UnityAdsManager.Ins.ShowAd(AdType.OfflineReward);
+				}
+			}
 		});
 	}
 
