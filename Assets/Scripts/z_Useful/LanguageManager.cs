@@ -6,7 +6,7 @@ using System;
 public class LanguageManager : SingletonObject<LanguageManager> {
 
 	private void Awake()
-	{		
+	{
 		if (Application.systemLanguage == SystemLanguage.Korean)
 		{
 			currentLanguageType = LanguageType.Korean;
@@ -20,7 +20,7 @@ public class LanguageManager : SingletonObject<LanguageManager> {
 			currentLanguageType = LanguageType.English;
 		}
 
-		PlayerPrefs.SetString("CurrentLanguage", currentLanguageType.ToString());		
+		PlayerPrefs.SetString("CurrentLanguage", currentLanguageType.ToString());
 	}
 		
 	public enum LanguageType
