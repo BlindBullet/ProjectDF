@@ -41,7 +41,7 @@ public static class ConstantData
 	//슬롯 파워업 가능 레벨
 	public static ObscuredInt[] SlotPowerUpPossibleLv = { 5, 25, 50, 100, 250, 500, 750, 1000 };
 	//게임스피드 버프의 증가량
-	public static ObscuredFloat BuffGameSpeedRate = 2f;
+	public static ObscuredFloat BuffGameSpeedRate = 2.5f;
 	//얻는 골드량 버프의 증가량
 	public static ObscuredFloat BuffGainGoldRate = 2f;
 	//기본 전방공격이 활성화됐을 때 감소하는 데미지량(%)

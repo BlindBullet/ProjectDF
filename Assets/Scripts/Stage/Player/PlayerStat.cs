@@ -40,7 +40,7 @@ public class PlayerStat
 	public ObscuredFloat TouchSkillCoolDecProb = 0f;
 	public ObscuredFloat GainGold = 1f;
 	public ObscuredBool UseAutoSkill = false;
-	public ObscuredFloat GameSpd = 1f;
+	public ObscuredFloat GameSpd = 1.25f;
 	public ObscuredBool RemoveAd = false;
 
 	public void Init()
@@ -82,10 +82,11 @@ public class PlayerStat
 		MoatSlowRate = 0f;
 		LvUpGold = 0f;
 		TouchSkillCoolDecProb = 0f;
-		GameSpd = 1f;
+		GameSpd = 1.25f;
 		UseAutoSkill = false;
 		GainGold = 1f;
-		RemoveAd = true;		
+		RemoveAd = true;
+		Time.timeScale = GameSpd;
 	}
 
 	public void CheckRemoveAd()

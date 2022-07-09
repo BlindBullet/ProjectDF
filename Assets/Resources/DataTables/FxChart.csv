@@ -41,6 +41,6 @@ ChannelGreen5s,ChannelGreen5s,2,Center,,,,,1
 SlashWideGreen,SlashWideGreen,5,,,4,,,1
 StormNovaBlue,StormNovaBlue,2,Center,,,,,5
 AuraChargeGreen,AuraChargeGreen,1,Center,,,,,5
-Impact01,Impact01,1,Center,,,,poly_explosion_lightning,20
+Impact01,Impact01,0.7,Center,,,,poly_explosion_lightning,20
 FireballExplosionRed3,FireballExplosionRed,3,Center,,,,poly_explosion_storm,10
 BeamupCylinderBlue,BeamupCylinderBlue,1.5,Land,,,,,5

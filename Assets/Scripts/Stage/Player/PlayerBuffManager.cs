@@ -56,7 +56,7 @@ public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
 		switch (data.Type)
 		{
 			case PlayerBuffType.GameSpeed:
-				StageManager.Ins.PlayerStat.GameSpd = 1f;
+				StageManager.Ins.PlayerStat.GameSpd = 1.25f;
 				Time.timeScale = StageManager.Ins.PlayerStat.GameSpd;
 				break;
 			case PlayerBuffType.UseAutoSkill:
