@@ -119,6 +119,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d7dbbe76455786a4fac37bbc642fd5b4, type: 3}
   - {fileID: 21300000, guid: baa107d6a05494741bf14d59428c8ae5, type: 3}
   - {fileID: 21300000, guid: 19503fd6a71c9184a80c64c66c71b778, type: 3}
+  - {fileID: 21300000, guid: 8a37f3e6824acf1459d7feab621ab0d0, type: 3}
   - {fileID: 21300000, guid: 4ced0ce6605cd5f47a0dcad503003d4f, type: 3}
   - {fileID: 21300000, guid: 56c74717f74ea664a8ddb179cb2db869, type: 3}
   - {fileID: 21300000, guid: 864eaa27623bd2a478712c10a369448e, type: 3}
@@ -262,6 +263,7 @@ SpriteAtlas:
   - Diagonal
   - slider_icontype_00_icon3
   - Frame_stoune_round4
+  - SGI_35
   - SGI_25
   - SGI_89
   - Bg_Pentagon_Green

@@ -61,52 +61,59 @@ public class RelicBar : MonoBehaviour
 
 		string _desc = "";
 
-		if (data.Lv == chart.MaxLv)
+		if(seChart.EParam2 == "AutoLvUp")
 		{
-			switch (seChart.EParam2)
-			{
-				case "Gold":
-					if (seChart.EffectType == SEEffectType.StatChange)
-						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max"), value1.ToCurrencyString());
-					else if (seChart.EffectType == SEEffectType.Ascension)
-						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_max"), value1.ToCurrencyString());
-					break;
-				case "Time":
-					if (seChart.EffectType == SEEffectType.OfflineReward)
-						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_t_max"), value1);
-					else
-						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max"), Math.Round(value1, 1));
-					break;
-				case "StartStage":
-					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_max"), Math.Round(value1, 1));
-					break;
-				default:
-					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max"), Math.Round(value1, 1));
-					break;
-			}
+
 		}
 		else
 		{
-			switch (seChart.EParam2)
+			if (data.Lv == chart.MaxLv)
 			{
-				case "Gold":
-					if (seChart.EffectType == SEEffectType.StatChange)
-						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p"), value1.ToCurrencyString(), value2.ToCurrencyString());
-					else if (seChart.EffectType == SEEffectType.Ascension)
-						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc"), value1.ToCurrencyString(), value2.ToCurrencyString());
-					break;
-				case "Time":
-					if (seChart.EffectType == SEEffectType.OfflineReward)
-						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_t"), value1, value2);
-					else
+				switch (seChart.EParam2)
+				{
+					case "Gold":
+						if (seChart.EffectType == SEEffectType.StatChange)
+							_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max"), value1.ToCurrencyString());
+						else if (seChart.EffectType == SEEffectType.Ascension)
+							_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_max"), value1.ToCurrencyString());
+						break;
+					case "Time":
+						if (seChart.EffectType == SEEffectType.OfflineReward)
+							_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_t_max"), value1);
+						else
+							_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max"), Math.Round(value1, 1));
+						break;
+					case "StartStage":
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_max"), Math.Round(value1, 1));
+						break;
+					default:
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p_max"), Math.Round(value1, 1));
+						break;
+				}
+			}
+			else
+			{
+				switch (seChart.EParam2)
+				{
+					case "Gold":
+						if (seChart.EffectType == SEEffectType.StatChange)
+							_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p"), value1.ToCurrencyString(), value2.ToCurrencyString());
+						else if (seChart.EffectType == SEEffectType.Ascension)
+							_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc"), value1.ToCurrencyString(), value2.ToCurrencyString());
+						break;
+					case "Time":
+						if (seChart.EffectType == SEEffectType.OfflineReward)
+							_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_t"), value1, value2);
+						else
+							_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p"), Math.Round(value1, 1), Math.Round(value2, 1));
+						break;
+					case "StartStage":
+						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc"), Math.Round(value1, 1), Math.Round(value2, 1));
+						break;
+					default:
 						_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p"), Math.Round(value1, 1), Math.Round(value2, 1));
-					break;
-				case "StartStage":
-					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc"), Math.Round(value1, 1), Math.Round(value2, 1));
-					break;
-				default:
-					_desc = string.Format(LanguageManager.Ins.SetString("se_inc_desc_p"), Math.Round(value1, 1), Math.Round(value2, 1));
-					break;
+						break;
+				}
 			}
 		}
 

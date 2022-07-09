@@ -162,6 +162,7 @@ str_name_castle_10007,다리 건설,Bridge Construction,橋の建設
 str_name_castle_10008,마법사 길드,Magician's Guild,魔法使いギルド
 str_name_castle_10009,해자,Moat,堀
 str_name_castle_10010,연금술 공방,Alchemy Workshop,錬金術の工房
+str_name_castle_10011,수호의 왕관,Crown of Guardianship,守護の王冠
 str_desc_castle_10001,환생시 얻는 마석이 증가합니다.,When ascension` increase gain magicite.,転生で獲得する魔石量アップ
 str_desc_castle_10002,환생 후 시작 스테이지가 증가합니다. 스테이지가 증가한만큼의 골드 보상도 들어옵니다.,Increase start stage and gold after ascension.,転生でスタートステージアップ。ステージアップの分の報酬獲得。
 str_desc_castle_10003,환생 후 골드를 얻습니다.,Get gold after ascension.,転生でゴールドを獲得
@@ -172,6 +173,7 @@ str_desc_castle_10007,퀘스트 시간이 감소합니다.,Quest time decrease.,
 str_desc_castle_10008,스킬이 1초마다 자동으로 사용될 확률이 증가합니다.,Increases the chance that the skill will be used automatically every 1 sec.,１秒置きでオートスキルの発動率アップ
 str_desc_castle_10009,해자가 생깁니다. 해자 안에서는 적들의 이동속도가 느려집니다.,Build a moat. Enemies' movement speed is slowed inside the moat.,範囲内で敵にスロウを付与する堀ができる。
 str_desc_castle_10010,터치 공격을 할 때마다 영웅들의 스킬 쿨타임이 1초씩 감소됩니다.,Each touch attack reduces the skill cooldown of heroes by 1 second.,タッチ攻撃の度にヒーロースキル待機が1秒ずつ短縮
+str_desc_castle_10011,자동 레벨업 기능이 활성화됩니다.,The automatic level-up function is activated.,自動レベルアップ機能が有効になります。
 name_slot_power_up_Front,전방 공격 Lv.{0},Front Attack Lv.{0},前方攻撃 Lv.{0}
 name_slot_power_up_Diagonal,사선 공격 Lv.{0},Slash Attack Lv.{0},斜線攻撃 Lv.{0}
 name_slot_power_up_Piercing,관통샷 Lv.{0},Penetrate Lv.{0},貫通ショット Lv.{0}
