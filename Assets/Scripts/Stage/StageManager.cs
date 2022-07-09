@@ -107,10 +107,10 @@ public class StageManager : MonoSingleton<StageManager>
 		if(PlayerData.CheckLv == 1 && PlayerData.CheckCount == 0)
 			DialogManager.Ins.OpenAttendance();
 		else
-		{
+		{			
 			TimeSpan span = TimeManager.Ins.GetCurrentTime() - PlayerData.CheckStartTime;
-
-			if (span.TotalSeconds <= 0f)
+			
+			if (span.TotalSeconds >= ConstantData.CheckClaimPossibleSec)
 			{
 				DialogManager.Ins.OpenAttendance();
 			}
