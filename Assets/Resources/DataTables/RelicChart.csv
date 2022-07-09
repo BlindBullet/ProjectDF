@@ -8,7 +8,7 @@
 10008,str_name_castle_10008,str_desc_castle_10008,SGI_94,Castle,50,Castle8,SoulStone,100,SoulStone,100,100,
 10009,str_name_castle_10009,str_desc_castle_10009,SGI_146,Castle,10,Castle9,SoulStone,100,SoulStone,150,150,
 10010,str_name_castle_10010,str_desc_castle_10010,SGI_28,Castle,40,Castle10,SoulStone,200,SoulStone,200,,
-10011,str_name_castle_10011,str_desc_castle_10011,SGI_35,Castle,1,Castle11,SoulStone,1500,SoulStone,200,,
+10011,str_name_castle_10011,str_desc_castle_10011,SGI_35,Castle,1,Castle11,SoulStone,3000,SoulStone,200,,
 20001,str_name_relic_20001,str_desc_relic_20001,05_a,Relic,100,Relic1,Magicite,25,Magicite,50,,2
 20002,str_name_relic_20002,str_desc_relic_20002,addons_06_t,Relic,40,Relic2,Magicite,150,Magicite,300,,2
 20003,str_name_relic_20003,str_desc_relic_20003,Dagger_v2_44,Relic,9999,Relic3,Magicite,30,Magicite,120,,1.1

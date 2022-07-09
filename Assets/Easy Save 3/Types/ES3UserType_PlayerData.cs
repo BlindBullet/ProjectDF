@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("IsFirstPlay", "PlayAppCount", "Gold", "Magicite", "SoulStone", "Stage", "TopStage", "AscensionCount", "TouchAttackLv", "Slots", "Heroes", "Relics", "Castles", "Quests", "PlayerBuffs", "QuestLv", "ClearQuestCount", "TotalClearQuestCount", "OnBGM", "OnSFX", "OnDmgText", "OfflineStartTime", "TutorialStep", "QuestResetStartTime", "CheckLv", "CheckCount", "CheckStartTime")]
+	[ES3PropertiesAttribute("IsFirstPlay", "PlayAppCount", "Gold", "Magicite", "SoulStone", "Stage", "TopStage", "AscensionCount", "TouchAttackLv", "Slots", "Heroes", "Relics", "Castles", "Quests", "PlayerBuffs", "QuestLv", "ClearQuestCount", "TotalClearQuestCount", "OnBGM", "OnSFX", "OnDmgText", "OfflineStartTime", "TutorialStep", "QuestResetStartTime", "CheckLv", "CheckCount", "CheckStartTime", "AutoLvUp")]
 	public class ES3UserType_PlayerData : ES3ObjectType
 	{
 		public static ES3Type Instance = null;
@@ -43,6 +43,7 @@ namespace ES3Types
 			writer.WriteProperty("CheckLv", instance.CheckLv, ES3Type_int.Instance);
 			writer.WriteProperty("CheckCount", instance.CheckCount, ES3Type_int.Instance);
 			writer.WriteProperty("CheckStartTime", instance.CheckStartTime, ES3Type_DateTime.Instance);
+			writer.WriteProperty("AutoLvUp", instance.AutoLvUp, ES3Type_bool.Instance);
 		}
 
 		protected override void ReadObject<T>(ES3Reader reader, object obj)
@@ -133,6 +134,9 @@ namespace ES3Types
 						break;
 					case "CheckStartTime":
 						instance.CheckStartTime = reader.Read<System.DateTime>(ES3Type_DateTime.Instance);
+						break;
+					case "AutoLvUp":
+						instance.AutoLvUp = reader.Read<System.Boolean>(ES3Type_bool.Instance);
 						break;
 					default:
 						reader.Skip();

@@ -63,7 +63,7 @@ public class RelicBar : MonoBehaviour
 
 		if(seChart.EParam2 == "AutoLvUp")
 		{
-
+			
 		}
 		else
 		{
@@ -237,9 +237,14 @@ public class RelicBar : MonoBehaviour
 					SoundManager.Ins.PlaySFX("se_button_2");
 
 					if (data.Puechase())
-					{						
+					{	
 						SEManager.Ins.Apply();
-						
+
+						if (chart.Id == "10011")
+						{
+							StageManager.Ins.TopBar.AutoLvUpBtn.SetBtn(true);
+						}
+
 						if (DialogRelic._Dialog != null)
 							DialogRelic._Dialog.SetBars();
 

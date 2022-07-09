@@ -67,6 +67,11 @@ public class StageManager : MonoSingleton<StageManager>
 		SetHeroes(PlayerData.IsFirstPlay);		
 		SEManager.Ins.Apply();
 
+		if (TopBar.IsOnAutoLvUp)
+		{			
+			TopBar.AutoLvUpBtn.SetBtn(false);
+		}	
+
 		StartCoroutine(OpenOfflineReward(PlayerData.IsFirstPlay));
 
 		if (PlayerData.IsFirstPlay)
@@ -82,6 +87,12 @@ public class StageManager : MonoSingleton<StageManager>
 		SetSlots();
 		SetHeroes(PlayerData.IsFirstPlay);		
 		SEManager.Ins.Apply();
+
+		if (TopBar.IsOnAutoLvUp)
+		{
+			TopBar.AutoLvUpBtn.SetBtn(false);
+		}	
+
 		cSetStageSeq = StartCoroutine(SetStage(PlayerData.Stage));
 	}
 
@@ -594,5 +605,43 @@ public class StageManager : MonoSingleton<StageManager>
 	{		
 		Moat.SetActive(true);
 	}
+
+	Coroutine cAutoLvUpSeq = null;
+
+	public void OnAutoLvUp()
+	{
+		cAutoLvUpSeq = StartCoroutine(AutoLvUpSeq());
+	}
+
+	public void OffAutoLvUp()
+	{
+		if(cAutoLvUpSeq != null)
+			StopCoroutine(cAutoLvUpSeq);
+	}
+
+	IEnumerator AutoLvUpSeq()
+	{
+		while (true)
+		{
+			double cost = 0f;
+
+			for(int i = 0; i < PlayerData.Slots.Count; i++)
+			{
+				cost += ConstantData.GetLvUpCost(PlayerData.Slots[i].Lv);
+			}
+
+			if(PlayerData.Gold >= cost)
+			{
+				for(int i = 0; i < Slots.Count; i++)
+				{
+					Slots[i].LevelUp();
+				}
+			}
+
+			yield return new WaitForSeconds(1f);
+		}
+	}
+
+
 
 }

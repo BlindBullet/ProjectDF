@@ -32,6 +32,8 @@ public class RelicData
 					StageManager.Ins.ChangeGold(-cost);
 					isOwn = true;
 					Lv++;
+					if (Lv >= chart.MaxLv)
+						isMax = true;
 					return true;
 				}
 				break;
@@ -41,6 +43,8 @@ public class RelicData
 					StageManager.Ins.ChangeMagicite(-cost);
 					isOwn = true;
 					Lv++;
+					if (Lv >= chart.MaxLv)
+						isMax = true;
 					return true;
 				}
 				break;
@@ -50,6 +54,8 @@ public class RelicData
 					StageManager.Ins.ChangeSoulStone(-cost);
 					isOwn = true;
 					Lv++;
+					if (Lv >= chart.MaxLv)
+						isMax = true;
 					return true;
 				}
 				break;

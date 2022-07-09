@@ -20,6 +20,8 @@ public class TopBar : MonoBehaviour
 	public TextMeshProUGUI GainGoldTimeText;
 	public GameObject AutoUseSkillBuffObj;
 	public TextMeshProUGUI AutoUseSkillTimeText;
+	public AutoLvUpBtn AutoLvUpBtn;
+	public bool IsOnAutoLvUp = false;
 
 	public void Setup()
 	{
@@ -145,5 +147,11 @@ public class TopBar : MonoBehaviour
 		{
 			AutoUseSkillBuffObj.SetActive(false);
 		}
+	}
+
+	public void SetAutoLvUpBtn()
+	{
+		IsOnAutoLvUp = true;
+		AutoLvUpBtn.gameObject.SetActive(true);		
 	}
 }

@@ -477,7 +477,10 @@ public class SEManager : MonoSingleton<SEManager>
 		{			
 			case SEEffectType.Stage:
 				switch (data.Chart.EParam2)
-				{					
+				{
+					case "AutoLvUp":
+						StageManager.Ins.TopBar.SetAutoLvUpBtn();
+						break;
 					case "SoulStoneRate":						
 						switch (data.Chart.EParam1)
 						{

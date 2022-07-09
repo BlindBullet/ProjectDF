@@ -35,6 +35,7 @@ public class PlayerData
 	public int CheckLv = 1;
 	public int CheckCount = 0;
 	public DateTime CheckStartTime;
+	public bool AutoLvUp = false;
 
 	public void Init()
 	{
@@ -59,6 +60,7 @@ public class PlayerData
 		CheckLv = 1;
 		CheckCount = 0;
 		CheckStartTime = TimeManager.Ins.GetCurrentTime();
+		AutoLvUp = false;
 
 		ResisterHeroes();
 		ResisterRelics();
@@ -439,6 +441,20 @@ public class PlayerData
 		CheckCount = 0;
 	}
 
+	public void SetAutoLvUp()
+	{
+		if (AutoLvUp)
+		{
+			AutoLvUp = false;
+		}
+		else
+		{
+			AutoLvUp = true;
+		}
+
+		Save();
+	}
+
 	public void Save()
 	{
 		ES3.Save<PlayerData>("PlayerData", this);
@@ -492,6 +508,7 @@ public class PlayerData
 						
 			CheckCount = data.CheckCount;
 			CheckStartTime = data.CheckStartTime;
+			AutoLvUp = data.AutoLvUp;
 
 			ResisterHeroes();
 			ResisterRelics();
