@@ -37,9 +37,6 @@ public class StartManager : MonoBehaviour
 
 		yield return new WaitForSeconds(1f);
 
-#if UNITY_ANDROID && !UNITY_EDITOR
-		yield return StartCoroutine(CheckForUpdate());
-#endif
 		TouchToStartText.gameObject.SetActive(true);
 
 		TouchToStartText.DOFade(1f, 1.5f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
@@ -50,46 +47,6 @@ public class StartManager : MonoBehaviour
 			SoundManager.Ins.PlaySFX("se_button_2");
 			StartCoroutine(ChangeScene());			
 		});
-	}
-
-	IEnumerator CheckForUpdate()
-	{
-		PlayAsyncOperation<AppUpdateInfo, AppUpdateErrorCode> appUpdateInfoOperation =
-		  appUpdateManager.GetAppUpdateInfo();
-
-		// Wait until the asynchronous operation completes.
-		yield return appUpdateInfoOperation;
-
-		if (appUpdateInfoOperation.IsSuccessful)
-		{
-			var appUpdateInfoResult = appUpdateInfoOperation.GetResult();
-			// Check AppUpdateInfo's UpdateAvailability, UpdatePriority,
-			// IsUpdateTypeAllowed(), etc. and decide whether to ask the user
-			// to start an in-app update.
-
-			var appUpdateOptions = AppUpdateOptions.ImmediateAppUpdateOptions();
-
-			// Creates an AppUpdateRequest that can be used to monitor the
-			// requested in-app update flow.
-			var startUpdateRequest = appUpdateManager.StartUpdate(
-			  // The result returned by PlayAsyncOperation.GetResult().
-			  appUpdateInfoResult,
-			  // The AppUpdateOptions created defining the requested in-app update
-			  // and its parameters.
-			  appUpdateOptions);
-
-			while (!startUpdateRequest.IsDone)
-			{
-				// For flexible flow,the user can continue to use the app while
-				// the update downloads in the background. You can implement a
-				// progress bar showing the download status during this time.
-				yield return null;
-			}
-		}
-		else
-		{
-			// Log appUpdateInfoOperation.Error.
-		}
 	}
 
 	IEnumerator ChangeScene()
