@@ -48,14 +48,14 @@ public class DialogHeroInfo : DialogController
 		purchaseBtnMat = PurchaseBtn.GetComponent<Image>().materialForRendering;
 		PurchaseBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
 
-		uiImage = EnchantBtn.GetComponent<Image>();
-		uiImage.material = new Material(uiImage.materialForRendering);
-		enchantBtnMat = PurchaseBtn.GetComponent<Image>().materialForRendering;
+		Image uiImage2 = EnchantBtn.GetComponent<Image>();
+		uiImage2.material = new Material(uiImage2.materialForRendering);
+		enchantBtnMat = EnchantBtn.GetComponent<Image>().materialForRendering;
 		EnchantBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
 
-		uiImage = UpgradeBtn.GetComponent<Image>();
-		uiImage.material = new Material(uiImage.materialForRendering);
-		upgradeBtnMat = PurchaseBtn.GetComponent<Image>().materialForRendering;
+		Image uiImage3 = UpgradeBtn.GetComponent<Image>();
+		uiImage3.material = new Material(uiImage3.materialForRendering);
+		upgradeBtnMat = EnchantBtn.GetComponent<Image>().materialForRendering;
 		UpgradeBtn.GetComponent<AllIn1SpriteShader.AllIn1Shader>().ApplyMaterialToHierarchy();
 
 		List<HeroChart> chartList = CsvData.Ins.HeroChart[data.Id];

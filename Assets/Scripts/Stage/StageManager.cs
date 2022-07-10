@@ -65,13 +65,13 @@ public class StageManager : MonoSingleton<StageManager>
 
 		SetSlots();
 		SetHeroes(PlayerData.IsFirstPlay);
+		SEManager.Ins.Apply();
 
 		if (TopBar.IsOnAutoLvUp)
 		{
 			TopBar.AutoLvUpBtn.SetBtn(false);
 		}
-
-		SEManager.Ins.Apply();
+		
 		StartCoroutine(OpenOfflineReward(PlayerData.IsFirstPlay));
 
 		if (PlayerData.IsFirstPlay)
