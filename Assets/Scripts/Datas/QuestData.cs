@@ -47,7 +47,7 @@ public class QuestData
 
 		QuestChart chart = CsvData.Ins.QuestChart[Id];
 
-		double totalTime = chart.Time * 60f;
+		double totalTime = (chart.Time + (int)(chart.Time * (StageManager.Ins.PlayerStat.QuestTime / 100f))) * 60f;
 		TimeSpan timeSpan = TimeManager.Ins.ReceivedTime - StartTime;
 		double progressTime = timeSpan.TotalSeconds + TimeManager.Ins.SinceTime;
 
