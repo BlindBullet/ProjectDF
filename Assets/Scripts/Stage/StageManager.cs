@@ -64,14 +64,14 @@ public class StageManager : MonoSingleton<StageManager>
 		TopBar.Setup();
 
 		SetSlots();
-		SetHeroes(PlayerData.IsFirstPlay);		
-		SEManager.Ins.Apply();
+		SetHeroes(PlayerData.IsFirstPlay);
 
 		if (TopBar.IsOnAutoLvUp)
-		{			
+		{
 			TopBar.AutoLvUpBtn.SetBtn(false);
-		}	
+		}
 
+		SEManager.Ins.Apply();
 		StartCoroutine(OpenOfflineReward(PlayerData.IsFirstPlay));
 
 		if (PlayerData.IsFirstPlay)
@@ -610,13 +610,17 @@ public class StageManager : MonoSingleton<StageManager>
 
 	public void OnAutoLvUp()
 	{
-		cAutoLvUpSeq = StartCoroutine(AutoLvUpSeq());
+		if(cAutoLvUpSeq == null)
+			cAutoLvUpSeq = StartCoroutine(AutoLvUpSeq());
 	}
 
 	public void OffAutoLvUp()
 	{
 		if(cAutoLvUpSeq != null)
+		{
 			StopCoroutine(cAutoLvUpSeq);
+			cAutoLvUpSeq = null;
+		}	
 	}
 
 	IEnumerator AutoLvUpSeq()
