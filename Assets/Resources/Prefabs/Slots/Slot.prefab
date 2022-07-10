@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: e92b30b404e434a46b68448430cef164, type: 2}
+  m_Material: {fileID: 2100000, guid: 5f854c0ff1195c547a0bc3a96da8d8ac, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shaderTypes: 2
+  shaderTypes: 0
   normalStrength: 5
   normalSmoothing: 1
   computingNormal: 0
@@ -1661,7 +1661,6 @@ MonoBehaviour:
     No: 0
     Lv: 0
     Power: 0
-    PowerUpStack: 0
     AtkData:
       Front: 0
       Diagonal: 0
@@ -1672,6 +1671,9 @@ MonoBehaviour:
       AtkUp: 0
       Size: 0
       Push: 0
+    PowerUpStackDatas: 
+    PowerUpListLvs: 
+    PowerUpLists: 
 --- !u!1 &9056847767095233150
 GameObject:
   m_ObjectHideFlags: 0
