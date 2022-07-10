@@ -38,7 +38,7 @@ public class StartManager : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-		yield return StartCoroutine(CheckForUpdate());
+		StartCoroutine(CheckForUpdate());
 #endif
 		TouchToStartText.gameObject.SetActive(true);
 
