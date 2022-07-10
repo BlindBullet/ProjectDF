@@ -106,6 +106,11 @@ public class SEManager : MonoSingleton<SEManager>
 		}
 
 		PlayerBuffManager.Ins.RunAllBuffs();
+
+		for (int i = 0; i < StageManager.Ins.Slots.Count; i++)
+		{
+			StageManager.Ins.Slots[i].SetLvUpCost();
+		}
 	}
 
 	void ApplySE(SEData data)

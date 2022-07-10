@@ -29,19 +29,20 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 
 	private void Start()
 	{
+		isReal = true;
+
+#if UNITY_ANDROID && !UNITY_EDITOR
 		Debug.Log("어플리케이션 인스톨러 네임 :" + Application.installerName);
 		// 플레이스토어 com.android.vending
 		// 원스토어 com.skt.skaf.A000Z00040
-
-		isReal = true;
 
 		string installerName = Application.installerName;
 
 		if (installerName == "com.android.vending" || installerName == "com.skt.skaf.A000Z00040")
 			isReal = true;
 		else
-			isReal = true;
-
+			isReal = false;
+#endif
 		// 모바일 광고 SDK를 초기화함.
 		MobileAds.Initialize(initStatus => { });
 
@@ -106,7 +107,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		}
 	}
 
-	#region 보급품 리워드 광고
+#region 보급품 리워드 광고
 	const string suppliesRewardId = "ca-app-pub-7304648099168356/5785904836";
 	RewardedAd rewardAd;
 
@@ -138,9 +139,9 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		Debug.Log("로드 실패");
 		isSuppliesRewardAdLoaded = false;
 	}
-	#endregion
+#endregion
 
-	#region 퀘스트 리워드 광고	
+#region 퀘스트 리워드 광고	
 	const string questRewardId = "ca-app-pub-7304648099168356/7860855094";	
 
 	public void ShowQuestRewardAd()
@@ -170,9 +171,9 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		Debug.Log("로드 실패");
 		isQuestRewardAdLoaded = false;
 	}
-	#endregion
+#endregion
 
-	#region 어센션 보상 광고
+#region 어센션 보상 광고
 	const string ascensionRewardId = "ca-app-pub-7304648099168356/3207294219";
 
 	public void ShowAscensionRewardAd()
@@ -203,9 +204,9 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		Debug.Log("로드 실패");
 		isAscensionRewardAdLoaded = false;
 	}
-	#endregion
+#endregion
 
-	#region 오프라인 보상 광고
+#region 오프라인 보상 광고
 	const string offlineRewardId = "ca-app-pub-7304648099168356/6992009449";
 
 	public void ShowOfflineRewardAd()
@@ -234,9 +235,9 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	{
 		Debug.Log("애드몹 광고 실패");		
 	}
-	#endregion
+#endregion
 
-	#region 퀘스트 갱신 광고	
+#region 퀘스트 갱신 광고	
 	const string questRefreshRewardId = "ca-app-pub-7304648099168356/3848144816";
 
 	public void ShowQuestRefreshAd()
@@ -247,9 +248,9 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		StartCoroutine(DialogQuest._Dialog.ResetQuest());
 		LoadAd(AdType.QuestRefresh);
 	}
-	#endregion
+#endregion
 
-	#region 퀘스트 리워드 전면 광고	
+#region 퀘스트 리워드 전면 광고	
 	const string questRefreshReward2Id = "ca-app-pub-7304648099168356/4319200910";
 
 	public void ShowQuestRewardAd2()
@@ -276,7 +277,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 			}
 		}
 	}
-	#endregion
+#endregion
 }
 
 public enum AdType
