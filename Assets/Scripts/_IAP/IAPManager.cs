@@ -6,7 +6,7 @@ using UnityEngine.Purchasing;
 public class IAPManager : MonoSingleton<IAPManager>, IStoreListener
 {
 	public const string ProductAdRemove = "remove_ad";
-	private const string AdRemoveId = "com.mkgames.projectdf.remove_ad";
+	private const string AdRemoveId = "remove_ad";
 
 	public IStoreController Controller;
 	public IExtensionProvider Extension;

@@ -3,8 +3,8 @@
     "m_SelectedPackage": {
         "deviceId": "ce031603b9e65a3903",
         "name": "com.mkgames.projectdf",
-        "processId": 17723,
-        "exited": true
+        "processId": 1238,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -37,6 +37,12 @@
             "name": "com.mkgames.projectdf",
             "processId": 9159,
             "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 1238,
+            "exited": false
         },
         {
             "deviceId": "R39M10EL61Y",
