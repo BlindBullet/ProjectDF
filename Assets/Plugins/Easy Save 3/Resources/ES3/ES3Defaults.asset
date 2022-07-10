@@ -36,19 +36,19 @@ MonoBehaviour:
     - DamageNumbersPro
     - Febucci.TextAnimator.Runtime
     - AllIn1SpriteShaderAssembly
-    - Purchasing.Common
-    - Febucci.TextAnimator.Demo.Runtime
-    - ACTk.Examples.Genuine.Runtime
     - Google.Play.Core
     - Google.Play.Common
     - Google.Play.AppUpdate
+    - Purchasing.Common
+    - Febucci.TextAnimator.Demo.Runtime
+    - ACTk.Examples.Genuine.Runtime
+    - Google.Android.AppBundle.Editor
     - PsdPlugin
     - ACTk.Editor
     - Febucci.TextAnimator.Editor
     - GoogleMobileAds.Editor
     - ACTk.Examples.Genuine.Editor
     - Febucci.TextAnimator.Demo.Editor
-    - Google.Android.AppBundle.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
