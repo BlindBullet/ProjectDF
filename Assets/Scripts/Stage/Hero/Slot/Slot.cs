@@ -59,7 +59,7 @@ public class Slot : MonoBehaviour
 
 		LvObj.SetActive(true);
 				
-		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
+		SetLvUpCost();
 		SetLvUpBtnState(0);
 		SetLvText();		
 		SetPowerUpBtn();		
@@ -89,7 +89,7 @@ public class Slot : MonoBehaviour
 		}
 
 		SetLvUpBtnState(0);
-		SetLvUpCost(ConstantData.GetLvUpCost(data.Lv));
+		SetLvUpCost();
 		SetLvText();
 	}
 
@@ -126,9 +126,9 @@ public class Slot : MonoBehaviour
 		LvText.text = data.Lv.ToString();
 	}
 
-	void SetLvUpCost(double cost)
+	public void SetLvUpCost()
 	{
-		LvUpCostText.text = ExtensionMethods.ToCurrencyString(cost);
+		LvUpCostText.text = ExtensionMethods.ToCurrencyString(ConstantData.GetLvUpCost(data.Lv));
 	}
 
 	void SetLvUpBtnState(double value)
