@@ -73,6 +73,8 @@ public class DialogAdReward : DialogController
 				return;
 			}
 
+			StageManager.Ins.PlayerStat.CheckRemoveAd();
+			
 			if (StageManager.Ins.PlayerStat.RemoveAd)
 			{
 				StartCoroutine(GetSuppliesReward(true));
@@ -159,6 +161,8 @@ public class DialogAdReward : DialogController
 				return;
 			}
 
+			StageManager.Ins.PlayerStat.CheckRemoveAd();
+			
 			if (StageManager.Ins.PlayerStat.RemoveAd)
 			{
 				StartCoroutine(GetQuestReward(true));

@@ -85,7 +85,7 @@ public class PlayerStat
 		GameSpd = 1.25f;
 		UseAutoSkill = false;
 		GainGold = 1f;
-		RemoveAd = true;
+		RemoveAd = false;
 		Time.timeScale = GameSpd;
 	}
 
