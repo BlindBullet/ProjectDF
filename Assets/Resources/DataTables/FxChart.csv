@@ -44,3 +44,5 @@ AuraChargeGreen,AuraChargeGreen,1,Center,,,,,5
 Impact01,Impact01,0.7,Center,,,,poly_explosion_lightning,20
 FireballExplosionRed3,FireballExplosionRed,3,Center,,,,poly_explosion_storm,10
 BeamupCylinderBlue,BeamupCylinderBlue,1.5,Land,,,,,5
+RegenerateBlue,RegenerateBlue,1,Center,,,,,5
+RegenerateRed,RegenerateRed,1,Center,,,,,5

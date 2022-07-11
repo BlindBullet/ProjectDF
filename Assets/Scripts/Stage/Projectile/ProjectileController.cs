@@ -405,7 +405,7 @@ public class ProjectileController : MonoBehaviour
 				bool isPush = Random.Range(0, 100) < data.PushProb ? true : false;
 				if(isPush) enemyBase.Push(data.PushPower, 1f);
 
-				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), false);
+				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit);
 			}
 			
 			if(penCount <= 0)

@@ -179,7 +179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 11
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 192c5db66286b16489caae9bef17ed41, type: 2}
   m_sharedMaterial: {fileID: 882574637698120323, guid: 192c5db66286b16489caae9bef17ed41,
@@ -344,7 +344,7 @@ MonoBehaviour:
     suffixDigits: 030000000300000003000000
     maxDigits: 4
   enableLeftText: 1
-  leftText: 
+  leftText: 11
   leftTextSettings:
     bold: 0
     italic: 0
@@ -690,7 +690,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1719127201
   m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingOrder: -1
 --- !u!1 &6752680735536672953
 GameObject:
   m_ObjectHideFlags: 0

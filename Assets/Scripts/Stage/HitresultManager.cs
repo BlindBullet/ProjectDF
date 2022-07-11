@@ -386,6 +386,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 							case FactorOwner.Caster:
 								double dmg = hitresults[i].Value + (caster.Stat.Atk * (hitresults[i].ValuePercent / 100f));
 								bool isCrit = Random.Range(0f, 100f) < caster.Stat.CritChance ? true : false;
+								
 								double resultDmg = 0;
 
 								if (isCrit)
