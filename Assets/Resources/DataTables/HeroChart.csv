@@ -84,3 +84,10 @@
 10020,str_name_10020,str_desc_10020,f107,Blue,3,58,0.7,0,Blue1,skill_10020,ce_10020,str_desc_ce_10020,SoulStone,1500
 10020,str_name_10020,str_desc_10020,f107,Blue,4,116,0.7,0,Blue1,skill_10020,ce_10020,str_desc_ce_10020,,
 10020,str_name_10020,str_desc_10020,f107,Blue,5,232,0.7,0,Blue1,skill_10020,ce_10020,str_desc_ce_10020,,
+10021,str_name_10021,str_desc_10021,f115,Red,2,23,0.9,0,Red1,skill_10021,ce_10021,str_desc_ce_10021,SoulStone,800
+10021,str_name_10021,str_desc_10021,f115,Red,3,45,0.9,0,Red1,skill_10021,ce_10021,str_desc_ce_10021,,
+10021,str_name_10021,str_desc_10021,f115,Red,4,90,0.9,0,Red1,skill_10021,ce_10021,str_desc_ce_10021,,
+10021,str_name_10021,str_desc_10021,f115,Red,5,180,0.9,0,Red1,skill_10021,ce_10021,str_desc_ce_10021,,
+10022,str_name_10022,str_desc_10022,f102,Blue,3,52,0.78,0,Blue1,skill_10022,ce_10022,str_desc_ce_10022,SoulStone,1500
+10022,str_name_10022,str_desc_10022,f102,Blue,4,104,0.78,0,Blue1,skill_10022,ce_10022,str_desc_ce_10022,,
+10022,str_name_10022,str_desc_10022,f102,Blue,5,208,0.78,0,Blue1,skill_10022,ce_10022,str_desc_ce_10022,,
