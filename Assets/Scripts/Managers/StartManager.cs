@@ -37,9 +37,8 @@ public class StartManager : MonoBehaviour
 
 		yield return new WaitForSeconds(1f);
 
-#if UNITY_ANDROID && !UNITY_EDITOR
 		StartCoroutine(CheckForUpdate());
-#endif
+
 		TouchToStartText.gameObject.SetActive(true);
 
 		TouchToStartText.DOFade(1f, 1.5f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
@@ -54,6 +53,7 @@ public class StartManager : MonoBehaviour
 
 	IEnumerator CheckForUpdate()
 	{
+#if UNITY_ANDROID && !UNITY_EDITOR
 		PlayAsyncOperation<AppUpdateInfo, AppUpdateErrorCode> appUpdateInfoOperation =
 		  appUpdateManager.GetAppUpdateInfo();
 
@@ -90,6 +90,8 @@ public class StartManager : MonoBehaviour
 		{
 			// Log appUpdateInfoOperation.Error.
 		}
+#endif
+		yield return null;
 	}
 
 	IEnumerator ChangeScene()

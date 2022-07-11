@@ -313,3 +313,9 @@ Attendance,출석,Check,出席
 title_popup_attendance,출석 체크,Check Attendance,出席
 desc_popup_attendance,매일 접속시 보상을 받을 수 있습니다.\n15번 보상을 받을 때마다 보상 레벨이 증가하며` 레벨업시 보상이 10% 증가합니다.(최대 300%),You can receive a reward by logging in every day.\nEvery 15th reward` the reward level increases` and the reward increases by 10% when leveling up. (Maximum 300%),1日1回ログインボナスが獲得できます。\n15日連続ログインでログインボナスとレベルアップの報酬が10％ずつ、最大300％まで増加します。
 Remove_Ad,광고 제거,Remove Ad,広告を削除
+str_name_10021,레이샤,Leixia,レイシャ
+str_desc_skill_10021,쿨타임 {0}초.\n30초 동안 모든 영웅들의 치명타 확률과 치명타 데미지를 증가시킵니다. 등급이 높을수록 지속 시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the critical cahnce and critical dmg of all heroes for 30 seconds. Each upgrade increases the duration.,待機{0}秒 \n30秒間、すべてのヒーローのクリティカル確率とクリティカルダメージが上昇します。ランクアップで維持時間延長。
+str_desc_ce_10021,2번 슬롯의 영웅 속성이 불이라면` 해당 영웅의 공격력이 증가합니다.,If the hero attribute of slot 2 is fire` Increases the attack power of that hero.,2番スロットのヒーローが火属性だと、そのヒーローのダメージアップ
+str_name_10022,루크레치아,Lucrecia,ルクレシア
+str_desc_skill_10022,쿨타임 {0}초.\n30초 동안 모든 영웅들의 공격력과 공격속도를 증가시킵니다. 등급이 높을수록 지속 시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the attack power and attack spd of all heroes for 30 seconds. Each upgrade increases the duration.,待機{0}秒 \n30秒間、すべてのヒーローの攻撃力と攻撃速度が上昇します。ランクアップで維持時間延長。
+str_desc_ce_10022,5번 슬롯의 영웅 속성이 물이라면` 해당 영웅의 공격력이 증가합니다.,If the hero attribute of slot 5 is water` Increases the attack power of that hero.,5番スロットのヒーローが水属性だと、そのヒーローのダメージアップ
