@@ -62,11 +62,13 @@ public class GameManager : MonoSingleton<GameManager>
 			BackkeyManager.Ins.UseBackkey(true);
 		}
 
+#if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.S))
 		{
 			StageManager.Ins.ChangeMagicite(1000000000000f);
 			StageManager.Ins.ChangeSoulStone(10000f);
 		}
+#endif
 	}
 
 	// 홈이나 다른 버튼을 눌러 어플리케이션이 멈췄을 때 콜됨

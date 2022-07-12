@@ -3,7 +3,7 @@ Close,닫기,Close,閉じる
 Pause,일시정지,Pause,一時停止
 Heroes,영웅 리스트,Heroes List,ヒーローリスト
 Ascension,환생,Ascension,転生
-popup_ascension_desc,환생을 하면 마석을 받고 처음으로 돌아갑니다.\n환생 시 레벨이 초기화되며`\n도달한 스테이지가 높을수록 받는 마석이 증가합니다.,If you Ascension` you will receive a Magicite and return to the beginning. When ascension` the level is reset` and the higher the stage reached` the more Magicite you receive.,転生すると魔石を獲得して、最初の状態になる。\n
+popup_ascension_desc,환생을 하면 마석을 받고 처음으로 돌아갑니다.\n환생 시 레벨이 초기화되며`\n도달한 스테이지가 높을수록 받는 마석이 증가합니다.,When you Ascend` you will receive Magicite and return to the beginning. On Ascension your level is reset and the higher the stage you reached the more Magicite you receive.,転生すると魔石を獲得して、最初の状態になる。\n
 レベルは初期化されて、\nステージが上がった分だけ魔石の獲得ができる。
 popup_ascension_reward_title,환생 보상,Reward Ascension,転生リワード
 popup_ascension_cant_ascension_desc,환생은 {0} 스테이지 이상부터 가능합니다.,Prestige is possible from stage {0} or higher.,転生は第{0}ステージ以上からできる。
@@ -29,7 +29,7 @@ Quest,퀘스트,Quest,クエスト
 Dungeon,던전,Dungeon,ダンジョン
 Setting,셋팅,Setting,セッティング
 notice_dungeon_update,던전은 현재 굳게 닫혀있습니다. (업데이트 예정),The dungeon is firmly closed for now (to be updated),ギルドによるダンジョン開拓中
-cant_use_skill_desc_1,적이 하나 이상 있을 때 사용 가능한 스킬입니다.,This skill can be used when there is at least one enemy.,スキルの発動条件を満たしてない
+cant_use_skill_desc_1,적이 하나 이상 있을 때 사용 가능한 스킬입니다.,You need at least 1 enemy to use this skill.,スキルの発動条件を満たしてない
 GameSpeedInc,게임 스피드 증가,Increase Game Speed,ゲームスピードアップ
 GainGold,적 처치 골드 증가,Increase Earn Gold,獲得報酬金増加
 UseAutoSkill,스킬 자동 사용,Use Auto Skill,オートスキル
@@ -38,7 +38,7 @@ get_ad_reward_x5,보상 x5,Reward x5,報酬５倍
 Skill,스킬,Skill,スキル
 Attr,속성,Attr,属性
 QuitGame,게임 종료,Quit Game,ゲーム終了
-QuitGameDesc,게임을 끝내시겠습니까?,Are you sure you want to leave the game?,ゲームを終了しますか？
+QuitGameDesc,게임을 끝내시겠습니까?,Are you sure you want to quit the game?,ゲームを終了しますか？
 title_popup_offline_reward,오프라인 보상,Offline Reward,オフライン中の報酬
 desc_popup_offline_reward,진행 보상은 현재 최대 {0}시간 {1}분 누적됩니다.\n유물이나 기타 효과로 보상과 누적 시간을 늘릴 수 있습니다.,Rewards currently accumulate up to {0} hours and {1} minutes.\nRelics and other effects can increase rewards and accumulation time.,報酬は最大で {0} 時間 {1} 分累積される。\n遺物や別の効果で報酬をさらにアップ。
 time_popup_offline_reward,오프라인 진행 시간: {0}시간 {1}분,Time: {0}H {1}M,オフライン経過時間 : {0}時間 {1}分
@@ -47,7 +47,7 @@ offline_reward_no_add,보상: {0},Reward: {0},報酬: {0}
 Get,받기,Claim,獲得
 Get_2x,보상 x2,Reward x2,報酬２倍
 Reward,보상,Reward,報酬
-popup_receive_reward_close,터치하여 보상을 받으세요.,Touch to get reward,タッチで報酬獲得
+popup_receive_reward_close,터치하여 보상을 받으세요.,Tap to receive reward,タッチで報酬獲得
 Enchant,강화,Enchant,強化
 LevelUp,레벨업,Level Up,レベルアップ
 Purchase,구매,Purchase,購入
@@ -77,18 +77,18 @@ str_desc_ce_10002,모든 영웅의 치명타 확률이 증가합니다.,Increase
 str_desc_ce_10003,모든 나무 속성 영웅들의 치명타 데미지가 증가합니다.,Increases the critical damage of all tree attribute heroes.,木属性の全ヒーローのクリティカルダメージアップ
 str_desc_ce_10004,모든 영웅들의 공격력이 증가합니다.,Increases the attack power of all heroes.,全ヒーローのダメージアップ
 str_desc_ce_10005,5번 슬롯의 영웅 속성이 나무라면` 골드 획득량이 증가합니다.,If the hero attribute of slot 5 is tree` the amount of earn gold increases.,５番スロットのヒーローが木属性なら、報酬獲得量アップ
-str_desc_ce_10006,물 속성 영웅이 2명 이상 배치돼있다면` 모든 영웅들의 공격력이 증가합니다.,If deploies 2 or more water attribute heroes` the attack power of all heroes increases.,配置ヒーロー二人以上が水属性なら、全ヒーローのダメージアップ
-str_desc_ce_10007,나무 속성 영웅이 2명 이상 배치돼있다면` 1`3`5번 슬롯 영웅들의 치명타 확률이 증가합니다.,If deploies 2 or more tree attribute heroes` increase critical chance of slots 1` 3` 5's heroes.,配置ヒーロー二人以上が木属性なら、1、3、5番スロットのヒーローのクリティカル率アップ
-str_desc_ce_10008,불 속성 영웅이 2명 이상 배치돼있다면` 모든 영웅들의 공격속도가 증가합니다.,If deploies 2 or more fire attribute heroes` the attack speed of all heroes increases.,配置ヒーロー二人以上が火属性なら、全ヒーローのスピードアップ
+str_desc_ce_10006,물 속성 영웅이 2명 이상 배치돼있다면` 모든 영웅들의 공격력이 증가합니다.,If 2 or more water attribute heroes are deployed` the attack power of all heroes increases.,配置ヒーロー二人以上が水属性なら、全ヒーローのダメージアップ
+str_desc_ce_10007,나무 속성 영웅이 2명 이상 배치돼있다면` 1`3`5번 슬롯 영웅들의 치명타 확률이 증가합니다.,If 2 or more tree attribute heroes are deployed` increase critical chance of slots heroes in slot 1` 3 and 5.,配置ヒーロー二人以上が木属性なら、1、3、5番スロットのヒーローのクリティカル率アップ
+str_desc_ce_10008,불 속성 영웅이 2명 이상 배치돼있다면` 모든 영웅들의 공격속도가 증가합니다.,If 2 or more fire attribute heroes are deployed` the attack speed of all heroes increases.,配置ヒーロー二人以上が火属性なら、全ヒーローのスピードアップ
 str_desc_ce_10009,모든 나무 속성 영웅들의 공격력이 증가합니다.,Increases the attack power of all Tree attribute heroes.,木属性の全ヒーローのダメージアップ
-str_desc_ce_10010,3번 슬롯의 영웅 속성이 불이라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slot 3 is fire` Increases the attack power of all heroes.,3番スロットのヒーローが火属性なら、全ヒーローのダメージアップ
-str_desc_ce_10011,1번 슬롯의 영웅 속성이 나무라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slot 1 is tree` Increases the attack power of all heroes.,1番スロットのヒーローが木属性なら、全ヒーローのダメージアップ
-str_desc_ce_10012,3` 5번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero attribute of slots 3 and 5 is water` the critical strike chance of all heroes increases.,3、5番スロットのヒーローが水属性なら、全ヒーローのクリティカル率アップ
-str_desc_ce_10013,2` 4번 슬롯의 영웅 속성이 불이라면` 모든 영웅들의 공격력이 증가합니다.,If the hero attribute of slots 2 and 4 is fire` the attack power of all heroes increases.,2、4番スロットのヒーローが火属性なら、全ヒーローのダメージアップ
-str_desc_ce_10014,1` 5번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero attribute of slots 1 and 5 is water` the critical chance of all heroes increases.,1、5番スロットのヒーローが水属性なら、全ヒーローのクリティカル率アップ
+str_desc_ce_10010,3번 슬롯의 영웅 속성이 불이라면` 모든 영웅들의 공격력이 증가합니다.,If the hero in slot 3 has a fire attribute` Increases the attack power of all heroes.,3番スロットのヒーローが火属性なら、全ヒーローのダメージアップ
+str_desc_ce_10011,1번 슬롯의 영웅 속성이 나무라면` 모든 영웅들의 공격력이 증가합니다.,If the hero in slot 1 has a tree attribute` Increases the attack power of all heroes.,1番スロットのヒーローが木属性なら、全ヒーローのダメージアップ
+str_desc_ce_10012,3` 5번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the heroes in slot 1 and 5 has a water attribute` the critical strike chance of all heroes increases.,3、5番スロットのヒーローが水属性なら、全ヒーローのクリティカル率アップ
+str_desc_ce_10013,2` 4번 슬롯의 영웅 속성이 불이라면` 모든 영웅들의 공격력이 증가합니다.,If the hero in slot 2 and 4 has a fire attribute` the attack power of all heroes increases.,2、4番スロットのヒーローが火属性なら、全ヒーローのダメージアップ
+str_desc_ce_10014,1` 5번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero in slot 1 and 5 has a water attribute` the critical chance of all heroes increases.,1、5番スロットのヒーローが水属性なら、全ヒーローのクリティカル率アップ
 str_desc_ce_10015,배치된 영웅들의 평균 등급이 3 이상이라면` 모든 영웅들의 공격력이 증가합니다.,If the average rank of the deployed heroes is 3 or higher` the attack power of all heroes increases.,配置中の全ヒーローの平均が3ランク以上なら、全ヒーローのダメージアップ
-str_desc_ce_10016,나무 속성 영웅이 3명 이상 배치돼있다면` 모든 영웅들의 치명타 데미지가 증가합니다.,If deploies 3 or more tree attribute heroes` the critical damage of all heroes increases.,配置中のヒーローの3人以上が木属性なら、全ヒーローのクリティカルダメージアップ
-str_desc_ce_10017,3번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero attribute of slot 3 is water` all heroes' critical chance increases.,3番スロットのヒーローが水属性なら、全ヒーローのクリティカル率アップ
+str_desc_ce_10016,나무 속성 영웅이 3명 이상 배치돼있다면` 모든 영웅들의 치명타 데미지가 증가합니다.,If 3 or more tree attribute heroes are deployed` the critical damage of all heroes increases.,配置中のヒーローの3人以上が木属性なら、全ヒーローのクリティカルダメージアップ
+str_desc_ce_10017,3번 슬롯의 영웅 속성이 물이라면` 모든 영웅들의 치명타 확률이 증가합니다.,If the hero in slot 3 has a water attribute` all heroes' critical chance increases.,3番スロットのヒーローが水属性なら、全ヒーローのクリティカル率アップ
 str_desc_ce_10018,모든 나무 속성 영웅들의 치명타 확률이 증가합니다.,Increases the critical chance of all tree attribute heroes.,木属性の全ヒーローのクリティカル率アップ
 str_desc_ce_10019,모든 불 속성 영웅들의 치명타 확률이 증가합니다.,Increases the critical chance of all fire attribute heroes.,火属性の全ヒーローのクリティカル率アップ
 str_desc_ce_10020,모든 물 속성 영웅들의 공격력이 증가합니다.,Increases the attack power of all water attribute heroes.,水属性の全ヒーローのクリティカル率アップ
@@ -224,12 +224,12 @@ str_name_quest_50001,유령 저택 청소,Haunted house cleaning,幽霊屋敷の
 str_name_quest_60001,모험가 길드의 부탁,Adventurer's Guild's Request,冒険者ギルドからのお願い
 str_name_quest_70001,고블린 부락 탐사,Goblin Village Exploration,ゴブリンたち
 str_name_quest_10002,고블린왕의 존재를 길드에 알리다,Announce the existence of the Goblin King to the guild,ゴブリンキング発見
-str_name_quest_20002,고블린과의 전투 준비,Prepare for battle to goblins,戦雲
-str_name_quest_30002,고블린의 침략을 막아내다,Defeat Goblin's Invasion,ゴブリンの侵攻
+str_name_quest_20002,고블린과의 전투 준비,Prepare for battle against the goblins,戦雲
+str_name_quest_30002,고블린의 침략을 막아내다,Defend against the Goblin's invasion,ゴブリンの侵攻
 str_name_quest_40002,미들랜드왕과 만남,Encounter with the King of Midland,ミッドランド王への謁見
 str_name_quest_50002,타락한 왕자,Fallen prince,堕落王子
 str_name_quest_60002,끝없는 사막,Endless desert,ザ・エンドレスデザート
-str_name_quest_70002,오크와 조우,Encounter with Orc ,オーク
+str_name_quest_70002,오크와 조우,Encounter with Orcs,オーク
 str_name_quest_10003,왕자의 행방 찾기,Finding the whereabouts of the prince,王子探し
 str_name_quest_20003,오크 도시 탐사,Orc's City Exploration,オークの街
 str_name_quest_30003,오아시스 찾기,Find Oasis,オアシス探し
@@ -302,7 +302,7 @@ desc_locked_quest,퀘스트는 환생 이후 열립니다.,The quest opens after
 Achieve,획득,Claim,獲得
 Dispatch,파견,Dispatch,派遣
 Rank,랭크,Rank,ランク
-desc_loading,본게임은 따로 클라우드 저장을 하지 않습니다. 게임을 삭제하면 모든 데이터가 지워집니다.,This game is not separately cloud saved. Deleting the game will erase all data.,本ゲームを削除する場合、保存データも全て削除されますので、予めご注意ください。
+desc_loading,본게임은 따로 클라우드 저장을 하지 않습니다. 게임을 삭제하면 모든 데이터가 지워집니다.,This game does not cloud save. Deleting the game will erase all data permanetly.,本ゲームを削除する場合、保存データも全て削除されますので、予めご注意ください。
 Confirm,확인,Confirm,確認
 notify_title_quest,퀘스트 완료!,Mission Complete,クエストクリア！
 notify_desc_quest,영웅들이 퀘스트를 마치고 돌아왔습니다. 두둑한 보상과 함께 말이죠!,The heroes have returned from the mission. With heavy rewards!,ヒーローたちがクエストをクリアして帰還！たくさんの補償をゲットしよう！
@@ -311,11 +311,11 @@ notify_desc_offline,오프라인 보상이 최대치에 달했습니다. 영웅�
 DmgText,데미지 텍스트,Damage Text,ダメージテキスト
 Attendance,출석,Check,出席
 title_popup_attendance,출석 체크,Check Attendance,出席
-desc_popup_attendance,매일 접속시 보상을 받을 수 있습니다.\n15번 보상을 받을 때마다 보상 레벨이 증가하며` 레벨업시 보상이 10% 증가합니다.(최대 300%),You can receive a reward by logging in every day.\nEvery 15th reward` the reward level increases` and the reward increases by 10% when leveling up. (Maximum 300%),1日1回ログインボナスが獲得できます。\n15日連続ログインでログインボナスとレベルアップの報酬が10％ずつ、最大300％まで増加します。
+desc_popup_attendance,매일 접속시 보상을 받을 수 있습니다.\n15번 보상을 받을 때마다 보상 레벨이 증가하며` 레벨업시 보상이 10% 증가합니다.(최대 300%),You receive a daily reward when you log in\nEvery 15th reward` the reward level increases` and the reward increases by 10% when leveling up. (Maximum 300%),1日1回ログインボナスが獲得できます。\n15日連続ログインでログインボナスとレベルアップの報酬が10％ずつ、最大300％まで増加します。
 Remove_Ad,광고 제거,Remove Ad,広告を削除
 str_name_10021,레이샤,Leixia,レイシャ
-str_desc_skill_10021,쿨타임 {0}초.\n30초 동안 모든 영웅들의 치명타 확률과 치명타 데미지를 증가시킵니다. 등급이 높을수록 지속 시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the critical cahnce and critical dmg of all heroes for 30 seconds. Each upgrade increases the duration.,待機{0}秒 \n30秒間、すべてのヒーローのクリティカル確率とクリティカルダメージが上昇します。ランクアップで維持時間延長。
-str_desc_ce_10021,2번 슬롯의 영웅 속성이 불이라면` 해당 영웅의 공격력이 증가합니다.,If the hero attribute of slot 2 is fire` Increases the attack power of that hero.,2番スロットのヒーローが火属性だと、そのヒーローのダメージアップ
+str_desc_skill_10021,쿨타임 {0}초.\n30초 동안 모든 영웅들의 치명타 확률과 치명타 데미지를 증가시킵니다. 등급이 높을수록 지속 시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the critical chance and critical dmg of all heroes for 30 seconds. Each upgrade increases the duration.,待機{0}秒 \n30秒間、すべてのヒーローのクリティカル確率とクリティカルダメージが上昇します。ランクアップで維持時間延長。
+str_desc_ce_10021,2번 슬롯의 영웅 속성이 불이라면` 해당 영웅의 공격력이 증가합니다.,If the heroes in slot 2 has a fire attribute` Increases the attack power of that hero.,2番スロットのヒーローが火属性だと、そのヒーローのダメージアップ
 str_name_10022,루크레치아,Lucrecia,ルクレシア
 str_desc_skill_10022,쿨타임 {0}초.\n30초 동안 모든 영웅들의 공격력과 공격속도를 증가시킵니다. 등급이 높을수록 지속 시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the attack power and attack spd of all heroes for 30 seconds. Each upgrade increases the duration.,待機{0}秒 \n30秒間、すべてのヒーローの攻撃力と攻撃速度が上昇します。ランクアップで維持時間延長。
-str_desc_ce_10022,5번 슬롯의 영웅 속성이 물이라면` 해당 영웅의 공격력이 증가합니다.,If the hero attribute of slot 5 is water` Increases the attack power of that hero.,5番スロットのヒーローが水属性だと、そのヒーローのダメージアップ
+str_desc_ce_10022,5번 슬롯의 영웅 속성이 물이라면` 해당 영웅의 공격력이 증가합니다.,If the heroes in slot 5 has a water attribute` Increases the attack power of that hero.,5番スロットのヒーローが水属性だと、そのヒーローのダメージアップ
