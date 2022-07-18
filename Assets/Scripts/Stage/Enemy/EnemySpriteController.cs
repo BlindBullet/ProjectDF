@@ -29,7 +29,7 @@ public class EnemySpriteController : MonoBehaviour
 		bgMat.SetFloat("_FadeAmount", 0f);
 		modelMat.SetFloat("_FadeAmount", 0f);
 
-		Model.sprite = Resources.Load<SpriteAtlas>("Sprites/Characters").GetSprite(chart.Model);
+		Model.sprite = Resources.Load<SpriteAtlas>("Sprites/Enemies").GetSprite(chart.Model);
 		Frame.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Frame_" + chart.Shape.ToString() + "_" + chart.Attr.ToString());
 		Bg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Bg_" + chart.Shape.ToString() + "_" + chart.Attr.ToString());
 	}
