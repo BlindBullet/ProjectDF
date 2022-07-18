@@ -13691,7 +13691,7 @@ MonoBehaviour:
     prefab: {fileID: 5025357164704868911, guid: 2cbe45b7d96adcd43af8b5c49d27d92b,
       type: 3}
     size: 20
-  - tag: Ise attack
+  - tag: Ise Attack
     prefab: {fileID: 3258718597191332915, guid: e0cebfe554e6a014c848d291a0222927,
       type: 3}
     size: 1

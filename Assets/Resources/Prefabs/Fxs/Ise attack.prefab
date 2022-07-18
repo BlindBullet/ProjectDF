@@ -9676,7 +9676,7 @@ GameObject:
   - component: {fileID: 3457567894819690695}
   - component: {fileID: -1421879468554391132}
   m_Layer: 0
-  m_Name: Ise attack
+  m_Name: Ise Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

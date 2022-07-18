@@ -126,12 +126,16 @@ public static class ConstantData
 
 	public static double GetGoldFromTime(float min, int stageNo)
 	{
-		return CalcValue(TimeGold, EnemyGoldGR, stageNo) * KillEnemiesCount1Min * min;
+		double value = CalcValue(TimeGold, EnemyGoldGR, stageNo) * KillEnemiesCount1Min * min;		
+		value = value + (value * (StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Red] / 100f));		
+		return  value;
 	}
 
 	public static double GetGoldFromOfflineTime(double min, int stageNo)
 	{
-		return CalcValue(OfflineTimeGold, EnemyGoldGR, stageNo) * KillEnemiesCount1Min * min;
+		double value = CalcValue(OfflineTimeGold, EnemyGoldGR, stageNo) * KillEnemiesCount1Min * min;		
+		value = value + (value * (StageManager.Ins.PlayerStat.NormalEnemyGoldInc[Attr.Red] / 100f));		
+		return value;
 	}
 
 	public static double GetAscensionGold()
