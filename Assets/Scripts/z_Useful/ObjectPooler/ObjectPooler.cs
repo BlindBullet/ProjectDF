@@ -23,8 +23,8 @@ public class ObjectPoolerEditor : Editor
 
 public class ObjectPooler : MonoBehaviour
 {
-	static ObjectPooler inst;
-	void Awake() => inst = this;
+	static ObjectPooler Ins;
+	void Awake() => Ins = this;
 
 	[Serializable]
 	public class Pool
@@ -44,14 +44,14 @@ public class ObjectPooler : MonoBehaviour
 
 
 	public static GameObject SpawnFromPool(string tag, Vector3 position) =>
-		inst._SpawnFromPool(tag, position, Quaternion.identity);
+		Ins._SpawnFromPool(tag, position, Quaternion.identity);
 
 	public static GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation) =>
-		inst._SpawnFromPool(tag, position, rotation);
+		Ins._SpawnFromPool(tag, position, rotation);
 
 	public static T SpawnFromPool<T>(string tag, Vector3 position) where T : Component
 	{
-		GameObject obj = inst._SpawnFromPool(tag, position, Quaternion.identity);
+		GameObject obj = Ins._SpawnFromPool(tag, position, Quaternion.identity);
 		if (obj.TryGetComponent(out T component))
 			return component;
 		else
@@ -63,7 +63,7 @@ public class ObjectPooler : MonoBehaviour
 
 	public static T SpawnFromPool<T>(string tag, Vector3 position, Quaternion rotation) where T : Component
 	{
-		GameObject obj = inst._SpawnFromPool(tag, position, rotation);
+		GameObject obj = Ins._SpawnFromPool(tag, position, rotation);
 		if (obj.TryGetComponent(out T component))
 			return component;
 		else
@@ -75,10 +75,10 @@ public class ObjectPooler : MonoBehaviour
 
 	public static List<GameObject> GetAllPools(string tag)
 	{
-		if (!inst.poolDictionary.ContainsKey(tag))
+		if (!Ins.poolDictionary.ContainsKey(tag))
 			throw new Exception($"Pool with tag {tag} doesn't exist.");
 
-		return inst.spawnObjects.FindAll(x => x.name == tag);
+		return Ins.spawnObjects.FindAll(x => x.name == tag);
 	}
 
 	public static List<T> GetAllPools<T>(string tag) where T : Component
@@ -93,10 +93,10 @@ public class ObjectPooler : MonoBehaviour
 
 	public static void ReturnToPool(GameObject obj)
 	{
-		if (!inst.poolDictionary.ContainsKey(obj.name))
+		if (!Ins.poolDictionary.ContainsKey(obj.name))
 			throw new Exception($"Pool with tag {obj.name} doesn't exist.");
 
-		inst.poolDictionary[obj.name].Enqueue(obj);
+		Ins.poolDictionary[obj.name].Enqueue(obj);
 	}
 
 	[ContextMenu("GetSpawnObjectsInfo")]
@@ -148,15 +148,15 @@ public class ObjectPooler : MonoBehaviour
 			}
 
 			// OnDisable에 ReturnToPool 구현여부와 중복구현 검사
-			if (poolDictionary[pool.tag].Count <= 0)
-				Debug.LogError($"{pool.tag}{INFO}");
-			else if (poolDictionary[pool.tag].Count != pool.size)
-				Debug.LogError($"{pool.tag}에 ReturnToPool이 중복됩니다");
+			//if (poolDictionary[pool.tag].Count <= 0)
+			//	Debug.LogError($"{pool.tag}{INFO}");
+			//else if (poolDictionary[pool.tag].Count != pool.size)
+			//	Debug.LogError($"{pool.tag}에 ReturnToPool이 중복됩니다");
 		}
 	}
 
 	GameObject CreateNewObject(string tag, GameObject prefab)
-	{
+	{		
 		var obj = Instantiate(prefab, transform);
 		obj.name = tag;
 		obj.SetActive(false); // 비활성화시 ReturnToPool을 하므로 Enqueue가 됨

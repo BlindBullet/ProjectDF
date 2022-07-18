@@ -314,8 +314,8 @@ public class ProjectileController : MonoBehaviour
 
 	void DestroySequence()
 	{
-		this.transform.position = new Vector3(0, -100f, 0);		
-		ObjectManager.Ins.Push<ProjectileController>(this);
+		this.transform.position = new Vector3(0, -100f, 0);
+		this.gameObject.SetActive(false);
 	}
 
 	Vector2 BezierValue(Vector2 p1, Vector2 p2, float value)
@@ -439,6 +439,11 @@ public class ProjectileController : MonoBehaviour
 		}
 	}
 
+	void OnDisable()
+	{
+		ObjectPooler.ReturnToPool(gameObject);    // 한 객체에 한번만 
+		CancelInvoke();    // Monobehaviour에 Invoke가 있다면 
+	}
 
 }
 

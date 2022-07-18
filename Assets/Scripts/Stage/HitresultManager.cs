@@ -212,8 +212,8 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 
 				for (int i = 0; i < projectiles.Count; i++)
 				{
-					ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
-					projectile.transform.position = caster.ProjectileAnchor.position.WithX(caster.ProjectileAnchor.position.x + projectiles[i].PosX);
+					ProjectileController projectile = ObjectPooler.SpawnFromPool<ProjectileController>(projectiles[i].Model, caster.ProjectileAnchor.position.WithX(caster.ProjectileAnchor.position.x + projectiles[i].PosX));
+					//projectile.transform.position = caster.ProjectileAnchor.position.WithX(caster.ProjectileAnchor.position.x + projectiles[i].PosX);
 					projectile.Setup(projectiles[i], hitresults, caster, dir, target);
 				}
 			}
@@ -258,8 +258,8 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 
 				for (int i = 0; i < projectiles.Count; i++)
 				{
-					ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);					
-					projectile.transform.position = minion.ProjectileAnchor.position.WithX(minion.ProjectileAnchor.position.x + projectiles[i].PosX);
+					ProjectileController projectile = ObjectPooler.SpawnFromPool<ProjectileController>(projectiles[i].Model, minion.ProjectileAnchor.position.WithX(minion.ProjectileAnchor.position.x + projectiles[i].PosX));					
+					//projectile.transform.position = minion.ProjectileAnchor.position.WithX(minion.ProjectileAnchor.position.x + projectiles[i].PosX);
 					projectile.Setup(projectiles[i], hitresults, minion, dir, target);
 				}
 			}
@@ -297,13 +297,13 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 						for(int k = 0; k < hitresults[i].SummonIds.Length; k++)
 						{
 							MinionChart minionChart = CsvData.Ins.MinionChart[hitresults[i].SummonIds[k]];
-							MinionBase minion = ObjectManager.Ins.Pop<MinionBase>(Resources.Load("Prefabs/Characters/Minions/MinionObj") as GameObject);
+							MinionBase minion = ObjectPooler.SpawnFromPool<MinionBase>("MinionObj", Vector3.zero);
 							minion.transform.localScale = new Vector2(minionChart.Size, minionChart.Size);
 							if(hitresults[i].SummonPosType == SummonPosType.Fix)							
 								minion.transform.position = new Vector2(hitresults[i].SummonPosX[k], hitresults[i].SummonPosY[k]);							
 							else
 								minion.transform.position = new Vector2(target.ProjectileAnchor.position.x + hitresults[i].SummonPosX[k], target.ProjectileAnchor.position.y + hitresults[i].SummonPosY[k]);
-							minion.Init(minionChart, target, hitresults[i].DurationTime);							
+							minion.Init(minionChart, target, hitresults[i].DurationTime);	
 						}						
 						break;
 				}

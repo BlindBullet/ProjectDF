@@ -348,7 +348,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 		int randNo = LotteryCalculator.LotteryCalc(probs);
 		SuppliesChart result = charts[randNo];
-		var supplies = ObjectManager.Ins.Pop<SuppliesBase>(Resources.Load("Prefabs/Supplies/Supplies") as GameObject);
+		var supplies = ObjectPooler.SpawnFromPool<SuppliesBase>("Supplies", Vector3.zero);
 		supplies.Setup(result);
 	}
 

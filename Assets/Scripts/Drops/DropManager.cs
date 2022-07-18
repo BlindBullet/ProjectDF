@@ -10,10 +10,9 @@ public class DropManager : MonoSingleton<DropManager>
 	{
 		for (int i = 0; i < count; i++)
 		{
-			DropGold obj = ObjectManager.Ins.Pop<DropGold>(Resources.Load("Prefabs/Drops/Gold") as GameObject);
 			float randX = Random.Range(pos.x - 1f, pos.x + 1f);
 			float randY = Random.Range(pos.y - 1f, pos.y + 1f);
-			obj.transform.position = new Vector2(randX, randY);
+			DropGold obj = ObjectPooler.SpawnFromPool<DropGold>("Gold", new Vector2(randX, randY));
 			obj.Setup();			
 		}
 	}
@@ -22,10 +21,9 @@ public class DropManager : MonoSingleton<DropManager>
 	{
 		for(int i = 0; i < count; i++)
 		{
-			DropSoulStone obj = ObjectManager.Ins.Pop<DropSoulStone>(Resources.Load("Prefabs/Drops/SoulStone") as GameObject);
 			float randX = Random.Range(pos.x - 1f, pos.x + 1f);
 			float randY = Random.Range(pos.y - 1f, pos.y + 1f);
-			obj.transform.position = new Vector2(randX, randY);
+			DropSoulStone obj = ObjectPooler.SpawnFromPool<DropSoulStone>("SoulStone", new Vector2(randX, randY));
 			obj.Setup();
 		}
 	}
