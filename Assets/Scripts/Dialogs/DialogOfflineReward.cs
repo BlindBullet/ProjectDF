@@ -83,7 +83,7 @@ public class DialogOfflineReward : DialogController
 			}
 
 			resultValue = rewardValue;
-			resultAddValue = rewardValue;
+			resultAddValue = addRewardValue;
 
 			if (StageManager.Ins.PlayerStat.RemoveAd)
 			{
