@@ -481,7 +481,7 @@ public class PlayerData
 			ClearQuestCount = data.ClearQuestCount;
 			TotalClearQuestCount = data.TotalClearQuestCount;
 			Stage = data.Stage;
-			TopStage = data.Stage;
+			TopStage = data.TopStage;
 			Heroes = data.Heroes;
 
 			for(int i = 0; i < Heroes.Count; i++)
