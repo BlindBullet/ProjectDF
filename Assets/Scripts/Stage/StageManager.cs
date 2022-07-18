@@ -278,7 +278,7 @@ public class StageManager : MonoSingleton<StageManager>
 		TopBar.SetStageText(stageNo);
 		NextStageSeq.NextStageSeq();
 
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(1f);
 
 		TutorialManager.Ins.SetTutorial();
 
