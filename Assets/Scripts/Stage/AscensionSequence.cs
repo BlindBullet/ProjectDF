@@ -8,12 +8,9 @@ public class AscensionSequence : MonoBehaviour
 {
 	public Image Img;
 	public GameObject effect;
-	Material mat;
-
+	
 	private void Awake()
-	{
-		Img.material = new Material(Img.materialForRendering);
-		mat = Img.materialForRendering;
+	{	
 		this.gameObject.SetActive(false);
 	}
 
