@@ -50,8 +50,8 @@ public class MinionAttackController : MonoBehaviour
 
 		for (int i = 0; i < projectiles.Count; i++)
 		{
-			ProjectileController projectile = ObjectManager.Ins.Pop<ProjectileController>(Resources.Load("Prefabs/Projectiles/" + projectiles[i].Model) as GameObject);
-			projectile.transform.position = me.ProjectileAnchor.position.WithX(me.ProjectileAnchor.position.x + projectiles[i].PosX);
+			ProjectileController projectile = ObjectPooler.SpawnFromPool<ProjectileController>(projectiles[i].Model, me.ProjectileAnchor.position.WithX(me.ProjectileAnchor.position.x + projectiles[i].PosX));
+			//projectile.transform.position = me.ProjectileAnchor.position.WithX(me.ProjectileAnchor.position.x + projectiles[i].PosX);
 			projectile.Setup(projectiles[i], hitresults, me, dir, me.Target);
 		}
 	}

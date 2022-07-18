@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class ThousandCommaText
 {
-    public static string GetThousandComma(int data)
+	public static string GetThousandComma(int data)
 	{
 		if(data == 0)
 		{

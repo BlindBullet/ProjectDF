@@ -317,7 +317,7 @@ public class EnemyBase : MonoBehaviour
 
 		transform.position = new Vector3(0, 20f, 0);
 		SpriteCon.Mask.enabled = true;
-		ObjectManager.Ins.Push<EnemyBase>(this);
+		this.gameObject.SetActive(false);
 	}
 
 	public void Push(float value, float time)
@@ -398,6 +398,7 @@ public class EnemyBase : MonoBehaviour
 				{
 					if (isBoss)
 					{
+						collision.GetComponent<PlayerLine>().Destroy();
 						TakeDmg(10f, Attr.None);
 					}
 					else
@@ -431,9 +432,15 @@ public class EnemyBase : MonoBehaviour
 	public void Destroy()
 	{
 		transform.position = new Vector3(0, 20f, 0);
-		ObjectManager.Ins.Push<EnemyBase>(this);
+		this.gameObject.SetActive(false);
 		Enemies.Remove(this);
 	}
 
-	
+	void OnDisable()
+	{
+		ObjectPooler.ReturnToPool(gameObject);    // 한 객체에 한번만 
+		CancelInvoke();    // Monobehaviour에 Invoke가 있다면 
+	}
+
+
 }

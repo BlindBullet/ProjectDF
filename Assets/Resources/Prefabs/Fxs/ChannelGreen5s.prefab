@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6976239937644990749}
   - component: {fileID: 7061933385766572327}
   - component: {fileID: 7062272952452764097}
+  - component: {fileID: -34722194783695823}
   m_Layer: 0
   m_Name: ChannelGreen5s
   m_TagString: Untagged
@@ -4902,6 +4903,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-34722194783695823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6972999400503212985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12370783322a4e045bb45f0b9b7252d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6973160693999582787
 GameObject:
   m_ObjectHideFlags: 0

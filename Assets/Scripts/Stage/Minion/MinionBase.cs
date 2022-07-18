@@ -105,6 +105,7 @@ public class MinionBase : MonoBehaviour
 
 	public void IdleMove()
 	{
+		DOTween.Kill("IdleMove");
 		ModelTrf.DOLocalMoveY(0.05f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetId("IdleMove");
 	}
 
@@ -255,8 +256,8 @@ public class MinionBase : MonoBehaviour
 		Minions.Remove(this);
 
 		yield return new WaitForSeconds(2f);
-		
-		ObjectManager.Ins.Push<MinionBase>(this);
+
+		this.gameObject.SetActive(false);		
 	}
 
 	public bool CalcRange()
@@ -287,23 +288,15 @@ public class MinionBase : MonoBehaviour
 		return f;
 	}
 
-	public void BackToOriginPos()
-	{
-		StopIdleMove();
-
-		dir = (originPos - this.transform.position).normalized;
-		ModelTrf.up = dir;
-
-		Sequence seq = DOTween.Sequence();
-		seq.Append(this.transform.DOMove(originPos, 2f).SetEase(Ease.Linear))
-			.AppendCallback(()=> IdleMove());		
-	}
-
 	public void Die()
 	{		
 		IsDie = true;
 	}
 
+	private void OnDisable()
+	{
+		ObjectPooler.ReturnToPool(this.gameObject);
+	}
 
 }
 

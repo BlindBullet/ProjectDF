@@ -9,11 +9,12 @@ public class DropGold : DropIcon
 	{
 		Sequence seq = DOTween.Sequence();
 		seq.Append(transform.DOMove(DropManager.Ins.GoldTrf.position, 1f).SetEase(Ease.InOutCubic))
-			.AppendCallback(() => { ObjectManager.Ins.Push<DropGold>(this); });
+			.AppendCallback(() => { this.gameObject.SetActive(false); });
 	}
 
 	public override void SetSfx()
 	{
 		
 	}
+	
 }

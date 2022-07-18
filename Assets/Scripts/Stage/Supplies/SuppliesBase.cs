@@ -141,7 +141,7 @@ public class SuppliesBase : MonoBehaviour
 
 		StopMove();			
 		transform.position = new Vector3(-100f, 0, 0);
-		ObjectManager.Ins.Push<SuppliesBase>(this);
+		this.gameObject.SetActive(false);
 	}
 
 	public void GetReward()
@@ -153,9 +153,13 @@ public class SuppliesBase : MonoBehaviour
 			DialogManager.Ins.OpenAdReward(data);
 			isClick = true;
 		}
-		
-		ObjectManager.Ins.Push<SuppliesBase>(this);		
+
+		this.gameObject.SetActive(false);		
 	}
 
+	private void OnDisable()
+	{
+		ObjectPooler.ReturnToPool(this.gameObject);
+	}
 
 }

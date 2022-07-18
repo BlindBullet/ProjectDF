@@ -142,7 +142,7 @@ public class SEManager : MonoSingleton<SEManager>
 							{
 								for (int k = 0; k < HeroBase.Heroes.Count; k++)
 								{
-									if (HeroBase.Heroes[k].Data.SlotNo == int.Parse(data.Chart.TParam2[i]))
+									if (HeroBase.Heroes[k].Data.SlotNo == int.Parse(data.Chart.TParam2[i], System.Globalization.CultureInfo.InvariantCulture))
 										targets.Add(HeroBase.Heroes[k]);
 								}
 							}
@@ -153,15 +153,15 @@ public class SEManager : MonoSingleton<SEManager>
 								switch (data.Chart.TParam2[0])
 								{
 									case "High":
-										if (HeroBase.Heroes[i].Data.Grade >= int.Parse(data.Chart.TParam3))
+										if (HeroBase.Heroes[i].Data.Grade >= int.Parse(data.Chart.TParam3, System.Globalization.CultureInfo.InvariantCulture))
 											targets.Add(HeroBase.Heroes[i]);
 										break;
 									case "Low":
-										if (HeroBase.Heroes[i].Data.Grade <= int.Parse(data.Chart.TParam3))
+										if (HeroBase.Heroes[i].Data.Grade <= int.Parse(data.Chart.TParam3, System.Globalization.CultureInfo.InvariantCulture))
 											targets.Add(HeroBase.Heroes[i]);
 										break;
 									default:
-										if (HeroBase.Heroes[i].Data.Grade == int.Parse(data.Chart.TParam3))
+										if (HeroBase.Heroes[i].Data.Grade == int.Parse(data.Chart.TParam3, System.Globalization.CultureInfo.InvariantCulture))
 											targets.Add(HeroBase.Heroes[i]);
 										break;
 								}
@@ -349,15 +349,15 @@ public class SEManager : MonoSingleton<SEManager>
 											switch (chart.CParam4)
 											{
 												case "High":
-													if (HeroBase.Heroes[k].Data.Grade >= int.Parse(chart.CParam5))
+													if (HeroBase.Heroes[k].Data.Grade >= int.Parse(chart.CParam5, System.Globalization.CultureInfo.InvariantCulture))
 														count++;
 													break;
 												case "Low":
-													if (HeroBase.Heroes[k].Data.Grade <= int.Parse(chart.CParam5))
+													if (HeroBase.Heroes[k].Data.Grade <= int.Parse(chart.CParam5, System.Globalization.CultureInfo.InvariantCulture))
 														count++;
 													break;
 												default:
-													if (HeroBase.Heroes[k].Data.Grade == int.Parse(chart.CParam5))
+													if (HeroBase.Heroes[k].Data.Grade == int.Parse(chart.CParam5, System.Globalization.CultureInfo.InvariantCulture))
 														count++;
 													break;
 											}											
@@ -1544,29 +1544,29 @@ public class SEData
 
 		if (Chart.TargetType == SETargetType.Enemy && Chart.EffectType == SEEffectType.StatChange && Chart.EParam2 == "Gold")
 		{						
-			return Value = ConstantData.CalcValue(double.Parse(Chart.EParam5), Chart.LvUpIncRate, Lv);
+			return Value = ConstantData.CalcValue(double.Parse(Chart.EParam5, System.Globalization.CultureInfo.InvariantCulture), Chart.LvUpIncRate, Lv);
 		}
 
 		if (Chart.TargetType == SETargetType.Hero && Chart.EffectType == SEEffectType.StatChange && Chart.EParam2 == "Atk")
 		{
-			return Value = ConstantData.CalcValue(double.Parse(Chart.EParam5), Chart.LvUpIncRate, Lv);
+			return Value = ConstantData.CalcValue(double.Parse(Chart.EParam5, System.Globalization.CultureInfo.InvariantCulture), Chart.LvUpIncRate, Lv);
 		}
 
-		return Value = (double.Parse(Chart.EParam5) + (Chart.LvUpIncValue * (Lv - 1))) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, (Lv - 1)) : 1f);
+		return Value = (double.Parse(Chart.EParam5, System.Globalization.CultureInfo.InvariantCulture) + (Chart.LvUpIncValue * (Lv - 1))) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, (Lv - 1)) : 1f);
 	}
 
 	public double NextSetValue()
 	{
 		if (Chart.TargetType == SETargetType.Enemy && Chart.EffectType == SEEffectType.StatChange && Chart.EParam2 == "Gold")
 		{				
-			return Value = ConstantData.CalcValue(double.Parse(Chart.EParam5), Chart.LvUpIncRate, Lv + 1);
+			return Value = ConstantData.CalcValue(double.Parse(Chart.EParam5, System.Globalization.CultureInfo.InvariantCulture), Chart.LvUpIncRate, Lv + 1);
 		}
 
 		if (Chart.TargetType == SETargetType.Hero && Chart.EffectType == SEEffectType.StatChange && Chart.EParam2 == "Atk")
 		{
-			return Value = ConstantData.CalcValue(double.Parse(Chart.EParam5), Chart.LvUpIncRate, Lv + 1);
+			return Value = ConstantData.CalcValue(double.Parse(Chart.EParam5, System.Globalization.CultureInfo.InvariantCulture), Chart.LvUpIncRate, Lv + 1);
 		}
 
-		return Value = (double.Parse(Chart.EParam5) + (Chart.LvUpIncValue * Lv)) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, Lv) : 1f);
+		return Value = (double.Parse(Chart.EParam5, System.Globalization.CultureInfo.InvariantCulture) + (Chart.LvUpIncValue * Lv)) * (Chart.LvUpIncRate > 0 ? Mathf.Pow(Chart.LvUpIncRate, Lv) : 1f);
 	}
 }

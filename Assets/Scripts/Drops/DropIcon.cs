@@ -12,4 +12,9 @@ public abstract class DropIcon : MonoBehaviour
 
 	public abstract void SetSfx();
 	public abstract void Move();
+
+	private void OnDisable()
+	{
+		ObjectPooler.ReturnToPool(this.gameObject);
+	}
 }

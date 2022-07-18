@@ -7,20 +7,24 @@ public class LanguageManager : SingletonObject<LanguageManager> {
 
 	private void Awake()
 	{
+		SelectLanguage();		
+		//PlayerPrefs.SetString("CurrentLanguage", currentLanguageType.ToString());
+	}
+
+	void SelectLanguage()
+	{
 		if (Application.systemLanguage == SystemLanguage.Korean)
 		{
 			currentLanguageType = LanguageType.Korean;
+			return;
 		}
 		else if (Application.systemLanguage == SystemLanguage.Japanese)
 		{
 			currentLanguageType = LanguageType.Japanese;
-		}
-		else
-		{
-			currentLanguageType = LanguageType.English;
+			return;
 		}
 
-		PlayerPrefs.SetString("CurrentLanguage", currentLanguageType.ToString());
+		currentLanguageType = LanguageType.English;
 	}
 		
 	public enum LanguageType

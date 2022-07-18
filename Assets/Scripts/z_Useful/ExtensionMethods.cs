@@ -71,7 +71,7 @@ public static partial class ExtensionMethods
 		else 
 		{
 			// 10의 거듭제곱을 구해서 자릿수 표현값을 만들어준다. 
-			var temp = double.Parse(partsSplit[0].Replace("E", "")) * Math.Pow(10, remainder); 
+			var temp = double.Parse(partsSplit[0].Replace("E", ""), System.Globalization.CultureInfo.InvariantCulture) * Math.Pow(10, remainder); 
 			// 소수 둘째자리까지만 출력한다. 
 			showNumber = temp.ToString("F").Replace(".00", ""); 
 		} 
@@ -128,7 +128,7 @@ public static partial class ExtensionMethods
 				throw new Exception("Failed currency string"); 
 			}
 			
-			string exponentNumber = string.Format("{0}E+{1}", number, index * 3); return double.Parse(exponentNumber); 
+			string exponentNumber = string.Format("{0}E+{1}", number, index * 3); return double.Parse(exponentNumber, System.Globalization.CultureInfo.InvariantCulture); 
 		} 
 	}
 

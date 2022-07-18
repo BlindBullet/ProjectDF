@@ -14651,6 +14651,7 @@ GameObject:
   - component: {fileID: 3940271792000249325}
   - component: {fileID: 3774386569517347701}
   - component: {fileID: 3775095395206434511}
+  - component: {fileID: 3636098969672364883}
   m_Layer: 0
   m_Name: HitFxRed
   m_TagString: Untagged
@@ -19530,6 +19531,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &3636098969672364883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3937520200888605927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12370783322a4e045bb45f0b9b7252d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3937627356656397675
 GameObject:
   m_ObjectHideFlags: 0

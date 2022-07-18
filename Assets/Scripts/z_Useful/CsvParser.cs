@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -265,7 +266,7 @@ public class CsvParser : SingletonObject<CsvParser>
 							for (int j = 0; j < column.Count; j++)
 							{
 								int var = 0;
-								if (int.TryParse(column[j], out var))
+								if (int.TryParse(column[j], NumberStyles.Any, CultureInfo.InvariantCulture, out var))
 								{
 									arr.SetValue(var, j);
 								}
@@ -280,7 +281,7 @@ public class CsvParser : SingletonObject<CsvParser>
 							for (int j = 0; j < column.Count; j++)
 							{
 								float var = 0;
-								if (float.TryParse(column[j], out var))
+								if (float.TryParse(column[j], NumberStyles.Any, CultureInfo.InvariantCulture, out var))
 								{
 									arr.SetValue(var, j);
 								}
@@ -295,7 +296,7 @@ public class CsvParser : SingletonObject<CsvParser>
 							for (int j = 0; j < column.Count; j++)
 							{
 								double var = 0;
-								if (double.TryParse(column[j], out var))
+								if (double.TryParse(column[j], NumberStyles.Any, CultureInfo.InvariantCulture, out var))
 								{
 									arr.SetValue(var, j);
 								}
@@ -348,7 +349,7 @@ public class CsvParser : SingletonObject<CsvParser>
 				object value;
 				try
 				{
-					value = Convert.ChangeType(data, propertyInfo.PropertyType);
+					value = Convert.ChangeType(data, propertyInfo.PropertyType, CultureInfo.InvariantCulture);
 					propertyInfo.SetValue(member, value, null);
 				}
 				catch

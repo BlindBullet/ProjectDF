@@ -10,6 +10,7 @@ public class FxChart
     public string SpawnAnchor { get; set; }
     public float SpawnPosX { get; set; }
     public float SpawnPosY { get; set; }
+    public float SpawnAngle { get; set; }
     public bool Binding { get; set; }
     public string SoundResource { get; set; }
     public int PoolCount { get; set; }

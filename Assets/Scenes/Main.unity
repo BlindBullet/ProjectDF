@@ -13574,6 +13574,245 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911636035}
   m_CullTransparentMesh: 1
+--- !u!1 &1923475263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1923475265}
+  - component: {fileID: 1923475264}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1923475264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923475263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2a31fb20678f243ace1246745a1d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: AuraChargeBlue
+    prefab: {fileID: 449133322641332621, guid: f0a8f3a1314bcac48bc04b2e5bc7aa53, type: 3}
+    size: 0
+  - tag: AuraChargeGreen
+    prefab: {fileID: 6189247940992249793, guid: 21e905d2a9cc85344b731f9b7eff1ced,
+      type: 3}
+    size: 5
+  - tag: AuraChargeRed
+    prefab: {fileID: 4810828030793279220, guid: e3aaaaa173c32fb45bce5879b92ff94e,
+      type: 3}
+    size: 5
+  - tag: BeamupCylinderBlue
+    prefab: {fileID: 703047233297004179, guid: b20edec64693d1b42a35e4afbc184815, type: 3}
+    size: 5
+  - tag: BubblesWater
+    prefab: {fileID: 6139458338222072085, guid: e1a53ff2133842e4f975be638e45c5dd,
+      type: 3}
+    size: 1
+  - tag: BuffBlue
+    prefab: {fileID: 2969816229490917131, guid: 8538e16897498f648bbf7e5d656dff62,
+      type: 3}
+    size: 5
+  - tag: ChannelGreen5s
+    prefab: {fileID: 6972999400503212985, guid: d0f80ef26dde4274aadd2cd6d0ca60a7,
+      type: 3}
+    size: 1
+  - tag: ChannelRed
+    prefab: {fileID: 6911562404639486302, guid: b8be284cfe827624198874c1569a2cfc,
+      type: 3}
+    size: 1
+  - tag: ElementalAuraNature
+    prefab: {fileID: 2346379401181651364, guid: 4d644eb393b10ad4493149256227b3b9,
+      type: 3}
+    size: 1
+  - tag: EnergyNovaRed
+    prefab: {fileID: 2683610855203782983, guid: ac1067278f6f517429bf5e39b8344484,
+      type: 3}
+    size: 1
+  - tag: EntangleVine
+    prefab: {fileID: 8307486799304074171, guid: 87bc2fdcd6925a241add288775fe43d0,
+      type: 3}
+    size: 15
+  - tag: FireballExplosionRed
+    prefab: {fileID: 8402880708660849852, guid: 920497d59f231f5498efbd10b2a4b722,
+      type: 3}
+    size: 20
+  - tag: HellFlame
+    prefab: {fileID: 1869274032668852645, guid: 25554dc8a4051da40a3535a8e7e14e54,
+      type: 3}
+    size: 15
+  - tag: Hit 19
+    prefab: {fileID: 8012167721796496598, guid: 447d98383047383438b2a4a652230a5b,
+      type: 3}
+    size: 15
+  - tag: HitFxBlue
+    prefab: {fileID: 835957566208838056, guid: dc7146dbad659d246920ae65a6b0f65d, type: 3}
+    size: 30
+  - tag: HitFxRed
+    prefab: {fileID: 3937520200888605927, guid: a5eed222a1663294a900d4a5e6b849e9,
+      type: 3}
+    size: 30
+  - tag: HitFxGreen
+    prefab: {fileID: 5645174697705703923, guid: 88ebcff865be47349923969a76570095,
+      type: 3}
+    size: 30
+  - tag: Impact01
+    prefab: {fileID: 5025357164704868911, guid: 2cbe45b7d96adcd43af8b5c49d27d92b,
+      type: 3}
+    size: 20
+  - tag: Ise attack
+    prefab: {fileID: 3258718597191332915, guid: e0cebfe554e6a014c848d291a0222927,
+      type: 3}
+    size: 1
+  - tag: MesmerizeCurse
+    prefab: {fileID: 2437789415202607164, guid: 61e55bd68c59e3f48a166d90b757c334,
+      type: 3}
+    size: 5
+  - tag: NatureExplosionGreen
+    prefab: {fileID: 3566844004726822435, guid: 1361dae230553fe46abc3f22afde9aa4,
+      type: 3}
+    size: 1
+  - tag: OrbitalBeamPink
+    prefab: {fileID: 5227046378873902720, guid: 64614146c1e32634b95a87fe4b8f85b3,
+      type: 3}
+    size: 1
+  - tag: RegenerateBlue
+    prefab: {fileID: 5744491039344301247, guid: 12eec81f9794bab419812dffdb5f82af,
+      type: 3}
+    size: 5
+  - tag: ShadowEnchant
+    prefab: {fileID: 805350060488918656, guid: 926d1cf0db959d54c842e2a1bf0ee38a, type: 3}
+    size: 5
+  - tag: RegenerateRed
+    prefab: {fileID: 606312764902536114, guid: 3d2e75a01dd62294799597e8e058b9e7, type: 3}
+    size: 5
+  - tag: SlashWideGreen
+    prefab: {fileID: 5419925617269149501, guid: 07397f10120168f4e9ffab08168642d7,
+      type: 3}
+    size: 1
+  - tag: StormNovaBlue
+    prefab: {fileID: 3625905604202086850, guid: 175fd30ce58e3e9429f30bd802a7e9f9,
+      type: 3}
+    size: 5
+  - tag: SwordVolleyGreen
+    prefab: {fileID: 1321914534353944498, guid: cc06ce523ec1e19448682d98d80c5cb3,
+      type: 3}
+    size: 1
+  - tag: TouchHitFx
+    prefab: {fileID: 8611792220908492474, guid: 8b4f31802c50a3f49850dcd696c2e9eb,
+      type: 3}
+    size: 8
+  - tag: TouchMuzzle
+    prefab: {fileID: 5475201332777037830, guid: 5f660116eba6b354c8cfec299a191b6d,
+      type: 3}
+    size: 8
+  - tag: ZombifyCurse
+    prefab: {fileID: 2433946529028899254, guid: 50d42961acd455646ae81fadcb03a852,
+      type: 3}
+    size: 5
+  - tag: Projectile 19
+    prefab: {fileID: 4163366649940332104, guid: 09ded8005aeb20b4d9f288f4883a8e66,
+      type: 3}
+    size: 5
+  - tag: Touch1
+    prefab: {fileID: 5833325551359508605, guid: d5810de6f8f35c14f95195792c82bf55,
+      type: 3}
+    size: 8
+  - tag: WillyProjectile
+    prefab: {fileID: 5592283594961164870, guid: 1061e8d437ff09f479edf1869a94bd23,
+      type: 3}
+    size: 1
+  - tag: Projectile 15
+    prefab: {fileID: 4555669001973782251, guid: bbd2a4829d30099428388847eca0e356,
+      type: 3}
+    size: 20
+  - tag: Red1
+    prefab: {fileID: 1445866837288078252, guid: 3588cac982e9135438e7ec379cc0fb2f,
+      type: 3}
+    size: 40
+  - tag: Blue1
+    prefab: {fileID: 3202336868325324120, guid: 411d4de6dc96b7545887dd8f46e2776a,
+      type: 3}
+    size: 40
+  - tag: Green1
+    prefab: {fileID: 9110258485663911881, guid: 4b47144b25a23fe46b2b6c77cbaa3cbd,
+      type: 3}
+    size: 40
+  - tag: 10017_Projectile
+    prefab: {fileID: 2727068555780274937, guid: 4d225d2cc8fb4c647845421fb91de333,
+      type: 3}
+    size: 4
+  - tag: LightningMissileBlue
+    prefab: {fileID: 7810594705947043890, guid: fa1abe193e96e4d46ba8d5cd7c4ab416,
+      type: 3}
+    size: 20
+  - tag: EnemyObjCircle
+    prefab: {fileID: 7397524120955551648, guid: 1c5fe071fb485fc4698e1d1644316046,
+      type: 3}
+    size: 20
+  - tag: EnemyObjOctagon
+    prefab: {fileID: 7397524120955551648, guid: 7c973a06640e1f74a823934171cf7b01,
+      type: 3}
+    size: 20
+  - tag: EnemyObjPentagon
+    prefab: {fileID: 7397524120955551648, guid: bb45d3c3f14db1546b3829809282694b,
+      type: 3}
+    size: 20
+  - tag: EnemyObjPentagonO
+    prefab: {fileID: 7397524120955551648, guid: 8055f870ad717064ebe561da8aff4254,
+      type: 3}
+    size: 20
+  - tag: EnemyObjPolygon
+    prefab: {fileID: 7397524120955551648, guid: ee55aca03f5dcf84fa61d5c4e01938d8,
+      type: 3}
+    size: 20
+  - tag: EnemyObjPolygonO
+    prefab: {fileID: 7397524120955551648, guid: d2765c5016474104790bc2de73a752c6,
+      type: 3}
+    size: 20
+  - tag: Gold
+    prefab: {fileID: 3112693273188492174, guid: 2720cf476482ccb49a81ca9a7c9a9281,
+      type: 3}
+    size: 40
+  - tag: SoulStone
+    prefab: {fileID: 4234125706992996020, guid: c16b96188a7ba1744be4f0813b8587b1,
+      type: 3}
+    size: 10
+  - tag: MinionObj
+    prefab: {fileID: 5447382863262340664, guid: 4828bcad5d73b2c468d1e5ba1935fb37,
+      type: 3}
+    size: 10
+  - tag: Supplies
+    prefab: {fileID: 2645499154291958194, guid: 4ca23a49adae8b24e9ab322e100435db,
+      type: 3}
+    size: 1
+--- !u!4 &1923475265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923475263}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!21 &1938432521
 Material:
   serializedVersion: 6
