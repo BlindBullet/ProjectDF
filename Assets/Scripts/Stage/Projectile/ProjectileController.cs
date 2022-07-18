@@ -498,8 +498,8 @@ public class ProjectileData
 		MoveType = MoveType.Direct;
 		PenCount = data.Piercing;
 		Bounce = data.Bounce;
-		PushPower = data.Push + 3f;
-		PushProb = data.Push > 0 ? 7.5f : 0f;
+		PushPower = data.Push + 2f;
+		PushProb = data.Push > 0 ? 2.5f : 0f;
 		Angle = angle;
 		Speed = 20f;
 		Lifetime = 5f;
