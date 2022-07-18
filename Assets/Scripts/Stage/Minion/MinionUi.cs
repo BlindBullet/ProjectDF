@@ -18,7 +18,7 @@ public class MinionUi : MonoBehaviour
 		Frame.transform.GetComponent<AllIn1Shader>().ApplyMaterialToHierarchy();
 
 		Bg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Bg_Circle_" + chart.Attr.ToString());
-		MinionImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Characters").GetSprite(chart.Model);
+		MinionImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Heroes").GetSprite(chart.Model);
 		Frame.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("MinionFrame_" + chart.Attr.ToString());
 	}
 

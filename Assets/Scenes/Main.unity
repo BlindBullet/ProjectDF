@@ -13760,15 +13760,15 @@ MonoBehaviour:
   - tag: Red1
     prefab: {fileID: 1445866837288078252, guid: 3588cac982e9135438e7ec379cc0fb2f,
       type: 3}
-    size: 40
+    size: 10
   - tag: Blue1
     prefab: {fileID: 3202336868325324120, guid: 411d4de6dc96b7545887dd8f46e2776a,
       type: 3}
-    size: 40
+    size: 10
   - tag: Green1
     prefab: {fileID: 9110258485663911881, guid: 4b47144b25a23fe46b2b6c77cbaa3cbd,
       type: 3}
-    size: 40
+    size: 10
   - tag: 10017_Projectile
     prefab: {fileID: 2727068555780274937, guid: 4d225d2cc8fb4c647845421fb91de333,
       type: 3}
@@ -13800,7 +13800,7 @@ MonoBehaviour:
   - tag: Gold
     prefab: {fileID: 3112693273188492174, guid: 2720cf476482ccb49a81ca9a7c9a9281,
       type: 3}
-    size: 40
+    size: 10
   - tag: SoulStone
     prefab: {fileID: 4234125706992996020, guid: c16b96188a7ba1744be4f0813b8587b1,
       type: 3}

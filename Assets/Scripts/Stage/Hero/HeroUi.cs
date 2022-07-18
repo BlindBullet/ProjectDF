@@ -51,7 +51,7 @@ public class HeroUi : MonoBehaviour
 
 	void SetIcon(HeroChart chart)
 	{
-		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Characters").GetSprite(chart.Model);
+		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Heroes").GetSprite(chart.Model);
 		IconFrame.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Frame_Circle_" + chart.Attr.ToString());
 		IconBg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Bg_Circle_" + chart.Attr.ToString());
 	}
