@@ -380,7 +380,7 @@ public class ProjectileController : MonoBehaviour
 			else if (caster == null && minion == null && hitresults == null)
 			{				
 				EffectManager.Ins.ShowFx("TouchHitFx", enemyBase.transform);
-				double resultDmg = enemyBase.TakeDmg(atk, Attr.None, false, 0f);
+				double resultDmg = enemyBase.TakeDmg(atk, Attr.None, false, 0f, 0f);
 				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), false);
 			}
 			//영웅 일반 공격
@@ -400,7 +400,8 @@ public class ProjectileController : MonoBehaviour
 				}
 
 				bool isCrit = Random.Range(0, 100f) <= caster.Stat.CritChance ? true : false;
-				double resultDmg = enemyBase.TakeDmg(atk, caster.Stat.Attr, isCrit, 0f);
+				atk = isCrit ? atk + (atk * (caster.Stat.CritDmg / 100f)) : atk;
+				double resultDmg = enemyBase.TakeDmg(atk, caster.Stat.Attr, isCrit, caster.Stat.CritDmg, 0f);
 
 				bool isPush = Random.Range(0, 100) < data.PushProb ? true : false;
 				if(isPush) enemyBase.Push(data.PushPower, 1f);
