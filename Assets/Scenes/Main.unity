@@ -387,7 +387,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.4}
+  m_Offset: {x: -5.631544, y: 0.39999998}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -398,7 +398,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 12.263088, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &58139946
 GameObject:
@@ -551,7 +551,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.4}
+  m_Offset: {x: -5.434379, y: 0.39999998}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -562,7 +562,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 11.868756, y: 2}
   m_EdgeRadius: 0
 --- !u!50 &109132633
 Rigidbody2D:
@@ -6133,7 +6133,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.4}
+  m_Offset: {x: 5.6931586, y: 0.39999998}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6144,7 +6144,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 12.386317, y: 2}
   m_EdgeRadius: 0
 --- !u!50 &912475485
 Rigidbody2D:
@@ -8060,7 +8060,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.4}
+  m_Offset: {x: 5.6931586, y: 0.39999998}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8071,7 +8071,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 12.386317, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &1143361647
 GameObject:
@@ -13800,11 +13800,11 @@ MonoBehaviour:
   - tag: Gold
     prefab: {fileID: 3112693273188492174, guid: 2720cf476482ccb49a81ca9a7c9a9281,
       type: 3}
-    size: 10
+    size: 15
   - tag: SoulStone
     prefab: {fileID: 4234125706992996020, guid: c16b96188a7ba1744be4f0813b8587b1,
       type: 3}
-    size: 10
+    size: 5
   - tag: MinionObj
     prefab: {fileID: 5447382863262340664, guid: 4828bcad5d73b2c468d1e5ba1935fb37,
       type: 3}

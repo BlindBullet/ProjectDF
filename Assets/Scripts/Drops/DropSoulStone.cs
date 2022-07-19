@@ -9,7 +9,7 @@ public class DropSoulStone : DropIcon
 	{
 		Sequence seq = DOTween.Sequence();
 		seq.Append(transform.DOMove(DropManager.Ins.SoulStoneTrf.position, 1f).SetEase(Ease.InOutCubic))
-			.AppendCallback(()=> { ObjectManager.Ins.Push<DropSoulStone>(this); });
+			.AppendCallback(()=> { this.gameObject.SetActive(false); });
 	}
 
 	public override void SetSfx()
