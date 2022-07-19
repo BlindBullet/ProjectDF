@@ -115,9 +115,12 @@ public class EnemyBase : MonoBehaviour
 		cMove = null;
 	}
 
-	public double TakeDmg(double atk, Attr attr, bool isCrit, float stiffTime)
+	public double TakeDmg(double atk, Attr attr, bool isCrit, float critDmg, float stiffTime)
 	{
 		float def = Stat.Def;
+
+		if (isCrit)					
+			atk = atk + (atk * (critDmg / 100f));
 
 		switch (attr)
 		{			
