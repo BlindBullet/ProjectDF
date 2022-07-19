@@ -392,18 +392,21 @@ public class EnemyBase : MonoBehaviour
 	{
 		if (collision.CompareTag("Player"))
 		{
+			var line = collision.GetComponent<PlayerLine>();
+
 			if (!isDie)
 			{
-				if(collision.GetComponent<PlayerLine>().count == 1)
+				if(line.count == 1)
 				{
 					if (isBoss)
 					{
-						collision.GetComponent<PlayerLine>().Destroy();
+						line.Destroy();
+						StageManager.Ins.Hp--;
 						TakeDmg(10f, Attr.None);
 					}
 					else
 					{
-						collision.GetComponent<PlayerLine>().Destroy();
+						line.Destroy();
 						StageManager.Ins.Hp--;
 						Die();
 					}
