@@ -134,7 +134,7 @@ public class EnemyBase : MonoBehaviour
 				if (Stat.Attr == Attr.Green)
 					atk = atk * 2f;
 				
-				atk = atk - (atk * (def / 100f));
+				//atk = atk - (atk * (def / 100f));
 				break;
 			case Attr.Green:
 				if (Stat.Immunes.Contains(Attr.Green))
@@ -146,7 +146,7 @@ public class EnemyBase : MonoBehaviour
 				if (Stat.Attr == Attr.Blue)
 					atk = atk * 2f;
 				
-				atk = atk - (atk * (def / 100f));
+				//atk = atk - (atk * (def / 100f));
 				break;
 			case Attr.Blue:
 				if (Stat.Immunes.Contains(Attr.Blue))
@@ -158,7 +158,7 @@ public class EnemyBase : MonoBehaviour
 				if (Stat.Attr == Attr.Red)
 					atk = atk * 2f;
 				
-				atk = atk - (atk * (def / 100f));
+				//atk = atk - (atk * (def / 100f));
 				break;
 		}
 
@@ -197,7 +197,7 @@ public class EnemyBase : MonoBehaviour
 				if (Stat.Attr == Attr.Green)
 					value = value * 2f;
 
-				value = value - (value * (def / 100f));
+				//value = value - (value * (def / 100f));
 				break;
 			case Attr.Green:
 				if (Stat.Immunes.Contains(Attr.Green))
@@ -209,7 +209,7 @@ public class EnemyBase : MonoBehaviour
 				if (Stat.Attr == Attr.Blue)
 					value = value * 2f;
 
-				value = value - (value * (def / 100f));
+				//value = value - (value * (def / 100f));
 				break;
 			case Attr.Blue:
 				if (Stat.Immunes.Contains(Attr.Blue))
@@ -221,7 +221,7 @@ public class EnemyBase : MonoBehaviour
 				if (Stat.Attr == Attr.Red)
 					value = value * 2f;
 
-				value = value - (value * (def / 100f));
+				//value = value - (value * (def / 100f));
 				break;			
 		}
 
