@@ -31,7 +31,8 @@ public class GameManager : MonoSingleton<GameManager>
 #if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			StageManager.Ins.ChangeMagicite(1000000000000f);
+			StageManager.Ins.ChangeGold(100000000000000000000000000000000000f);
+			StageManager.Ins.ChangeMagicite(100000000000000000000f);
 			StageManager.Ins.ChangeSoulStone(10000f);
 		}
 #endif
