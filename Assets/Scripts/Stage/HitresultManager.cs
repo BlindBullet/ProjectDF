@@ -416,7 +416,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 			}
 			else
 			{
-				Debug.Log("¹Ì½º");
+				
 			}
 		}
 	}
