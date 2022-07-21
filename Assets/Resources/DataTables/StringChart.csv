@@ -183,13 +183,13 @@ name_slot_power_up_Bounce,반동 Lv.{0},Bounce Lv.{0},反動 Lv.{0}
 name_slot_power_up_AtkUp,데미지 증가 Lv.{0},Increase Power Lv.{0},ダメージ増加 Lv.{0}
 name_slot_power_up_Size,크기 증가 Lv.{0},Increase Size Lv.{0},サイズ拡大 Lv.{0}
 name_slot_power_up_Push,밀어내기 Lv.{0},Push Lv.{0},ノックバックLv.{0}
-desc_slot_power_up_Front,전방으로 나가는 기본 공격의 발사체가 추가됩니다. ,Added projectiles for basic attacks that go forward.,基本攻撃の前方への発射体追加
-desc_slot_power_up_Diagonal,사선으로 나가는 발사체가 기본 공격에 추가됩니다. ,A projectile that goes out in a slash is added to your basic attack.,基本攻撃に斜線への発射体追加
+desc_slot_power_up_Front,전방으로 나가는 기본 공격의 발사체가 추가됩니다. 데미지가 25% 감소합니다.,Added projectiles for basic attacks that go forward.,基本攻撃の前方への発射体追加
+desc_slot_power_up_Diagonal,사선으로 나가는 발사체가 기본 공격에 추가됩니다. 데미지가 25% 감소합니다.,A projectile that goes out in a slash is added to your basic attack.,基本攻撃に斜線への発射体追加
 desc_slot_power_up_Piercing,기본 공격의 관통력이 증가합니다. ,Increases the penetration of basic attacks.,基本攻撃の貫通力アップ
 desc_slot_power_up_Multi,기본 공격을 추가로 한 번 더 합니다.,One more basic attack.,基本攻撃を追加でもう1回
 desc_slot_power_up_Boom,기본 공격이 적에게 맞았을 때 폭발합니다.,Basic attacks explode when hit by enemies.,基本攻撃が敵に当たると爆発
 desc_slot_power_up_Bounce,기본 공격의 발사체가 벽에 튕기는 횟수가 증가합니다.,Increases the number of times projectiles from basic attacks bounce off walls.,基本攻撃の発射体の壁へ弾ませる数アップ
-desc_slot_power_up_AtkUp,기본 공격의 데미지가 증가합니다. (공격력이 증가하진 않습니다.),Basic attack projectiles damage is increased.,基本攻撃のダメージアップ
+desc_slot_power_up_AtkUp,기본 공격의 데미지가 레벨당 50% 증가합니다. (공격력이 증가하진 않습니다.),Basic attack projectiles damage is increased.,基本攻撃のダメージアップ
 desc_slot_power_up_Size,총알의 크기가 커집니다.,The size of the projectile increases.,銃弾のサイズアップ
 desc_slot_power_up_Push,10%의 확률로 적을 밀어냅니다. 레벨이 증가할수록 밀어내는 힘이 강해집니다.,10% chance to knock back enemies. As the level increases` the pushing force becomes stronger.,10%でノックバック。レベルアップでノックバック効果アップ
 help_slot_power_up,슬롯 강화는 5` 25` 50` 100` 250` 500` 750` 1000 레벨마다 가능하며` 강화에 드는 비용은 매번 달라집니다.,Slot enhancements are available at 5` 25` 50` 100` 250` 500` 750 and 1000 levels` and the cost of enhancement varies each time.,スロット強化は5` 25` 50` 100` 250` 500` 750` 1000レベル毎にできる。

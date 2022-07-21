@@ -144,10 +144,10 @@ public class ProjectileController : MonoBehaviour
 		this.minion = null;
 		this.dir = dir;
 
-		atk = caster.Stat.Atk;
-		atk = atk + (atk * (attackData.AtkUp / 5f));
+		atk = caster.Stat.Atk;		
 		atk = atk - (atk * (attackData.Front > 0 ? ConstantData.FrontDmgDecP / 100f : 0f));
 		atk = atk - (atk * (attackData.Diagonal > 0 ? ConstantData.DiagonalDmgDecP / 100f : 0f));
+		atk = atk + (atk * (attackData.AtkUp / 2f));
 
 		if (target == null)
 		{
