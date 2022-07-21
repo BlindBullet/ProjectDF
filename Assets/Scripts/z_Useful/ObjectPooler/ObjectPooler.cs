@@ -50,8 +50,7 @@ public class ObjectPooler : MonoBehaviour
 		Ins._SpawnFromPool(tag, position, rotation);
 
 	public static T SpawnFromPool<T>(string tag, Vector3 position) where T : Component
-	{
-		Debug.Log(tag);
+	{		
 		GameObject obj = Ins._SpawnFromPool(tag, position, Quaternion.identity);
 		if (obj.TryGetComponent(out T component))
 			return component;

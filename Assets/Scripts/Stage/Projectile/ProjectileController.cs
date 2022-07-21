@@ -398,9 +398,8 @@ public class ProjectileController : MonoBehaviour
 				}
 
 				bool isCrit = Random.Range(0, 100f) <= caster.Stat.CritChance ? true : false;
-				atk = isCrit ? atk + (atk * (caster.Stat.CritDmg / 100f)) : atk;
-				double resultDmg = enemyBase.TakeDmg(atk, caster.Stat.Attr, isCrit, 0f);
-
+				atk = isCrit ? atk + (atk * (caster.Stat.CritDmg / 100f)) : atk;				
+				double resultDmg = enemyBase.TakeDmg(atk, caster.Stat.Attr, isCrit, 0f);			
 				bool isPush = Random.Range(0, 100) < data.PushProb ? true : false;
 				if(isPush) enemyBase.Push(data.PushPower, 1f);
 
