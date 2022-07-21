@@ -145,9 +145,7 @@ public class ProjectileController : MonoBehaviour
 		this.dir = dir;
 
 		atk = caster.Stat.Atk;		
-		atk = atk - (atk * (attackData.Front > 0 ? ConstantData.FrontDmgDecP / 100f : 0f));
-		atk = atk - (atk * (attackData.Diagonal > 0 ? ConstantData.DiagonalDmgDecP / 100f : 0f));
-		atk = atk + (atk * (attackData.AtkUp / 2f));
+		atk = atk + (atk * (attackData.AtkUp / 5f));
 
 		if (target == null)
 		{
@@ -339,7 +337,7 @@ public class ProjectileController : MonoBehaviour
 			if (bounce > 0)
 			{
 				bounce--;
-				atk = atk - (atk * (ConstantData.BounceDmgDecP / 100f));
+				//atk = atk - (atk * (ConstantData.BounceDmgDecP / 100f));
 				dir = Vector2.Reflect(dir, collision.contacts[0].normal);
 				ModelTrf.up = dir;
 				return;
