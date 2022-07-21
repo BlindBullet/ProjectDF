@@ -21,6 +21,8 @@ ce_10019,,,,,,,Hero,Attr,Red,,StatChange,Inc,CritChance,,,5,5,
 ce_10020,,,,,,,Hero,Attr,Blue,,StatChange,Inc,Atk,,,30,,2
 ce_10021,DeployHero,Slot,2,Attr,Red,,Hero,Slot,2,,StatChange,Inc,Atk,,,35,,2
 ce_10022,DeployHero,Slot,5,Attr,Blue,,Hero,Slot,5,,StatChange,Inc,Atk,,,35,,2
+ce_10023,,,,,,,Hero,All,,,StatChange,Inc,Atk,,,25,,2
+ce_10024,,,,,,,Hero,All,,,StatChange,Inc,CritDmg,,,40,,2
 Castle1,,,,,,,Player,,,,Ascension,Inc,Magicite,,,5,5,
 Castle2,,,,,,,Player,,,,Ascension,Inc,StartStage,,,11,10,
 Castle3,,,,,,,Player,,,,Ascension,Inc,Gold,,,200,,2

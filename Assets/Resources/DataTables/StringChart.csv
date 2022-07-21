@@ -319,3 +319,6 @@ str_desc_ce_10021,2번 슬롯의 영웅 속성이 불이라면` 해당 영웅의
 str_name_10022,루크레치아,Lucrecia,ルクレシア
 str_desc_skill_10022,쿨타임 {0}초.\n30초 동안 모든 영웅들의 공격력과 공격속도를 증가시킵니다. 등급이 높을수록 지속 시간이 증가합니다.,Cooldown {0}Sec.\nIncreases the attack power and attack spd of all heroes for 30 seconds. Each upgrade increases the duration.,待機{0}秒 \n30秒間、すべてのヒーローの攻撃力と攻撃速度が上昇します。ランクアップで維持時間延長。
 str_desc_ce_10022,5번 슬롯의 영웅 속성이 물이라면` 해당 영웅의 공격력이 증가합니다.,If the heroes in slot 5 has a water attribute` Increases the attack power of that hero.,5番スロットのヒーローが水属性だと、そのヒーローのダメージアップ
+str_name_10023,지원,Alice,アリス
+str_desc_skill_10023,쿨타임 {0}초.\n광대한 나뭇잎의 폭풍이 모든 적들에게 피해를 주고 스턴시킵니다.,Cooldown {0}Sec.\nA vast leaf storm damages and stuns all enemies.,待機{0}秒 \n広大な葉の嵐は、すべての敵にダメージを与え、スタンする。
+str_desc_ce_10023,모든 영웅들의 공격력이 증가합니다.,Increases the attack power of all heroes.,全ヒーローのダメージアップ

@@ -13813,6 +13813,10 @@ MonoBehaviour:
     prefab: {fileID: 2645499154291958194, guid: 4ca23a49adae8b24e9ab322e100435db,
       type: 3}
     size: 1
+  - tag: LeavesAttack
+    prefab: {fileID: 5271847015247695434, guid: 186df8c2dd7657f439368e0b461c1661,
+      type: 3}
+    size: 1
 --- !u!4 &1923475265
 Transform:
   m_ObjectHideFlags: 0
