@@ -342,7 +342,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 									dmg = dmg * (1 + (minion.Stat.CritDmg / 100f));
 
 								Vector3 pos = target.transform.position;
-								resultDmg = target.TakeDmg(dmg, minion.Stat.Attr, isCrit, minion.Stat.CritDmg, hitresults[i].StiffTime);
+								resultDmg = target.TakeDmg(dmg, minion.Stat.Attr, isCrit, hitresults[i].StiffTime);
 								FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit);
 								break;
 							case FactorOwner.Target:
@@ -390,10 +390,10 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 								double resultDmg = 0;
 
 								if (isCrit)
-									dmg = dmg * (1 + (caster.Stat.CritDmg / 100f));
+									dmg = dmg + (dmg * (caster.Stat.CritDmg / 100f));
 								
 								Vector3 pos = target.transform.position;
-								resultDmg = target.TakeDmg(dmg, caster.Stat.Attr, isCrit, caster.Stat.CritDmg, hitresults[i].StiffTime);
+								resultDmg = target.TakeDmg(dmg, caster.Stat.Attr, isCrit, hitresults[i].StiffTime);
 								FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit);
 								break;
 							case FactorOwner.Target:
