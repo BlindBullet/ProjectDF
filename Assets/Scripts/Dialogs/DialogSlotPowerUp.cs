@@ -96,7 +96,7 @@ public class DialogSlotPowerUp : DialogController
 			switch (charts[i].Type)
 			{
 				case AtkUpgradeType.Front:
-					if (data.AtkData.Front < 4)
+					if (data.AtkData.Front < 3)
 						upgrades.Add(AtkUpgradeType.Front);
 					break;
 				case AtkUpgradeType.Diagonal:
@@ -104,7 +104,7 @@ public class DialogSlotPowerUp : DialogController
 						upgrades.Add(AtkUpgradeType.Diagonal);
 					break;
 				case AtkUpgradeType.Multi:
-					if (data.AtkData.Multi < 2)
+					if (data.AtkData.Multi < 1)
 						upgrades.Add(AtkUpgradeType.Multi);
 					break;
 				case AtkUpgradeType.Boom:
@@ -116,7 +116,7 @@ public class DialogSlotPowerUp : DialogController
 						upgrades.Add(AtkUpgradeType.Size);
 					break;
 				case AtkUpgradeType.Push:
-					if (data.AtkData.Push < 5)
+					if (data.AtkData.Push < 4)
 						upgrades.Add(AtkUpgradeType.Push);
 					break;					
 				default:
