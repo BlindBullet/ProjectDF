@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9217414527830357061}
   - component: {fileID: 5144888596711923460}
   - component: {fileID: 6239221526121088032}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Supplies
   m_TagString: Supplies
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 8710151877450395075}
   - component: {fileID: 3042945221478829455}
   - component: {fileID: 1356855792268874310}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3957178995912949201}
   - component: {fileID: 2273290817767938801}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Wing_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6824790741326740954}
   - component: {fileID: 3943492410943355571}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8928093792503869857}
   - component: {fileID: 5734052631756014764}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Wing_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
