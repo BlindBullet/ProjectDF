@@ -16,9 +16,12 @@ public class PlayerMenu : MonoBehaviour
 	public TextMeshProUGUI RemoveAdText;
 	public Button AttendanceBtn;
 	public TextMeshProUGUI AttendanceBtnText;
+	int count = 0;
 
 	private void Start()
-	{		
+	{
+		count = this.gameObject.transform.childCount - 1;
+
 		SettingBtn.onClick.RemoveAllListeners();
 		SettingBtn.onClick.AddListener(() => { DialogManager.Ins.OpenSetting(); });
 		SettingBtnText.text = LanguageManager.Ins.SetString("Setting");
@@ -37,9 +40,8 @@ public class PlayerMenu : MonoBehaviour
 	}
 
 	public void Open()
-	{
-		int n = this.gameObject.transform.childCount - 1;
-		MenuTrf.DOSizeDelta(new Vector2(MenuTrf.sizeDelta.x, 150f + (180f * n)), 0.5f).SetEase(Ease.InOutQuad);
+	{		
+		MenuTrf.DOSizeDelta(new Vector2(MenuTrf.sizeDelta.x, 150f + (180f * count)), 0.5f).SetEase(Ease.InOutQuad);
 	}
 
 	public void Close()
