@@ -27,14 +27,14 @@ RectTransform:
   m_GameObject: {fileID: 2801002113635471392}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 7397524122027817339}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.84}
+  m_AnchoredPosition: {x: 0, y: -0.38}
   m_SizeDelta: {x: 2, y: 0.8487}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &7424511479053330507
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 2236004293113125651}
   - component: {fileID: 5296013684508591741}
   - component: {fileID: 7369457786312021482}
-  - component: {fileID: 3240473449754586869}
+  - component: {fileID: 1851602219064867582}
   m_Layer: 6
   m_Name: EnemyObjPentagonO
   m_TagString: Enemy
@@ -300,8 +300,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Immunes: 
---- !u!60 &3240473449754586869
-PolygonCollider2D:
+--- !u!58 &1851602219064867582
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -314,22 +314,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.79494995, y: 1.2408938}
-      - {x: -0.7944756, y: 1.2244141}
-      - {x: -1.2863777, y: -0.29109514}
-      - {x: 0.009639978, y: -1.242626}
-      - {x: 1.2642186, y: -0.29321772}
+  serializedVersion: 2
+  m_Radius: 0.6
 --- !u!1 &7397524122027817337
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +460,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6a214aeb4558f95458ee5bd3de382456, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d9560f9a6438c144fa4fb642abf6f8e1, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
@@ -566,7 +552,7 @@ SpriteRenderer:
   m_SortingLayerID: 296287947
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6a214aeb4558f95458ee5bd3de382456, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d9560f9a6438c144fa4fb642abf6f8e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -648,7 +634,7 @@ SpriteRenderer:
   m_SortingLayerID: 296287947
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 677eada37eb28af42b9b5273d82fc2e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2da7bdc905310d249a8758ccb927a401, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

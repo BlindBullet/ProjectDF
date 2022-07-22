@@ -20,7 +20,7 @@ public class EnemySpriteController : MonoBehaviour
 	public void Setup(EnemyBase me, EnemyChart chart)
 	{
 		this.me = me;
-		Model.transform.localPosition = Vector3.zero;
+		Model.transform.localPosition = Vector3.zero;		
 		frameMat = Frame.transform.GetComponent<Renderer>().material;
 		modelMat = Model.transform.GetComponent<Renderer>().material;
 		bgMat = Bg.transform.GetComponent<Renderer>().material;
@@ -30,8 +30,8 @@ public class EnemySpriteController : MonoBehaviour
 		modelMat.SetFloat("_FadeAmount", 0f);
 
 		Model.sprite = Resources.Load<SpriteAtlas>("Sprites/Enemies").GetSprite(chart.Model);
-		Frame.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Frame_" + chart.Shape.ToString() + "_" + chart.Attr.ToString());
-		Bg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Bg_" + chart.Shape.ToString() + "_" + chart.Attr.ToString());
+		Frame.sprite = Resources.Load<SpriteAtlas>("Sprites/Enemies").GetSprite("Frame_" + chart.Shape.ToString() + "_" + chart.Attr.ToString());
+		Bg.sprite = Resources.Load<SpriteAtlas>("Sprites/Enemies").GetSprite("Bg_" + chart.Shape.ToString() + "_" + chart.Attr.ToString());
 	}
 
 	public IEnumerator Hit(bool isCrit, float stiffTime)

@@ -27,14 +27,14 @@ RectTransform:
   m_GameObject: {fileID: 2801002113635471392}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 7397524122027817339}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.861}
+  m_AnchoredPosition: {x: 0, y: -0.503}
   m_SizeDelta: {x: 2, y: 0.8487}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &7424511479053330507
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 2236004293113125651}
   - component: {fileID: 5296013684508591741}
   - component: {fileID: 7369457786312021482}
-  - component: {fileID: 1612768753801810271}
+  - component: {fileID: 7677093094319079211}
   m_Layer: 6
   m_Name: EnemyObjOctagon
   m_TagString: Enemy
@@ -300,8 +300,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Immunes: 
---- !u!60 &1612768753801810271
-PolygonCollider2D:
+--- !u!61 &7677093094319079211
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -323,16 +323,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.72951245, y: 1.2411718}
-      - {x: -0.68012774, y: 1.2438197}
-      - {x: -1.2758555, y: 0.6238227}
-      - {x: -1.2724491, y: -0.6695969}
-      - {x: -0.74870604, y: -1.224729}
-      - {x: 0.75230205, y: -1.2438109}
-      - {x: 1.2452768, y: -0.6429653}
-      - {x: 1.2590388, y: 0.5913343}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &7397524122027817337
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +470,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d12995c7489e74345a18819541b93149, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af7efefd1dd10f44da9703524392a928, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
@@ -569,7 +562,7 @@ SpriteRenderer:
   m_SortingLayerID: 296287947
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d12995c7489e74345a18819541b93149, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af7efefd1dd10f44da9703524392a928, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -651,7 +644,7 @@ SpriteRenderer:
   m_SortingLayerID: 296287947
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 9d792bcd8890b114f9e9b246d9679313, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e49d46bb44515f48911bf762b9ced72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
