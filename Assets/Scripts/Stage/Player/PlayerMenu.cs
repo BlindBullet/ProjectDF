@@ -27,7 +27,7 @@ public class PlayerMenu : MonoBehaviour
 		SettingBtnText.text = LanguageManager.Ins.SetString("Setting");
 
 		RankBtn.onClick.RemoveAllListeners();
-		RankBtn.onClick.AddListener(() => { GPGSBinder.Inst.ShowAllLeaderboardUI(); });
+		RankBtn.onClick.AddListener(() => { if (AdmobManager.Ins.isReal) GPGSBinder.Inst.ShowAllLeaderboardUI(); });
 		RankBtnText.text = LanguageManager.Ins.SetString("Rank");
 
 		RemoveAdBtn.onClick.RemoveAllListeners();
