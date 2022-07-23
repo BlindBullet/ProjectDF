@@ -653,6 +653,8 @@ MonoBehaviour:
     Attr: 0
     AtkInc: 0
     AtkDec: 0
+    AtkIncRate: 0
+    AtkDecRate: 0
     SpdInc: 0
     SpdDec: 0
     CritChanceInc: 0
@@ -679,6 +681,7 @@ MonoBehaviour:
     EnchantLv: 0
     IsOwn: 0
     SlotNo: 0
+    CurCT: 0
 --- !u!114 &2635919947509388237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,7 +933,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 46d1d0ead3c601442bc2b0bced0daa33, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7c615c8dec3c1cb4d83f44cc20e5cdb0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1023,7 +1026,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b929dbca78bbb94fabb561967a08dcd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b9aeaf8a9f6a0954ebff46aa33f0237e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
