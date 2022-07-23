@@ -53,8 +53,8 @@ public class IAPManager : MonoSingleton<IAPManager>, IStoreListener
 		{
 			//광고 제거 실행
 			StageManager.Ins.PlayerStat.RemoveAd = true;
-			StageManager.Ins.ChangeSoulStone(3000f);
-			DialogManager.Ins.OpenReceiveReward(RewardType.SoulStone, 3000f);
+			StageManager.Ins.ChangeSoulStone(5000f);
+			DialogManager.Ins.OpenReceiveReward(RewardType.SoulStone, 5000f);
 		}
 
 		return PurchaseProcessingResult.Complete;
