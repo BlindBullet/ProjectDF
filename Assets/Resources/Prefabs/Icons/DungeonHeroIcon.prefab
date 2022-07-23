@@ -646,6 +646,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3436197217650751932}
   - component: {fileID: 3436197217650751933}
+  - component: {fileID: 7266058220282875100}
+  - component: {fileID: 8599363171269715408}
   m_Layer: 5
   m_Name: DungeonHeroIcon
   m_TagString: Untagged
@@ -683,6 +685,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3436197217650751935}
   m_CullTransparentMesh: 1
+--- !u!114 &7266058220282875100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3436197217650751935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3700da36cb5504ca0eb84a2585ef99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8599363171269715408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3436197217650751935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386a4a756e1ce174aaf360d68587dc4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3436197217980691741
 GameObject:
   m_ObjectHideFlags: 0
