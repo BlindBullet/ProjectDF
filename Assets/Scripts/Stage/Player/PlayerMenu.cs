@@ -14,6 +14,8 @@ public class PlayerMenu : MonoBehaviour
 	public TextMeshProUGUI RankBtnText;
 	public Button RemoveAdBtn;
 	public TextMeshProUGUI RemoveAdText;
+	public Button ShopBtn;
+	public TextMeshProUGUI ShopBtnText;
 	public Button AttendanceBtn;
 	public TextMeshProUGUI AttendanceBtnText;
 	int count = 0;
@@ -23,7 +25,7 @@ public class PlayerMenu : MonoBehaviour
 		count = this.gameObject.transform.childCount - 1;
 
 		SettingBtn.onClick.RemoveAllListeners();
-		SettingBtn.onClick.AddListener(() => { DialogManager.Ins.OpenSetting(); });
+		SettingBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenSetting(); });
 		SettingBtnText.text = LanguageManager.Ins.SetString("Setting");
 
 		RankBtn.onClick.RemoveAllListeners();
@@ -34,8 +36,12 @@ public class PlayerMenu : MonoBehaviour
 		RemoveAdBtn.onClick.AddListener(() => { IAPManager.Ins.Purchase("remove_ad"); });
 		RemoveAdText.text = LanguageManager.Ins.SetString("Remove_Ad");
 
+		ShopBtn.onClick.RemoveAllListeners();
+		ShopBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenShop(); });
+		ShopBtnText.text = LanguageManager.Ins.SetString("Shop");
+
 		AttendanceBtn.onClick.RemoveAllListeners();
-		AttendanceBtn.onClick.AddListener(() => { DialogManager.Ins.OpenAttendance(); });
+		AttendanceBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenAttendance(); });
 		AttendanceBtnText.text = LanguageManager.Ins.SetString("Attendance");
 	}
 

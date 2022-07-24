@@ -1,25 +1,13 @@
 {
-    "m_SelectedDeviceId": "R39M10EL61Y",
+    "m_SelectedDeviceId": "ce031603b9e65a3903",
     "m_SelectedPackage": {
-        "deviceId": "R39M10EL61Y",
+        "deviceId": "ce031603b9e65a3903",
         "name": "com.mkgames.projectdf",
-        "processId": 16975,
+        "processId": 14868,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.sec.android.app.launcher",
-            "processId": 5058,
-            "exited": false
-        },
-        {
-            "deviceId": "ce031603b9e65a3903",
-            "name": "com.mkgames.projectdf",
-            "processId": 30450,
-            "exited": true
-        },
         {
             "deviceId": "ce031603b9e65a3903",
             "name": "com.mkgames.projectdf",
@@ -42,6 +30,12 @@
             "deviceId": "ce031603b9e65a3903",
             "name": "com.mkgames.projectdf",
             "processId": 4057,
+            "exited": true
+        },
+        {
+            "deviceId": "ce031603b9e65a3903",
+            "name": "com.mkgames.projectdf",
+            "processId": 14868,
             "exited": false
         },
         {

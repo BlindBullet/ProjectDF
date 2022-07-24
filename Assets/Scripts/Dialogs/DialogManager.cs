@@ -114,4 +114,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogAttendance") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogAttendance>().OpenDialog();
 	}
+
+	public void OpenShop()
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogShop") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogShop>().OpenDialog();
+	}
 }
