@@ -290,7 +290,9 @@ public class PlayerData
 		if (TopStage < Stage)
 		{
 			TopStage = Stage;
-			GPGSBinder.Inst.ReportLeaderboard(GPGSIds.leaderboard_top_stage, TopStage);
+
+			if(AdmobManager.Ins.isReal)
+				GPGSBinder.Inst.ReportLeaderboard(GPGSIds.leaderboard_top_stage, TopStage);
 		}	
 
 		Save();

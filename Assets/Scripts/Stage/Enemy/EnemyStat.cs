@@ -27,7 +27,7 @@ public class EnemyStat
 		this.isBoss = isBoss;
 		this.data = data;
 		Attr = data.Attr;
-		MaxHp = ConstantData.GetEnemyHp(data.Hp, stageNo, isBoss);
+		MaxHp = ConstantData.GetEnemyHp(data.Hp, stageNo, isBoss);		
 		MaxHp = isBoss ? MaxHp + (MaxHp * ((playerStat.BossEnemyHpInc[Attr] - playerStat.BossEnemyHpDec[Attr]) / 100f)) :
 			MaxHp + (MaxHp * ((playerStat.NormalEnemyHpInc[Attr] - playerStat.NormalEnemyHpDec[Attr]) / 100f));
 		Gold = ConstantData.GetEnemyGold(data.Gold, stageNo, isBoss);

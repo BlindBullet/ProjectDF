@@ -20,7 +20,7 @@ public static partial class ExtensionMethods
 	/// /// <returns>클리커 표현식</returns> 
 
 	public static string ToCurrencyString(this double number, CurrencyType currencyType = CurrencyType.Default) 
-	{ 
+	{		
 		// 정수부가 0인경우 0으로 퉁친다. 
 		if (-1d < number && number < 1d) 
 		{ 
@@ -45,7 +45,7 @@ public static partial class ExtensionMethods
 		
 		// 예외 상황이다.... 
 		if (partsSplit.Length < 2) 
-		{
+		{			
 			UnityEngine.Debug.LogWarning(string.Format("Failed - ToCurrencyString({0})", number)); 
 			return Zero; 
 		} 

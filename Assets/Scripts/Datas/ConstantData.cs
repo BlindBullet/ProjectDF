@@ -145,7 +145,7 @@ public static class ConstantData
 
 	public static double CalcValue(double beginValue, float growthRate, int lv)
 	{
-		return Math.Round(beginValue * (Mathf.Pow(growthRate, lv) - 1) / (growthRate - 1));
+		return Math.Round(beginValue * (Math.Pow(growthRate, lv) - 1) / (growthRate - 1));
 	}
 
 }
