@@ -94,6 +94,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: de8464c431dd74b4eba3039dbff0b5f8, type: 3}
   - {fileID: 21300000, guid: 674c51d4ff2b34963950fdc62adf100b, type: 3}
   - {fileID: 21300000, guid: 5f9213f420127fd40bd82b2f1bef5225, type: 3}
+  - {fileID: 21300000, guid: dc0910b504e692c45b4520a842a7598c, type: 3}
   - {fileID: 21300000, guid: f54fbdc50751eb54fa74b9e0b35d04f0, type: 3}
   - {fileID: 21300000, guid: 37c4ebd5e5c4f874ba8e02d647a3cb22, type: 3}
   - {fileID: 21300000, guid: 1f19bd1636a8d1448a5af49a735255ec, type: 3}
@@ -215,6 +216,7 @@ SpriteAtlas:
   - Red
   - Wings Halo - Stars
   - Star_On
+  - SGI_150
   - GainGold
   - Green
   - Simple_ICON_Close_Red
