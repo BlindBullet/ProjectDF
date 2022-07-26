@@ -35,7 +35,7 @@ SpriteAtlas:
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 4096
+      m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
       m_TextureCompression: 1
@@ -146,6 +146,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 534a22fae9e4e48be871e02b64743349, type: 3}
   - {fileID: 21300000, guid: b714503bf63300240a0b9fde6e2c0dd3, type: 3}
   - {fileID: 21300000, guid: 7e747c9b00608d84ba777afba556fbe0, type: 3}
+  - {fileID: 21300000, guid: 3e19fcdb8d2c29d4a9017677cf32433c, type: 3}
   - {fileID: 21300000, guid: f7264ceb75f31bf4e8f2b99fcb462234, type: 3}
   - {fileID: 21300000, guid: c62600fb964a0bc4cab9b4d304091212, type: 3}
   - {fileID: 21300000, guid: da504afb9a13bf343a93ef242cee5240, type: 3}
@@ -159,6 +160,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f65cf20de479227468290069df10812b, type: 3}
   - {fileID: 21300000, guid: 8e31ee6de7ba0584ca61b3349cf97a89, type: 3}
   - {fileID: 21300000, guid: 168da77df1715ea4a85c09f9e3a12ebc, type: 3}
+  - {fileID: 21300000, guid: b61d54ada442843bb81c0b4ae4c744fa, type: 3}
   - {fileID: 21300000, guid: 7e78c6ad56bdf4f96b5236a2dbd11025, type: 3}
   - {fileID: 21300000, guid: cfe34cad17cd3a34b8cf45c5695f3e63, type: 3}
   - {fileID: 21300000, guid: c760c0fdafa397a479d8831e27241cdb, type: 3}
@@ -265,6 +267,7 @@ SpriteAtlas:
   - background_gradient_01
   - Enchantment_57_runecrystal
   - Frame_stoune_3
+  - autolvup_icon
   - Jewelry_30_green_ring
   - Enchantment_60_runecrystal
   - Loot_27
@@ -278,6 +281,7 @@ SpriteAtlas:
   - Enchantment_36_green_scroll
   - 09
   - 05
+  - frame_stageframe_00_s2
   - label_tag_00
   - icon_itemicon_shop
   - slider_edgetype_01_frame_back
