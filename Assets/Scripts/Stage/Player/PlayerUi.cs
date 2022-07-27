@@ -20,7 +20,9 @@ public class PlayerUi : MonoBehaviour
 	public Button CastleBtn;
 	public TextMeshProUGUI CastleBtnText;
 	public Button DungeonBtn;
-	public TextMeshProUGUI DungeonBtnText;	
+	public TextMeshProUGUI DungeonBtnText;
+	public Button ShopBtn;
+	public TextMeshProUGUI ShopBtnText;
 	public Button MenuBtn;
 	public TextMeshProUGUI MenuBtnText;
 	public PlayerMenu Menu;	
@@ -54,6 +56,10 @@ public class PlayerUi : MonoBehaviour
 		DungeonBtnText.text = LanguageManager.Ins.SetString("Dungeon");
 		DungeonBtn.onClick.RemoveAllListeners();
 		DungeonBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenCautionBar("notice_dungeon_update"); });
+
+		ShopBtn.onClick.RemoveAllListeners();
+		ShopBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenShop(); });
+		ShopBtnText.text = LanguageManager.Ins.SetString("Shop");
 
 		MenuBtnText.text = LanguageManager.Ins.SetString("Menu");
 		MenuBtn.onClick.RemoveAllListeners();
