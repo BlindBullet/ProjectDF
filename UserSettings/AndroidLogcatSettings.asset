@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "ce031603b9e65a3903",
+    "m_SelectedDeviceId": "R39M10EL61Y",
     "m_SelectedPackage": {
-        "deviceId": "ce031603b9e65a3903",
+        "deviceId": "R39M10EL61Y",
         "name": "com.mkgames.projectdf",
-        "processId": 14868,
+        "processId": 28298,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -40,30 +40,6 @@
         },
         {
             "deviceId": "R39M10EL61Y",
-            "name": "com.sec.android.app.launcher",
-            "processId": 3683,
-            "exited": false
-        },
-        {
-            "deviceId": "R39M10EL61Y",
-            "name": "com.android.cellbroadcastreceiver",
-            "processId": 10672,
-            "exited": true
-        },
-        {
-            "deviceId": "R39M10EL61Y",
-            "name": "com.mkgames.projectdf",
-            "processId": 12431,
-            "exited": true
-        },
-        {
-            "deviceId": "R39M10EL61Y",
-            "name": "com.mkgames.projectdf",
-            "processId": 18833,
-            "exited": true
-        },
-        {
-            "deviceId": "R39M10EL61Y",
             "name": "com.mkgames.projectdf",
             "processId": 16975,
             "exited": true
@@ -72,6 +48,36 @@
             "deviceId": "R39M10EL61Y",
             "name": "com.mkgames.projectdf",
             "processId": 27084,
+            "exited": true
+        },
+        {
+            "deviceId": "R39M10EL61Y",
+            "name": "com.mkgames.projectdf",
+            "processId": 6253,
+            "exited": true
+        },
+        {
+            "deviceId": "R39M10EL61Y",
+            "name": "com.mkgames.projectdf",
+            "processId": 11083,
+            "exited": true
+        },
+        {
+            "deviceId": "R39M10EL61Y",
+            "name": "com.mkgames.projectdf",
+            "processId": 28298,
+            "exited": false
+        },
+        {
+            "deviceId": "277b551c9d217ece",
+            "name": "com.google.android.gms.ui",
+            "processId": 22956,
+            "exited": false
+        },
+        {
+            "deviceId": "277b551c9d217ece",
+            "name": "com.mkgames.projectdf",
+            "processId": 22752,
             "exited": false
         }
     ],
