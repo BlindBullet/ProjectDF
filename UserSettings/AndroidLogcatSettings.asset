@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R39M10EL61Y",
         "name": "com.mkgames.projectdf",
-        "processId": 11083,
+        "processId": 28298,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -41,12 +41,6 @@
         {
             "deviceId": "R39M10EL61Y",
             "name": "com.mkgames.projectdf",
-            "processId": 18833,
-            "exited": true
-        },
-        {
-            "deviceId": "R39M10EL61Y",
-            "name": "com.mkgames.projectdf",
             "processId": 16975,
             "exited": true
         },
@@ -66,6 +60,24 @@
             "deviceId": "R39M10EL61Y",
             "name": "com.mkgames.projectdf",
             "processId": 11083,
+            "exited": true
+        },
+        {
+            "deviceId": "R39M10EL61Y",
+            "name": "com.mkgames.projectdf",
+            "processId": 28298,
+            "exited": false
+        },
+        {
+            "deviceId": "277b551c9d217ece",
+            "name": "com.google.android.gms.ui",
+            "processId": 22956,
+            "exited": false
+        },
+        {
+            "deviceId": "277b551c9d217ece",
+            "name": "com.mkgames.projectdf",
+            "processId": 22752,
             "exited": false
         }
     ],
