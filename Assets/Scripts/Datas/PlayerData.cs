@@ -264,18 +264,36 @@ public class PlayerData
 
 	public void ChangeGold(double amount)
 	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		Gold += amount;
 		Save();
 	}
 
 	public void ChangeSoulStone(double amount)
 	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		SoulStone += amount;
 		Save();
 	}
 
 	public void ChangeMagicite(double amount)
 	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		Magicite += amount;
 		Save();
 	}

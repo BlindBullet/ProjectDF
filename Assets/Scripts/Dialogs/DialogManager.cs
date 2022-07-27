@@ -7,7 +7,7 @@ public class DialogManager : SingletonObject<DialogManager> {
 
 	Transform DialogTrf;
 	public const string Path = "Dialogs/";
-
+	
 	public void SetDialogTransform()
 	{
 		DialogTrf = GameObject.Find("Ui Canvas").transform.Find("Dialog").transform;
@@ -27,6 +27,12 @@ public class DialogManager : SingletonObject<DialogManager> {
 
 	public void OpenHero()
 	{
+#if UNITY_ANDROID && !UNITY_EDITOR		
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogHero") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogHero>().OpenDialog();
 	}
@@ -45,24 +51,48 @@ public class DialogManager : SingletonObject<DialogManager> {
 
 	public void OpenRelic()
 	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogRelic") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogRelic>().OpenDialog();
 	}
 
 	public void OpenCastle()
 	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogCastle") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogCastle>().OpenDialog();
 	}
 
 	public void OpenAscension()
 	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogAscension") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogAscension>().OpenDialog();
 	}
 
 	public void OpenQuest()
 	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogQuest") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogQuest>().OpenDialog();
 	}
