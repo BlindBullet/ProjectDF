@@ -56,7 +56,21 @@ public class DialogSetting : DialogController
 
 		AekashicsBtn.onClick.RemoveAllListeners();
 		AekashicsBtn.onClick.AddListener(() => 
-		{ 
+		{
+			GPGSBinder.Inst.LoadCustomLeaderboardArray(GPGSIds.leaderboard_top_stage, 10, 
+				GooglePlayGames.BasicApi.LeaderboardStart.TopScores,
+				GooglePlayGames.BasicApi.LeaderboardTimeSpan.AllTime,
+				(success, scoreData) => 
+				{
+					string log = $"{success}\n";
+					var score = scoreData.Scores;
+					
+					for (int i = 0; i < score.Length; i++)
+					{
+						log += $"{1}, {score[i].rank}, {score[i].value}, {score[i].userID}, {score[i].date}\n";
+					}
+				});
+			
 			Application.OpenURL("http://www.akashics.moe/"); 
 		} );
 
