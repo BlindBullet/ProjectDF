@@ -55,7 +55,10 @@ public class DialogSetting : DialogController
 		});
 
 		AekashicsBtn.onClick.RemoveAllListeners();
-		AekashicsBtn.onClick.AddListener(() => Application.OpenURL("http://www.akashics.moe/"));
+		AekashicsBtn.onClick.AddListener(() => 
+		{ 
+			Application.OpenURL("http://www.akashics.moe/"); 
+		} );
 
 		Show(true, true);
 	}

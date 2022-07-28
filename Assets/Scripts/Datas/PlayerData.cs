@@ -334,7 +334,13 @@ public class PlayerData
 	}
 
 	public void Ascension()
-	{		
+	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		Stage = StageManager.Ins.PlayerStat.StartStage;
 		Gold = ConstantData.GetAscensionGold();
 		
