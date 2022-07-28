@@ -6,24 +6,33 @@ using UnityEngine;
 public class EquipmentData
 {
 	public string Id;
-	public int Lv;
+	public int EnchantLv;
 	public int Count;
-
-	public EquipmentData(string id)
+	public bool isOpen;
+	public EquipmentType Type;
+	
+	public EquipmentData(string id, EquipmentType type)
 	{
 		Id = id;
-		Lv = 0;
+		EnchantLv = 0;
 		Count = 0;
+		isOpen = false;
+		Type = type;
 	}
 
-	public void LvUp()
+	public void EnchantLvUp()
 	{
-		Lv++;
+		EnchantLv++;
 	}
 
 	public void AddCount(int count)
 	{
 		Count += count;
+	}
+
+	public void Open()
+	{
+		isOpen = true;
 	}
 
 }

@@ -25,7 +25,9 @@ public class PlayerUi : MonoBehaviour
 	public TextMeshProUGUI ShopBtnText;
 	public Button MenuBtn;
 	public TextMeshProUGUI MenuBtnText;
-	public PlayerMenu Menu;	
+	public PlayerMenu Menu;
+	public Button EquipmentBtn;
+	public TextMeshProUGUI EquipmentBtnText;
 
 	bool isOpenMenu = false;
 
@@ -60,6 +62,10 @@ public class PlayerUi : MonoBehaviour
 		ShopBtn.onClick.RemoveAllListeners();
 		ShopBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenShop(); });
 		ShopBtnText.text = LanguageManager.Ins.SetString("Shop");
+
+		EquipmentBtn.onClick.RemoveAllListeners();
+		EquipmentBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenEquipment(); });
+		EquipmentBtnText.text = LanguageManager.Ins.SetString("Equipment");
 
 		MenuBtnText.text = LanguageManager.Ins.SetString("Menu");
 		MenuBtn.onClick.RemoveAllListeners();

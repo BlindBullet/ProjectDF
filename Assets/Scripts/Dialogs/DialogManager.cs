@@ -150,4 +150,16 @@ public class DialogManager : SingletonObject<DialogManager> {
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogShop") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogShop>().OpenDialog();
 	}
+
+	public void OpenEquipment()
+	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogEquipment") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogEquipment>().OpenDialog();
+	}
 }

@@ -12,7 +12,7 @@ public class EquipmentSaveData
 
 		foreach(KeyValuePair<string, EquipmentChart> elem in CsvData.Ins.EquipmentChart)
 		{
-			EquipmentData data = new EquipmentData(elem.Key);
+			EquipmentData data = new EquipmentData(elem.Key, elem.Value.Type);
 			Datas.Add(data);
 		}
 
@@ -23,14 +23,42 @@ public class EquipmentSaveData
 	{
 		foreach (KeyValuePair<string, EquipmentChart> elem in CsvData.Ins.EquipmentChart)
 		{
+			bool alreadyHave = false;
 			for(int i = 0; i < Datas.Count; i++)
 			{
 				if (Datas[i].Id == elem.Key)
-					continue;
+				{
+					alreadyHave = true;
+					break;
+				}	
 			}
 
-			EquipmentData data = new EquipmentData(elem.Key);
+			if (alreadyHave)
+				continue;
+
+			EquipmentData data = new EquipmentData(elem.Key, elem.Value.Type);
 			Datas.Add(data);
+		}
+
+		Save();
+	}
+
+	public void Get(string id, int count)
+	{
+		for(int i = 0; i < Datas.Count; i++)
+		{
+			if(Datas[i].Id == id)
+			{
+				if (Datas[i].isOpen)
+				{
+					Datas[i].AddCount(count);
+				}
+				else
+				{
+					Datas[i].Open();
+					Datas[i].AddCount(count);
+				}
+			}
 		}
 
 		Save();
@@ -41,7 +69,7 @@ public class EquipmentSaveData
 		for(int i = 0; i < Datas.Count; i++)
 		{
 			if (Datas[i].Id == id)
-				Datas[i].LvUp();
+				Datas[i].EnchantLvUp();
 		}
 
 		Save();
@@ -72,14 +100,34 @@ public class EquipmentSaveData
 					EquipmentChart _chart = CsvData.Ins.EquipmentChart[Datas[i].Id];
 
 					if(chart.Level == 5)
-					{
+					{						
 						if (_chart.Grade == chart.Grade + 1 && _chart.Level == 1)
-							Datas[i].AddCount(1);
+						{
+							if (Datas[i].isOpen)
+							{
+								Datas[i].AddCount(1);
+							}
+							else
+							{
+								Datas[i].Open();
+								Datas[i].AddCount(1);
+							}
+						}	
 					}
 					else
 					{
 						if(_chart.Grade == chart.Grade && _chart.Level == chart.Level + 1)
-							Datas[i].AddCount(1);
+						{
+							if (Datas[i].isOpen)
+							{
+								Datas[i].AddCount(1);
+							}
+							else
+							{
+								Datas[i].Open();
+								Datas[i].AddCount(1);
+							}
+						}
 					}
 				}
 			}
