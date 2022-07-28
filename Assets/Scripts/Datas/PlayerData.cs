@@ -22,7 +22,7 @@ public class PlayerData
 	public List<RelicData> Relics = new List<RelicData>();
 	public List<RelicData> Castles = new List<RelicData>();
 	public List<QuestData> Quests = new List<QuestData>();
-	public List<PlayerBuffData> PlayerBuffs = new List<PlayerBuffData>();
+	public List<PlayerBuffData> PlayerBuffs = new List<PlayerBuffData>();	
 	public int QuestLv;
 	public int ClearQuestCount;
 	public int TotalClearQuestCount;

@@ -24,6 +24,7 @@ public class CsvData : SingletonObject<CsvData>
 	public Dictionary<string, EquipmentChart> EquipmentChart = new Dictionary<string, EquipmentChart>();
 
 
+
 	protected override void OnCreate()
 	{
 		base.OnCreate();
