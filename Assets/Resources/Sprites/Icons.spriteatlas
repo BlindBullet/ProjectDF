@@ -62,6 +62,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 47caad006fcf92c4e853443444d3a454, type: 3}
+  - {fileID: 21300000, guid: 63250e009fb6cab46ad951d86ac54ebc, type: 3}
   - {fileID: 21300000, guid: 68b35d2059b8c46e0a98e53628e9b3af, type: 3}
   - {fileID: 21300000, guid: 8117f4307e1203149b5b546788620202, type: 3}
   - {fileID: 21300000, guid: 73d8983007ddd4830baf7ecba1debd74, type: 3}
@@ -118,6 +119,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 1d65aa4885daf894ab46dc628e56c617, type: 3}
   - {fileID: 21300000, guid: 6900647849bf74c2daec9082ae11cc1c, type: 3}
   - {fileID: 21300000, guid: 870ae8d845863d14980499e20c5110dd, type: 3}
+  - {fileID: 21300000, guid: ad146319f391d894cb73d6a0053b7949, type: 3}
   - {fileID: 21300000, guid: d7076c294909a794fa9c09c65f87dc36, type: 3}
   - {fileID: 21300000, guid: 798678391569249ab82c838b946c24ae, type: 3}
   - {fileID: 21300000, guid: c3f1fc3966c85264ea6b5a260e23d852, type: 3}
@@ -133,6 +135,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f5c69c2a0cb6ceb4a8504c9ddc5d25c7, type: 3}
   - {fileID: 21300000, guid: c74c2a3aa43a5e341ab42d859a484aee, type: 3}
   - {fileID: 21300000, guid: 50f3fc3a81c62455b9346631abc915a8, type: 3}
+  - {fileID: 21300000, guid: f7b7b74af80d9204fb3919960cecaeaa, type: 3}
+  - {fileID: 21300000, guid: b1850f4a3ffe25849bf43e4aa4c95785, type: 3}
   - {fileID: 21300000, guid: e402f46a49fabcc4b8c85dd0304d6258, type: 3}
   - {fileID: 21300000, guid: a4a94a9a529081c4abd0838f21bf5d54, type: 3}
   - {fileID: 21300000, guid: 1c2a10aa3a504cb4aa4042e8a0ac09c0, type: 3}
@@ -183,6 +187,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 215d9dff07115427c805c2bc477a4e81, type: 3}
   m_PackedSpriteNamesToIndex:
   - Boom
+  - necklace_02
   - Btn_Gray
   - Piercing
   - Popup_00_Glow_white
@@ -239,6 +244,7 @@ SpriteAtlas:
   - Enchantment_43_book
   - Btn_Blue
   - QuestLvIcon
+  - Sword_01
   - Frame_metal2_fr2
   - icon_itemicon_hero
   - Frame_stoune_2
@@ -254,6 +260,8 @@ SpriteAtlas:
   - Star_Off
   - 16_Cloth_Chest
   - action_text_warning
+  - Book_1
+  - Arrow_03
   - SGI_144
   - SGI_94
   - Enchantment_37_demon_scroll

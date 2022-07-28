@@ -10,7 +10,9 @@ public class HeroStat
 	public double Atk;	
 	public float Spd;	
 	public float CritChance;
-	public float CritDmg;    
+	public float CritChance2;
+	public float CritDmg;
+	public float CritDmg2;
 	public Attr Attr;    
 	public float AtkInc;
 	public float AtkDec;
@@ -20,8 +22,12 @@ public class HeroStat
 	public float SpdDec;
 	public float CritChanceInc;
 	public float CritChanceDec;
+	public float CritChance2Inc;
+	public float CritChance2Dec;
 	public float CritDmgInc;
 	public float CritDmgDec;
+	public float CritDmg2Inc;
+	public float CritDmg2Dec;
 	public float CoolTimeAdd;
 	public float CoolTimeInc;
 	public float CoolTimeDec;
@@ -59,8 +65,12 @@ public class HeroStat
 		SpdDec = 0;
 		CritChanceInc = 0;
 		CritChanceDec = 0;
+		CritChance2Inc = 0;
+		CritChance2Dec = 0;
 		CritDmgInc = 0;
 		CritDmgDec = 0;
+		CritDmg2Inc = 0;
+		CritDmg2Dec = 0;
 		CoolTimeAdd = 0;
 		CoolTimeInc = 0;
 		CoolTimeDec = 0;
@@ -89,7 +99,9 @@ public class HeroStat
 		Atk = (ConstantData.GetHeroAtk(chart.Atk, lv, enchantLv) * (1 + (AtkInc / 100f))) * (1 * AtkIncRate / 100f);
 		Spd = chart.Spd * (1 + (SpdInc / 100f));
 		CritChance = CritChanceInc - CritChanceDec;
+		CritChance2 = CritChance2Inc - CritChance2Dec;
 		CritDmg = 100f + (CritDmgInc - CritDmgDec);
+		CritDmg2 = 100f + (CritDmg2Inc - CritDmg2Dec);
 		PenCount = chart.PenCount + PenCountInc - PenCountDec;
 		CoolTimeAdd = CoolTimeInc - CoolTimeDec;
 
