@@ -14,6 +14,8 @@ public class EquipmentIcon : MonoBehaviour
 	public Image Bg;
 	public Image Image;
 	public Image Frame;
+	public TextMeshProUGUI EnchantLvText;
+	public TextMeshProUGUI LvText;
 	public Image CountFill;
 	public TextMeshProUGUI CountText;
 	public GameObject LockObj;
@@ -41,6 +43,19 @@ public class EquipmentIcon : MonoBehaviour
 		Bg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Equipment_Bg_" + chart.Grade.ToString());
 		Frame.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite("Equipment_Frame_" + chart.Grade.ToString());
 		Image.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.Icon);
+
+		if (data.isOpen)
+		{
+			EnchantLvText.gameObject.SetActive(true);
+			LvText.gameObject.SetActive(true);
+			EnchantLvText.text = "+" + data.EnchantLv.ToString();
+			LvText.text = chart.Level.ToString() + LanguageManager.Ins.SetString("EquipmentLv");
+		}
+		else
+		{
+			EnchantLvText.gameObject.SetActive(false);
+			LvText.gameObject.SetActive(false);
+		}
 	}
 
 	public void SetCount(EquipmentData data)
