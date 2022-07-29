@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class EquipmentSaveData
 {
 	public List<EquipmentData> Datas = new List<EquipmentData>();
@@ -12,7 +13,8 @@ public class EquipmentSaveData
 
 		foreach(KeyValuePair<string, EquipmentChart> elem in CsvData.Ins.EquipmentChart)
 		{
-			EquipmentData data = new EquipmentData(elem.Key, elem.Value.Type);
+			EquipmentData data = new EquipmentData();
+			data.Init(elem.Key, elem.Value.Type);
 			Datas.Add(data);
 		}
 
@@ -36,7 +38,8 @@ public class EquipmentSaveData
 			if (alreadyHave)
 				continue;
 
-			EquipmentData data = new EquipmentData(elem.Key, elem.Value.Type);
+			EquipmentData data = new EquipmentData();
+			data.Init(elem.Key, elem.Value.Type);
 			Datas.Add(data);
 		}
 
@@ -50,14 +53,32 @@ public class EquipmentSaveData
 			if(Datas[i].Id == id)
 			{
 				if (Datas[i].isOpen)
-				{
+				{					
 					Datas[i].AddCount(count);
 				}
 				else
 				{
 					Datas[i].Open();
 					Datas[i].AddCount(count);
+					SEManager.Ins.Apply();
 				}
+			}
+		}
+
+		Save();
+	}
+
+	public void Equip(string id)
+	{
+		for(int i = 0; i < Datas.Count; i++)
+		{
+			if(Datas[i].Id == id)
+			{
+				Datas[i].Equip();
+			}
+			else
+			{
+				Datas[i].UnEquip();
 			}
 		}
 
@@ -148,7 +169,7 @@ public class EquipmentSaveData
 
 		if (data == null)
 		{
-			Init();
+			Init();			
 		}
 		else
 		{

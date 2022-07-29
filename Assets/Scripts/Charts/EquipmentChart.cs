@@ -11,7 +11,9 @@ public class EquipmentChart
     public int Grade { get; set; }
     public int Level { get; set; }
     public string EquipEffect { get; set; }
+    public string EquipEffectDesc { get; set; }
     public string CollectionEffect { get; set; }
+    public string CollectionEffectDesc { get; set; }
 
 }
 

@@ -162,4 +162,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogEquipment") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogEquipment>().OpenDialog();
 	}
+
+	public void OpenEquipmentInfo(EquipmentData data)
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogEquipmentInfo") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogEquipmentInfo>().OpenDialog(data);
+	}
 }

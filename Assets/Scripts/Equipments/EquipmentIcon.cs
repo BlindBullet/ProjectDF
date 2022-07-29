@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.U2D;
+using System;
 
 public class EquipmentIcon : MonoBehaviour
 {
@@ -16,17 +17,19 @@ public class EquipmentIcon : MonoBehaviour
 	public Image CountFill;
 	public TextMeshProUGUI CountText;
 	public GameObject LockObj;
+	public GameObject EquipObj;
 	EquipmentData data = null;
 
-	public void Setup(EquipmentData data)
+	public void Setup(EquipmentData data, Action<EquipmentData> action = null)
 	{
 		this.data = data;
 
 		Btn.onClick.RemoveAllListeners();
-		Btn.onClick.AddListener(() => { });
+		Btn.onClick.AddListener(() => { if (action != null) action(data); });
 
 		SetCount(data);
 		SetLock(data);
+		SetEquip(data);
 		SetIcon();
 		Icons.Add(this);
 	}
@@ -50,11 +53,23 @@ public class EquipmentIcon : MonoBehaviour
 	{
 		if (data.isOpen)
 		{
-			LockObj.SetActive(true);
+			LockObj.SetActive(false);
 		}
 		else
 		{
-			LockObj.SetActive(false);
+			LockObj.SetActive(true);
+		}
+	}
+
+	public void SetEquip(EquipmentData data)
+	{
+		if (data.isEquip)
+		{
+			EquipObj.SetActive(true);
+		}
+		else
+		{
+			EquipObj.SetActive(false);
 		}
 	}
 }

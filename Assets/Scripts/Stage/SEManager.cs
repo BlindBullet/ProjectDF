@@ -71,6 +71,32 @@ public class SEManager : MonoSingleton<SEManager>
 			SeList.Add(data);
 		}
 
+		//장비 효과 불러오기
+		List<EquipmentData> equipments = StageManager.Ins.EquipmentData.Datas;
+
+		for(int i = 0; i < equipments.Count; i++)
+		{
+			if (!equipments[i].isOpen)
+				continue;
+
+			EquipmentChart chart = CsvData.Ins.EquipmentChart[equipments[i].Id];
+						
+			SEChart seChart = CsvData.Ins.SEChart[chart.EquipEffect];
+			SEData data = null;
+
+			if (equipments[i].isEquip)
+			{
+				data = new SEData(seChart, equipments[i].EnchantLv);
+				data.SetValue();
+				SeList.Add(data);
+			}
+
+			seChart = CsvData.Ins.SEChart[chart.CollectionEffect];
+			data = new SEData(seChart, equipments[i].EnchantLv);
+			data.SetValue();
+			SeList.Add(data);
+		}
+
 		InitAllStat();
 		ApplyAllSe(SeList);
 	}

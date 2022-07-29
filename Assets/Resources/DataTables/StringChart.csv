@@ -323,3 +323,12 @@ str_name_10023,지원,Alice,アリス
 str_desc_skill_10023,쿨타임 {0}초.\n광대한 나뭇잎의 폭풍이 모든 적들에게 피해를 주고 스턴시킵니다.,Cooldown {0}Sec.\nA vast leaf storm damages and stuns all enemies.,待機{0}秒 \n広大な葉の嵐は、すべての敵にダメージを与え、スタンする。
 str_desc_ce_10023,모든 영웅들의 공격력이 증가합니다.,Increases the attack power of all heroes.,全ヒーローのダメージアップ
 Equipment,장비,Equipment,装備
+EquipEffect,장착 효과,Equip Effect,装備装着効果
+equipment_ee_desc_Red,불 속성 영웅의 공격력이 증가합니다.,Increases the attack power of fire attribute heroes.,火属性ヒーローのダメージアップ
+equipment_ee_desc_Blue,물 속성 영웅의 공격력이 증가합니다.,Increases the attack power of water attribute heroes.,水属性ヒーローのダメージアップ
+equipment_ee_desc_Green,나무 속성 영웅의 공격력이 증가합니다.,Increases the attack power of tree attribute heroes.,木属性ヒーローのダメージアップ
+equipment_ee_desc_Acc,모든 영웅의 회심의 일격 확률이 증가합니다.,Increases the attack power of tree attribute heroes.,木属性ヒーローのダメージアップ
+equipment_ce_desc_Red,불 속성 영웅의 공격력이 증가합니다.,Increases the attack power of fire attribute heroes.,火属性ヒーローのダメージアップ
+equipment_ce_desc_Blue,물 속성 영웅의 공격력이 증가합니다.,Increases the attack power of water attribute heroes.,水属性ヒーローのダメージアップ
+equipment_ce_desc_Green,나무 속성 영웅의 공격력이 증가합니다.,Increases the attack power of tree attribute heroes.,木属性ヒーローのダメージアップ
+equipment_ce_desc_Acc,모든 영웅의 회심의 일격 데미지가 증가합니다.,Increases the attack power of tree attribute heroes.,木属性ヒーローのダメージアップ

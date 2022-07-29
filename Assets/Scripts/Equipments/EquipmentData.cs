@@ -10,13 +10,15 @@ public class EquipmentData
 	public int Count;
 	public bool isOpen;
 	public EquipmentType Type;
-	
-	public EquipmentData(string id, EquipmentType type)
+	public bool isEquip;
+
+	public void Init(string id, EquipmentType type)
 	{
 		Id = id;
-		EnchantLv = 0;
+		EnchantLv = 1;
 		Count = 0;
 		isOpen = false;
+		isEquip = false;
 		Type = type;
 	}
 
@@ -33,6 +35,16 @@ public class EquipmentData
 	public void Open()
 	{
 		isOpen = true;
+	}
+
+	public void Equip()
+	{
+		isEquip = true;
+	}
+
+	public void UnEquip()
+	{
+		isEquip = false;
 	}
 
 }

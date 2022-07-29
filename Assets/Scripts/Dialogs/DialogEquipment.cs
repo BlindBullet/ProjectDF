@@ -57,8 +57,13 @@ public class DialogEquipment : DialogController
 		
 		for(int i = 0; i < Icons.Count; i++)
 		{
-			Icons[i].Setup(datas[i]);
+			Icons[i].Setup(datas[i], OpenEquipmentInfo);
 		}
+	}
+
+	void OpenEquipmentInfo(EquipmentData data)
+	{
+		DialogManager.Ins.OpenEquipmentInfo(data);
 	}
 
 	void ClickBtn(EquipmentType type)

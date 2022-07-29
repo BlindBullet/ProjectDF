@@ -650,6 +650,9 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 	}
 
-
+	public void GetEquipment(string id, int count)
+	{
+		EquipmentData.Get(id, count);
+	}
 
 }
