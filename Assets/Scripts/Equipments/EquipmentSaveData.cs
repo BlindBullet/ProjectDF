@@ -68,11 +68,11 @@ public class EquipmentSaveData
 		Save();
 	}
 
-	public void Equip(string id)
+	public void Equip(EquipmentData data)
 	{
 		for(int i = 0; i < Datas.Count; i++)
 		{
-			if(Datas[i].Id == id)
+			if(Datas[i] == data)
 			{
 				Datas[i].Equip();
 			}
@@ -96,58 +96,47 @@ public class EquipmentSaveData
 		Save();
 	}
 
-	public void Upgrade(string id)
-	{
-		EquipmentData data = null;
+	public void Fusion(EquipmentData data)
+	{		
+		EquipmentChart chart = CsvData.Ins.EquipmentChart[data.Id];
 
-		for(int i = 0; i < Datas.Count; i++)
+		if(data.Count >= 5)
 		{
-			if(Datas[i].Id == id)
+			int count = data.Count / 5;
+
+			data.AddCount(-5 * count);
+
+			for(int i = 0; i < Datas.Count; i++)
 			{
-				data = Datas[i];
-			}
-		}
+				EquipmentChart _chart = CsvData.Ins.EquipmentChart[Datas[i].Id];
 
-		if(data != null)
-		{
-			EquipmentChart chart = CsvData.Ins.EquipmentChart[data.Id];
-
-			if(data.Count >= 5)
-			{
-				data.AddCount(-5);
-
-				for(int i = 0; i < Datas.Count; i++)
-				{
-					EquipmentChart _chart = CsvData.Ins.EquipmentChart[Datas[i].Id];
-
-					if(chart.Level == 5)
-					{						
-						if (_chart.Grade == chart.Grade + 1 && _chart.Level == 1)
-						{
-							if (Datas[i].isOpen)
-							{
-								Datas[i].AddCount(1);
-							}
-							else
-							{
-								Datas[i].Open();
-								Datas[i].AddCount(1);
-							}
-						}	
-					}
-					else
+				if(chart.Level == 1)
+				{						
+					if (_chart.Grade == chart.Grade + 1 && _chart.Level == 4)
 					{
-						if(_chart.Grade == chart.Grade && _chart.Level == chart.Level + 1)
+						if (Datas[i].isOpen)
 						{
-							if (Datas[i].isOpen)
-							{
-								Datas[i].AddCount(1);
-							}
-							else
-							{
-								Datas[i].Open();
-								Datas[i].AddCount(1);
-							}
+							Datas[i].AddCount(count);
+						}
+						else
+						{
+							Datas[i].Open();
+							Datas[i].AddCount(count);
+						}
+					}	
+				}
+				else
+				{
+					if(_chart.Grade == chart.Grade && _chart.Level == chart.Level - 1)
+					{
+						if (Datas[i].isOpen)
+						{
+							Datas[i].AddCount(count);
+						}
+						else
+						{
+							Datas[i].Open();
+							Datas[i].AddCount(count);
 						}
 					}
 				}

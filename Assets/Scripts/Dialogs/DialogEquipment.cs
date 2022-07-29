@@ -6,6 +6,7 @@ using TMPro;
 
 public class DialogEquipment : DialogController
 {
+	public static DialogEquipment _Dialog = null;
 	public List<EquipmentIcon> Icons = new List<EquipmentIcon>();
 
 	public TextMeshProUGUI TitleText;
@@ -31,10 +32,11 @@ public class DialogEquipment : DialogController
 		AccBtn.onClick.AddListener(() => ClickBtn(EquipmentType.Acc));
 
 		ClickBtn(EquipmentType.Red);
+		_Dialog = this;
 		Show(true);
 	}
 
-	void SetEquipmentIcons(EquipmentType type)
+	public void SetEquipmentIcons(EquipmentType type)
 	{
 		List<EquipmentData> datas = new List<EquipmentData>();
 
@@ -99,5 +101,8 @@ public class DialogEquipment : DialogController
 		}
 	}
 
-
+	private void OnDisable()
+	{
+		_Dialog = null;
+	}
 }
