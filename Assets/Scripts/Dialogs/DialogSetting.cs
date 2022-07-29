@@ -69,6 +69,8 @@ public class DialogSetting : DialogController
 					{
 						log += $"{1}, {score[i].rank}, {score[i].value}, {score[i].userID}, {score[i].date}\n";
 					}
+
+					Debug.Log("·©Å© Á¤º¸\n" + log);
 				});
 			
 			Application.OpenURL("http://www.akashics.moe/"); 
