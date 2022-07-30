@@ -58,11 +58,14 @@ public class EquipmentRewardIcon : MonoBehaviour
 		{
 			case 4:
 				Grade4Fx.SetActive(true);
+				SoundManager.Ins.PlaySFX("se_enchant_hero_2");
 				break;
 			case 5:
 				Grade5Fx.SetActive(true);
+				SoundManager.Ins.PlaySFX("AppearAngel");
 				break;
 			default:
+				SoundManager.Ins.PlaySFX("se_button_2");
 				break;
 		}
 	}
