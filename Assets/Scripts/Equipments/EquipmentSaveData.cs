@@ -121,7 +121,7 @@ public class EquipmentSaveData
 
 				if(chart.Level == 1)
 				{						
-					if (_chart.Grade == chart.Grade + 1 && _chart.Level == 4)
+					if (_chart.Grade == chart.Grade + 1 && _chart.Level == 5)
 					{
 						if (Datas[i].isOpen)
 						{

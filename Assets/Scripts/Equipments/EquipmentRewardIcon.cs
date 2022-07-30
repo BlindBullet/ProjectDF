@@ -48,23 +48,26 @@ public class EquipmentRewardIcon : MonoBehaviour
 
 	IEnumerator DirectionSeq(EquipmentChart chart)
 	{
-		transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+		transform.localScale = new Vector3(2f, 2f, 2f);
 
-		transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetEase(Ease.InOutQuad);
-
+		transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetEase(Ease.InOutElastic);
+		
 		yield return new WaitForSeconds(0.35f);
 
 		switch (chart.Grade)
 		{
 			case 4:
 				Grade4Fx.SetActive(true);
+				yield return new WaitForSeconds(0.15f);
 				SoundManager.Ins.PlaySFX("se_enchant_hero_2");
 				break;
 			case 5:
 				Grade5Fx.SetActive(true);
+				yield return new WaitForSeconds(0.15f);
 				SoundManager.Ins.PlaySFX("AppearAngel");
 				break;
 			default:
+				yield return new WaitForSeconds(0.15f);
 				SoundManager.Ins.PlaySFX("se_button_2");
 				break;
 		}
