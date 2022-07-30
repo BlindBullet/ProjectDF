@@ -7,7 +7,7 @@ public class DialogManager : SingletonObject<DialogManager> {
 
 	Transform DialogTrf;
 	public const string Path = "Dialogs/";
-
+	
 	public void SetDialogTransform()
 	{
 		DialogTrf = GameObject.Find("Ui Canvas").transform.Find("Dialog").transform;
@@ -27,7 +27,7 @@ public class DialogManager : SingletonObject<DialogManager> {
 
 	public void OpenHero()
 	{
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID && !UNITY_EDITOR		
 		string installerName = Application.installerName;
 
 		if (installerName != "com.android.vending")
@@ -135,12 +135,6 @@ public class DialogManager : SingletonObject<DialogManager> {
 
 	public void OpenSlotPowerUp(SlotData data)
 	{
-#if UNITY_ANDROID && !UNITY_EDITOR
-		string installerName = Application.installerName;
-
-		if (installerName != "com.android.vending")
-			return;
-#endif
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogSlotPowerUp") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogSlotPowerUp>().OpenDialog(data);
 	}
@@ -156,4 +150,29 @@ public class DialogManager : SingletonObject<DialogManager> {
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogShop") as GameObject, DialogTrf);
 		dialog.GetComponent<DialogShop>().OpenDialog();
 	}
+
+	public void OpenEquipment()
+	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogEquipment") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogEquipment>().OpenDialog();
+	}
+
+	public void OpenEquipmentInfo(EquipmentData data)
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogEquipmentInfo") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogEquipmentInfo>().OpenDialog(data);	
+	}
+
+	public void OpenGachaEquipmentInfo(List<string> ids)
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogGachaEquipment") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogGachaEquipment>().OpenDialog(ids);
+	}
+
 }

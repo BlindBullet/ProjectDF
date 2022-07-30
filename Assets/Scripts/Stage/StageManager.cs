@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class StageManager : MonoSingleton<StageManager>
 {
 	public PlayerData PlayerData = new PlayerData();
+	public EquipmentSaveData EquipmentData = new EquipmentSaveData();
 	public PlayerStat PlayerStat = new PlayerStat();
 	public PlayerUi PlayerUi;
 	public TopBar TopBar;
@@ -42,6 +43,9 @@ public class StageManager : MonoSingleton<StageManager>
 
 		PlayerData = new PlayerData();
 		PlayerData.Load();
+
+		EquipmentData = new EquipmentSaveData();
+		EquipmentData.Load();
 
 		PlayerStat = new PlayerStat();
 		PlayerStat.Init();
@@ -646,6 +650,9 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 	}
 
-
+	public void GetEquipment(string id, int count)
+	{
+		EquipmentData.Get(id, count);
+	}
 
 }

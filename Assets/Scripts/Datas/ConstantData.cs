@@ -78,6 +78,8 @@ public static class ConstantData
 	public static ObscuredFloat IncStageStartGoldFactor = 1.1f;
 	//출석체크를 하고 다음 출석 체크를 할 수 있는 시간(초)
 	public static ObscuredInt CheckClaimPossibleSec = 22 * 60 * 60;
+	//장비 등급 뽑기 확률
+	public static int[] EquipmentGachaLvProbs = { 5, 10, 15, 30, 40 };
 
 	public static double GetLvUpCost(int lv)
 	{

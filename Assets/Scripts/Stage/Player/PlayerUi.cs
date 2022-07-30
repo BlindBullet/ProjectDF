@@ -20,10 +20,14 @@ public class PlayerUi : MonoBehaviour
 	public Button CastleBtn;
 	public TextMeshProUGUI CastleBtnText;
 	public Button DungeonBtn;
-	public TextMeshProUGUI DungeonBtnText;	
+	public TextMeshProUGUI DungeonBtnText;
+	public Button ShopBtn;
+	public TextMeshProUGUI ShopBtnText;
 	public Button MenuBtn;
 	public TextMeshProUGUI MenuBtnText;
-	public PlayerMenu Menu;	
+	public PlayerMenu Menu;
+	public Button EquipmentBtn;
+	public TextMeshProUGUI EquipmentBtnText;
 
 	bool isOpenMenu = false;
 
@@ -54,6 +58,14 @@ public class PlayerUi : MonoBehaviour
 		DungeonBtnText.text = LanguageManager.Ins.SetString("Dungeon");
 		DungeonBtn.onClick.RemoveAllListeners();
 		DungeonBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenCautionBar("notice_dungeon_update"); });
+
+		ShopBtn.onClick.RemoveAllListeners();
+		ShopBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenShop(); });
+		ShopBtnText.text = LanguageManager.Ins.SetString("Shop");
+
+		EquipmentBtn.onClick.RemoveAllListeners();
+		EquipmentBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenEquipment(); });
+		EquipmentBtnText.text = LanguageManager.Ins.SetString("Equipment");
 
 		MenuBtnText.text = LanguageManager.Ins.SetString("Menu");
 		MenuBtn.onClick.RemoveAllListeners();

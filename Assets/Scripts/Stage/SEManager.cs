@@ -71,6 +71,32 @@ public class SEManager : MonoSingleton<SEManager>
 			SeList.Add(data);
 		}
 
+		//장비 효과 불러오기
+		List<EquipmentData> equipments = StageManager.Ins.EquipmentData.Datas;
+
+		for(int i = 0; i < equipments.Count; i++)
+		{
+			if (!equipments[i].isOpen)
+				continue;
+
+			EquipmentChart chart = CsvData.Ins.EquipmentChart[equipments[i].Id];
+						
+			SEChart seChart = CsvData.Ins.SEChart[chart.EquipEffect];
+			SEData data = null;
+
+			if (equipments[i].isEquip)
+			{
+				data = new SEData(seChart, equipments[i].EnchantLv);
+				data.SetValue();
+				SeList.Add(data);
+			}
+
+			seChart = CsvData.Ins.SEChart[chart.CollectionEffect];
+			data = new SEData(seChart, equipments[i].EnchantLv);
+			data.SetValue();
+			SeList.Add(data);
+		}
+
 		InitAllStat();
 		ApplyAllSe(SeList);
 	}
@@ -1283,15 +1309,31 @@ public class SEManager : MonoSingleton<SEManager>
 						{
 							case "Inc":
 								if (data.Chart.Id.Contains("ce"))
+								{
 									target.Stat.AtkIncRate += (float)data.Value;
+								}
+								else if (data.Chart.Id.Contains("equipment"))
+								{
+									target.Stat.AtkIncRate += (float)data.Value;
+								}
 								else
+								{
 									target.Stat.AtkInc += (float)data.Value;
+								}	
 								break;
 							case "Dec":
 								if (data.Chart.Id.Contains("ce"))
+								{
 									target.Stat.AtkDecRate += (float)data.Value;
+								}
+								else if (data.Chart.Id.Contains("equipment"))
+								{
+									target.Stat.AtkDecRate += (float)data.Value;
+								}
 								else
+								{
 									target.Stat.AtkDec += (float)data.Value;
+								}	
 								break;
 						}
 						break;
@@ -1317,6 +1359,17 @@ public class SEManager : MonoSingleton<SEManager>
 								break;
 						}
 						break;
+					case "CritChance2":
+						switch (data.Chart.EParam1)
+						{
+							case "Inc":
+								target.Stat.CritChance2Inc += (float)data.Value;
+								break;
+							case "Dec":
+								target.Stat.CritChance2Dec += (float)data.Value;
+								break;
+						}
+						break;
 					case "CritDmg":
 						switch (data.Chart.EParam1)
 						{
@@ -1325,6 +1378,17 @@ public class SEManager : MonoSingleton<SEManager>
 								break;
 							case "Dec":
 								target.Stat.CritDmgDec += (float)data.Value;
+								break;
+						}
+						break;
+					case "CritDmg2":
+						switch (data.Chart.EParam1)
+						{
+							case "Inc":
+								target.Stat.CritDmg2Inc += (float)data.Value;
+								break;
+							case "Dec":
+								target.Stat.CritDmg2Dec += (float)data.Value;
 								break;
 						}
 						break;
