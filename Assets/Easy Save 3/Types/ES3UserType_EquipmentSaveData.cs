@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("Datas")]
+	[ES3PropertiesAttribute("Datas", "WeaponLv", "WeaponExp", "AccLv", "AccExp")]
 	public class ES3UserType_EquipmentSaveData : ES3ObjectType
 	{
 		public static ES3Type Instance = null;
@@ -17,6 +17,10 @@ namespace ES3Types
 			var instance = (EquipmentSaveData)obj;
 			
 			writer.WriteProperty("Datas", instance.Datas, ES3Internal.ES3TypeMgr.GetOrCreateES3Type(typeof(System.Collections.Generic.List<EquipmentData>)));
+			writer.WriteProperty("WeaponLv", instance.WeaponLv, ES3Type_int.Instance);
+			writer.WriteProperty("WeaponExp", instance.WeaponExp, ES3Type_int.Instance);
+			writer.WriteProperty("AccLv", instance.AccLv, ES3Type_int.Instance);
+			writer.WriteProperty("AccExp", instance.AccExp, ES3Type_int.Instance);
 		}
 
 		protected override void ReadObject<T>(ES3Reader reader, object obj)
@@ -29,6 +33,18 @@ namespace ES3Types
 					
 					case "Datas":
 						instance.Datas = reader.Read<System.Collections.Generic.List<EquipmentData>>();
+						break;
+					case "WeaponLv":
+						instance.WeaponLv = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
+					case "WeaponExp":
+						instance.WeaponExp = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
+					case "AccLv":
+						instance.AccLv = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
+					case "AccExp":
+						instance.AccExp = reader.Read<System.Int32>(ES3Type_int.Instance);
 						break;
 					default:
 						reader.Skip();

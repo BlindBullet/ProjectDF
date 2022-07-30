@@ -22,7 +22,7 @@ public class CsvData : SingletonObject<CsvData>
 	public Dictionary<int, List<SlotPowerUpChart>> SlotPowerUpChart = new Dictionary<int, List<SlotPowerUpChart>>();
 	public Dictionary<string, AttendanceChart> AttendanceChart = new Dictionary<string, AttendanceChart>();
 	public Dictionary<string, EquipmentChart> EquipmentChart = new Dictionary<string, EquipmentChart>();
-
+	public Dictionary<string, EquipmentLvChart> EquipmentLvChart = new Dictionary<string, EquipmentLvChart>();
 
 
 	protected override void OnCreate()
@@ -47,6 +47,7 @@ public class CsvData : SingletonObject<CsvData>
 		SlotPowerUpChart = CsvParser.Ins.ParseDupeKeyToDict(SlotPowerUpChart, "DataTables/SlotPowerUpChart");
 		AttendanceChart = CsvParser.Ins.ParseToDict(AttendanceChart, "DataTables/AttendanceChart");
 		EquipmentChart = CsvParser.Ins.ParseToDict(EquipmentChart, "DataTables/EquipmentChart");
+		EquipmentLvChart = CsvParser.Ins.ParseToDict(EquipmentLvChart, "DataTables/EquipmentLvChart");
 
 	}
 

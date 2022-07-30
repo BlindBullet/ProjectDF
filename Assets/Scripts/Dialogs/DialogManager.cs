@@ -166,6 +166,13 @@ public class DialogManager : SingletonObject<DialogManager> {
 	public void OpenEquipmentInfo(EquipmentData data)
 	{
 		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogEquipmentInfo") as GameObject, DialogTrf);
-		dialog.GetComponent<DialogEquipmentInfo>().OpenDialog(data);
+		dialog.GetComponent<DialogEquipmentInfo>().OpenDialog(data);	
 	}
+
+	public void OpenGachaEquipmentInfo(List<string> ids)
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogGachaEquipment") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogGachaEquipment>().OpenDialog(ids);
+	}
+
 }

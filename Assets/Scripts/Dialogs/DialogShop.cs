@@ -15,6 +15,8 @@ public class DialogShop : DialogController
 	public TextMeshProUGUI SoulStone3CostText;
 	public Button SoulStone4Btn;
 	public TextMeshProUGUI SoulStone4CostText;
+	public WeaponGachaBar WeaponGachaBar;
+	public AccGachaBar AccGachaBar;
 
 	public void OpenDialog()
 	{
@@ -33,6 +35,9 @@ public class DialogShop : DialogController
 		SoulStone2CostText.text = string.Format("{0} {1}", IAPManager.Ins.GetProduct("soulstone2").metadata.localizedPrice, IAPManager.Ins.GetProduct("soulstone2").metadata.isoCurrencyCode);
 		SoulStone3CostText.text = string.Format("{0} {1}", IAPManager.Ins.GetProduct("soulstone3").metadata.localizedPrice, IAPManager.Ins.GetProduct("soulstone3").metadata.isoCurrencyCode);
 		SoulStone4CostText.text = string.Format("{0} {1}", IAPManager.Ins.GetProduct("soulstone4").metadata.localizedPrice, IAPManager.Ins.GetProduct("soulstone4").metadata.isoCurrencyCode);
+
+		WeaponGachaBar.Setup();
+		AccGachaBar.Setup();
 
 		Show(true);
 	}

@@ -20,8 +20,6 @@ public class EquipmentChart
 public enum EquipmentType
 {
     None,
-    Red,
-    Blue,
-    Green,
+    Weapon,
     Acc,
 }

@@ -10,28 +10,20 @@ public class DialogEquipment : DialogController
 	public List<EquipmentIcon> Icons = new List<EquipmentIcon>();
 
 	public TextMeshProUGUI TitleText;
-	public Button RedBtn;
-	public GameObject RedSelectedObj;
-	public Button BlueBtn;
-	public GameObject BlueSelectedObj;
-	public Button GreenBtn;
-	public GameObject GreenSelectedObj;
+	public Button WeaponBtn;
+	public GameObject WeaponSelectedObj;	
 	public Button AccBtn;
 	public GameObject AccSelectedObj;
 
 	public void OpenDialog()
 	{
-		TitleText.text = LanguageManager.Ins.SetString("Equipment");
-		RedBtn.onClick.RemoveAllListeners();
-		RedBtn.onClick.AddListener(() => ClickBtn(EquipmentType.Red));
-		BlueBtn.onClick.RemoveAllListeners();
-		BlueBtn.onClick.AddListener(() => ClickBtn(EquipmentType.Blue));
-		GreenBtn.onClick.RemoveAllListeners();
-		GreenBtn.onClick.AddListener(() => ClickBtn(EquipmentType.Green));
+		TitleText.text = LanguageManager.Ins.SetString("Equipment");		
+		WeaponBtn.onClick.RemoveAllListeners();
+		WeaponBtn.onClick.AddListener(() => ClickBtn(EquipmentType.Weapon));
 		AccBtn.onClick.RemoveAllListeners();
 		AccBtn.onClick.AddListener(() => ClickBtn(EquipmentType.Acc));
 
-		ClickBtn(EquipmentType.Red);
+		ClickBtn(EquipmentType.Weapon);
 		_Dialog = this;
 		Show(true);
 	}
@@ -74,28 +66,12 @@ public class DialogEquipment : DialogController
 
 		switch (type)
 		{
-			case EquipmentType.Red:
-				RedSelectedObj.SetActive(true);
-				BlueSelectedObj.SetActive(false);
-				GreenSelectedObj.SetActive(false);
+			case EquipmentType.Weapon:
+				WeaponSelectedObj.SetActive(true);				
 				AccSelectedObj.SetActive(false);
-				break;
-			case EquipmentType.Blue:
-				RedSelectedObj.SetActive(false);
-				BlueSelectedObj.SetActive(true);
-				GreenSelectedObj.SetActive(false);
-				AccSelectedObj.SetActive(false);
-				break;
-			case EquipmentType.Green:
-				RedSelectedObj.SetActive(false);
-				BlueSelectedObj.SetActive(false);
-				GreenSelectedObj.SetActive(true);
-				AccSelectedObj.SetActive(false);
-				break;
+				break;			
 			case EquipmentType.Acc:
-				RedSelectedObj.SetActive(false);
-				BlueSelectedObj.SetActive(false);
-				GreenSelectedObj.SetActive(false);
+				WeaponSelectedObj.SetActive(false);				
 				AccSelectedObj.SetActive(true);
 				break;
 		}

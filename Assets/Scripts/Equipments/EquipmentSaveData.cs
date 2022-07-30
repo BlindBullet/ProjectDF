@@ -6,6 +6,10 @@ using UnityEngine;
 public class EquipmentSaveData
 {
 	public List<EquipmentData> Datas = new List<EquipmentData>();
+	public int WeaponLv;
+	public int WeaponExp;
+	public int AccLv;
+	public int AccExp;
 
 	public void Init()
 	{
@@ -17,6 +21,11 @@ public class EquipmentSaveData
 			data.Init(elem.Key, elem.Value.Type);
 			Datas.Add(data);
 		}
+
+		WeaponLv = 1;
+		WeaponExp = 0;
+		AccLv = 1;
+		AccExp = 0;
 
 		Save();
 	}
@@ -146,6 +155,85 @@ public class EquipmentSaveData
 		Save();
 	}
 
+	public void WeaponExpUp(int count)
+	{
+		WeaponExp += count;
+
+		var chart = CsvData.Ins.EquipmentLvChart[WeaponLv.ToString()];
+
+		if(WeaponExp >= chart.NeedCount)
+		{
+			WeaponLv++;
+			WeaponExp = WeaponExp - chart.NeedCount;
+		}
+
+		Save();
+	}
+
+	public void AccExpUp(int count)
+	{
+		AccExp += count;
+
+		var chart = CsvData.Ins.EquipmentLvChart[AccLv.ToString()];
+
+		if (AccExp >= chart.NeedCount)
+		{
+			AccLv++;
+			AccExp = AccExp - chart.NeedCount;
+		}
+
+		Save();
+	}
+
+	public List<string> GachaWeapon(int count)
+	{
+		List<string> result = new List<string>();
+		var chart = CsvData.Ins.EquipmentLvChart[WeaponLv.ToString()];
+
+		for(int i = 0; i < count; i++)
+		{
+			int lotteryNo = LotteryCalculator.LotteryIntWeight(chart.Probs) + 1;
+			int lvLotteryNo = LotteryCalculator.LotteryIntWeight(ConstantData.EquipmentGachaLvProbs) + 1;
+
+			foreach(KeyValuePair<string, EquipmentChart> elem in CsvData.Ins.EquipmentChart)
+			{
+				if (elem.Value.Grade == lotteryNo && elem.Value.Level == lvLotteryNo && elem.Value.Type == EquipmentType.Weapon)
+				{
+					result.Add(elem.Key);
+					Get(elem.Key, 1);
+					break;
+				}	
+			}
+		}
+
+		WeaponExpUp(count);
+		return result;
+	}
+
+	public List<string> GachaAcc(int count)
+	{
+		List<string> result = new List<string>();
+		var chart = CsvData.Ins.EquipmentLvChart[AccLv.ToString()];
+
+		for (int i = 0; i < count; i++)
+		{
+			int lotteryNo = LotteryCalculator.LotteryIntWeight(chart.Probs) + 1;
+			int lvLotteryNo = LotteryCalculator.LotteryIntWeight(ConstantData.EquipmentGachaLvProbs) + 1;
+
+			foreach (KeyValuePair<string, EquipmentChart> elem in CsvData.Ins.EquipmentChart)
+			{
+				if (elem.Value.Grade == lotteryNo && elem.Value.Level == lvLotteryNo && elem.Value.Type == EquipmentType.Acc)
+				{
+					result.Add(elem.Key);
+					Get(elem.Key, 1);
+					break;
+				}
+			}
+		}
+
+		AccExpUp(count);
+		return result;
+	}
 
 	public void Save()
 	{
@@ -163,6 +251,10 @@ public class EquipmentSaveData
 		else
 		{
 			Datas = data.Datas;
+			WeaponLv = data.WeaponLv;
+			WeaponExp = data.WeaponExp;
+			AccLv = data.AccLv;
+			AccExp = data.AccExp;
 		}
 
 		CheckAddData();

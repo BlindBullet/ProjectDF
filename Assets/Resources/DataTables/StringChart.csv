@@ -324,15 +324,21 @@ str_desc_skill_10023,쿨타임 {0}초.\n광대한 나뭇잎의 폭풍이 모든 
 str_desc_ce_10023,모든 영웅들의 공격력이 증가합니다.,Increases the attack power of all heroes.,全ヒーローのダメージアップ
 Equipment,장비,Equipment,装備
 EquipEffect,장착 효과,Equip Effect,装着効果
-equipment_ee_desc_Red,불 속성 영웅의 공격력이 증가합니다.,Increases the attack power of fire attribute heroes.,火属性ヒーローのダメージアップ
-equipment_ee_desc_Blue,물 속성 영웅의 공격력이 증가합니다.,Increases the attack power of water attribute heroes.,水属性ヒーローのダメージアップ
-equipment_ee_desc_Green,나무 속성 영웅의 공격력이 증가합니다.,Increases the attack power of tree attribute heroes.,木属性ヒーローのダメージアップ
-equipment_ee_desc_Acc,모든 영웅의 회심의 일격 확률이 증가합니다.,Increases the attack power of tree attribute heroes.,木属性ヒーローのダメージアップ
-equipment_ce_desc_Red,불 속성 영웅의 공격력이 증가합니다.,Increases the attack power of fire attribute heroes.,火属性ヒーローのダメージアップ
-equipment_ce_desc_Blue,물 속성 영웅의 공격력이 증가합니다.,Increases the attack power of water attribute heroes.,水属性ヒーローのダメージアップ
-equipment_ce_desc_Green,나무 속성 영웅의 공격력이 증가합니다.,Increases the attack power of tree attribute heroes.,木属性ヒーローのダメージアップ
-equipment_ce_desc_Acc,모든 영웅의 회심의 일격 데미지가 증가합니다.,Increases the attack power of tree attribute heroes.,木属性ヒーローのダメージアップ
+equipment_ee_desc_Weapon,모든 영웅의 공격력이 증가합니다.,Increases the attack power of all heroes.,全ヒーローのダメージアップ
+equipment_ee_desc_Acc,모든 영웅의 회심의 일격 확률이 증가합니다.,Increases the enhanced critical chance of all heroes.,全ヒーローの回心の一撃率アップ
+equipment_ce_desc_Weapon,모든 영웅의 공격력이 증가합니다.,Increases the attack power of all heroes.,全ヒーローのダメージアップ
+equipment_ce_desc_Acc,모든 영웅들의 회심의 일격 데미지가 증가합니다.,Increases the enhanced critical damage of all heroes.,全ヒーローの回心の一撃ダメージアップ
 EquipmentLv,등급,Tier,ティア
 Fusion,융합,Fusion,融合
 Equip,장착,Equip,装着
 FusionDesc,융합 버튼을 누르면 5개당 하나씩 다음 등급의 장비로 진화합니다.,Press the Fusion button to evolve into the next level of equipment` one for every 5 pieces of this equipment you have.,フュージョンボタンを押すと、持っているこの装備の個数5個あたり1つずつ、次の等級の装備に進化します。
+equipment_grade_1,일반,Common,一般
+equipment_grade_2,고급,Uncommon,高度
+equipment_grade_3,희귀,Rare,魔法
+equipment_grade_4,영웅,Epic,英雄
+equipment_grade_5,전설,Legendary,伝説
+Gacha15,15회 소환,15 summons,15回召喚
+Gacha35,35회 소환,35 summons,35回召喚
+Summon_Weapon,무기 소환,Summon Weapon,武器召喚
+Summon_Acc,장신구 소환,Summon Accessory,装身具召喚
+not_enough_soulstone,영혼석이 모자랍니다.,Not enough SoulStones.,魂石が足りません。
