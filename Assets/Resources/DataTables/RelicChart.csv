@@ -1,5 +1,7 @@
 ﻿Id,Name,Desc,Icon,Type,MaxLv,Effect,PriceCostType,Price,LvUpCostType,LvUpCost,LvUpCostIncValue,LvUpCostIncRate
+10011,str_name_castle_10011,str_desc_castle_10011,SGI_35,Castle,1,Castle11,SoulStone,5000,SoulStone,200,,
 10001,str_name_castle_10001,str_desc_castle_10001,SGI_addons_170,Castle,100,Castle1,SoulStone,100,SoulStone,100,,
+10012,str_name_castle_10012,str_desc_castle_10012,SGI_150,Castle,100,Castle12,SoulStone,200,SoulStone,220,20,
 10002,str_name_castle_10002,str_desc_castle_10002,SGI_13,Castle,30,Castle2,SoulStone,500,SoulStone,500,,
 10004,str_name_castle_10004,str_desc_castle_10004,SGI_25,Castle,20,Castle4,SoulStone,100,SoulStone,100,50,
 10005,str_name_castle_10005,str_desc_castle_10005,SGI_81,Castle,40,Castle5,SoulStone,100,SoulStone,100,25,
@@ -8,7 +10,6 @@
 10008,str_name_castle_10008,str_desc_castle_10008,SGI_94,Castle,50,Castle8,SoulStone,100,SoulStone,100,100,
 10009,str_name_castle_10009,str_desc_castle_10009,SGI_146,Castle,10,Castle9,SoulStone,100,SoulStone,150,150,
 10010,str_name_castle_10010,str_desc_castle_10010,SGI_28,Castle,40,Castle10,SoulStone,200,SoulStone,200,,
-10011,str_name_castle_10011,str_desc_castle_10011,SGI_35,Castle,1,Castle11,SoulStone,5000,SoulStone,200,,
 20001,str_name_relic_20001,str_desc_relic_20001,05_a,Relic,100,Relic1,Magicite,25,Magicite,50,,2
 20002,str_name_relic_20002,str_desc_relic_20002,addons_06_t,Relic,40,Relic2,Magicite,150,Magicite,300,,2
 20003,str_name_relic_20003,str_desc_relic_20003,Dagger_v2_44,Relic,9999,Relic3,Magicite,30,Magicite,120,,1.1

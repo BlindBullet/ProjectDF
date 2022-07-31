@@ -31,8 +31,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	{
 		isReal = true;
 
-#if UNITY_ANDROID && !UNITY_EDITOR
-		Debug.Log("어플리케이션 인스톨러 네임 :" + Application.installerName);
+#if UNITY_ANDROID && !UNITY_EDITOR		
 		// 플레이스토어 com.android.vending
 		// 원스토어 com.skt.skaf.A000Z00040
 

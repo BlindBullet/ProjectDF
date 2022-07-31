@@ -24,6 +24,7 @@ ce_10022,DeployHero,Slot,5,Attr,Blue,,Hero,Slot,5,,StatChange,Inc,Atk,,,35,,2
 ce_10023,,,,,,,Hero,All,,,StatChange,Inc,Atk,,,25,,2
 ce_10024,,,,,,,Hero,All,,,StatChange,Inc,CritDmg,,,40,,2
 Castle1,,,,,,,Player,,,,Ascension,Inc,Magicite,,,5,5,
+Castle12,,,,,,,Player,,,,Ascension,Inc,Magicite,,,10,10,
 Castle2,,,,,,,Player,,,,Ascension,Inc,StartStage,,,11,10,
 Castle3,,,,,,,Player,,,,Ascension,Inc,Gold,,,200,,2
 Castle4,,,,,,,Player,,,,OfflineReward,Inc,Amount,,,5,5,

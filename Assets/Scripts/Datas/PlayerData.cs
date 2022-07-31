@@ -10,7 +10,7 @@ public class PlayerData
 {
 	public bool IsFirstPlay;
 	public int PlayAppCount;
-	public double Gold;
+	public double Gold;	
 	public double Magicite;
 	public double SoulStone;
 	public int Stage;
@@ -22,7 +22,7 @@ public class PlayerData
 	public List<RelicData> Relics = new List<RelicData>();
 	public List<RelicData> Castles = new List<RelicData>();
 	public List<QuestData> Quests = new List<QuestData>();
-	public List<PlayerBuffData> PlayerBuffs = new List<PlayerBuffData>();	
+	public List<PlayerBuffData> PlayerBuffs = new List<PlayerBuffData>();
 	public int QuestLv;
 	public int ClearQuestCount;
 	public int TotalClearQuestCount;
@@ -264,14 +264,7 @@ public class PlayerData
 
 	public void ChangeGold(double amount)
 	{
-#if UNITY_ANDROID && !UNITY_EDITOR
-		string installerName = Application.installerName;
-
-		if (installerName != "com.android.vending")
-			return;
-#endif
-		Gold += amount;
-		Save();
+		Gold += amount;		
 	}
 
 	public void ChangeSoulStone(double amount)
@@ -300,6 +293,12 @@ public class PlayerData
 
 	public void ChangeStage(int count)
 	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		Stage += count;
 
 		if (Stage < 1)
@@ -335,7 +334,13 @@ public class PlayerData
 	}
 
 	public void Ascension()
-	{		
+	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		Stage = StageManager.Ins.PlayerStat.StartStage;
 		Gold = ConstantData.GetAscensionGold();
 		
@@ -481,7 +486,13 @@ public class PlayerData
 	}
 
 	public void Load()
-	{		
+	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		string installerName = Application.installerName;
+
+		if (installerName != "com.android.vending")
+			return;
+#endif
 		PlayerData data = ES3.Load<PlayerData>("PlayerData", defaultValue: null);
 		
 		if(data == null)
