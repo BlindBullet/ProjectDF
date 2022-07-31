@@ -14,6 +14,9 @@ public class EquipmentChart
     public string EquipEffectDesc { get; set; }
     public string CollectionEffect { get; set; }
     public string CollectionEffectDesc { get; set; }
+    public double EnchantCost { get; set; }
+    public double CostInc { get; set; }
+    public float CostIncRate { get; set; }
 
 }
 
