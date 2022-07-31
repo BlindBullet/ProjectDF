@@ -79,16 +79,34 @@ public class EquipmentSaveData
 
 	public void Equip(EquipmentData data)
 	{
-		for(int i = 0; i < Datas.Count; i++)
+		switch (data.Type)
 		{
-			if(Datas[i] == data)
-			{
-				Datas[i].Equip();
-			}
-			else
-			{
-				Datas[i].UnEquip();
-			}
+			case EquipmentType.Weapon:
+				for (int i = 0; i < Datas.Count; i++)
+				{
+					if (Datas[i] == data)
+					{
+						Datas[i].Equip();
+					}
+					else if(Datas[i] != data && Datas[i].Type == EquipmentType.Weapon)
+					{
+						Datas[i].UnEquip();
+					}
+				}
+				break;
+			case EquipmentType.Acc:
+				for (int i = 0; i < Datas.Count; i++)
+				{
+					if (Datas[i] == data)
+					{
+						Datas[i].Equip();
+					}
+					else if (Datas[i] != data && Datas[i].Type == EquipmentType.Acc)
+					{
+						Datas[i].UnEquip();
+					}
+				}
+				break;
 		}
 
 		Save();

@@ -18,6 +18,8 @@ public class HeroStat
 	public float AtkDec;
 	public float AtkIncRate;
 	public float AtkDecRate;
+	public float AtkIncRateE;
+	public float AtkDecRateE;
 	public float SpdInc;
 	public float SpdDec;
 	public float CritChanceInc;
@@ -61,6 +63,8 @@ public class HeroStat
 		AtkDec = 0;
 		AtkIncRate = 100;
 		AtkDecRate = 0;
+		AtkIncRateE = 100;
+		AtkDecRateE = 0;
 		SpdInc = 0;
 		SpdDec = 0;
 		CritChanceInc = 0;
@@ -96,7 +100,8 @@ public class HeroStat
 
 	public void CalcStat()
 	{
-		Atk = (ConstantData.GetHeroAtk(chart.Atk, lv, enchantLv) * (1 + (AtkInc / 100f))) * (1 * AtkIncRate / 100f);
+		Atk = (ConstantData.GetHeroAtk(chart.Atk, lv, enchantLv) * (1 + (AtkInc / 100f))) * (AtkIncRate / 100f);
+		Atk = Atk * (AtkIncRateE / 100f);
 		Spd = chart.Spd * (1 + (SpdInc / 100f));
 		CritChance = CritChanceInc - CritChanceDec;
 		CritChance2 = CritChance2Inc - CritChance2Dec;
