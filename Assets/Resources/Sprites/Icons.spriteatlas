@@ -183,6 +183,7 @@ SpriteAtlas:
   - {fileID: 7441667161129010492, guid: 32e5940eeaf2948afb3c6e8b5304c351, type: 3}
   - {fileID: 21300000, guid: 6f5cc40e4a1cd458c9901849a7f52a07, type: 3}
   - {fileID: 21300000, guid: 6086d31e8b912c644b4d17f6b2f3b25e, type: 3}
+  - {fileID: 21300000, guid: 4315c32ed9459cb419d17d4bfcef5400, type: 3}
   - {fileID: 21300000, guid: da5db72ec48e840799f4a20440277192, type: 3}
   - {fileID: 21300000, guid: 3062f33e6ee20de41bc855f40a075cf7, type: 3}
   - {fileID: 21300000, guid: 65052b4ecdb127142b1ff702f4d539ca, type: 3}
@@ -321,6 +322,7 @@ SpriteAtlas:
   - play_top_shadow_0
   - Btn_Red
   - SGI_54
+  - EnchantStone
   - label_ribbon_01
   - Blue
   - 02

@@ -31,7 +31,7 @@ public class GameManager : MonoSingleton<GameManager>
 #if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			StageManager.Ins.GetEquipment("10001", 10);
+			StageManager.Ins.GetEnchanStone(10000000f);
 		}
 #endif
 	}

@@ -24,7 +24,6 @@ ce_10022,DeployHero,Slot,5,Attr,Blue,,Hero,Slot,5,,StatChange,Inc,Atk,,,35,,2
 ce_10023,,,,,,,Hero,All,,,StatChange,Inc,Atk,,,25,,2
 ce_10024,,,,,,,Hero,All,,,StatChange,Inc,CritDmg,,,40,,2
 Castle1,,,,,,,Player,,,,Ascension,Inc,Magicite,,,5,5,
-Castle12,,,,,,,Player,,,,Ascension,Inc,Magicite,,,10,10,
 Castle2,,,,,,,Player,,,,Ascension,Inc,StartStage,,,11,10,
 Castle3,,,,,,,Player,,,,Ascension,Inc,Gold,,,200,,2
 Castle4,,,,,,,Player,,,,OfflineReward,Inc,Amount,,,5,5,
@@ -57,7 +56,7 @@ Relic19,,,,,,,Enemy,Boss,Blue,,StatChange,Dec,Hp,,,0.5,0.5,
 Relic20,,,,,,,Enemy,Boss,Green,,StatChange,Dec,Hp,,,0.5,0.5,
 Relic21,,,,,,,Player,,,,Stage,Inc,DropSSNormal,,,0.1,0.1,
 Relic22,,,,,,,Player,,,,Stage,Inc,DropSSBoss,,,1,0.5,
-equipment_e_10001,,,,,,,Hero,All,,,StatChange,Inc,Atk,,,100,,0.1
+equipment_e_10001,,,,,,,Hero,All,,,StatChange,Inc,Atk,,,100,,1.1
 equipment_e_10002,,,,,,,Hero,All,,,StatChange,Inc,Atk,,,100,,1.1
 equipment_e_10003,,,,,,,Hero,All,,,StatChange,Inc,Atk,,,100,,1.1
 equipment_e_10004,,,,,,,Hero,All,,,StatChange,Inc,Atk,,,100,,1.1

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("Datas", "WeaponLv", "WeaponExp", "AccLv", "AccExp")]
+	[ES3PropertiesAttribute("Datas", "WeaponLv", "WeaponExp", "AccLv", "AccExp", "EnchantStone")]
 	public class ES3UserType_EquipmentSaveData : ES3ObjectType
 	{
 		public static ES3Type Instance = null;
@@ -21,6 +21,7 @@ namespace ES3Types
 			writer.WriteProperty("WeaponExp", instance.WeaponExp, ES3Type_int.Instance);
 			writer.WriteProperty("AccLv", instance.AccLv, ES3Type_int.Instance);
 			writer.WriteProperty("AccExp", instance.AccExp, ES3Type_int.Instance);
+			writer.WriteProperty("EnchantStone", instance.EnchantStone, ES3Type_double.Instance);
 		}
 
 		protected override void ReadObject<T>(ES3Reader reader, object obj)
@@ -45,6 +46,9 @@ namespace ES3Types
 						break;
 					case "AccExp":
 						instance.AccExp = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
+					case "EnchantStone":
+						instance.EnchantStone = reader.Read<System.Double>(ES3Type_double.Instance);
 						break;
 					default:
 						reader.Skip();

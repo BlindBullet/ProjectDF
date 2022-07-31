@@ -10,6 +10,7 @@ public class EquipmentSaveData
 	public int WeaponExp;
 	public int AccLv;
 	public int AccExp;
+	public double EnchantStone;
 
 	public void Init()
 	{
@@ -26,6 +27,7 @@ public class EquipmentSaveData
 		WeaponExp = 0;
 		AccLv = 1;
 		AccExp = 0;
+		EnchantStone = 0f;
 
 		Save();
 	}
@@ -112,14 +114,9 @@ public class EquipmentSaveData
 		Save();
 	}
 
-	public void LvUp(string id)
-	{
-		for(int i = 0; i < Datas.Count; i++)
-		{
-			if (Datas[i].Id == id)
-				Datas[i].EnchantLvUp();
-		}
-
+	public void EnchantLvUp(EquipmentData data)
+	{		
+		data.EnchantLvUp();
 		Save();
 	}
 
@@ -253,6 +250,12 @@ public class EquipmentSaveData
 		return result;
 	}
 
+	public void GetEnchantStone(double amount)
+	{
+		EnchantStone += amount;
+		Save();
+	}
+
 	public void Save()
 	{
 		ES3.Save<EquipmentSaveData>("EquipmentData", this);
@@ -273,6 +276,7 @@ public class EquipmentSaveData
 			WeaponExp = data.WeaponExp;
 			AccLv = data.AccLv;
 			AccExp = data.AccExp;
+			EnchantStone = data.EnchantStone;			
 		}
 
 		CheckAddData();

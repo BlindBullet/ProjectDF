@@ -23,13 +23,15 @@ public class DialogEquipmentInfo : DialogController
 	public Button FusionBtn;
 	public TextMeshProUGUI FusionBtnText;
 	public Button EquipBtn;
-	public TextMeshProUGUI EquipBtnText;
+	public TextMeshProUGUI EquipBtnText;	
+	public TextMeshProUGUI EnchantStoneText;
 	EquipmentData data = null;
+	EquipmentChart chart = null;
 
 	public void OpenDialog(EquipmentData data)
 	{
 		this.data = data;
-		EquipmentChart chart = CsvData.Ins.EquipmentChart[data.Id];
+		chart = CsvData.Ins.EquipmentChart[data.Id];
 
 		NameText.text = LanguageManager.Ins.SetString(chart.Name);
 		EquipmentIcon.Setup(data);
@@ -40,31 +42,29 @@ public class DialogEquipmentInfo : DialogController
 		EnchantBtnText.text = LanguageManager.Ins.SetString("Enchant");
 		FusionDescText.text = LanguageManager.Ins.SetString("FusionDesc");
 
-		SetEquipEffect(chart.EquipEffect, data, chart);
-		SetCollectionEffect(chart.CollectionEffect, data, chart);
-
-		EnchantBtn.onClick.RemoveAllListeners();
-		EnchantBtn.onClick.AddListener(() => { });
+		SetEquipEffect();
+		SetCollectionEffect();
 
 		SetFusionBtn();
 		SetEquipBtn();
+		SetEnchantBtn();
 
 		Show(true);
 	}
 
-	void SetEquipEffect(string id, EquipmentData data, EquipmentChart chart)
+	void SetEquipEffect()
 	{
 		SEData seData = null;
 
-		for (int i = 0; i < SEManager.Ins.SeList.Count; i++)
-		{
-			if (SEManager.Ins.SeList[i].Chart.Id == id)
-			{
-				seData = SEManager.Ins.SeList[i];
-			}
-		}
+		//for (int i = 0; i < SEManager.Ins.SeList.Count; i++)
+		//{
+		//	if (SEManager.Ins.SeList[i].Chart.Id == chart.EquipEffect)
+		//	{
+		//		seData = SEManager.Ins.SeList[i];
+		//	}
+		//}
 
-		SEChart seChart = CsvData.Ins.SEChart[id];
+		SEChart seChart = CsvData.Ins.SEChart[chart.EquipEffect];
 
 		if (seData == null)
 			seData = new SEData(seChart, data.EnchantLv);
@@ -85,19 +85,19 @@ public class DialogEquipmentInfo : DialogController
 		EeDesc2.text = _desc;
 	}
 
-	void SetCollectionEffect(string id, EquipmentData data, EquipmentChart chart)
-	{
+	void SetCollectionEffect()
+	{		
 		SEData seData = null;
 
-		for (int i = 0; i < SEManager.Ins.SeList.Count; i++)
-		{
-			if (SEManager.Ins.SeList[i].Chart.Id == id)
-			{
-				seData = SEManager.Ins.SeList[i];
-			}
-		}
+		//for (int i = 0; i < SEManager.Ins.SeList.Count; i++)
+		//{
+		//	if (SEManager.Ins.SeList[i].Chart.Id == chart.CollectionEffect)
+		//	{
+		//		seData = SEManager.Ins.SeList[i];
+		//	}
+		//}
 
-		SEChart seChart = CsvData.Ins.SEChart[id];
+		SEChart seChart = CsvData.Ins.SEChart[chart.CollectionEffect];
 
 		if (seData == null)
 			seData = new SEData(seChart, data.EnchantLv);
@@ -181,8 +181,42 @@ public class DialogEquipmentInfo : DialogController
 			return;
 		}
 
-		
+		SetEnchantStoneText();
+
+		EquipmentChart chart = CsvData.Ins.EquipmentChart[data.Id];
+		double cost = ConstantData.CalcValue(chart.EnchantCost, chart.CostIncRate, data.EnchantLv);		
+		EnchantCostText.text = cost.ToCurrencyString();
+
+		EnchantBtn.onClick.RemoveAllListeners();
+
+		if(StageManager.Ins.EquipmentData.EnchantStone >= cost)
+		{
+			EnchantBtn.onClick.AddListener(() => 
+			{
+				StageManager.Ins.EquipmentData.GetEnchantStone(-cost);
+				StageManager.Ins.EquipmentData.EnchantLvUp(data);
+
+				EquipmentIcon.Setup(data);
+				SetEquipEffect();
+				SetCollectionEffect();
+				DialogEquipment._Dialog.SetEquipmentIcons(data.Type);
+				SEManager.Ins.Apply();
+				SetEnchantBtn();
+			});
+		}
+		else
+		{
+			EnchantBtn.onClick.AddListener(() => 
+			{
+				DialogManager.Ins.OpenCautionBar("not_enough_enchantstone");
+			});
+		}
 
 
+	}
+
+	void SetEnchantStoneText()
+	{
+		EnchantStoneText.text = StageManager.Ins.EquipmentData.EnchantStone.ToCurrencyString();
 	}
 }

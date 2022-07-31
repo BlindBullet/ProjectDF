@@ -655,4 +655,9 @@ public class StageManager : MonoSingleton<StageManager>
 		EquipmentData.Get(id, count);
 	}
 
+	public void GetEnchanStone(double amount)
+	{
+		EquipmentData.GetEnchantStone(amount);
+	}
+
 }
