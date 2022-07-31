@@ -50,7 +50,9 @@ public enum StatType
     MaxHp,
     CurHp,
     CritChance,
+    CritChance2,
     CritDmg,
+    CritDmg2,
     PenCount,
 
 }

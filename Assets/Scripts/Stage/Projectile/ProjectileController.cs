@@ -379,7 +379,7 @@ public class ProjectileController : MonoBehaviour
 			{				
 				EffectManager.Ins.ShowFx("TouchHitFx", enemyBase.transform);
 				double resultDmg = enemyBase.TakeDmg(atk, Attr.None, false, 0f);
-				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), false);
+				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), false, false);
 			}
 			//영웅 일반 공격
 			else if(caster != null && minion == null && hitresults == null)
@@ -397,13 +397,15 @@ public class ProjectileController : MonoBehaviour
 						break;
 				}
 
+				bool isCrit2 = Random.Range(0, 100f) <= caster.Stat.CritChance2 ? true : false;
 				bool isCrit = Random.Range(0, 100f) <= caster.Stat.CritChance ? true : false;
 				atk = isCrit ? atk + (atk * (caster.Stat.CritDmg / 100f)) : atk;				
+				atk = isCrit2 ? atk + (atk * (caster.Stat.CritDmg2 / 100f)) : atk;
 				double resultDmg = enemyBase.TakeDmg(atk, caster.Stat.Attr, isCrit, 0f);			
 				bool isPush = Random.Range(0, 100) < data.PushProb ? true : false;
 				if(isPush) enemyBase.Push(data.PushPower, 1f);
 
-				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit);
+				FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit, isCrit2);
 			}
 			
 			if(penCount <= 0)

@@ -343,7 +343,7 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 
 								Vector3 pos = target.transform.position;
 								resultDmg = target.TakeDmg(dmg, minion.Stat.Attr, isCrit, hitresults[i].StiffTime);
-								FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit);
+								FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit, false);
 								break;
 							case FactorOwner.Target:
 
@@ -385,16 +385,20 @@ public class HitresultManager : MonoSingleton<HitresultManager>
 						{
 							case FactorOwner.Caster:
 								double dmg = hitresults[i].Value + (caster.Stat.Atk * (hitresults[i].ValuePercent / 100f));
+								bool isCrit2 = Random.Range(0f, 100f) < caster.Stat.CritChance2 ? true : false;
 								bool isCrit = Random.Range(0f, 100f) < caster.Stat.CritChance ? true : false;
 								
 								double resultDmg = 0;
-
+	
 								if (isCrit)
 									dmg = dmg + (dmg * (caster.Stat.CritDmg / 100f));
-								
+
+								if (isCrit2)
+									dmg = dmg + (dmg * (caster.Stat.CritDmg2 / 100f));
+
 								Vector3 pos = target.transform.position;
-								resultDmg = target.TakeDmg(dmg, caster.Stat.Attr, isCrit, hitresults[i].StiffTime);
-								FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit);
+								resultDmg = target.TakeDmg(dmg, caster.Stat.Attr, isCrit, hitresults[i].StiffTime);	
+								FloatingTextManager.Ins.ShowDmg(pos, resultDmg.ToCurrencyString(), isCrit, isCrit2);
 								break;
 							case FactorOwner.Target:
 

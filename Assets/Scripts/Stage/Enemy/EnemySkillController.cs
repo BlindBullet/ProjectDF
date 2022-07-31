@@ -116,7 +116,7 @@ public class EnemySkillController : MonoBehaviour
 				break;
 			case EnemySkillHitType.Dmg:
 				double value = target.TakeDmg(float.Parse(skill.Data.Param1), me.Stat.Attr);
-				FloatingTextManager.Ins.ShowDmg(target.transform.position, value.ToCurrencyString(), false);
+				FloatingTextManager.Ins.ShowDmg(target.transform.position, value.ToCurrencyString(), false, false);
 				break;
 		}
 	}
