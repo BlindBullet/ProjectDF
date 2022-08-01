@@ -210,7 +210,12 @@ public class EquipmentSaveData
 			int lotteryNo = LotteryCalculator.LotteryIntWeight(chart.Probs) + 1;
 			int lvLotteryNo = LotteryCalculator.LotteryIntWeight(ConstantData.EquipmentGachaLvProbs) + 1;
 
-			foreach(KeyValuePair<string, EquipmentChart> elem in CsvData.Ins.EquipmentChart)
+			if (lotteryNo == 5 && lvLotteryNo == 1)
+			{
+				lvLotteryNo = 2;
+			}
+
+			foreach (KeyValuePair<string, EquipmentChart> elem in CsvData.Ins.EquipmentChart)
 			{
 				if (elem.Value.Grade == lotteryNo && elem.Value.Level == lvLotteryNo && elem.Value.Type == EquipmentType.Weapon)
 				{
@@ -234,6 +239,11 @@ public class EquipmentSaveData
 		{
 			int lotteryNo = LotteryCalculator.LotteryIntWeight(chart.Probs) + 1;
 			int lvLotteryNo = LotteryCalculator.LotteryIntWeight(ConstantData.EquipmentGachaLvProbs) + 1;
+
+			if (lotteryNo == 5 && lvLotteryNo == 1)
+			{
+				lvLotteryNo = 2;
+			}
 
 			foreach (KeyValuePair<string, EquipmentChart> elem in CsvData.Ins.EquipmentChart)
 			{
