@@ -58,21 +58,24 @@ public class LanguageManager : SingletonObject<LanguageManager> {
 		switch (currentLanguageType)
 		{
 			case LanguageType.Korean:
-				if (dicData[id].Korean == "")
+				if (dicData[id].Korean == null)
 				{
 					Debug.LogWarning(id + ": 스트링 값이 비어있습니다.");
+					return id;
 				}
 				return dicData[id].Korean.Replace("\\n", "\n");
 			case LanguageType.English:
-				if (dicData[id].English == "")
+				if (dicData[id].English == null)
 				{
 					Debug.LogWarning(id + ": 스트링 값이 비어있습니다.");
+					return id;
 				}
 				return dicData[id].English.Replace("\\n","\n");
 			case LanguageType.Japanese:
-				if (dicData[id].Japanese == "")
+				if (dicData[id].Japanese == null)
 				{
 					Debug.LogWarning(id + ": 스트링 값이 비어있습니다.");
+					return id;
 				}
 				return dicData[id].Japanese.Replace("\\n", "\n");
 			default:
