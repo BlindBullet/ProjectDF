@@ -138,6 +138,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: fef3b5376faf0f441a40482e6bc3cd91, type: 3}
   - {fileID: 21300000, guid: c3519d37c059fe7479c797558b4e5882, type: 3}
   - {fileID: 21300000, guid: 0b7a40476ad6c494b8cf792384117bfd, type: 3}
+  - {fileID: 21300000, guid: e82a2867b393e7147be70a7bcaa3a1f5, type: 3}
   - {fileID: 21300000, guid: ae9f8677ca3c24a7c80d7217a941f886, type: 3}
   - {fileID: 21300000, guid: c5f379770ddf3470cab5328d5615bb23, type: 3}
   - {fileID: 21300000, guid: e00a0197d85c19d4c8ded43c7a3b8abd, type: 3}
@@ -145,7 +146,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ef307ea7fdeb0434b878049ab3a41a09, type: 3}
   - {fileID: 6114881062073981623, guid: 1f6ecbb7b97344026b5277644ad2ca95, type: 3}
   - {fileID: 21300000, guid: 8da8cee722ae0404b94ebebca6a49921, type: 3}
-  - {fileID: 21300000, guid: 775fc328172297d47b66e9ffa3ce159e, type: 3}
   - {fileID: 21300000, guid: e9c6293819dc6a040ab98cbfb7386633, type: 3}
   - {fileID: 21300000, guid: dc5e0a38033163543a3f1d6202f4cd99, type: 3}
   - {fileID: 21300000, guid: 1d65aa4885daf894ab46dc628e56c617, type: 3}
@@ -323,6 +323,7 @@ SpriteAtlas:
   - Magicite
   - Acc_1
   - Weapon_16
+  - Weapon_25
   - Btn_Yellow
   - icon_itemicon_sword
   - Acc_18
@@ -330,7 +331,6 @@ SpriteAtlas:
   - label_ribbon_02
   - common_popup_0
   - Frame_metal2_fr3
-  - Weapon_25
   - Weapon_19
   - SGI_28
   - Enchantment_43_book
