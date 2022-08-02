@@ -56,7 +56,7 @@ public class DialogDungeon : DialogController
 					yield break;
 			}
 			
-			int time = (int)((ConstantData.DungeonEnterTicketAddTime * 60) - timeSpan.TotalSeconds);			
+			int time = (int)((ConstantData.DungeonEnterTicketAddTime * 60) - Math.Round(timeSpan.TotalSeconds));			
 			int hour = time / 3600;
 			int min = time % 3600 / 60;
 			int sec = time % 3600 % 60;

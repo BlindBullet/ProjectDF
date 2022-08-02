@@ -398,24 +398,25 @@ str_desc_castle_10012,환생시 얻는 마석이 증가합니다.,When ascension
 Basement,지하,B,地下
 Floor,층,F,階
 dungeon_dispatch_info,파견 인원 : {0}명,Number of Players: {0},派遣人数：{0}人
-str_name_dungeon_1,적1,,
-str_name_dungeon_2,적2,,
-str_name_dungeon_3,적3,,
-str_name_dungeon_4,적4,,
-str_name_dungeon_5,적5,,
-str_name_dungeon_6,적6,,
-str_name_dungeon_7,적7,,
-str_name_dungeon_8,적8,,
-str_name_dungeon_9,적9,,
-str_name_dungeon_10,적10,,
-str_name_dungeon_11,적11,,
-str_name_dungeon_12,적12,,
-str_name_dungeon_13,적13,,
-str_name_dungeon_14,적14,,
-str_name_dungeon_15,적15,,
-str_name_dungeon_16,적16,,
-str_name_dungeon_17,적17,,
-str_name_dungeon_18,적18,,
-str_name_dungeon_19,적19,,
-str_name_dungeon_20,적20,,
+str_name_dungeon_1,적1,Enemy1,Enemy1
+str_name_dungeon_2,적2,Enemy2,Enemy2
+str_name_dungeon_3,적3,Enemy3,Enemy3
+str_name_dungeon_4,적4,Enemy4,Enemy4
+str_name_dungeon_5,적5,Enemy5,Enemy5
+str_name_dungeon_6,적6,Enemy6,Enemy6
+str_name_dungeon_7,적7,Enemy7,Enemy7
+str_name_dungeon_8,적8,Enemy8,Enemy8
+str_name_dungeon_9,적9,Enemy9,Enemy9
+str_name_dungeon_10,적10,Enemy10,Enemy10
+str_name_dungeon_11,적11,Enemy11,Enemy11
+str_name_dungeon_12,적12,Enemy12,Enemy12
+str_name_dungeon_13,적13,Enemy13,Enemy13
+str_name_dungeon_14,적14,Enemy14,Enemy14
+str_name_dungeon_15,적15,Enemy15,Enemy15
+str_name_dungeon_16,적16,Enemy16,Enemy16
+str_name_dungeon_17,적17,Enemy17,Enemy17
+str_name_dungeon_18,적18,Enemy18,Enemy18
+str_name_dungeon_19,적19,Enemy19,Enemy19
+str_name_dungeon_20,적20,Enemy20,Enemy20
 notice_dungeon_closed,던전은 200스테이지 클리어시 열립니다.,The dungeon opens when you clear stage 200.,ダンジョンは200ステージクリア時に開かれます。
+not_enough_dungeon_ticket,던전 티켓이 모자랍니다.,Not enough dungeon tickets.,ダンジョンチケットが足りません。
