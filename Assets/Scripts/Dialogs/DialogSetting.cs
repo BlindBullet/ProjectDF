@@ -71,9 +71,7 @@ public class DialogSetting : DialogController
 					}
 
 					Debug.Log("·©Å© Á¤º¸\n" + log);
-				});
-			
-			Application.OpenURL("http://www.akashics.moe/"); 
+				});			 
 		} );
 
 		Show(true, true);
