@@ -106,7 +106,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 	IEnumerator OpenOfflineReward(bool isFirstPlay)
 	{
-		yield return StartCoroutine(TimeManager.Ins.GetTime());
+		//yield return StartCoroutine(TimeManager.Ins.GetTime());
 
 		OpenAttendance();
 

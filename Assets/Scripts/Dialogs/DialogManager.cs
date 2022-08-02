@@ -175,4 +175,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogGachaEquipment>().OpenDialog(ids);
 	}
 
+	public void OpenDungeon()
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogDungeon") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogDungeon>().OpenDialog();
+	}
+
 }

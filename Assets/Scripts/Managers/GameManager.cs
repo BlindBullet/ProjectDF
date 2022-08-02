@@ -31,7 +31,7 @@ public class GameManager : MonoSingleton<GameManager>
 #if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			StageManager.Ins.GetEnchanStone(10000000f);
+			StageManager.Ins.DungeonData.UseTicket();
 		}
 #endif
 	}

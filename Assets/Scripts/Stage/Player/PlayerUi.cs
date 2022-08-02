@@ -54,10 +54,22 @@ public class PlayerUi : MonoBehaviour
 
 		SetAscensionNotify();
 		SetQuestBtn();
-
+		
 		DungeonBtnText.text = LanguageManager.Ins.SetString("Dungeon");
 		DungeonBtn.onClick.RemoveAllListeners();
-		DungeonBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenCautionBar("notice_dungeon_update"); });
+		DungeonBtn.onClick.AddListener(() => 
+		{ 
+			SoundManager.Ins.PlaySFX("se_button_2");
+
+			if (StageManager.Ins.DungeonData.IsDungeonOpen)
+			{
+				DialogManager.Ins.OpenDungeon();
+			}
+			else
+			{
+				DialogManager.Ins.OpenCautionBar("notice_dungeon_closed");
+			}
+		});
 
 		ShopBtn.onClick.RemoveAllListeners();
 		ShopBtn.onClick.AddListener(() => { SoundManager.Ins.PlaySFX("se_button_2"); DialogManager.Ins.OpenShop(); });

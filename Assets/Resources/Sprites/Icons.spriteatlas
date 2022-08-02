@@ -191,6 +191,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 52b39b0b8c2353c41895e43ff74eda96, type: 3}
   - {fileID: 21300000, guid: b714503bf63300240a0b9fde6e2c0dd3, type: 3}
   - {fileID: 21300000, guid: 32be736ba1d2f5545816938e610ab61f, type: 3}
+  - {fileID: 21300000, guid: 01ab7b6be525b514fbd3c03fa88f3297, type: 3}
   - {fileID: 21300000, guid: 475f319b8b1c3e747b8e0e4623ee924e, type: 3}
   - {fileID: 21300000, guid: 7e747c9b00608d84ba777afba556fbe0, type: 3}
   - {fileID: 21300000, guid: 3e19fcdb8d2c29d4a9017677cf32433c, type: 3}
@@ -376,6 +377,7 @@ SpriteAtlas:
   - Equipment_Bg_3
   - Enchantment_57_runecrystal
   - Weapon_20
+  - icon_itemicon_ticket
   - Weapon_1
   - Frame_stoune_3
   - autolvup_icon

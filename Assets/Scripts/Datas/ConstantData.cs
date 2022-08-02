@@ -81,9 +81,11 @@ public static class ConstantData
 	//장비 등급 뽑기 확률
 	public static int[] EquipmentGachaLvProbs = { 5, 10, 15, 30, 40 };
 	//던전 입장 카운트 추가 시간
-	public static ObscuredInt DungeonEnterTicketAddTime = 180;
+	public static ObscuredInt DungeonEnterTicketAddTime = 1;
 	//던전 입장 최대 카운트
 	public static ObscuredInt DungeonEnterMaxTicketCount = 5;
+	//던전 컨텐츠 오픈 스테이지 조건
+	public static ObscuredInt DungeonOpenStage = 1;
 
 	public static double GetLvUpCost(int lv)
 	{

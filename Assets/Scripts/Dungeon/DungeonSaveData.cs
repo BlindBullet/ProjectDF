@@ -6,15 +6,17 @@ using System;
 public class DungeonSaveData
 {
 	public int DungeonEnterCount;
-	public DateTime DungeonEnterTime;
+	public DateTime TicketChargeStartTime;
+	public float TicketChargeLeftTime;
 	public bool IsDungeonOpen;
 
 	public void Init()
 	{
 		DungeonEnterCount = 5;
-		DungeonEnterTime = DateTime.UtcNow;
+		TicketChargeStartTime = DateTime.UtcNow;
+		TicketChargeLeftTime = 0;
 
-		if(StageManager.Ins.PlayerData.TopStage >= 200)
+		if(StageManager.Ins.PlayerData.TopStage > ConstantData.DungeonOpenStage)
 		{
 			IsDungeonOpen = true;
 		}
@@ -24,6 +26,33 @@ public class DungeonSaveData
 		}
 
 		Save();
+	}
+
+	public void UseTicket()
+	{
+		if (DungeonEnterCount == 5)
+			TicketChargeStartTime = TimeManager.Ins.GetCurrentTime();
+
+		DungeonEnterCount--;
+		Save();
+	}
+
+	public void CheckDungeonTicketAdd(double sec)
+	{
+		int addCount = (int)(sec / (ConstantData.DungeonEnterTicketAddTime * 60));
+		double leftSec = Math.Round(sec % (ConstantData.DungeonEnterTicketAddTime * 60));		
+		DungeonEnterCount += addCount;
+
+		if (DungeonEnterCount > ConstantData.DungeonEnterMaxTicketCount)
+		{
+			DungeonEnterCount = ConstantData.DungeonEnterMaxTicketCount;
+		}
+		else
+		{
+			TicketChargeStartTime = TimeManager.Ins.GetCurrentTime().AddSeconds(-leftSec);			
+		}
+		
+		Save();		
 	}
 
 	public void Save()
@@ -42,9 +71,10 @@ public class DungeonSaveData
 		else
 		{
 			DungeonEnterCount = data.DungeonEnterCount;
-			DungeonEnterTime = data.DungeonEnterTime;
+			TicketChargeStartTime = data.TicketChargeStartTime;
+			TicketChargeLeftTime = data.TicketChargeLeftTime;
 
-			if (StageManager.Ins.PlayerData.TopStage >= 200)
+			if (StageManager.Ins.PlayerData.TopStage > ConstantData.DungeonOpenStage)
 			{
 				IsDungeonOpen = true;
 			}
