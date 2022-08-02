@@ -9,6 +9,7 @@ public class StageManager : MonoSingleton<StageManager>
 {
 	public PlayerData PlayerData = new PlayerData();
 	public EquipmentSaveData EquipmentData = new EquipmentSaveData();
+	public DungeonSaveData DungeonData = new DungeonSaveData();
 	public PlayerStat PlayerStat = new PlayerStat();
 	public PlayerUi PlayerUi;
 	public TopBar TopBar;
@@ -46,6 +47,9 @@ public class StageManager : MonoSingleton<StageManager>
 
 		EquipmentData = new EquipmentSaveData();
 		EquipmentData.Load();
+
+		DungeonData = new DungeonSaveData();
+		DungeonData.Load();
 
 		PlayerStat = new PlayerStat();
 		PlayerStat.Init();

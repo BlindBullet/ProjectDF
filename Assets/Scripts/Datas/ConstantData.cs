@@ -80,6 +80,10 @@ public static class ConstantData
 	public static ObscuredInt CheckClaimPossibleSec = 22 * 60 * 60;
 	//장비 등급 뽑기 확률
 	public static int[] EquipmentGachaLvProbs = { 5, 10, 15, 30, 40 };
+	//던전 입장 카운트 추가 시간
+	public static ObscuredInt DungeonEnterTicketAddTime = 180;
+	//던전 입장 최대 카운트
+	public static ObscuredInt DungeonEnterMaxTicketCount = 5;
 
 	public static double GetLvUpCost(int lv)
 	{

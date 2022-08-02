@@ -627,6 +627,7 @@ GameObject:
   - component: {fileID: 3449369846395961609}
   - component: {fileID: 6203984198316747411}
   - component: {fileID: 3593186315290374743}
+  - component: {fileID: 6466799255708129944}
   m_Layer: 5
   m_Name: DungeonBar
   m_TagString: Untagged
@@ -694,6 +695,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6466799255708129944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903966824233833407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb896a83a6464d48b84d50f33c20bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyImg: {fileID: 2336272654132278940}
+  FloorText: {fileID: 350003987989876363}
+  NameText: {fileID: 6289646682651455830}
+  DispatchInfoText: {fileID: 5968943691319484954}
+  DispatchBtn: {fileID: 471855218640976177}
+  DispatchBtnText: {fileID: 4276091777297478712}
 --- !u!1 &6289646682651455828
 GameObject:
   m_ObjectHideFlags: 0

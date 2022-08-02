@@ -215,7 +215,7 @@ desc_tutorial_step_4,버튼을 눌러 영웅을 레벨업하세요. 5레벨까�
 desc_tutorial_step_5,파워업 버튼을 눌러 영웅을 업그레이드하세요. 도움말을 보시면 언제 파워업이 가능한지 알 수 있습니다.,Upgrade your hero by pressing the power-up button. The help will tell you when power-ups are available.,強化ボタンでヒーローをアップグレード、ヘルプでいつアップグレード可能か確認できます。
 desc_tutorial_step_6,이제 환생할 수 있습니다. 환생 버튼을 눌러 정보를 확인하세요.,Now you can Ascension. Click the Ascension button to check the information.,転生できるようになりました。転生ボタンをタッチして情報を確認しましょう。
 cant_play_ad,광고 불러오기에 실패했습니다.,Failed to load ad.,広告の読み込みに失敗しました。
-desc_aekashics,THANKS FOR ENEMIES DESIGN\n버튼 클릭시 홈페이지로 연결됩니다.,THANKS FOR ENEMIES DESIGN\nWhen you click the button` you will be connected to the homepage.,THANKS FOR ENEMIES DESIGN\nボタンをタッチするとホームページに移動します。
+desc_aekashics,THANKS FOR ENEMIES DESIGN,THANKS FOR ENEMIES DESIGN,THANKS FOR ENEMIES DESIGN
 str_name_quest_10001,이세계 탐색,Explore the other world,初めて異世界へ
 str_name_quest_20001,마을 주민 돕기,Help villagers,村人助け
 str_name_quest_30001,고블린과의 조우,Encounter with Goblin,ゴブリン
@@ -395,3 +395,26 @@ name_equipment_20024,세계수의 징표,Sign of The Worldtree,世界数の兆�
 name_equipment_20025,대지의 분노,Earth's Wrath,大地の怒り
 str_name_castle_10012,마력정화기,Magic Purifier,魔力浄化器
 str_desc_castle_10012,환생시 얻는 마석이 증가합니다.,When ascension` increase gain magicite.,転生で獲得する魔石量アップ
+Basement,지하,B,地下
+Floor,층,F,階
+dungeon_dispatch_info,파견 인원 : {0}명,Number of Players: {0},派遣人数：{0}人
+str_name_dungeon_1,,,
+str_name_dungeon_2,,,
+str_name_dungeon_3,,,
+str_name_dungeon_4,,,
+str_name_dungeon_5,,,
+str_name_dungeon_6,,,
+str_name_dungeon_7,,,
+str_name_dungeon_8,,,
+str_name_dungeon_9,,,
+str_name_dungeon_10,,,
+str_name_dungeon_11,,,
+str_name_dungeon_12,,,
+str_name_dungeon_13,,,
+str_name_dungeon_14,,,
+str_name_dungeon_15,,,
+str_name_dungeon_16,,,
+str_name_dungeon_17,,,
+str_name_dungeon_18,,,
+str_name_dungeon_19,,,
+str_name_dungeon_20,,,
