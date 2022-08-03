@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "277b551c9d217ece",
         "name": "com.mkgames.projectdf",
-        "processId": 1819,
+        "processId": 13714,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -85,6 +85,24 @@
             "name": "com.mkgames.projectdf",
             "processId": 1819,
             "exited": true
+        },
+        {
+            "deviceId": "277b551c9d217ece",
+            "name": "com.sec.android.app.launcher",
+            "processId": 6391,
+            "exited": false
+        },
+        {
+            "deviceId": "277b551c9d217ece",
+            "name": "com.mkgames.projectdf",
+            "processId": 11466,
+            "exited": true
+        },
+        {
+            "deviceId": "277b551c9d217ece",
+            "name": "com.mkgames.projectdf",
+            "processId": 13714,
+            "exited": false
         }
     ],
     "m_Tags": {
