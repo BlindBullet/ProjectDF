@@ -110,7 +110,7 @@ public class HeroStat
 		PenCount = chart.PenCount + PenCountInc - PenCountDec;
 		CoolTimeAdd = CoolTimeInc - CoolTimeDec;
 
-		for(int i = 0; i < StageManager.Ins.Slots.Count; i++)
+		for(int i = 0; i < StageManager.Ins.Slots.Length; i++)
 		{
 			if (StageManager.Ins.Slots[i].No == data.SlotNo)
 				StageManager.Ins.Slots[i].SetAtk(Atk);

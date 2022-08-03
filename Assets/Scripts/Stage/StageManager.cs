@@ -13,7 +13,7 @@ public class StageManager : MonoSingleton<StageManager>
 	public PlayerStat PlayerStat = new PlayerStat();
 	public PlayerUi PlayerUi;
 	public TopBar TopBar;
-	public List<PlayerLine> PlayerLines = new List<PlayerLine>();
+	public PlayerLine[] PlayerLines;
 	[HideInInspector] public int Hp;
 	public LoseStagePanel LoseStagePanel;
 	public NextStageSequence NextStageSeq;
@@ -21,7 +21,7 @@ public class StageManager : MonoSingleton<StageManager>
 	public GameObject Moat;
 	public GameObject OfflineRewardPanel;
 
-	public List<Slot> Slots = new List<Slot>();
+	public Slot[] Slots;
 
 	public event UnityAction<double> GoldChanged;
 	public event UnityAction<double> SoulStoneChanged;
@@ -220,9 +220,9 @@ public class StageManager : MonoSingleton<StageManager>
 
 	public void SetSlots()
 	{		
-		for(int i = 0; i < Slots.Count; i++)
+		for(int i = 0; i < Slots.Length; i++)
 		{
-			Slots[i].No = i + 1;
+			Slots[i].No = i + 1;			
 			Slots[i].Init(PlayerData.Slots[i]);
 		}
 	}
@@ -309,13 +309,13 @@ public class StageManager : MonoSingleton<StageManager>
 
 	void RefreshLine()
 	{
-		for (int i = 0; i < PlayerLines.Count; i++)
+		for (int i = 0; i < PlayerLines.Length; i++)
 		{
 			PlayerLines[i].gameObject.SetActive(true);
 			PlayerLines[i].Refresh();
 		}
 
-		Hp = PlayerLines.Count;
+		Hp = PlayerLines.Length;
 	}
 
 	bool CheckAppearSupplies()
@@ -560,7 +560,7 @@ public class StageManager : MonoSingleton<StageManager>
 			HeroBase.Heroes[i].Destroy();
 		}
 
-		for (int i = 0; i < Slots.Count; i++)
+		for (int i = 0; i < Slots.Length; i++)
 		{
 			Slots[i].ClosePowerUpBtn();
 		}
@@ -644,7 +644,7 @@ public class StageManager : MonoSingleton<StageManager>
 
 			if(PlayerData.Gold >= cost)
 			{
-				for(int i = 0; i < Slots.Count; i++)
+				for(int i = 0; i < Slots.Length; i++)
 				{
 					Slots[i].LevelUp();
 				}

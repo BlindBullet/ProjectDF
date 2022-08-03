@@ -59,7 +59,7 @@ public class TutorialStep : MonoBehaviour
 				}
 				break;
 			case 4:				
-				for (int i = 0; i < StageManager.Ins.Slots.Count; i++)
+				for (int i = 0; i < StageManager.Ins.Slots.Length; i++)
 				{
 					if (StageManager.Ins.Slots[i].No == 3)
 					{
@@ -68,7 +68,7 @@ public class TutorialStep : MonoBehaviour
 				}
 				break;
 			case 5:				
-				for (int i = 0; i < StageManager.Ins.Slots.Count; i++)
+				for (int i = 0; i < StageManager.Ins.Slots.Length; i++)
 				{
 					if (StageManager.Ins.Slots[i].No == 3)
 					{

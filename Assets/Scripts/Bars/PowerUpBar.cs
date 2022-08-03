@@ -115,7 +115,7 @@ public class PowerUpBar : MonoBehaviour
 						break;
 				}
 
-				for (int i = 0; i < StageManager.Ins.Slots.Count; i++)
+				for (int i = 0; i < StageManager.Ins.Slots.Length; i++)
 				{
 					if (data.No == StageManager.Ins.Slots[i].No)
 						StageManager.Ins.Slots[i].AfterPowerUp();

@@ -133,7 +133,7 @@ public class SEManager : MonoSingleton<SEManager>
 
 		PlayerBuffManager.Ins.RunAllBuffs();
 
-		for (int i = 0; i < StageManager.Ins.Slots.Count; i++)
+		for (int i = 0; i < StageManager.Ins.Slots.Length; i++)
 		{
 			StageManager.Ins.Slots[i].SetLvUpCost();
 		}
