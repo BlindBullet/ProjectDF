@@ -168,34 +168,24 @@ public class DialogAdReward : DialogController
 				StartCoroutine(GetQuestReward(true));
 			}
 			else
-			{
-				if (AdmobManager.Ins.isQuestRewardAdInterstitial)
+			{	
+				if (AdmobManager.Ins.isQuestRewardAdLoaded)
 				{
-					AdmobManager.Ins.ShowQuestRewardAd2();
-					AdmobManager.Ins.isQuestRewardAdInterstitial = false;
+					AdmobManager.Ins.ShowQuestRewardAd();
 				}
 				else
 				{
+					AdmobManager.Ins.LoadAd(AdType.QuestReward);
+
 					if (AdmobManager.Ins.isQuestRewardAdLoaded)
 					{
 						AdmobManager.Ins.ShowQuestRewardAd();
 					}
 					else
 					{
-						AdmobManager.Ins.LoadAd(AdType.QuestReward);
-
-						if (AdmobManager.Ins.isQuestRewardAdLoaded)
-						{
-							AdmobManager.Ins.ShowQuestRewardAd();
-						}
-						else
-						{
-							UnityAdsManager.Ins.ShowAd(AdType.QuestReward);
-						}
+						UnityAdsManager.Ins.ShowAd(AdType.QuestReward);
 					}
-
-					AdmobManager.Ins.isQuestRewardAdInterstitial = true;
-				}
+				}				
 			}
 		});
 

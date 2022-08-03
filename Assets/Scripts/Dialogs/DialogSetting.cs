@@ -54,27 +54,28 @@ public class DialogSetting : DialogController
 			StageManager.Ins.PlayerData.SetDmgText(a);			
 		});
 
-		AekashicsBtn.onClick.RemoveAllListeners();
-		AekashicsBtn.onClick.AddListener(() => 
-		{
-			GPGSBinder.Inst.LoadCustomLeaderboardArray(GPGSIds.leaderboard_top_stage, 10, 
-				GooglePlayGames.BasicApi.LeaderboardStart.TopScores,
-				GooglePlayGames.BasicApi.LeaderboardTimeSpan.AllTime,
-				(success, scoreData) => 
-				{
-					string log = $"{success}\n";
-					var score = scoreData.Scores;
-					
-					for (int i = 0; i < score.Length; i++)
-					{
-						log += $"{1}, {score[i].rank}, {score[i].value}, {score[i].userID}, {score[i].date}\n";
-					}
+		AekashicsBtn.enabled = false;
+		//AekashicsBtn.onClick.RemoveAllListeners();
+		//AekashicsBtn.onClick.AddListener(() => 
+		//{
+		//	//GPGSBinder.Inst.LoadCustomLeaderboardArray(GPGSIds.leaderboard_top_stage, 10, 
+		//	//	GooglePlayGames.BasicApi.LeaderboardStart.TopScores,
+		//	//	GooglePlayGames.BasicApi.LeaderboardTimeSpan.AllTime,
+		//	//	(success, scoreData) => 
+		//	//	{
+		//	//		string log = $"{success}\n";
+		//	//		var score = scoreData.Scores;
 
-					Debug.Log("·©Å© Á¤º¸\n" + log);
-				});
-			
-			Application.OpenURL("http://www.akashics.moe/"); 
-		} );
+		//	//		for (int i = 0; i < score.Length; i++)
+		//	//		{
+		//	//			log += $"{1}, {score[i].rank}, {score[i].value}, {score[i].userID}, {score[i].date}\n";
+		//	//		}
+
+		//	//		Debug.Log("·©Å© Á¤º¸\n" + log);
+		//	//	});
+
+		//	Application.OpenURL("http://www.akashics.moe/"); 
+		//} );
 
 		Show(true, true);
 	}
