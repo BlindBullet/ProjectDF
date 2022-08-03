@@ -60,15 +60,17 @@ public class PlayerUi : MonoBehaviour
 		DungeonBtn.onClick.AddListener(() => 
 		{ 
 			SoundManager.Ins.PlaySFX("se_button_2");
+			DialogManager.Ins.OpenCautionBar("notice_dungeon_update");
 
-			if (StageManager.Ins.DungeonData.IsDungeonOpen)
-			{
-				DialogManager.Ins.OpenDungeon();
-			}
-			else
-			{
-				DialogManager.Ins.OpenCautionBar("notice_dungeon_closed");
-			}
+			//if (StageManager.Ins.DungeonData.IsDungeonOpen)
+			//{
+			//	DialogManager.Ins.OpenDungeon();
+			//}
+			//else
+			//{
+				
+			//	//DialogManager.Ins.OpenCautionBar("notice_dungeon_closed");
+			//}
 		});
 
 		ShopBtn.onClick.RemoveAllListeners();
