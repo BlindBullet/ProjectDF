@@ -71,7 +71,7 @@ public class DialogSetting : DialogController
 					}
 
 					Debug.Log("·©Å© Á¤º¸\n" + log);
-				});			 
+				});			
 		} );
 
 		Show(true, true);
