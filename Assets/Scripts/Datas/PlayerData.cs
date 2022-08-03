@@ -293,12 +293,6 @@ public class PlayerData
 
 	public void ChangeStage(int count)
 	{
-#if UNITY_ANDROID && !UNITY_EDITOR
-		string installerName = Application.installerName;
-
-		if (installerName != "com.android.vending")
-			return;
-#endif
 		Stage += count;
 
 		if (Stage < 1)
@@ -487,12 +481,6 @@ public class PlayerData
 
 	public void Load()
 	{
-#if UNITY_ANDROID && !UNITY_EDITOR
-		string installerName = Application.installerName;
-
-		if (installerName != "com.android.vending")
-			return;
-#endif
 		PlayerData data = ES3.Load<PlayerData>("PlayerData", defaultValue: null);
 		
 		if(data == null)
