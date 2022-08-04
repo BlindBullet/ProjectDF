@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class DungeonManager : MonoSingleton<DungeonManager>
 {
-    
+
+
+	public void SetDungeon(int dungeonStageNo)
+	{
+
+	}
 }
