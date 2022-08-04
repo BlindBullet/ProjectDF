@@ -29,7 +29,7 @@ public class DungeonBar : MonoBehaviour
 			}
 			else
 			{
-				//DialogManager.Ins.OpenDungeonInfo(chart);
+				DialogManager.Ins.OpenDungeonInfo(chart);
 			}
 		});
 	}

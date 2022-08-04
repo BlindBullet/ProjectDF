@@ -11279,6 +11279,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Heroes: []
   Ui: {fileID: 0}
+  PlayerData:
+    IsFirstPlay: 0
+    PlayAppCount: 0
+    Gold: 0
+    Magicite: 0
+    SoulStone: 0
+    Stage: 0
+    TopStage: 0
+    AscensionCount: 0
+    TouchAttackLv: 0
+    Slots: []
+    Heroes: []
+    Relics: []
+    Castles: []
+    Quests: []
+    QuestLv: 0
+    ClearQuestCount: 0
+    TotalClearQuestCount: 0
+    OnBGM: 0
+    OnSFX: 0
+    OnDmgText: 0
+    TutorialStep: 0
+    CheckLv: 1
+    CheckCount: 0
+    AutoLvUp: 0
 --- !u!1 &1550765091
 GameObject:
   m_ObjectHideFlags: 0

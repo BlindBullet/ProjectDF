@@ -84,6 +84,12 @@ public class RewardIcon : MonoBehaviour
 				else
 					Amount.text = value.ToString();
 				break;
+			case RewardType.EnchantStone:
+				if (value <= 0)
+					Amount.text = "";
+				else
+					Amount.text = value.ToCurrencyString();
+				break;
 		}
 	}
 

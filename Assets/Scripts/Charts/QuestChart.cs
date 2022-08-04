@@ -24,6 +24,6 @@ public enum RewardType
     GameSpeed,
     GainGold,
     UseAutoSkill,
-
+    EnchantStone,
 
 }

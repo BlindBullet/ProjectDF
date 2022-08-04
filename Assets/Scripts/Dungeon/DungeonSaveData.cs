@@ -9,12 +9,16 @@ public class DungeonSaveData
 	public DateTime TicketChargeStartTime;
 	public float TicketChargeLeftTime;
 	public bool IsDungeonOpen;
+	public int CurDungeonLv;
+	public int TopDungeonLv;
 
 	public void Init()
 	{
 		DungeonEnterCount = 5;
 		TicketChargeStartTime = DateTime.UtcNow;
 		TicketChargeLeftTime = 0;
+		CurDungeonLv = 1;
+		TopDungeonLv = 1;
 
 		if(StageManager.Ins.PlayerData.TopStage > ConstantData.DungeonOpenStage)
 		{
@@ -55,6 +59,20 @@ public class DungeonSaveData
 		Save();		
 	}
 
+	public void SetCurDungeonLv(int no)
+	{
+		CurDungeonLv = no;
+		Save();
+	}
+
+	public void SetTopDungeonLv(int no)
+	{
+		if(no > TopDungeonLv)
+			TopDungeonLv = no;
+
+		Save();
+	}
+
 	public void Save()
 	{
 		ES3.Save<DungeonSaveData>("DungeonData", this);
@@ -73,6 +91,8 @@ public class DungeonSaveData
 			DungeonEnterCount = data.DungeonEnterCount;
 			TicketChargeStartTime = data.TicketChargeStartTime;
 			TicketChargeLeftTime = data.TicketChargeLeftTime;
+			CurDungeonLv = data.CurDungeonLv;
+			TopDungeonLv = data.TopDungeonLv;
 
 			if (StageManager.Ins.PlayerData.TopStage > ConstantData.DungeonOpenStage)
 			{

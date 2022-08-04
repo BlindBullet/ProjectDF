@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("DungeonEnterCount", "TicketChargeStartTime", "TicketChargeLeftTime", "IsDungeonOpen")]
+	[ES3PropertiesAttribute("DungeonEnterCount", "TicketChargeStartTime", "TicketChargeLeftTime", "IsDungeonOpen", "CurDungeonLv", "TopDungeonLv")]
 	public class ES3UserType_DungeonSaveData : ES3ObjectType
 	{
 		public static ES3Type Instance = null;
@@ -20,6 +20,8 @@ namespace ES3Types
 			writer.WriteProperty("TicketChargeStartTime", instance.TicketChargeStartTime, ES3Type_DateTime.Instance);
 			writer.WriteProperty("TicketChargeLeftTime", instance.TicketChargeLeftTime, ES3Type_float.Instance);
 			writer.WriteProperty("IsDungeonOpen", instance.IsDungeonOpen, ES3Type_bool.Instance);
+			writer.WriteProperty("CurDungeonLv", instance.CurDungeonLv, ES3Type_int.Instance);
+			writer.WriteProperty("TopDungeonLv", instance.TopDungeonLv, ES3Type_int.Instance);
 		}
 
 		protected override void ReadObject<T>(ES3Reader reader, object obj)
@@ -41,6 +43,12 @@ namespace ES3Types
 						break;
 					case "IsDungeonOpen":
 						instance.IsDungeonOpen = reader.Read<System.Boolean>(ES3Type_bool.Instance);
+						break;
+					case "CurDungeonLv":
+						instance.CurDungeonLv = reader.Read<System.Int32>(ES3Type_int.Instance);
+						break;
+					case "TopDungeonLv":
+						instance.TopDungeonLv = reader.Read<System.Int32>(ES3Type_int.Instance);
 						break;
 					default:
 						reader.Skip();

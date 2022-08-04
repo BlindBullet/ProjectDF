@@ -145,4 +145,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogDungeon>().OpenDialog();
 	}
 
+	public void OpenDungeonInfo(DungeonChart chart)
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogDungeonInfo") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogDungeonInfo>().OpenDialog(chart);
+	}
+
 }
