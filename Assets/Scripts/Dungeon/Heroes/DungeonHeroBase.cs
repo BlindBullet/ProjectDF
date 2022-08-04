@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class DungeonHeroBase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+	public void SetHero(HeroData data)
+	{
+
+	}
 }
