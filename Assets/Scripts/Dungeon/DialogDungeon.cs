@@ -8,12 +8,14 @@ using System;
 public class DialogDungeon : DialogController
 {
 	public TextMeshProUGUI TitleText;
+	public TextMeshProUGUI DescText;
 	public Transform DungeonBarTrf;
 	public TextMeshProUGUI DungeonTicketText;
 	
 	public void OpenDialog()
 	{
 		TitleText.text = LanguageManager.Ins.SetString("Dungeon");
+		DescText.text = LanguageManager.Ins.SetString("desc_popup_dungeon");
 		SetDungeonBars();
 		SetDungeonTicketInfo();
 		Show(true);

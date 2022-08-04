@@ -420,3 +420,4 @@ str_name_dungeon_19,적19,Enemy19,Enemy19
 str_name_dungeon_20,적20,Enemy20,Enemy20
 notice_dungeon_closed,던전은 200스테이지 클리어시 열립니다.,The dungeon opens when you clear stage 200.,ダンジョンは200ステージクリア時に開かれます。
 not_enough_dungeon_ticket,던전 티켓이 모자랍니다.,Not enough dungeon tickets.,ダンジョンチケットが足りません。
+desc_popup_dungeon,던전에는 모든 영웅들이 출전합니다.\n보상으로 영혼석과 장비 강화석이 주어지며`\n더 깊은 곳으로 갈수록 보상이 높아집니다.,All heroes will participate in the dungeon.\nSoulstones and equipment Enhantstones are given as rewards`\nThe deeper you go` the higher the rewards.,ダンジョンにはすべての英雄が出場します。 \n報酬として魂石と装備強化石が与えられ、\nより深いところに行くほど報酬が高くなります。
