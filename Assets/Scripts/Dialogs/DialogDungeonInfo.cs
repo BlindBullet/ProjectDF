@@ -34,6 +34,9 @@ public class DialogDungeonInfo : DialogController
 	{
 		Debug.Log("던전 " + no + "층 출전");
 		StageManager.Ins.DungeonData.UseTicket();
-		CloseDialog();
+		StageManager.Ins.DungeonData.SetCurDungeonLv(no);
+		StageManager.Ins.EnterDungeon();
+		SoundManager.Ins.DissolveBGMVolume(0f, 0.5f);
+		MySceneManager.Ins.ChangeScene("Dungeon");
 	}
 }

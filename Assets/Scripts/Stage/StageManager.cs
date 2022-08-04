@@ -664,4 +664,21 @@ public class StageManager : MonoSingleton<StageManager>
 		EquipmentData.GetEnchantStone(amount);
 	}
 
+	public void EnterDungeon()
+	{
+		for (int i = EnemyBase.Enemies.Count - 1; i >= 0; i--)
+		{
+			EnemyBase.Enemies[i].Destroy();
+		}
+
+		EnemySpawner.Ins.StopSpawn();
+
+		for (int i = HeroBase.Heroes.Count - 1; i >= 0; i--)
+		{
+			HeroBase.Heroes[i].Destroy();
+		}
+
+		StopAllCoroutines();
+	}
+
 }
