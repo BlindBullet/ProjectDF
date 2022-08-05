@@ -1,6 +1,6 @@
 ﻿Id,Name,AppearEnemy,Attr,Hp,RewardSoulStone,RewardEnchantStone
-1,str_name_dungeon_1,Enemy1,Red,10000,100,10
-2,str_name_dungeon_2,Enemy2,Blue,100000,100,10
+1,str_name_dungeon_1,Enemy1,Blue,10000,100,10
+2,str_name_dungeon_2,Enemy2,Red,100000,100,10
 3,str_name_dungeon_3,Enemy3,Green,1000000,100,10
 4,str_name_dungeon_4,Enemy4,Red,10000000,100,10
 5,str_name_dungeon_5,Enemy5,Blue,100000000,100,10
