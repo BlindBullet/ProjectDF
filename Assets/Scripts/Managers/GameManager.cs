@@ -13,7 +13,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 		DialogManager.Ins.SetDialogTransform();
 		
-		DontDestroyOnLoad(this);
+		//DontDestroyOnLoad(this);
 	}
 
 	private void Start()

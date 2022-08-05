@@ -25,7 +25,7 @@ public class DialogController : MonoBehaviour
 
 	public void Show(bool enabledBackkey, bool stopTime = false)
 	{		
-		BattleInputManager.Ins.isPause = true;
+		//BattleInputManager.Ins.isPause = true;
 
 		if (stopTime)					
 			Time.timeScale = 0f;		
