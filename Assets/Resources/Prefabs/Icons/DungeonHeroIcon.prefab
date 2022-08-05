@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &925748252298755131
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8656385042488632802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -240,7 +240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4910641997214898152
 RectTransform:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6930733067424441169
 RectTransform:
   m_ObjectHideFlags: 0
@@ -647,7 +647,6 @@ GameObject:
   - component: {fileID: 3436197217650751932}
   - component: {fileID: 3436197217650751933}
   - component: {fileID: 7266058220282875100}
-  - component: {fileID: 8599363171269715408}
   m_Layer: 5
   m_Name: DungeonHeroIcon
   m_TagString: Untagged
@@ -696,18 +695,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3700da36cb5504ca0eb84a2585ef99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8599363171269715408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3436197217650751935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 386a4a756e1ce174aaf360d68587dc4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  IconBg: {fileID: 3436197215962704306}
+  IconFrame: {fileID: 3436197216057932736}
+  IconImg: {fileID: 3436197217980691747}
+  Stars:
+  - {fileID: 362432751372700628}
+  - {fileID: 840077662116734882}
+  - {fileID: 1250905033738565419}
+  - {fileID: 236442388276642888}
+  - {fileID: 7887303411685393339}
 --- !u!1 &3436197217980691741
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,10 +850,10 @@ RectTransform:
   m_Father: {fileID: 3436197215962704301}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -27, y: -31}
-  m_SizeDelta: {x: -126.7, y: -133.7}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -30, y: -30}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3016323854437498232
 CanvasRenderer:
@@ -1146,7 +1142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1481184733432017257
 RectTransform:
   m_ObjectHideFlags: 0

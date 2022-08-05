@@ -8,6 +8,7 @@ public class DungeonChart
     public string Name { get; set; }    
     public string AppearEnemy { get; set; }
     public Attr Attr { get; set; }
+    public double Hp { get; set; }
     public double RewardSoulStone { get; set; }
     public double RewardEnchantStoneMin { get; set; }
     public double RewardEnchantStoneMax { get; set; }

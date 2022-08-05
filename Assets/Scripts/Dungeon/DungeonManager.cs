@@ -8,8 +8,10 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 	public DungeonUi Ui;
 	public PlayerData PlayerData = new PlayerData();
 	public DungeonSaveData DungeonData = new DungeonSaveData();
+	public EquipmentSaveData EquipmentData = new EquipmentSaveData();
 	public DungeonEnemyBase Enemy;
-
+	public EquipmentData Weapon;	
+	public double HeroAtkIncRate = 100f;	
 
 	private void Start()
 	{
@@ -18,6 +20,23 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 
 		PlayerData.Load();
 		DungeonData.Load();
+		EquipmentData.Load();
+
+		HeroAtkIncRate = 100f;
+		Weapon = null;
+		
+		for(int i = 0; i < EquipmentData.Datas.Count; i++)
+		{
+			if (EquipmentData.Datas[i].Type == EquipmentType.Weapon && EquipmentData.Datas[i].isEquip)
+				Weapon = EquipmentData.Datas[i];		
+		}
+
+		if(Weapon != null)
+		{
+			EquipmentChart equipmentChart = CsvData.Ins.EquipmentChart[Weapon.Id];
+			SEChart seChart = CsvData.Ins.SEChart[equipmentChart.EquipEffect];
+			HeroAtkIncRate += ConstantData.CalcValue(double.Parse(seChart.EParam5), seChart.LvUpIncRate, Weapon.EnchantLv);
+		}
 
 		SetDungeon();
 	}
@@ -41,14 +60,27 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 				Heroes[count].gameObject.SetActive(true);
 				Heroes[count].SetHero(PlayerData.Heroes[i]);
 				count++;
-			}	
+			}
 		}
 	}
 
 	IEnumerator DungeonSeq()
 	{
+		yield return new WaitForSeconds(1f);
+
+		for(int i = 0; i < DungeonHeroBase.Heroes.Count; i++)
+		{
+			StartCoroutine(DungeonHeroBase.Heroes[i].Attack());
+		}
+
 		yield return null;
 	}
 
-
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.K))
+		{
+			MySceneManager.Ins.ChangeScene("Main");
+		}
+	}
 }

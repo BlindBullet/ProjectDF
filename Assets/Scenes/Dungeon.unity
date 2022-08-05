@@ -5947,7 +5947,22 @@ MonoBehaviour:
     CheckLv: 1
     CheckCount: 0
     AutoLvUp: 0
+  EquipmentData:
+    Datas: []
+    WeaponLv: 0
+    WeaponExp: 0
+    AccLv: 0
+    AccExp: 0
+    EnchantStone: 0
   Enemy: {fileID: 6533998231934297420}
+  Weapon:
+    Id: 
+    EnchantLv: 0
+    Count: 0
+    isOpen: 0
+    Type: 0
+    isEquip: 0
+  HeroAtkIncRate: 100
 --- !u!4 &1854657990
 Transform:
   m_ObjectHideFlags: 0
@@ -7291,6 +7306,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8661822137512499056, guid: 0efbd1bbb6c51e3469ec54dd729f2327,
+        type: 3}
+      propertyPath: HpFill
+      value: 
+      objectReference: {fileID: 1686861884}
+    - target: {fileID: 8661822137512499056, guid: 0efbd1bbb6c51e3469ec54dd729f2327,
+        type: 3}
+      propertyPath: HpText
+      value: 
+      objectReference: {fileID: 358635698}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0efbd1bbb6c51e3469ec54dd729f2327, type: 3}
 --- !u!114 &6533998231934297420 stripped
