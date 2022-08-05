@@ -16,7 +16,7 @@ namespace ES3Types
 		{
 			var instance = (DungeonSaveData)obj;
 			
-			writer.WriteProperty("DungeonEnterCount", instance.DungeonEnterCount, ES3Type_int.Instance);
+			writer.WriteProperty("DungeonEnterCount", instance.TicketCount, ES3Type_int.Instance);
 			writer.WriteProperty("TicketChargeStartTime", instance.TicketChargeStartTime, ES3Type_DateTime.Instance);
 			writer.WriteProperty("TicketChargeLeftTime", instance.TicketChargeLeftTime, ES3Type_float.Instance);
 			writer.WriteProperty("IsDungeonOpen", instance.IsDungeonOpen, ES3Type_bool.Instance);
@@ -33,7 +33,7 @@ namespace ES3Types
 				{
 					
 					case "DungeonEnterCount":
-						instance.DungeonEnterCount = reader.Read<System.Int32>(ES3Type_int.Instance);
+						instance.TicketCount = reader.Read<System.Int32>(ES3Type_int.Instance);
 						break;
 					case "TicketChargeStartTime":
 						instance.TicketChargeStartTime = reader.Read<System.DateTime>(ES3Type_DateTime.Instance);

@@ -32,9 +32,9 @@ public class DialogDungeon : DialogController
 
 	public void SetDungeonTicketInfo()
 	{
-		if(StageManager.Ins.DungeonData.DungeonEnterCount >= ConstantData.DungeonEnterMaxTicketCount)
+		if(StageManager.Ins.DungeonData.TicketCount >= ConstantData.DungeonEnterMaxTicketCount)
 		{
-			DungeonTicketText.text = StageManager.Ins.DungeonData.DungeonEnterCount + " / " + ConstantData.DungeonEnterMaxTicketCount;
+			DungeonTicketText.text = StageManager.Ins.DungeonData.TicketCount + " / " + ConstantData.DungeonEnterMaxTicketCount;
 		}
 		else
 		{
@@ -52,9 +52,9 @@ public class DialogDungeon : DialogController
 			{
 				StageManager.Ins.DungeonData.CheckDungeonTicketAdd(timeSpan.TotalSeconds);
 				timeSpan = TimeManager.Ins.GetCurrentTime() - StageManager.Ins.DungeonData.TicketChargeStartTime;
-				DungeonTicketText.text = StageManager.Ins.DungeonData.DungeonEnterCount + " / " + ConstantData.DungeonEnterMaxTicketCount;
+				DungeonTicketText.text = StageManager.Ins.DungeonData.TicketCount + " / " + ConstantData.DungeonEnterMaxTicketCount;
 
-				if (StageManager.Ins.DungeonData.DungeonEnterCount >= ConstantData.DungeonEnterMaxTicketCount)
+				if (StageManager.Ins.DungeonData.TicketCount >= ConstantData.DungeonEnterMaxTicketCount)
 					yield break;
 			}
 			
@@ -67,7 +67,7 @@ public class DialogDungeon : DialogController
 			string minStr = min < 10 ? "0" + min : min.ToString();
 			string secStr = sec < 10 ? "0" + sec : sec.ToString();
 
-			DungeonTicketText.text = StageManager.Ins.DungeonData.DungeonEnterCount + " / " + ConstantData.DungeonEnterMaxTicketCount
+			DungeonTicketText.text = StageManager.Ins.DungeonData.TicketCount + " / " + ConstantData.DungeonEnterMaxTicketCount
 				+ " (" + hourStr + ":" + minStr + ":" + secStr + ")";
 
 			yield return new WaitForSeconds(1f);			

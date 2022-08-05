@@ -151,4 +151,10 @@ public class DialogManager : SingletonObject<DialogManager> {
 		dialog.GetComponent<DialogDungeonInfo>().OpenDialog(chart);
 	}
 
+	public void OpenDungeonWin(double getSoulStone, double getEnchantStone)
+	{
+		GameObject dialog = Instantiate(Resources.Load("Prefabs/Dialogs/DialogDungeonWin") as GameObject, DialogTrf);
+		dialog.GetComponent<DialogDungeonWin>().OpenDialog(getSoulStone, getEnchantStone);
+	}	
+
 }

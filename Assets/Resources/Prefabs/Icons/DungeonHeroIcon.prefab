@@ -704,6 +704,10 @@ MonoBehaviour:
   - {fileID: 1250905033738565419}
   - {fileID: 236442388276642888}
   - {fileID: 7887303411685393339}
+  Atk: 0
+  Spd: 0
+  Attr: 0
+  rect: {fileID: 3436197217650751932}
 --- !u!1 &3436197217980691741
 GameObject:
   m_ObjectHideFlags: 0

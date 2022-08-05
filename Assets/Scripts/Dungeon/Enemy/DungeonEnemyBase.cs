@@ -11,6 +11,7 @@ public class DungeonEnemyBase : MonoBehaviour
 	public SpriteRenderer EnemySprite;
 	public double MaxHp;
 	public double CurHp;
+	public TextMeshProUGUI EnemyName;
 	public TextMeshProUGUI HpText;
 	public Image HpFill;
 	Attr attr;
@@ -18,8 +19,9 @@ public class DungeonEnemyBase : MonoBehaviour
 
 	public void SetEnemy(DungeonChart chart)
 	{
+		EnemyName.text = LanguageManager.Ins.SetString(chart.Name);
 		EnemySprite.sprite = Resources.Load<SpriteAtlas>("Sprites/Characters").GetSprite(chart.AppearEnemy);
-		mat = EnemySprite.material;
+		mat = EnemySprite.GetComponent<Renderer>().material;
 		MaxHp = chart.Hp;
 		CurHp = chart.Hp;
 		attr = chart.Attr;
@@ -33,8 +35,12 @@ public class DungeonEnemyBase : MonoBehaviour
 		this.transform.DOMoveY(4.8f, 1f).SetEase(Ease.InOutQuad);
 	}
 
-	public void TakeDmg(double value, Attr _attr)
+	public double TakeDmg(double value, Attr _attr)
 	{
+		mat.SetColor("_HitEffectColor", Color.red);
+		mat.SetFloat("_HitEffectBlend", 0.6f);
+		mat.DOFloat(0f, "_HitEffectBlend", 0.5f).SetEase(Ease.InOutBounce);
+
 		switch (attr)
 		{
 			case Attr.Red:
@@ -56,17 +62,24 @@ public class DungeonEnemyBase : MonoBehaviour
 
 		if (CurHp <= 0f)
 			Die();
+
+		return value;
 	}
 
 	void SetHpBar()
 	{
 		HpFill.fillAmount = (float)(CurHp / MaxHp);
-		HpText.text = CurHp.ToCurrencyString();
+
+		if (CurHp <= 0f)
+			HpText.text = "0";
+		else
+			HpText.text = CurHp.ToCurrencyString();
 	}
 
 	void Die()
 	{
-
+		mat.DOFloat(1f, "_FadeAmount", 1.5f).SetEase(Ease.Linear);		
+		DungeonManager.Ins.Win();
 	}
 
 }

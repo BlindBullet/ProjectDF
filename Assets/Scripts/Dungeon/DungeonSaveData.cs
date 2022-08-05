@@ -5,7 +5,7 @@ using System;
 
 public class DungeonSaveData
 {
-	public int DungeonEnterCount;
+	public int TicketCount;
 	public DateTime TicketChargeStartTime;
 	public float TicketChargeLeftTime;
 	public bool IsDungeonOpen;
@@ -14,7 +14,7 @@ public class DungeonSaveData
 
 	public void Init()
 	{
-		DungeonEnterCount = 5;
+		TicketCount = 5;
 		TicketChargeStartTime = DateTime.UtcNow;
 		TicketChargeLeftTime = 0;
 		CurDungeonLv = 1;
@@ -34,10 +34,10 @@ public class DungeonSaveData
 
 	public void UseTicket()
 	{
-		if (DungeonEnterCount == 5)
+		if (TicketCount == 5)
 			TicketChargeStartTime = TimeManager.Ins.GetCurrentTime();
 
-		DungeonEnterCount--;
+		TicketCount--;
 		Save();
 	}
 
@@ -45,11 +45,11 @@ public class DungeonSaveData
 	{
 		int addCount = (int)(sec / (ConstantData.DungeonEnterTicketAddTime * 60));
 		double leftSec = Math.Round(sec % (ConstantData.DungeonEnterTicketAddTime * 60));		
-		DungeonEnterCount += addCount;
+		TicketCount += addCount;
 
-		if (DungeonEnterCount > ConstantData.DungeonEnterMaxTicketCount)
+		if (TicketCount > ConstantData.DungeonEnterMaxTicketCount)
 		{
-			DungeonEnterCount = ConstantData.DungeonEnterMaxTicketCount;
+			TicketCount = ConstantData.DungeonEnterMaxTicketCount;
 		}
 		else
 		{
@@ -88,7 +88,7 @@ public class DungeonSaveData
 		}
 		else
 		{
-			DungeonEnterCount = data.DungeonEnterCount;
+			TicketCount = data.TicketCount;
 			TicketChargeStartTime = data.TicketChargeStartTime;
 			TicketChargeLeftTime = data.TicketChargeLeftTime;
 			CurDungeonLv = data.CurDungeonLv;

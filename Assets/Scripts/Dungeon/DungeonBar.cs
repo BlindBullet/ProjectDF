@@ -23,7 +23,7 @@ public class DungeonBar : MonoBehaviour
 		DispatchBtn.onClick.RemoveAllListeners();
 		DispatchBtn.onClick.AddListener(() => 
 		{ 
-			if(StageManager.Ins.DungeonData.DungeonEnterCount <= 0)
+			if(StageManager.Ins.DungeonData.TicketCount <= 0)
 			{
 				DialogManager.Ins.OpenCautionBar("not_enough_dungeon_ticket");
 			}

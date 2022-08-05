@@ -173,5 +173,6 @@ MonoBehaviour:
   EnemySprite: {fileID: 6533998230296275326}
   MaxHp: 0
   CurHp: 0
+  EnemyName: {fileID: 0}
   HpText: {fileID: 0}
   HpFill: {fileID: 0}

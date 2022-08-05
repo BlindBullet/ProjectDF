@@ -13,6 +13,9 @@ public class FloatingTextManager : MonoSingleton<FloatingTextManager>
 	DamageNumber Buff;
 	DamageNumber Gold;
 	DamageNumber SoulStone;
+	DamageNumber RedDmg;
+	DamageNumber BlueDmg;
+	DamageNumber GreenDmg;
 
 	private void Start()
 	{
@@ -23,6 +26,9 @@ public class FloatingTextManager : MonoSingleton<FloatingTextManager>
 		Buff = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/BuffTextPrefab");
 		Gold = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/GoldPrefab");
 		SoulStone = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/SoulStonePrefab");
+		RedDmg = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/RedDamagePrefab");
+		BlueDmg = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/BlueDamagePrefab");
+		GreenDmg = Resources.Load<DamageNumber>("Prefabs/FloatingTexts/GreenDamagePrefab");
 	}
 
 	public void ShowDmg(Vector3 pos, string text, bool isCrit, bool isCrit2)
@@ -40,6 +46,22 @@ public class FloatingTextManager : MonoSingleton<FloatingTextManager>
 			CritDmg.Spawn(pos, text);
 		else
 			Dmg.Spawn(pos, text);
+	}
+
+	public void ShowDungeonDmg(Vector3 pos, string text, Attr attr)
+	{
+		switch (attr)
+		{
+			case Attr.Red:
+				RedDmg.Spawn(pos, text);
+				break;
+			case Attr.Blue:
+				BlueDmg.Spawn(pos, text);
+				break;
+			case Attr.Green:
+				GreenDmg.Spawn(pos, text);
+				break;
+		}
 	}
 
 	public void ShowHeal(Vector3 pos, string text)

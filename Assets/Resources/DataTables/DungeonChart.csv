@@ -1,5 +1,5 @@
 ﻿Id,Name,AppearEnemy,Attr,Hp,RewardSoulStone,RewardEnchantStoneMin,RewardEnchantStoneMax
-1,str_name_dungeon_1,Enemy1,Red,100000,100,5,20
+1,str_name_dungeon_1,Enemy1,Red,1000,100,5,20
 2,str_name_dungeon_2,Enemy1,Blue,1000000000,100,5,20
 3,str_name_dungeon_3,Enemy1,Green,1999900000,100,5,20
 4,str_name_dungeon_4,Enemy1,Red,2999800000,100,5,20
