@@ -124,7 +124,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 		
 		double getSoulStone = Math.Round(chart.RewardSoulStone * (1 + rewardInc), 0);
 		PlayerData.ChangeSoulStone(getSoulStone);
-		double getEnchantStone = Math.Round(chart.RewardEnchantStoneMin * (1 + rewardInc), 0);
+		double getEnchantStone = Math.Round(chart.RewardEnchantStone * (1 + rewardInc), 0);
 		EquipmentData.GetEnchantStone(getEnchantStone);
 
 		yield return new WaitForSeconds(1f);

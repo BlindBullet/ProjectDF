@@ -20,7 +20,7 @@ public class DialogDungeonInfo : DialogController
 		EnemyImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Characters").GetSprite(chart.AppearEnemy);
 
 		RewardIcons[0].SetIcon(RewardType.SoulStone, chart.RewardSoulStone, RewardValueShowType.CalcValue);
-		RewardIcons[1].SetIcon(RewardType.EnchantStone, chart.RewardEnchantStoneMin, RewardValueShowType.CalcValue);
+		RewardIcons[1].SetIcon(RewardType.EnchantStone, chart.RewardEnchantStone, RewardValueShowType.CalcValue);
 		
 		DescText.text = LanguageManager.Ins.SetString("desc_dungeon_info");
 

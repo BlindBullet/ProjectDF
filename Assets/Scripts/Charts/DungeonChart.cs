@@ -10,7 +10,6 @@ public class DungeonChart
     public Attr Attr { get; set; }
     public double Hp { get; set; }
     public double RewardSoulStone { get; set; }
-    public double RewardEnchantStoneMin { get; set; }
-    public double RewardEnchantStoneMax { get; set; }
+    public double RewardEnchantStone { get; set; }    
 
 }
