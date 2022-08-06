@@ -16,6 +16,8 @@ public class StartManager : MonoBehaviour
 
 	private void Start()
 	{
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
 #if UNITY_ANDROID && !UNITY_EDITOR
 		appUpdateManager = new AppUpdateManager();
 #endif

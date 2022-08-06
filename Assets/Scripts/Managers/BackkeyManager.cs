@@ -12,7 +12,7 @@ public class BackkeyManager : SingletonObject<BackkeyManager>
 	}
 
 	public void UseBackkey(bool stopTime)
-	{
+	{		
 		if (OpenedDialogList.Count > 0)
 		{
 			if (OpenedDialogList[OpenedDialogList.Count - 1].EnabledBackkey)

@@ -9,11 +9,7 @@ public class GameManager : MonoSingleton<GameManager>
 {	
 	private void Awake()
 	{
-		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
-		DialogManager.Ins.SetDialogTransform();
-		
-		//DontDestroyOnLoad(this);
+		DontDestroyOnLoad(this.gameObject);
 	}
 
 	private void Start()
@@ -25,13 +21,18 @@ public class GameManager : MonoSingleton<GameManager>
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			BackkeyManager.Ins.UseBackkey(true);
+			Scene scene = SceneManager.GetActiveScene();
+
+			if (scene.name == "Main")
+			{
+				BackkeyManager.Ins.UseBackkey(true);				
+			}	
 		}
 
 #if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			StageManager.Ins.DungeonData.TicketCount++;
+
 		}
 #endif
 	}
@@ -46,7 +47,10 @@ public class GameManager : MonoSingleton<GameManager>
 			bPaused = true;
 
 			// todo : 어플리케이션을 내리는 순간에 처리할 행동들
-			StageManager.Ins.PlayerData.SetOfflineTime();
+			Scene scene = SceneManager.GetActiveScene();
+
+			if(scene.name == "Main")
+				StageManager.Ins.PlayerData.SetOfflineTime();
 		}
 		else
 		{
@@ -66,8 +70,11 @@ public class GameManager : MonoSingleton<GameManager>
 	}
 
 	private void OnDestroy()
-	{		
-		StageManager.Ins.PlayerData.SetOfflineTime();
+	{
+		Scene scene = SceneManager.GetActiveScene();
+
+		if (scene.name == "Main")
+			StageManager.Ins.PlayerData.SetOfflineTime();		
 	}
 
 }

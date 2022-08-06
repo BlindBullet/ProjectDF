@@ -26,9 +26,11 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	[HideInInspector] public bool isQuestRewardAdInterstitial = false;
 	[HideInInspector] public bool isAscensionRewardAdLoaded = false;
 	[HideInInspector] public bool isReal = true;
+	bool isFirst = false;
 
 	private void Start()
 	{
+		isFirst = false;
 		isReal = true;
 
 #if UNITY_ANDROID && !UNITY_EDITOR		
@@ -49,6 +51,9 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 
 	public void Setup()
 	{
+		if (isFirst)
+			return;
+
 		offlineRewardAd = new RewardedAd(isTestMode ? rewardTestID : offlineRewardId);
 		LoadAd(AdType.OfflineReward);
 		suppliesAd = new RewardedAd(isTestMode ? rewardTestID : suppliesRewardId);
@@ -81,6 +86,8 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 		this.offlineRewardAd.OnAdFailedToLoad += OnFailLoadedOfflineRewardAd;
 		this.offlineRewardAd.OnUserEarnedReward += SuccessOfflineRewardAd;
 		this.offlineRewardAd.OnAdFailedToShow += FailedOfflineRewardAd;
+
+		isFirst = true;
 	}
 
 	public void LoadAd(AdType type)

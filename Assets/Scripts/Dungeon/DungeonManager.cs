@@ -152,11 +152,10 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 		MySceneManager.Ins.ChangeScene("Main");
 	}
 
-	private void Update()
+	public IEnumerator WinEndSeq()
 	{
-		if (Input.GetKeyDown(KeyCode.K))
-		{
-			MySceneManager.Ins.ChangeScene("Main");
-		}
+		yield return new WaitForSeconds(1f);
+
+		MySceneManager.Ins.ChangeScene("Main");
 	}
 }

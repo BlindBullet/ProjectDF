@@ -39,6 +39,8 @@ public class StageManager : MonoSingleton<StageManager>
 
 	private void Start()
 	{
+		BackkeyManager.Ins.ClearDialog();
+		DialogManager.Ins.SetDialogTransform();
 		AdmobManager.Ins.Setup();
 
 		TutorialManager.Ins.InitTutorial();
