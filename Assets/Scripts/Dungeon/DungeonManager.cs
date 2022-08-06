@@ -152,10 +152,8 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 		MySceneManager.Ins.ChangeScene("Main");
 	}
 
-	public IEnumerator WinEndSeq()
+	public void WinEndSeq()
 	{
-		yield return new WaitForSeconds(1f);
-
 		MySceneManager.Ins.ChangeScene("Main");
 	}
 }

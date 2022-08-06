@@ -28,7 +28,7 @@ public class DialogDungeonWin : DialogController
 		RewardIcons[1].SetIcon(RewardType.EnchantStone, getEnchantStone, RewardValueShowType.CalcValue);
 
 		ReturnBtn.onClick.RemoveAllListeners();
-		ReturnBtn.onClick.AddListener(() => { StartCoroutine(DungeonManager.Ins.WinEndSeq()); CloseDialog(); });
+		ReturnBtn.onClick.AddListener(() => { DungeonManager.Ins.WinEndSeq(); CloseDialog(); });
 
 		ReturnBtnText.text = LanguageManager.Ins.SetString("Return");
 
