@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-public class PlayerBuffManager : SingletonObject<PlayerBuffManager>
+public class PlayerBuffManager : MonoSingleton<PlayerBuffManager>
 {
 	public UnityAction<double> GameSpeedBuffAdded;
 	public UnityAction<double> AutoSkillBuffAdded;

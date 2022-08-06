@@ -154,4 +154,14 @@ public class TopBar : MonoBehaviour
 		IsOnAutoLvUp = true;
 		AutoLvUpBtn.gameObject.SetActive(true);		
 	}
+
+	private void OnDisable()
+	{
+		StageManager.Ins.GoldChanged -= SetGoldText;
+		StageManager.Ins.SoulStoneChanged -= SetSoulStoneText;
+		StageManager.Ins.MagiciteChanged -= SetMagiciteText;
+		PlayerBuffManager.Ins.GameSpeedBuffAdded -= SetGameSpeed;
+		PlayerBuffManager.Ins.AutoSkillBuffAdded -= SetAutoUseSkill;
+		PlayerBuffManager.Ins.GainGoldBuffAdded -= SetGainGold;
+	}
 }

@@ -658,16 +658,6 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 	}
 
-	public void GetEquipment(string id, int count)
-	{
-		EquipmentData.Get(id, count);
-	}
-
-	public void GetEnchanStone(double amount)
-	{
-		EquipmentData.GetEnchantStone(amount);
-	}
-
 	public void EnterDungeon()
 	{
 		for (int i = EnemyBase.Enemies.Count - 1; i >= 0; i--)
@@ -683,6 +673,7 @@ public class StageManager : MonoSingleton<StageManager>
 		}
 
 		StopAllCoroutines();
+
 	}
 
 }

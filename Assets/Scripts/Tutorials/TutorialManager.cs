@@ -88,6 +88,11 @@ public class TutorialManager : MonoSingleton<TutorialManager>
 		SetTutorial();
 	}
 
+	private void OnDisable()
+	{
+		StageManager.Ins.GoldChanged -= GoldChanged;
+		StageManager.Ins.StageChanged -= StageChanged;
+	}
 }
 
 public class TutorialCondition
