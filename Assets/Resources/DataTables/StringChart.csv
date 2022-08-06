@@ -421,7 +421,7 @@ str_name_dungeon_20,엘리고스,Eligos,エリゴス
 notice_dungeon_closed,던전은 200스테이지 클리어시 열립니다.,The dungeon opens when you clear stage 200.,ダンジョンは200ステージクリア時に開かれます。
 not_enough_dungeon_ticket,던전 티켓이 모자랍니다.,Not enough dungeon tickets.,ダンジョンチケットが足りません。
 desc_popup_dungeon,던전에는 모든 영웅들이 출전합니다.\n보상으로 영혼석과 장비 강화석이 주어지며`\n더 깊은 곳으로 갈수록 보상이 높아집니다.,All heroes will participate in the dungeon.\nSoulstones and equipment Enhantstones are given as rewards`\nThe deeper you go` the higher the rewards.,ダンジョンにはすべての英雄が出場します。 \n報酬として魂石と装備強化石が与えられ、\nより深いところに行くほど報酬が高くなります。
-desc_dungeon_info,던전은 보유한 모든 영웅이 출전합니다.\n시간 제한 내에 적을 물리치세요.\n빠르게 처치할수록 보상이 늘어납니다.,All the heroes you have will participate in the dungeon. \nDefeat the enemy within the time limit. \nThe faster you kill them` the more rewards you get.,ダンジョンは保有しているすべての英雄が出場します。\n時間制限内に敵を倒してください。\n早く倒すほど報酬が増えます。
+desc_dungeon_info,던전은 보유한 모든 영웅이 출전합니다.\n시간 제한 내에 적을 물리치세요.\n던전에서는 영웅 등급과 강화도` 무기만이 효과를 발휘합니다.,All the heroes you have will participate in the dungeon. \nDefeat the enemy within the time limit. \nIn dungeons` only hero grades` enhancements` and weapons are effective.,ダンジョンは保有しているすべての英雄が出場します。\nダンジョンでは英雄等級と強化度、武器だけが効果を発揮します。
 Return,돌아가기,Exit,出る
 Victory,승리!,Victory,勝利
 VictoryTime,승리 시간,Victory Time,勝利時間
