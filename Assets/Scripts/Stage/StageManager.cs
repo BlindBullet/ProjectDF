@@ -39,6 +39,8 @@ public class StageManager : MonoSingleton<StageManager>
 
 	private void Start()
 	{
+		AdmobManager.Ins.Setup();
+
 		TutorialManager.Ins.InitTutorial();
 		appearSuppliesProb = 0f;
 

@@ -44,7 +44,11 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 #endif
 		// 모바일 광고 SDK를 초기화함.
 		MobileAds.Initialize(initStatus => { });
+		DontDestroyOnLoad(this.gameObject);
+	}
 
+	public void Setup()
+	{
 		offlineRewardAd = new RewardedAd(isTestMode ? rewardTestID : offlineRewardId);
 		LoadAd(AdType.OfflineReward);
 		suppliesAd = new RewardedAd(isTestMode ? rewardTestID : suppliesRewardId);
@@ -227,7 +231,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 
 	void SuccessOfflineRewardAd(object sender, Reward args)
 	{
-		StartCoroutine(DialogOfflineReward._Dialog.ShowAdReward());		
+		StartCoroutine(DialogOfflineReward._Dialog.ShowAdReward());
 	}
 
 	void FailedOfflineRewardAd(object sender, AdErrorEventArgs args)
@@ -241,11 +245,8 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 
 	public void ShowQuestRefreshAd()
 	{
-		//if (questRefreshAd.IsLoaded())
-		//	questRefreshAd.Show();
-
-		if(isOfflineAdLoaded)
-			offlineRewardAd.Show();
+		if (questRefreshAd.IsLoaded())
+			questRefreshAd.Show();
 
 		StartCoroutine(DialogQuest._Dialog.ResetQuest());
 		LoadAd(AdType.OfflineReward);
