@@ -24,7 +24,9 @@ public class IAPManager : MonoSingleton<IAPManager>, IStoreListener
 	void Start()
 	{
 		DontDestroyOnLoad(gameObject);
-		InitUnityIAP();
+
+		if (!GameManager.Ins.OpenedOfflineReward)
+			InitUnityIAP();
 	}
 
 	void InitUnityIAP()

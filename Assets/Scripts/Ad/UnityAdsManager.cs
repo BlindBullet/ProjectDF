@@ -15,7 +15,8 @@ public class UnityAdsManager : MonoSingleton<UnityAdsManager>, IUnityAdsLoadList
 	// Start is called before the first frame update
 	void Start()
 	{
-		this.LoadAd();
+		if(!GameManager.Ins.OpenedOfflineReward)
+			this.LoadAd();
 	}
 
 	public void LoadAd()

@@ -39,6 +39,9 @@ public class StageManager : MonoSingleton<StageManager>
 
 	private void Start()
 	{
+		HeroBase.Heroes.Clear();
+		EnemyBase.Enemies.Clear();
+
 		BackkeyManager.Ins.ClearDialog();
 		DialogManager.Ins.SetDialogTransform();
 		AdmobManager.Ins.Setup();
@@ -83,8 +86,9 @@ public class StageManager : MonoSingleton<StageManager>
 		{
 			TopBar.AutoLvUpBtn.SetBtn(false);
 		}
-		
-		StartCoroutine(OpenOfflineReward(PlayerData.IsFirstPlay));
+				
+		if(!GameManager.Ins.OpenedOfflineReward)
+			StartCoroutine(OpenOfflineReward(PlayerData.IsFirstPlay));
 
 		if (PlayerData.IsFirstPlay)
 			PlayerData.RunFirstPlay();
@@ -125,6 +129,7 @@ public class StageManager : MonoSingleton<StageManager>
 		PlayerStat.CheckRemoveAd();
 
 		DialogManager.Ins.OpenOfflineReward(AdmobManager.Ins.isOfflineAdLoaded);
+		GameManager.Ins.OpenedOfflineReward = true;
 	}
 
 	void OpenAttendance()

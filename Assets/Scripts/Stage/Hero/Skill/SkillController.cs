@@ -74,8 +74,7 @@ public class SkillController : MonoBehaviour
 				{
 					if (UseSkill())
 					{
-						me.Ui.CloseSkillReadyText();
-						//me.Ui.CloseSkillReadyFrame();
+						me.Ui.CloseSkillReadyText();						
 					}
 				}
 
@@ -91,8 +90,7 @@ public class SkillController : MonoBehaviour
 					{
 						if (UseSkill())
 						{
-							me.Ui.CloseSkillReadyText();
-							//me.Ui.CloseSkillReadyFrame();
+							me.Ui.CloseSkillReadyText();							
 						}
 					}
 				}

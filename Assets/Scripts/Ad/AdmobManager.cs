@@ -26,7 +26,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 	[HideInInspector] public bool isQuestRewardAdInterstitial = false;
 	[HideInInspector] public bool isAscensionRewardAdLoaded = false;
 	[HideInInspector] public bool isReal = true;
-	bool isFirst = false;
+	public bool isFirst = false;
 
 	private void Start()
 	{

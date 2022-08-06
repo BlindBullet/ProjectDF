@@ -6,15 +6,13 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
-{	
-	private void Awake()
-	{
-		DontDestroyOnLoad(this.gameObject);
-	}
-
+{
+	public bool OpenedOfflineReward = false;
+		
 	private void Start()
 	{
-		
+		DontDestroyOnLoad(this.gameObject);
+		OpenedOfflineReward = false;
 	}
 		
 	private void Update()
@@ -32,7 +30,7 @@ public class GameManager : MonoSingleton<GameManager>
 #if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-
+			StageManager.Ins.ChangeMagicite(10000000000000000000000000000000000000f);
 		}
 #endif
 	}
