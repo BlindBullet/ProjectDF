@@ -61,7 +61,7 @@ public class PlayerUi : MonoBehaviour
 		{ 
 			SoundManager.Ins.PlaySFX("se_button_2");
 
-			if (StageManager.Ins.DungeonData.IsDungeonOpen)
+			if (StageManager.Ins.PlayerData.TopStage > ConstantData.DungeonOpenStage)
 			{
 				DialogManager.Ins.OpenDungeon();
 			}

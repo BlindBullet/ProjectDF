@@ -7,8 +7,7 @@ public class DungeonSaveData
 {
 	public int TicketCount;
 	public DateTime TicketChargeStartTime;
-	public float TicketChargeLeftTime;
-	public bool IsDungeonOpen;
+	public float TicketChargeLeftTime;	
 	public int CurDungeonLv;
 	public int TopDungeonLv;
 
@@ -19,15 +18,6 @@ public class DungeonSaveData
 		TicketChargeLeftTime = 0;
 		CurDungeonLv = 1;
 		TopDungeonLv = 1;
-
-		if(StageManager.Ins.PlayerData.TopStage > ConstantData.DungeonOpenStage)
-		{
-			IsDungeonOpen = true;
-		}
-		else
-		{
-			IsDungeonOpen = false;
-		}
 
 		Save();
 	}
@@ -93,15 +83,6 @@ public class DungeonSaveData
 			TicketChargeLeftTime = data.TicketChargeLeftTime;
 			CurDungeonLv = data.CurDungeonLv;
 			TopDungeonLv = data.TopDungeonLv;
-
-			if (StageManager.Ins.PlayerData.TopStage > ConstantData.DungeonOpenStage)
-			{
-				IsDungeonOpen = true;
-			}
-			else
-			{
-				IsDungeonOpen = false;
-			}
 		}
 				
 		Save();
