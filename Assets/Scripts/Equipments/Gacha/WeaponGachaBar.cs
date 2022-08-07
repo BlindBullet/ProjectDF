@@ -23,7 +23,7 @@ public class WeaponGachaBar : MonoBehaviour
 		TitleText.text = LanguageManager.Ins.SetString("Summon_Weapon");
 
 		InfoBtn.onClick.RemoveAllListeners();
-		InfoBtn.onClick.AddListener(() => { });
+		InfoBtn.onClick.AddListener(() => { Application.OpenURL("https://mkgames0330.blogspot.com/2022/08/blog-post.html"); });
 
 		Gacha15Btn.onClick.RemoveAllListeners();
 		Gacha15Btn.onClick.AddListener(() => 
