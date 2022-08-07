@@ -426,3 +426,4 @@ Return,돌아가기,Exit,出る
 Victory,승리!,Victory,勝利
 VictoryTime,승리 시간,Victory Time,勝利時間
 RewardIncRate,보상 증가량,Increase Reward ,報酬増加量
+desc_dungeon_auto_exit,{0}초 후 자동으로 돌아갑니다.,Automatically returns after {0} seconds.,{0}秒後に自動的に戻ります。

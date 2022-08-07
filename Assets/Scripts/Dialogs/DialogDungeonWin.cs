@@ -11,6 +11,7 @@ public class DialogDungeonWin : DialogController
 	public RewardIcon[] RewardIcons;
 	public Button ReturnBtn;
 	public TextMeshProUGUI ReturnBtnText;
+	public TextMeshProUGUI ReturnDescText;
 
 	public void OpenDialog(double getSoulStone, double getEnchantStone)
 	{
@@ -32,7 +33,24 @@ public class DialogDungeonWin : DialogController
 
 		ReturnBtnText.text = LanguageManager.Ins.SetString("Return");
 
+		StartCoroutine(AutoExit());
 		Show(false);
+	}
+
+	IEnumerator AutoExit()
+	{
+		int count = 5;
+
+		for(int i = 0; i < 5; i++)
+		{
+			ReturnDescText.text = string.Format(LanguageManager.Ins.SetString("desc_dungeon_auto_exit"), count.ToString());
+			yield return new WaitForSeconds(1f);
+			count--;
+		}
+
+		ReturnDescText.text = string.Format(LanguageManager.Ins.SetString("desc_dungeon_auto_exit"), count.ToString());
+		DungeonManager.Ins.WinEndSeq();
+		CloseDialog();
 	}
 
 
