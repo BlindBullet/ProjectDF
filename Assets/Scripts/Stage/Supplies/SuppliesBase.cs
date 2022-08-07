@@ -23,6 +23,7 @@ public class SuppliesBase : MonoBehaviour
 		data = chart;
 		IconImg.sprite = Resources.Load<SpriteAtlas>("Sprites/Icons").GetSprite(chart.Icon);
 		IconImg.transform.localScale = new Vector2(chart.IconSize, chart.IconSize);
+		IconTrf.position = Vector3.zero;
 		WingsMove();
 
 		min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
