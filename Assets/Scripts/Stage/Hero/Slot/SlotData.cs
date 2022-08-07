@@ -91,7 +91,7 @@ public class SlotData
 				AtkData.Boom++;
 				break;
 			case AtkUpgradeType.Bounce:
-				AtkData.Bounce++;
+				AtkData.Bounce = AtkData.Bounce + 2;
 				break;
 			case AtkUpgradeType.AtkUp:
 				AtkData.AtkUp++;
