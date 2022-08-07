@@ -118,7 +118,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 		//½Â¸® ½Ã°£
 		int time = (int)(30f - Mathf.Round(_time));
 		//½Â¸® º¸»ó Áõ°¡
-		float rewardInc = Mathf.Round(30f - time) / 30f;
+		float rewardInc = Mathf.Round(30f - time) / 30f / 2f;
 		
 		DungeonChart chart = CsvData.Ins.DungeonChart[DungeonData.CurDungeonLv.ToString()];
 		

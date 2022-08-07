@@ -20,7 +20,7 @@ public class DialogDungeonWin : DialogController
 		//½Â¸® ½Ã°£
 		int time = (int)(30f - Mathf.Round(DungeonManager.Ins._time));
 		//½Â¸® º¸»ó Áõ°¡
-		float rewardInc = Mathf.Round(((30f - time) / 30f) * 100f);
+		float rewardInc = Mathf.Round(((30f - time) / 30f) * 100f / 2f);
 
 		DescText.text = LanguageManager.Ins.SetString("VictoryTime") + " : " + time.ToString() + "\n"
 			+ LanguageManager.Ins.SetString("RewardIncRate") + " : +" + rewardInc.ToString() + "%";
