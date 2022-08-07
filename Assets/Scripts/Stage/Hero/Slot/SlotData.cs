@@ -82,7 +82,7 @@ public class SlotData
 				AtkData.Diagonal++;
 				break;
 			case AtkUpgradeType.Piercing:
-				AtkData.Piercing++;
+				AtkData.Piercing = AtkData.Piercing + 2;
 				break;
 			case AtkUpgradeType.Multi:
 				AtkData.Multi++;
