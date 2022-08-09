@@ -69,8 +69,8 @@ public class WeaponGachaBar : MonoBehaviour
 		var chart = CsvData.Ins.EquipmentLvChart[lv.ToString()];
 
 		LvText.text = lv.ToString();
-		ExpText.text = exp + " / " + chart.NeedCount;
-		ExpFill.fillAmount = (float)exp / (float)chart.NeedCount;
+		ExpText.text = lv == 8 ? "MAX" : exp + " / " + chart.NeedCount;
+		ExpFill.fillAmount = lv == 8 ? 1f : (float)exp / (float)chart.NeedCount;
 	}
 
 

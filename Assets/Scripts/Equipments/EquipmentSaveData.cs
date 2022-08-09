@@ -226,7 +226,9 @@ public class EquipmentSaveData
 			}
 		}
 
-		WeaponExpUp(count);
+		if(WeaponLv < 8)
+			WeaponExpUp(count);
+
 		return result;
 	}
 
@@ -256,7 +258,9 @@ public class EquipmentSaveData
 			}
 		}
 
-		AccExpUp(count);
+		if(AccLv < 8)
+			AccExpUp(count);
+
 		return result;
 	}
 

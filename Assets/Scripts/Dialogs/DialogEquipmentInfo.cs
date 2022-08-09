@@ -154,6 +154,13 @@ public class DialogEquipmentInfo : DialogController
 			return;
 		}
 
+		EquipmentChart chart = CsvData.Ins.EquipmentChart[data.Id];
+		if (chart.Grade == 5 && chart.Level == 1)
+		{
+			FusionBtn.gameObject.SetActive(false);
+			return;
+		}	
+
 		if(data.Count >= 5)
 		{
 			FusionBtn.gameObject.SetActive(true);
