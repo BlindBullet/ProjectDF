@@ -665,6 +665,8 @@ public class StageManager : MonoSingleton<StageManager>
 
 	public void EnterDungeon()
 	{
+		PlayerData.Save();
+
 		for (int i = EnemyBase.Enemies.Count - 1; i >= 0; i--)
 		{
 			EnemyBase.Enemies[i].Destroy();

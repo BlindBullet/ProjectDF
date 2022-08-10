@@ -219,6 +219,7 @@ public class DialogQuestInfo : DialogController
 
 			data.Dispatch(TimeManager.Ins.ReceivedTime, DispatchHeroes);
 			DialogQuest._Dialog.SetQuests();
+			StageManager.Ins.PlayerData.Save();
 			CloseDialog();
 		}
 		else
