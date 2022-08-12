@@ -44,9 +44,9 @@ public class WeaponGachaBar : MonoBehaviour
 		Gacha35Btn.onClick.RemoveAllListeners();
 		Gacha35Btn.onClick.AddListener(() => 
 		{
-			if (StageManager.Ins.PlayerData.SoulStone >= 1200)
+			if (StageManager.Ins.PlayerData.SoulStone >= 1000)
 			{
-				StageManager.Ins.ChangeSoulStone(-1200);
+				StageManager.Ins.ChangeSoulStone(-1000);
 				var result = StageManager.Ins.EquipmentData.GachaWeapon(35);
 				DialogManager.Ins.OpenGachaEquipmentInfo(result);
 				SetLvAndExp();
