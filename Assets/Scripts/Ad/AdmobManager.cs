@@ -256,7 +256,7 @@ public class AdmobManager : MonoSingleton<AdmobManager>
 			questRefreshAd.Show();
 
 		StartCoroutine(DialogQuest._Dialog.ResetQuest());
-		LoadAd(AdType.OfflineReward);
+		LoadAd(AdType.QuestRefresh);
 	}
 #endregion
 
