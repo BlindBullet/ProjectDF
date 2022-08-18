@@ -22,13 +22,17 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 	private void Start()
 	{
 		DialogManager.Ins.SetDialogTransform();
-
-		SoundManager.Ins.ChangeBGM("Time_for_Battle__30s_Loop");
-		SoundManager.Ins.DissolveBGMVolume(1f, 1f);
+		
 		_time = 30f;
 		PlayerData.Load();
 		DungeonData.Load();
 		EquipmentData.Load();
+
+		if (PlayerData.OnBGM)
+		{
+			SoundManager.Ins.ChangeBGM("Time_for_Battle__30s_Loop");
+			SoundManager.Ins.DissolveBGMVolume(1f, 1f);
+		}
 
 		DungeonNameText.text = LanguageManager.Ins.SetString("Dungeon") + " " + DungeonData.CurDungeonLv.ToString() + LanguageManager.Ins.SetString("Floor");
 
