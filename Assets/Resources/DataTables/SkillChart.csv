@@ -114,3 +114,8 @@ skill_10023,str_name_skill_10023,str_desc_skill_10023,ActiveEnemyTarget,2,80,2,A
 skill_10023,str_name_skill_10023,str_desc_skill_10023,ActiveEnemyTarget,3,80,2,Attack,BeamupCylinderBlue,se_cast_skill,LeavesAttack,60,10|15|20|25|30|35|40|50,skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_4
 skill_10023,str_name_skill_10023,str_desc_skill_10023,ActiveEnemyTarget,4,80,2,Attack,BeamupCylinderBlue,se_cast_skill,LeavesAttack,60,10|15|20|25|30|35|40|50,skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_5
 skill_10023,str_name_skill_10023,str_desc_skill_10023,ActiveEnemyTarget,5,80,2,Attack,BeamupCylinderBlue,se_cast_skill,LeavesAttack,60,10|15|20|25|30|35|40|50,skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_1|skill_10023_6
+skill_10024,str_name_skill_10024,str_desc_skill_10024,Active,1,65,30,Attack,BeamupCylinderBlue,se_cast_skill,,6,3,skill_10024_1
+skill_10024,str_name_skill_10024,str_desc_skill_10024,Active,2,65,40,Attack,BeamupCylinderBlue,se_cast_skill,,6,3,skill_10024_2
+skill_10024,str_name_skill_10024,str_desc_skill_10024,Active,3,65,50,Attack,BeamupCylinderBlue,se_cast_skill,,6,3,skill_10024_3
+skill_10024,str_name_skill_10024,str_desc_skill_10024,Active,4,65,60,Attack,BeamupCylinderBlue,se_cast_skill,,6,3,skill_10024_4
+skill_10024,str_name_skill_10024,str_desc_skill_10024,Active,5,65,70,Attack,BeamupCylinderBlue,se_cast_skill,,6,3,skill_10024_5
