@@ -649,18 +649,26 @@ MonoBehaviour:
     Atk: 0
     Spd: 0
     CritChance: 0
+    CritChance2: 0
     CritDmg: 0
+    CritDmg2: 0
     Attr: 0
     AtkInc: 0
     AtkDec: 0
     AtkIncRate: 0
     AtkDecRate: 0
+    AtkIncRateE: 0
+    AtkDecRateE: 0
     SpdInc: 0
     SpdDec: 0
     CritChanceInc: 0
     CritChanceDec: 0
+    CritChance2Inc: 0
+    CritChance2Dec: 0
     CritDmgInc: 0
     CritDmgDec: 0
+    CritDmg2Inc: 0
+    CritDmg2Dec: 0
     CoolTimeAdd: 0
     CoolTimeInc: 0
     CoolTimeDec: 0
