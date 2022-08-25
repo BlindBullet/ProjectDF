@@ -121,7 +121,7 @@ public class EquipmentSaveData
 	}
 
 	public void Fusion(EquipmentData data)
-	{		
+	{	
 		EquipmentChart chart = CsvData.Ins.EquipmentChart[data.Id];
 
 		if(data.Count >= 5)
@@ -136,7 +136,7 @@ public class EquipmentSaveData
 
 				if(chart.Level == 1)
 				{						
-					if (_chart.Grade == chart.Grade + 1 && _chart.Level == 5)
+					if (_chart.Grade == chart.Grade + 1 && _chart.Level == 5 && chart.Type == _chart.Type)
 					{
 						if (Datas[i].isOpen)
 						{
@@ -151,7 +151,7 @@ public class EquipmentSaveData
 				}
 				else
 				{
-					if(_chart.Grade == chart.Grade && _chart.Level == chart.Level - 1)
+					if(_chart.Grade == chart.Grade && _chart.Level == chart.Level - 1 && chart.Type == _chart.Type)
 					{
 						if (Datas[i].isOpen)
 						{
